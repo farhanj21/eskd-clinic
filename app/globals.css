@@ -184,7 +184,7 @@ header.site-header.scrolled{
 nav.primary{display:flex;gap:6px;align-items:center;}
 nav.primary a{
   padding:10px 14px;
-  font-size:14px;font-weight:500;
+  font-size:16px;font-weight:500;
   color:var(--ink);
   border-radius:999px;
   transition:color .2s,background .2s;
