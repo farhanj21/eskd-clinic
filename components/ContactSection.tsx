@@ -66,8 +66,8 @@ export default function ContactSection() {
                   <h4>Opening hours</h4>
                   <p>
                     Mon – Thu &nbsp; 8:30am – 4:00pm<br />
-                    Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8:30am – 4:30pm<br />
-                    Saturday &nbsp;&nbsp;&nbsp; Monthly · by appointment
+                    Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8:30am – 4:30pm<br />
+                    Saturday &nbsp;&nbsp;&nbsp;&nbsp; 8:00am – 4:00pm
                   </p>
                 </div>
               </div>
@@ -105,46 +105,51 @@ export default function ContactSection() {
             <h3>Book or enquire</h3>
             <p className="sub">Please share a few details and we'll be in touch shortly.</p>
 
-            <div className="form-radios" style={{marginBottom:'18px'}}>
+            {/* <div className="form-radios" style={{marginBottom:'18px'}}>
               <label><input type="radio" name="patient" defaultChecked /><span>New Patient</span></label>
               <label><input type="radio" name="patient" /><span>Existing Patient</span></label>
-            </div>
+            </div> */}
 
             <div className="form-row">
               <div className="field">
                 <label htmlFor="f-first">First name</label>
-                <input type="text" id="f-first" placeholder="Jane" required />
+                <input type="text" id="f-first" placeholder="First name" required />
               </div>
               <div className="field">
                 <label htmlFor="f-last">Last name</label>
-                <input type="text" id="f-last" placeholder="Doe" required />
+                <input type="text" id="f-last" placeholder="Last name" required />
               </div>
             </div>
             <div className="form-row">
               <div className="field">
                 <label htmlFor="f-email">Email</label>
-                <input type="email" id="f-email" placeholder="jane@email.com" required />
+                <input type="email" id="f-email" placeholder="Email address" required />
               </div>
               <div className="field">
                 <label htmlFor="f-phone">Phone</label>
-                <input type="tel" id="f-phone" placeholder="0400 000 000" required />
+                <input type="tel" id="f-phone" placeholder="Phone number" required />
               </div>
             </div>
             <div className="form-row single">
               <div className="field">
                 <label htmlFor="f-reason">I&apos;d like to</label>
                 <select id="f-reason">
-                  <option>Book an appointment</option>
-                  <option>Ask about a treatment</option>
-                  <option>Emergency — same day</option>
-                  <option>Cosmetic consultation</option>
+                  <option>General Consultation</option>
+                  <option>Smile Design Consultation</option>
+                  <option>Implant</option>
+                  <option>Aligners</option>
+                  <option>Whitening</option>
+                  <option>Wisdom Teeth</option>
+                  <option>Porcelain and Composite Veneers</option>
+                  <option>Gum Contouring</option>
+                  <option>Sedation</option>
                 </select>
               </div>
             </div>
             <div className="form-row single">
               <div className="field">
                 <label htmlFor="f-message">How can we help?</label>
-                <textarea id="f-message" placeholder="Tell us a bit about what brings you in…"></textarea>
+                <textarea id="f-message" placeholder="Any additional details or questions…"></textarea>
               </div>
             </div>
             <div className="submit-row">
