@@ -751,10 +751,23 @@ section.section{
 .reviews .section-head{max-width:none;}
 .reviews .section-head h2{white-space:nowrap;}
 .reviews{background:var(--cream);}
-.reviews-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+.reviews-track-wrap{
+  overflow:hidden;
+  margin-top:48px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
+.reviews-track{
+  display:flex;
+  gap:24px;
+  width:max-content;
+  padding:4px 0 24px;
+  cursor:grab;
+  will-change:transform;
+}
+.reviews-track:active{cursor:grabbing;}
 .review-card{
+  flex:0 0 380px;
   background:var(--cream-50);
   border:1px solid var(--line-soft);
   border-radius:var(--radius-md);
@@ -790,7 +803,7 @@ section.section{
   color:var(--gold);
   opacity:.18;
 }
-@media(max-width:880px){.reviews-grid{grid-template-columns:1fr;}}
+@media(max-width:640px){.review-card{flex:0 0 300px;}}
 
 /* ---------- Health funds ---------- */
 .funds{
