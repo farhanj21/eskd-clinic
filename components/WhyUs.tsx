@@ -29,9 +29,9 @@ export default function WhyUs() {
         <div className="why-foot reveal">
           <div className="stats">
             <div className="stat"><b>40+</b><span>Years serving St&nbsp;Kilda</span></div>
-            <div className="stat"><b>15k+</b><span>Patients cared for</span></div>
-            <div className="stat"><b>20+</b><span>Suburbs served</span></div>
-            <div className="stat"><b>9</b><span>Health funds, gap-free</span></div>
+            <div className="stat"><b>10,000+</b><span>Patients cared for</span></div>
+            <div className="stat"><b>15</b><span>Suburbs served</span></div>
+            {/* <div className="stat"><b>9</b><span>Health funds, gap-free</span></div> */}
           </div>
           <a href="#contact" className="btn btn-gold">
             Book Your Visit

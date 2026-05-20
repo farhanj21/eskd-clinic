@@ -86,10 +86,17 @@ export default function ContactSection() {
             </div>
 
             <div className="map-wrap reveal">
-              <div className="map-pin">
+              <a
+                className="map-pin"
+                href="https://maps.app.goo.gl/7e4dRpEyETE8K18s5"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open East St Kilda Dental in Google Maps"
+              >
                 <b>East St Kilda Dental</b>
                 <span>364 Dandenong Rd · VIC 3183</span>
-              </div>
+                <span className="map-cta">Open in Google Maps ↗</span>
+              </a>
             </div>
           </div>
 

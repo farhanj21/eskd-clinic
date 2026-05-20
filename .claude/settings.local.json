@@ -18,7 +18,8 @@
       "Bash(Select-String -Path \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\" -Pattern \"contact\" -SimpleMatch)",
       "Bash(Select-Object LineNumber, Line)",
       "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"contact\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })",
-      "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"section-head\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })"
+      "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"section-head\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })",
+      "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"map\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })"
     ]
   }
 }

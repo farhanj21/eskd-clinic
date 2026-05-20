@@ -914,7 +914,7 @@ section.section{
 .form .btn{width:100%;justify-content:center;}
 
 .map-wrap{
-  margin-top:60px;
+  margin-top:0;
   border-radius:var(--radius-lg);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -938,8 +938,11 @@ section.section{
   box-shadow:var(--shadow-md);
   font-family:var(--serif);
 }
+.map-pin{transition:transform .2s ease,box-shadow .2s ease;}
+.map-pin:hover{transform:translate(-50%,-50%) scale(1.03);box-shadow:0 8px 32px rgba(15,40,42,.22);}
 .map-pin b{display:block;font-size:20px;}
 .map-pin span{font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
+.map-cta{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:6px;}
 
 @media(max-width:880px){
   .contact-grid{grid-template-columns:1fr;gap:36px;}
