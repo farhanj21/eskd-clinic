@@ -1,9 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
+const aboutLinks = [
+  { label: 'How We Work', href: '#about' },
+  { label: 'Languages', href: '#contact' },
+  { label: 'Blogs', href: '#blog' },
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms and Conditions', href: '#' },
+]
+
+const serviceLinks = [
+  { label: 'Invisalign', href: '#services' },
+  { label: 'Veneers', href: '#services' },
+  { label: 'Gentle Dentistry', href: '#gentle' },
+  { label: 'Emergency', href: '#services' },
+  { label: 'Dental Surgery', href: '#services' },
+  { label: 'Wisdom Tooth Extraction', href: '#services' },
+  { label: 'Teeth Whitening', href: '#services' },
+  { label: 'Crowns and Bridges', href: '#services' },
+]
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<'about' | 'services' | null>(null)
+  const navRef = useRef<HTMLElement>(null)
 
   function toggleMenu() {
     setMenuOpen((prev) => !prev)
@@ -11,38 +32,80 @@ export default function Header() {
 
   function closeMenu() {
     setMenuOpen(false)
+    setOpenDropdown(null)
   }
+
+  function toggleDropdown(name: 'about' | 'services') {
+    setOpenDropdown((prev) => (prev === name ? null : name))
+  }
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const chevron = (
+    <svg className="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  )
 
   return (
     <header className="site-header" id="site-header">
       <div className="container header-inner">
         <a href="#" className="brand">
-          <img src="/assets/logo-compact.png" alt="East St Kilda Dental — Since 1984" />
+          <img src="/assets/eskd-no-bg.png" alt="East St Kilda Dental — Since 1984" />
         </a>
-        <nav className="primary" aria-label="Primary navigation">
-          <a href="#about">
-            About{' '}
-            <svg className="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </a>
-          <a href="#services">
-            Services{' '}
-            <svg className="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </a>
-          <a href="#gentle">Gentle Dentistry</a>
+
+        <nav className="primary" aria-label="Primary navigation" ref={navRef}>
+          {/* About dropdown */}
+          <div className={`nav-item${openDropdown === 'about' ? ' open' : ''}`}>
+            <a
+              href="#about"
+              onClick={(e) => { e.preventDefault(); toggleDropdown('about') }}
+              aria-haspopup="true"
+              aria-expanded={openDropdown === 'about'}
+            >
+              About {chevron}
+            </a>
+            <div className="dropdown" role="menu">
+              {aboutLinks.map(({ label, href }) => (
+                <a key={label} href={href} role="menuitem" onClick={() => setOpenDropdown(null)}>
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services dropdown */}
+          <div className={`nav-item${openDropdown === 'services' ? ' open' : ''}`}>
+            <a
+              href="#services"
+              onClick={(e) => { e.preventDefault(); toggleDropdown('services') }}
+              aria-haspopup="true"
+              aria-expanded={openDropdown === 'services'}
+            >
+              Services {chevron}
+            </a>
+            <div className="dropdown" role="menu">
+              {serviceLinks.map(({ label, href }) => (
+                <a key={label} href={href} role="menuitem" onClick={() => setOpenDropdown(null)}>
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+
           <a href="#team">Our Team</a>
-          <a href="#patients">
-            Patients{' '}
-            <svg className="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </a>
-          <a href="#blog">Blog</a>
+          <a href="#patients">Patients</a>
           <a href="#contact">Contact</a>
         </nav>
+
         <div className="header-cta">
           {/* <a href="tel:+61395273678" className="btn btn-outline">(03) 9527 3678</a> */}
           <a href="#contact" className="btn btn-primary">
@@ -66,16 +129,44 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {/* Mobile nav */}
       <nav
         className={`mobile-nav${menuOpen ? ' open' : ''}`}
         aria-label="Mobile navigation"
       >
-        <a href="#about" onClick={closeMenu}>About</a>
-        <a href="#services" onClick={closeMenu}>Services</a>
-        <a href="#gentle" onClick={closeMenu}>Gentle Dentistry</a>
+        {/* About accordion */}
+        <button
+          className={`mob-parent${openDropdown === 'about' ? ' open' : ''}`}
+          onClick={() => toggleDropdown('about')}
+        >
+          About {chevron}
+        </button>
+        <div className={`mob-dropdown${openDropdown === 'about' ? ' open' : ''}`}>
+          {aboutLinks.map(({ label, href }) => (
+            <a key={label} href={href} onClick={closeMenu}>{label}</a>
+          ))}
+        </div>
+
+        {/* Services accordion */}
+        <button
+          className={`mob-parent${openDropdown === 'services' ? ' open' : ''}`}
+          onClick={() => toggleDropdown('services')}
+        >
+          Services {chevron}
+        </button>
+        <div className={`mob-dropdown${openDropdown === 'services' ? ' open' : ''}`}>
+          {serviceLinks.map(({ label, href }) => (
+            <a key={label} href={href} onClick={closeMenu}>{label}</a>
+          ))}
+        </div>
+
         <a href="#team" onClick={closeMenu}>Our Team</a>
+        <a href="#patients" onClick={closeMenu}>Patients</a>
         <a href="#contact" onClick={closeMenu}>Contact</a>
-        <a href="#contact" className="btn btn-primary mobile-cta" onClick={closeMenu}>Book Appointment</a>
+        <a href="#contact" className="btn btn-primary mobile-cta" onClick={closeMenu}>
+          Book Appointment
+        </a>
       </nav>
     </header>
   )
