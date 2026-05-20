@@ -1,3 +1,5 @@
+// removed erroneous import of url
+
 export default function SignatureServices() {
   return (
     <section className="section signature" id="gentle">
@@ -11,7 +13,7 @@ export default function SignatureServices() {
         <div className="sig-card reveal from-left">
           <div
             className="img"
-            style={{backgroundImage:"url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=85&auto=format&fit=crop')"}}
+            style={{backgroundImage: "url('/assets/gentle.JPG')"}}
             role="img"
             aria-label="Dental consultation"
           ></div>
@@ -39,7 +41,7 @@ export default function SignatureServices() {
         <div className="sig-card flip reveal from-right">
           <div
             className="img"
-            style={{backgroundImage:"url('https://images.unsplash.com/photo-1581585099522-f6ac2efe6a37?w=1400&q=85&auto=format&fit=crop')"}}
+            style={{ backgroundImage: "url('/assets/cosmetic_smile.JPG')" }}
             role="img"
             aria-label="Cosmetic smile design"
           ></div>

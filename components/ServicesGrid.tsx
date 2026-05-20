@@ -34,7 +34,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url('/assets/extraction.JPG')"}}
               role="img"
               aria-label="Fillings and extractions"
             >
@@ -56,7 +56,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url('/assets/emergency.JPG')"}}
               role="img"
               aria-label="Emergency dental care"
             >
@@ -78,7 +78,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('/public/Wisdom_Teeth.JPG')"}}
+              style={{backgroundImage:"url('/assets/Wisdom_Teeth.JPG')"}}
               role="img"
               aria-label="Wisdom teeth removal"
             >
@@ -100,7 +100,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url(https://plus.unsplash.com/premium_photo-1661436629100-ba3c5ea70514?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"}}
+              style={{backgroundImage:"url('/assets/veneers.JPG')"}}
               role="img"
               aria-label="Porcelain veneers"
             >
@@ -166,7 +166,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1612538498456-e861df91d4d0?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url(https://plus.unsplash.com/premium_photo-1661436629100-ba3c5ea70514?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"}}
               role="img"
               aria-label="Crowns and bridges"
             >
@@ -188,7 +188,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url(https://plus.unsplash.com/premium_photo-1674179075503-1ae4d0c278dd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"}}
+              style={{backgroundImage: "url('/assets/whitening.JPG')"}}
               role="img"
               aria-label="Teeth whitening"
             >
