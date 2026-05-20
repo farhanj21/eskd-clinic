@@ -70,7 +70,7 @@ export default function Reviews() {
         }
       }
 
-      track.style.transform = `translateX(${xRef.current}px)`
+      track!.style.transform = `translateX(${xRef.current}px)`
       raf = requestAnimationFrame(tick)
     }
 

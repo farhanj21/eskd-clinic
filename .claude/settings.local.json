@@ -27,7 +27,8 @@
       "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\" | ForEach-Object { $_.Name })",
       "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\\\\assets\" | ForEach-Object { $_.Name })",
       "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\\\\assets\" | Where-Object { $_.Name -match \"favicon\" } | ForEach-Object { $_.Name })",
-      "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"Smile gallery|Health funds|Testimonials\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })"
+      "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"Smile gallery|Health funds|Testimonials\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })",
+      "Bash(npx tsc *)"
     ]
   }
 }

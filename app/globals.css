@@ -328,7 +328,7 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
   position:relative;
   min-height:min(86vh,760px);
   background:linear-gradient(180deg,rgba(14,58,61,.55) 0%,rgba(14,58,61,.35) 35%,rgba(14,58,61,.75) 100%),
-             url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=2000&q=85&auto=format&fit=crop') center/cover;
+             url('/assets/EK04.png') center/cover;
   color:var(--cream-50);
   display:flex;align-items:center;
   overflow:hidden;
