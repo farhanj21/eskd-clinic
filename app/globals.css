@@ -827,8 +827,11 @@ section.section{
 
 .contact-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:60px;
-  margin-top:18px;
+  align-items:start;
 }
+.contact-left{display:flex;flex-direction:column;gap:20px;}
+.contact-left .section-head{margin-bottom:15px;}
+.contact-form-sticky{position:sticky;top:100px;}
 .contact-info{display:flex;flex-direction:column;gap:28px;}
 .info-item{display:flex;gap:18px;align-items:flex-start;}
 .info-item .ico{
