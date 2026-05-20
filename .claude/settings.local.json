@@ -22,7 +22,11 @@
       "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"map\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })",
       "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"select|field\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })",
       "PowerShell($lines = Get-Content \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\globals.css\"; for \\($i=0; $i -lt $lines.Length; $i++\\) { if \\($lines[$i] -match \"smile|gallery-grid|ba-\"\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" } })",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\" -Recurse -Force | ForEach-Object { $_.FullName })"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\" -Recurse -Force | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\" | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\" | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\\\\assets\" | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Force \"C:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\public\\\\assets\" | Where-Object { $_.Name -match \"favicon\" } | ForEach-Object { $_.Name })"
     ]
   }
 }

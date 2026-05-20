@@ -18,9 +18,12 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'East St Kilda Dental — Your Local Dental Home Since 1984',
+  title: 'East St Kilda Dental — Your Local Dental Home',
   description:
     'East St Kilda Dental — gentle, comprehensive family and cosmetic dental care in East St Kilda since 1984. Book your appointment today.',
+  icons: {
+    icon: '/assets/favicon.png',
+  },
 }
 
 export default function RootLayout({
