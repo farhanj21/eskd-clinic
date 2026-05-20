@@ -4,7 +4,6 @@ export default function Intro() {
       <div className="container">
         <div className="intro-grid">
           <div className="intro-art reveal">
-            <div className="stamp">SINCE<b>1984</b>EAST ST KILDA</div>
             <div className="badge">
               <div className="n">40+</div>
               <div className="l">Years caring for St&nbsp;Kilda families</div>

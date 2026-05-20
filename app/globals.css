@@ -435,7 +435,7 @@ section.section{
 .section-head p{font-size:17px;}
 
 /* ---------- Welcome / Intro ---------- */
-.intro{background:var(--cream-50);}
+.intro{background:var(--cream-50);padding-top:36px;}
 .intro-grid{
   display:grid;grid-template-columns:1fr 1.05fr;gap:72px;
   align-items:center;

@@ -2,7 +2,7 @@ export default function TrustStrip() {
   return (
     <div className="trust reveal">
       <div className="container trust-inner">
-        <div className="trust-label">Accredited with leading Australian healthcare bodies</div>
+        <div className="trust-label">Accredited with Australian healthcare bodies</div>
         <div className="trust-logos">
           <div className="trust-logo sans">ADA</div>
           <div className="trust-logo">Invisalign</div>
