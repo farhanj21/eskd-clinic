@@ -78,7 +78,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1610552050890-fe99536c2615?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url('/public/Wisdom_Teeth.JPG')"}}
               role="img"
               aria-label="Wisdom teeth removal"
             >
@@ -100,7 +100,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url(https://plus.unsplash.com/premium_photo-1661436629100-ba3c5ea70514?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"}}
               role="img"
               aria-label="Porcelain veneers"
             >
@@ -122,7 +122,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1601317314062-7d1eb89ce5ec?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=900&q=80&auto=format&fit=crop')"}}
               role="img"
               aria-label="Invisalign clear aligners"
             >
@@ -144,7 +144,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url(https://images.unsplash.com/photo-1593022356769-11f762e25ed9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}}
               role="img"
               aria-label="Dental implants"
             >
@@ -188,7 +188,7 @@ export default function ServicesGrid() {
           <article className="service-card reveal">
             <div
               className="img"
-              style={{backgroundImage:"url('https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=900&q=80&auto=format&fit=crop')"}}
+              style={{backgroundImage:"url(https://plus.unsplash.com/premium_photo-1674179075503-1ae4d0c278dd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"}}
               role="img"
               aria-label="Teeth whitening"
             >
