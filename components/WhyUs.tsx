@@ -4,7 +4,7 @@ export default function WhyUs() {
       <div className="container">
         <div className="section-head reveal">
           <span className="eyebrow center">Why East St Kilda Families Choose Us</span>
-          <h2>A dental experience that feels different —<br />because it&nbsp;<em style={{fontStyle:'italic',color:'var(--gold-soft)'}}>is</em>.</h2>
+          <h2>A dental experience that feels <br></br>different — because it&nbsp;<em style={{fontStyle:'italic',color:'var(--gold-soft)'}}>is</em>.</h2>
           <p className="lede">For four decades we've earned the trust of generations of local families. Here's what makes our care worth the visit.</p>
         </div>
 

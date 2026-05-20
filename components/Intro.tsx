@@ -12,7 +12,7 @@ export default function Intro() {
           <div className="intro-body reveal" style={{transitionDelay:'.1s'}}>
             <div className="intro-art-mobile" aria-hidden="true"></div>
             <span className="eyebrow">A Different Kind of Dental Experience</span>
-            <h2 style={{marginTop:'18px'}}>A clinic that feels personal,<br />because&nbsp;it&nbsp;is.</h2>
+            <h2 style={{marginTop:'18px'}}>A clinic that feels <br />personal, because&nbsp;it&nbsp;is.</h2>
             <p className="lede">At East St Kilda Dental, we don't just treat teeth — we care for people. For more than forty years our experienced, warm-hearted team has provided comprehensive dental services built around your comfort, long-term wellness, and confidence.</p>
             <p style={{marginTop:'14px'}}>Whether you're here for a routine clean, dental implants, or a complete cosmetic transformation, you're in expert hands. Modern technology, a calming atmosphere, and a gentle, patient-first approach — that's how we've earned the trust of generations of local families.</p>
 
