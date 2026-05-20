@@ -3,7 +3,7 @@ export default function Intro() {
     <section className="section intro" id="about">
       <div className="container">
         <div className="intro-grid">
-          <div className="intro-art reveal">
+          <div className="intro-art reveal scale-in">
             <div className="badge">
               <div className="n">40+</div>
               <div className="l">Years caring for St&nbsp;Kilda families</div>

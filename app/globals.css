@@ -100,12 +100,32 @@ p{margin:0;color:var(--ink-soft);}
 /* ---------- Scroll reveal ---------- */
 .reveal{
   opacity:0;
-  transform:translateY(24px);
-  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+  transform:translateY(40px);
+  transition:opacity .95s cubic-bezier(.22,1,.36,1),transform .95s cubic-bezier(.22,1,.36,1);
 }
+.reveal.from-left{transform:translateX(-56px);}
+.reveal.from-right{transform:translateX(56px);}
+.reveal.scale-in{transform:scale(0.91) translateY(18px);}
 .reveal.visible{opacity:1;transform:none;}
+
+/* Eyebrow line draws in after parent becomes visible */
+.reveal .eyebrow::before,
+.reveal .eyebrow.center::after{width:0;transition:width .65s cubic-bezier(.22,1,.36,1) .3s;}
+.reveal.visible .eyebrow::before,
+.reveal.visible .eyebrow.center::after{width:34px;}
+
+/* Scroll progress bar */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--teal-600));
+  z-index:300;pointer-events:none;
+  transition:width .08s linear;
+}
+
 @media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none;}
+  .reveal,.reveal.from-left,.reveal.from-right,.reveal.scale-in{opacity:1;transform:none;transition:none;}
+  .reveal .eyebrow::before,.reveal .eyebrow.center::after{width:34px;transition:none;}
+  .scroll-progress{display:none;}
 }
 
 /* ---------- Buttons ---------- */

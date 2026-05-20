@@ -6,11 +6,11 @@ export default function Hero() {
         <div className="hero-badge"><span className="n">40+</span><span>YEARS</span></div>
       </div>
       <div className="container container-wide hero-grid">
-        <div className="reveal">
-          <span className="eyebrow">Your Local Dental Home · Since 1984</span>
-          <h1>Forty years of <em>heartfelt</em>, skilled dentistry in&nbsp;East&nbsp;St&nbsp;Kilda.</h1>
-          <p className="sub">From family check-ups to complete smile makeovers, our experienced team delivers gentle, comprehensive care trusted by generations of local families.</p>
-          <div className="hero-ctas">
+        <div>
+          <span className="eyebrow reveal" style={{transitionDelay:'.05s'}}>Your Local Dental Home · Since 1984</span>
+          <h1 className="reveal" style={{transitionDelay:'.18s'}}>Forty years of <em>heartfelt</em>, skilled dentistry in&nbsp;East&nbsp;St&nbsp;Kilda.</h1>
+          <p className="sub reveal" style={{transitionDelay:'.32s'}}>From family check-ups to complete smile makeovers, our experienced team delivers gentle, comprehensive care trusted by generations of local families.</p>
+          <div className="hero-ctas reveal" style={{transitionDelay:'.44s'}}>
             <a href="#contact" className="btn btn-gold">
               Book An Appointment
               <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -26,7 +26,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <aside className="hero-meta reveal" style={{transitionDelay:'.15s'}}>
+        <aside className="hero-meta reveal" style={{transitionDelay:'.28s'}}>
           <h4>Welcoming new patients</h4>
           <p>Comprehensive dental care for the whole family. Gap-free check-ups available with most major health funds.</p>
           <div className="hours">

@@ -8,7 +8,7 @@ export default function SignatureServices() {
           <p className="lede">Two signature pillars of the East St Kilda Dental experience — combining gentle, anxiety-free dentistry with bespoke cosmetic transformations, all under one trusted roof.</p>
         </div>
 
-        <div className="sig-card reveal">
+        <div className="sig-card reveal from-left">
           <div
             className="img"
             style={{backgroundImage:"url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=85&auto=format&fit=crop')"}}
@@ -36,7 +36,7 @@ export default function SignatureServices() {
           </div>
         </div>
 
-        <div className="sig-card flip reveal">
+        <div className="sig-card flip reveal from-right">
           <div
             className="img"
             style={{backgroundImage:"url('https://images.unsplash.com/photo-1581585099522-f6ac2efe6a37?w=1400&q=85&auto=format&fit=crop')"}}

@@ -8,7 +8,7 @@ export default function WhyUs() {
           <p className="lede">For four decades we've earned the trust of generations of local families. Here's what makes our care worth the visit.</p>
         </div>
 
-        <div className="why-grid">
+        <div className="why-grid" data-stagger>
           <div className="pillar reveal">
             <div className="num">01</div>
             <h3>Heritage you can feel</h3>
@@ -28,9 +28,9 @@ export default function WhyUs() {
 
         <div className="why-foot reveal">
           <div className="stats">
-            <div className="stat"><b>40+</b><span>Years serving St&nbsp;Kilda</span></div>
-            <div className="stat"><b>10,000+</b><span>Patients cared for</span></div>
-            <div className="stat"><b>15</b><span>Suburbs served</span></div>
+            <div className="stat"><b data-count="40" data-suffix="+">40+</b><span>Years serving St&nbsp;Kilda</span></div>
+            <div className="stat"><b data-count="10000" data-suffix="+">10,000+</b><span>Patients cared for</span></div>
+            <div className="stat"><b data-count="15" data-suffix="">15</b><span>Suburbs served</span></div>
             {/* <div className="stat"><b>9</b><span>Health funds, gap-free</span></div> */}
           </div>
           <a href="#contact" className="btn btn-gold">

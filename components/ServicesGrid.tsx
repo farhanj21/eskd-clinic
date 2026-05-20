@@ -8,7 +8,7 @@ export default function ServicesGrid() {
           <p className="lede">From same-day relief to long-term cosmetic plans, explore the treatments we provide every day — delivered with skill, care, and the warmth of a clinic that's been part of your community since 1984.</p>
         </div>
 
-        <div className="services-grid">
+        <div className="services-grid" data-stagger>
           <article className="service-card reveal">
             <div
               className="img"
@@ -31,7 +31,7 @@ export default function ServicesGrid() {
             </div>
           </article>
 
-          <article className="service-card reveal" style={{transitionDelay:'.05s'}}>
+          <article className="service-card reveal">
             <div
               className="img"
               style={{backgroundImage:"url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=900&q=80&auto=format&fit=crop')"}}
@@ -53,7 +53,7 @@ export default function ServicesGrid() {
             </div>
           </article>
 
-          <article className="service-card reveal" style={{transitionDelay:'.1s'}}>
+          <article className="service-card reveal">
             <div
               className="img"
               style={{backgroundImage:"url('https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=900&q=80&auto=format&fit=crop')"}}
@@ -97,7 +97,7 @@ export default function ServicesGrid() {
             </div>
           </article>
 
-          <article className="service-card reveal" style={{transitionDelay:'.05s'}}>
+          <article className="service-card reveal">
             <div
               className="img"
               style={{backgroundImage:"url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80&auto=format&fit=crop')"}}
@@ -119,7 +119,7 @@ export default function ServicesGrid() {
             </div>
           </article>
 
-          <article className="service-card reveal" style={{transitionDelay:'.1s'}}>
+          <article className="service-card reveal">
             <div
               className="img"
               style={{backgroundImage:"url('https://images.unsplash.com/photo-1601317314062-7d1eb89ce5ec?w=900&q=80&auto=format&fit=crop')"}}
@@ -163,7 +163,7 @@ export default function ServicesGrid() {
             </div>
           </article>
 
-          <article className="service-card reveal" style={{transitionDelay:'.05s'}}>
+          <article className="service-card reveal">
             <div
               className="img"
               style={{backgroundImage:"url('https://images.unsplash.com/photo-1612538498456-e861df91d4d0?w=900&q=80&auto=format&fit=crop')"}}
@@ -185,7 +185,7 @@ export default function ServicesGrid() {
             </div>
           </article>
 
-          <article className="service-card reveal" style={{transitionDelay:'.1s'}}>
+          <article className="service-card reveal">
             <div
               className="img"
               style={{backgroundImage:"url('https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=900&q=80&auto=format&fit=crop')"}}
