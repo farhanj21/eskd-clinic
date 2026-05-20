@@ -44,7 +44,7 @@ export default function Header() {
           <a href="#contact">Contact</a>
         </nav>
         <div className="header-cta">
-          <a href="tel:+61395273678" className="btn btn-outline">(03) 9527 3678</a>
+          {/* <a href="tel:+61395273678" className="btn btn-outline">(03) 9527 3678</a> */}
           <a href="#contact" className="btn btn-primary">
             Book Now
             <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

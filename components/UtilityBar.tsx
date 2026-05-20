@@ -26,8 +26,6 @@ export default function UtilityBar() {
             </svg>
             Mon–Fri 8:30am–4:30pm
           </span>
-          <span className="sep desktop-only"></span>
-          <a className="item" href="#contact">Languages: EN · RU · HE</a>
         </div>
       </div>
     </div>

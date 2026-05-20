@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="hours">
             <span className="d">Mon — Thu</span><span>8:30am – 4:00pm</span>
             <span className="d">Friday</span><span>8:30am – 4:30pm</span>
-            <span className="d">Saturday</span><span>Monthly · By appt.</span>
+            <span className="d">Saturday</span><span>8:00am – 4:00pm</span>
           </div>
         </aside>
       </div>
