@@ -4,13 +4,6 @@ import { useRef, useState } from 'react'
 
 const slides = [
   {
-    before: 'https://images.unsplash.com/photo-1588776814546-1ffbb04e20f4?w=900&q=80&auto=format&fit=crop',
-    after:  'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=80&auto=format&fit=crop',
-    label:   'Porcelain Veneers',
-    sublabel:'4–6 week transformation',
-    delay:   undefined,
-  },
-  {
     before: '/assets/before_invis.png',
     after:  '/assets/after_invis.png',
     label:   'Invisalign Treatment',

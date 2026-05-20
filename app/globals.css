@@ -715,11 +715,11 @@ section.section{
 .gallery{background:var(--cream-50);}
 .gallery-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 .smile-card{
-  position:relative;aspect-ratio:1/1;
+  position:relative;aspect-ratio:3/4;
   border-radius:var(--radius-md);overflow:hidden;
   background:#ddd center/cover no-repeat;
   box-shadow:var(--shadow-sm);
