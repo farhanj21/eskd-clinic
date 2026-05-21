@@ -354,8 +354,8 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
   padding:120px 0 110px;
   position:relative;z-index:1;
 }
-.hero .eyebrow{color:var(--gold-soft);}
-.hero .eyebrow::before{background:var(--gold-soft);}
+.hero .eyebrow{color:#E0A83C;}
+.hero .eyebrow::before{background:#E0A83C;}
 .hero h1{color:var(--cream-50);font-weight:500;margin:22px 0 0;}
 .hero h1 em{font-style:italic;color:var(--gold-soft);font-weight:500;}
 .hero .sub{color:rgba(246,239,227,.85);font-size:18px;max-width:540px;margin-top:22px;}
