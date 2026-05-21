@@ -138,11 +138,7 @@ export default function ContactSection() {
                 <input type="text" id="f-last" placeholder="Last name" required />
               </div>
             </div>
-            <div className="form-row">
-              <div className="field">
-                <label htmlFor="f-email">Email</label>
-                <input type="email" id="f-email" placeholder="Email address" required />
-              </div>
+            <div className="form-row single">
               <div className="field">
                 <label htmlFor="f-phone">Phone</label>
                 <div className="phone-wrap">

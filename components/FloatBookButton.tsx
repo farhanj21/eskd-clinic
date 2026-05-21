@@ -96,7 +96,9 @@ export default function FloatBookButton() {
         </button>
 
         <div className="modal-greeting">
-          <div className="modal-avatar">A</div>
+          <div className="modal-avatar">
+            <img src="/assets/anbar.JPG" alt="Anbar" />
+          </div>
           <div>
             <p className="modal-greeting-name">Anbar</p>
             <p className="modal-greeting-text">
@@ -116,11 +118,7 @@ export default function FloatBookButton() {
               <input type="text" id="m-last" placeholder="Last name" required />
             </div>
           </div>
-          <div className="form-row">
-            <div className="field">
-              <label htmlFor="m-email">Email</label>
-              <input type="email" id="m-email" placeholder="Email address" required />
-            </div>
+          <div className="form-row single">
             <div className="field">
               <label htmlFor="m-phone">Phone</label>
               <div className="phone-wrap modal-phone-wrap">

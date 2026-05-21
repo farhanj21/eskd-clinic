@@ -1282,9 +1282,11 @@ footer.site-footer{
 .modal-avatar{
   flex-shrink:0;
   width:44px;height:44px;border-radius:50%;
-  background:var(--gold);color:var(--white);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:20px;font-weight:500;
+  overflow:hidden;
+  background:var(--gold);
+}
+.modal-avatar img{
+  width:100%;height:100%;object-fit:cover;display:block;
 }
 .modal-greeting-name{
   font-weight:600;font-size:12px;
