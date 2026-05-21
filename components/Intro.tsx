@@ -66,6 +66,13 @@ export default function Intro() {
             </div>
           </div>
         </div>
+
+        <div className="intro-team-strip reveal">
+          <div className="intro-team-strip-label">
+            <span>The East St Kilda Dental family</span>
+          </div>
+        </div>
+
       </div>
     </section>
   )
