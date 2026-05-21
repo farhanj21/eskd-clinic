@@ -62,7 +62,7 @@ export default function Intro() {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </a>
-              <a href="#team" className="btn btn-outline">Meet Our Team</a>
+              <a href="#patients" className="btn btn-outline">View Results</a>
             </div>
           </div>
         </div>
