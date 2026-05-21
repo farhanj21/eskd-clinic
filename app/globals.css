@@ -832,7 +832,7 @@ section.section{
 @media(max-width:640px){.review-card{flex:0 0 300px;}}
 
 /* ---------- Team ---------- */
-.team{background:var(--cream-50);}
+.team{background:var(--cream-50);border-top:1px solid var(--line-soft);}
 .team-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);

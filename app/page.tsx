@@ -25,14 +25,16 @@ export default function Home() {
         <Hero />
         <TrustStrip />
         <Intro />
+        <Team />
         <SignatureServices />
         <ServicesGrid />
         <WhyUs />
         <Gallery />
+        <ContactSection />
         <Reviews />
         {/* <HealthFunds /> */}
-        <ContactSection />
-        <Team />
+        
+        
       </main>
       <Footer />
       <FloatBookButton />
