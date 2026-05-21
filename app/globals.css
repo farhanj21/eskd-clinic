@@ -1159,6 +1159,18 @@ section.section{
   .form-row{grid-template-columns:1fr;}
 }
 
+/* Mobile map: keep overlay style, give enough height so card isn't clipped */
+@media(max-width:600px){
+  .map-wrap{
+    aspect-ratio:unset;
+    min-height:220px;
+  }
+  .map-pin{
+    max-width:calc(100% - 40px);
+    padding:16px 18px;
+  }
+}
+
 /* ---------- Footer ---------- */
 footer.site-footer{
   background:#082A2D;
