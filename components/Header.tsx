@@ -164,9 +164,6 @@ export default function Header() {
         <a href="#team" onClick={closeMenu}>Our Team</a>
         <a href="#patients" onClick={closeMenu}>Patients</a>
         <a href="#contact" onClick={closeMenu}>Contact</a>
-        <a href="#contact" className="btn btn-primary mobile-cta" onClick={closeMenu}>
-          Book Appointment
-        </a>
       </nav>
     </header>
   )
