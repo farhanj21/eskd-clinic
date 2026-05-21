@@ -6,34 +6,34 @@ const SPEED = 55 // px per second
 
 const reviews = [
   {
-    quote: "Dr Maydelman was so professional and made me feel so comfortable during my procedure. Didn't feel any pain or discomfort — will definitely be having all my future appointments here.",
-    name: "Nitara N.",
+    quote: "Dr. Anbar was great! I had been quite naughty and hadn't been to the dentist for a while, Dr. Anbar explained every step, and why we were doing each. I was made to feel comfortable, and Anbar even explained why some proceedures were unnecessary for me.",
+    name: "Sequana Mallinson",
     source: "Google Review",
-    initial: "N",
+    initial: "S",
   },
   {
-    quote: "Dr Arik is very thorough and we felt really comfortable with the advice he gave for our family's dental care. The staff are lovely and the practice is so warm and inviting.",
-    name: "Natalie H.",
-    source: "Google Review",
-    initial: "N",
-  },
-  {
-    quote: "Bev was absolutely lovely & provided excellent advice. The whole team genuinely cares — I'll be returning every six months without hesitation.",
-    name: "Jemma B.",
-    source: "Google Review",
-    initial: "J",
-  },
-  {
-    quote: "Came in nervous about a wisdom tooth extraction and left wondering why I'd waited so long. Completely painless — I was back at work the very next day.",
-    name: "Marcus T.",
+    quote: "Dr Anbar is the most gentle, caring dentist I have been to. Extremely knowledgeable and explained everything very well with my yearly check up. Highly recommend, definitely going back.",
+    name: "Michael Stride",
     source: "Google Review",
     initial: "M",
   },
   {
-    quote: "Six months into my Invisalign journey and my confidence has transformed completely. Everyone here is so warm and caring — it truly doesn't feel like a clinic.",
-    name: "Sarah K.",
+    quote: "Great welcoming dental practice. Dr Jarrod was professional and made me feel comfortable. I'm very happy with my treatment plan so far, all the staff are friendly, highly recommended.",
+    name: "Camille Thurnherr",
     source: "Google Review",
-    initial: "S",
+    initial: "C",
+  },
+  {
+    quote: "Have been to this clinic for over 20 years even though I live 45 mins away. Always professional and skillful. Will continue visiting East St Kilda every 6 months for my check ups!",
+    name: "Jackie Perkins",
+    source: "Google Review",
+    initial: "J",
+  },
+  {
+    quote: "Recently started attending this, and noticed the friendliness of staff and the dentist. Dr Anbar has been amazing and really invested the time to understand my teeth issues. Overall it’s been a great experience.",
+    name: "Ehsan Alvi",
+    source: "Google Review",
+    initial: "E",
   },
 ]
 

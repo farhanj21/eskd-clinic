@@ -18,7 +18,7 @@ export default function Footer() {
                   <path d="M16 11.4a4 4 0 1 1-7.9 1.2 4 4 0 0 1 7.9-1.2zM17.5 6.5h.01" />
                 </svg>
               </a>
-              <a href="#" aria-label="Google Reviews">
+              <a href="https://share.google/M1ZtOT5z13fj2mhWf" target="_blank" rel="noopener noreferrer" aria-label="Google Reviews">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 11v3.2h5.4a4.7 4.7 0 0 1-2 3.1 5.7 5.7 0 0 1-3.4 1.1 5.7 5.7 0 0 1-5.7-5.7A5.7 5.7 0 0 1 12 6c1.4 0 2.7.5 3.7 1.4l2.2-2.2A8.7 8.7 0 0 0 12 3a8.7 8.7 0 1 0 0 17.5c5 0 8.5-3.5 8.5-8.5 0-.6 0-1.1-.2-1.7H12z" />
                 </svg>
