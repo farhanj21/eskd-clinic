@@ -108,11 +108,16 @@ p{margin:0;color:var(--ink-soft);}
 .reveal.scale-in{transform:scale(0.91) translateY(18px);}
 .reveal.visible{opacity:1;transform:none;}
 
-/* Eyebrow line draws in after parent becomes visible */
+/* Eyebrow line draws in — works whether reveal is on a parent or on the eyebrow itself */
 .reveal .eyebrow::before,
-.reveal .eyebrow.center::after{width:0;transition:width .65s cubic-bezier(.22,1,.36,1) .3s;}
+.eyebrow.reveal::before,
+.reveal .eyebrow.center::after,
+.eyebrow.center.reveal::after{width:0;transition:width .65s cubic-bezier(.22,1,.36,1) .3s;}
+
 .reveal.visible .eyebrow::before,
-.reveal.visible .eyebrow.center::after{width:34px;}
+.eyebrow.reveal.visible::before,
+.reveal.visible .eyebrow.center::after,
+.eyebrow.center.reveal.visible::after{width:34px;}
 
 /* Scroll progress bar */
 .scroll-progress{
@@ -124,7 +129,8 @@ p{margin:0;color:var(--ink-soft);}
 
 @media(prefers-reduced-motion:reduce){
   .reveal,.reveal.from-left,.reveal.from-right,.reveal.scale-in{opacity:1;transform:none;transition:none;}
-  .reveal .eyebrow::before,.reveal .eyebrow.center::after{width:34px;transition:none;}
+  .reveal .eyebrow::before,.eyebrow.reveal::before,
+  .reveal .eyebrow.center::after,.eyebrow.center.reveal::after{width:34px;transition:none;}
   .scroll-progress{display:none;}
 }
 

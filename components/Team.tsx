@@ -34,15 +34,15 @@ export default function Team() {
     <section className="section team" id="team">
       <div className="container">
 
-        <div className="section-head reveal">
-          <span className="eyebrow center">The People Behind Your Smile</span>
-          <h2>Meet our team</h2>
-          <p className="lede">Experienced, caring, and genuinely invested in your long-term dental health — get to know the people you'll be trusting with your smile.</p>
+        <div className="section-head">
+          <span className="eyebrow center reveal" style={{ transitionDelay: '.05s' }}>The People Behind Your Smile</span>
+          <h2 className="reveal" style={{ transitionDelay: '.16s' }}>Meet our team</h2>
+          <p className="lede reveal" style={{ transitionDelay: '.27s' }}>Experienced, caring, and genuinely invested in your long-term dental health — get to know the people you'll be trusting with your smile.</p>
         </div>
 
         <div className="team-grid" data-stagger>
           {members.map((m) => (
-            <div key={m.name} className="team-card reveal">
+            <div key={m.name} className="team-card reveal scale-in">
               <div
                 className="team-photo"
                 style={{ backgroundImage: `url('${m.photo}')` }}
