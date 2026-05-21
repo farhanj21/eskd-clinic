@@ -1120,3 +1120,110 @@ footer.site-footer{
   box-shadow:0 10px 30px rgba(184,137,90,.5);
 }
 @media(max-width:600px){.float-book{display:none;}}
+
+/* =====================================================
+   RESPONSIVE — TABLET & MOBILE FIXES
+   ===================================================== */
+
+/* Prevent horizontal overflow from white-space:nowrap headings */
+@media(max-width:900px){
+  .signature .section-head h2,
+  .reviews .section-head h2,
+  .services .section-head h2{white-space:normal;}
+}
+@media(max-width:720px){
+  .gallery .section-head .lede,
+  .why .section-head .lede{white-space:normal;}
+}
+
+/* Bump minimum gutter to 24px on small phones so content never hugs the edge */
+@media(max-width:500px){
+  :root{--gutter:24px;}
+}
+
+/* Hero: clean mobile layout */
+@media(max-width:640px){
+  .hero-grid{gap:28px;padding:64px 0 96px;}
+  .hero h1{margin-top:16px;}
+  .hero .sub{font-size:16px;margin-top:16px;}
+  .hero-ctas{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+    margin-top:26px;
+  }
+  .hero-ctas .btn{justify-content:center;padding:14px 24px;}
+  /* Hero meta card — generous internal padding so it doesn't feel cramped */
+  .hero-meta{padding:24px 26px;}
+  .hero-meta h4{font-size:19px;margin-bottom:8px;}
+  /* Keep 2-column hours — it fits fine on phones and reads better */
+  .hero-meta .hours{gap:5px 16px;font-size:13px;}
+}
+@media(max-width:420px){
+  .hero-grid{padding:44px 0 80px;}
+  .hero-meta{padding:20px 22px;}
+}
+
+/* Trust strip: tighten gap on phones */
+@media(max-width:640px){
+  .trust-logos{gap:20px;}
+  .trust-inner{gap:14px;}
+}
+
+/* Intro art: reduce tall aspect-ratio when stacked */
+@media(max-width:980px){
+  .intro-art{aspect-ratio:3/2;}
+}
+@media(max-width:640px){
+  .intro-art{aspect-ratio:16/9;}
+  .intro-art .stamp{width:84px;height:84px;font-size:11px;}
+  .intro-art .stamp b{font-size:18px;}
+}
+
+/* Signature cards: tighter body padding on phones */
+@media(max-width:640px){
+  .sig-card .body{padding:22px 18px;}
+  .sig-card .actions{flex-direction:column;gap:10px;}
+  .sig-card .actions .btn{justify-content:center;}
+}
+
+/* Gallery: single column on small phones */
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:1fr;}
+}
+
+/* Why stats: consolidate spacing on phones */
+@media(max-width:480px){
+  .why-foot .stats{gap:20px;}
+  .why-foot .stat b{font-size:34px;}
+}
+
+/* Contact: disable sticky form panel on mobile */
+@media(max-width:880px){
+  .contact-form-sticky{position:static;}
+}
+/* Contact form: tighter padding on small phones */
+@media(max-width:480px){
+  .form{padding:24px 18px;}
+  .form-row{grid-template-columns:1fr;}
+}
+
+/* Footer bottom: stack on phones */
+@media(max-width:480px){
+  footer.site-footer{padding-top:52px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;}
+}
+
+/* Header: compact logo on very small phones */
+@media(max-width:360px){
+  .brand img{height:36px;}
+  .header-cta .btn{padding:8px 12px;font-size:12px;}
+}
+
+/* Utility bar: wrap on very small screens */
+@media(max-width:560px){
+  .utility-bar .container{height:auto;padding:6px var(--gutter);flex-wrap:wrap;gap:4px;}
+}
+
+/* Global safety: clip horizontal overflow without breaking sticky positioning */
+html{overflow-x:clip;}
