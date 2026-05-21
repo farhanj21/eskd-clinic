@@ -1047,6 +1047,59 @@ section.section{
   background:rgba(255,255,255,.08);
 }
 .field textarea{min-height:110px;resize:vertical;}
+
+/* Phone field — flag selector + number as one unified visual field */
+.phone-wrap{
+  display:flex;align-items:stretch;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--radius-sm);
+  transition:border-color .2s,background .2s;
+  position:relative;
+}
+.phone-wrap:focus-within{border-color:var(--gold-soft);background:rgba(255,255,255,.08);}
+.phone-country{position:relative;flex-shrink:0;}
+.phone-country-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  height:100%;padding:0 10px 0 14px;
+  background:rgba(255,255,255,.06);
+  border:none;border-right:1px solid rgba(255,255,255,.18);
+  border-radius:var(--radius-sm) 0 0 var(--radius-sm);
+  color:var(--cream-50);font:inherit;font-size:13.5px;
+  cursor:pointer;white-space:nowrap;transition:background .2s;
+}
+.phone-country-btn:hover{background:rgba(255,255,255,.12);}
+.phone-flag{display:block;width:20px;height:15px;object-fit:cover;border-radius:2px;flex-shrink:0;}
+.phone-code-text{font-size:13.5px;letter-spacing:.02em;}
+.phone-country-btn svg{opacity:.55;flex-shrink:0;}
+.phone-dropdown{
+  position:absolute;top:calc(100% + 4px);left:0;
+  min-width:220px;
+  background:var(--teal-800);
+  border:1px solid rgba(246,239,227,.18);
+  border-radius:var(--radius-md);
+  box-shadow:var(--shadow-md);
+  z-index:200;list-style:none;margin:0;padding:6px;
+  max-height:260px;overflow-y:auto;
+}
+.phone-option{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:var(--radius-sm);
+  font-size:13.5px;color:rgba(246,239,227,.9);
+  cursor:pointer;transition:background .15s;
+}
+.phone-option:hover{background:rgba(255,255,255,.08);}
+.phone-option.active{background:rgba(184,137,90,.22);color:var(--gold-soft);}
+.phone-option-code{margin-left:auto;font-size:12px;opacity:.6;}
+.phone-wrap .phone-input{
+  flex:1;min-width:0;
+  background:transparent;border:none;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  color:var(--cream-50);padding:13px 14px;
+  font:inherit;font-size:14.5px;outline:none;
+}
+.phone-wrap .phone-input::placeholder{color:rgba(246,239,227,.45);}
+.phone-wrap .phone-input:focus{background:transparent;border:none;}
 .form-radios{display:flex;gap:10px;flex-wrap:wrap;}
 .form-radios label{
   flex:1;min-width:120px;

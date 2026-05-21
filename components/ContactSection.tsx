@@ -1,9 +1,27 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+
+const countries = [
+  { iso: 'au', code: '+61', name: 'Australia' },
+  { iso: 'nz', code: '+64', name: 'New Zealand' },
+]
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [countryOpen, setCountryOpen] = useState(false)
+  const [selected, setSelected] = useState(countries[0])
+  const countryRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (countryRef.current && !countryRef.current.contains(e.target as Node)) {
+        setCountryOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -127,7 +145,58 @@ export default function ContactSection() {
               </div>
               <div className="field">
                 <label htmlFor="f-phone">Phone</label>
-                <input type="tel" id="f-phone" placeholder="Phone number" required />
+                <div className="phone-wrap">
+                  {/* Country selector */}
+                  <div className="phone-country" ref={countryRef}>
+                    <button
+                      type="button"
+                      className="phone-country-btn"
+                      aria-haspopup="listbox"
+                      aria-expanded={countryOpen}
+                      onClick={() => setCountryOpen(o => !o)}
+                    >
+                      <img
+                        src={`https://flagcdn.com/20x15/${selected.iso}.png`}
+                        width="20" height="15"
+                        alt={selected.name}
+                        className="phone-flag"
+                      />
+                      <span className="phone-code-text">{selected.code}</span>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+                    {countryOpen && (
+                      <ul className="phone-dropdown" role="listbox">
+                        {countries.map(c => (
+                          <li
+                            key={c.code}
+                            role="option"
+                            aria-selected={c.code === selected.code}
+                            className={`phone-option${c.code === selected.code ? ' active' : ''}`}
+                            onClick={() => { setSelected(c); setCountryOpen(false) }}
+                          >
+                            <img
+                              src={`https://flagcdn.com/20x15/${c.iso}.png`}
+                              width="20" height="15"
+                              alt={c.name}
+                            />
+                            <span>{c.name}</span>
+                            <span className="phone-option-code">{c.code}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  {/* Number input — shares the same visual field */}
+                  <input
+                    className="phone-input"
+                    type="tel"
+                    id="f-phone"
+                    placeholder="Phone number"
+                    required
+                  />
+                </div>
               </div>
             </div>
             <div className="form-row single">
