@@ -26,7 +26,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <aside className="hero-meta reveal" style={{transitionDelay:'.28s'}}>
+        {/* <aside className="hero-meta reveal" style={{transitionDelay:'.28s'}}>
           <h4>Welcoming new patients</h4>
           <p>Comprehensive dental care for the whole family. Gap-free check-ups available with most major health funds.</p>
           <div className="hours">
@@ -34,7 +34,7 @@ export default function Hero() {
             <span className="d">Friday</span><span>8:30am – 4:30pm</span>
             <span className="d">Saturday</span><span>8:00am – 4:00pm</span>
           </div>
-        </aside>
+        </aside> */}
       </div>
     </section>
   )
