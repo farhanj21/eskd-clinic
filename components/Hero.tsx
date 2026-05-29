@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section className="hero" aria-label="Hero">
-      <div className="hero-badges" aria-hidden="true">
+<div className="hero-badges" aria-hidden="true">
         <div className="hero-badge" style={{background:'rgba(246,239,227)'}}><span style={{color:'var(--teal-800)', fontWeight:700}}>EST.</span><span className="n">1984</span></div>
         {/* <div className="hero-badge"><span className="n">40+</span><span>YEARS</span></div> */}
       </div>

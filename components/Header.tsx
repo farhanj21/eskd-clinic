@@ -24,6 +24,7 @@ const serviceLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<'about' | 'services' | null>(null)
+  const [scrolled, setScrolled] = useState(false)
   const navRef = useRef<HTMLElement>(null)
 
   function toggleMenu() {
@@ -49,6 +50,14 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const chevron = (
     <svg className="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <polyline points="6 9 12 15 18 9" />
@@ -56,7 +65,7 @@ export default function Header() {
   )
 
   return (
-    <header className="site-header" id="site-header">
+    <header className={`site-header${scrolled ? ' scrolled' : ''}`} id="site-header">
       <div className="container header-inner">
         <a href="#" className="brand">
           <img src="/assets/eskd-no-bg.png" alt="East St Kilda Dental — Since 1984" />
