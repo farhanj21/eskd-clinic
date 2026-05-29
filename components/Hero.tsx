@@ -2,14 +2,14 @@ export default function Hero() {
   return (
     <section className="hero" aria-label="Hero">
       <div className="hero-badges" aria-hidden="true">
-        <div className="hero-badge"><span>EST.</span><span className="n">1984</span></div>
-        <div className="hero-badge"><span className="n">40+</span><span>YEARS</span></div>
+        <div className="hero-badge" style={{background:'rgba(246,239,227)'}}><span style={{color:'var(--teal-800)', fontWeight:700}}>EST.</span><span className="n">1984</span></div>
+        {/* <div className="hero-badge"><span className="n">40+</span><span>YEARS</span></div> */}
       </div>
       <div className="container container-wide hero-grid">
         <div>
-          <span className="eyebrow reveal" style={{transitionDelay:'.05s'}}>Your Local Dental Home · Since 1984</span>
-          <h1 className="reveal" style={{transitionDelay:'.18s'}}>Forty years of <em>heartfelt</em>, skilled dentistry in&nbsp;East&nbsp;St&nbsp;Kilda.</h1>
-          <p className="sub reveal" style={{transitionDelay:'.32s'}}>From family check-ups to complete smile makeovers, our experienced team delivers gentle, comprehensive care trusted by generations of local families.</p>
+          <span className="eyebrow reveal" style={{transitionDelay:'.05s' , color:'var(--gold)'}}>Your Local Dental Home · Since 1984</span>
+          <h1 className="reveal" style={{transitionDelay:'.18s', color:'#0E3A3D'}}>Forty years of <em style={{color:'var(--gold)'}}>heartfelt</em>, skilled dentistry in&nbsp;East&nbsp;St&nbsp;Kilda.</h1>
+          <p className="sub reveal" style={{transitionDelay:'.32s', color:'#0E3A3D'}}>From family check-ups to complete smile makeovers, our experienced team delivers gentle, comprehensive care trusted by generations of local families.</p>
           <div className="hero-ctas reveal" style={{transitionDelay:'.44s'}}>
             <a href="#contact" className="btn btn-gold">
               Book An Appointment
