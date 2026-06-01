@@ -87,7 +87,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="services-cta reveal">
+        <div className="gallery-cta reveal">
           <a href="#contact" className="btn btn-outline">
             See All Transformations
             <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
