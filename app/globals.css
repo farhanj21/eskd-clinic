@@ -1232,7 +1232,7 @@ footer.site-footer{
   gap:54px;
   padding-bottom:60px;
 }
-.footer-brand img{height:84px;width:auto;margin-bottom:18px;}
+.footer-brand img{height:84px;width:auto;max-width:100%;object-fit:contain;margin-bottom:18px;}
 .footer-brand p{font-size:14px;color:rgba(246,239,227,.65);line-height:1.6;}
 .footer-brand .social{display:flex;gap:10px;margin-top:22px;}
 .footer-brand .social a{
@@ -1543,7 +1543,7 @@ footer.site-footer{
 @media(max-width:640px){
   header.site-header .container{padding-left:20px;padding-right:20px;}
   .mobile-nav{padding-left:20px;padding-right:20px;}
-  .footer-brand img{max-width:140px;}
+  .footer-brand img{height:auto;width:140px;}
   .btn{font-size:13px;}
 }
 
