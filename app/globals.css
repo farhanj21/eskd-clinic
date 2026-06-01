@@ -432,7 +432,7 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
 }
 .trust-label{
   font-size:12px;text-transform:uppercase;letter-spacing:.22em;
-  color:var(--muted);
+  color:var(--gold);
   font-weight:500;
   white-space:nowrap;
 }
