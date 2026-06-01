@@ -344,34 +344,13 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
 .hero{
   position:relative;
   min-height:min(86vh,760px);
-  background:var(--teal-900);
+  background:url('/assets/Hero Eddy  white.png') center/cover;
   color:var(--cream-50);
   display:flex;align-items:center;
   overflow:hidden;
   margin-top:-94px;
 }
-.hero-slide{
-  position:absolute;inset:0;
-  background:center/cover no-repeat;
-  opacity:0;
-  transition:opacity 1.2s ease;
-  z-index:0;
-}
-.hero-slide.active{opacity:1;}
-.hero-dots{
-  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
-  display:flex;gap:10px;
-  z-index:2;
-}
-.hero-dot{
-  width:8px;height:8px;
-  border-radius:50%;
-  border:none;padding:0;
-  background:rgba(255,255,255,.4);
-  cursor:pointer;
-  transition:background .3s,transform .3s;
-}
-.hero-dot.active{background:var(--gold);transform:scale(1.3);}
+.hero-alt{background-image:url('/assets/Hero AG White.png');}
 .hero::before{
   content:"";
   position:absolute;inset:auto 0 -2px 0;height:140px;
