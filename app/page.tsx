@@ -24,14 +24,14 @@ export default function Home() {
       <main>
         <Hero />
         <TrustStrip />
-        <Intro />
+        {/* <Intro />
         <Team />
         <SignatureServices />
         <ServicesGrid />
         <WhyUs />
         <Gallery />
         <ContactSection />
-        <Reviews />
+        <Reviews /> */}
         {/* <HealthFunds /> */}
         
         

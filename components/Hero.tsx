@@ -1,13 +1,41 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
+const slides = [
+  { img: '/assets/Hero Eddy  white.png' },
+  { img: '/assets/Hero AG White.png' },
+  { img: '/assets/Hero AG01.png' },
+]
+
 export default function Hero() {
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive(prev => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section className="hero" aria-label="Hero">
-<div className="hero-badges" aria-hidden="true">
+      {slides.map((s, i) => (
+        <div
+          key={i}
+          className={`hero-slide${i === active ? ' active' : ''}`}
+          style={{ backgroundImage: `url('${s.img}')` }}
+          aria-hidden="true"
+        />
+      ))}
+
+      <div className="hero-badges" aria-hidden="true">
         <div className="hero-badge" style={{background:'rgba(246,239,227)'}}><span style={{color:'var(--teal-800)', fontWeight:700}}>EST.</span><span className="n">1984</span></div>
-        {/* <div className="hero-badge"><span className="n">40+</span><span>YEARS</span></div> */}
       </div>
+
       <div className="container container-wide hero-grid">
         <div>
-          <span className="eyebrow reveal" style={{transitionDelay:'.05s' , color:'var(--gold)'}}>Your Local Dental Home · Since 1984</span>
+          <span className="eyebrow reveal" style={{transitionDelay:'.05s', color:'var(--gold)'}}>Your Local Dental Home · Since 1984</span>
           <h1 className="reveal" style={{transitionDelay:'.18s', color:'#0E3A3D'}}>Heartfelt <em style={{color:'var(--gold)'}}>dentistry</em>, trusted by locals for generations.</h1>
           <p className="sub reveal" style={{transitionDelay:'.32s', color:'#0E3A3D'}}>Gentle, comprehensive dental care delivered with skill, warmth, and the trust of a long-standing local clinic.</p>
           <div className="hero-ctas reveal" style={{transitionDelay:'.44s'}}>
@@ -26,15 +54,19 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        {/* <aside className="hero-meta reveal" style={{transitionDelay:'.28s'}}>
-          <h4>Welcoming new patients</h4>
-          <p>Comprehensive dental care for the whole family. Gap-free check-ups available with most major health funds.</p>
-          <div className="hours">
-            <span className="d">Mon — Thu</span><span>8:30am – 4:00pm</span>
-            <span className="d">Friday</span><span>8:30am – 4:30pm</span>
-            <span className="d">Saturday</span><span>8:00am – 4:00pm</span>
-          </div>
-        </aside> */}
+      </div>
+
+      <div className="hero-dots" role="tablist" aria-label="Slide indicators">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            className={`hero-dot${i === active ? ' active' : ''}`}
+            onClick={() => setActive(i)}
+            role="tab"
+            aria-selected={i === active}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   )
