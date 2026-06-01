@@ -171,6 +171,12 @@ p{margin:0;color:var(--ink-soft);}
   color:var(--teal-900);
 }
 .btn-light:hover{background:var(--teal-800);color:#fff;border-color:var(--teal-800);}
+.btn-teal{
+  background:var(--teal-800);
+  border-color:var(--teal-800);
+  color:var(--white);
+}
+.btn-teal:hover{background:var(--teal-700);color:var(--white);}
 .btn .arrow{width:14px;height:14px;}
 
 /* ---------- Utility bar ---------- */
