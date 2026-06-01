@@ -441,10 +441,12 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
 .hero-badge .n{font-size:22px;color:var(--gold-soft);font-weight:600;}
 
 @media(max-width:980px){
-  .hero{min-height:auto;}
-  .hero-grid{grid-template-columns:1fr;gap:36px;padding:84px 0 100px;}
+  .hero{min-height:auto;margin-top:-80px;background:var(--cream-50);}
+  .hero-grid{grid-template-columns:1fr;gap:36px;padding:100px 0 100px;}
   .hero-meta{padding:22px;}
   .hero-badges{display:none;}
+  .hero-slide{display:none;}
+  .hero::before{display:none;}
 }
 
 /* ---------- Trust strip ---------- */
@@ -894,7 +896,8 @@ section.section{
   color:var(--gold);
   opacity:.18;
 }
-@media(max-width:640px){.review-card{flex:0 0 300px;}}
+@media(max-width:640px){.review-card{flex:0 0 300px;}.service-card{flex:0 0 260px;}}
+@media(max-width:420px){.service-card{flex:0 0 230px;}.review-card{flex:0 0 270px;}}
 
 /* ---------- Team ---------- */
 .team{
@@ -1455,32 +1458,38 @@ footer.site-footer{
 
 /* Hero: clean mobile layout */
 @media(max-width:640px){
-  /* Give the hero container extra horizontal padding beyond the global gutter */
-  .hero .container-wide{padding-left:32px;padding-right:32px;}
-  .hero-grid{gap:28px;padding:64px 0 96px;}
-  .hero h1{margin-top:16px;}
-  .hero .sub{font-size:16px;margin-top:16px;}
+  .hero .container-wide{padding-left:24px;padding-right:24px;}
+  .hero-grid{gap:24px;padding:96px 0 90px;}
+  .hero h1{margin-top:14px;max-width:100%;}
+  .hero .sub{font-size:15px;margin-top:14px;max-width:100%;}
   .hero-ctas{
     flex-direction:column;
     align-items:stretch;
     gap:12px;
-    margin-top:26px;
+    margin-top:24px;
   }
-  .hero-ctas .btn{justify-content:center;padding:14px 24px;}
-  /* Hero meta card — keep internal padding generous so it never feels cramped */
+  .hero-ctas .btn{justify-content:center;padding:14px 20px;}
   .hero-meta{padding:24px 26px;}
   .hero-meta h4{font-size:19px;margin-bottom:8px;}
   .hero-meta .hours{gap:5px 16px;font-size:13px;}
+  .hero-dot{width:10px;height:10px;display:none;}
+  .hero-dots{display:none;}
 }
 @media(max-width:420px){
-  .hero-grid{padding:44px 0 80px;}
+  .hero-grid{padding:90px 0 76px;}
+  .hero .sub{font-size:14px;}
 }
 
 /* Trust strip: stack vertically, allow label to wrap, centre everything */
 @media(max-width:720px){
   .trust-inner{flex-direction:column;align-items:center;text-align:center;gap:14px;}
   .trust-label{white-space:normal;text-align:center;}
-  .trust-logos{gap:20px;justify-content:center;}
+  .trust-logos{gap:20px;justify-content:center;flex-wrap:wrap;}
+}
+@media(max-width:420px){
+  .trust-logos{gap:14px;}
+  .trust-logo{font-size:18px;}
+  .trust-logo.sans{font-size:13px;}
 }
 
 /* Intro art: reduce tall aspect-ratio when stacked */
@@ -1529,14 +1538,18 @@ footer.site-footer{
 
 /* Header: match the 32px side-padding used in the hero so logo and hamburger never hug the edge */
 @media(max-width:640px){
-  header.site-header .container{padding-left:32px;padding-right:32px;}
-  .mobile-nav{padding-left:32px;padding-right:32px;}
+  header.site-header .container{padding-left:20px;padding-right:20px;}
+  .mobile-nav{padding-left:20px;padding-right:20px;}
+  .footer-brand img{max-width:140px;}
+  .btn{font-size:13px;}
 }
 
 /* Header: compact logo on very small phones */
 @media(max-width:360px){
   .brand img{height:36px;}
   .header-cta .btn{padding:8px 12px;font-size:12px;}
+  .hero{margin-top:-68px;}
+  .hero-grid{padding:84px 0 72px;}
 }
 
 /* Utility bar: hide entirely on mobile */
