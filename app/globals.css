@@ -177,6 +177,8 @@ p{margin:0;color:var(--ink-soft);}
   color:var(--white);
 }
 .btn-teal:hover{background:var(--teal-700);color:var(--white);}
+.btn-alt{background:#0F4C5C;border-color:#0F4C5C;color:var(--white);}
+.btn-alt:hover{background:#ffffff;color:#0F4C5C;border-color:#0F4C5C;}
 .btn .arrow{width:14px;height:14px;}
 
 /* ---------- Utility bar ---------- */
@@ -196,6 +198,7 @@ p{margin:0;color:var(--ink-soft);}
 .utility-bar .item svg{width:13px;height:13px;}
 .utility-bar .sep{width:1px;height:14px;background:rgba(255,255,255,.18);}
 @media(max-width:820px){.utility-bar .desktop-only{display:none;}}
+.utility-bar-alt{background:#0F4C5C;}
 
 /* ---------- Header ---------- */
 header.site-header{
@@ -1208,6 +1211,7 @@ section.section{
 }
 
 /* ---------- Footer ---------- */
+footer.site-footer.footer-alt{background:#0F4C5C;}
 footer.site-footer{
   background:#082A2D;
   color:rgba(246,239,227,.7);
