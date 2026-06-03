@@ -27,7 +27,7 @@ export default function HomeAlt() {
       <HeaderAlt />
       <main>
         <HeroAlt />
-        <TrustStrip />
+        {/* <TrustStrip /> */}
         <AboutSplitAlt />
         <ServicesOverviewAlt />
         {/* <Intro />

@@ -25,7 +25,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <TrustStrip />
+        {/* <TrustStrip /> */}
         <AboutSplit />
         <ServicesOverview />
         {/* <Intro />
