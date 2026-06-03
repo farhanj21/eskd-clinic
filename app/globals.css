@@ -551,7 +551,7 @@ section.section{
 .feat-icon{
   width:52px;height:52px;min-width:52px;
   border-radius:50%;
-  background:#ede9e2;
+  background:#ffffff;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
