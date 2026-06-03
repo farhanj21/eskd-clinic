@@ -214,7 +214,7 @@ header.site-header{
 } */
 .header-inner{
   display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0;
+  padding:8px 0;
   gap:30px;
 }
 .brand{display:flex;align-items:center;}
