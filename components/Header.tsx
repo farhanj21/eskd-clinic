@@ -141,12 +141,8 @@ export default function Header() {
 
         <div className="header-cta">
           {/* <a href="tel:+61395273678" className="btn btn-outline">(03) 9527 3678</a> */}
-          <a href="#contact" className="btn btn-teal">
-            Book Now
-            <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
+          <a href="#contact" className="btn btn-gold btn-rect">
+            Book Appointment
           </a>
           <button
             className="mobile-toggle"

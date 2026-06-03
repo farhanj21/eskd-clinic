@@ -28,14 +28,14 @@ export default function Hero() {
         />
       ))}
 
-      <div className="hero-badges" aria-hidden="true">
+      {/* <div className="hero-badges" aria-hidden="true">
         <div className="hero-badge" style={{background:'rgba(246,239,227)'}}><span style={{color:'var(--teal-800)', fontWeight:700}}>EST.</span><span className="n">1984</span></div>
-      </div>
+      </div> */}
 
       <div className="container container-wide hero-grid">
         <div>
           <span className="eyebrow reveal" style={{transitionDelay:'.05s', color:'var(--gold)'}}>Your Local Dental Home · Since 1984</span>
-          <h1 className="reveal" style={{transitionDelay:'.18s', color:'#0E3A3D'}}>Heartfelt <em style={{color:'var(--gold)'}}>dentistry</em>, trusted by locals for generations.</h1>
+          <h1 className="reveal" style={{transitionDelay:'.18s', color:'#0E3A3D'}}>Trusted <em style={{color:'var(--gold)'}}>heartfelt</em> dentistry for <br></br>local families</h1>
           <p className="sub reveal" style={{transitionDelay:'.32s', color:'#0E3A3D'}}>Gentle, comprehensive dental care delivered with skill, warmth, and the trust of a long-standing local clinic.</p>
           <div className="hero-ctas reveal" style={{transitionDelay:'.44s'}}>
             <a href="#contact" className="btn btn-gold">
