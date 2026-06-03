@@ -723,10 +723,11 @@ section.section{
   border-left:1px solid #D6CFC4;
 }
 .svc-trust-icon{display:flex;align-items:center;justify-content:center;}
+.svc-trust-hand-icon{filter:invert(68%) sepia(28%) saturate(600%) hue-rotate(5deg) brightness(95%);}
 .svc-trust-heading{
   font-family:var(--serif);
   font-size:18px;
-  font-weight:500;
+  font-weight:700;
   color:#064E4A;
   line-height:1.4;
   margin:0;

@@ -60,22 +60,14 @@ const services = [
 const trustItems = [
   {
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="#B79B63" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="36" height="36">
-        {/* Heart */}
-        <path d="M24 18C24 14.5 21.5 12 18.5 12C15.5 12 13 14.5 13 17.5C13 22 24 30 24 30C24 30 35 22 35 17.5C35 14.5 32.5 12 29.5 12C26.5 12 24 14.5 24 18Z" />
-        {/* Cupped hands offering */}
-        <path d="M10 36C10 36 8 33 10 32L16 32" />
-        <path d="M38 36C38 36 40 33 38 32L32 32" />
-        <path d="M16 32C16 32 16 36 24 36C32 36 32 32 32 32" />
-        <path d="M10 36Q24 42 38 36" />
-      </svg>
+      <img src="/assets/hand-heart.png" alt="" width="30" height="30" className="svc-trust-hand-icon" />
     ),
     heading: "We're here for your smile,",
     subheading: 'whenever you need us.',
   },
   { text: 'Emergency care available' },
   { text: 'New patients welcome' },
-  { text: 'Health fund preferred provider' },
+  { text: <><span style={{fontWeight:700, color:'#C8102E'}}>HCF</span> preferred provider</> },
 ]
 
 export default function ServicesOverview() {
