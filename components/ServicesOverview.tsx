@@ -65,9 +65,9 @@ const trustItems = [
     heading: "We're here for your smile,",
     subheading: 'whenever you need us.',
   },
-  { text: 'Emergency care available' },
-  { text: 'New patients welcome' },
-  { text: <><span style={{fontWeight:700, color:'#C8102E'}}>HCF</span> preferred provider</> },
+  { text: 'Emergency care available', href: '#contact' },
+  { text: 'New patients welcome', href: '#contact' },
+  { cta: true },
 ]
 
 export default function ServicesOverview() {
@@ -105,10 +105,16 @@ export default function ServicesOverview() {
           {trustItems.map((item, i) => (
             <div key={i} className="svc-trust-item">
               {item.icon && <div className="svc-trust-icon">{item.icon}</div>}
-              {item.heading ? (
+              {item.cta ? (
+                <a href="#services" className="btn btn-gold btn-rect" style={{fontSize:'13px',padding:'10px 22px'}}>
+                  View All Services
+                </a>
+              ) : item.heading ? (
                 <p className="svc-trust-heading">
                   {item.heading}<br />{item.subheading}
                 </p>
+              ) : item.href ? (
+                <a href={item.href} className="svc-trust-link">{item.text}</a>
               ) : (
                 <p className="svc-trust-text">{item.text}</p>
               )}

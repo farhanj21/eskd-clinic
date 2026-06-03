@@ -807,6 +807,16 @@ section.section{
   line-height:1.4;
   margin:0;
 }
+.svc-trust-link{
+  font-size:16px;
+  font-weight:600;
+  color:#064E4A;
+  text-decoration:none;
+  border-bottom:1px solid rgba(6,78,74,.25);
+  padding-bottom:1px;
+  transition:border-color .2s,color .2s;
+}
+.svc-trust-link:hover{color:#064E4A;border-bottom-color:#064E4A;}
 .svc-trust-text{
   font-size:16px;
   font-weight:500;
