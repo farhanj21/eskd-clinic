@@ -352,7 +352,7 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
 .hero{
   position:relative;
   min-height:min(86vh,760px);
-  background:var(--teal-900);
+  background:var(--cream-50);
   color:var(--cream-50);
   display:flex;align-items:center;
   overflow:hidden;
