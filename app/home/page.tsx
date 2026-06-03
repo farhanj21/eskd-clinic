@@ -12,6 +12,7 @@ import Reviews from '@/components/Reviews'
 import HealthFunds from '@/components/HealthFunds'
 import ContactSection from '@/components/ContactSection'
 import Team from '@/components/Team'
+import AboutSplitAlt from '@/components/AboutSplitAlt'
 import FooterAlt from '@/components/FooterAlt'
 import FloatBookButton from '@/components/FloatBookButton'
 import HeroAlt from '@/components/HeroAlt'
@@ -21,11 +22,12 @@ export default function HomeAlt() {
   return (
     <>
       <ScrollEffects />
-      <UtilityBarAlt />
+      {/* <UtilityBarAlt /> */}
       <HeaderAlt />
       <main>
         <HeroAlt />
         <TrustStrip />
+        <AboutSplitAlt />
         {/* <Intro />
         <Team />
         <SignatureServices />

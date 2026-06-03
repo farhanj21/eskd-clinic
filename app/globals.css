@@ -583,6 +583,7 @@ section.section{
   border-radius:var(--radius-md);
   pointer-events:none;
 }
+.about-split-alt{background:#0F4C5C;}
 .about-split-image{
   width:100%;
   height:auto;
