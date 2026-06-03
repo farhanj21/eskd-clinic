@@ -3,56 +3,35 @@ const services = [
     title: 'General Dentistry',
     description: 'Preventive care to keep your smile healthy.',
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="38" height="38">
-        <path d="M24 6C18 6 12 10 12 17c0 4 1.5 7 3 10l2 9c.5 2 1.5 3 3 3s2-1 2-3v-5c0-1 .5-2 2-2s2 1 2 2v5c0 2 .5 3 2 3s2.5-1 3-3l2-9c1.5-3 3-6 3-10 0-7-6-11-12-11z" />
-      </svg>
+      <img src="/assets/general_dentist_icon.png" alt="" width="34" height="34" style={{filter:'brightness(0) invert(1)'}} />
     ),
   },
   {
     title: 'Cosmetic Dentistry',
     description: 'Enhance your smile with natural-looking results.',
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="38" height="38">
-        <path d="M24 6C18 6 12 10 12 17c0 4 1.5 7 3 10l2 9c.5 2 1.5 3 3 3s2-1 2-3v-5c0-1 .5-2 2-2s2 1 2 2v5c0 2 .5 3 2 3s2.5-1 3-3l2-9c1.5-3 3-6 3-10 0-7-6-11-12-11z" />
-        <path d="M30 10l2-3M34 14l3-1M32 18l3 1" />
-      </svg>
+      <img src="/assets/cosmetic_icon.png" alt="" width="34" height="34" style={{filter:'brightness(0) invert(1)'}} />
     ),
   },
   {
     title: 'Restorative Dentistry',
     description: 'Restore and rebuild with long-lasting solutions.',
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="38" height="38">
-        <path d="M24 6C18 6 12 10 12 17c0 4 1.5 7 3 10l2 9c.5 2 1.5 3 3 3s2-1 2-3v-5c0-1 .5-2 2-2s2 1 2 2v5c0 2 .5 3 2 3s2.5-1 3-3l2-9c1.5-3 3-6 3-10 0-7-6-11-12-11z" />
-        <path d="M18 16h12M18 21h8" />
-      </svg>
+      <img src="/assets/restorative_icon.png" alt="" width="34" height="34" style={{filter:'brightness(0) invert(1)'}} />
     ),
   },
   {
     title: 'Orthodontics',
     description: 'Straighten your smile with effective options.',
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="45" height="45">
-        <path d="M10 28c0 6 6 10 14 10s14-4 14-10" />
-        <rect x="14" y="20" width="20" height="8" rx="2" />
-        <line x1="20" y1="20" x2="20" y2="28" />
-        <line x1="28" y1="20" x2="28" y2="28" />
-        <line x1="14" y1="24" x2="34" y2="24" />
-        <circle cx="17" cy="24" r="1.5" fill="white" stroke="none" />
-        <circle cx="24" cy="24" r="1.5" fill="white" stroke="none" />
-        <circle cx="31" cy="24" r="1.5" fill="white" stroke="none" />
-      </svg>
+      <img src="/assets/ortho_icon.png" alt="" width="42" height="42" style={{filter:'brightness(0) invert(1)'}} />
     ),
   },
   {
     title: 'Emergency Dentistry',
     description: 'Prompt care when you need it most.',
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="38" height="38">
-        <path d="M24 6C18 6 12 10 12 17c0 4 1.5 7 3 10l2 9c.5 2 1.5 3 3 3s2-1 2-3v-5c0-1 .5-2 2-2s2 1 2 2v5c0 2 .5 3 2 3s2.5-1 3-3l2-9c1.5-3 3-6 3-10 0-7-6-11-12-11z" />
-        <line x1="24" y1="13" x2="24" y2="21" />
-        <circle cx="24" cy="25" r="1.2" fill="white" stroke="none" />
-      </svg>
+      <img src="/assets/emergency_icon.png" alt="" width="34" height="34" style={{filter:'brightness(0) invert(1)'}} />
     ),
   },
 ]

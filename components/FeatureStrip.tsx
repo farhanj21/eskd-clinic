@@ -7,7 +7,7 @@ const items = [
   {
     title: 'Comprehensive Services',
     desc: 'From check-ups to advanced treatments.',
-    icon: <svg width="26" height="26" fill="none" stroke="#134B4E" strokeWidth="1.6" viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 8c0 4 2 6 2 10h10c0-4 2-6 2-10 0-3-3-6-7-6z"/></svg>,
+    icon: <img src="/assets/services_icon.png" alt="" width="30" height="30" style={{filter:'brightness(0) saturate(100%) invert(22%) sepia(50%) saturate(500%) hue-rotate(155deg) brightness(90%)'}} />,
   },
   {
     title: 'Convenient Appointments',
