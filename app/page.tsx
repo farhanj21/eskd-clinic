@@ -12,6 +12,7 @@ import Reviews from '@/components/Reviews'
 import HealthFunds from '@/components/HealthFunds'
 import ContactSection from '@/components/ContactSection'
 import Team from '@/components/Team'
+import FeatureStrip from '@/components/FeatureStrip'
 import AboutSplit from '@/components/AboutSplit'
 import ServicesOverview from '@/components/ServicesOverview'
 import Footer from '@/components/Footer'
@@ -25,7 +26,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        {/* <TrustStrip /> */}
+        <FeatureStrip />
         <AboutSplit />
         <ServicesOverview />
         {/* <Intro />

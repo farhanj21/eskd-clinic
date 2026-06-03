@@ -526,6 +526,61 @@ section.section{
 .section-head .eyebrow{margin-bottom:0;}
 .section-head p{font-size:17px;}
 
+/* ---------- Feature Strip ---------- */
+.feat-strip{
+  background:#f5f2ed;
+  width:100%;
+}
+.feat-strip-inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:28px var(--gutter);
+  display:flex;
+  align-items:stretch;
+  gap:0;
+}
+.feat-item{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  flex:1;
+  padding:0 18px;
+}
+.feat-item--first{padding-left:0;}
+.feat-item--last{padding-right:0;}
+.feat-icon{
+  width:52px;height:52px;min-width:52px;
+  border-radius:50%;
+  background:#ede9e2;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.feat-title{
+  margin:0 0 4px;
+  font-size:14px;
+  font-weight:600;
+  color:#2c2a27;
+  font-family:var(--sans);
+  line-height:1.3;
+}
+.feat-desc{
+  margin:0;
+  font-size:13px;
+  color:#7a766f;
+  line-height:1.5;
+}
+.feat-sep{
+  width:1px;
+  background:#d4cfc8;
+  align-self:stretch;
+  flex-shrink:0;
+}
+@media(max-width:800px){
+  .feat-strip-inner{flex-direction:column;gap:20px;}
+  .feat-item{padding:0 !important;}
+  .feat-sep{width:100%;height:1px;align-self:auto;}
+}
+
 /* ---------- About Split ---------- */
 .about-split{
   background:#082A2D;

@@ -12,6 +12,7 @@ import Reviews from '@/components/Reviews'
 import HealthFunds from '@/components/HealthFunds'
 import ContactSection from '@/components/ContactSection'
 import Team from '@/components/Team'
+import FeatureStrip from '@/components/FeatureStrip'
 import AboutSplitAlt from '@/components/AboutSplitAlt'
 import ServicesOverviewAlt from '@/components/ServicesOverviewAlt'
 import FooterAlt from '@/components/FooterAlt'
@@ -27,7 +28,7 @@ export default function HomeAlt() {
       <HeaderAlt />
       <main>
         <HeroAlt />
-        {/* <TrustStrip /> */}
+        <FeatureStrip />
         <AboutSplitAlt />
         <ServicesOverviewAlt />
         {/* <Intro />
