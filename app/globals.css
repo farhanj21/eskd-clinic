@@ -755,6 +755,15 @@ section.section{
   .svc-trust-item+.svc-trust-item{border-left:none;border-top:1px solid #D6CFC4;}
 }
 
+/* Services Overview Alt — swap #064E4A → #0F4C5C */
+.svc-overview-alt-wrap .svc-overview-heading{color:#0F4C5C;}
+.svc-overview-alt-wrap .svc-card-icon{background:#0F4C5C;}
+.svc-overview-alt-wrap .svc-card:hover .svc-card-icon{background:#1a6678;}
+.svc-overview-alt-wrap .svc-card-title{color:#0F4C5C;}
+.svc-overview-alt-wrap .svc-card-cta{color:#0F4C5C;}
+.svc-overview-alt-wrap .svc-trust-heading{color:#0F4C5C;}
+.svc-overview-alt-wrap .svc-trust-text{color:#0F4C5C;}
+
 /* ---------- Welcome / Intro ---------- */
 .intro{background:var(--cream-50);padding-top:36px;}
 .intro-grid{

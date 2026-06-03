@@ -13,7 +13,7 @@ import HealthFunds from '@/components/HealthFunds'
 import ContactSection from '@/components/ContactSection'
 import Team from '@/components/Team'
 import AboutSplitAlt from '@/components/AboutSplitAlt'
-import ServicesOverview from '@/components/ServicesOverview'
+import ServicesOverviewAlt from '@/components/ServicesOverviewAlt'
 import FooterAlt from '@/components/FooterAlt'
 import FloatBookButton from '@/components/FloatBookButton'
 import HeroAlt from '@/components/HeroAlt'
@@ -29,7 +29,7 @@ export default function HomeAlt() {
         <HeroAlt />
         <TrustStrip />
         <AboutSplitAlt />
-        <ServicesOverview />
+        <ServicesOverviewAlt />
         {/* <Intro />
         <Team />
         <SignatureServices />
