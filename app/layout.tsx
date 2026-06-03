@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <head>
-        <link rel="preload" as="image" href="/assets/Hero Eddy  white.png" fetchPriority="high" />
+        <link rel="preload" as="image" href="/assets/Hero Eddy  white.webp" fetchPriority="high" />
       </head>
       <body>{children}</body>
     </html>

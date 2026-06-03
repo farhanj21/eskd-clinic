@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 
 const slides = [
-  { img: '/assets/Hero Eddy  white.png' },
-  { img: '/assets/Hero AG White.png' },
+  { img: '/assets/Hero Eddy  white.webp' },
+  { img: '/assets/Hero AG White.webp' },
 ]
 
 const accreditations = ['ADA', 'Invisalign', 'AHPRA', 'Medicare CDBS', 'HICAPS']
