@@ -528,7 +528,7 @@ section.section{
 
 /* ---------- Feature Strip ---------- */
 .feat-strip{
-  background:#f5f2ed;
+  background:var(--cream-50);
   width:100%;
 }
 .feat-strip-inner{
