@@ -506,6 +506,105 @@ section.section{
 .section-head .eyebrow{margin-bottom:0;}
 .section-head p{font-size:17px;}
 
+/* ---------- About Split ---------- */
+.about-split{
+  background:#082A2D;
+  padding:120px 0;
+}
+.about-split-inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 var(--gutter);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.about-split-eyebrow{
+  display:block;
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#B79B63;
+  margin-bottom:28px;
+}
+.about-split-heading{
+  font-family:var(--serif);
+  font-size:clamp(38px,4.2vw,64px);
+  font-weight:500;
+  line-height:1.1;
+  color:var(--white);
+  margin:0;
+  letter-spacing:-.01em;
+}
+.about-split-heading em{
+  font-style:italic;
+  color:#D3B084;
+}
+.about-split-divider{
+  width:70px;height:1px;
+  background:#B79B63;
+  margin:32px 0;
+}
+.about-split-body{
+  font-size:18px;
+  line-height:1.72;
+  color:rgba(251,247,238,.78);
+  max-width:500px;
+  margin-bottom:44px;
+}
+.about-split-btn{
+  background:#B79B63;
+  color:white;
+  border-color:#B79B63;
+  border-radius:8px;
+  font-weight:600;
+  padding:16px 36px;
+  font-size:14px;
+  letter-spacing:.06em;
+  transition:background .25s,transform .25s,box-shadow .25s;
+}
+.about-split-btn:hover{
+  background:#a48a55;
+  border-color:#a48a55;
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(183,155,99,.35);
+}
+.about-split-btn .arrow{width:14px;height:14px;}
+.about-split-image-wrap{
+  position:relative;
+}
+.about-split-image-border{
+  position:absolute;
+  inset:18px -18px -18px 18px;
+  border:1px solid rgba(183,155,99,.45);
+  border-radius:var(--radius-md);
+  pointer-events:none;
+}
+.about-split-image{
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:var(--radius-md);
+  box-shadow:0 24px 64px rgba(0,0,0,.32);
+  display:block;
+  position:relative;
+  z-index:1;
+}
+@media(max-width:900px){
+  .about-split{padding:80px 0;}
+  .about-split-inner{grid-template-columns:1fr;gap:56px;}
+  .about-split-image-border{inset:12px -12px -12px 12px;}
+  .about-split-body{max-width:100%;}
+}
+@media(max-width:600px){
+  .about-split{padding:64px 0;}
+  .about-split-heading{font-size:clamp(32px,8vw,48px);}
+}
+
 /* ---------- Welcome / Intro ---------- */
 .intro{background:var(--cream-50);padding-top:36px;}
 .intro-grid{

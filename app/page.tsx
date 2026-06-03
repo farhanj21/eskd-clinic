@@ -12,6 +12,7 @@ import Reviews from '@/components/Reviews'
 import HealthFunds from '@/components/HealthFunds'
 import ContactSection from '@/components/ContactSection'
 import Team from '@/components/Team'
+import AboutSplit from '@/components/AboutSplit'
 import Footer from '@/components/Footer'
 import FloatBookButton from '@/components/FloatBookButton'
 
@@ -24,6 +25,7 @@ export default function Home() {
       <main>
         <Hero />
         <TrustStrip />
+        <AboutSplit />
         {/* <Intro />
         <Team />
         <SignatureServices />
