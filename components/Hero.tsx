@@ -7,13 +7,23 @@ const slides = [
   { img: '/assets/Hero AG White.png' },
 ]
 
+const accreditations = ['ADA', 'Invisalign', 'AHPRA', 'Medicare CDBS', 'HICAPS']
+
 export default function Hero() {
   const [active, setActive] = useState(0)
+  const [accredActive, setAccredActive] = useState(0)
 
   useEffect(() => {
     const id = setInterval(() => {
       setActive(prev => (prev + 1) % slides.length)
     }, 5000)
+    return () => clearInterval(id)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setAccredActive(prev => (prev + 1) % accreditations.length)
+    }, 2200)
     return () => clearInterval(id)
   }, [])
 
@@ -48,6 +58,15 @@ export default function Hero() {
             <a href="#services" className="btn btn-outline btn-rect">
               Our Services
             </a>
+          </div>
+
+          <div className="hero-accred reveal" style={{transitionDelay:'.56s'}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:'20px',height:'20px',flexShrink:0}}>
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="8 12 11 15 16 9" />
+            </svg>
+            <span className="hero-accred-label">Accredited with</span>
+            <span className="hero-accred-item" key={accredActive}>{accreditations[accredActive]}</span>
           </div>
         </div>
       </div>

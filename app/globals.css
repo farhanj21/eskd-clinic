@@ -401,7 +401,27 @@ nav.primary .dropdown a:hover{background:var(--cream-100);color:var(--teal-800);
 .hero h1{color:var(--cream-50);font-weight:500;margin:22px 0 0;}
 .hero h1 em{font-style:italic;color:var(--gold-soft);font-weight:500;}
 .hero .sub{color:rgba(246,239,227,.85);font-size:18px;max-width:540px;margin-top:22px;}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;}
+.hero-accred{
+  display:flex;align-items:center;gap:10px;
+  margin-top:28px;
+  font-size:16px;
+  font-weight:500;
+  color:#0E3A3D;
+  letter-spacing:.02em;
+}
+.hero-accred-label{opacity:.7;}
+.hero-accred-item{
+  font-weight:700;
+  color:var(--gold);
+  animation:accred-fade 2.2s ease forwards;
+}
+@keyframes accred-fade{
+  0%{opacity:0;transform:translateY(5px);}
+  12%{opacity:1;transform:translateY(0);}
+  80%{opacity:1;transform:translateY(0);}
+  100%{opacity:0;transform:translateY(-5px);}
+}
 .hero-meta{
   align-self:end;
   background:rgba(14,58,61,.55);
@@ -1733,7 +1753,7 @@ footer.site-footer{
     flex-direction:column;
     align-items:stretch;
     gap:12px;
-    margin-top:24px;
+    margin-top:15px;
   }
   .hero-ctas .btn{justify-content:center;padding:14px 20px;}
   .hero-meta{padding:24px 26px;}
