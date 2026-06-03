@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <ScrollEffects />
-      <UtilityBar />
+      {/* <UtilityBar /> */}
       <Header />
       <main>
         <Hero />
