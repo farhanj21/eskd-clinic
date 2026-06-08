@@ -32,7 +32,11 @@
       "Bash(Get-ChildItem -Path . -Force)",
       "Bash(Select-Object Name, Mode)",
       "Bash(findstr /i \"error compiled successfully\")",
-      "Bash(Select-String \"Compiled|error\")"
+      "Bash(Select-String \"Compiled|error\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\services\\\\[slug]\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\areas\\\\[suburb]\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\learn\\\\[slug]\")",
+      "Bash(grep -n \"^\\\\.sec{\\\\\\\\|^\\\\.sec {\\\\|^\\\\.alt{\\\\\\\\|^\\\\.alt {\\\\|^\\\\.lead{\\\\\\\\|^\\\\.lead {\\\\|^\\\\.sec\\\\.alt\\\\|\\\\.sec\\\\.alt\\\\|\\\\.proof-stars\\\\|\\\\.proof-dot\\\\|\\\\.offer-meta\\\\|\\\\.foot-grid\\\\|\\\\.foot-logo\\\\|\\\\.footer-v2\\\\|\\\\.foot-bottom\\\\|\\\\.super-band\" \"c:/Users/f-jaf/Desktop/Code/eskd-clinic/eskd-clinic/app/globals.css\")"
     ]
   }
 }

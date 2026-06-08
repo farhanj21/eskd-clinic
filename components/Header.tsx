@@ -1,217 +1,212 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
-const homeLinks = [
-  { label: 'Home 1', href: '/' },
-  { label: 'Home 2', href: '/home' },
-]
-
-const aboutLinks = [
-  { label: 'How We Work', href: '#about' },
-  { label: 'Languages', href: '#contact' },
-  { label: 'Blogs', href: '#blog' },
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms and Conditions', href: '#' },
-]
-
-const serviceLinks = [
-  { label: 'Invisalign', href: '#services' },
-  { label: 'Veneers', href: '#services' },
-  { label: 'Gentle Dentistry', href: '#gentle' },
-  { label: 'Emergency', href: '#services' },
-  { label: 'Dental Surgery', href: '#services' },
-  { label: 'Wisdom Tooth Extraction', href: '#services' },
-  { label: 'Teeth Whitening', href: '#services' },
-  { label: 'Crowns and Bridges', href: '#services' },
-]
+type DropKey = 'services' | 'newpatients' | 'about' | 'costs' | null
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<'about' | 'services' | 'home' | null>(null)
-  const [scrolled, setScrolled] = useState(false)
-  const navRef = useRef<HTMLElement>(null)
+  const [openDrop, setOpenDrop] = useState<DropKey>(null)
+  const [openMob, setOpenMob] = useState<string | null>(null)
+  const navRef = useRef<HTMLDivElement>(null)
 
-  function toggleMenu() {
-    setMenuOpen((prev) => !prev)
-  }
-
-  function closeMenu() {
-    setMenuOpen(false)
-    setOpenDropdown(null)
-  }
-
-  function toggleDropdown(name: 'about' | 'services' | 'home') {
-    setOpenDropdown((prev) => (prev === name ? null : name))
+  function toggleDrop(k: DropKey) {
+    setOpenDrop(prev => prev === k ? null : k)
   }
 
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null)
-      }
+    function onOut(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpenDrop(null)
     }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    document.addEventListener('mousedown', onOut)
+    return () => document.removeEventListener('mousedown', onOut)
   }, [])
 
-  useEffect(() => {
-    function handleScroll() {
-      setScrolled(window.scrollY > 10)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const chevron = (
-    <svg className="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  const chev = (
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ opacity: .55 }}>
       <polyline points="6 9 12 15 18 9" />
     </svg>
   )
 
   return (
-    <header className={`site-header${scrolled ? ' scrolled' : ''}`} id="site-header">
-      <div className="container header-inner">
-        <a href="#" className="brand">
-          <img src="/assets/eskd-no-bg.png" alt="East St Kilda Dental — Since 1984" />
-        </a>
+    <header className="site-header">
+      <div className="header-inner" ref={navRef}>
+        <Link href="/" className="brand" aria-label="East St Kilda Dental — home">
+          <Image
+            src="/assets/logo-compact.png"
+            alt="East St Kilda Dental"
+            width={120}
+            height={56}
+            style={{ height: '56px', width: 'auto' }}
+            priority
+          />
+        </Link>
 
-        <nav className="primary" aria-label="Primary navigation" ref={navRef}>
-          {/* About dropdown */}
-          <div className={`nav-item${openDropdown === 'about' ? ' open' : ''}`}>
-            <a
-              href="#about"
-              onClick={(e) => { e.preventDefault(); toggleDropdown('about') }}
-              aria-haspopup="true"
-              aria-expanded={openDropdown === 'about'}
-            >
-              About {chevron}
-            </a>
-            <div className="dropdown" role="menu">
-              {aboutLinks.map(({ label, href }) => (
-                <a key={label} href={href} role="menuitem" onClick={() => setOpenDropdown(null)}>
-                  {label}
-                </a>
-              ))}
+        <nav className="primary" aria-label="Main">
+          <Link href="/" className="menu-link">Home</Link>
+
+          {/* Services mega-menu */}
+          <div className={`nav-item has-mega${openDrop === 'services' ? ' open' : ''}`}>
+            <button className="menu-link" onClick={() => toggleDrop('services')} aria-expanded={openDrop === 'services'}>
+              Services {chev}
+            </button>
+            <div className="dd mega">
+              <div className="mega-start">
+                <span className="col-title">Start here</span>
+                <Link href="/first-visit">New patients</Link>
+                <Link href="/gentle">Nervous patients</Link>
+                <Link href="/emergency">Emergency</Link>
+                <Link href="/services/svc-checkups">Check-up</Link>
+              </div>
+              <div>
+                <div className="col-title">General &amp; Preventive</div>
+                <Link href="/services/svc-checkups">Check-ups &amp; Exams</Link>
+                <Link href="/services/svc-cleans">Cleans &amp; Hygiene</Link>
+                <Link href="/services/svc-kids">Children&apos;s Dentistry</Link>
+                <Link href="/services/svc-mouthguards">Mouthguards</Link>
+                <Link href="/services/svc-tmj">TMJ &amp; Jaw Pain</Link>
+                <Link href="/gentle">Anxiety &amp; Gentle Care</Link>
+                <Link href="/services/svc-myofunctional">Myofunctional Therapy</Link>
+              </div>
+              <div>
+                <div className="col-title">Restorative</div>
+                <Link href="/services/svc-fillings">Fillings &amp; Restorations</Link>
+                <Link href="/services/svc-crowns">Crowns &amp; Bridges</Link>
+                <Link href="/services/svc-rootcanal">Root Canal Therapy</Link>
+                <Link href="/services/svc-onlays">Onlays &amp; Inlays</Link>
+                <Link href="/services/svc-dentures">Dentures</Link>
+                <Link href="/services/svc-extractions">Extractions &amp; Wisdom Teeth</Link>
+              </div>
+              <div>
+                <div className="col-title">Cosmetic</div>
+                <Link href="/services/svc-smiledesign">Smile Design</Link>
+                <Link href="/services/svc-veneers">Veneers</Link>
+                <Link href="/services/svc-whitening">Teeth Whitening</Link>
+                <div className="col-title">Orthodontics</div>
+                <Link href="/services/svc-invisalign">Invisalign / Clear Aligners</Link>
+                <Link href="/services/svc-braces">Braces</Link>
+                <div className="col-title">Implants</div>
+                <Link href="/services/svc-implant-single">Single Implants</Link>
+                <Link href="/services/svc-implant-allon4">All-on-4 / Full Arch</Link>
+                <Link href="/services/svc-bonegraft">Bone Grafting</Link>
+                <div className="col-title">Emergency</div>
+                <Link href="/emergency">Emergency Dentistry</Link>
+              </div>
+              <div className="mega-concern">
+                <span className="col-title">By concern</span>
+                <Link href="/learn/article-bleeding-gums">Bleeding gums</Link>
+                <Link href="/services/svc-checkups">Sensitive teeth</Link>
+                <Link href="/emergency">Toothache</Link>
+                <Link href="/services/svc-cleans">Bad breath</Link>
+                <Link href="/emergency">Chipped or broken tooth</Link>
+              </div>
             </div>
           </div>
 
-          {/* Services dropdown */}
-          <div className={`nav-item${openDropdown === 'services' ? ' open' : ''}`}>
-            <a
-              href="#services"
-              onClick={(e) => { e.preventDefault(); toggleDropdown('services') }}
-              aria-haspopup="true"
-              aria-expanded={openDropdown === 'services'}
-            >
-              Services {chevron}
-            </a>
-            <div className="dropdown" role="menu">
-              {serviceLinks.map(({ label, href }) => (
-                <a key={label} href={href} role="menuitem" onClick={() => setOpenDropdown(null)}>
-                  {label}
-                </a>
-              ))}
+          {/* New Patients */}
+          <div className={`nav-item${openDrop === 'newpatients' ? ' open' : ''}`}>
+            <button className="menu-link" onClick={() => toggleDrop('newpatients')} aria-expanded={openDrop === 'newpatients'}>
+              New Patients {chev}
+            </button>
+            <div className="dd">
+              <Link href="/first-visit">Your First Visit</Link>
+              <Link href="/offer">The Comprehensive Care Visit</Link>
+              <Link href="/#faq">FAQ</Link>
             </div>
           </div>
 
-          <a href="#team">Our Team</a>
-          <a href="#patients">Patients</a>
-          <a href="#contact">Contact</a>
+          <Link href="/gentle" className="menu-link">Gentle Dentistry</Link>
+          <Link href="/learn" className="menu-link">Dental Education</Link>
 
-          {/* Home dropdown */}
-          <div className={`nav-item${openDropdown === 'home' ? ' open' : ''}`}>
-            <a
-              href="/"
-              onClick={(e) => { e.preventDefault(); toggleDropdown('home') }}
-              aria-haspopup="true"
-              aria-expanded={openDropdown === 'home'}
-            >
-              Home {chevron}
-            </a>
-            <div className="dropdown" role="menu">
-              {homeLinks.map(({ label, href }) => (
-                <a key={label} href={href} role="menuitem" onClick={() => setOpenDropdown(null)}>
-                  {label}
-                </a>
-              ))}
+          {/* About */}
+          <div className={`nav-item${openDrop === 'about' ? ' open' : ''}`}>
+            <button className="menu-link" onClick={() => toggleDrop('about')} aria-expanded={openDrop === 'about'}>
+              About {chev}
+            </button>
+            <div className="dd">
+              <Link href="/about#story">Our Story (40 years)</Link>
+              <Link href="/about#different">Why We&apos;re Different</Link>
+              <Link href="/about#team">Meet the Team</Link>
+              <Link href="/ourwork">Our Work / Smile Gallery</Link>
             </div>
           </div>
+
+          {/* Costs & Support */}
+          <div className={`nav-item${openDrop === 'costs' ? ' open' : ''}`}>
+            <button className="menu-link" onClick={() => toggleDrop('costs')} aria-expanded={openDrop === 'costs'}>
+              Costs &amp; Support {chev}
+            </button>
+            <div className="dd">
+              <Link href="/fees">Fees Guide</Link>
+              <Link href="/fees#payment">Payment Options</Link>
+              <Link href="/fees#funds">Health Funds We Accept</Link>
+              <Link href="/super">Using Your Super</Link>
+            </div>
+          </div>
+
+          <Link href="/contact" className="menu-link">Contact</Link>
         </nav>
 
-        <div className="header-cta">
-          <a className="item" href="tel:+61395273678">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
-            </svg>
-            (03) 9527 3678
-          </a>
-          <a href="#contact" className="btn btn-gold btn-rect">
-            Book Appointment
-          </a>
+        {/* Right CTAs */}
+        <div className="nav-right">
+          <Link href="/emergency" className="btn-emergency-nav">
+            <span className="ed-dot" />
+            Emergency
+          </Link>
+          <a href="tel:+61395273678" className="nav-phone">(03) 9527 3678</a>
+          <Link href="/booking" className="btn" style={{ padding: '12px 22px', fontSize: '14px' }}>
+            Book your visit
+          </Link>
           <button
-            className="mobile-toggle"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            onClick={toggleMenu}
+            className={`menu-toggle${menuOpen ? ' active' : ''}`}
+            aria-label="Toggle menu"
+            onClick={() => setMenuOpen(p => !p)}
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
+            <span /><span /><span />
           </button>
         </div>
       </div>
 
       {/* Mobile nav */}
-      <nav
-        className={`mobile-nav${menuOpen ? ' open' : ''}`}
-        aria-label="Mobile navigation"
-      >
-        {/* About accordion */}
-        <button
-          className={`mob-parent${openDropdown === 'about' ? ' open' : ''}`}
-          onClick={() => toggleDropdown('about')}
-        >
-          About {chevron}
+      <div className={`mobile-nav${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
+        <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+
+        <button className="mob-parent" onClick={() => setOpenMob(p => p === 'svc' ? null : 'svc')}>
+          Services
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+            style={{ transform: openMob === 'svc' ? 'rotate(180deg)' : undefined, transition: 'transform .2s' }}>
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </button>
-        <div className={`mob-dropdown${openDropdown === 'about' ? ' open' : ''}`}>
-          {aboutLinks.map(({ label, href }) => (
-            <a key={label} href={href} onClick={closeMenu}>{label}</a>
-          ))}
+        <div className={`mob-sub${openMob === 'svc' ? ' open' : ''}`}>
+          <Link href="/services/svc-checkups" onClick={() => setMenuOpen(false)}>Check-ups &amp; Exams</Link>
+          <Link href="/services/svc-cleans" onClick={() => setMenuOpen(false)}>Cleans &amp; Hygiene</Link>
+          <Link href="/services/svc-fillings" onClick={() => setMenuOpen(false)}>Fillings &amp; Restorations</Link>
+          <Link href="/services/svc-crowns" onClick={() => setMenuOpen(false)}>Crowns &amp; Bridges</Link>
+          <Link href="/services/svc-implant-single" onClick={() => setMenuOpen(false)}>Dental Implants</Link>
+          <Link href="/services/svc-invisalign" onClick={() => setMenuOpen(false)}>Invisalign</Link>
+          <Link href="/services/svc-veneers" onClick={() => setMenuOpen(false)}>Veneers</Link>
+          <Link href="/services/svc-whitening" onClick={() => setMenuOpen(false)}>Whitening</Link>
+          <Link href="/emergency" onClick={() => setMenuOpen(false)}>Emergency</Link>
         </div>
 
-        {/* Services accordion */}
-        <button
-          className={`mob-parent${openDropdown === 'services' ? ' open' : ''}`}
-          onClick={() => toggleDropdown('services')}
-        >
-          Services {chevron}
-        </button>
-        <div className={`mob-dropdown${openDropdown === 'services' ? ' open' : ''}`}>
-          {serviceLinks.map(({ label, href }) => (
-            <a key={label} href={href} onClick={closeMenu}>{label}</a>
-          ))}
+        <Link href="/first-visit" onClick={() => setMenuOpen(false)}>New Patients</Link>
+        <Link href="/gentle" onClick={() => setMenuOpen(false)}>Gentle Dentistry</Link>
+        <Link href="/learn" onClick={() => setMenuOpen(false)}>Dental Education</Link>
+        <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
+        <Link href="/fees" onClick={() => setMenuOpen(false)}>Costs &amp; Support</Link>
+        <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', padding: '0 6px' }}>
+          <Link href="/emergency" className="btn" style={{ background: 'var(--clay)', textAlign: 'center' }} onClick={() => setMenuOpen(false)}>
+            Emergency
+          </Link>
+          <Link href="/booking" className="btn" style={{ textAlign: 'center' }} onClick={() => setMenuOpen(false)}>
+            Book your visit
+          </Link>
         </div>
-
-        <a href="#team" onClick={closeMenu}>Our Team</a>
-        <a href="#patients" onClick={closeMenu}>Patients</a>
-        <a href="#contact" onClick={closeMenu}>Contact</a>
-
-        {/* Home accordion */}
-        <button
-          className={`mob-parent${openDropdown === 'home' ? ' open' : ''}`}
-          onClick={() => toggleDropdown('home')}
-        >
-          Home {chevron}
-        </button>
-        <div className={`mob-dropdown${openDropdown === 'home' ? ' open' : ''}`}>
-          {homeLinks.map(({ label, href }) => (
-            <a key={label} href={href} onClick={closeMenu}>{label}</a>
-          ))}
-        </div>
-      </nav>
+      </div>
     </header>
   )
 }
