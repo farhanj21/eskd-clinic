@@ -1,71 +1,111 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import GetInTouch from '@/components/GetInTouch'
 
 export const metadata: Metadata = {
-  title: 'Smile Gallery — Before & After Results | East St Kilda Dental',
+  title: 'Our Work — Real Results, Real People | East St Kilda Dental',
   description:
-    'See real smile transformations from East St Kilda Dental — veneers, Invisalign, implants, whitening and more. Book a free cosmetic consultation.',
+    'Natural-looking outcomes from gentle, considered care at East St Kilda Dental — always in proportion to the person, never overdone. Browse the smile gallery.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/ourwork' },
 }
 
 const cases = [
-  { treatment: 'Porcelain Veneers', description: '8 upper veneers to correct colour, shape and spacing.' },
-  { treatment: 'Invisalign', description: 'Crowding correction over 14 months with Invisalign Full.' },
-  { treatment: 'Dental Implants', description: 'Single implant crown replacing a missing upper central incisor.' },
-  { treatment: 'Teeth Whitening', description: 'In-chair ZOOM! whitening — immediate results in 90 minutes.' },
-  { treatment: 'Composite Bonding', description: 'Edge bonding to restore worn incisal edges and close minor gaps.' },
-  { treatment: 'Smile Makeover', description: 'Combined whitening, Invisalign and veneers for a complete transformation.' },
+  {
+    h4: 'Gentle smile refresh',
+    p: "A natural-looking improvement, in keeping with the patient's face.",
+  },
+  {
+    h4: 'Restoring a damaged tooth',
+    p: 'Function and appearance brought back with a crown.',
+  },
+  {
+    h4: 'Replacing a missing tooth',
+    p: 'A single implant that looks and feels natural.',
+  },
+  {
+    h4: "A nervous patient's journey",
+    p: 'From years away to comfortable, ongoing care.',
+  },
+  {
+    h4: 'Straightening with aligners',
+    p: 'A discreet path to a straighter smile.',
+  },
+  {
+    h4: 'A full-mouth rehabilitation',
+    p: 'Planned, phased care over time.',
+  },
 ]
 
 export default function OurWorkPage() {
   return (
     <main>
-      <section className="page-hero section" style={{ background: 'var(--surface-teal)' }}>
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow light">Our Work</span>
-            <h1>Smile Gallery</h1>
-            <p className="lede" style={{ color: 'rgba(246,239,227,.85)', maxWidth: '600px', margin: '0 auto' }}>
-              Every smile transformation starts with a conversation. Here are some of the results our patients have achieved.
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="hero-v2">
+        <div className="container hero-v2-grid">
+          <div className="reveal">
+            <div className="eyebrow">Our work</div>
+            <h1>Real results, <em>real people</em></h1>
+            <p className="lead">
+              Natural-looking outcomes from gentle, considered care, always in proportion to the person, never overdone.
             </p>
+            <div className="hero-cta">
+              <Link href="/booking" className="btn">Book a consultation</Link>
+              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+            </div>
+          </div>
+          <div className="ph tall reveal">
+            <span>Warm, real before/after or smile photo (with consent). Never stock.</span>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      {/* ── INTRO ────────────────────────────────────────── */}
+      <section className="sec alt">
+        <div className="container reveal" style={{ maxWidth: '48em', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="eyebrow">About these results</div>
+          <h2>Honest, in-context examples</h2>
+          <p style={{ fontSize: '18px', marginTop: '14px' }}>
+            Every result is different, because every person is. The examples here are shared with patient consent and reflect typical, natural outcomes, not guarantees. We&apos;ll always talk you through what&apos;s realistic for you.
+          </p>
+        </div>
+      </section>
+
+      {/* ── GALLERY ──────────────────────────────────────── */}
+      <section className="sec">
         <div className="container">
-          <div className="gallery-cases reveal">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">A selection of our work</div>
+            <h2>Smile gallery</h2>
+          </div>
+          <div className="svc-grid reveal">
             {cases.map((c, i) => (
-              <div key={i} className="case-card" style={{ transitionDelay: `${i * 0.07}s` }}>
-                <div className="case-images">
-                  <div className="case-img before" aria-label="Before treatment">
-                    <span>Before</span>
-                  </div>
-                  <div className="case-img after" aria-label="After treatment">
-                    <span>After</span>
-                  </div>
+              <div key={i} className="svc">
+                <div className="ph" style={{ height: '170px', marginBottom: '10px' }}>
+                  <span>Before &amp; after (with patient consent)</span>
                 </div>
-                <div className="case-info">
-                  <h3>{c.treatment}</h3>
-                  <p>{c.description}</p>
-                </div>
+                <h4>{c.h4}</h4>
+                <p>{c.p}</p>
               </div>
             ))}
           </div>
-
-          <div className="gallery-disclaimer reveal" style={{ marginTop: '48px', padding: '24px', background: 'var(--surface-warm)', borderRadius: 'var(--radius-lg)', fontSize: '14px', color: 'var(--ink-light)' }}>
-            <p>Individual results vary. All cosmetic dental procedures carry potential risks and are performed following a thorough clinical assessment. Images shown are for illustrative purposes.</p>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '48px' }} className="reveal">
-            <p style={{ marginBottom: '16px', color: 'var(--ink-light)' }}>Interested in your own transformation?</p>
-            <Link href="/booking" className="btn btn-primary">Book a Free Cosmetic Consultation</Link>
-          </div>
+          <p className="reveal" style={{ textAlign: 'center', marginTop: '18px', fontSize: '13px', opacity: .7 }}>
+            Placeholder cases for layout. All images require patient consent and must comply with AHPRA advertising guidelines (no misleading before/after, no testimonials) before publishing. Clinical sign-off required.
+          </p>
         </div>
       </section>
 
-      <GetInTouch variant="cosmetic" id="contact" />
+      {/* ── RELATED TREATMENTS ───────────────────────────── */}
+      <section className="sec">
+        <div className="container reveal" style={{ textAlign: 'center' }}>
+          <div className="eyebrow">Considering treatment?</div>
+          <h2>Explore the options</h2>
+          <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Link href="/services/svc-veneers" className="btn btn-ghost">Veneers</Link>
+            <Link href="/services/svc-smiledesign" className="btn btn-ghost">Smile design</Link>
+            <Link href="/services/svc-implant-single" className="btn btn-ghost">Implants</Link>
+            <Link href="/services/svc-whitening" className="btn btn-ghost">Whitening</Link>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
