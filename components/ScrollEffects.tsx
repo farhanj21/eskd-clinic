@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 function countUp(el: HTMLElement, target: number, suffix: string, duration = 1600) {
   const start = performance.now()
@@ -15,6 +16,8 @@ function countUp(el: HTMLElement, target: number, suffix: string, duration = 160
 }
 
 export default function ScrollEffects() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const header = document.getElementById('site-header')
     const bar = document.querySelector<HTMLElement>('.scroll-progress')
@@ -30,6 +33,7 @@ export default function ScrollEffects() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
 
+    // Immediately mark all .reveal elements visible if IntersectionObserver is unavailable
     if (!('IntersectionObserver' in window)) {
       document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'))
       return () => window.removeEventListener('scroll', handleScroll)
@@ -42,7 +46,7 @@ export default function ScrollEffects() {
       })
     })
 
-    // Count-up observer — triggers when stat enters view
+    // Count-up observer
     const countObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -56,7 +60,7 @@ export default function ScrollEffects() {
     )
     document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => countObserver.observe(el))
 
-    // Reveal observer
+    // Reveal observer — re-queries the DOM after navigation so new page elements are picked up
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -75,7 +79,7 @@ export default function ScrollEffects() {
       revealObserver.disconnect()
       countObserver.disconnect()
     }
-  }, [])
+  }, [pathname])
 
   return <div className="scroll-progress" aria-hidden="true" />
 }
