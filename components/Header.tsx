@@ -126,9 +126,9 @@ export default function Header() {
               About {chev}
             </button>
             <div className="dd">
-              <Link href="/about#story">Our Story (40 years)</Link>
-              <Link href="/about#different">Why We&apos;re Different</Link>
-              <Link href="/about#team">Meet the Team</Link>
+              <Link href="/about/story">Our Story (40 years)</Link>
+              <Link href="/about/different">Why We&apos;re Different</Link>
+              <Link href="/about/team">Meet the Team</Link>
               <Link href="/ourwork">Our Work / Smile Gallery</Link>
             </div>
           </div>
