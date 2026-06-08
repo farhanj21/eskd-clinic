@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GetInTouch from '@/components/GetInTouch'
 
 export const metadata: Metadata = {
   title: 'Our Story | East St Kilda Dental — Four Decades on the Same Corner',
@@ -129,6 +130,8 @@ export default function AboutStoryPage() {
           </div>
         </div>
       </section>
+
+      <GetInTouch variant="default" id="contact" />
     </main>
   )
 }

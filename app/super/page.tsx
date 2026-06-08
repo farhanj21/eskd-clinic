@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GetInTouch from '@/components/GetInTouch'
 
 export const metadata: Metadata = {
   title: 'Using Your Super for Dental Treatment | East St Kilda Dental',
@@ -189,6 +190,8 @@ export default function SuperPage() {
           </div>
         </div>
       </section>
+
+      <GetInTouch variant="super" id="contact" />
     </main>
   )
 }

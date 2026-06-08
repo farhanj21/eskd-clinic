@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GetInTouch from '@/components/GetInTouch'
 
 export const metadata: Metadata = {
   title: 'Dental Fees & Costs | East St Kilda Dental — No Surprises',
@@ -182,6 +183,8 @@ export default function FeesPage() {
           </div>
         </div>
       </section>
+
+      <GetInTouch variant="fees" id="contact" />
     </main>
   )
 }
