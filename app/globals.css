@@ -2335,6 +2335,39 @@ html,body{overflow-x:hidden;max-width:100%;}
 .svc-nervous-band{text-align:center;max-width:46em;margin-left:auto;margin-right:auto;}
 .svc-nervous-band p{font-size:21px;font-family:var(--display);color:var(--sage-deep);line-height:1.4;}
 
+/* ── Contact page: light callback form ──────────────────── */
+.callback-form{display:flex;flex-direction:column;gap:12px;max-width:30em;margin:0 auto;}
+.callback-form input,.callback-form textarea{padding:13px 16px;border:1px solid var(--line);border-radius:10px;font-family:var(--body);font-size:15px;background:var(--paper);color:var(--ink);width:100%;outline:none;}
+.callback-form input:focus,.callback-form textarea:focus{border-color:var(--sage);}
+.callback-form textarea{resize:vertical;min-height:96px;}
+.contact-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:760px){.contact-detail-grid{grid-template-columns:1fr;}}
+
+/* ── Dental Education: learn index ──────────────────────── */
+.topic-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;justify-content:center;}
+.topic-tag{display:inline-block;background:var(--cream-2);color:var(--sage-deep);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;}
+.article-card-soon{opacity:.55;pointer-events:none;}
+.article-card-soon .read-lbl{font-size:13px;color:var(--ink-faint);}
+
+/* ── Article / Post layout ───────────────────────────────── */
+.post{max-width:760px;margin:0 auto;padding:60px var(--side-pad,24px) 80px;}
+.post-back{display:inline-flex;align-items:center;gap:6px;color:var(--sage-deep);font-weight:600;font-size:14px;text-decoration:none;margin-bottom:22px;}
+.post-back:hover{color:var(--clay-deep);}
+.post-cat{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:10px;}
+.byline{font-size:14px;color:var(--ink-faint);margin:10px 0 28px;}
+.answer{font-size:19px;line-height:1.7;color:var(--ink);background:var(--sage-tint);border-radius:14px;padding:24px 28px;margin:24px 0 32px;border-left:4px solid var(--sage);}
+.post-hero{width:100%;min-height:300px;margin:0 0 40px;border-radius:18px;}
+.post-body h2{font-size:clamp(20px,2.5vw,26px);font-family:var(--display);margin:40px 0 14px;color:var(--ink);}
+.post-body p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin:0 0 20px;}
+.post-cta{background:var(--sage-tint);border:1px solid var(--sage-soft);border-radius:18px;padding:36px;text-align:center;margin:44px 0;}
+.post-cta h3{font-family:var(--display);font-size:26px;color:var(--sage-deep);margin:0 0 10px;}
+.post-cta p{font-size:16px;color:var(--ink-soft);margin:0 0 22px;}
+
+/* ── Short answer box (article-bleeding-gums style) ─────── */
+.ansbox{background:var(--sage-tint);border:1px solid var(--sage-soft);border-radius:14px;padding:24px 28px;margin:28px 0;}
+.ansbox .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:8px;}
+.ansbox p{font-size:17px;line-height:1.7;color:var(--ink);margin:0;}
+
 /* ── New Patients pages ──────────────────────────────────── */
 
 /* Hero proof inside hero-v2 columns (left-align, not centred) */

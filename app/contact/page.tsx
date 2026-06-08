@@ -1,96 +1,127 @@
-import type { Metadata } from 'next'
-import GetInTouch from '@/components/GetInTouch'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Contact Us | East St Kilda Dental',
-  description:
-    'Get in touch with East St Kilda Dental — call (03) 9527 3678, email hello@eaststkildadental.com.au, or book online. 364 Dandenong Road, East St Kilda VIC 3183.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/contact' },
-}
+import { useState } from 'react'
+import Link from 'next/link'
 
 export default function ContactPage() {
+  const [submitted, setSubmitted] = useState(false)
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setSubmitted(true)
+  }
+
   return (
     <main>
-      <section className="page-hero section" style={{ background: 'var(--surface-teal)', paddingBottom: '32px' }}>
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow light">Contact</span>
-            <h1>Get In Touch</h1>
-            <p className="lede" style={{ color: 'rgba(246,239,227,.85)', maxWidth: '560px', margin: '0 auto' }}>
-              Book an appointment, ask a question, or just say hello. We respond to all enquiries within one business day.
-            </p>
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="hero-v2">
+        <div className="container hero-v2-grid">
+          <div className="reveal">
+            <div className="eyebrow">Get in touch</div>
+            <h1>We&apos;d love to <em>see you</em></h1>
+            <p className="lead">Call us, book online, or leave your details and we&apos;ll call you back. Whatever&apos;s easiest, we&apos;ll make it simple.</p>
+            <div className="hero-cta">
+              <Link href="/booking" className="btn">Book online</Link>
+              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+            </div>
+          </div>
+          <div className="ph tall reveal">
+            <span>Warm, real photo of reception or the team welcoming a patient.</span>
           </div>
         </div>
       </section>
 
-      <section className="section" style={{ paddingBottom: 0 }}>
+      {/* ── CONTACT DETAILS ──────────────────────────────── */}
+      <section className="sec alt">
         <div className="container">
-          <div className="contact-details-grid reveal">
-            <div className="contact-detail-card">
-              <div className="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
-                </svg>
-              </div>
-              <h3>Phone</h3>
-              <p><a href="tel:+61395273678">(03) 9527 3678</a></p>
-              <p style={{ fontSize: '14px', color: 'var(--ink-light)' }}>Same-day emergency line available</p>
-            </div>
-            <div className="contact-detail-card">
-              <div className="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </div>
-              <h3>Email</h3>
-              <p><a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a></p>
-            </div>
-            <div className="contact-detail-card">
-              <div className="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <h3>Address</h3>
-              <p>364 Dandenong Road<br />East St Kilda VIC 3183</p>
-              <a href="https://maps.app.goo.gl/7e4dRpEyETE8K18s5" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px' }}>
-                Open in Google Maps ↗
-              </a>
-            </div>
-            <div className="contact-detail-card">
-              <div className="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-              </div>
-              <h3>Hours</h3>
+          <div className="contact-detail-grid reveal">
+            <div className="svc">
+              <h4>Call us</h4>
               <p>
-                Mon–Thu 8:30am–4:00pm<br />
-                Friday 8:30am–4:30pm<br />
-                Saturday 8:00am–4:00pm
+                <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+                  (03) 9527 3678
+                </a>
+              </p>
+              <p>The fastest way to reach reception.</p>
+            </div>
+            <div className="svc">
+              <h4>Visit us</h4>
+              <p>
+                364 Dandenong Road,<br />
+                East St Kilda VIC 3183<br />
+                (corner of Orrong Road)
+              </p>
+            </div>
+            <div className="svc">
+              <h4>Opening hours</h4>
+              <p>
+                Mon&ndash;Thu: 8.30am&ndash;4.00pm<br />
+                Fri: 8.30am&ndash;4.30pm<br />
+                Sat: 8.00am&ndash;4.00pm (monthly)<br />
+                Sun: Closed
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <div style={{ margin: '48px 0 0' }}>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5!2d145.0!3d-37.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDUyJzEyLjAiUyAxNDXCsDAwJzAwLjAiRQ!5e0!3m2!1sen!2sau!4v1234567890"
-          width="100%"
-          height="400"
-          style={{ border: 'none', display: 'block' }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="East St Kilda Dental location map"
-        />
-      </div>
+      {/* ── FIND US ──────────────────────────────────────── */}
+      <section className="sec">
+        <div className="container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.5228534697304!2d145.00524827655942!3d-37.868064671969994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66a929a98bdf1%3A0xbda0fc5ba1f8b78a!2s364%20Dandenong%20Rd%2C%20St%20Kilda%20East%20VIC%203183!5e0!3m2!1sen!2sau!4v1749340000000!5m2!1sen!2sau"
+            width="100%"
+            height="380"
+            style={{ border: 'none', display: 'block', borderRadius: '18px' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="East St Kilda Dental — 364 Dandenong Road"
+          />
+          <div className="reveal" style={{ maxWidth: '48em', margin: '22px auto 0', textAlign: 'center' }}>
+            <p style={{ fontSize: '17px' }}>
+              We&apos;re on Dandenong Road at the corner of Orrong Road, with free off-street parking off Orrong Road. Trams 5 and 64 stop along Dandenong Road, and Balaclava Station on the Sandringham line is a short walk away.
+            </p>
+            <div style={{ marginTop: '14px' }}>
+              <Link href="/areas/east-st-kilda" className="btn btn-ghost">See areas we serve</Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <GetInTouch variant="default" id="contact" />
+      {/* ── CALL ME BACK ─────────────────────────────────── */}
+      <section className="sec alt">
+        <div className="container">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">Prefer we call you?</div>
+            <h2>Leave your details</h2>
+          </div>
+          <div className="reveal">
+            {submitted ? (
+              <div style={{ maxWidth: '30em', margin: '0 auto', textAlign: 'center', padding: '32px 0' }}>
+                <h3 style={{ color: 'var(--sage-deep)', fontFamily: 'var(--display)' }}>Thanks — we&apos;ll call you back</h3>
+                <p>We&apos;ll be in touch during opening hours. For a dental emergency call us directly on{' '}
+                  <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>(03) 9527 3678</a>.
+                </p>
+              </div>
+            ) : (
+              <form className="callback-form" onSubmit={handleSubmit}>
+                <input type="text" placeholder="Your name" aria-label="Your name" required />
+                <input type="tel" placeholder="Phone number" aria-label="Phone number" required />
+                <input type="text" placeholder="Best time to call" aria-label="Best time to call" />
+                <textarea placeholder="Anything you'd like us to know (optional)" aria-label="Message" />
+                <button className="btn" type="submit" style={{ justifyContent: 'center' }}>
+                  Request a callback
+                </button>
+                <p style={{ fontSize: '13px', color: 'var(--ink-faint)', textAlign: 'center', margin: 0 }}>
+                  We&apos;ll call during opening hours. For a dental emergency, please{' '}
+                  <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)' }}>call us straight away</a>.
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
