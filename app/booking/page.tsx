@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GetInTouch from '@/components/GetInTouch'
 
 export const metadata: Metadata = {
   title: 'Book an Appointment | East St Kilda Dental',
@@ -140,6 +141,8 @@ export default function BookingPage() {
           </div>
         </div>
       </section>
+
+      <GetInTouch variant="default" id="contact" />
     </main>
   )
 }
