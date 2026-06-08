@@ -31,20 +31,20 @@ export default async function ServicePage({ params }: Props) {
   return (
     <main>
       {/* ── 1. HERO ──────────────────────────────────────── */}
-      <section className="hero" style={{ background: 'var(--sage-deep)', color: 'var(--paper)' }}>
-        <div className="container hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
+      <section className="hero-v2">
+        <div className="container hero-v2-grid">
           <div className="reveal">
-            <div className="eyebrow" style={{ color: 'var(--clay-soft)' }}>{service.eyebrow}</div>
-            <h1 style={{ color: 'var(--paper)' }}>
+            <div className="eyebrow">{service.eyebrow}</div>
+            <h1>
               {service.h1pre ? <>{service.h1pre} <em>{service.h1em}</em></> : <em>{service.h1em}</em>}
             </h1>
-            <p className="lead" style={{ color: 'rgba(252,250,245,.85)', marginTop: '16px' }}>{service.heroLead}</p>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '28px' }}>
-              <Link href="/booking" className="btn">Book a visit</Link>
-              <Link href="#contact" className="btn btn-ghost" style={{ borderColor: 'rgba(252,250,245,.4)', color: 'var(--paper)' }}>Ask a question</Link>
+            <p className="lead">{service.heroLead}</p>
+            <div className="hero-cta">
+              <Link href="/booking" className="btn">Book your visit</Link>
+              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
-            <p style={{ marginTop: '14px', fontSize: '15px', color: 'rgba(252,250,245,.7)' }}>
-              Or call us: <a href="tel:+61395273678" style={{ color: 'var(--clay-soft)' }}>(03) 9527 3678</a>
+            <p style={{ marginTop: '14px', fontSize: '14px', color: 'var(--ink-faint)' }}>
+              Gentle, no-judgement care &nbsp;·&nbsp; 40+ years local
             </p>
           </div>
           <div className="ph tall reveal" style={{ minHeight: '420px' }}>
