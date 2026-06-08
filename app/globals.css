@@ -2334,3 +2334,48 @@ html,body{overflow-x:hidden;max-width:100%;}
 /* ── Service page: nervous & cost bands ─────────────────── */
 .svc-nervous-band{text-align:center;max-width:46em;margin-left:auto;margin-right:auto;}
 .svc-nervous-band p{font-size:21px;font-family:var(--display);color:var(--sage-deep);line-height:1.4;}
+
+/* ── New Patients pages ──────────────────────────────────── */
+
+/* Hero proof inside hero-v2 columns (left-align, not centred) */
+.hero-v2 .hero-proof{justify-content:flex-start;margin-top:18px;}
+
+/* Chips on light section background */
+.sec:not(.sage-bg) .chip{background:var(--sage-tint);border-color:var(--sage-soft);color:var(--sage-deep);}
+
+/* Fears list */
+.fears{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center;}
+.fears span{background:var(--cream);border:1px solid var(--cream-2);color:var(--ink-soft);padding:7px 16px;border-radius:999px;font-size:14.5px;}
+
+/* Terms band */
+.terms-band{background:var(--sage-tint);border:1px solid var(--sage-soft);border-radius:20px;padding:40px;text-align:center;margin-top:28px;}
+.terms-band p{font-family:var(--display);font-size:clamp(22px,3vw,30px);color:var(--sage-deep);margin:0 0 12px;line-height:1.35;}
+.terms-band span{font-size:16px;color:var(--ink-soft);}
+
+/* Vertical numbered steps (first-visit & offer) */
+.steps{counter-reset:fv;display:flex;flex-direction:column;margin-top:28px;}
+.step{display:grid;grid-template-columns:60px 1fr;gap:20px;padding-bottom:36px;position:relative;counter-increment:fv;}
+.step:not(:last-child)::before{content:"";position:absolute;left:29px;top:60px;bottom:0;width:2px;background:var(--sage-soft);}
+.step .num{width:58px;height:58px;border-radius:50%;background:var(--sage-deep);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:22px;font-weight:500;flex-shrink:0;position:relative;z-index:1;}
+.step .num::before{content:counter(fv);}
+.step h4{font-size:19px;font-family:var(--display);margin:14px 0 8px;color:var(--ink);}
+.step p{font-size:15.5px;color:var(--ink-soft);margin:0;line-height:1.65;}
+
+/* Stories grid (testimonials on light bg) */
+.stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;}
+.nervous-proof.light{background:var(--paper);border:1px solid var(--line-soft);border-radius:16px;padding:28px 30px;margin:0;border-left:none;color:var(--ink);font-family:var(--display);font-style:italic;}
+.nervous-proof.light p{font-size:19px;line-height:1.55;color:var(--ink);margin:0 0 14px;}
+.nervous-proof.light cite{display:block;font-style:normal;font-size:13px;color:var(--ink-faint);font-weight:500;font-family:var(--body);}
+@media(max-width:700px){.stories-grid{grid-template-columns:1fr;}}
+
+/* Responsible note */
+.responsible{text-align:center;font-style:italic;font-size:17px;color:var(--ink-soft);max-width:44em;margin:36px auto 0;}
+
+/* Google score */
+.gscore{text-align:center;font-size:17px;color:var(--ink-soft);}
+
+/* Booking two-column (offer page: online + callback) */
+.booking-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;align-items:start;}
+.booking-cols .form{display:flex;flex-direction:column;gap:10px;}
+.booking-cols .form input{padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-family:var(--body);font-size:15px;background:var(--paper);color:var(--ink);}
+@media(max-width:700px){.booking-cols{grid-template-columns:1fr;}}
