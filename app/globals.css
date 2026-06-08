@@ -216,13 +216,13 @@ p{margin:0;color:var(--ink-soft);}
 /* ---------- Header ---------- */
 /* ── Header ──────────────────────────────────────────────── */
 header.site-header{position:sticky;top:0;z-index:60;background:rgba(247,243,236,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 28px;max-width:var(--container);margin:0 auto}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 28px 13px max(28px,calc((100vw - var(--container)) / 2 + 28px))}
 .logo{font-family:var(--display);font-weight:600;font-size:22px;color:var(--sage-deep);letter-spacing:-.02em;line-height:1;flex:none;text-decoration:none}
 .logo small{display:block;font-family:var(--body);font-weight:600;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--clay-deep);margin-top:3px}
-.mainmenu{flex:1;min-width:0;}
-.mainmenu>ul{display:flex;gap:0;list-style:none;align-items:center;margin:0;padding:0;justify-content:center;}
+.mainmenu{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;}
+.mainmenu>ul{display:flex;gap:2px;list-style:none;align-items:center;margin:0;padding:0;}
 .mainmenu>ul>li{position:relative}
-.menu-link{display:flex;align-items:center;gap:5px;font-family:var(--body);font-weight:500;font-size:14px;color:var(--ink);background:none;border:none;cursor:pointer;padding:10px 10px;border-radius:9px;line-height:1;transition:.2s;white-space:nowrap;text-decoration:none}
+.menu-link{display:flex;align-items:center;gap:7px;font-family:var(--body);font-weight:500;font-size:15px;color:var(--ink);background:none;border:none;cursor:pointer;padding:10px 12px;border-radius:9px;line-height:1;transition:.2s;white-space:nowrap;text-decoration:none}
 .menu-link:hover{color:var(--clay-deep);background:var(--sage-tint)}
 .has-dd>.menu-link::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.55;transition:.2s}
 .has-dd:hover>.menu-link::after,.has-dd.open>.menu-link::after{transform:rotate(225deg);opacity:.9}
@@ -251,8 +251,7 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(247,243,236,
 .nav-right{display:flex;align-items:center;gap:16px;flex:none}
 .phone{font-weight:700;color:var(--sage-deep);font-size:15px;white-space:nowrap}
 .phone-mini{display:none}
-@media(max-width:1200px){.menu-link{padding:9px 7px;font-size:13.5px}.nav-right{gap:10px}}
-@media(max-width:1080px){.menu-link{padding:8px 5px;font-size:13px}.mega{width:640px}.nav-right{gap:8px}}
+@media(max-width:1080px){.mainmenu>ul{gap:0}.menu-link{padding:10px 8px;font-size:14px}.mega{width:640px}}
 @media(max-width:900px){
   .menu-toggle{display:flex}
   .phone{display:inline-flex;align-items:center;border:1.5px solid var(--sage);border-radius:30px;padding:9px 16px;font-size:14px}

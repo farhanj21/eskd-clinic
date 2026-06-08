@@ -151,7 +151,7 @@ export default function Header() {
             <span className="phone-full">(03) 9527 3678</span>
             <span className="phone-mini">Call us</span>
           </a>
-          <Link href="/booking" className="btn" style={{ padding: '12px 22px', fontSize: '14px' }}>
+          <Link href="/booking" className="btn">
             Book your visit
           </Link>
           <button
