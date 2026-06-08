@@ -2068,7 +2068,8 @@ html,body{overflow-x:hidden;max-width:100%;}
 .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
 .pillar{background:var(--paper);border:1px solid var(--line-soft);border-radius:18px;padding:34px 30px;}
 .pillar .n{font-family:var(--display);font-size:30px;color:var(--clay);font-weight:500;}
-.pillar h3{font-size:23px;margin:14px 0 10px;}
+.pillar h3{font-size:23px;margin:14px 0 10px;color:var(--ink);}
+.pillar p{font-size:15px;line-height:1.6;color:var(--ink-soft);}
 @media(max-width:820px){.pillars{grid-template-columns:1fr;}}
 
 /* Reviews */
