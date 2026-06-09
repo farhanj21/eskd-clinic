@@ -59,11 +59,11 @@ export default function Home() {
             <h1>Trusted for <em>skilled, heartfelt dentistry</em></h1>
             <p className="lead">From family check-ups to cosmetic care, we provide gentle, comprehensive dentistry trusted by generations of local families.</p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book your visit</Link>
+              <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '15px' }}>
-              <Link href="/offer" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+              <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
                 New patient? The Comprehensive Care Visit, $297 (valued at $499) &rarr;
               </Link>
             </p>
@@ -179,7 +179,7 @@ export default function Home() {
               <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px', color: 'var(--ink)' }}>
                 Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
               </p>
-              <Link href="/booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
+              <Link href="/book" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
@@ -205,36 +205,36 @@ export default function Home() {
             <div className="svc-item reveal">
               <h4>Check-ups &amp; cleans</h4>
               <p>Gentle, thorough preventive care to keep small things small.</p>
-              <Link href="/services/svc-checkups">Learn more</Link>
+              <Link href="/services/check-ups">Learn more</Link>
             </div>
             <div className="svc-item reveal">
               <h4>Emergency dentistry</h4>
               <p>In pain? We&apos;ll see you quickly and get you comfortable.</p>
-              <Link href="/emergency">Learn more</Link>
+              <Link href="/emergency-dentist">Learn more</Link>
             </div>
             <div className="svc-item reveal">
               <h4>Fillings &amp; restorations</h4>
               <p>Quietly fixing what needs fixing, preserving your natural teeth.</p>
-              <Link href="/services/svc-fillings">Learn more</Link>
+              <Link href="/services/fillings">Learn more</Link>
             </div>
             <div className="svc-item reveal">
               <h4>Crowns &amp; root canals</h4>
               <p>Saving teeth and easing pain, explained every step of the way.</p>
-              <Link href="/services/svc-crowns">Learn more</Link>
+              <Link href="/services/crowns-and-bridges">Learn more</Link>
             </div>
             <div className="svc-item reveal">
               <h4>Dental implants</h4>
               <p>Replacing missing teeth so you can eat and smile with ease.</p>
-              <Link href="/services/svc-implant-single">Learn more</Link>
+              <Link href="/services/dental-implants">Learn more</Link>
             </div>
             <div className="svc-item reveal">
               <h4>Cosmetic dentistry</h4>
               <p>Subtle, natural improvements when you&apos;re ready, never pushed.</p>
-              <Link href="/services/svc-smiledesign">Learn more</Link>
+              <Link href="/services/smile-design">Learn more</Link>
             </div>
           </div>
           <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
-            <Link href="/services/svc-checkups" className="btn btn-ghost">See all services</Link>
+            <Link href="/services/check-ups" className="btn btn-ghost">See all services</Link>
           </div>
           <p style={{ textAlign: 'center', marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }} className="reveal">
             Implants, Invisalign and cosmetic work included.
@@ -305,12 +305,12 @@ export default function Home() {
             <h3>Not sure where to start?</h3>
             <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
             <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
-              <Link href="/offer" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
+              <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
                 New here? Start with the Comprehensive Care Visit, $297 &rarr;
               </Link>
             </p>
             <div className="ctaband-actions">
-              <Link href="/booking" className="btn">Book your visit</Link>
+              <Link href="/book" className="btn">Book your visit</Link>
               <Link href="/contact" className="btn btn-ghost-light">Request a callback</Link>
             </div>
           </div>
@@ -517,25 +517,25 @@ export default function Home() {
           </div>
           <div className="areas-grid reveal">
             <Link href="/">East St Kilda</Link>
-            <Link href="/areas/st-kilda">St Kilda</Link>
-            <Link href="/areas/st-kilda-west">St Kilda West</Link>
-            <Link href="/areas/balaclava">Balaclava</Link>
-            <Link href="/areas/elwood">Elwood</Link>
-            <Link href="/areas/elsternwick">Elsternwick</Link>
-            <Link href="/areas/ripponlea">Ripponlea</Link>
-            <Link href="/areas/caulfield">Caulfield</Link>
-            <Link href="/areas/caulfield-north">Caulfield North</Link>
-            <Link href="/areas/windsor">Windsor</Link>
-            <Link href="/areas/prahran">Prahran</Link>
-            <Link href="/areas/armadale">Armadale</Link>
-            <Link href="/areas/glen-huntly">Glen Huntly</Link>
-            <Link href="/areas/carnegie">Carnegie</Link>
-            <Link href="/areas/gardenvale">Gardenvale</Link>
-            <Link href="/areas/albert-park">Albert Park</Link>
-            <Link href="/areas/middle-park">Middle Park</Link>
-            <Link href="/areas/south-yarra">South Yarra</Link>
-            <Link href="/areas/toorak">Toorak</Link>
-            <Link href="/areas/malvern">Malvern</Link>
+            <Link href="/dentist-st-kilda">St Kilda</Link>
+            <Link href="/dentist-st-kilda-west">St Kilda West</Link>
+            <Link href="/dentist-balaclava">Balaclava</Link>
+            <Link href="/dentist-elwood">Elwood</Link>
+            <Link href="/dentist-elsternwick">Elsternwick</Link>
+            <Link href="/areas-we-serve/ripponlea">Ripponlea</Link>
+            <Link href="/dentist-caulfield">Caulfield</Link>
+            <Link href="/dentist-caulfield-north">Caulfield North</Link>
+            <Link href="/dentist-windsor">Windsor</Link>
+            <Link href="/dentist-prahran">Prahran</Link>
+            <Link href="/dentist-armadale">Armadale</Link>
+            <Link href="/areas-we-serve/glen-huntly">Glen Huntly</Link>
+            <Link href="/dentist-carnegie">Carnegie</Link>
+            <Link href="/areas-we-serve/gardenvale">Gardenvale</Link>
+            <Link href="/dentist-albert-park">Albert Park</Link>
+            <Link href="/areas-we-serve/middle-park">Middle Park</Link>
+            <Link href="/dentist-south-yarra">South Yarra</Link>
+            <Link href="/areas-we-serve/toorak">Toorak</Link>
+            <Link href="/areas-we-serve/malvern">Malvern</Link>
           </div>
           <p className="areas-wider reveal">
             We also welcome patients from across the wider inner-Melbourne area, from Brighton and Bentleigh to South Melbourne, Richmond and beyond.

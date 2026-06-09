@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Emergency Dental Care | East St Kilda Dental',
   description:
     "Dental emergency in East St Kilda? Call (03) 9527 3678 for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.",
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
 }
 
 const firstAid = [
@@ -69,7 +69,7 @@ export default function EmergencyPage() {
             </p>
             <div className="hero-cta">
               <a href="tel:+61395273678" className="btn">Call (03) 9527 3678</a>
-              <Link href="/booking" className="btn btn-ghost">Book online</Link>
+              <Link href="/book" className="btn btn-ghost">Book online</Link>
             </div>
             <div className="hero-proof">
               <span>Same-day care where possible</span>
@@ -177,7 +177,7 @@ export default function EmergencyPage() {
           </p>
           <div className="super-logo">AccessMySuper</div>
           <div style={{ marginTop: '24px' }}>
-            <Link href="/super" className="btn-super">Learn More</Link>
+            <Link href="/using-your-super" className="btn-super">Learn More</Link>
           </div>
         </div>
       </section>
@@ -212,7 +212,7 @@ export default function EmergencyPage() {
             <a className="btn" href="tel:+61395273678">Call (03) 9527 3678</a>
           </div>
           <p style={{ marginTop: '14px', fontSize: '14px', opacity: 0.85 }}>
-            <Link href="/booking" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>
+            <Link href="/book" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>
           </p>
         </div>
       </section>

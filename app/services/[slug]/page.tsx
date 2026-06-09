@@ -40,7 +40,7 @@ export default async function ServicePage({ params }: Props) {
             </h1>
             <p className="lead">{service.heroLead}</p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book your visit</Link>
+              <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '14px', color: 'var(--ink-faint)' }}>
@@ -134,7 +134,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="container reveal">
           <h3 style={{ color: 'var(--paper)', fontFamily: 'var(--display)', fontSize: 'clamp(24px,4vw,36px)', margin: '0 0 24px' }}>{service.ctaH3}</h3>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/booking" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a visit</Link>
+            <Link href="/book" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a visit</Link>
             <Link href="#contact" className="btn btn-ghost" style={{ borderColor: 'rgba(252,250,245,.5)', color: 'var(--paper)' }}>Request a callback</Link>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="svc-nervous-band reveal">
             <p>&ldquo;I haven&rsquo;t been to the dentist in years. I was embarrassed and anxious. The team here made me feel completely at ease — no judgement, just kindness.&rdquo;</p>
             <p style={{ marginTop: '16px', fontSize: '16px', fontFamily: 'var(--body)' }}>
-              <Link href="/gentle" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+              <Link href="/nervous-patients" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
                 How we look after nervous patients →
               </Link>
             </p>

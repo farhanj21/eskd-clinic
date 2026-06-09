@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
   description:
     'Scared of the dentist? East St Kilda Dental specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call (03) 9527 3678.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/gentle' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/nervous-patients' },
 }
 
 export default function GentlePage() {
@@ -20,7 +20,7 @@ export default function GentlePage() {
             <h1>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best with.</em></h1>
             <p className="lead">If fear has kept you away, you&apos;re in the right place. Looking after anxious patients is one of the things we&apos;re known for. Tell us you&apos;re nervous, and we go entirely at your pace, with no judgement and no pressure.</p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book a gentle visit</Link>
+              <Link href="/book" className="btn">Book a gentle visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <div className="hero-proof">
@@ -151,7 +151,7 @@ export default function GentlePage() {
             <h3>Take the first step, gently</h3>
             <p>Book a visit, or just leave your number and we&apos;ll call you, whatever feels easier. No judgement, no pressure, ever.</p>
             <div className="ctaband-actions">
-              <Link href="/booking" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a gentle visit</Link>
+              <Link href="/book" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a gentle visit</Link>
               <Link href="#contact" className="btn btn-ghost ctaband-ghost">Request a callback</Link>
             </div>
           </div>
@@ -246,9 +246,9 @@ export default function GentlePage() {
           <div className="eyebrow">Helpful next steps</div>
           <h2>Before you book</h2>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/first-visit" className="btn btn-ghost">Your first visit</Link>
+            <Link href="/your-first-visit" className="btn btn-ghost">Your first visit</Link>
             <Link href="/fees" className="btn btn-ghost">Fees &amp; health funds</Link>
-            <Link href="/services/svc-checkups" className="btn btn-ghost">All services</Link>
+            <Link href="/services/check-ups" className="btn btn-ghost">All services</Link>
           </div>
         </div>
       </section>

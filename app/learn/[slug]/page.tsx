@@ -112,7 +112,7 @@ export default async function ArticlePage({ params }: Props) {
             <div className="post-cta">
               <h3>{article.ctaH3}</h3>
               {article.ctaBody && <p>{article.ctaBody}</p>}
-              <Link href="/booking" className="btn">Book your first visit</Link>
+              <Link href="/book" className="btn">Book your first visit</Link>
             </div>
           )}
 

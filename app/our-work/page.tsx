@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Our Work — Real Results, Real People | East St Kilda Dental',
   description:
     'Natural-looking outcomes from gentle, considered care at East St Kilda Dental — always in proportion to the person, never overdone. Browse the smile gallery.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/ourwork' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/our-work' },
 }
 
 const cases = [
@@ -49,7 +49,7 @@ export default function OurWorkPage() {
               Natural-looking outcomes from gentle, considered care, always in proportion to the person, never overdone.
             </p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book a consultation</Link>
+              <Link href="/book" className="btn">Book a consultation</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
@@ -100,10 +100,10 @@ export default function OurWorkPage() {
           <div className="eyebrow">Considering treatment?</div>
           <h2>Explore the options</h2>
           <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/services/svc-veneers" className="btn btn-ghost">Veneers</Link>
-            <Link href="/services/svc-smiledesign" className="btn btn-ghost">Smile design</Link>
-            <Link href="/services/svc-implant-single" className="btn btn-ghost">Implants</Link>
-            <Link href="/services/svc-whitening" className="btn btn-ghost">Whitening</Link>
+            <Link href="/services/veneers" className="btn btn-ghost">Veneers</Link>
+            <Link href="/services/smile-design" className="btn btn-ghost">Smile design</Link>
+            <Link href="/services/dental-implants" className="btn btn-ghost">Implants</Link>
+            <Link href="/services/teeth-whitening" className="btn btn-ghost">Whitening</Link>
           </div>
         </div>
       </section>

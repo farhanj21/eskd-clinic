@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: data.meta.title,
     description: data.meta.description,
-    alternates: { canonical: `https://www.eaststkildadental.com.au/areas/${suburb}` },
+    alternates: { canonical: `https://www.eaststkildadental.com.au/areas-we-serve/${suburb}` },
   }
 }
 
@@ -38,8 +38,8 @@ export default async function AreaPage({ params }: Props) {
               <h1>Your Local Dentist Near {data.name}</h1>
               <p className="lede" style={{ color: 'rgba(246,239,227,.85)' }}>{data.intro}</p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '32px' }}>
-                <Link href="/booking" className="btn btn-primary">Book an Appointment</Link>
-                <Link href="/offer" className="btn btn-ghost">New Patient Offer</Link>
+                <Link href="/book" className="btn btn-primary">Book an Appointment</Link>
+                <Link href="/comprehensive-care-visit" className="btn btn-ghost">New Patient Offer</Link>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default async function AreaPage({ params }: Props) {
                 <span className="eyebrow">New Patient Offer</span>
                 <h3>$297 <small style={{ fontSize: '14px', fontWeight: 400 }}>(valued at $499)</small></h3>
                 <p>Comprehensive exam, digital x-rays and scale &amp; clean.</p>
-                <Link href="/offer" className="btn btn-primary" style={{ marginTop: '12px', display: 'inline-flex' }}>
+                <Link href="/comprehensive-care-visit" className="btn btn-primary" style={{ marginTop: '12px', display: 'inline-flex' }}>
                   Claim Offer
                 </Link>
               </div>

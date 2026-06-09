@@ -25,7 +25,7 @@ export interface ArticleData {
 /* ─── V2 prototype articles (verbatim) ─────────────────── */
 export const articles: ArticleData[] = [
   {
-    slug: 'havent-been-in-years',
+    slug: 'havent-been-to-the-dentist-in-years',
     title: "Haven't been to the dentist in years? Here's exactly what to expect.",
     eyebrow: 'Nervous patients',
     author: 'Dr Anbar Ganatra',
@@ -100,7 +100,7 @@ export const articles: ArticleData[] = [
     },
   },
   {
-    slug: 'why-are-my-gums-bleeding',
+    slug: 'bleeding-gums',
     title: 'Why are my gums bleeding?',
     eyebrow: 'Gum health',
     author: 'East St Kilda Dental team',

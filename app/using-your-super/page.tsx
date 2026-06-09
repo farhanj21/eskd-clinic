@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Using Your Super for Dental Treatment | East St Kilda Dental',
   description:
     'If significant dental treatment is affecting your daily life, you may be able to access superannuation early on compassionate grounds. East St Kilda Dental prepares the ATO report.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/super' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/using-your-super' },
 }
 
 const canFund = [
@@ -66,7 +66,7 @@ export default function SuperPage() {
               If significant dental treatment is affecting your daily life, you may be able to access some of your superannuation early, on compassionate grounds, to pay for it. We&apos;ll prepare the report the ATO needs and connect you with AccessMySuper, who guide you through the rest.
             </p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book a consultation</Link>
+              <Link href="/book" className="btn">Book a consultation</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <div className="hero-proof">

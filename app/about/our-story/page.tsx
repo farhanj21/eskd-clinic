@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Our Story | East St Kilda Dental — Four Decades on the Same Corner',
   description:
     'East St Kilda Dental began around 1980. For over thirty years it was led by Dr Eddie Goldman, and is now guided by Dr Anbar Ganatra — same corner, same heart, a higher standard.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/story' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-story' },
 }
 
 export default function AboutStoryPage() {
@@ -22,7 +22,7 @@ export default function AboutStoryPage() {
               Every long-standing practice has a story. Ours began around 1980, on the corner of Dandenong and Orrong Roads, and it&apos;s still being written by the same neighbourhood today.
             </p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book your visit</Link>
+              <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
@@ -124,9 +124,9 @@ export default function AboutStoryPage() {
           <div className="eyebrow">Keep exploring</div>
           <h2>Get to know us</h2>
           <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/about/team" className="btn btn-ghost">Meet the team</Link>
-            <Link href="/about/different" className="btn btn-ghost">Why we&apos;re different</Link>
-            <Link href="/gentle" className="btn btn-ghost">Nervous patients</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/about/why-were-different" className="btn btn-ghost">Why we&apos;re different</Link>
+            <Link href="/nervous-patients" className="btn btn-ghost">Nervous patients</Link>
           </div>
         </div>
       </section>

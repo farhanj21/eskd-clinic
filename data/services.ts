@@ -24,7 +24,7 @@ export interface ServiceData {
 
 export const services: ServiceData[] = [
   {
-    slug: 'svc-checkups',
+    slug: 'check-ups',
     eyebrow: 'General & preventive',
     h1pre: 'Gentle, thorough',
     h1em: 'check-ups',
@@ -78,7 +78,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-cleans',
+    slug: 'cleans-and-hygiene',
     eyebrow: 'General & preventive',
     h1pre: 'Professional',
     h1em: 'cleans & hygiene',
@@ -132,7 +132,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-kids',
+    slug: 'childrens-dentistry',
     eyebrow: 'General & preventive',
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
@@ -186,7 +186,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-mouthguards',
+    slug: 'mouthguards',
     eyebrow: 'General & preventive',
     h1pre: 'Custom',
     h1em: 'sports mouthguards',
@@ -240,7 +240,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-tmj',
+    slug: 'tmj-jaw-pain',
     eyebrow: 'General & preventive',
     h1pre: 'Help for',
     h1em: 'jaw pain & TMJ',
@@ -294,7 +294,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-myofunctional',
+    slug: 'myofunctional-therapy',
     eyebrow: 'General & preventive',
     h1pre: '',
     h1em: 'Myofunctional therapy',
@@ -348,7 +348,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-fillings',
+    slug: 'fillings',
     eyebrow: 'Restorative dentistry',
     h1pre: 'Tooth-coloured',
     h1em: 'fillings',
@@ -402,7 +402,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-crowns',
+    slug: 'crowns-and-bridges',
     eyebrow: 'Restorative dentistry',
     h1pre: 'Crowns & bridges that',
     h1em: 'look and last',
@@ -456,7 +456,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-rootcanal',
+    slug: 'root-canal',
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'root canal therapy',
@@ -510,7 +510,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-onlays',
+    slug: 'onlays-and-inlays',
     eyebrow: 'Restorative dentistry',
     h1pre: '',
     h1em: 'Onlays & inlays',
@@ -564,7 +564,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-dentures',
+    slug: 'dentures',
     eyebrow: 'Restorative dentistry',
     h1pre: 'Comfortable',
     h1em: 'dentures',
@@ -618,7 +618,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-extractions',
+    slug: 'extractions-wisdom-teeth',
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'extractions & wisdom teeth',
@@ -672,7 +672,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-smiledesign',
+    slug: 'smile-design',
     eyebrow: 'Cosmetic dentistry',
     h1pre: '',
     h1em: 'Smile design',
@@ -726,7 +726,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-veneers',
+    slug: 'veneers',
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Natural-looking',
     h1em: 'veneers',
@@ -780,7 +780,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-whitening',
+    slug: 'teeth-whitening',
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Professional',
     h1em: 'teeth whitening',
@@ -834,7 +834,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-invisalign',
+    slug: 'invisalign',
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Invisalign & clear aligners',
@@ -888,7 +888,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-braces',
+    slug: 'braces',
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Braces',
@@ -942,7 +942,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-implant-single',
+    slug: 'dental-implants',
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Single dental implants',
@@ -996,7 +996,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-implant-allon4',
+    slug: 'all-on-4-implants',
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'All-on-4 & full-arch implants',
@@ -1050,7 +1050,7 @@ export const services: ServiceData[] = [
     },
   },
   {
-    slug: 'svc-bonegraft',
+    slug: 'bone-grafting',
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Bone grafting',

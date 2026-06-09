@@ -40,7 +40,7 @@ export default function CampaignPage() {
                 </li>
               </ul>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="/booking" className="btn btn-primary" style={{ fontSize: '1.05rem', padding: '16px 36px' }}>
+                <Link href="/book" className="btn btn-primary" style={{ fontSize: '1.05rem', padding: '16px 36px' }}>
                   Claim This Offer
                 </Link>
                 <a href="tel:+61395273678" className="btn btn-ghost">(03) 9527 3678</a>

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Why We\'re Different | East St Kilda Dental',
   description:
     'Decades of local trust, a gentle team, no judgement, and honest, comprehensive care. Eight reasons families choose East St Kilda Dental.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/different' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/why-were-different' },
 }
 
 const reasons = [
@@ -57,7 +57,7 @@ export default function AboutDifferentPage() {
               Plenty of clinics can clean your teeth. Here&apos;s what you get with us that you won&apos;t find just anywhere.
             </p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book your visit</Link>
+              <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
@@ -92,9 +92,9 @@ export default function AboutDifferentPage() {
             Decades of trust, a gentle team, and honest, comprehensive care. <em>That&apos;s the difference.</em>
           </p>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/about/story" className="btn btn-ghost">Our story</Link>
-            <Link href="/about/team" className="btn btn-ghost">Meet the team</Link>
-            <Link href="/gentle" className="btn btn-ghost">Nervous patients</Link>
+            <Link href="/about/our-story" className="btn btn-ghost">Our story</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/nervous-patients" className="btn btn-ghost">Nervous patients</Link>
           </div>
         </div>
       </section>

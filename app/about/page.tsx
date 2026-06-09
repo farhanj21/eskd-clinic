@@ -22,7 +22,7 @@ export default function AboutPage() {
               East St Kilda Dental has looked after this neighbourhood for over 40 years. Here&apos;s our story, what makes us different, and the people who&apos;ll care for you.
             </p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book your visit</Link>
+              <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <div className="hero-proof">
@@ -45,22 +45,22 @@ export default function AboutPage() {
             <h2>A little more about East St Kilda Dental</h2>
           </div>
           <div className="svc-grid reveal">
-            <Link href="/about/story" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
+            <Link href="/about/our-story" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
               <h4>Our Story</h4>
               <p>Four decades on the same corner, and the family behind it today.</p>
               <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>Explore &rarr;</span>
             </Link>
-            <Link href="/about/different" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
+            <Link href="/about/why-were-different" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
               <h4>Why We&apos;re Different</h4>
               <p>No judgement, comprehensive care, and a gentle, female-led team.</p>
               <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>Explore &rarr;</span>
             </Link>
-            <Link href="/about/team" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
+            <Link href="/about/our-team" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
               <h4>Meet the Team</h4>
               <p>The dentists and people who&apos;ll look after you.</p>
               <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>Explore &rarr;</span>
             </Link>
-            <Link href="/ourwork" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
+            <Link href="/our-work" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
               <h4>Our Work</h4>
               <p>Real, natural-looking results, shared with consent.</p>
               <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>Explore &rarr;</span>

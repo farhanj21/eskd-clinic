@@ -59,7 +59,7 @@ export default function FeesPage() {
             You&apos;ll always know what something costs before it happens. A written estimate, one simple price for your first visit, and flexible ways to pay. Money worries shouldn&apos;t get in the way of looking after yourself.
           </p>
           <div className="hero-cta" style={{ justifyContent: 'center' }}>
-            <Link href="/booking" className="btn">Book your visit</Link>
+            <Link href="/book" className="btn">Book your visit</Link>
             <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
           </div>
           <div className="hero-proof" style={{ justifyContent: 'center' }}>
@@ -81,8 +81,8 @@ export default function FeesPage() {
               Your thorough first visit, the exam, X-rays, scale, clean, fluoride and a clear care plan, for one simple price of $297 (valued at $499). With most health funds you claim on the day and pay only a minimal gap.
             </p>
             <div className="ctaband-actions">
-              <Link href="/offer" className="btn">See what&apos;s included</Link>
-              <Link href="/booking" className="btn btn-ghost-light">Book online</Link>
+              <Link href="/comprehensive-care-visit" className="btn">See what&apos;s included</Link>
+              <Link href="/book" className="btn btn-ghost-light">Book online</Link>
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function FeesPage() {
           </p>
           <div className="super-logo">AccessMySuper</div>
           <div style={{ marginTop: '28px' }}>
-            <Link href="/super" className="btn-super">Learn More</Link>
+            <Link href="/using-your-super" className="btn-super">Learn More</Link>
           </div>
         </div>
       </div>

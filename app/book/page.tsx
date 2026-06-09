@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Book an Appointment | East St Kilda Dental',
   description:
     'Book your dental appointment online at East St Kilda Dental. New patient offer available — comprehensive exam, x-rays and scale & clean for $297 (valued at $499).',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/booking' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/book' },
 }
 
 export default function BookingPage() {

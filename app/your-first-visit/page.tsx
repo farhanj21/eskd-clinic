@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Your First Visit | East St Kilda Dental',
   description:
     'Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call (03) 9527 3678.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/first-visit' },
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
 }
 
 export default function FirstVisitPage() {
@@ -20,7 +20,7 @@ export default function FirstVisitPage() {
             <h1>Your complete first visit, <em>done properly.</em></h1>
             <p className="lead">No rushed five-minute look. Your first appointment is a thorough, gentle assessment of your whole mouth, finished with a clear, honest care plan. You&apos;ll leave knowing exactly where you stand.</p>
             <div className="hero-cta">
-              <Link href="/booking" className="btn">Book your first visit</Link>
+              <Link href="/book" className="btn">Book your first visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <div className="hero-proof">
@@ -67,7 +67,7 @@ export default function FirstVisitPage() {
               <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px' }}>
                 Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
               </p>
-              <Link href="/booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book your visit</Link>
+              <Link href="/book" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
@@ -133,7 +133,7 @@ export default function FirstVisitPage() {
             Nervous, or has it been a while? <em>That&apos;s exactly who we&apos;re best with.</em>
           </p>
           <div style={{ marginTop: '18px' }}>
-            <Link href="/gentle" className="btn btn-ghost">See how we help nervous patients</Link>
+            <Link href="/nervous-patients" className="btn btn-ghost">See how we help nervous patients</Link>
           </div>
         </div>
       </section>
@@ -176,7 +176,7 @@ export default function FirstVisitPage() {
             <div className="eyebrow">A smooth, easy start</div>
             <h2>Two minutes of prep, <em>and you&apos;re set</em></h2>
             <p>Save time at your first visit by completing your new patient form online before you arrive. Prefer paper? Just come a few minutes early and we&apos;ll help you settle in.</p>
-            <Link href="/booking" className="btn btn-ghost" style={{ marginTop: '20px', display: 'inline-flex' }}>Complete your form online</Link>
+            <Link href="/book" className="btn btn-ghost" style={{ marginTop: '20px', display: 'inline-flex' }}>Complete your form online</Link>
           </div>
           <div className="reveal">
             <h4 style={{ fontFamily: 'var(--display)', fontSize: '20px', color: 'var(--sage-deep)', marginBottom: '12px' }}>What to bring</h4>

@@ -23,13 +23,13 @@ export default function Footer() {
           <div>
             <h4>Care</h4>
             <ul>
-              <li><Link href="/services/svc-checkups">Check-ups &amp; cleans</Link></li>
-              <li><Link href="/emergency">Emergency</Link></li>
-              <li><Link href="/gentle">Nervous patients</Link></li>
-              <li><Link href="/services/svc-implant-single">Implants</Link></li>
-              <li><Link href="/services/svc-smiledesign">Cosmetic</Link></li>
+              <li><Link href="/services/check-ups">Check-ups &amp; cleans</Link></li>
+              <li><Link href="/emergency-dentist">Emergency</Link></li>
+              <li><Link href="/nervous-patients">Nervous patients</Link></li>
+              <li><Link href="/services/dental-implants">Implants</Link></li>
+              <li><Link href="/services/smile-design">Cosmetic</Link></li>
               <li><Link href="/services">All services</Link></li>
-              <li><Link href="/super">Using your super</Link></li>
+              <li><Link href="/using-your-super">Using your super</Link></li>
             </ul>
           </div>
 
@@ -38,14 +38,14 @@ export default function Footer() {
             <h4>Areas we serve</h4>
             <ul>
               <li><Link href="/">East St Kilda</Link></li>
-              <li><Link href="/areas/st-kilda">St Kilda</Link></li>
-              <li><Link href="/areas/balaclava">Balaclava</Link></li>
-              <li><Link href="/areas/caulfield">Caulfield</Link></li>
-              <li><Link href="/areas/elwood">Elwood</Link></li>
-              <li><Link href="/areas/elsternwick">Elsternwick</Link></li>
-              <li><Link href="/areas/windsor">Windsor</Link></li>
-              <li><Link href="/areas/prahran">Prahran</Link></li>
-              <li><Link href="/areas">All areas we serve</Link></li>
+              <li><Link href="/dentist-st-kilda">St Kilda</Link></li>
+              <li><Link href="/dentist-balaclava">Balaclava</Link></li>
+              <li><Link href="/dentist-caulfield">Caulfield</Link></li>
+              <li><Link href="/dentist-elwood">Elwood</Link></li>
+              <li><Link href="/dentist-elsternwick">Elsternwick</Link></li>
+              <li><Link href="/dentist-windsor">Windsor</Link></li>
+              <li><Link href="/dentist-prahran">Prahran</Link></li>
+              <li><Link href="/areas-we-serve">All areas we serve</Link></li>
             </ul>
           </div>
 
@@ -72,7 +72,7 @@ export default function Footer() {
             {' · '}
             <Link href="/terms">Terms</Link>
             {' · '}
-            <Link href="/booking">Book online</Link>
+            <Link href="/book">Book online</Link>
           </span>
         </div>
       </div>

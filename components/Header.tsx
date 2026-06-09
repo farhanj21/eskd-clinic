@@ -46,52 +46,52 @@ export default function Header() {
               <div className="dd mega">
                 <div className="mega-start">
                   <span className="col-title">Start here</span>
-                  <Link href="/first-visit" onClick={close}>New patients</Link>
-                  <Link href="/gentle" onClick={close}>Nervous patients</Link>
-                  <Link href="/emergency" onClick={close}>Emergency</Link>
-                  <Link href="/services/svc-checkups" onClick={close}>Check-up</Link>
+                  <Link href="/your-first-visit" onClick={close}>New patients</Link>
+                  <Link href="/nervous-patients" onClick={close}>Nervous patients</Link>
+                  <Link href="/emergency-dentist" onClick={close}>Emergency</Link>
+                  <Link href="/services/check-ups" onClick={close}>Check-up</Link>
                 </div>
                 <div>
                   <div className="col-title">General &amp; Preventive</div>
-                  <Link href="/services/svc-checkups" onClick={close}>Check-ups &amp; Exams</Link>
-                  <Link href="/services/svc-cleans" onClick={close}>Cleans &amp; Hygiene</Link>
-                  <Link href="/services/svc-kids" onClick={close}>Children&apos;s Dentistry</Link>
-                  <Link href="/services/svc-mouthguards" onClick={close}>Mouthguards</Link>
-                  <Link href="/services/svc-tmj" onClick={close}>TMJ &amp; Jaw Pain</Link>
-                  <Link href="/gentle" onClick={close}>Anxiety &amp; Gentle Care</Link>
-                  <Link href="/services/svc-myofunctional" onClick={close}>Myofunctional Therapy</Link>
+                  <Link href="/services/check-ups" onClick={close}>Check-ups &amp; Exams</Link>
+                  <Link href="/services/cleans-and-hygiene" onClick={close}>Cleans &amp; Hygiene</Link>
+                  <Link href="/services/childrens-dentistry" onClick={close}>Children&apos;s Dentistry</Link>
+                  <Link href="/services/mouthguards" onClick={close}>Mouthguards</Link>
+                  <Link href="/services/tmj-jaw-pain" onClick={close}>TMJ &amp; Jaw Pain</Link>
+                  <Link href="/nervous-patients" onClick={close}>Anxiety &amp; Gentle Care</Link>
+                  <Link href="/services/myofunctional-therapy" onClick={close}>Myofunctional Therapy</Link>
                 </div>
                 <div>
                   <div className="col-title">Restorative</div>
-                  <Link href="/services/svc-fillings" onClick={close}>Fillings &amp; Restorations</Link>
-                  <Link href="/services/svc-crowns" onClick={close}>Crowns &amp; Bridges</Link>
-                  <Link href="/services/svc-rootcanal" onClick={close}>Root Canal Therapy</Link>
-                  <Link href="/services/svc-onlays" onClick={close}>Onlays &amp; Inlays</Link>
-                  <Link href="/services/svc-dentures" onClick={close}>Dentures</Link>
-                  <Link href="/services/svc-extractions" onClick={close}>Extractions &amp; Wisdom Teeth</Link>
+                  <Link href="/services/fillings" onClick={close}>Fillings &amp; Restorations</Link>
+                  <Link href="/services/crowns-and-bridges" onClick={close}>Crowns &amp; Bridges</Link>
+                  <Link href="/services/root-canal" onClick={close}>Root Canal Therapy</Link>
+                  <Link href="/services/onlays-and-inlays" onClick={close}>Onlays &amp; Inlays</Link>
+                  <Link href="/services/dentures" onClick={close}>Dentures</Link>
+                  <Link href="/services/extractions-wisdom-teeth" onClick={close}>Extractions &amp; Wisdom Teeth</Link>
                 </div>
                 <div>
                   <div className="col-title">Cosmetic</div>
-                  <Link href="/services/svc-smiledesign" onClick={close}>Smile Design</Link>
-                  <Link href="/services/svc-veneers" onClick={close}>Veneers</Link>
-                  <Link href="/services/svc-whitening" onClick={close}>Teeth Whitening</Link>
+                  <Link href="/services/smile-design" onClick={close}>Smile Design</Link>
+                  <Link href="/services/veneers" onClick={close}>Veneers</Link>
+                  <Link href="/services/teeth-whitening" onClick={close}>Teeth Whitening</Link>
                   <div className="col-title">Orthodontics</div>
-                  <Link href="/services/svc-invisalign" onClick={close}>Invisalign / Clear Aligners</Link>
-                  <Link href="/services/svc-braces" onClick={close}>Braces</Link>
+                  <Link href="/services/invisalign" onClick={close}>Invisalign / Clear Aligners</Link>
+                  <Link href="/services/braces" onClick={close}>Braces</Link>
                   <div className="col-title">Implants</div>
-                  <Link href="/services/svc-implant-single" onClick={close}>Single Implants</Link>
-                  <Link href="/services/svc-implant-allon4" onClick={close}>All-on-4 / Full Arch</Link>
-                  <Link href="/services/svc-bonegraft" onClick={close}>Bone Grafting</Link>
+                  <Link href="/services/dental-implants" onClick={close}>Single Implants</Link>
+                  <Link href="/services/all-on-4-implants" onClick={close}>All-on-4 / Full Arch</Link>
+                  <Link href="/services/bone-grafting" onClick={close}>Bone Grafting</Link>
                   <div className="col-title">Emergency</div>
-                  <Link href="/emergency" onClick={close}>Emergency Dentistry</Link>
+                  <Link href="/emergency-dentist" onClick={close}>Emergency Dentistry</Link>
                 </div>
                 <div className="mega-concern">
                   <span className="col-title">By concern</span>
-                  <Link href="/learn/why-are-my-gums-bleeding" onClick={close}>Bleeding gums</Link>
-                  <Link href="/services/svc-checkups" onClick={close}>Sensitive teeth</Link>
-                  <Link href="/emergency" onClick={close}>Toothache</Link>
-                  <Link href="/services/svc-cleans" onClick={close}>Bad breath</Link>
-                  <Link href="/emergency" onClick={close}>Chipped or broken tooth</Link>
+                  <Link href="/learn/bleeding-gums" onClick={close}>Bleeding gums</Link>
+                  <Link href="/services/check-ups" onClick={close}>Sensitive teeth</Link>
+                  <Link href="/emergency-dentist" onClick={close}>Toothache</Link>
+                  <Link href="/services/cleans-and-hygiene" onClick={close}>Bad breath</Link>
+                  <Link href="/emergency-dentist" onClick={close}>Chipped or broken tooth</Link>
                 </div>
               </div>
             </li>
@@ -102,13 +102,13 @@ export default function Header() {
                 New Patients
               </button>
               <div className="dd">
-                <Link href="/first-visit" onClick={close}>Your First Visit</Link>
-                <Link href="/offer" onClick={close}>The Comprehensive Care Visit</Link>
+                <Link href="/your-first-visit" onClick={close}>Your First Visit</Link>
+                <Link href="/comprehensive-care-visit" onClick={close}>The Comprehensive Care Visit</Link>
                 <Link href="/#faq" onClick={close}>FAQ</Link>
               </div>
             </li>
 
-            <li><Link href="/gentle" className="menu-link" onClick={close}>Gentle Dentistry</Link></li>
+            <li><Link href="/nervous-patients" className="menu-link" onClick={close}>Gentle Dentistry</Link></li>
             <li><Link href="/learn" className="menu-link" onClick={close}>Dental Education</Link></li>
 
             {/* About */}
@@ -117,10 +117,10 @@ export default function Header() {
                 About
               </button>
               <div className="dd">
-                <Link href="/about/story" onClick={close}>Our Story (40 years)</Link>
-                <Link href="/about/different" onClick={close}>Why We&apos;re Different</Link>
-                <Link href="/about/team" onClick={close}>Meet the Team</Link>
-                <Link href="/ourwork" onClick={close}>Our Work / Smile Gallery</Link>
+                <Link href="/about/our-story" onClick={close}>Our Story (40 years)</Link>
+                <Link href="/about/why-were-different" onClick={close}>Why We&apos;re Different</Link>
+                <Link href="/about/our-team" onClick={close}>Meet the Team</Link>
+                <Link href="/our-work" onClick={close}>Our Work / Smile Gallery</Link>
               </div>
             </li>
 
@@ -133,7 +133,7 @@ export default function Header() {
                 <Link href="/fees" onClick={close}>Fees Guide</Link>
                 <Link href="/fees#payment" onClick={close}>Payment Options</Link>
                 <Link href="/fees#funds" onClick={close}>Health Funds We Accept</Link>
-                <Link href="/super" onClick={close}>Using Your Super</Link>
+                <Link href="/using-your-super" onClick={close}>Using Your Super</Link>
               </div>
             </li>
 
@@ -143,7 +143,7 @@ export default function Header() {
 
         {/* Right CTAs */}
         <div className="nav-right">
-          <Link href="/emergency" className="btn-emergency-nav">
+          <Link href="/emergency-dentist" className="btn-emergency-nav">
             <span className="ed-dot" />
             Emergency
           </Link>
@@ -151,7 +151,7 @@ export default function Header() {
             <span className="phone-full">(03) 9527 3678</span>
             <span className="phone-mini">Call us</span>
           </a>
-          <Link href="/booking" className="btn">
+          <Link href="/book" className="btn">
             Book your visit
           </Link>
           <button
