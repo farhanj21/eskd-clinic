@@ -276,6 +276,25 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(247,243,236,
   .mainmenu>ul>li.has-mega{position:relative}
 }
 
+/* ── "More" overflow menu ─────────────────────────────────────
+   ≥1700px: full bar, "More" hidden, all items inline.
+   900–1700px: secondary items fold into the "More" dropdown.
+   ≤900px: hamburger drawer — secondary items show inline again,
+           "More" hidden (handled by the rule below, ordered last
+           so it wins over the 1700px rule at narrow widths). */
+.nav-more{display:none}
+.nav-more>.menu-link::after{display:none}           /* no caret — the ⋯ is the affordance */
+.nav-more .menu-link{font-size:20px;line-height:.7;padding:10px 14px;color:var(--ink-soft)}
+.nav-more.open .menu-link,.nav-more .menu-link:hover{color:var(--clay-deep)}
+@media(max-width:1700px){
+  .nav-extra{display:none}
+  .nav-more{display:block}
+}
+@media(max-width:900px){
+  .nav-extra{display:block}
+  .nav-more{display:none}
+}
+
 /* ---------- Hero ---------- */
 .hero{
   position:relative;

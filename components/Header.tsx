@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
-type DropKey = 'services' | 'newpatients' | 'about' | 'costs' | null
+type DropKey = 'services' | 'newpatients' | 'about' | 'costs' | 'more' | null
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -36,7 +36,7 @@ export default function Header() {
 
         <nav className={`mainmenu${menuOpen ? ' open' : ''}`} aria-label="Main">
           <ul>
-            <li><Link href="/" className="menu-link" onClick={close}>Home</Link></li>
+            {/* <li><Link href="/" className="menu-link" onClick={close}>Home</Link></li> */}
 
             {/* Services mega-menu */}
             <li className={`has-dd has-mega${openDrop === 'services' ? ' open' : ''}`}>
@@ -108,8 +108,8 @@ export default function Header() {
               </div>
             </li>
 
-            <li><Link href="/nervous-patients" className="menu-link" onClick={close}>Gentle Dentistry</Link></li>
-            <li><Link href="/learn" className="menu-link" onClick={close}>Dental Education</Link></li>
+            <li className="nav-extra"><Link href="/nervous-patients" className="menu-link" onClick={close}>Gentle Dentistry</Link></li>
+            <li className="nav-extra"><Link href="/learn" className="menu-link" onClick={close}>Dental Education</Link></li>
 
             {/* About */}
             <li className={`has-dd${openDrop === 'about' ? ' open' : ''}`}>
@@ -137,7 +137,19 @@ export default function Header() {
               </div>
             </li>
 
-            <li><Link href="/contact" className="menu-link" onClick={close}>Contact</Link></li>
+            <li className="nav-extra"><Link href="/contact" className="menu-link" onClick={close}>Contact</Link></li>
+
+            {/* More — overflow menu shown only between 900px and 1700px */}
+            <li className={`has-dd nav-more${openDrop === 'more' ? ' open' : ''}`}>
+              <button className="menu-link" onClick={() => toggleDrop('more')} aria-expanded={openDrop === 'more'} aria-label="More menu options">
+                <span aria-hidden="true">&#x22EF;</span>
+              </button>
+              <div className="dd">
+                <Link href="/nervous-patients" onClick={close}>Gentle Dentistry</Link>
+                <Link href="/learn" onClick={close}>Dental Education</Link>
+                <Link href="/contact" onClick={close}>Contact</Link>
+              </div>
+            </li>
           </ul>
         </nav>
 
