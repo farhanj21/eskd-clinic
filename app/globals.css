@@ -215,7 +215,7 @@ p{margin:0;color:var(--ink-soft);}
 
 /* ---------- Header ---------- */
 /* ── Header ──────────────────────────────────────────────── */
-header.site-header{position:relative;z-index:60;background:rgba(247,243,236,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+header.site-header{position:sticky;top:0;z-index:60;background:rgba(247,243,236,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 28px 13px max(28px,calc((100vw - var(--container)) / 2 + 28px))}
 .logo{font-family:var(--display);font-weight:600;font-size:22px;color:var(--sage-deep);letter-spacing:-.02em;line-height:1;flex:none;text-decoration:none}
 .logo small{display:block;font-family:var(--body);font-weight:600;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--clay-deep);margin-top:3px}
@@ -1852,8 +1852,8 @@ footer.site-footer{
   .utility-bar{display:none;}
 }
 
-/* Global overflow guard — prevents any element wider than viewport from causing horizontal scroll */
-html,body{overflow-x:hidden;max-width:100%;}
+/* Global overflow guard — overflow-x:hidden on html breaks position:sticky; keep on body only */
+body{overflow-x:hidden;max-width:100%;}
 
 /* ── Page Hero ─────────────────────────────────────────────────────────────── */
 .page-hero{padding-top:calc(var(--section-pad) + 60px);}

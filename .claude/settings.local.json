@@ -39,7 +39,10 @@
       "Bash(grep -n \"^\\\\.sec{\\\\\\\\|^\\\\.sec {\\\\|^\\\\.alt{\\\\\\\\|^\\\\.alt {\\\\|^\\\\.lead{\\\\\\\\|^\\\\.lead {\\\\|^\\\\.sec\\\\.alt\\\\|\\\\.sec\\\\.alt\\\\|\\\\.proof-stars\\\\|\\\\.proof-dot\\\\|\\\\.offer-meta\\\\|\\\\.foot-grid\\\\|\\\\.foot-logo\\\\|\\\\.footer-v2\\\\|\\\\.foot-bottom\\\\|\\\\.super-band\" \"c:/Users/f-jaf/Desktop/Code/eskd-clinic/eskd-clinic/app/globals.css\")",
       "Bash(grep -n \"^\\\\.proc\\\\|^\\\\.p {\\\\\\\\|^\\\\.pn\\\\|^\\\\.checks\\\\|^\\\\.faq {\\\\\\\\|^\\\\.faq-v2\\\\|^\\\\.svc-grid\\\\|^\\\\.svc {\\\\\\\\|^\\\\.svc-item\" \"c:/Users/f-jaf/Desktop/Code/eskd-clinic/eskd-clinic/app/globals.css\")",
       "Bash(ls /mnt/c/Users/f-jaf/Desktop/Code/eskd-clinic/)",
-      "Read(//mnt/c/Users/f-jaf/Desktop/Code/**)"
+      "Read(//mnt/c/Users/f-jaf/Desktop/Code/**)",
+      "Bash(Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue)",
+      "Bash(Write-Output \"done\")",
+      "Bash(grep -v \"\\\\/\\\\*\\\\|hidden:true\")"
     ]
   }
 }
