@@ -1,24 +1,33 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { useEffect } from 'react'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Page not found | East St Kilda Dental',
-}
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  useEffect(() => {
+    console.error(error)
+  }, [error])
 
-export default function NotFound() {
   return (
     <main>
       <section className="hero-v2" style={{ minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: '44em', marginLeft: 'auto', marginRight: 'auto' }}>
-          <div className="eyebrow">404 — Page not found</div>
+          <div className="eyebrow">500 — Something went wrong</div>
           <h1 style={{ fontSize: 'clamp(38px,6vw,68px)', color: 'var(--sage-deep)', marginTop: '16px' }}>
-            We couldn&apos;t find <em>that page</em>
+            An unexpected <em>error occurred</em>
           </h1>
           <p className="lead" style={{ marginTop: '20px', marginBottom: '32px' }}>
-            It may have moved, been renamed, or never existed. Try heading back home or get in touch and we&apos;ll point you in the right direction.
+            Sorry about that — something on our end didn&apos;t go as planned. Try again, or contact us if the problem persists.
           </p>
           <div className="hero-cta" style={{ justifyContent: 'center' }}>
-            <Link href="/" className="btn">Back to home</Link>
+            <button className="btn" onClick={reset}>Try again</button>
+            <Link href="/" className="btn btn-ghost">Back to home</Link>
             <Link href="/contact" className="btn btn-ghost">Contact us</Link>
           </div>
         </div>
