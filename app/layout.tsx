@@ -28,11 +28,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'East St Kilda Dental — Your Local Dental Home Since 1984',
+    default: 'East St Kilda Dental — Your Local Dental Home Since 1980',
     template: '%s | East St Kilda Dental',
   },
   description:
-    'East St Kilda Dental — gentle, comprehensive family and cosmetic dental care in East St Kilda since 1984. Book your appointment today.',
+    'East St Kilda Dental — gentle, comprehensive family and cosmetic dental care in East St Kilda since 1980. Book your appointment today.',
   icons: {
     icon: '/assets/favicon.png',
   },
