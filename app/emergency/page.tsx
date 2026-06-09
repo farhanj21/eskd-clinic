@@ -5,76 +5,215 @@ import GetInTouch from '@/components/GetInTouch'
 export const metadata: Metadata = {
   title: 'Emergency Dental Care | East St Kilda Dental',
   description:
-    'Dental emergency in East St Kilda? Call (03) 9527 3678 for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we\'re here for you.',
+    "Dental emergency in East St Kilda? Call (03) 9527 3678 for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.",
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency' },
 }
+
+const firstAid = [
+  {
+    h4: 'Knocked-out tooth',
+    p: 'Hold it by the white crown, never the root, and don’t scrub it. If you can, gently place it back in the socket. If not, keep it in milk. Try to see us within the hour.',
+  },
+  {
+    h4: 'Bad toothache',
+    p: 'Rinse with warm, salty water and take your usual pain relief. Avoid very hot, cold or sweet food. Then call us.',
+  },
+  {
+    h4: 'Broken or chipped tooth',
+    p: 'Save any pieces, rinse your mouth with warm water, and press clean gauze on any bleeding. Call us to be seen.',
+  },
+  {
+    h4: 'Swelling',
+    p: 'Swelling of the gum, jaw or face can be a sign of infection. Call us the same day so we can act quickly.',
+  },
+  {
+    h4: 'Lost filling or crown',
+    p: 'Keep the crown if you have it, and avoid chewing on that side. Call us and we’ll re-secure it.',
+  },
+  {
+    h4: 'A baby tooth knocked out',
+    p: 'Do not put a baby tooth back in. Keep your child calm, bring the tooth with you, and call us for advice.',
+  },
+]
+
+const faq = [
+  {
+    q: 'Will you get me out of pain today?',
+    a: "That's our first priority. Call us and we'll do our best to see you the same day and relieve the pain, then plan any further treatment with you.",
+  },
+  {
+    q: 'How much does an emergency appointment cost?',
+    a: "You'll be told the cost of the emergency exam up front, and you'll get a written estimate before any treatment goes ahead. Payment options are available.",
+  },
+  {
+    q: "I'm really nervous. Can you still help?",
+    a: "Absolutely. Gentle care for anxious patients is one of the things we're known for, and we'll keep you calm and in control, with happy gas available if it helps.",
+  },
+  {
+    q: "It's after hours. What should I do?",
+    a: "If it's serious — trouble breathing or swallowing, heavy bleeding, a facial injury or spreading swelling — call 000 or go to a hospital emergency department. Otherwise, call us when we open and we'll fit you in.",
+  },
+]
 
 export default function EmergencyPage() {
   return (
     <main>
-      <section className="page-hero section" style={{ background: '#8B1A1A' }}>
-        <div className="container">
-          <div className="page-hero-inner">
-            <div className="page-hero-text reveal" style={{ maxWidth: '680px' }}>
-              <span className="eyebrow light">Emergency Dental</span>
-              <h1>Same-Day Emergency Care</h1>
-              <p className="lede" style={{ color: 'rgba(255,235,235,.85)' }}>
-                Dental emergencies don&apos;t wait. Neither do we. Call us now for same-day appointments — pain relief and urgent treatment as fast as possible.
-              </p>
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '32px' }}>
-                <a href="tel:+61395273678" className="btn btn-emergency" style={{ fontSize: '1.05rem', padding: '16px 32px' }}>
-                  Call Now — (03) 9527 3678
-                </a>
-                <Link href="/booking" className="btn btn-ghost">Book Online</Link>
-              </div>
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="hero-v2">
+        <div className="container hero-v2-grid">
+          <div className="reveal">
+            <div className="eyebrow">Dental emergency?</div>
+            <h1>In pain? <em>We&apos;ll help you today.</em></h1>
+            <p className="lead">
+              Take a breath. Most dental emergencies look scarier than they feel, and we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
+            </p>
+            <div className="hero-cta">
+              <a href="tel:+61395273678" className="btn">Call (03) 9527 3678</a>
+              <Link href="/booking" className="btn btn-ghost">Book online</Link>
             </div>
+            <div className="hero-proof">
+              <span>Same-day care where possible</span>
+              <span className="proof-dot" />
+              <span>Gentle with nervous patients</span>
+              <span className="proof-dot" />
+              <span>40+ years local</span>
+            </div>
+            <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
+              Open Mon&ndash;Thu to 4pm, Fri to 4.30pm, monthly Saturdays. After hours and serious? See the red box below.
+            </p>
+          </div>
+          <div className="ph tall reveal">
+            <span>Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical.</span>
           </div>
         </div>
       </section>
 
-      <section className="section" style={{ background: '#fff8f8' }}>
+      {/* ── IS IT AN EMERGENCY? ──────────────────────────── */}
+      <section className="sec alt">
         <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">Emergency Situations</span>
-            <h2>We Treat All Dental Emergencies</h2>
+          <div className="sec-head reveal">
+            <div className="eyebrow">When to call us straight away</div>
+            <h2>These usually need <em>prompt care</em></h2>
           </div>
-          <div className="emergency-grid reveal" style={{ transitionDelay: '.1s' }}>
-            {[
-              { title: 'Severe Toothache', body: 'Intense, persistent tooth pain is usually a sign of infection or nerve involvement. We\'ll diagnose the cause and provide fast pain relief.' },
-              { title: 'Broken or Chipped Tooth', body: 'A broken tooth needs prompt assessment. Depending on the extent of the break, treatment may include bonding, a crown, or extraction.' },
-              { title: 'Knocked-Out Tooth', body: 'Time is critical. Keep the tooth moist (in milk or saliva), call us immediately, and come in as fast as possible — re-implantation is sometimes possible.' },
-              { title: 'Lost Filling or Crown', body: 'A lost restoration exposes sensitive tooth structure. We\'ll replace or re-cement it promptly to prevent further damage or pain.' },
-              { title: 'Dental Abscess', body: 'A dental abscess is a serious infection that can spread if untreated. Signs include swelling, severe pain, fever, and a bad taste. This requires urgent care.' },
-              { title: 'Wisdom Tooth Pain', body: 'Impacted or infected wisdom teeth can cause intense pain and swelling. We provide same-week assessment and can relieve the immediate infection and pain.' },
-            ].map((item, i) => (
-              <div key={i} className="emergency-card" style={{ transitionDelay: `${i * 0.06}s` }}>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
+          <ul className="offer-includes reveal" style={{ maxWidth: '760px', margin: '0 auto' }}>
+            <li>Severe or throbbing toothache</li>
+            <li>A knocked-out or loose adult tooth</li>
+            <li>A broken, chipped or cracked tooth</li>
+            <li>Swelling of the gum, jaw or face</li>
+            <li>A lost filling or crown</li>
+            <li>Bleeding that won&apos;t settle</li>
+            <li>Pain after recent treatment</li>
+            <li>An accident or knock to the mouth</li>
+          </ul>
+          <p className="reveal" style={{ textAlign: 'center', marginTop: '26px', fontSize: '17px' }}>
+            Not sure? Call us anyway on{' '}
+            <a href="tel:+61395273678" style={{ color: 'var(--clay-deep)', fontWeight: 600 }}>(03) 9527 3678</a>{' '}
+            and we&apos;ll help you work out what&apos;s needed.
+          </p>
+        </div>
+      </section>
+
+      {/* ── WHAT TO DO RIGHT NOW ─────────────────────────── */}
+      <section className="sec">
+        <div className="container">
+          <div className="sec-head reveal">
+            <div className="eyebrow">Before you reach us</div>
+            <h2>Simple first aid that <em>can save a tooth</em></h2>
+          </div>
+          <div className="svc-grid reveal">
+            {firstAid.map((item, i) => (
+              <div key={i} className="svc">
+                <h4>{item.h4}</h4>
+                <p>{item.p}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container" style={{ maxWidth: '720px' }}>
-          <div className="section-head left reveal">
-            <span className="eyebrow">First Aid Guidance</span>
-            <h2>While You Wait</h2>
+      {/* ── WHEN TO GO STRAIGHT TO HOSPITAL ─────────────── */}
+      <section className="sec alt">
+        <div className="container reveal">
+          <div style={{ background: '#FBEDE4', border: '1px solid var(--clay)', borderLeft: '5px solid var(--clay-deep)', borderRadius: '14px', padding: '30px 32px', maxWidth: '820px', margin: '0 auto' }}>
+            <h3 style={{ fontFamily: 'var(--display)', fontSize: '24px', color: 'var(--clay-deep)', margin: '0 0 12px' }}>
+              Some emergencies need a hospital, not a dental chair
+            </h3>
+            <p style={{ margin: '0 0 14px' }}>
+              Call <b>000</b> or go to your nearest hospital emergency department straight away if you have:
+            </p>
+            <ul style={{ margin: 0, paddingLeft: '20px', lineHeight: 1.9 }}>
+              <li>Difficulty breathing or swallowing</li>
+              <li>Heavy bleeding that won&apos;t stop</li>
+              <li>A serious facial injury</li>
+              <li>Swelling spreading towards your eye or neck, or you feel very unwell</li>
+            </ul>
           </div>
-          <div className="faq-list reveal" style={{ transitionDelay: '.1s' }}>
-            {[
-              { q: 'My child knocked out a permanent tooth — what do I do?', a: 'Pick up the tooth by the crown (not the root). If dirty, rinse gently with milk or saline — not tap water. Keep it moist: place it back in the socket if possible, or in milk. Call us immediately. Speed matters — the best outcomes occur within 30–60 minutes of the injury.' },
-              { q: 'I have a dental abscess — is it an emergency?', a: 'Yes. Dental abscesses can spread to the jaw, neck or even the airway if untreated. If you have significant swelling, difficulty swallowing, or fever, go to an emergency department as well as calling us.' },
-              { q: 'My filling fell out but it doesn\'t hurt — do I still need to come in urgently?', a: 'It\'s less critical than active pain, but exposed tooth structure can decay quickly and become sensitive. Call us to book the next available appointment — usually within a day or two.' },
-              { q: 'What\'s the best painkiller for a toothache?', a: 'Ibuprofen (if appropriate for you) or paracetamol can help manage dental pain short-term. Clove oil (eugenol) on a cotton swab over the tooth can also provide temporary relief. These are bridge measures only — please call us.' },
-            ].map((item, i) => (
-              <details key={i} className="faq-item">
+        </div>
+      </section>
+
+      {/* ── HOW WE HELP ──────────────────────────────────── */}
+      <section className="sec">
+        <div className="container reveal" style={{ textAlign: 'center', maxWidth: '48em', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="eyebrow">Calm, gentle, fast</div>
+          <h2>We&apos;ll get you comfortable, <em>then sort the cause</em></h2>
+          <p style={{ fontSize: '18px', marginTop: '14px' }}>
+            We keep time aside each day for emergencies, and our first job is simply to get you out of pain. If you&apos;re nervous, that&apos;s completely fine. Looking after anxious patients is one of the things we&apos;re known for, and we&apos;ll go gently.
+          </p>
+          <p style={{ fontSize: '16px', marginTop: '16px', color: 'var(--ink-soft)' }}>
+            You&apos;ll get a clear written estimate before any treatment, and we have payment options if you need them. If it&apos;s outside our hours and serious, please use the hospital guidance above.
+          </p>
+          <div style={{ marginTop: '24px' }}>
+            <a className="btn" href="tel:+61395273678">Call (03) 9527 3678</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SUPER BAND ───────────────────────────────────── */}
+      <section className="super-band">
+        <div className="super-band-wrap">
+          <h2>Using Super For Essential Treatment</h2>
+          <p>
+            For significant, medically necessary treatment, the ATO may allow early access to your super on compassionate grounds, for example to help relieve chronic dental pain when other funding is not available. It does not cover cosmetic treatment. If it may be relevant to you, we can prepare the clinical report the ATO requires and point you to a licensed provider who manages the application. We never need your myGov details.
+          </p>
+          <div className="super-logo">AccessMySuper</div>
+          <div style={{ marginTop: '24px' }}>
+            <Link href="/super" className="btn-super">Learn More</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────── */}
+      <section className="sec alt">
+        <div className="container">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">Quick answers</div>
+            <h2>Emergency questions</h2>
+          </div>
+          <div className="faq reveal">
+            {faq.map((item, i) => (
+              <details key={i} open={i === 0}>
                 <summary>{item.q}</summary>
                 <p>{item.a}</p>
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── IN PAIN NOW ──────────────────────────────────── */}
+      <section className="sec sage-bg">
+        <div className="container reveal" style={{ textAlign: 'center' }}>
+          <div className="eyebrow">We&apos;re here to help</div>
+          <h2>In pain now? <em>Call us.</em></h2>
+          <p style={{ maxWidth: '34em', margin: '0 auto' }}>
+            Our friendly team will talk you through what to do and find you the soonest possible time.
+          </p>
+          <div style={{ marginTop: '22px' }}>
+            <a className="btn" href="tel:+61395273678">Call (03) 9527 3678</a>
+          </div>
+          <p style={{ marginTop: '14px', fontSize: '14px', opacity: 0.85 }}>
+            <Link href="/booking" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>
+          </p>
         </div>
       </section>
 

@@ -2210,7 +2210,17 @@ html,body{overflow-x:hidden;max-width:100%;}
 .book-form .btn{grid-column:1/-1;}
 @media(max-width:820px){.book-grid{grid-template-columns:1fr;gap:32px;}.book-form{grid-template-columns:1fr;}.embed-frame{height:520px;}}
 
-/* Super band */
+/* Super band (original — used on emergency page) */
+.super-band{background:var(--cream);text-align:center;padding:64px 24px;}
+.super-band-wrap{max-width:760px;margin:0 auto;background:var(--sage-deep);border-radius:24px;padding:56px 44px;box-shadow:0 24px 60px rgba(44,42,38,.12);}
+.super-band-wrap h2{font-family:var(--display);color:var(--cream);font-weight:500;font-size:clamp(25px,3.3vw,38px);letter-spacing:.06em;text-transform:uppercase;line-height:1.2;margin:0;}
+.super-band-wrap p{margin:22px auto 0;font-size:16.5px;line-height:1.72;color:rgba(247,243,236,.97);max-width:62ch;}
+.super-band-wrap .super-logo{margin:30px auto 0;font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:.22em;color:var(--cream);opacity:.92;text-transform:uppercase;}
+.btn-super{display:inline-block;margin-top:24px;background:transparent;color:var(--cream);border:1.6px solid rgba(247,243,236,.7);padding:14px 40px;font-family:var(--body);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px;border-radius:40px;transition:.25s;}
+.btn-super:hover{background:rgba(247,243,236,.14);}
+@media(max-width:600px){.super-band{padding:44px 16px;}.super-band-wrap{padding:40px 24px;}}
+
+/* Super band v2 (used on fees page) */
 .super-band-v2{background:var(--cream);text-align:center;padding:64px 24px;}
 .super-band-inner{max-width:760px;margin:0 auto;background:var(--sage-deep);border-radius:24px;padding:56px 44px;box-shadow:0 24px 60px rgba(44,42,38,.12);}
 .super-band-inner h2{font-family:var(--display);color:var(--cream);font-weight:500;font-size:clamp(25px,3.3vw,38px);letter-spacing:.06em;text-transform:uppercase;line-height:1.2;margin:0;}
