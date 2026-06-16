@@ -32,7 +32,20 @@
       "Bash(Get-ChildItem -Path . -Force)",
       "Bash(Select-Object Name, Mode)",
       "Bash(findstr /i \"error compiled successfully\")",
-      "Bash(Select-String \"Compiled|error\")"
+      "Bash(Select-String \"Compiled|error\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\services\\\\[slug]\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\areas\\\\[suburb]\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\learn\\\\[slug]\")",
+      "Bash(grep -n \"^\\\\.sec{\\\\\\\\|^\\\\.sec {\\\\|^\\\\.alt{\\\\\\\\|^\\\\.alt {\\\\|^\\\\.lead{\\\\\\\\|^\\\\.lead {\\\\|^\\\\.sec\\\\.alt\\\\|\\\\.sec\\\\.alt\\\\|\\\\.proof-stars\\\\|\\\\.proof-dot\\\\|\\\\.offer-meta\\\\|\\\\.foot-grid\\\\|\\\\.foot-logo\\\\|\\\\.footer-v2\\\\|\\\\.foot-bottom\\\\|\\\\.super-band\" \"c:/Users/f-jaf/Desktop/Code/eskd-clinic/eskd-clinic/app/globals.css\")",
+      "Bash(grep -n \"^\\\\.proc\\\\|^\\\\.p {\\\\\\\\|^\\\\.pn\\\\|^\\\\.checks\\\\|^\\\\.faq {\\\\\\\\|^\\\\.faq-v2\\\\|^\\\\.svc-grid\\\\|^\\\\.svc {\\\\\\\\|^\\\\.svc-item\" \"c:/Users/f-jaf/Desktop/Code/eskd-clinic/eskd-clinic/app/globals.css\")",
+      "Bash(ls /mnt/c/Users/f-jaf/Desktop/Code/eskd-clinic/)",
+      "Read(//mnt/c/Users/f-jaf/Desktop/Code/**)",
+      "Bash(Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue)",
+      "Bash(Write-Output \"done\")",
+      "Bash(grep -v \"\\\\/\\\\*\\\\|hidden:true\")",
+      "Bash(Select-String -Path \"eskd-website - V2 07 06 2026.html\" -Pattern \"dentist-st-kilda|dentist-balaclava|dentist-caulfield|dentist-elwood|dentist-elsternwick|areas-we-serve|id=\\\\\"page-dentist\" -SimpleMatch)",
+      "Bash(Format-Table -AutoSize)",
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-windsor\" \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-prahran\")"
     ]
   }
 }

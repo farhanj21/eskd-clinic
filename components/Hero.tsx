@@ -1,40 +1,87 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
+const slides = [
+  { img: '/assets/Hero Eddy  white.webp' },
+  { img: '/assets/Hero AG White.webp' },
+]
+
+const accreditations = ['ADA', 'Invisalign', 'AHPRA', 'Medicare CDBS', 'HICAPS']
+
 export default function Hero() {
+  const [active, setActive] = useState(0)
+  const [accredActive, setAccredActive] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive(prev => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(id)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setAccredActive(prev => (prev + 1) % accreditations.length)
+    }, 2200)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section className="hero" aria-label="Hero">
-      <div className="hero-badges" aria-hidden="true">
-        <div className="hero-badge"><span>EST.</span><span className="n">1984</span></div>
-        <div className="hero-badge"><span className="n">40+</span><span>YEARS</span></div>
-      </div>
+      {slides.map((s, i) => (
+        <div
+          key={i}
+          className={`hero-slide${i === active ? ' active' : ''}`}
+          style={{ backgroundImage: `url('${s.img}')` }}
+          aria-hidden="true"
+        />
+      ))}
+
+      {/* <div className="hero-badges" aria-hidden="true">
+        <div className="hero-badge" style={{background:'rgba(246,239,227)'}}><span style={{color:'var(--teal-800)', fontWeight:700}}>EST.</span><span className="n">1984</span></div>
+      </div> */}
+
       <div className="container container-wide hero-grid">
         <div>
-          <span className="eyebrow reveal" style={{transitionDelay:'.05s'}}>Your Local Dental Home · Since 1984</span>
-          <h1 className="reveal" style={{transitionDelay:'.18s'}}>Forty years of <em>heartfelt</em>, skilled dentistry in&nbsp;East&nbsp;St&nbsp;Kilda.</h1>
-          <p className="sub reveal" style={{transitionDelay:'.32s'}}>From family check-ups to complete smile makeovers, our experienced team delivers gentle, comprehensive care trusted by generations of local families.</p>
+          <span className="eyebrow reveal" style={{transitionDelay:'.05s', color:'var(--gold)'}}>Your Local Dental Home · Since 1984</span>
+          <h1 className="reveal" style={{transitionDelay:'.18s', color:'#0E3A3D'}}>Trusted, <em style={{color:'var(--gold)'}}>heartfelt</em> dentistry for <br></br>local families</h1>
+          <p className="sub reveal" style={{transitionDelay:'.32s', color:'#0E3A3D'}}>Gentle, comprehensive dental care delivered with skill, warmth, and the trust of a long-standing local clinic.</p>
           <div className="hero-ctas reveal" style={{transitionDelay:'.44s'}}>
-            <a href="#contact" className="btn btn-gold">
+            <a href="#contact" className="btn btn-gold btn-rect">
               Book An Appointment
               <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
-            <a href="tel:+61395273678" className="btn btn-light">
-              <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
-              </svg>
-              (03) 9527 3678
+            <a href="#services" className="btn btn-outline btn-rect">
+              Our Services
             </a>
           </div>
-        </div>
-        {/* <aside className="hero-meta reveal" style={{transitionDelay:'.28s'}}>
-          <h4>Welcoming new patients</h4>
-          <p>Comprehensive dental care for the whole family. Gap-free check-ups available with most major health funds.</p>
-          <div className="hours">
-            <span className="d">Mon — Thu</span><span>8:30am – 4:00pm</span>
-            <span className="d">Friday</span><span>8:30am – 4:30pm</span>
-            <span className="d">Saturday</span><span>8:00am – 4:00pm</span>
+
+          <div className="hero-accred reveal" style={{transitionDelay:'.56s'}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:'20px',height:'20px',flexShrink:0}}>
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="8 12 11 15 16 9" />
+            </svg>
+            <span className="hero-accred-label">Accredited with</span>
+            <span className="hero-accred-item" key={accredActive}>{accreditations[accredActive]}</span>
           </div>
-        </aside> */}
+        </div>
+      </div>
+
+      <div className="hero-dots" role="tablist" aria-label="Slide indicators">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            className={`hero-dot${i === active ? ' active' : ''}`}
+            onClick={() => setActive(i)}
+            role="tab"
+            aria-selected={i === active}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   )
