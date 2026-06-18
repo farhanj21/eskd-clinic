@@ -15,16 +15,19 @@ const clinicians = [
     name: 'Dr Anbar Ganatra',
     role: 'Principal Dentist',
     bio: 'Anbar leads the practice with a calm, gentle, no-judgement approach, and is known for putting nervous patients at ease.',
+    image: '/assets/team/anbar-ganatra.webp',
   },
   {
     name: 'Dr Edmund Goldman',
     role: 'Dentist & Prosthodontist',
     bio: 'Edmund has cared for local families on this corner for decades, with a focus on rebuilding and replacing teeth.',
+    image: '/assets/team/edmund-goldman.webp',
   },
   {
     name: 'Dr Jarrod Dean',
     role: 'General Dentist',
     bio: 'Jarrod provides gentle, thorough general and family dentistry across the practice.',
+    image: '/assets/team/jarrod-dean.webp',
   },
   {
     name: 'Dr Marina Bekheet',
