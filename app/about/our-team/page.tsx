@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 
@@ -14,16 +15,19 @@ const clinicians = [
     name: 'Dr Anbar Ganatra',
     role: 'Principal Dentist',
     bio: 'Anbar leads the practice with a calm, gentle, no-judgement approach, and is known for putting nervous patients at ease.',
+    image: '/assets/team/anbar-ganatra.webp',
   },
   {
     name: 'Dr Edmund Goldman',
     role: 'Dentist & Prosthodontist',
     bio: 'Edmund has cared for local families on this corner for decades, with a focus on rebuilding and replacing teeth.',
+    image: '/assets/team/edmund-goldman.webp',
   },
   {
     name: 'Dr Jarrod Dean',
     role: 'General Dentist',
     bio: 'Jarrod provides gentle, thorough general and family dentistry across the practice.',
+    image: '/assets/team/jarrod-dean.webp',
   },
   {
     name: 'Dr Marina Bekheet',
@@ -31,9 +35,10 @@ const clinicians = [
     bio: 'Marina offers warm, careful general dentistry and takes the time to explain every step.',
   },
   {
-    name: 'Michelle Callangham',
+    name: 'Michelle Callaghan',
     role: 'Hygienist',
     bio: 'Michelle looks after gum health and preventive care with a light, reassuring touch.',
+    image: '/assets/team/michelle-callaghan.webp',
   },
   {
     name: 'Beverly Spector',
@@ -52,16 +57,19 @@ const practiceTeam = [
     name: 'Michelle Mirjam',
     role: 'Dental Assistant & Receptionist',
     bio: 'Michelle welcomes you at reception and supports your care chairside.',
+    image: '/assets/team/michelle-mirjam.webp',
   },
   {
     name: "Indiana O'Connor",
     role: 'Dental Assistant & Receptionist',
     bio: 'Indiana helps every visit run smoothly, from the front desk to the chair.',
+    image: '/assets/team/indiana-oconnor.webp',
   },
   {
-    name: 'Maddy Conventry',
+    name: 'Maddy Coventry',
     role: 'Dental Assistant & Receptionist',
     bio: "Maddy is one of the friendly faces who'll greet you and assist during your visit.",
+    image: '/assets/team/maddy-coventry.webp',
   },
 ]
 
@@ -98,9 +106,21 @@ export default function AboutTeamPage() {
           <div className="team-grid reveal">
             {clinicians.map((member, i) => (
               <div key={i} className="svc">
-                <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
-                  <span>Warm, real photo of {member.name}. Never stock.</span>
-                </div>
+                {'image' in member && member.image ? (
+                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
+                    <Image
+                      src={member.image as string}
+                      alt={`Photo of ${member.name}`}
+                      fill
+                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      sizes="(max-width: 768px) 100vw, 300px"
+                    />
+                  </div>
+                ) : (
+                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
+                    <span>Warm, real photo of {member.name}. Never stock.</span>
+                  </div>
+                )}
                 <h4 style={{ marginBottom: '2px' }}>{member.name}</h4>
                 <p style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px', margin: '2px 0 8px' }}>{member.role}</p>
                 <p style={{ fontSize: '15px', margin: 0 }}>{member.bio}</p>
@@ -120,18 +140,28 @@ export default function AboutTeamPage() {
           <div className="team-grid reveal">
             {practiceTeam.map((member, i) => (
               <div key={i} className="svc">
-                <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
-                  <span>Warm, real photo of {member.name}. Never stock.</span>
-                </div>
+                {'image' in member && member.image ? (
+                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
+                    <Image
+                      src={member.image as string}
+                      alt={`Photo of ${member.name}`}
+                      fill
+                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      sizes="(max-width: 768px) 100vw, 300px"
+                    />
+                  </div>
+                ) : (
+                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
+                    <span>Warm, real photo of {member.name}. Never stock.</span>
+                  </div>
+                )}
                 <h4 style={{ marginBottom: '2px' }}>{member.name}</h4>
                 <p style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px', margin: '2px 0 8px' }}>{member.role}</p>
                 <p style={{ fontSize: '15px', margin: 0 }}>{member.bio}</p>
               </div>
             ))}
           </div>
-          <p className="reveal" style={{ textAlign: 'center', marginTop: '18px', fontSize: '13px', opacity: .7 }}>
-            Bios, qualifications and photos to be confirmed and AHPRA-compliant before publishing.
-          </p>
+
         </div>
       </section>
 

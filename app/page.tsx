@@ -1,4 +1,5 @@
 import JsonLd from '@/components/JsonLd'
+import Image from 'next/image'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 
@@ -322,7 +323,13 @@ export default function Home() {
         <div className="container">
           <div className="team-lead-grid">
             <div className="ph tall reveal">
-              <span>Portrait: Dr Anbar Ganatra, warm and approachable.</span>
+              <Image
+                src="/assets/team/team-home.webp"
+                alt="The East St Kilda Dental team"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                sizes="(max-width: 820px) 100vw, 40vw"
+              />
             </div>
             <div className="reveal">
               <div className="eyebrow">The people who&apos;ll care for you</div>
@@ -332,22 +339,46 @@ export default function Home() {
           </div>
           <div className="team-grid-v2">
             <div className="team-member reveal">
-              <div className="ph"><span>Photo</span></div>
+              <div className="ph">
+                <Image
+                  src="/assets/team/anbar-ganatra.webp"
+                  alt="Dr Anbar Ganatra – Principal Dentist"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                  sizes="(max-width: 820px) 50vw, 25vw"
+                />
+              </div>
               <h4>Dr Anbar Ganatra</h4>
               <span>Principal Dentist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph"><span>Photo</span></div>
+              <div className="ph">
+                <Image
+                  src="/assets/team/edmund-goldman.webp"
+                  alt="Dr Edmund Goldman – Dentist & Prosthodontist"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                  sizes="(max-width: 820px) 50vw, 25vw"
+                />
+              </div>
               <h4>Dr Edmund Goldman</h4>
               <span>Dentist &amp; Prosthodontist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph"><span>Photo</span></div>
+              <div className="ph">
+                <Image
+                  src="/assets/team/jarrod-dean.webp"
+                  alt="Dr Jarrod Dean – General Dentist"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                  sizes="(max-width: 820px) 50vw, 25vw"
+                />
+              </div>
               <h4>Dr Jarrod Dean</h4>
               <span>General Dentist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph"><span>Photo</span></div>
+              <div className="ph"></div>
               <h4>Beverly Spector</h4>
               <span>Hygienist</span>
             </div>
