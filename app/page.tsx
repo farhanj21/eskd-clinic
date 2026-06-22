@@ -1,7 +1,19 @@
+import type { CSSProperties } from 'react'
 import JsonLd from '@/components/JsonLd'
 import Image from 'next/image'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+
+// V3 white theme — scoped to the home page only. Overriding these CSS
+// custom properties on <main> cascades to every section inside it
+// (.sec, .sec.alt, .hero-v2, cards) without affecting other routes,
+// the header, or the footer (which live outside this <main>).
+const whiteTheme: CSSProperties = {
+  ['--cream' as string]: '#FFFFFF',
+  ['--paper' as string]: '#FFFFFF',
+  ['--cream-2' as string]: '#F1EFEA',
+  background: '#FFFFFF',
+}
 
 export const metadata = {
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
@@ -48,7 +60,7 @@ const faqSchema = {
 
 export default function Home() {
   return (
-    <main>
+    <main style={whiteTheme}>
       <JsonLd data={dentistSchema} />
       <JsonLd data={faqSchema} />
 

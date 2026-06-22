@@ -1,9 +1,20 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, type CSSProperties } from 'react'
 import Link from 'next/link'
 
 type DropKey = 'services' | 'newpatients' | 'about' | 'costs' | 'more' | null
+
+// V3 white theme — scoped to the header only. Overriding these CSS custom
+// properties cascades to the dropdown panels and mega-menu (which use
+// --paper / --cream-2), while `background` swaps the header bar's own
+// translucent cream tint for the V3 translucent white.
+const whiteTheme: CSSProperties = {
+  ['--cream' as string]: '#FFFFFF',
+  ['--paper' as string]: '#FFFFFF',
+  ['--cream-2' as string]: '#F1EFEA',
+  background: 'rgba(255,255,255,.92)',
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -28,7 +39,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="site-header" ref={navRef}>
+    <header className="site-header" ref={navRef} style={whiteTheme}>
       <div className="nav">
         <Link href="/" className="logo" aria-label="East St Kilda Dental — home">
           East St Kilda Dental<small>Gentle care since 1980</small>
