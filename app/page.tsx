@@ -206,8 +206,7 @@ export default function Home() {
               style={{ borderRadius: 0, minHeight: '100%' }}
               src="/assets/incoming/comprehensive-care-visit.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
-              objectPosition="55% 95%"
-              scale={1.35}
+              objectPosition="center 40%"
               sizes="(max-width: 820px) 100vw, 50vw"
             />
           </div>
@@ -396,8 +395,13 @@ export default function Home() {
               <span>General Dentist</span>
             </div>
             <div className="team-member reveal">
-              <Photo sizes="(max-width: 820px) 50vw, 25vw" objectPosition="center top" />
-              <h4>Beverly Spector</h4>
+              <Photo
+                src="/assets/team/michelle-callaghan.webp"
+                alt="Michelle Callaghan – Hygienist"
+                objectPosition="40% 95%"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
+              <h4>Michelle Callaghan</h4>
               <span>Hygienist</span>
             </div>
           </div>
@@ -473,8 +477,8 @@ export default function Home() {
             className="reveal"
             src="/assets/incoming/honest-about-cost.webp"
             alt="A friendly receptionist smiling while helping a patient at the front desk"
-                 objectPosition="15% 95%"
-                 scale={1.05}
+            objectPosition="15% 95%"
+            scale={1.05}
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
