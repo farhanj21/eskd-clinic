@@ -3,6 +3,8 @@ export interface ServiceData {
   eyebrow: string
   h1pre: string   // text before the <em> (empty string if em comes first)
   h1em: string    // the italic portion
+  heroImage?: string  // path under /public for the hero photo; falls back to a placeholder hint when absent
+  heroAlt?: string
   heroLead: string
   whatItIsH2: string
   whatItIs: string[]
@@ -28,6 +30,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Gentle, thorough',
     h1em: 'check-ups',
+    heroImage: '/assets/incoming/checkup-hero.webp',
+    heroAlt: 'A gentle dentist examining a young patient wearing protective glasses in the treatment chair',
     heroLead: 'A calm, comprehensive look at your teeth, gums and bite, so small problems are found early, while they\'re still small.',
     whatItIsH2: 'What a comprehensive check-up involves',
     whatItIs: [
@@ -82,6 +86,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Professional',
     h1em: 'cleans & hygiene',
+    heroImage: '/assets/incoming/cleans-hero.webp',
     heroLead: 'A gentle, thorough clean that removes what brushing can\'t reach, and keeps your gums healthy for life.',
     whatItIsH2: 'What a professional clean does',
     whatItIs: [

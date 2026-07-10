@@ -38,7 +38,8 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            hint="Warm, reassuring photo: a calm, relaxed patient with a gentle clinician, soft natural light."
+            src="/assets/incoming/how-we-look-after.webp"
+            alt="A clinician gently reassuring a relaxed patient in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
@@ -130,7 +131,8 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            hint="Soft, reassuring image: happy-gas setup, a calm treatment room, or a relaxed patient with headphones."
+            src="/assets/incoming/comfort-is-part.webp"
+            alt="A smiling, relaxed patient chatting with the dental team in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
           <div className="reveal">
@@ -198,7 +200,8 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            hint="Warm team photo: real faces, friendly and approachable, in the clinic."
+            src="/assets/incoming/calm-team.webp"
+            alt="The friendly East St Kilda Dental team smiling and waving outside the clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>

@@ -39,7 +39,8 @@ export default function OfferPage() {
           <Photo
             tall
             className="reveal"
-            hint="Warm, real photo: a relaxed patient with a friendly clinician, soft natural light."
+            src="/assets/incoming/see-our-fees-1.webp"
+            alt="A smiling clinician demonstrating brushing on a dental model for a seated patient"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
@@ -78,7 +79,8 @@ export default function OfferPage() {
               </p>
             </div>
             <Photo
-              hint="Calm photo: the consult room or a relaxed patient-and-dentist moment."
+              src="/assets/incoming/see-our-fees-2.webp"
+              alt="A dentist and patient reviewing a dental X-ray together on screen during a consultation"
               sizes="(max-width: 820px) 100vw, 50vw"
             />
           </div>

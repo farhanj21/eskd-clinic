@@ -51,6 +51,9 @@ export default async function ServicePage({ params }: Props) {
           <Photo
             tall
             className="reveal"
+            priority
+            src={service.heroImage}
+            alt={service.heroAlt}
             hint={`Service image: ${service.h1em}`}
             sizes="(max-width: 860px) 100vw, 48vw"
             style={{ minHeight: '420px' }}
