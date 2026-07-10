@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
@@ -34,9 +35,12 @@ export default function GentlePage() {
               No lectures. No raised eyebrows. Just a calm team that does this every day.
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, reassuring photo: a calm, relaxed patient with a gentle clinician, soft natural light.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, reassuring photo: a calm, relaxed patient with a gentle clinician, soft natural light."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -123,9 +127,12 @@ export default function GentlePage() {
       {/* ── COMFORT OPTIONS ──────────────────────────────── */}
       <section className="sec sage-bg" id="comfort">
         <div className="container nervous-grid">
-          <div className="ph tall reveal">
-            <span>Soft, reassuring image: happy-gas setup, a calm treatment room, or a relaxed patient with headphones.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Soft, reassuring image: happy-gas setup, a calm treatment room, or a relaxed patient with headphones."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
           <div className="reveal">
             <div className="eyebrow">Whatever helps you feel safe</div>
             <h2>Comfort is part of the treatment</h2>
@@ -188,9 +195,12 @@ export default function GentlePage() {
             <p>You&apos;ll see the same friendly faces each visit, which is its own kind of reassurance.</p>
             <Link href="/about#team" className="btn btn-ghost" style={{ marginTop: '20px', display: 'inline-flex' }}>Meet the full team</Link>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm team photo: real faces, friendly and approachable, in the clinic.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm team photo: real faces, friendly and approachable, in the clinic."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

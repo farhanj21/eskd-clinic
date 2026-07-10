@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'The Comprehensive Care Visit — $297 (valued at $499) | East St Kilda Dental',
@@ -35,9 +36,12 @@ export default function OfferPage() {
               <span style={{ color: 'var(--ink-faint)', fontSize: '15px' }}>&middot; valued at $499</span>
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo: a relaxed patient with a friendly clinician, soft natural light.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo: a relaxed patient with a friendly clinician, soft natural light."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -73,9 +77,10 @@ export default function OfferPage() {
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
-            <div className="ph">
-              <span>Calm photo: the consult room or a relaxed patient-and-dentist moment.</span>
-            </div>
+            <Photo
+              hint="Calm photo: the consult room or a relaxed patient-and-dentist moment."
+              sizes="(max-width: 820px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>

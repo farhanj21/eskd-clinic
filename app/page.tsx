@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import JsonLd from '@/components/JsonLd'
-import Image from 'next/image'
 import Link from 'next/link'
+import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
 
 // V3 white theme — scoped to the home page only. Overriding these CSS
@@ -81,9 +81,13 @@ export default function Home() {
               </Link>
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo: a friendly clinician with a patient mid-conversation, soft natural light.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            priority
+            hint="Warm, real photo: a friendly clinician with a patient mid-conversation, soft natural light."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -197,9 +201,11 @@ export default function Home() {
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
-            <div className="ph" style={{ borderRadius: 0, minHeight: '100%' }}>
-              <span>Calm photo: the consult room or a relaxed patient-and-dentist moment.</span>
-            </div>
+            <Photo
+              style={{ borderRadius: 0, minHeight: '100%' }}
+              hint="Calm photo: the consult room or a relaxed patient-and-dentist moment."
+              sizes="(max-width: 820px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -258,9 +264,12 @@ export default function Home() {
       {/* NERVOUS PATIENTS */}
       <section className="sec sage-bg" id="nervous">
         <div className="container nervous-grid">
-          <div className="ph tall reveal">
-            <span>Soft, reassuring image: calm hands, a relaxed patient, or the gentle clinic environment.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Soft, reassuring image: calm hands, a relaxed patient, or the gentle clinic environment."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
@@ -334,15 +343,14 @@ export default function Home() {
       <section className="sec">
         <div className="container">
           <div className="team-lead-grid">
-            <div className="ph tall reveal">
-              <Image
-                src="/assets/team/team-home.webp"
-                alt="The East St Kilda Dental team"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                sizes="(max-width: 820px) 100vw, 40vw"
-              />
-            </div>
+            <Photo
+              tall
+              className="reveal"
+              src="/assets/team/team-home.webp"
+              alt="The East St Kilda Dental team"
+              objectPosition="center top"
+              sizes="(max-width: 820px) 100vw, 40vw"
+            />
             <div className="reveal">
               <div className="eyebrow">The people who&apos;ll care for you</div>
               <h2>A gentle team you&apos;ll get to <em>know</em></h2>
@@ -351,46 +359,37 @@ export default function Home() {
           </div>
           <div className="team-grid-v2">
             <div className="team-member reveal">
-              <div className="ph">
-                <Image
-                  src="/assets/team/anbar-ganatra.webp"
-                  alt="Dr Anbar Ganatra – Principal Dentist"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                />
-              </div>
+              <Photo
+                src="/assets/team/anbar-ganatra.webp"
+                alt="Dr Anbar Ganatra – Principal Dentist"
+                objectPosition="center top"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
               <h4>Dr Anbar Ganatra</h4>
               <span>Principal Dentist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph">
-                <Image
-                  src="/assets/team/edmund-goldman.webp"
-                  alt="Dr Edmund Goldman – Dentist & Prosthodontist"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                />
-              </div>
+              <Photo
+                src="/assets/team/edmund-goldman.webp"
+                alt="Dr Edmund Goldman – Dentist & Prosthodontist"
+                objectPosition="center top"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
               <h4>Dr Edmund Goldman</h4>
               <span>Dentist &amp; Prosthodontist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph">
-                <Image
-                  src="/assets/team/jarrod-dean.webp"
-                  alt="Dr Jarrod Dean – General Dentist"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                />
-              </div>
+              <Photo
+                src="/assets/team/jarrod-dean.webp"
+                alt="Dr Jarrod Dean – General Dentist"
+                objectPosition="center top"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
               <h4>Dr Jarrod Dean</h4>
               <span>General Dentist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph"></div>
+              <Photo sizes="(max-width: 820px) 50vw, 25vw" objectPosition="center top" />
               <h4>Beverly Spector</h4>
               <span>Hygienist</span>
             </div>
@@ -414,9 +413,12 @@ export default function Home() {
               <div><b>1</b><span>caring local team</span></div>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Heritage-feel image: the practice exterior, an old neighbourhood photo, or a multi-generational family moment.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Heritage-feel image: the practice exterior, an old neighbourhood photo, or a multi-generational family moment."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -458,9 +460,12 @@ export default function Home() {
               <Link href="/fees" className="btn btn-ghost">See our fees &amp; payment options</Link>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Calm image: front desk welcome, or hands with a printed care plan.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Calm image: front desk welcome, or hands with a printed care plan."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -504,10 +509,10 @@ export default function Home() {
             <h2>Gentle, natural-looking results</h2>
           </div>
           <div className="gallery-v2">
-            <div className="ph reveal"><span>Before / after (understated)</span></div>
-            <div className="ph reveal"><span>Real smile, real patient</span></div>
-            <div className="ph reveal"><span>Subtle, natural result</span></div>
-            <div className="ph reveal"><span>Everyday result</span></div>
+            <Photo className="reveal" hint="Before / after (understated)" sizes="(max-width: 820px) 50vw, 25vw" />
+            <Photo className="reveal" hint="Real smile, real patient" sizes="(max-width: 820px) 50vw, 25vw" />
+            <Photo className="reveal" hint="Subtle, natural result" sizes="(max-width: 820px) 50vw, 25vw" />
+            <Photo className="reveal" hint="Everyday result" sizes="(max-width: 820px) 50vw, 25vw" />
           </div>
         </div>
       </section>
@@ -524,19 +529,19 @@ export default function Home() {
           </div>
           <div className="edu-grid">
             <div className="edu-art reveal">
-              <div className="ph"><span>Article image</span></div>
+              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
               <span>Nervous patients</span>
               <h4>Haven&apos;t been in years? Here&apos;s exactly what to expect.</h4>
               <p>A calm, step-by-step walk-through for an easier return.</p>
             </div>
             <div className="edu-art reveal">
-              <div className="ph"><span>Article image</span></div>
+              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
               <span>Sore gums</span>
               <h4>Why are my gums bleeding?</h4>
               <p>What bleeding gums are trying to tell you, and when to act.</p>
             </div>
             <div className="edu-art reveal">
-              <div className="ph"><span>Article image</span></div>
+              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
               <span>Your visit</span>
               <h4>Do I really need a crown?</h4>
               <p>How to tell, in plain language and without the pressure.</p>

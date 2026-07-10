@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'Using Your Super for Dental Treatment | East St Kilda Dental',
@@ -80,9 +81,12 @@ export default function SuperPage() {
               Facilitated by AccessMySuper, an external licensed provider. Eligibility is decided by the ATO.
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo: a calm conversation between patient and dentist, care plan on the table.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo: a calm conversation between patient and dentist, care plan on the table."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

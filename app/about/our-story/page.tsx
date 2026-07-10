@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'Our Story | East St Kilda Dental — Four Decades on the Same Corner',
@@ -26,9 +27,12 @@ export default function AboutStoryPage() {
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real hero photo of the clinic exterior on the corner, with local character. Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real hero photo of the clinic exterior on the corner, with local character. Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -36,9 +40,11 @@ export default function AboutStoryPage() {
       <section className="sec">
         <div className="container">
           <div className="band reveal">
-            <div className="ph" style={{ minHeight: '320px' }}>
-              <span>Warm, real photo: the building or street today, or an early/archival image if one exists. Never stock.</span>
-            </div>
+            <Photo
+              hint="Warm, real photo: the building or street today, or an early/archival image if one exists. Never stock."
+              sizes="(max-width: 860px) 100vw, 48vw"
+              style={{ minHeight: '320px' }}
+            />
             <div className="bandtext">
               <div className="eyebrow">Chapter one</div>
               <h2>Where it began</h2>
@@ -54,9 +60,11 @@ export default function AboutStoryPage() {
       <section className="sec alt">
         <div className="container">
           <div className="band rev reveal">
-            <div className="ph" style={{ minHeight: '320px' }}>
-              <span>Warm, real photo of Dr Eddie Goldman, or a long-standing patient or family. Never stock.</span>
-            </div>
+            <Photo
+              hint="Warm, real photo of Dr Eddie Goldman, or a long-standing patient or family. Never stock."
+              sizes="(max-width: 860px) 100vw, 48vw"
+              style={{ minHeight: '320px' }}
+            />
             <div className="bandtext">
               <div className="eyebrow">Chapter two</div>
               <h2>The Goldman years</h2>
@@ -75,9 +83,11 @@ export default function AboutStoryPage() {
       <section className="sec">
         <div className="container">
           <div className="band reveal">
-            <div className="ph" style={{ minHeight: '320px' }}>
-              <span>Warm, real photo of Dr Anbar with a patient, gentle and reassuring. Never stock.</span>
-            </div>
+            <Photo
+              hint="Warm, real photo of Dr Anbar with a patient, gentle and reassuring. Never stock."
+              sizes="(max-width: 860px) 100vw, 48vw"
+              style={{ minHeight: '320px' }}
+            />
             <div className="bandtext">
               <div className="eyebrow">Chapter three</div>
               <h2>Today, a new chapter</h2>

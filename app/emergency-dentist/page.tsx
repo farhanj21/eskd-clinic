@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'Emergency Dental Care | East St Kilda Dental',
@@ -82,9 +83,12 @@ export default function EmergencyPage() {
               Open Mon&ndash;Thu to 4pm, Fri to 4.30pm, monthly Saturdays. After hours and serious? See the red box below.
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { services, getService } from '@/data/services'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -47,9 +48,13 @@ export default async function ServicePage({ params }: Props) {
               Gentle, no-judgement care &nbsp;·&nbsp; 40+ years local
             </p>
           </div>
-          <div className="ph tall reveal" style={{ minHeight: '420px' }}>
-            <span>Service image: {service.h1em}</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint={`Service image: ${service.h1em}`}
+            sizes="(max-width: 860px) 100vw, 48vw"
+            style={{ minHeight: '420px' }}
+          />
         </div>
       </section>
 

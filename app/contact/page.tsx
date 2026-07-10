@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Photo from '@/components/Photo'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -25,9 +26,12 @@ export default function ContactPage() {
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of reception or the team welcoming a patient.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of reception or the team welcoming a patient."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

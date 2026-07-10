@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'About Us | East St Kilda Dental — Gentle, Local Care Since 1980',
@@ -31,9 +32,12 @@ export default function AboutPage() {
               <span>Generations of local families</span>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of the clinic exterior on the corner of Dandenong and Orrong Roads. Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of the clinic exterior on the corner of Dandenong and Orrong Roads. Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'Our Work — Real Results, Real People | East St Kilda Dental',
@@ -53,9 +54,12 @@ export default function OurWorkPage() {
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real before/after or smile photo (with consent). Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real before/after or smile photo (with consent). Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -80,9 +84,11 @@ export default function OurWorkPage() {
           <div className="svc-grid reveal">
             {cases.map((c, i) => (
               <div key={i} className="svc">
-                <div className="ph" style={{ height: '170px', marginBottom: '10px' }}>
-                  <span>Before &amp; after (with patient consent)</span>
-                </div>
+                <Photo
+                  hint="Before & after (with patient consent)"
+                  sizes="(max-width: 820px) 100vw, 33vw"
+                  style={{ height: '170px', marginBottom: '10px' }}
+                />
                 <h4>{c.h4}</h4>
                 <p>{c.p}</p>
               </div>

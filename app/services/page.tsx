@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'All Dental Services | East St Kilda Dental',
@@ -82,9 +83,12 @@ export default function ServicesPage() {
               <span>Clear, no-surprise fees</span>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of the team or a treatment room. Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of the team or a treatment room. Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Photo from '@/components/Photo'
 
 export const metadata: Metadata = {
   title: 'Dental Education | East St Kilda Dental',
@@ -63,9 +64,12 @@ export default function LearnIndex() {
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, calm editorial image. Never stock-clinical.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, calm editorial image. Never stock-clinical."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -100,9 +104,11 @@ export default function LearnIndex() {
                   className="svc"
                   style={{ cursor: 'pointer', textDecoration: 'none' }}
                 >
-                  <div className="ph" style={{ height: '140px', marginBottom: '12px' }}>
-                    <span>Article image</span>
-                  </div>
+                  <Photo
+                    hint="Article image"
+                    sizes="(max-width: 820px) 100vw, 33vw"
+                    style={{ height: '140px', marginBottom: '12px' }}
+                  />
                   <h4>{card.title}</h4>
                   <p>{card.excerpt}</p>
                   <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
@@ -111,9 +117,11 @@ export default function LearnIndex() {
                 </Link>
               ) : (
                 <div key={i} className="svc article-card-soon">
-                  <div className="ph" style={{ height: '140px', marginBottom: '12px' }}>
-                    <span>Coming soon</span>
-                  </div>
+                  <Photo
+                    hint="Coming soon"
+                    sizes="(max-width: 820px) 100vw, 33vw"
+                    style={{ height: '140px', marginBottom: '12px' }}
+                  />
                   <h4>{card.title}</h4>
                   <p>{card.excerpt}</p>
                   <span className="read-lbl">Coming soon</span>

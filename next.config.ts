@@ -8,6 +8,10 @@ import type { NextConfig } from 'next'
 const isProduction = process.env.VERCEL_ENV === 'production'
 
 const nextConfig: NextConfig = {
+  images: {
+    // AVIF first (smaller), WebP fallback; browsers get the best format they support
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     if (isProduction) return []
 

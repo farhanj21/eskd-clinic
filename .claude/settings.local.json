@@ -45,7 +45,8 @@
       "Bash(grep -v \"\\\\/\\\\*\\\\|hidden:true\")",
       "Bash(Select-String -Path \"eskd-website - V2 07 06 2026.html\" -Pattern \"dentist-st-kilda|dentist-balaclava|dentist-caulfield|dentist-elwood|dentist-elsternwick|areas-we-serve|id=\\\\\"page-dentist\" -SimpleMatch)",
       "Bash(Format-Table -AutoSize)",
-      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-windsor\" \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-prahran\")"
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-windsor\" \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-prahran\")",
+      "Bash(node scripts/optimize-images.mjs \"public/assets/clinic.png\" --out public/assets --width 1200)"
     ]
   }
 }

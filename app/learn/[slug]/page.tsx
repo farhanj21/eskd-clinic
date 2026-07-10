@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { articles, getArticle } from '@/data/articles'
 import GetInTouch from '@/components/GetInTouch'
 import JsonLd from '@/components/JsonLd'
+import Photo from '@/components/Photo'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -80,9 +81,11 @@ export default async function ArticlePage({ params }: Props) {
           )}
 
           {/* Hero image placeholder */}
-          <div className="ph post-hero">
-            <span>Article image — {article.title}</span>
-          </div>
+          <Photo
+            className="post-hero"
+            hint={`Article image — ${article.title}`}
+            sizes="(max-width: 820px) 100vw, 60vw"
+          />
 
           {/* Body: structured sections (h2 + paragraphs) */}
           {article.sections && article.sections.length > 0 && (
