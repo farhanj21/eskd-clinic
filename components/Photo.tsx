@@ -16,6 +16,10 @@ interface PhotoProps {
   className?: string
   style?: CSSProperties
   objectPosition?: string
+  /** Zoom factor for the image within its frame. 1 = fit (cover), >1 zooms in. */
+  scale?: number
+  /** How the image fills its frame. 'cover' (default) crops to fill; 'contain' shows the whole image. */
+  objectFit?: 'cover' | 'contain'
 }
 
 export default function Photo({
@@ -28,6 +32,8 @@ export default function Photo({
   className,
   style,
   objectPosition = 'center',
+  scale = 1,
+  objectFit = 'cover',
 }: PhotoProps) {
   const classes = ['ph', tall && 'tall', className].filter(Boolean).join(' ')
 
@@ -40,7 +46,11 @@ export default function Photo({
           fill
           sizes={sizes}
           priority={priority}
-          style={{ objectFit: 'cover', objectPosition }}
+          style={{
+            objectFit,
+            objectPosition,
+            ...(scale !== 1 && { transform: `scale(${scale})`, transformOrigin: objectPosition }),
+          }}
         />
       ) : (
         hint && <span>{hint}</span>

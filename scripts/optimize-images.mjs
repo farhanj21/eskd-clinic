@@ -52,7 +52,10 @@ const kebab = (name) =>
 const kb = (bytes) => `${(bytes / 1024).toFixed(0)} KB`
 
 async function collectInputs(inputs) {
-  if (inputs.length === 0) inputs = [DEFAULT_IN]
+  if (inputs.length === 0) {
+    inputs = [DEFAULT_IN]
+    await mkdir(DEFAULT_IN, { recursive: true })
+  }
   const files = []
   for (const input of inputs) {
     if (!existsSync(input)) {
@@ -79,7 +82,6 @@ async function main() {
 
   if (files.length === 0) {
     console.log(`Nothing to do. Drop photos into ${DEFAULT_IN}/ and run again.`)
-    if (!existsSync(DEFAULT_IN)) await mkdir(DEFAULT_IN, { recursive: true })
     return
   }
 

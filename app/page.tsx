@@ -85,7 +85,8 @@ export default function Home() {
             tall
             className="reveal"
             priority
-            hint="Warm, real photo: a friendly clinician with a patient mid-conversation, soft natural light."
+            src="/assets/incoming/hero.webp"
+            alt="A smiling clinician showing a dental model to a patient in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
@@ -203,7 +204,10 @@ export default function Home() {
             </div>
             <Photo
               style={{ borderRadius: 0, minHeight: '100%' }}
-              hint="Calm photo: the consult room or a relaxed patient-and-dentist moment."
+              src="/assets/incoming/comprehensive-care-visit.webp"
+              alt="A dentist talking with a seated patient during a comprehensive care consultation"
+              objectPosition="55% 95%"
+              scale={1.35}
               sizes="(max-width: 820px) 100vw, 50vw"
             />
           </div>
@@ -267,7 +271,10 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            hint="Soft, reassuring image: calm hands, a relaxed patient, or the gentle clinic environment."
+            src="/assets/incoming/nervous-patients.webp"
+            alt="A relaxed patient smiling warmly in the dental chair"
+            objectPosition="0% 40%"
+            scale={1.1}
             sizes="(max-width: 860px) 100vw, 48vw"
           />
           <div className="reveal">
@@ -346,8 +353,8 @@ export default function Home() {
             <Photo
               tall
               className="reveal"
-              src="/assets/team/team-home.webp"
-              alt="The East St Kilda Dental team"
+              src="/assets/incoming/meet-the-team.webp"
+              alt="The East St Kilda Dental team standing together outside the clinic entrance"
               objectPosition="center top"
               sizes="(max-width: 820px) 100vw, 40vw"
             />
@@ -416,7 +423,8 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            hint="Heritage-feel image: the practice exterior, an old neighbourhood photo, or a multi-generational family moment."
+            src="/assets/incoming/heritage.webp"
+            alt="Three generations of a family embracing and laughing together"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
@@ -463,7 +471,10 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            hint="Calm image: front desk welcome, or hands with a printed care plan."
+            src="/assets/incoming/honest-about-cost.webp"
+            alt="A friendly receptionist smiling while helping a patient at the front desk"
+                 objectPosition="15% 95%"
+                 scale={1.05}
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
@@ -600,7 +611,14 @@ export default function Home() {
           </div>
           <div className="loc-grid">
             <div className="ph reveal" style={{ minHeight: '340px' }}>
-              <span>Embedded Google Map · 364 Dandenong Rd, East St Kilda VIC 3183</span>
+              <iframe
+                title="Map to East St Kilda Dental, 364 Dandenong Rd, East St Kilda VIC 3183"
+                src="https://www.google.com/maps?q=East+St+Kilda+Dental,+364+Dandenong+Rd,+East+St+Kilda+VIC+3183&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
+                allowFullScreen
+              />
             </div>
             <div className="reveal">
               <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>364 Dandenong Rd, East St Kilda VIC 3183</b></p>
