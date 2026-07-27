@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import JsonLd from '@/components/JsonLd'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { SCHEMA_ID, SITE_URL, areasServed, business, openingHours, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Emergency Dental Care | East St Kilda Dental',
@@ -12,29 +13,39 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
 })
 
+// Each item carries both its short card heading and the question form someone
+// would actually type or ask. `question` is what the FAQPage node publishes;
+// Emergency doc 2 turns it into the visible heading, at which point the two are
+// literally the same string.
 const firstAid = [
   {
     h4: 'Knocked-out tooth',
+    question: 'What should I do if a tooth is knocked out?',
     p: 'Hold it by the white crown, never the root, and don’t scrub it. If you can, gently place it back in the socket. If not, keep it in milk. Try to see us within the hour.',
   },
   {
     h4: 'Bad toothache',
+    question: 'What should I do for a bad toothache?',
     p: 'Rinse with warm, salty water and take your usual pain relief. Avoid very hot, cold or sweet food. Then call us.',
   },
   {
     h4: 'Broken or chipped tooth',
+    question: 'What should I do if I break or chip a tooth?',
     p: 'Save any pieces, rinse your mouth with warm water, and press clean gauze on any bleeding. Call us to be seen.',
   },
   {
     h4: 'Swelling',
+    question: 'What should I do about facial or gum swelling?',
     p: 'Swelling of the gum, jaw or face can be a sign of infection. Call us the same day so we can act quickly.',
   },
   {
     h4: 'Lost filling or crown',
+    question: 'What should I do if I lose a filling or crown?',
     p: 'Keep the crown if you have it, and avoid chewing on that side. Call us and we’ll re-secure it.',
   },
   {
     h4: 'A baby tooth knocked out',
+    question: 'What should I do if my child knocks out a baby tooth?',
     p: 'Do not put a baby tooth back in. Keep your child calm, bring the tooth with you, and call us for advice.',
   },
 ]
@@ -58,9 +69,54 @@ const faq = [
   },
 ]
 
+/**
+ * Emergency structured data: what we offer, and the answers someone in pain is
+ * asking for at 2am.
+ *
+ * Every question and answer is generated from the `faq` and `firstAid` arrays
+ * that render the visible page, so the markup cannot drift from the words on
+ * screen — the condition for both AI attribution and any rich result.
+ *
+ * The service hours come from the shared opening-hours constant and are weekday
+ * only. Nothing here implies round-the-clock availability, because we are not.
+ */
+const emergencySchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': SCHEMA_ID.emergencyService,
+      serviceType: 'Emergency dental care',
+      name: 'Emergency dental care',
+      url: `${SITE_URL}/emergency-dentist`,
+      provider: { '@id': SCHEMA_ID.practice },
+      areaServed: areasServed.map((name) => ({ '@type': 'City', name })),
+      hoursAvailable: openingHours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [...h.days],
+        opens: h.opens,
+        closes: h.closes,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': SCHEMA_ID.emergencyFaq,
+      mainEntity: [
+        ...faq.map(({ q, a }) => ({ question: q, answer: a })),
+        ...firstAid.map(({ question, p }) => ({ question, answer: p })),
+      ].map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    },
+  ],
+}
+
 export default function EmergencyPage() {
   return (
     <main>
+      <JsonLd data={emergencySchema} />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
         <div className="container hero-v2-grid">

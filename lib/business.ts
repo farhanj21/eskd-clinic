@@ -20,6 +20,9 @@ export const SCHEMA_ID = {
   /** The Learn hub as a collection, and the list of guides it contains. */
   learnCollection: `${SITE_URL}/learn#collection`,
   learnGuides: `${SITE_URL}/learn#guides`,
+  /** Emergency dental care as a service, and that page's questions. */
+  emergencyService: `${SITE_URL}/emergency-dentist#service`,
+  emergencyFaq: `${SITE_URL}/emergency-dentist#faq`,
 } as const
 
 export const business = {
