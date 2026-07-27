@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { articles, getArticle } from '@/data/articles'
 import GetInTouch from '@/components/GetInTouch'
 import JsonLd from '@/components/JsonLd'
+import Breadcrumb, { learnArticleTrail } from '@/components/Breadcrumb'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
 
@@ -49,6 +50,8 @@ export default async function ArticlePage({ params }: Props) {
       <JsonLd data={schema} />
       <div className="container">
         <article className="post">
+          <Breadcrumb trail={learnArticleTrail(article.title)} />
+
           {/* Back link */}
           <Link href="/learn" className="post-back">&larr; Back to dental education</Link>
 

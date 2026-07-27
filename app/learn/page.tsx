@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import JsonLd from '@/components/JsonLd'
+import Breadcrumb, { learnHubTrail } from '@/components/Breadcrumb'
 import { withSocial } from '@/lib/seo'
 import { SCHEMA_ID, SITE_URL, business, telHref } from '@/lib/business'
 
@@ -114,6 +115,9 @@ export default function LearnIndex() {
       <JsonLd data={learnSchema} />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
+        <div className="container">
+          <Breadcrumb trail={learnHubTrail} />
+        </div>
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Learn</div>

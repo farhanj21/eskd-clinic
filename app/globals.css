@@ -2380,7 +2380,25 @@ body{overflow-x:hidden;max-width:100%;}
 .article-card-soon .read-lbl{font-size:13px;color:var(--ink-faint);}
 
 /* ── Article / Post layout ───────────────────────────────── */
-.post{max-width:760px;margin:0 auto;padding:60px var(--side-pad,24px) 80px;}
+/* Article body. No fixed measure and no auto-centring — the column starts at
+   the container gutter and flows to the container's own fluid width, so the
+   article lines up with the header and every other page instead of sitting in
+   a narrow fixed block. */
+.post{max-width:none;margin:0;padding:60px 0 80px;}
+/* Breadcrumb trail. The visible list is mirrored exactly by the
+   BreadcrumbList schema — both come from one array in components/Breadcrumb. */
+.breadcrumb{margin-bottom:20px;}
+.breadcrumb ol{
+  display:flex;flex-wrap:wrap;align-items:center;
+  list-style:none;margin:0;padding:0;
+  font-family:var(--body);font-size:14px;line-height:1.5;color:var(--ink-faint);
+}
+.breadcrumb li{display:flex;align-items:center;}
+.breadcrumb li+li::before{content:'/';margin:0 9px;color:var(--ink-faint);opacity:.55;}
+.breadcrumb a{color:var(--ink-soft);text-decoration:none;}
+.breadcrumb a:hover{color:var(--sage-deep);text-decoration:underline;}
+.breadcrumb li[aria-current="page"]{color:var(--ink-faint);}
+
 .post-back{display:inline-flex;align-items:center;gap:6px;color:var(--sage-deep);font-weight:600;font-size:14px;text-decoration:none;margin-bottom:22px;}
 .post-back:hover{color:var(--clay-deep);}
 .post-cat{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:10px;}
