@@ -3,6 +3,7 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import JsonLd from '@/components/JsonLd'
+import StickyCallBar from '@/components/StickyCallBar'
 import { withSocial } from '@/lib/seo'
 import { SCHEMA_ID, SITE_URL, areasServed, business, openingHours, telHref } from '@/lib/business'
 
@@ -275,6 +276,8 @@ export default function EmergencyPage() {
       </section>
 
       <GetInTouch variant="emergency" id="contact" />
+
+      <StickyCallBar />
     </main>
   )
 }
