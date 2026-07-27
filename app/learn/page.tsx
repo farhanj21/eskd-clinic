@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
+import JsonLd from '@/components/JsonLd'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { SCHEMA_ID, SITE_URL, business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
@@ -11,10 +12,19 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/learn' },
 })
 
+interface LearnCard {
+  /** Article route segment, or null while the guide is still unwritten. */
+  slug: string | null
+  title: string
+  excerpt: string
+  status: 'published' | 'coming-soon'
+}
+
 /* Matches the prototype's 6-card learn index exactly */
-const learnCards = [
+const learnCards: LearnCard[] = [
   {
-    slug: 'havent-been-in-years',
+    // Must match a slug in data/articles.ts — this is the live article route.
+    slug: 'havent-been-to-the-dentist-in-years',
     title: "Haven't been to the dentist in years?",
     excerpt: "A gentle, no-judgement guide to coming back, what to expect, and why it's never too late.",
     status: 'published' as const,
@@ -51,9 +61,57 @@ const learnCards = [
   },
 ]
 
+const LEARN_URL = `${SITE_URL}/learn`
+
+/**
+ * The guides that are actually live.
+ *
+ * Derived from the same `learnCards` array that renders the visible cards, so
+ * the schema and the page can never drift: publish a guide by giving its card a
+ * slug and `status: 'published'`, and it joins both the visible list and the
+ * ItemList at once, with no separate edit.
+ *
+ * Coming-soon cards are deliberately excluded — they are not real pages yet, and
+ * listing them would misrepresent the library.
+ */
+const publishedGuides = learnCards.filter(
+  (card): card is LearnCard & { slug: string } => card.status === 'published' && card.slug !== null,
+)
+
+// Marks the Learn hub as a curated library rather than a page with links, and
+// connects it to the WebSite and practice nodes declared on the home page.
+const learnSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': SCHEMA_ID.learnCollection,
+      url: LEARN_URL,
+      name: 'Dental Education',
+      description:
+        'Clear, calm answers to common dental questions. Honest, easy-to-read guides from East St Kilda Dental.',
+      isPartOf: { '@id': SCHEMA_ID.website },
+      about: { '@id': SCHEMA_ID.practice },
+      mainEntity: { '@id': SCHEMA_ID.learnGuides },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': SCHEMA_ID.learnGuides,
+      name: 'Guides and articles',
+      itemListElement: publishedGuides.map((card, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${LEARN_URL}/${card.slug}`,
+        name: card.title,
+      })),
+    },
+  ],
+}
+
 export default function LearnIndex() {
   return (
     <main>
+      <JsonLd data={learnSchema} />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
         <div className="container hero-v2-grid">

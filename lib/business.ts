@@ -17,6 +17,9 @@ export const SCHEMA_ID = {
   practice: `${SITE_URL}/#practice`,
   website: `${SITE_URL}/#website`,
   faq: `${SITE_URL}/#faq`,
+  /** The Learn hub as a collection, and the list of guides it contains. */
+  learnCollection: `${SITE_URL}/learn#collection`,
+  learnGuides: `${SITE_URL}/learn#guides`,
 } as const
 
 export const business = {
