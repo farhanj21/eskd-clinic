@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/business'
 import { services } from '@/data/services'
-import { articles } from '@/data/articles'
+import { publishedArticles } from '@/data/articles'
 import { suburbs } from '@/data/suburbs'
 
 /**
@@ -46,7 +46,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     ...STATIC_PATHS,
     ...services.map((s) => `/services/${s.slug}`),
-    ...articles.map((a) => `/learn/${a.slug}`),
+    // Published guides only — Google is never invited to crawl a draft.
+    ...publishedArticles.map((a) => `/learn/${a.slug}`),
     ...suburbs.map((s) => `/areas/${s.slug}`),
   ]
 

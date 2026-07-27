@@ -321,3 +321,19 @@ export const articles: ArticleData[] = [
 export function getArticle(slug: string): ArticleData | undefined {
   return articles.find(a => a.slug === slug)
 }
+
+/**
+ * The guides that are actually live.
+ *
+ * Anything not explicitly `status: 'published'` is treated as a draft and gets
+ * nothing: no route, no sitemap entry, no card on the hub and no place in the
+ * ItemList. The cleanest thin page is the one that does not exist, so an
+ * unpublished slug 404s rather than serving a "coming soon" stub.
+ *
+ * Everything that lists guides must read from here, not from `articles`.
+ */
+export const publishedArticles: ArticleData[] = articles.filter(a => a.status === 'published')
+
+export function getPublishedArticle(slug: string): ArticleData | undefined {
+  return publishedArticles.find(a => a.slug === slug)
+}

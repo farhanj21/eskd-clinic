@@ -2385,6 +2385,17 @@ body{overflow-x:hidden;max-width:100%;}
    article lines up with the header and every other page instead of sitting in
    a narrow fixed block. */
 .post{max-width:none;margin:0;padding:60px 0 80px;}
+/* "Publishing soon" teaser on the Learn hub. Deliberately plain text and
+   visually secondary — never a link, and never a card, because an unwritten
+   guide is not content. */
+.publishing-soon{
+  margin:34px 0 0;
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--ink-faint);
+  text-align:center;
+}
+
 /* Breadcrumb trail. The visible list is mirrored exactly by the
    BreadcrumbList schema — both come from one array in components/Breadcrumb. */
 .breadcrumb{margin-bottom:20px;}

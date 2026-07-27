@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { articles, getArticle } from '@/data/articles'
+import { publishedArticles, getPublishedArticle } from '@/data/articles'
 import GetInTouch from '@/components/GetInTouch'
 import JsonLd from '@/components/JsonLd'
 import Breadcrumb, { learnArticleTrail } from '@/components/Breadcrumb'
@@ -13,12 +13,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return articles.map(a => ({ slug: a.slug }))
+  // Drafts get no route at all, so an unpublished slug 404s.
+  return publishedArticles.map(a => ({ slug: a.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const article = getArticle(slug)
+  const article = getPublishedArticle(slug)
   if (!article) return {}
   return withSocial({
     title: article.meta.title,
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
-  const article = getArticle(slug)
+  const article = getPublishedArticle(slug)
   if (!article) notFound()
 
   const schema = {

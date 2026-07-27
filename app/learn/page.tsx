@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd'
 import Breadcrumb, { learnHubTrail } from '@/components/Breadcrumb'
 import { withSocial } from '@/lib/seo'
 import { SCHEMA_ID, SITE_URL, business, telHref } from '@/lib/business'
+import { publishedArticles } from '@/data/articles'
 
 export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
@@ -13,71 +14,31 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/learn' },
 })
 
-interface LearnCard {
-  /** Article route segment, or null while the guide is still unwritten. */
-  slug: string | null
-  title: string
-  excerpt: string
-  status: 'published' | 'coming-soon'
-}
-
-/* Matches the prototype's 6-card learn index exactly */
-const learnCards: LearnCard[] = [
-  {
-    // Must match a slug in data/articles.ts — this is the live article route.
-    slug: 'havent-been-to-the-dentist-in-years',
-    title: "Haven't been to the dentist in years?",
-    excerpt: "A gentle, no-judgement guide to coming back, what to expect, and why it's never too late.",
-    status: 'published' as const,
-  },
-  {
-    slug: null,
-    title: 'Why do my gums bleed?',
-    excerpt: 'Bleeding gums explained, and what to do about it.',
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'Do I really need a crown?',
-    excerpt: "When a filling isn't enough, and how to decide.",
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'What happens at your first visit',
-    excerpt: 'A calm walk-through of your comprehensive first appointment.',
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'Is teeth whitening safe?',
-    excerpt: 'What works, what to avoid, and how to protect your teeth.',
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'Helping an anxious child at the dentist',
-    excerpt: 'Gentle ways to make dental visits easy for kids.',
-    status: 'coming-soon' as const,
-  },
-]
-
 const LEARN_URL = `${SITE_URL}/learn`
 
 /**
  * The guides that are actually live.
  *
- * Derived from the same `learnCards` array that renders the visible cards, so
- * the schema and the page can never drift: publish a guide by giving its card a
- * slug and `status: 'published'`, and it joins both the visible list and the
- * ItemList at once, with no separate edit.
- *
- * Coming-soon cards are deliberately excluded — they are not real pages yet, and
- * listing them would misrepresent the library.
+ * This is `data/articles.ts` filtered to published — the same source that
+ * generates the article routes and the sitemap. The grid, the ItemList and the
+ * routes therefore cannot disagree: write a guide, mark it published, and it
+ * appears in all three at once with no separate edit.
  */
-const publishedGuides = learnCards.filter(
-  (card): card is LearnCard & { slug: string } => card.status === 'published' && card.slug !== null,
-)
+const publishedGuides = publishedArticles
+
+/**
+ * Topics we intend to write, shown as one quiet non-linked line.
+ *
+ * These are not pages and must never be rendered as cards or links — an empty
+ * promise dressed up as content reads as an unfinished site to a crawler, and a
+ * placeholder route would be a thin page or a soft 404. Move a title out of
+ * here and into data/articles.ts when the guide is actually written.
+ */
+const upcomingTopics = [
+  'Do I really need a crown?',
+  'Is teeth whitening safe?',
+  'Helping an anxious child at the dentist',
+]
 
 // Marks the Learn hub as a curated library rather than a page with links, and
 // connects it to the WebSite and practice nodes declared on the home page.
@@ -99,11 +60,11 @@ const learnSchema = {
       '@type': 'ItemList',
       '@id': SCHEMA_ID.learnGuides,
       name: 'Guides and articles',
-      itemListElement: publishedGuides.map((card, i) => ({
+      itemListElement: publishedGuides.map((guide, i) => ({
         '@type': 'ListItem',
         position: i + 1,
-        url: `${LEARN_URL}/${card.slug}`,
-        name: card.title,
+        url: `${LEARN_URL}/${guide.slug}`,
+        name: guide.title,
       })),
     },
   ],
@@ -160,39 +121,33 @@ export default function LearnIndex() {
             <h2>Guides &amp; articles</h2>
           </div>
           <div className="svc-grid reveal">
-            {learnCards.map((card, i) => (
-              card.status === 'published' && card.slug ? (
-                <Link
-                  key={i}
-                  href={`/learn/${card.slug}`}
-                  className="svc"
-                  style={{ cursor: 'pointer', textDecoration: 'none' }}
-                >
-                  <Photo
-                    hint="Article image"
-                    sizes="(max-width: 820px) 100vw, 33vw"
-                    style={{ height: '140px', marginBottom: '12px' }}
-                  />
-                  <h4>{card.title}</h4>
-                  <p>{card.excerpt}</p>
-                  <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
-                    Read article &rarr;
-                  </span>
-                </Link>
-              ) : (
-                <div key={i} className="svc article-card-soon">
-                  <Photo
-                    hint="Coming soon"
-                    sizes="(max-width: 820px) 100vw, 33vw"
-                    style={{ height: '140px', marginBottom: '12px' }}
-                  />
-                  <h4>{card.title}</h4>
-                  <p>{card.excerpt}</p>
-                  <span className="read-lbl">Coming soon</span>
-                </div>
-              )
+            {publishedGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/learn/${guide.slug}`}
+                className="svc"
+                style={{ cursor: 'pointer', textDecoration: 'none' }}
+              >
+                <Photo
+                  hint="Article image"
+                  sizes="(max-width: 820px) 100vw, 33vw"
+                  style={{ height: '140px', marginBottom: '12px' }}
+                />
+                <h4>{guide.title}</h4>
+                <p>{guide.excerpt}</p>
+                <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+                  Read article &rarr;
+                </span>
+              </Link>
             ))}
           </div>
+
+          {/* Plain text, never links: these guides do not exist yet. */}
+          {upcomingTopics.length > 0 && (
+            <p className="publishing-soon reveal">
+              Publishing soon: {upcomingTopics.join(' · ')}
+            </p>
+          )}
         </div>
       </section>
     </main>
