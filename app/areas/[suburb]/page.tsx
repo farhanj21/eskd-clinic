@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { suburbs, getSuburb } from '@/data/suburbs'
 import GetInTouch from '@/components/GetInTouch'
 import { withSocial } from '@/lib/seo'
-import { streetAddress } from '@/lib/business'
+import { SITE_URL, streetAddress } from '@/lib/business'
 
 interface Props {
   params: Promise<{ suburb: string }>
@@ -21,7 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return withSocial({
     title: data.meta.title,
     description: data.meta.description,
-    alternates: { canonical: `https://www.eaststkildadental.com.au/areas-we-serve/${suburb}` },
+    // Self-referencing: this page's own production URL. It previously pointed
+    // at /areas-we-serve/<suburb>, which is not a route and returns 404.
+    alternates: { canonical: `${SITE_URL}/areas/${suburb}` },
   })
 }
 

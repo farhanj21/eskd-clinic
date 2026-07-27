@@ -1,16 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/business'
-
-// Vercel sets VERCEL_ENV automatically:
-//   "production"  → main production deployment
-//   "preview"     → all staging / preview deployments
-//   "development" → local dev
-// This is the same signal next.config.ts uses for its staging X-Robots-Tag
-// header, so the two can never disagree. NEXT_PUBLIC_SITE_ENV is honoured as
-// well, for any host that is not Vercel.
-const isProduction =
-  process.env.VERCEL_ENV === 'production' ||
-  process.env.NEXT_PUBLIC_SITE_ENV === 'production'
+import { isProduction } from '@/lib/env'
 
 /**
  * AI answer engines can only cite a site their crawlers are allowed to read.
