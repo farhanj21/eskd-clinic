@@ -13,40 +13,38 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
 })
 
-// Each item carries both its short card heading and the question form someone
-// would actually type or ask. `question` is what the FAQPage node publishes;
-// Emergency doc 2 turns it into the visible heading, at which point the two are
-// literally the same string.
+/**
+ * First aid, as question-and-answer pairs.
+ *
+ * One source of truth for the visible cards AND the FAQ schema, so the question
+ * a reader sees and the question an engine matches are the same string and can
+ * never drift. Headings are phrased the way a worried person actually asks,
+ * with the action kept in the first sentence of each answer.
+ */
 const firstAid = [
   {
-    h4: 'Knocked-out tooth',
-    question: 'What should I do if a tooth is knocked out?',
-    p: 'Hold it by the white crown, never the root, and don’t scrub it. If you can, gently place it back in the socket. If not, keep it in milk. Try to see us within the hour.',
+    q: 'What should I do if a tooth is knocked out?',
+    a: 'Hold it by the white crown, never the root, and don’t scrub it. If you can, gently place it back in the socket. If not, keep it in milk. Try to see us within the hour.',
   },
   {
-    h4: 'Bad toothache',
-    question: 'What should I do for a bad toothache?',
-    p: 'Rinse with warm, salty water and take your usual pain relief. Avoid very hot, cold or sweet food. Then call us.',
+    q: 'What should I do for a bad toothache?',
+    a: 'Rinse with warm, salty water and take your usual pain relief. Avoid very hot, cold or sweet food. Then call us.',
   },
   {
-    h4: 'Broken or chipped tooth',
-    question: 'What should I do if I break or chip a tooth?',
-    p: 'Save any pieces, rinse your mouth with warm water, and press clean gauze on any bleeding. Call us to be seen.',
+    q: 'What should I do for a broken or chipped tooth?',
+    a: 'Save any pieces, rinse your mouth with warm water, and press clean gauze on any bleeding. Call us to be seen.',
   },
   {
-    h4: 'Swelling',
-    question: 'What should I do about facial or gum swelling?',
-    p: 'Swelling of the gum, jaw or face can be a sign of infection. Call us the same day so we can act quickly.',
+    q: 'What should I do about facial or gum swelling?',
+    a: 'Swelling of the gum, jaw or face can be a sign of infection. Call us the same day so we can act quickly.',
   },
   {
-    h4: 'Lost filling or crown',
-    question: 'What should I do if I lose a filling or crown?',
-    p: 'Keep the crown if you have it, and avoid chewing on that side. Call us and we’ll re-secure it.',
+    q: 'What should I do if I lose a filling or crown?',
+    a: 'Keep the crown if you have it, and avoid chewing on that side. Call us and we’ll re-secure it.',
   },
   {
-    h4: 'A baby tooth knocked out',
-    question: 'What should I do if my child knocks out a baby tooth?',
-    p: 'Do not put a baby tooth back in. Keep your child calm, bring the tooth with you, and call us for advice.',
+    q: 'What should I do if a baby tooth is knocked out?',
+    a: 'Do not put a baby tooth back in. Keep your child calm, bring the tooth with you, and call us for advice.',
   },
 ]
 
@@ -101,13 +99,10 @@ const emergencySchema = {
     {
       '@type': 'FAQPage',
       '@id': SCHEMA_ID.emergencyFaq,
-      mainEntity: [
-        ...faq.map(({ q, a }) => ({ question: q, answer: a })),
-        ...firstAid.map(({ question, p }) => ({ question, answer: p })),
-      ].map(({ question, answer }) => ({
+      mainEntity: [...faq, ...firstAid].map(({ q, a }) => ({
         '@type': 'Question',
-        name: question,
-        acceptedAnswer: { '@type': 'Answer', text: answer },
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
       })),
     },
   ],
@@ -183,11 +178,11 @@ export default function EmergencyPage() {
             <h2>Simple first aid that <em>can save a tooth</em></h2>
           </div>
           <div className="svc-grid reveal">
-            {firstAid.map((item, i) => (
-              <div key={i} className="svc">
-                <h4>{item.h4}</h4>
-                <p>{item.p}</p>
-              </div>
+            {firstAid.map((item) => (
+              <article key={item.q} className="svc">
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </article>
             ))}
           </div>
         </div>
