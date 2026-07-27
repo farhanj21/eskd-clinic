@@ -60,6 +60,16 @@ const faqs = [
   },
 ]
 
+// One self-contained, factual sentence for AI answer engines and featured
+// snippets to quote whole: who we are, what we are, where, since when, and the
+// entry price. Assembled from lib/business.ts so it can never contradict the
+// JSON-LD below. Kept plain and descriptive — no superlatives or outcome
+// claims, for AHPRA safety.
+const summarySentence =
+  `${business.name} is a gentle family and emergency dentist at ${business.address.streetAddress}, ` +
+  `caring for ${business.serviceRegion} since ${business.foundedYear}, ` +
+  `with a $${comprehensiveCareVisit.price} comprehensive first visit.`
+
 // One connected JSON-LD @graph for the home page: the practice, the four named
 // clinicians, the FAQ, and the website. Every fact comes from lib/business.ts.
 //
@@ -129,14 +139,14 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
             <h1>Quality dentistry in <em>East St Kilda</em></h1>
-            <p className="lead">From routine check-ups to cosmetic care, trusted by generations of local families across Melbourne&apos;s inner south-east.</p>
+            <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '15px' }}>
               <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
-                New patient? The Comprehensive Care Visit, $297 (valued at $499) &rarr;
+                New patient? Experience the Comprehensive Care Visit &rarr;
               </Link>
             </p>
           </div>

@@ -29,6 +29,10 @@ export const business = {
   email: 'hello@eaststkildadental.com.au',
   priceRange: '$$',
   currenciesAccepted: 'AUD',
+  /** The practice has cared for the neighbourhood since around 1980. */
+  foundedYear: 1980,
+  /** The catchment, as we describe it in prose. */
+  serviceRegion: "Melbourne's inner south-east",
   address: {
     streetAddress: '364 Dandenong Rd',
     addressLocality: 'East St Kilda',
