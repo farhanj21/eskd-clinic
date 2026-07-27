@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
-    'Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call (03) 9527 3678.',
+    `Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
-}
+})
 
 export default function FirstVisitPage() {
   return (
@@ -21,7 +24,7 @@ export default function FirstVisitPage() {
             <p className="lead">No rushed five-minute look. Your first appointment is a thorough, gentle assessment of your whole mouth, finished with a clear, honest care plan. You&apos;ll leave knowing exactly where you stand.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your first visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
               <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
@@ -34,9 +37,12 @@ export default function FirstVisitPage() {
               One simple price of $297, everything included. Nervous or overdue? You&apos;re especially welcome.
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo: a friendly welcome at reception, or a relaxed patient with the dentist.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo: a friendly welcome at reception, or a relaxed patient with the dentist."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -72,9 +78,10 @@ export default function FirstVisitPage() {
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
-            <div className="ph">
-              <span>Calm photo: the consult room, or a relaxed patient-and-dentist moment.</span>
-            </div>
+            <Photo
+              hint="Calm photo: the consult room, or a relaxed patient-and-dentist moment."
+              sizes="(max-width: 820px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>

@@ -97,7 +97,7 @@ export default function FloatBookButton() {
 
         <div className="modal-greeting">
           <div className="modal-avatar">
-            <img src="/assets/anbar.JPG" alt="Anbar" />
+            <img src="/assets/team/anbar-ganatra.webp" alt="Anbar" />
           </div>
           <div>
             <p className="modal-greeting-name">Anbar</p>

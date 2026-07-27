@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Why We\'re Different | East St Kilda Dental',
   description:
     'Decades of local trust, a gentle team, no judgement, and honest, comprehensive care. Eight reasons families choose East St Kilda Dental.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/about/why-were-different' },
-}
+})
 
 const reasons = [
   {
@@ -58,12 +61,15 @@ export default function AboutDifferentPage() {
             </p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of the team with a patient. Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of the team with a patient. Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

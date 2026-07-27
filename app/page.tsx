@@ -1,77 +1,155 @@
+import type { CSSProperties } from 'react'
 import JsonLd from '@/components/JsonLd'
-import Image from 'next/image'
 import Link from 'next/link'
+import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
+import MapEmbed from '@/components/MapEmbed'
+import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
+import { withSocial } from '@/lib/seo'
 
-export const metadata = {
+// V3 white theme — scoped to the home page only. Overriding these CSS
+// custom properties on <main> cascades to every section inside it
+// (.sec, .sec.alt, .hero-v2, cards) without affecting other routes,
+// the header, or the footer (which live outside this <main>).
+const whiteTheme: CSSProperties = {
+  ['--cream' as string]: '#FFFFFF',
+  ['--paper' as string]: '#FFFFFF',
+  ['--cream-2' as string]: '#F1EFEA',
+  background: '#FFFFFF',
+}
+
+export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
     'Gentle, judgement-free dentist in East St Kilda. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
-}
+})
 
-const dentistSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Dentist',
-  name: 'East St Kilda Dental',
-  description: 'Gentle, judgement-free family dentistry in East St Kilda since 1980.',
-  url: 'https://eaststkildadental.com.au',
-  telephone: '+61-3-9527-3678',
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '364 Dandenong Rd',
-    addressLocality: 'East St Kilda',
-    addressRegion: 'VIC',
-    postalCode: '3183',
-    addressCountry: 'AU',
+// The five questions in the "Things you might be wondering" section. Both the
+// visible <details> list and the FAQPage node below are rendered from this one
+// array, so the markup can never drift from the words on the page — a hard
+// requirement for FAQ rich results.
+const faqs = [
+  {
+    q: "It's been years since I went. Will you judge me?",
+    a: 'Never. A huge number of our patients come to us after a long gap. There are no lectures and no raised eyebrows here, only a warm welcome and a care plan to move forward.',
   },
-  openingHoursSpecification: [
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '08:30', closes: '16:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '08:30', closes: '16:30' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '16:00' },
-  ],
-  geo: { '@type': 'GeoCoordinates', latitude: -37.8714, longitude: 145.0006 },
-}
+  {
+    q: "I'm really nervous about the dentist. Can you help?",
+    a: "Yes, this is one of the things we do best. Tell us you're anxious and we'll slow right down, talk you through everything, and offer happy gas and other comfort options.",
+  },
+  {
+    q: 'How much will it cost?',
+    a: "You'll always get a clear written estimate before any treatment begins, and time to think it over. We also offer payment plans for larger treatment.",
+  },
+  {
+    q: 'Do you take my health fund?',
+    a: 'We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.',
+  },
+  {
+    q: 'What happens at my first visit?',
+    a: "A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You're never rushed.",
+  },
+]
 
-const faqSchema = {
+// One self-contained, factual sentence for AI answer engines and featured
+// snippets to quote whole: who we are, what we are, where, since when, and the
+// entry price. Assembled from lib/business.ts so it can never contradict the
+// JSON-LD below. Kept plain and descriptive — no superlatives or outcome
+// claims, for AHPRA safety.
+const summarySentence =
+  `${business.name} is a gentle family and emergency dentist at ${business.address.streetAddress}, ` +
+  `caring for ${business.serviceRegion} since ${business.foundedYear}, ` +
+  `with a $${comprehensiveCareVisit.price} comprehensive first visit.`
+
+// One connected JSON-LD @graph for the home page: the practice, the four named
+// clinicians, the FAQ, and the website. Every fact comes from lib/business.ts.
+//
+// No Review or aggregateRating markup here, deliberately, per the AHPRA
+// advertising guidance.
+const homeSchema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: "It's been years since I went. Will you judge me?", acceptedAnswer: { '@type': 'Answer', text: 'Never. A huge number of our patients come to us after a long gap. There are no lectures and no raised eyebrows here, only a warm welcome and a care plan to move forward.' } },
-    { '@type': 'Question', name: "I'm really nervous about the dentist. Can you help?", acceptedAnswer: { '@type': 'Answer', text: "Yes, this is one of the things we do best. Tell us you're anxious and we'll slow right down, talk you through everything, and offer happy gas and other comfort options." } },
-    { '@type': 'Question', name: 'How much will it cost?', acceptedAnswer: { '@type': 'Answer', text: "You'll always get a clear written estimate before any treatment begins, and time to think it over. We also offer payment plans for larger treatment." } },
-    { '@type': 'Question', name: 'Do you take my health fund?', acceptedAnswer: { '@type': 'Answer', text: 'We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.' } },
-    { '@type': 'Question', name: 'What happens at my first visit?', acceptedAnswer: { '@type': 'Answer', text: "A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You're never rushed." } },
+  '@graph': [
+    {
+      '@type': 'Dentist',
+      '@id': SCHEMA_ID.practice,
+      name: business.name,
+      url: business.url,
+      image: `${SITE_URL}/assets/incoming/meet-the-team.webp`,
+      telephone: business.telephone,
+      email: business.email,
+      priceRange: business.priceRange,
+      currenciesAccepted: business.currenciesAccepted,
+      address: { '@type': 'PostalAddress', ...business.address },
+      geo: { '@type': 'GeoCoordinates', ...business.geo },
+      hasMap: business.hasMap,
+      openingHoursSpecification: openingHours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [...h.days],
+        opens: h.opens,
+        closes: h.closes,
+      })),
+      areaServed: areasServed.map((name) => ({ '@type': 'City', name })),
+      sameAs: socialProfiles,
+      makesOffer: { '@type': 'Offer', ...comprehensiveCareVisit },
+      employee: clinicians.map((c) => ({ '@id': clinicianId(c.slug) })),
+    },
+    ...clinicians.map((c) => ({
+      '@type': 'Person',
+      '@id': clinicianId(c.slug),
+      name: c.name,
+      jobTitle: c.jobTitle,
+      worksFor: { '@id': SCHEMA_ID.practice },
+    })),
+    {
+      '@type': 'FAQPage',
+      '@id': SCHEMA_ID.faq,
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': SCHEMA_ID.website,
+      url: business.url,
+      name: business.name,
+      publisher: { '@id': SCHEMA_ID.practice },
+    },
   ],
 }
 
 export default function Home() {
   return (
-    <main>
-      <JsonLd data={dentistSchema} />
-      <JsonLd data={faqSchema} />
+    <main style={whiteTheme}>
+      <JsonLd data={homeSchema} />
 
       {/* HERO */}
       <section className="hero-v2">
         <div className="container hero-v2-grid">
           <div className="reveal">
-            <div className="eyebrow">Serving Melbourne and surrounds since 1980</div>
-            <h1>Trusted for <em>skilled, heartfelt dentistry</em></h1>
-            <p className="lead">From family check-ups to cosmetic care, we provide gentle, comprehensive dentistry trusted by generations of local families.</p>
+            <div className="eyebrow">Skilled, heartfelt dentistry</div>
+            <h1>Quality dentistry in <em>East St Kilda</em></h1>
+            <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '15px' }}>
               <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
-                New patient? The Comprehensive Care Visit, $297 (valued at $499) &rarr;
+                New patient? Experience the Comprehensive Care Visit &rarr;
               </Link>
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo: a friendly clinician with a patient mid-conversation, soft natural light.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            priority
+            src="/assets/incoming/hero.webp"
+            alt="A smiling clinician showing a dental model to a patient in the treatment room"
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -185,9 +263,13 @@ export default function Home() {
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
-            <div className="ph" style={{ borderRadius: 0, minHeight: '100%' }}>
-              <span>Calm photo: the consult room or a relaxed patient-and-dentist moment.</span>
-            </div>
+            <Photo
+              style={{ borderRadius: 0, minHeight: '100%' }}
+              src="/assets/incoming/comprehensive-care-visit.webp"
+              alt="A dentist talking with a seated patient during a comprehensive care consultation"
+              objectPosition="center 40%"
+              sizes="(max-width: 820px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -246,9 +328,15 @@ export default function Home() {
       {/* NERVOUS PATIENTS */}
       <section className="sec sage-bg" id="nervous">
         <div className="container nervous-grid">
-          <div className="ph tall reveal">
-            <span>Soft, reassuring image: calm hands, a relaxed patient, or the gentle clinic environment.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            src="/assets/incoming/nervous-patients.webp"
+            alt="A relaxed patient smiling warmly in the dental chair"
+            objectPosition="0% 40%"
+            scale={1.1}
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
@@ -322,15 +410,14 @@ export default function Home() {
       <section className="sec">
         <div className="container">
           <div className="team-lead-grid">
-            <div className="ph tall reveal">
-              <Image
-                src="/assets/team/team-home.webp"
-                alt="The East St Kilda Dental team"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                sizes="(max-width: 820px) 100vw, 40vw"
-              />
-            </div>
+            <Photo
+              tall
+              className="reveal"
+              src="/assets/incoming/meet-the-team.webp"
+              alt="The East St Kilda Dental team standing together outside the clinic entrance"
+              objectPosition="center top"
+              sizes="(max-width: 820px) 100vw, 40vw"
+            />
             <div className="reveal">
               <div className="eyebrow">The people who&apos;ll care for you</div>
               <h2>A gentle team you&apos;ll get to <em>know</em></h2>
@@ -339,47 +426,43 @@ export default function Home() {
           </div>
           <div className="team-grid-v2">
             <div className="team-member reveal">
-              <div className="ph">
-                <Image
-                  src="/assets/team/anbar-ganatra.webp"
-                  alt="Dr Anbar Ganatra – Principal Dentist"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                />
-              </div>
+              <Photo
+                src="/assets/team/anbar-ganatra.webp"
+                alt="Dr Anbar Ganatra – Principal Dentist"
+                objectPosition="center top"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
               <h4>Dr Anbar Ganatra</h4>
               <span>Principal Dentist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph">
-                <Image
-                  src="/assets/team/edmund-goldman.webp"
-                  alt="Dr Edmund Goldman – Dentist & Prosthodontist"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                />
-              </div>
+              <Photo
+                src="/assets/team/edmund-goldman.webp"
+                alt="Dr Edmund Goldman – Dentist & Prosthodontist"
+                objectPosition="center top"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
               <h4>Dr Edmund Goldman</h4>
               <span>Dentist &amp; Prosthodontist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph">
-                <Image
-                  src="/assets/team/jarrod-dean.webp"
-                  alt="Dr Jarrod Dean – General Dentist"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                />
-              </div>
+              <Photo
+                src="/assets/team/jarrod-dean.webp"
+                alt="Dr Jarrod Dean – General Dentist"
+                objectPosition="center top"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
               <h4>Dr Jarrod Dean</h4>
               <span>General Dentist</span>
             </div>
             <div className="team-member reveal">
-              <div className="ph"></div>
-              <h4>Beverly Spector</h4>
+              <Photo
+                src="/assets/team/michelle-callaghan.webp"
+                alt="Michelle Callaghan – Hygienist"
+                objectPosition="40% 95%"
+                sizes="(max-width: 820px) 50vw, 25vw"
+              />
+              <h4>Michelle Callaghan</h4>
               <span>Hygienist</span>
             </div>
           </div>
@@ -402,9 +485,13 @@ export default function Home() {
               <div><b>1</b><span>caring local team</span></div>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Heritage-feel image: the practice exterior, an old neighbourhood photo, or a multi-generational family moment.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            src="/assets/incoming/heritage.webp"
+            alt="Three generations of a family embracing and laughing together"
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -446,9 +533,15 @@ export default function Home() {
               <Link href="/fees" className="btn btn-ghost">See our fees &amp; payment options</Link>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Calm image: front desk welcome, or hands with a printed care plan.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            src="/assets/incoming/honest-about-cost.webp"
+            alt="A friendly receptionist smiling while helping a patient at the front desk"
+            objectPosition="15% 95%"
+            scale={1.05}
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -460,26 +553,12 @@ export default function Home() {
             <h2>Things you might be wondering</h2>
           </div>
           <div className="faq-v2 reveal">
-            <details open>
-              <summary>It&apos;s been years since I went. Will you judge me?</summary>
-              <p>Never. A huge number of our patients come to us after a long gap. There are no lectures and no raised eyebrows here, only a warm welcome and a care plan to move forward.</p>
-            </details>
-            <details>
-              <summary>I&apos;m really nervous about the dentist. Can you help?</summary>
-              <p>Yes, this is one of the things we do best. Tell us you&apos;re anxious and we&apos;ll slow right down, talk you through everything, and offer happy gas and other comfort options.</p>
-            </details>
-            <details>
-              <summary>How much will it cost?</summary>
-              <p>You&apos;ll always get a clear written estimate before any treatment begins, and time to think it over. We also offer payment plans for larger treatment.</p>
-            </details>
-            <details>
-              <summary>Do you take my health fund?</summary>
-              <p>We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.</p>
-            </details>
-            <details>
-              <summary>What happens at my first visit?</summary>
-              <p>A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You&apos;re never rushed.</p>
-            </details>
+            {faqs.map(({ q, a }, i) => (
+              <details key={q} open={i === 0}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -492,10 +571,10 @@ export default function Home() {
             <h2>Gentle, natural-looking results</h2>
           </div>
           <div className="gallery-v2">
-            <div className="ph reveal"><span>Before / after (understated)</span></div>
-            <div className="ph reveal"><span>Real smile, real patient</span></div>
-            <div className="ph reveal"><span>Subtle, natural result</span></div>
-            <div className="ph reveal"><span>Everyday result</span></div>
+            <Photo className="reveal" hint="Before / after (understated)" sizes="(max-width: 820px) 50vw, 25vw" />
+            <Photo className="reveal" hint="Real smile, real patient" sizes="(max-width: 820px) 50vw, 25vw" />
+            <Photo className="reveal" hint="Subtle, natural result" sizes="(max-width: 820px) 50vw, 25vw" />
+            <Photo className="reveal" hint="Everyday result" sizes="(max-width: 820px) 50vw, 25vw" />
           </div>
         </div>
       </section>
@@ -512,19 +591,19 @@ export default function Home() {
           </div>
           <div className="edu-grid">
             <div className="edu-art reveal">
-              <div className="ph"><span>Article image</span></div>
+              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
               <span>Nervous patients</span>
               <h4>Haven&apos;t been in years? Here&apos;s exactly what to expect.</h4>
               <p>A calm, step-by-step walk-through for an easier return.</p>
             </div>
             <div className="edu-art reveal">
-              <div className="ph"><span>Article image</span></div>
+              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
               <span>Sore gums</span>
               <h4>Why are my gums bleeding?</h4>
               <p>What bleeding gums are trying to tell you, and when to act.</p>
             </div>
             <div className="edu-art reveal">
-              <div className="ph"><span>Article image</span></div>
+              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
               <span>Your visit</span>
               <h4>Do I really need a crown?</h4>
               <p>How to tell, in plain language and without the pressure.</p>
@@ -582,11 +661,14 @@ export default function Home() {
             <h2>Easy to get to, easy to park</h2>
           </div>
           <div className="loc-grid">
-            <div className="ph reveal" style={{ minHeight: '340px' }}>
-              <span>Embedded Google Map · 364 Dandenong Rd, East St Kilda VIC 3183</span>
-            </div>
+            <MapEmbed
+              className="ph reveal"
+              style={{ minHeight: '340px' }}
+              title={`Map to ${business.name}, ${fullAddress}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${business.name}, ${fullAddress}`)}&output=embed`}
+            />
             <div className="reveal">
-              <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>364 Dandenong Rd, East St Kilda VIC 3183</b></p>
+              <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>{fullAddress}</b></p>
               <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>
                 Off-street parking off Orrong Road · Trams 5 &amp; 64 and bus 220 nearby · Armadale station a 10–15 min walk · Wheelchair accessible
               </p>

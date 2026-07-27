@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { services, getService } from '@/data/services'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -16,11 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const service = getService(slug)
   if (!service) return {}
-  return {
+  return withSocial({
     title: service.meta.title,
     description: service.meta.description,
     alternates: { canonical: `https://www.eaststkildadental.com.au/services/${slug}` },
-  }
+  })
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -41,15 +44,22 @@ export default async function ServicePage({ params }: Props) {
             <p className="lead">{service.heroLead}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '14px', color: 'var(--ink-faint)' }}>
               Gentle, no-judgement care &nbsp;·&nbsp; 40+ years local
             </p>
           </div>
-          <div className="ph tall reveal" style={{ minHeight: '420px' }}>
-            <span>Service image: {service.h1em}</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            priority
+            src={service.heroImage}
+            alt={service.heroAlt}
+            hint={`Service image: ${service.h1em}`}
+            sizes="(max-width: 860px) 100vw, 48vw"
+            style={{ minHeight: '420px' }}
+          />
         </div>
       </section>
 

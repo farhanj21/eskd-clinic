@@ -1,58 +1,86 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Photo from '@/components/Photo'
+import JsonLd from '@/components/JsonLd'
+import Breadcrumb, { learnHubTrail } from '@/components/Breadcrumb'
+import GuideGrid from '@/components/GuideGrid'
+import TopicChips from '@/components/TopicChips'
+import { withSocial } from '@/lib/seo'
+import { SCHEMA_ID, SITE_URL, business, telHref } from '@/lib/business'
+import { publishedArticles } from '@/data/articles'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
   description:
     'Clear, calm answers to your dental questions. Honest, easy-to-read guides with no jargon, no scare tactics, no selling — from the team at East St Kilda Dental.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/learn' },
-}
+})
 
-/* Matches the prototype's 6-card learn index exactly */
-const learnCards = [
-  {
-    slug: 'havent-been-in-years',
-    title: "Haven't been to the dentist in years?",
-    excerpt: "A gentle, no-judgement guide to coming back, what to expect, and why it's never too late.",
-    status: 'published' as const,
-  },
-  {
-    slug: null,
-    title: 'Why do my gums bleed?',
-    excerpt: 'Bleeding gums explained, and what to do about it.',
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'Do I really need a crown?',
-    excerpt: "When a filling isn't enough, and how to decide.",
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'What happens at your first visit',
-    excerpt: 'A calm walk-through of your comprehensive first appointment.',
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'Is teeth whitening safe?',
-    excerpt: 'What works, what to avoid, and how to protect your teeth.',
-    status: 'coming-soon' as const,
-  },
-  {
-    slug: null,
-    title: 'Helping an anxious child at the dentist',
-    excerpt: 'Gentle ways to make dental visits easy for kids.',
-    status: 'coming-soon' as const,
-  },
+const LEARN_URL = `${SITE_URL}/learn`
+
+/**
+ * The guides that are actually live.
+ *
+ * This is `data/articles.ts` filtered to published — the same source that
+ * generates the article routes and the sitemap. The grid, the ItemList and the
+ * routes therefore cannot disagree: write a guide, mark it published, and it
+ * appears in all three at once with no separate edit.
+ */
+const publishedGuides = publishedArticles
+
+/**
+ * Topics we intend to write, shown as one quiet non-linked line.
+ *
+ * These are not pages and must never be rendered as cards or links — an empty
+ * promise dressed up as content reads as an unfinished site to a crawler, and a
+ * placeholder route would be a thin page or a soft 404. Move a title out of
+ * here and into data/articles.ts when the guide is actually written.
+ */
+const upcomingTopics = [
+  'Do I really need a crown?',
+  'Is teeth whitening safe?',
+  'Helping an anxious child at the dentist',
 ]
+
+// Marks the Learn hub as a curated library rather than a page with links, and
+// connects it to the WebSite and practice nodes declared on the home page.
+const learnSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': SCHEMA_ID.learnCollection,
+      url: LEARN_URL,
+      name: 'Dental Education',
+      description:
+        'Clear, calm answers to common dental questions. Honest, easy-to-read guides from East St Kilda Dental.',
+      isPartOf: { '@id': SCHEMA_ID.website },
+      about: { '@id': SCHEMA_ID.practice },
+      mainEntity: { '@id': SCHEMA_ID.learnGuides },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': SCHEMA_ID.learnGuides,
+      name: 'Guides and articles',
+      itemListElement: publishedGuides.map((guide, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${LEARN_URL}/${guide.slug}`,
+        name: guide.title,
+      })),
+    },
+  ],
+}
 
 export default function LearnIndex() {
   return (
     <main>
+      <JsonLd data={learnSchema} />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
+        <div className="container">
+          <Breadcrumb trail={learnHubTrail} />
+        </div>
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Learn</div>
@@ -60,12 +88,15 @@ export default function LearnIndex() {
             <p className="lead">Honest, easy-to-read guides written to help you understand your mouth — no jargon, no scare tactics, no selling.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book a check-up</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, calm editorial image. Never stock-clinical.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, calm editorial image. Never stock-clinical."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -74,13 +105,7 @@ export default function LearnIndex() {
         <div className="container reveal" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Browse by topic</div>
           <h2>What would you like to understand?</h2>
-          <div className="topic-tags">
-            <span className="topic-tag">Nervous patients</span>
-            <span className="topic-tag">Prevention</span>
-            <span className="topic-tag">Treatments explained</span>
-            <span className="topic-tag">Kids</span>
-            <span className="topic-tag">Costs &amp; funds</span>
-          </div>
+          <TopicChips />
         </div>
       </section>
 
@@ -91,36 +116,14 @@ export default function LearnIndex() {
             <div className="eyebrow">Latest</div>
             <h2>Guides &amp; articles</h2>
           </div>
-          <div className="svc-grid reveal">
-            {learnCards.map((card, i) => (
-              card.status === 'published' && card.slug ? (
-                <Link
-                  key={i}
-                  href={`/learn/${card.slug}`}
-                  className="svc"
-                  style={{ cursor: 'pointer', textDecoration: 'none' }}
-                >
-                  <div className="ph" style={{ height: '140px', marginBottom: '12px' }}>
-                    <span>Article image</span>
-                  </div>
-                  <h4>{card.title}</h4>
-                  <p>{card.excerpt}</p>
-                  <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
-                    Read article &rarr;
-                  </span>
-                </Link>
-              ) : (
-                <div key={i} className="svc article-card-soon">
-                  <div className="ph" style={{ height: '140px', marginBottom: '12px' }}>
-                    <span>Coming soon</span>
-                  </div>
-                  <h4>{card.title}</h4>
-                  <p>{card.excerpt}</p>
-                  <span className="read-lbl">Coming soon</span>
-                </div>
-              )
-            ))}
-          </div>
+          <GuideGrid guides={publishedGuides} />
+
+          {/* Plain text, never links: these guides do not exist yet. */}
+          {upcomingTopics.length > 0 && (
+            <p className="publishing-soon reveal">
+              Publishing soon: {upcomingTopics.join(' · ')}
+            </p>
+          )}
         </div>
       </section>
     </main>

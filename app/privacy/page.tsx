@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import { withSocial } from '@/lib/seo'
+import { business, emailHref, fullAddress, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Privacy Policy | East St Kilda Dental',
   description: 'East St Kilda Dental\'s privacy policy — how we collect, use, and protect your personal information.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/privacy' },
-}
+})
 
 export default function PrivacyPage() {
   return (
@@ -72,7 +74,7 @@ export default function PrivacyPage() {
 
             <h2>8. Access & Correction</h2>
             <p>
-              You may request access to or correction of your personal information at any time by contacting us at <a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a> or by calling <a href="tel:+61395273678">(03) 9527 3678</a>.
+              You may request access to or correction of your personal information at any time by contacting us at <a href={emailHref}>{business.email}</a> or by calling <a href={telHref}>{business.telephoneDisplay}</a>.
             </p>
 
             <h2>9. Complaints</h2>
@@ -82,10 +84,10 @@ export default function PrivacyPage() {
 
             <h2>10. Contact</h2>
             <p>
-              East St Kilda Dental<br />
-              364 Dandenong Road, East St Kilda VIC 3183<br />
-              <a href="tel:+61395273678">(03) 9527 3678</a><br />
-              <a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a>
+              {business.name}<br />
+              {fullAddress}<br />
+              <a href={telHref}>{business.telephoneDisplay}</a><br />
+              <a href={emailHref}>{business.email}</a>
             </p>
           </div>
         </div>

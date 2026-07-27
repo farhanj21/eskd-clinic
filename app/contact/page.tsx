@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Photo from '@/components/Photo'
+import MapEmbed from '@/components/MapEmbed'
+import { business, localityLine, streetAddress, telHref } from '@/lib/business'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -22,12 +25,15 @@ export default function ContactPage() {
             <p className="lead">Call us, book online, or leave your details and we&apos;ll call you back. Whatever&apos;s easiest, we&apos;ll make it simple.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book online</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of reception or the team welcoming a patient.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of reception or the team welcoming a patient."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -38,8 +44,8 @@ export default function ContactPage() {
             <div className="svc">
               <h4>Call us</h4>
               <p>
-                <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
-                  (03) 9527 3678
+                <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+                  {business.telephoneDisplay}
                 </a>
               </p>
               <p>The fastest way to reach reception.</p>
@@ -47,8 +53,8 @@ export default function ContactPage() {
             <div className="svc">
               <h4>Visit us</h4>
               <p>
-                364 Dandenong Road,<br />
-                East St Kilda VIC 3183<br />
+                {streetAddress},<br />
+                {localityLine}<br />
                 (corner of Orrong Road)
               </p>
             </div>
@@ -68,15 +74,10 @@ export default function ContactPage() {
       {/* ── FIND US ──────────────────────────────────────── */}
       <section className="sec">
         <div className="container">
-          <iframe
+          <MapEmbed
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.5228534697304!2d145.00524827655942!3d-37.868064671969994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66a929a98bdf1%3A0xbda0fc5ba1f8b78a!2s364%20Dandenong%20Rd%2C%20St%20Kilda%20East%20VIC%203183!5e0!3m2!1sen!2sau!4v1749340000000!5m2!1sen!2sau"
-            width="100%"
-            height="380"
-            style={{ border: 'none', display: 'block', borderRadius: '18px' }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="East St Kilda Dental — 364 Dandenong Road"
+            title={`${business.name} — ${streetAddress}`}
+            style={{ height: '380px', borderRadius: '18px' }}
           />
           <div className="reveal" style={{ maxWidth: '48em', margin: '22px auto 0', textAlign: 'center' }}>
             <p style={{ fontSize: '17px' }}>
@@ -101,7 +102,7 @@ export default function ContactPage() {
               <div style={{ maxWidth: '30em', margin: '0 auto', textAlign: 'center', padding: '32px 0' }}>
                 <h3 style={{ color: 'var(--sage-deep)', fontFamily: 'var(--display)' }}>Thanks — we&apos;ll call you back</h3>
                 <p>We&apos;ll be in touch during opening hours. For a dental emergency call us directly on{' '}
-                  <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>(03) 9527 3678</a>.
+                  <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.
                 </p>
               </div>
             ) : (
@@ -115,7 +116,7 @@ export default function ContactPage() {
                 </button>
                 <p style={{ fontSize: '13px', color: 'var(--ink-faint)', textAlign: 'center', margin: 0 }}>
                   We&apos;ll call during opening hours. For a dental emergency, please{' '}
-                  <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)' }}>call us straight away</a>.
+                  <a href={telHref} style={{ color: 'var(--sage-deep)' }}>call us straight away</a>.
                 </p>
               </form>
             )}

@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { suburbs, getSuburb } from '@/data/suburbs'
 import GetInTouch from '@/components/GetInTouch'
+import { withSocial } from '@/lib/seo'
+import { SITE_URL, streetAddress } from '@/lib/business'
 
 interface Props {
   params: Promise<{ suburb: string }>
@@ -16,11 +18,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { suburb } = await params
   const data = getSuburb(suburb)
   if (!data) return {}
-  return {
+  return withSocial({
     title: data.meta.title,
     description: data.meta.description,
-    alternates: { canonical: `https://www.eaststkildadental.com.au/areas-we-serve/${suburb}` },
-  }
+    // Self-referencing: this page's own production URL. It previously pointed
+    // at /areas-we-serve/<suburb>, which is not a route and returns 404.
+    alternates: { canonical: `${SITE_URL}/areas/${suburb}` },
+  })
 }
 
 export default async function AreaPage({ params }: Props) {
@@ -70,7 +74,7 @@ export default async function AreaPage({ params }: Props) {
               <div className="aside-card" style={{ marginTop: '24px' }}>
                 <h3>Getting Here</h3>
                 <p>
-                  <strong>364 Dandenong Road</strong><br />
+                  <strong>{streetAddress}</strong><br />
                   East St Kilda VIC 3183
                 </p>
                 <p>

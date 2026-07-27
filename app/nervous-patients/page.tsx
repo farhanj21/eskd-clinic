@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
   description:
-    'Scared of the dentist? East St Kilda Dental specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call (03) 9527 3678.',
+    `Scared of the dentist? ${business.name} specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/nervous-patients' },
-}
+})
 
 export default function GentlePage() {
   return (
@@ -21,7 +24,7 @@ export default function GentlePage() {
             <p className="lead">If fear has kept you away, you&apos;re in the right place. Looking after anxious patients is one of the things we&apos;re known for. Tell us you&apos;re nervous, and we go entirely at your pace, with no judgement and no pressure.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book a gentle visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
               <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
@@ -34,9 +37,14 @@ export default function GentlePage() {
               No lectures. No raised eyebrows. Just a calm team that does this every day.
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, reassuring photo: a calm, relaxed patient with a gentle clinician, soft natural light.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            priority
+            src="/assets/incoming/how-we-look-after.webp"
+            alt="A clinician gently reassuring a relaxed patient in the treatment room"
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -123,9 +131,13 @@ export default function GentlePage() {
       {/* ── COMFORT OPTIONS ──────────────────────────────── */}
       <section className="sec sage-bg" id="comfort">
         <div className="container nervous-grid">
-          <div className="ph tall reveal">
-            <span>Soft, reassuring image: happy-gas setup, a calm treatment room, or a relaxed patient with headphones.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            src="/assets/incoming/comfort-is-part.webp"
+            alt="A smiling, relaxed patient chatting with the dental team in the treatment room"
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
           <div className="reveal">
             <div className="eyebrow">Whatever helps you feel safe</div>
             <h2>Comfort is part of the treatment</h2>
@@ -188,9 +200,13 @@ export default function GentlePage() {
             <p>You&apos;ll see the same friendly faces each visit, which is its own kind of reassurance.</p>
             <Link href="/about#team" className="btn btn-ghost" style={{ marginTop: '20px', display: 'inline-flex' }}>Meet the full team</Link>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm team photo: real faces, friendly and approachable, in the clinic.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            src="/assets/incoming/calm-team.webp"
+            alt="The friendly East St Kilda Dental team smiling and waving outside the clinic"
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

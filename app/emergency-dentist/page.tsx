@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Emergency Dental Care | East St Kilda Dental',
   description:
-    "Dental emergency in East St Kilda? Call (03) 9527 3678 for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.",
+    `Dental emergency in East St Kilda? Call ${business.telephoneDisplay} for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
-}
+})
 
 const firstAid = [
   {
@@ -68,7 +71,7 @@ export default function EmergencyPage() {
               Take a breath. Most dental emergencies look scarier than they feel, and we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
             </p>
             <div className="hero-cta">
-              <a href="tel:+61395273678" className="btn">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn">Call {business.telephoneDisplay}</a>
               <Link href="/book" className="btn btn-ghost">Book online</Link>
             </div>
             <div className="hero-proof">
@@ -82,9 +85,12 @@ export default function EmergencyPage() {
               Open Mon&ndash;Thu to 4pm, Fri to 4.30pm, monthly Saturdays. After hours and serious? See the red box below.
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -107,7 +113,7 @@ export default function EmergencyPage() {
           </ul>
           <p className="reveal" style={{ textAlign: 'center', marginTop: '26px', fontSize: '17px' }}>
             Not sure? Call us anyway on{' '}
-            <a href="tel:+61395273678" style={{ color: 'var(--clay-deep)', fontWeight: 600 }}>(03) 9527 3678</a>{' '}
+            <a href={telHref} style={{ color: 'var(--clay-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>{' '}
             and we&apos;ll help you work out what&apos;s needed.
           </p>
         </div>
@@ -163,7 +169,7 @@ export default function EmergencyPage() {
             You&apos;ll get a clear written estimate before any treatment, and we have payment options if you need them. If it&apos;s outside our hours and serious, please use the hospital guidance above.
           </p>
           <div style={{ marginTop: '24px' }}>
-            <a className="btn" href="tel:+61395273678">Call (03) 9527 3678</a>
+            <a className="btn" href={telHref}>Call {business.telephoneDisplay}</a>
           </div>
         </div>
       </section>
@@ -209,7 +215,7 @@ export default function EmergencyPage() {
             Our friendly team will talk you through what to do and find you the soonest possible time.
           </p>
           <div style={{ marginTop: '22px' }}>
-            <a className="btn" href="tel:+61395273678">Call (03) 9527 3678</a>
+            <a className="btn" href={telHref}>Call {business.telephoneDisplay}</a>
           </div>
           <p style={{ marginTop: '14px', fontSize: '14px', opacity: 0.85 }}>
             <Link href="/book" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>

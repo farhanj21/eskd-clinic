@@ -34,7 +34,7 @@ export default function AboutSplit() {
         <div className="about-split-image-wrap reveal from-right">
           <div className="about-split-image-border" />
           <img
-            src="/assets/clinic.png"
+            src="/assets/clinic.webp"
             alt="East St Kilda Dental clinic interior"
             className="about-split-image"
           />

@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Dentist St Kilda | East St Kilda Dental',
   description:
     'Your local dentist near St Kilda — gentle, judgement-free dental care just a short trip up Carlisle Street. 40+ years on Dandenong Road. Book online today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/dentist-st-kilda' },
-}
+})
 
 const pills = ['Acland Street', 'Fitzroy Street', 'Balaclava Station']
 
@@ -26,7 +29,7 @@ export default function DentistStKildaPage() {
             </p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
               <span>40+ years on Dandenong Road</span>
@@ -34,9 +37,12 @@ export default function DentistStKildaPage() {
               <span>Gentle, no-judgement care</span>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of the clinic or team, with a calm local feel. Never stock imagery.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of the clinic or team, with a calm local feel. Never stock imagery."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

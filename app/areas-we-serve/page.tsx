@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, streetAddress, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Areas We Serve | East St Kilda Dental',
   description:
     'East St Kilda Dental — a trusted local dentist for the inner south-east. Serving St Kilda, Balaclava, Caulfield, Elsternwick, Elwood and surrounding suburbs.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/areas-we-serve' },
-}
+})
 
 const suburbs = [
-  { href: '/',                    h4: 'East St Kilda',  p: 'Our home. We\'re at 364 Dandenong Road, East St Kilda (corner Orrong Road).', cta: 'Our clinic' },
+  { href: '/',                    h4: 'East St Kilda',  p: `Our home. We're at ${streetAddress}, ${business.address.addressLocality} (corner Orrong Road).`, cta: 'Our clinic' },
   { href: '/dentist-st-kilda',    h4: 'St Kilda',       p: 'Your local dentist, a few minutes from the bay.',                             cta: 'View St Kilda' },
   { href: '/dentist-balaclava',   h4: 'Balaclava',      p: 'One of our closest neighbourhoods.',                                          cta: 'View Balaclava' },
   { href: '/dentist-caulfield',   h4: 'Caulfield',      p: 'An easy trip west along Dandenong Road.',                                     cta: 'View Caulfield' },
@@ -33,12 +36,15 @@ export default function AreasWeServePage() {
             </p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of the clinic exterior or local street. Never stock imagery.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of the clinic exterior or local street. Never stock imagery."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

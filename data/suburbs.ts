@@ -20,7 +20,7 @@ export const suburbs: SuburbData[] = [
     intro:
       'East St Kilda Dental is your closest full-service dental clinic to St Kilda, just a short trip along Dandenong Road. We welcome St Kilda residents for everything from routine check-ups to complete smile transformations.',
     body: [
-      'St Kilda residents have been trusting East St Kilda Dental for over 40 years. Our clinic at 364 Dandenong Road is easily accessible by tram (Route 67) and has on-street parking available on Dandenong Road and surrounding streets.',
+      'St Kilda residents have been trusting East St Kilda Dental for over 40 years. Our clinic at 364 Dandenong Rd is easily accessible by tram (Route 67) and has on-street parking available on Dandenong Road and surrounding streets.',
       'We offer the full range of dental services — from general and preventive care to cosmetic dentistry, Invisalign, dental implants, and emergency appointments. Same-day emergency care is available for urgent dental situations.',
       'Our new patient offer — a comprehensive exam, digital x-rays and scale & clean for $297 (valued at $499) — is available to all new St Kilda patients.',
     ],
@@ -40,7 +40,7 @@ export const suburbs: SuburbData[] = [
     intro:
       'East St Kilda Dental is your neighbourhood dental clinic for Balaclava, just minutes away on Dandenong Road. We provide comprehensive dental care for families, couples and individuals across the Balaclava community.',
     body: [
-      'Balaclava residents are among our closest neighbours and some of our most loyal patients. From our clinic at 364 Dandenong Road, we\'re just a short walk or drive from Balaclava station and the Chapel Street shopping precinct.',
+      'Balaclava residents are among our closest neighbours and some of our most loyal patients. From our clinic at 364 Dandenong Rd, we\'re just a short walk or drive from Balaclava station and the Chapel Street shopping precinct.',
       'We take the time to understand each patient\'s unique needs, making our practice the choice for families who want a dentist who knows their name and history. Children are always welcome.',
       'Take advantage of our new patient offer — comprehensive exam, x-rays and clean for $297 (valued at $499) — to start your relationship with us on the best foot.',
     ],

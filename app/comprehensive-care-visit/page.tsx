@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'The Comprehensive Care Visit — $297 (valued at $499) | East St Kilda Dental',
   description:
     'New to East St Kilda Dental? The Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment for $297 (valued at $499). Everything included. Book online.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/comprehensive-care-visit' },
-}
+})
 
 export default function OfferPage() {
   return (
@@ -35,9 +38,14 @@ export default function OfferPage() {
               <span style={{ color: 'var(--ink-faint)', fontSize: '15px' }}>&middot; valued at $499</span>
             </p>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo: a relaxed patient with a friendly clinician, soft natural light.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            priority
+            src="/assets/incoming/see-our-fees-1.webp"
+            alt="A smiling clinician demonstrating brushing on a dental model for a seated patient"
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -73,9 +81,11 @@ export default function OfferPage() {
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
-            <div className="ph">
-              <span>Calm photo: the consult room or a relaxed patient-and-dentist moment.</span>
-            </div>
+            <Photo
+              src="/assets/incoming/see-our-fees-2.webp"
+              alt="A dentist and patient reviewing a dental X-ray together on screen during a consultation"
+              sizes="(max-width: 820px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -123,7 +133,7 @@ export default function OfferPage() {
               </div>
               <p style={{ fontSize: '13px', marginTop: '10px', color: 'var(--ink-faint)' }}>
                 Or call us on{' '}
-                <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>(03) 9527 3678</a>.
+                <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.
               </p>
             </div>
           </div>

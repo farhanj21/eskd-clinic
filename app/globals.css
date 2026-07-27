@@ -2076,6 +2076,20 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-proof>span{display:inline-flex;align-items:center;gap:7px;}
 .proof-stars{color:var(--clay);letter-spacing:2px;}
 .proof-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
+
+/* Click-to-load map facade. Keeps a megabyte of Google Maps JavaScript off the
+   critical path until a visitor actually asks for the map. */
+.map-facade{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(135deg,var(--sage-soft),var(--clay-soft));
+  border:0;color:var(--sage-deep);font-family:var(--body);text-align:center;padding:20px;
+  cursor:pointer;transition:filter .2s ease;
+}
+.map-facade:hover{filter:brightness(1.04);}
+.map-facade:focus-visible{outline:3px solid var(--sage-deep);outline-offset:-3px;}
+.map-facade svg{width:30px;height:30px;}
+.map-facade-label{font-weight:600;font-size:16px;}
+.map-facade-sub{font-size:13.5px;color:var(--ink-soft);max-width:30em;line-height:1.4;}
 @media(max-width:860px){.hero-v2-grid{grid-template-columns:1fr;gap:34px;}}
 
 /* Image placeholder */
@@ -2102,6 +2116,9 @@ body{overflow-x:hidden;max-width:100%;}
 @media(max-width:820px){.reviews-v2{grid-template-columns:1fr;}}
 
 /* Offer card */
+/* Match the reference .wrap (28px gutters) so the offer card isn't narrowed
+   by the wider responsive --gutter, which was wrapping the heading onto two lines. */
+#first-visit > .container{padding-left:28px;padding-right:28px;}
 .offer-card-v2{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--paper);}
 .offer-card-v2 .body{padding:50px 46px;}
 .offer-card-v2 h2{margin:14px 0 16px;}
@@ -2358,12 +2375,51 @@ body{overflow-x:hidden;max-width:100%;}
 
 /* ── Dental Education: learn index ──────────────────────── */
 .topic-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;justify-content:center;}
-.topic-tag{display:inline-block;background:var(--cream-2);color:var(--sage-deep);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;}
+/* Topic chips are real links to their own /learn/<topic> pages, not labels. */
+.topic-tag{
+  display:inline-block;background:var(--cream-2);color:var(--sage-deep);
+  border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;
+  text-decoration:none;border:1px solid transparent;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.topic-tag:hover{background:var(--sage-soft);border-color:var(--sage);}
+.topic-tag:focus-visible{outline:2px solid var(--sage-deep);outline-offset:2px;}
+/* The topic you are currently browsing. */
+.topic-tag.on{background:var(--sage-deep);color:var(--paper);border-color:var(--sage-deep);}
 .article-card-soon{opacity:.55;pointer-events:none;}
 .article-card-soon .read-lbl{font-size:13px;color:var(--ink-faint);}
 
 /* ── Article / Post layout ───────────────────────────────── */
-.post{max-width:760px;margin:0 auto;padding:60px var(--side-pad,24px) 80px;}
+/* Article body. No fixed measure and no auto-centring — the column starts at
+   the container gutter and flows to the container's own fluid width, so the
+   article lines up with the header and every other page instead of sitting in
+   a narrow fixed block. */
+.post{max-width:none;margin:0;padding:60px 0 80px;}
+/* "Publishing soon" teaser on the Learn hub. Deliberately plain text and
+   visually secondary — never a link, and never a card, because an unwritten
+   guide is not content. */
+.publishing-soon{
+  margin:34px 0 0;
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--ink-faint);
+  text-align:center;
+}
+
+/* Breadcrumb trail. The visible list is mirrored exactly by the
+   BreadcrumbList schema — both come from one array in components/Breadcrumb. */
+.breadcrumb{margin-bottom:20px;}
+.breadcrumb ol{
+  display:flex;flex-wrap:wrap;align-items:center;
+  list-style:none;margin:0;padding:0;
+  font-family:var(--body);font-size:14px;line-height:1.5;color:var(--ink-faint);
+}
+.breadcrumb li{display:flex;align-items:center;}
+.breadcrumb li+li::before{content:'/';margin:0 9px;color:var(--ink-faint);opacity:.55;}
+.breadcrumb a{color:var(--ink-soft);text-decoration:none;}
+.breadcrumb a:hover{color:var(--sage-deep);text-decoration:underline;}
+.breadcrumb li[aria-current="page"]{color:var(--ink-faint);}
+
 .post-back{display:inline-flex;align-items:center;gap:6px;color:var(--sage-deep);font-weight:600;font-size:14px;text-decoration:none;margin-bottom:22px;}
 .post-back:hover{color:var(--clay-deep);}
 .post-cat{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:10px;}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { business, emailHref, localityLine, streetAddress, telHref } from '@/lib/business'
 
 const countries = [
   { iso: 'au', code: '+61', name: 'Australia' },
@@ -51,7 +52,7 @@ export default function ContactSection() {
                 <div>
                   <h4>Call the clinic</h4>
                   <p>
-                    <a href="tel:+61395273678">(03) 9527 3678</a>
+                    <a href={telHref}>{business.telephoneDisplay}</a>
                     <br />
                     <span style={{color:'rgba(246,239,227,.6)',fontSize:'14px'}}>Same-day emergency lines available</span>
                   </p>
@@ -67,8 +68,8 @@ export default function ContactSection() {
                 <div>
                   <h4>Visit us</h4>
                   <p>
-                    364 Dandenong Road<br />
-                    East St Kilda VIC 3183<br />
+                    {streetAddress}<br />
+                    {localityLine}<br />
                     <span style={{color:'rgba(246,239,227,.6)',fontSize:'14px'}}>Off-street parking via Orrong Road · Tram 5, 64 · Bus 220</span>
                   </p>
                 </div>
@@ -98,7 +99,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <p><a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a></p>
+                  <p><a href={emailHref}>{business.email}</a></p>
                 </div>
               </div>
             </div>
@@ -111,8 +112,8 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 aria-label="Open East St Kilda Dental in Google Maps"
               >
-                <b>East St Kilda Dental</b>
-                <span>364 Dandenong Rd · VIC 3183</span>
+                <b>{business.name}</b>
+                <span>{streetAddress} · {business.address.addressRegion} {business.address.postalCode}</span>
                 <span className="map-cta">Open in Google Maps ↗</span>
               </a>
             </div>

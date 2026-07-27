@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Dental Fees & Costs | East St Kilda Dental — No Surprises',
   description:
     "You'll always know what something costs before it happens. $297 first visit, all major health funds, HUMM payment plans. East St Kilda Dental.",
   alternates: { canonical: 'https://www.eaststkildadental.com.au/fees' },
-}
+})
 
 const paymentOptions = [
   {
@@ -60,7 +62,7 @@ export default function FeesPage() {
           </p>
           <div className="hero-cta" style={{ justifyContent: 'center' }}>
             <Link href="/book" className="btn">Book your visit</Link>
-            <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+            <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
           </div>
           <div className="hero-proof" style={{ justifyContent: 'center' }}>
             <span>$297 first visit, all included</span>

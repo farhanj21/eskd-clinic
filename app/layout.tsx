@@ -5,6 +5,8 @@ import ScrollEffects from '@/components/ScrollEffects'
 import UtilityBar from '@/components/UtilityBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { SITE_URL, business } from '@/lib/business'
+import { SHARE_IMAGE } from '@/lib/seo'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -26,15 +28,42 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+const SITE_TITLE = 'East St Kilda Dental | gentle family and emergency dentist'
+const SITE_DESCRIPTION =
+  'Gentle, judgement-free dentist in East St Kilda, caring for local families since 1980. Comprehensive check-ups, nervous-patient care, kids and emergencies.'
+const SOCIAL_DESCRIPTION = 'Gentle, judgement-free dentist in East St Kilda since 1980.'
+
+// Site-wide defaults. Every page overrides the title, description, canonical
+// and share-card text via withSocial() in lib/seo.ts — these are the fallback
+// for anything that does not.
+//
+// metadataBase must be the production domain, even on staging, so the relative
+// og:image path resolves to the absolute URL that Open Graph requires.
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'East St Kilda Dental — Your Local Dental Home Since 1980',
+    default: SITE_TITLE,
     template: '%s | East St Kilda Dental',
   },
-  description:
-    'East St Kilda Dental — gentle, comprehensive family and cosmetic dental care in East St Kilda since 1980. Book your appointment today.',
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
   icons: {
     icon: '/assets/favicon.png',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: business.name,
+    locale: 'en_AU',
+    url: '/',
+    title: SITE_TITLE,
+    description: SOCIAL_DESCRIPTION,
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_TITLE,
+    description: SOCIAL_DESCRIPTION,
+    images: [SHARE_IMAGE.url],
   },
 }
 
@@ -42,9 +71,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${hanken.variable}`}>
       <head>
-        <link rel="preload" as="image" href="/assets/Hero Eddy  white.webp" fetchPriority="high" />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MQ9RNSZP');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+        {/*
+          No hand-written hero preload here. The one that used to live on this
+          line pointed at /assets/Hero Eddy  white.webp, which does not exist —
+          so every page fired a high-priority request that 404'd and competed
+          with the real LCP image for bandwidth. Each page's above-the-fold
+          hero uses <Photo priority>, and next/image emits the correct preload
+          with the optimised srcset for us.
+        */}
       </head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MQ9RNSZP"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <ScrollEffects />
         <UtilityBar />
         <Header />

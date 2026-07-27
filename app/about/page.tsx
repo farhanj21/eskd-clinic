@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'About Us | East St Kilda Dental — Gentle, Local Care Since 1980',
   description:
     'East St Kilda Dental has looked after this neighbourhood for over 40 years. Our story, why we\'re different, and the team who\'ll care for you.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/about' },
-}
+})
 
 export default function AboutPage() {
   return (
@@ -23,7 +26,7 @@ export default function AboutPage() {
             </p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
               <span>Since ~1980</span>
@@ -31,9 +34,12 @@ export default function AboutPage() {
               <span>Generations of local families</span>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real photo of the clinic exterior on the corner of Dandenong and Orrong Roads. Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real photo of the clinic exterior on the corner of Dandenong and Orrong Roads. Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 

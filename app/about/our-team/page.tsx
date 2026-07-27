@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Meet the Team | East St Kilda Dental',
   description:
     'A warm, experienced team who genuinely care, and who\'ll remember you next time. Meet the dentists and support team at East St Kilda Dental.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-team' },
-}
+})
 
 const clinicians = [
   {
@@ -87,12 +89,15 @@ export default function AboutTeamPage() {
             </p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
-          <div className="ph tall reveal">
-            <span>Warm, real group photo of the team. Never stock.</span>
-          </div>
+          <Photo
+            tall
+            className="reveal"
+            hint="Warm, real group photo of the team. Never stock."
+            sizes="(max-width: 860px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -106,21 +111,14 @@ export default function AboutTeamPage() {
           <div className="team-grid reveal">
             {clinicians.map((member, i) => (
               <div key={i} className="svc">
-                {'image' in member && member.image ? (
-                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
-                    <Image
-                      src={member.image as string}
-                      alt={`Photo of ${member.name}`}
-                      fill
-                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                      sizes="(max-width: 768px) 100vw, 300px"
-                    />
-                  </div>
-                ) : (
-                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
-                    <span>Warm, real photo of {member.name}. Never stock.</span>
-                  </div>
-                )}
+                <Photo
+                  src={'image' in member ? (member.image as string) : undefined}
+                  hint={`Warm, real photo of ${member.name}. Never stock.`}
+                  alt={`Photo of ${member.name}`}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  objectPosition="center top"
+                  style={{ height: '150px', marginBottom: '12px' }}
+                />
                 <h4 style={{ marginBottom: '2px' }}>{member.name}</h4>
                 <p style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px', margin: '2px 0 8px' }}>{member.role}</p>
                 <p style={{ fontSize: '15px', margin: 0 }}>{member.bio}</p>
@@ -140,21 +138,14 @@ export default function AboutTeamPage() {
           <div className="team-grid reveal">
             {practiceTeam.map((member, i) => (
               <div key={i} className="svc">
-                {'image' in member && member.image ? (
-                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
-                    <Image
-                      src={member.image as string}
-                      alt={`Photo of ${member.name}`}
-                      fill
-                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                      sizes="(max-width: 768px) 100vw, 300px"
-                    />
-                  </div>
-                ) : (
-                  <div className="ph" style={{ height: '150px', marginBottom: '12px' }}>
-                    <span>Warm, real photo of {member.name}. Never stock.</span>
-                  </div>
-                )}
+                <Photo
+                  src={'image' in member ? (member.image as string) : undefined}
+                  hint={`Warm, real photo of ${member.name}. Never stock.`}
+                  alt={`Photo of ${member.name}`}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  objectPosition="center top"
+                  style={{ height: '150px', marginBottom: '12px' }}
+                />
                 <h4 style={{ marginBottom: '2px' }}>{member.name}</h4>
                 <p style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px', margin: '2px 0 8px' }}>{member.role}</p>
                 <p style={{ fontSize: '15px', margin: 0 }}>{member.bio}</p>
