@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, type CSSProperties } from 'react'
 import Link from 'next/link'
+import { business, telHref } from '@/lib/business'
 
 type DropKey = 'services' | 'newpatients' | 'about' | 'costs' | 'more' | null
 
@@ -170,8 +171,8 @@ export default function Header() {
             <span className="ed-dot" />
             Emergency
           </Link>
-          <a href="tel:+61395273678" className="phone">
-            <span className="phone-full">(03) 9527 3678</span>
+          <a href={telHref} className="phone">
+            <span className="phone-full">{business.telephoneDisplay}</span>
             <span className="phone-mini">Call us</span>
           </a>
           <Link href="/book" className="btn">

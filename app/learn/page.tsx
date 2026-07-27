@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
@@ -62,7 +63,7 @@ export default function LearnIndex() {
             <p className="lead">Honest, easy-to-read guides written to help you understand your mouth — no jargon, no scare tactics, no selling.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book a check-up</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
           <Photo

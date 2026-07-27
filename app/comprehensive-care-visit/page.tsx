@@ -3,6 +3,7 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'The Comprehensive Care Visit — $297 (valued at $499) | East St Kilda Dental',
@@ -131,7 +132,7 @@ export default function OfferPage() {
               </div>
               <p style={{ fontSize: '13px', marginTop: '10px', color: 'var(--ink-faint)' }}>
                 Or call us on{' '}
-                <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>(03) 9527 3678</a>.
+                <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.
               </p>
             </div>
           </div>

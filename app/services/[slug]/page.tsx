@@ -5,6 +5,7 @@ import { services, getService } from '@/data/services'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -43,7 +44,7 @@ export default async function ServicePage({ params }: Props) {
             <p className="lead">{service.heroLead}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '14px', color: 'var(--ink-faint)' }}>
               Gentle, no-judgement care &nbsp;·&nbsp; 40+ years local

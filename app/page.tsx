@@ -3,17 +3,7 @@ import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
-import {
-  SITE_URL,
-  SCHEMA_ID,
-  areasServed,
-  business,
-  clinicianId,
-  clinicians,
-  comprehensiveCareVisit,
-  openingHours,
-  socialProfiles,
-} from '@/lib/business'
+import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
 
 // V3 white theme — scoped to the home page only. Overriding these CSS
@@ -143,7 +133,7 @@ export default function Home() {
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <p style={{ marginTop: '14px', fontSize: '15px' }}>
               <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
@@ -672,7 +662,7 @@ export default function Home() {
           <div className="loc-grid">
             <div className="ph reveal" style={{ minHeight: '340px' }}>
               <iframe
-                title="Map to East St Kilda Dental, 364 Dandenong Rd, East St Kilda VIC 3183"
+                title={`Map to ${business.name}, ${fullAddress}`}
                 src="https://www.google.com/maps?q=East+St+Kilda+Dental,+364+Dandenong+Rd,+East+St+Kilda+VIC+3183&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -681,7 +671,7 @@ export default function Home() {
               />
             </div>
             <div className="reveal">
-              <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>364 Dandenong Rd, East St Kilda VIC 3183</b></p>
+              <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>{fullAddress}</b></p>
               <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>
                 Off-street parking off Orrong Road · Trams 5 &amp; 64 and bus 220 nearby · Armadale station a 10–15 min walk · Wheelchair accessible
               </p>

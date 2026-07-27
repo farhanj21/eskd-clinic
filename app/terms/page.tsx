@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { withSocial } from '@/lib/seo'
+import { business, emailHref, fullAddress, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Terms & Conditions | East St Kilda Dental',
@@ -72,10 +73,10 @@ export default function TermsPage() {
 
             <h2>10. Contact</h2>
             <p>
-              East St Kilda Dental<br />
-              364 Dandenong Road, East St Kilda VIC 3183<br />
-              <a href="tel:+61395273678">(03) 9527 3678</a><br />
-              <a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a>
+              {business.name}<br />
+              {fullAddress}<br />
+              <a href={telHref}>{business.telephoneDisplay}</a><br />
+              <a href={emailHref}>{business.email}</a>
             </p>
           </div>
         </div>

@@ -3,11 +3,12 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
   description:
-    'Scared of the dentist? East St Kilda Dental specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call (03) 9527 3678.',
+    `Scared of the dentist? ${business.name} specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/nervous-patients' },
 })
 
@@ -23,7 +24,7 @@ export default function GentlePage() {
             <p className="lead">If fear has kept you away, you&apos;re in the right place. Looking after anxious patients is one of the things we&apos;re known for. Tell us you&apos;re nervous, and we go entirely at your pace, with no judgement and no pressure.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book a gentle visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
               <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'New Patient Smile Offer | East St Kilda Dental',
@@ -48,7 +49,7 @@ export default function CampaignPage() {
                 <Link href="/book" className="btn btn-primary" style={{ fontSize: '1.05rem', padding: '16px 36px' }}>
                   Claim This Offer
                 </Link>
-                <a href="tel:+61395273678" className="btn btn-ghost">(03) 9527 3678</a>
+                <a href={telHref} className="btn btn-ghost">{business.telephoneDisplay}</a>
               </div>
             </div>
           </div>

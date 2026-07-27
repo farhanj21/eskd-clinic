@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { getInTouchCopy, type GetInTouchVariant } from '@/data/getintouch'
+import { business, emailHref, fullAddress, telHref } from '@/lib/business'
 
 interface GetInTouchProps {
   variant?: GetInTouchVariant
@@ -29,18 +30,18 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
 
           <div className="gt-detail">
             <span className="ic">&#9742;</span>
-            <a href="tel:+61395273678">(03) 9527 3678</a>
+            <a href={telHref}>{business.telephoneDisplay}</a>
           </div>
           <div className="gt-detail">
             <span className="ic">&#9678;</span>
             <span>
-              <strong className="gt-name">East St Kilda Dental</strong><br />
-              364 Dandenong Rd, East St Kilda VIC 3183
+              <strong className="gt-name">{business.name}</strong><br />
+              {fullAddress}
             </span>
           </div>
           <div className="gt-detail">
             <span className="ic">&#9993;</span>
-            <a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a>
+            <a href={emailHref}>{business.email}</a>
           </div>
 
           <div className="gt-hours">
@@ -66,7 +67,7 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
           {submitted ? (
             <div style={{ padding: '40px 0', textAlign: 'center' }}>
               <h3 style={{ color: 'var(--cream)' }}>Message sent</h3>
-              <p>Thanks &mdash; we&apos;ll be in touch within one business day.<br />Prefer to call? <a href="tel:+61395273678">(03) 9527 3678</a></p>
+              <p>Thanks &mdash; we&apos;ll be in touch within one business day.<br />Prefer to call? <a href={telHref}>{business.telephoneDisplay}</a></p>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
@@ -131,7 +132,7 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
 
               <p className="gt-finehint">
                 We respond to all enquiries within one business day. Prefer to call?{' '}
-                <a href="tel:+61395273678">(03) 9527 3678</a>
+                <a href={telHref}>{business.telephoneDisplay}</a>
               </p>
 
               <button type="submit" className="gt-btn">

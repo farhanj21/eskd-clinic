@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { suburbs, getSuburb } from '@/data/suburbs'
 import GetInTouch from '@/components/GetInTouch'
 import { withSocial } from '@/lib/seo'
+import { streetAddress } from '@/lib/business'
 
 interface Props {
   params: Promise<{ suburb: string }>
@@ -71,7 +72,7 @@ export default async function AreaPage({ params }: Props) {
               <div className="aside-card" style={{ marginTop: '24px' }}>
                 <h3>Getting Here</h3>
                 <p>
-                  <strong>364 Dandenong Road</strong><br />
+                  <strong>{streetAddress}</strong><br />
                   East St Kilda VIC 3183
                 </p>
                 <p>

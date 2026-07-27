@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
+import { business, localityLine, streetAddress, telHref } from '@/lib/business'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -23,7 +24,7 @@ export default function ContactPage() {
             <p className="lead">Call us, book online, or leave your details and we&apos;ll call you back. Whatever&apos;s easiest, we&apos;ll make it simple.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book online</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
           <Photo
@@ -42,8 +43,8 @@ export default function ContactPage() {
             <div className="svc">
               <h4>Call us</h4>
               <p>
-                <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
-                  (03) 9527 3678
+                <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+                  {business.telephoneDisplay}
                 </a>
               </p>
               <p>The fastest way to reach reception.</p>
@@ -51,8 +52,8 @@ export default function ContactPage() {
             <div className="svc">
               <h4>Visit us</h4>
               <p>
-                364 Dandenong Road,<br />
-                East St Kilda VIC 3183<br />
+                {streetAddress},<br />
+                {localityLine}<br />
                 (corner of Orrong Road)
               </p>
             </div>
@@ -80,7 +81,7 @@ export default function ContactPage() {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="East St Kilda Dental — 364 Dandenong Road"
+            title={`${business.name} — ${streetAddress}`}
           />
           <div className="reveal" style={{ maxWidth: '48em', margin: '22px auto 0', textAlign: 'center' }}>
             <p style={{ fontSize: '17px' }}>
@@ -105,7 +106,7 @@ export default function ContactPage() {
               <div style={{ maxWidth: '30em', margin: '0 auto', textAlign: 'center', padding: '32px 0' }}>
                 <h3 style={{ color: 'var(--sage-deep)', fontFamily: 'var(--display)' }}>Thanks — we&apos;ll call you back</h3>
                 <p>We&apos;ll be in touch during opening hours. For a dental emergency call us directly on{' '}
-                  <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>(03) 9527 3678</a>.
+                  <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.
                 </p>
               </div>
             ) : (
@@ -119,7 +120,7 @@ export default function ContactPage() {
                 </button>
                 <p style={{ fontSize: '13px', color: 'var(--ink-faint)', textAlign: 'center', margin: 0 }}>
                   We&apos;ll call during opening hours. For a dental emergency, please{' '}
-                  <a href="tel:+61395273678" style={{ color: 'var(--sage-deep)' }}>call us straight away</a>.
+                  <a href={telHref} style={{ color: 'var(--sage-deep)' }}>call us straight away</a>.
                 </p>
               </form>
             )}

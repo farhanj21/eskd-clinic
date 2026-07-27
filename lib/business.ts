@@ -54,6 +54,23 @@ export const business = {
 } as const
 
 /**
+ * Ready-made strings for visible copy and href attributes.
+ *
+ * Import these rather than retyping the address or phone number. A stray
+ * "Dandenong Road" where the rest of the web says "Dandenong Rd" is exactly the
+ * kind of drift that costs an entity its knowledge panel.
+ */
+export const telHref = `tel:${business.telephone}`
+export const emailHref = `mailto:${business.email}`
+
+/** "364 Dandenong Rd" */
+export const streetAddress = business.address.streetAddress
+/** "East St Kilda VIC 3183" */
+export const localityLine = `${business.address.addressLocality} ${business.address.addressRegion} ${business.address.postalCode}`
+/** "364 Dandenong Rd, East St Kilda VIC 3183" */
+export const fullAddress = `${streetAddress}, ${localityLine}`
+
+/**
  * Weekly opening hours only.
  *
  * Saturday is deliberately omitted: it runs monthly, not weekly, so it would be
@@ -75,11 +92,19 @@ export const areasServed = [
 ] as const
 
 /**
- * External profiles for sameAs.
+ * External profiles, published as `sameAs` in the structured data.
  *
- * TODO Add the Facebook page and Instagram profile URLs once confirmed by the
- * practice. Placeholders are intentionally left out rather than shipped as
- * dummy strings.
+ * These are what let a search or AI engine tie the website, the Google Business
+ * Profile and the social accounts together into one entity. Only add a URL here
+ * once it has been opened and confirmed to resolve to a live profile whose
+ * name, address and phone match this file exactly — an unverified or redirecting
+ * URL weakens the entity rather than strengthening it.
+ *
+ * TODO Add, once the practice supplies and someone has opened each one:
+ *   - Facebook page URL
+ *   - Instagram profile URL
+ *   - HealthEngine listing URL
+ * Placeholders are deliberately not shipped as dummy strings.
  */
 export const socialProfiles: string[] = [
   // Google Business Profile share link (same link used in ContactSection).

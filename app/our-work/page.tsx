@@ -3,6 +3,7 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Our Work — Real Results, Real People | East St Kilda Dental',
@@ -52,7 +53,7 @@ export default function OurWorkPage() {
             </p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book a consultation</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
           <Photo

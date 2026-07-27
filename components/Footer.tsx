@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { business, emailHref, localityLine, streetAddress, telHref } from '@/lib/business'
 
 export default function Footer() {
   return (
@@ -54,11 +55,11 @@ export default function Footer() {
             <h4>Get in touch</h4>
             <ul>
               <li>
-                364 Dandenong Rd<br />
-                East St Kilda VIC 3183
+                {streetAddress}<br />
+                {localityLine}
               </li>
-              <li><a href="tel:+61395273678">(03) 9527 3678</a></li>
-              <li><a href="mailto:hello@eaststkildadental.com.au">hello@eaststkildadental.com.au</a></li>
+              <li><a href={telHref}>{business.telephoneDisplay}</a></li>
+              <li><a href={emailHref}>{business.email}</a></li>
             </ul>
             <p style={{ marginTop: '14px', fontSize: '13px' }}>We speak 7 languages</p>
           </div>

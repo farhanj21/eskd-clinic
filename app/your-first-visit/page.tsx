@@ -3,11 +3,12 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
-    'Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call (03) 9527 3678.',
+    `Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
 })
 
@@ -23,7 +24,7 @@ export default function FirstVisitPage() {
             <p className="lead">No rushed five-minute look. Your first appointment is a thorough, gentle assessment of your whole mouth, finished with a clear, honest care plan. You&apos;ll leave knowing exactly where you stand.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your first visit</Link>
-              <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
+              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
               <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
