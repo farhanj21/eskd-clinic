@@ -3,6 +3,17 @@ import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
+import {
+  SITE_URL,
+  SCHEMA_ID,
+  areasServed,
+  business,
+  clinicianId,
+  clinicians,
+  comprehensiveCareVisit,
+  openingHours,
+  socialProfiles,
+} from '@/lib/business'
 
 // V3 white theme — scoped to the home page only. Overriding these CSS
 // custom properties on <main> cascades to every section inside it
@@ -22,47 +33,95 @@ export const metadata = {
   alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
 }
 
-const dentistSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Dentist',
-  name: 'East St Kilda Dental',
-  description: 'Gentle, judgement-free family dentistry in East St Kilda since 1980.',
-  url: 'https://eaststkildadental.com.au',
-  telephone: '+61-3-9527-3678',
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '364 Dandenong Rd',
-    addressLocality: 'East St Kilda',
-    addressRegion: 'VIC',
-    postalCode: '3183',
-    addressCountry: 'AU',
+// The five questions in the "Things you might be wondering" section. Both the
+// visible <details> list and the FAQPage node below are rendered from this one
+// array, so the markup can never drift from the words on the page — a hard
+// requirement for FAQ rich results.
+const faqs = [
+  {
+    q: "It's been years since I went. Will you judge me?",
+    a: 'Never. A huge number of our patients come to us after a long gap. There are no lectures and no raised eyebrows here, only a warm welcome and a care plan to move forward.',
   },
-  openingHoursSpecification: [
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '08:30', closes: '16:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '08:30', closes: '16:30' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '16:00' },
-  ],
-  geo: { '@type': 'GeoCoordinates', latitude: -37.8714, longitude: 145.0006 },
-}
+  {
+    q: "I'm really nervous about the dentist. Can you help?",
+    a: "Yes, this is one of the things we do best. Tell us you're anxious and we'll slow right down, talk you through everything, and offer happy gas and other comfort options.",
+  },
+  {
+    q: 'How much will it cost?',
+    a: "You'll always get a clear written estimate before any treatment begins, and time to think it over. We also offer payment plans for larger treatment.",
+  },
+  {
+    q: 'Do you take my health fund?',
+    a: 'We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.',
+  },
+  {
+    q: 'What happens at my first visit?',
+    a: "A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You're never rushed.",
+  },
+]
 
-const faqSchema = {
+// One connected JSON-LD @graph for the home page: the practice, the four named
+// clinicians, the FAQ, and the website. Every fact comes from lib/business.ts.
+//
+// No Review or aggregateRating markup here, deliberately, per the AHPRA
+// advertising guidance.
+const homeSchema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: "It's been years since I went. Will you judge me?", acceptedAnswer: { '@type': 'Answer', text: 'Never. A huge number of our patients come to us after a long gap. There are no lectures and no raised eyebrows here, only a warm welcome and a care plan to move forward.' } },
-    { '@type': 'Question', name: "I'm really nervous about the dentist. Can you help?", acceptedAnswer: { '@type': 'Answer', text: "Yes, this is one of the things we do best. Tell us you're anxious and we'll slow right down, talk you through everything, and offer happy gas and other comfort options." } },
-    { '@type': 'Question', name: 'How much will it cost?', acceptedAnswer: { '@type': 'Answer', text: "You'll always get a clear written estimate before any treatment begins, and time to think it over. We also offer payment plans for larger treatment." } },
-    { '@type': 'Question', name: 'Do you take my health fund?', acceptedAnswer: { '@type': 'Answer', text: 'We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.' } },
-    { '@type': 'Question', name: 'What happens at my first visit?', acceptedAnswer: { '@type': 'Answer', text: "A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You're never rushed." } },
+  '@graph': [
+    {
+      '@type': 'Dentist',
+      '@id': SCHEMA_ID.practice,
+      name: business.name,
+      url: business.url,
+      image: `${SITE_URL}/assets/incoming/meet-the-team.webp`,
+      telephone: business.telephone,
+      email: business.email,
+      priceRange: business.priceRange,
+      currenciesAccepted: business.currenciesAccepted,
+      address: { '@type': 'PostalAddress', ...business.address },
+      geo: { '@type': 'GeoCoordinates', ...business.geo },
+      hasMap: business.hasMap,
+      openingHoursSpecification: openingHours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [...h.days],
+        opens: h.opens,
+        closes: h.closes,
+      })),
+      areaServed: areasServed.map((name) => ({ '@type': 'City', name })),
+      sameAs: socialProfiles,
+      makesOffer: { '@type': 'Offer', ...comprehensiveCareVisit },
+      employee: clinicians.map((c) => ({ '@id': clinicianId(c.slug) })),
+    },
+    ...clinicians.map((c) => ({
+      '@type': 'Person',
+      '@id': clinicianId(c.slug),
+      name: c.name,
+      jobTitle: c.jobTitle,
+      worksFor: { '@id': SCHEMA_ID.practice },
+    })),
+    {
+      '@type': 'FAQPage',
+      '@id': SCHEMA_ID.faq,
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': SCHEMA_ID.website,
+      url: business.url,
+      name: business.name,
+      publisher: { '@id': SCHEMA_ID.practice },
+    },
   ],
 }
 
 export default function Home() {
   return (
     <main style={whiteTheme}>
-      <JsonLd data={dentistSchema} />
-      <JsonLd data={faqSchema} />
+      <JsonLd data={homeSchema} />
 
       {/* HERO */}
       <section className="hero-v2">
@@ -492,26 +551,12 @@ export default function Home() {
             <h2>Things you might be wondering</h2>
           </div>
           <div className="faq-v2 reveal">
-            <details open>
-              <summary>It&apos;s been years since I went. Will you judge me?</summary>
-              <p>Never. A huge number of our patients come to us after a long gap. There are no lectures and no raised eyebrows here, only a warm welcome and a care plan to move forward.</p>
-            </details>
-            <details>
-              <summary>I&apos;m really nervous about the dentist. Can you help?</summary>
-              <p>Yes, this is one of the things we do best. Tell us you&apos;re anxious and we&apos;ll slow right down, talk you through everything, and offer happy gas and other comfort options.</p>
-            </details>
-            <details>
-              <summary>How much will it cost?</summary>
-              <p>You&apos;ll always get a clear written estimate before any treatment begins, and time to think it over. We also offer payment plans for larger treatment.</p>
-            </details>
-            <details>
-              <summary>Do you take my health fund?</summary>
-              <p>We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.</p>
-            </details>
-            <details>
-              <summary>What happens at my first visit?</summary>
-              <p>A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You&apos;re never rushed.</p>
-            </details>
+            {faqs.map(({ q, a }, i) => (
+              <details key={q} open={i === 0}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
