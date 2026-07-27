@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
+import MapEmbed from '@/components/MapEmbed'
 import { business, localityLine, streetAddress, telHref } from '@/lib/business'
 
 export default function ContactPage() {
@@ -73,15 +74,10 @@ export default function ContactPage() {
       {/* ── FIND US ──────────────────────────────────────── */}
       <section className="sec">
         <div className="container">
-          <iframe
+          <MapEmbed
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.5228534697304!2d145.00524827655942!3d-37.868064671969994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66a929a98bdf1%3A0xbda0fc5ba1f8b78a!2s364%20Dandenong%20Rd%2C%20St%20Kilda%20East%20VIC%203183!5e0!3m2!1sen!2sau!4v1749340000000!5m2!1sen!2sau"
-            width="100%"
-            height="380"
-            style={{ border: 'none', display: 'block', borderRadius: '18px' }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
             title={`${business.name} — ${streetAddress}`}
+            style={{ height: '380px', borderRadius: '18px' }}
           />
           <div className="reveal" style={{ maxWidth: '48em', margin: '22px auto 0', textAlign: 'center' }}>
             <p style={{ fontSize: '17px' }}>

@@ -41,6 +41,7 @@ export default function OfferPage() {
           <Photo
             tall
             className="reveal"
+            priority
             src="/assets/incoming/see-our-fees-1.webp"
             alt="A smiling clinician demonstrating brushing on a dental model for a seated patient"
             sizes="(max-width: 860px) 100vw, 48vw"

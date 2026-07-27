@@ -40,6 +40,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
+            priority
             src="/assets/incoming/how-we-look-after.webp"
             alt="A clinician gently reassuring a relaxed patient in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"

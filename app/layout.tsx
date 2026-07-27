@@ -78,7 +78,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         {/* End Google Tag Manager */}
-        <link rel="preload" as="image" href="/assets/Hero Eddy  white.webp" fetchPriority="high" />
+        {/*
+          No hand-written hero preload here. The one that used to live on this
+          line pointed at /assets/Hero Eddy  white.webp, which does not exist —
+          so every page fired a high-priority request that 404'd and competed
+          with the real LCP image for bandwidth. Each page's above-the-fold
+          hero uses <Photo priority>, and next/image emits the correct preload
+          with the optimised srcset for us.
+        */}
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}

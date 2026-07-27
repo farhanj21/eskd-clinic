@@ -3,6 +3,7 @@ import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
+import MapEmbed from '@/components/MapEmbed'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
 
@@ -660,16 +661,12 @@ export default function Home() {
             <h2>Easy to get to, easy to park</h2>
           </div>
           <div className="loc-grid">
-            <div className="ph reveal" style={{ minHeight: '340px' }}>
-              <iframe
-                title={`Map to ${business.name}, ${fullAddress}`}
-                src="https://www.google.com/maps?q=East+St+Kilda+Dental,+364+Dandenong+Rd,+East+St+Kilda+VIC+3183&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
-                allowFullScreen
-              />
-            </div>
+            <MapEmbed
+              className="ph reveal"
+              style={{ minHeight: '340px' }}
+              title={`Map to ${business.name}, ${fullAddress}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${business.name}, ${fullAddress}`)}&output=embed`}
+            />
             <div className="reveal">
               <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>{fullAddress}</b></p>
               <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>

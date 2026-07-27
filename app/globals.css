@@ -2076,6 +2076,20 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-proof>span{display:inline-flex;align-items:center;gap:7px;}
 .proof-stars{color:var(--clay);letter-spacing:2px;}
 .proof-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
+
+/* Click-to-load map facade. Keeps a megabyte of Google Maps JavaScript off the
+   critical path until a visitor actually asks for the map. */
+.map-facade{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(135deg,var(--sage-soft),var(--clay-soft));
+  border:0;color:var(--sage-deep);font-family:var(--body);text-align:center;padding:20px;
+  cursor:pointer;transition:filter .2s ease;
+}
+.map-facade:hover{filter:brightness(1.04);}
+.map-facade:focus-visible{outline:3px solid var(--sage-deep);outline-offset:-3px;}
+.map-facade svg{width:30px;height:30px;}
+.map-facade-label{font-weight:600;font-size:16px;}
+.map-facade-sub{font-size:13.5px;color:var(--ink-soft);max-width:30em;line-height:1.4;}
 @media(max-width:860px){.hero-v2-grid{grid-template-columns:1fr;gap:34px;}}
 
 /* Image placeholder */
