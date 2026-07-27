@@ -127,9 +127,9 @@ export default function Home() {
       <section className="hero-v2">
         <div className="container hero-v2-grid">
           <div className="reveal">
-            <div className="eyebrow">Serving Melbourne and surrounds since 1980</div>
-            <h1>Trusted for <em>skilled, heartfelt dentistry</em></h1>
-            <p className="lead">From family check-ups to cosmetic care, we provide gentle, comprehensive dentistry trusted by generations of local families.</p>
+            <div className="eyebrow">Skilled, heartfelt dentistry</div>
+            <h1>Quality dentistry in <em>East St Kilda</em></h1>
+            <p className="lead">From routine check-ups to cosmetic care, trusted by generations of local families across Melbourne&apos;s inner south-east.</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
               <a href="tel:+61395273678" className="btn btn-ghost">Call (03) 9527 3678</a>
