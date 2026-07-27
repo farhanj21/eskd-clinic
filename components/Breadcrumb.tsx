@@ -24,8 +24,16 @@ export const LEARN_SECTION = { name: 'Dental Education', href: '/learn' }
 /** Home → Dental Education, where the section itself is the current page. */
 export const learnHubTrail: Crumb[] = [HOME, { name: LEARN_SECTION.name }]
 
+/**
+ * Home → Dental Education → this page.
+ *
+ * Used by both articles and topic pages: pass whatever the page's visible H1
+ * says, so the trail always matches the heading beneath it.
+ */
+export const learnChildTrail = (name: string): Crumb[] => [HOME, LEARN_SECTION, { name }]
+
 /** Home → Dental Education → article. Pass the article's visible H1. */
-export const learnArticleTrail = (title: string): Crumb[] => [HOME, LEARN_SECTION, { name: title }]
+export const learnArticleTrail = learnChildTrail
 
 /**
  * Breadcrumb trail, visible and structured.

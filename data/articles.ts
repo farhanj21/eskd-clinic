@@ -19,6 +19,8 @@ export interface ArticleData {
   ctaBody?: string
   related?: { label: string; href: string }[]
   status?: 'published' | 'coming-soon'
+  /** Topic slugs from data/topics.ts. Drives the Browse-by-topic pages. */
+  topics?: string[]
   meta: { title: string; description: string }
 }
 
@@ -32,6 +34,7 @@ export const articles: ArticleData[] = [
     date: '2026-06-07',
     readTime: '6 min read',
     status: 'published',
+    topics: ['nervous-patients'],
     excerpt:
       "If it has been years since your last visit, your first appointment with us is mostly a calm conversation and a gentle look, with no lectures and no judgement. You will not be rushed into anything. You will leave knowing exactly where your dental health stands and with a simple, prioritised care plan, and nothing happens without your say-so.",
     sections: [
@@ -107,6 +110,7 @@ export const articles: ArticleData[] = [
     date: '2026-06-07',
     readTime: '5 min read',
     status: 'published',
+    topics: ['prevention'],
     excerpt:
       "If your gums bleed when you brush or floss, you're not alone, and it's usually very treatable. Here's what it means and what to do, without any judgement.",
     shortAnswer:
@@ -177,6 +181,7 @@ export const articles: ArticleData[] = [
     date: '2025-08-15',
     readTime: '4 min read',
     status: 'published',
+    topics: ['prevention'],
     excerpt:
       'The "every six months" rule is widely quoted — but is it right for everyone? Our dentists explain what actually determines your ideal recall schedule.',
     body: [
@@ -202,6 +207,7 @@ export const articles: ArticleData[] = [
     date: '2025-07-20',
     readTime: '5 min read',
     status: 'published',
+    topics: ['nervous-patients'],
     excerpt: 'First visits can feel daunting if you\'re not sure what\'s involved. Here\'s a clear, honest overview of exactly what happens and how long it takes.',
     body: [
       'If you haven\'t been to the dentist in a while — or if you\'re visiting a new practice for the first time — it\'s natural to feel a little uncertain about what lies ahead. Here\'s what a comprehensive new patient appointment looks like at East St Kilda Dental.',
@@ -227,6 +233,7 @@ export const articles: ArticleData[] = [
     date: '2025-06-10',
     readTime: '6 min read',
     status: 'published',
+    topics: ['treatments-explained'],
     excerpt: 'Both Invisalign and traditional braces can deliver excellent results — but they\'re not interchangeable. We break down the honest pros, cons and costs of each.',
     body: [
       'Straight teeth are no longer the exclusive domain of teenagers in metal braces. Invisalign has made orthodontic treatment accessible and discreet for adults, and braces themselves have come a long way.',
@@ -251,6 +258,7 @@ export const articles: ArticleData[] = [
     date: '2025-05-05',
     readTime: '5 min read',
     status: 'published',
+    topics: ['treatments-explained'],
     excerpt: 'Bruxism — teeth grinding — affects up to 10% of adults and can cause serious damage before you even know it\'s happening. Here\'s what to look for.',
     body: [
       'Bruxism — the technical term for teeth grinding and jaw clenching — is surprisingly common. Many people grind at night and have no idea until a dentist notices the telltale wear patterns.',
@@ -275,6 +283,7 @@ export const articles: ArticleData[] = [
     date: '2025-04-18',
     readTime: '6 min read',
     status: 'published',
+    topics: ['treatments-explained'],
     excerpt: 'If you\'re missing a tooth (or several), you have choices. We explain when implants are the better long-term decision — and when a bridge makes more sense.',
     body: [
       'Losing a tooth is more consequential than many people realise. Beyond aesthetics, a missing tooth allows adjacent teeth to drift, affects your bite, and triggers bone loss in the jaw beneath the gap.',
@@ -299,6 +308,7 @@ export const articles: ArticleData[] = [
     date: '2025-03-12',
     readTime: '5 min read',
     status: 'published',
+    topics: ['costs-and-funds'],
     excerpt: 'Many Australians don\'t realise they may be able to access their superannuation early for dental care. We explain how the process works — and when it applies.',
     body: [
       'Significant dental treatment can be a substantial expense, and many Australians struggle to afford the care they need. What\'s less widely known is that it may be possible to access your superannuation early to fund dental treatment under specific circumstances.',

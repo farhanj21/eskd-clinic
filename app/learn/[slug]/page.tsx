@@ -6,30 +6,57 @@ import GetInTouch from '@/components/GetInTouch'
 import JsonLd from '@/components/JsonLd'
 import Breadcrumb, { learnArticleTrail } from '@/components/Breadcrumb'
 import Photo from '@/components/Photo'
+import TopicView from '@/components/TopicView'
+import { getPopulatedTopic, populatedTopics } from '@/data/topics'
 import { withSocial } from '@/lib/seo'
+import { SITE_URL } from '@/lib/business'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
+/**
+ * Both guides and topic landing pages live at /learn/<slug>, which reads better
+ * and indexes more cleanly than a query parameter. This route resolves a slug
+ * to whichever it is; data/topics.ts fails the build if the two ever collide.
+ *
+ * A draft guide and an empty topic both produce no params at all, so their URLs
+ * 404 rather than serving a thin page.
+ */
 export async function generateStaticParams() {
-  // Drafts get no route at all, so an unpublished slug 404s.
-  return publishedArticles.map(a => ({ slug: a.slug }))
+  return [
+    ...publishedArticles.map(a => ({ slug: a.slug })),
+    ...populatedTopics.map(t => ({ slug: t.slug })),
+  ]
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
+
+  const topic = getPopulatedTopic(slug)
+  if (topic) {
+    return withSocial({
+      title: `${topic.label} — dental guides | East St Kilda Dental`,
+      description: topic.intro,
+      alternates: { canonical: `${SITE_URL}/learn/${slug}` },
+    })
+  }
+
   const article = getPublishedArticle(slug)
   if (!article) return {}
   return withSocial({
     title: article.meta.title,
     description: article.meta.description,
-    alternates: { canonical: `https://www.eaststkildadental.com.au/learn/${slug}` },
+    alternates: { canonical: `${SITE_URL}/learn/${slug}` },
   })
 }
 
-export default async function ArticlePage({ params }: Props) {
+export default async function LearnEntryPage({ params }: Props) {
   const { slug } = await params
+
+  const topic = getPopulatedTopic(slug)
+  if (topic) return <TopicView topic={topic} />
+
   const article = getPublishedArticle(slug)
   if (!article) notFound()
 

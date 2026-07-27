@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Photo from '@/components/Photo'
 import JsonLd from '@/components/JsonLd'
 import Breadcrumb, { learnHubTrail } from '@/components/Breadcrumb'
+import GuideGrid from '@/components/GuideGrid'
+import TopicChips from '@/components/TopicChips'
 import { withSocial } from '@/lib/seo'
 import { SCHEMA_ID, SITE_URL, business, telHref } from '@/lib/business'
 import { publishedArticles } from '@/data/articles'
@@ -103,13 +105,7 @@ export default function LearnIndex() {
         <div className="container reveal" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Browse by topic</div>
           <h2>What would you like to understand?</h2>
-          <div className="topic-tags">
-            <span className="topic-tag">Nervous patients</span>
-            <span className="topic-tag">Prevention</span>
-            <span className="topic-tag">Treatments explained</span>
-            <span className="topic-tag">Kids</span>
-            <span className="topic-tag">Costs &amp; funds</span>
-          </div>
+          <TopicChips />
         </div>
       </section>
 
@@ -120,27 +116,7 @@ export default function LearnIndex() {
             <div className="eyebrow">Latest</div>
             <h2>Guides &amp; articles</h2>
           </div>
-          <div className="svc-grid reveal">
-            {publishedGuides.map((guide) => (
-              <Link
-                key={guide.slug}
-                href={`/learn/${guide.slug}`}
-                className="svc"
-                style={{ cursor: 'pointer', textDecoration: 'none' }}
-              >
-                <Photo
-                  hint="Article image"
-                  sizes="(max-width: 820px) 100vw, 33vw"
-                  style={{ height: '140px', marginBottom: '12px' }}
-                />
-                <h4>{guide.title}</h4>
-                <p>{guide.excerpt}</p>
-                <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
-                  Read article &rarr;
-                </span>
-              </Link>
-            ))}
-          </div>
+          <GuideGrid guides={publishedGuides} />
 
           {/* Plain text, never links: these guides do not exist yet. */}
           {upcomingTopics.length > 0 && (

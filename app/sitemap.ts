@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/business'
 import { services } from '@/data/services'
 import { publishedArticles } from '@/data/articles'
+import { populatedTopics } from '@/data/topics'
 import { suburbs } from '@/data/suburbs'
 
 /**
@@ -48,6 +49,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((s) => `/services/${s.slug}`),
     // Published guides only — Google is never invited to crawl a draft.
     ...publishedArticles.map((a) => `/learn/${a.slug}`),
+    // Topic pages that actually have guides. An empty topic has no page.
+    ...populatedTopics.map((t) => `/learn/${t.slug}`),
     ...suburbs.map((s) => `/areas/${s.slug}`),
   ]
 
