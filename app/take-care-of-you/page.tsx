@@ -1,13 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'New Patient Smile Offer | East St Kilda Dental',
   description:
     'East St Kilda Dental — new patient offer includes comprehensive exam, digital x-rays and scale & clean for $297 (valued at $499). Limited availability.',
+  // Campaign landing page: kept out of the index, but still needs its own
+  // canonical so it does not inherit the layout's "/" and point at the home
+  // page, and so shared links carry the right og:url.
+  alternates: { canonical: 'https://www.eaststkildadental.com.au/take-care-of-you' },
   robots: { index: false },
-}
+})
 
 export default function CampaignPage() {
   return (

@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'About Us | East St Kilda Dental — Gentle, Local Care Since 1980',
   description:
     'East St Kilda Dental has looked after this neighbourhood for over 40 years. Our story, why we\'re different, and the team who\'ll care for you.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/about' },
-}
+})
 
 export default function AboutPage() {
   return (

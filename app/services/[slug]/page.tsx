@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { services, getService } from '@/data/services'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -17,11 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const service = getService(slug)
   if (!service) return {}
-  return {
+  return withSocial({
     title: service.meta.title,
     description: service.meta.description,
     alternates: { canonical: `https://www.eaststkildadental.com.au/services/${slug}` },
-  }
+  })
 }
 
 export default async function ServicePage({ params }: Props) {

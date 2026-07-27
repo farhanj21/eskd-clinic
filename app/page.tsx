@@ -14,6 +14,7 @@ import {
   openingHours,
   socialProfiles,
 } from '@/lib/business'
+import { withSocial } from '@/lib/seo'
 
 // V3 white theme — scoped to the home page only. Overriding these CSS
 // custom properties on <main> cascades to every section inside it
@@ -26,12 +27,12 @@ const whiteTheme: CSSProperties = {
   background: '#FFFFFF',
 }
 
-export const metadata = {
+export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
     'Gentle, judgement-free dentist in East St Kilda. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
-}
+})
 
 // The five questions in the "Things you might be wondering" section. Both the
 // visible <details> list and the FAQPage node below are rendered from this one

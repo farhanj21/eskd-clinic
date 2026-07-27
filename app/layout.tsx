@@ -5,6 +5,8 @@ import ScrollEffects from '@/components/ScrollEffects'
 import UtilityBar from '@/components/UtilityBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { SITE_URL, business } from '@/lib/business'
+import { SHARE_IMAGE } from '@/lib/seo'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -26,15 +28,42 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+const SITE_TITLE = 'East St Kilda Dental | gentle family and emergency dentist'
+const SITE_DESCRIPTION =
+  'Gentle, judgement-free dentist in East St Kilda, caring for local families since 1980. Comprehensive check-ups, nervous-patient care, kids and emergencies.'
+const SOCIAL_DESCRIPTION = 'Gentle, judgement-free dentist in East St Kilda since 1980.'
+
+// Site-wide defaults. Every page overrides the title, description, canonical
+// and share-card text via withSocial() in lib/seo.ts — these are the fallback
+// for anything that does not.
+//
+// metadataBase must be the production domain, even on staging, so the relative
+// og:image path resolves to the absolute URL that Open Graph requires.
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'East St Kilda Dental — Your Local Dental Home Since 1980',
+    default: SITE_TITLE,
     template: '%s | East St Kilda Dental',
   },
-  description:
-    'East St Kilda Dental — gentle, comprehensive family and cosmetic dental care in East St Kilda since 1980. Book your appointment today.',
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
   icons: {
     icon: '/assets/favicon.png',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: business.name,
+    locale: 'en_AU',
+    url: '/',
+    title: SITE_TITLE,
+    description: SOCIAL_DESCRIPTION,
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_TITLE,
+    description: SOCIAL_DESCRIPTION,
+    images: [SHARE_IMAGE.url],
   },
 }
 

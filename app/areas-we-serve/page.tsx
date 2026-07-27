@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Areas We Serve | East St Kilda Dental',
   description:
     'East St Kilda Dental — a trusted local dentist for the inner south-east. Serving St Kilda, Balaclava, Caulfield, Elsternwick, Elwood and surrounding suburbs.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/areas-we-serve' },
-}
+})
 
 const suburbs = [
   { href: '/',                    h4: 'East St Kilda',  p: 'Our home. We\'re at 364 Dandenong Road, East St Kilda (corner Orrong Road).', cta: 'Our clinic' },

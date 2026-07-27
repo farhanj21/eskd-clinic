@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
   description:
     'Clear, calm answers to your dental questions. Honest, easy-to-read guides with no jargon, no scare tactics, no selling — from the team at East St Kilda Dental.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/learn' },
-}
+})
 
 /* Matches the prototype's 6-card learn index exactly */
 const learnCards = [

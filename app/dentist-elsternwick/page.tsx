@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Dentist Elsternwick | East St Kilda Dental',
   description:
     'Gentle family dentistry for Elsternwick — a short trip north from the Glen Huntly Road shops. Comprehensive, unhurried care. Book online today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/dentist-elsternwick' },
-}
+})
 
 const pills = ['Glen Huntly Road', 'Elsternwick Station', 'Classic Cinemas']
 

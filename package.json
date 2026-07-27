@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "images": "node scripts/optimize-images.mjs"
+    "images": "node scripts/optimize-images.mjs",
+    "share-image": "node scripts/make-share-image.mjs"
   },
   "dependencies": {
     "next": "15.5.18",

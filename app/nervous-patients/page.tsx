@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
   description:
     'Scared of the dentist? East St Kilda Dental specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call (03) 9527 3678.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/nervous-patients' },
-}
+})
 
 export default function GentlePage() {
   return (

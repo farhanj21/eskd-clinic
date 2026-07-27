@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { suburbs, getSuburb } from '@/data/suburbs'
 import GetInTouch from '@/components/GetInTouch'
+import { withSocial } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ suburb: string }>
@@ -16,11 +17,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { suburb } = await params
   const data = getSuburb(suburb)
   if (!data) return {}
-  return {
+  return withSocial({
     title: data.meta.title,
     description: data.meta.description,
     alternates: { canonical: `https://www.eaststkildadental.com.au/areas-we-serve/${suburb}` },
-  }
+  })
 }
 
 export default async function AreaPage({ params }: Props) {

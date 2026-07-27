@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Privacy Policy | East St Kilda Dental',
   description: 'East St Kilda Dental\'s privacy policy — how we collect, use, and protect your personal information.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/privacy' },
-}
+})
 
 export default function PrivacyPage() {
   return (

@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'The Comprehensive Care Visit — $297 (valued at $499) | East St Kilda Dental',
   description:
     'New to East St Kilda Dental? The Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment for $297 (valued at $499). Everything included. Book online.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/comprehensive-care-visit' },
-}
+})
 
 export default function OfferPage() {
   return (

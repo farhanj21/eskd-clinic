@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
     'Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call (03) 9527 3678.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
-}
+})
 
 export default function FirstVisitPage() {
   return (

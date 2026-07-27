@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Terms & Conditions | East St Kilda Dental',
   description: 'Terms and conditions for East St Kilda Dental — website use, appointment policy, and service terms.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/terms' },
-}
+})
 
 export default function TermsPage() {
   return (

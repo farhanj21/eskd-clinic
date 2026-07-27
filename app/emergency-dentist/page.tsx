@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import { withSocial } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: 'Emergency Dental Care | East St Kilda Dental',
   description:
     "Dental emergency in East St Kilda? Call (03) 9527 3678 for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.",
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
-}
+})
 
 const firstAid = [
   {
