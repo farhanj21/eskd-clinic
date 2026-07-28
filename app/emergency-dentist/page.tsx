@@ -118,23 +118,20 @@ export default function EmergencyPage() {
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Dental emergency?</div>
+            {/* The emotional line stays the only H1. This H2 carries the search
+                term and the suburb, honestly hedged — not a guarantee. */}
             <h1>In pain? <em>We&apos;ll help you today.</em></h1>
+            <h2 className="hero-keyline">Emergency dentist in East St Kilda, same-day care where possible.</h2>
             <p className="lead">
-              Take a breath. Most dental emergencies look scarier than they feel, and we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
+              Take a breath. Most dental emergencies look scarier than they feel, and as an emergency dentist in East St Kilda we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
             </p>
             <div className="hero-cta">
               <a href={telHref} className="btn">Call {business.telephoneDisplay}</a>
               <Link href="/book" className="btn btn-ghost">Book online</Link>
             </div>
-            <div className="hero-proof">
-              <span>Same-day care where possible</span>
-              <span className="proof-dot" />
-              <span>Gentle with nervous patients</span>
-              <span className="proof-dot" />
-              <span>40+ years local</span>
-            </div>
+
             <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
-              Open Mon&ndash;Thu to 4pm, Fri to 4.30pm, monthly Saturdays. After hours and serious? See the red box below.
+              Open Mon&ndash;Thu to 4pm, Fri to 4.30pm, monthly Saturdays.
             </p>
           </div>
           <Photo
