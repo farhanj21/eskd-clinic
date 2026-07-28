@@ -14,6 +14,25 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
 })
 
+// Treatment pages behind the conditions on this page. Only the conditions that
+// genuinely map to a treatment carry a link, with the treatment name as the
+// anchor text — a few meaningful links beat many.
+const CROWNS = { label: 'crowns & bridges', href: '/services/crowns-and-bridges' }
+const FILLINGS = { label: 'fillings', href: '/services/fillings' }
+const ROOT_CANAL = { label: 'root canal therapy', href: '/services/root-canal' }
+
+// Nearby suburbs, for "emergency dentist near me" and per-suburb intent.
+// Only suburbs with a live, dedicated page are listed — these are the pages the
+// nav and /areas-we-serve already point at. East St Kilda is the home page, so
+// it is not repeated here.
+const nearbySuburbs = [
+  { label: 'St Kilda', href: '/dentist-st-kilda' },
+  { label: 'Balaclava', href: '/dentist-balaclava' },
+  { label: 'Elwood', href: '/dentist-elwood' },
+  { label: 'Elsternwick', href: '/dentist-elsternwick' },
+  { label: 'Caulfield', href: '/dentist-caulfield' },
+]
+
 /**
  * First aid, as question-and-answer pairs.
  *
@@ -21,8 +40,11 @@ export const metadata: Metadata = withSocial({
  * a reader sees and the question an engine matches are the same string and can
  * never drift. Headings are phrased the way a worried person actually asks,
  * with the action kept in the first sentence of each answer.
+ *
+ * `related` is presentational only and is deliberately kept out of the schema —
+ * the FAQ answer must stay exactly the text a reader sees.
  */
-const firstAid = [
+const firstAid: { q: string; a: string; related?: { label: string; href: string }[] }[] = [
   {
     q: 'What should I do if a tooth is knocked out?',
     a: 'Hold it by the white crown, never the root, and don’t scrub it. If you can, gently place it back in the socket. If not, keep it in milk. Try to see us within the hour.',
@@ -30,18 +52,22 @@ const firstAid = [
   {
     q: 'What should I do for a bad toothache?',
     a: 'Rinse with warm, salty water and take your usual pain relief. Avoid very hot, cold or sweet food. Then call us.',
+    related: [ROOT_CANAL],
   },
   {
     q: 'What should I do for a broken or chipped tooth?',
     a: 'Save any pieces, rinse your mouth with warm water, and press clean gauze on any bleeding. Call us to be seen.',
+    related: [CROWNS, FILLINGS],
   },
   {
     q: 'What should I do about facial or gum swelling?',
     a: 'Swelling of the gum, jaw or face can be a sign of infection. Call us the same day so we can act quickly.',
+    related: [ROOT_CANAL],
   },
   {
     q: 'What should I do if I lose a filling or crown?',
     a: 'Keep the crown if you have it, and avoid chewing on that side. Call us and we’ll re-secure it.',
+    related: [CROWNS],
   },
   {
     q: 'What should I do if a baby tooth is knocked out?',
@@ -180,6 +206,17 @@ export default function EmergencyPage() {
               <article key={item.q} className="svc">
                 <h3>{item.q}</h3>
                 <p>{item.a}</p>
+                {item.related && (
+                  <p className="related">
+                    Related:{' '}
+                    {item.related.map((r, i) => (
+                      <span key={r.href}>
+                        {i > 0 && ' · '}
+                        <Link href={r.href}>{r.label}</Link>
+                      </span>
+                    ))}
+                  </p>
+                )}
               </article>
             ))}
           </div>
@@ -268,6 +305,23 @@ export default function EmergencyPage() {
           </div>
           <p style={{ marginTop: '14px', fontSize: '14px', opacity: 0.85 }}>
             <Link href="/book" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Local intent: names the suburbs we cover and links each to its own
+          page. Informational, not a sales line. */}
+      <section className="sec" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
+        <div className="container reveal">
+          <p className="serves">
+            Emergency care for the inner south-east:{' '}
+            {nearbySuburbs.map((s, i) => (
+              <span key={s.href}>
+                {i > 0 && ', '}
+                <Link href={s.href}>{s.label}</Link>
+              </span>
+            ))}
+            .
           </p>
         </div>
       </section>
