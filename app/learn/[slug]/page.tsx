@@ -115,6 +115,8 @@ export default async function LearnEntryPage({ params }: Props) {
           {/* Hero image placeholder */}
           <Photo
             className="post-hero"
+            src={article.image}
+            alt={article.title}
             hint={`Article image — ${article.title}`}
             sizes="(max-width: 820px) 100vw, 60vw"
           />

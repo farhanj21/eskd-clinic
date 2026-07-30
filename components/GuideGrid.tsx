@@ -20,6 +20,8 @@ export default function GuideGrid({ guides }: { guides: ArticleData[] }) {
           style={{ cursor: 'pointer', textDecoration: 'none' }}
         >
           <Photo
+            src={guide.image}
+            alt={guide.title}
             hint="Article image"
             sizes="(max-width: 820px) 100vw, 33vw"
             style={{ height: '140px', marginBottom: '12px' }}
