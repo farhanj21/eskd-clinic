@@ -31,8 +31,11 @@ export default function ContactPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/contact.webp"
+            alt="Dentist taking a selfie with a smiling patient in the clinic"
             hint="Warm, real photo of reception or the team welcoming a patient."
             sizes="(max-width: 860px) 100vw, 48vw"
+            priority
           />
         </div>
       </section>
