@@ -83,21 +83,34 @@ export default async function LearnEntryPage({ params }: Props) {
           {/* Back link */}
           <Link href="/learn" className="post-back">&larr; Back to dental education</Link>
 
-          {/* Category breadcrumb */}
-          <div className="post-cat">Learn / {article.eyebrow}</div>
+          <div className="post-head-grid">
+            <div>
+              {/* Category breadcrumb */}
+              <div className="post-cat">Learn / {article.eyebrow}</div>
 
-          {/* Title */}
-          <h1>{article.title}</h1>
+              {/* Title */}
+              <h1>{article.title}</h1>
 
-          {/* Byline */}
-          {article.author && (
-            <div className="byline">
-              Reviewed by {article.author} &middot; {article.readTime}
+              {/* Byline */}
+              {article.author && (
+                <div className="byline">
+                  Reviewed by {article.author} &middot; {article.readTime}
+                </div>
+              )}
+              {!article.author && (
+                <div className="byline">{article.readTime}</div>
+              )}
             </div>
-          )}
-          {!article.author && (
-            <div className="byline">{article.readTime}</div>
-          )}
+
+            {/* Hero image */}
+            <Photo
+              className="post-hero"
+              src={article.image}
+              alt={article.title}
+              hint={`Article image — ${article.title}`}
+              sizes="(max-width: 820px) 100vw, 42vw"
+            />
+          </div>
 
           {/* Short answer box (optional) */}
           {article.shortAnswer && (
@@ -111,15 +124,6 @@ export default async function LearnEntryPage({ params }: Props) {
           {!article.shortAnswer && (
             <p className="answer">{article.excerpt}</p>
           )}
-
-          {/* Hero image placeholder */}
-          <Photo
-            className="post-hero"
-            src={article.image}
-            alt={article.title}
-            hint={`Article image — ${article.title}`}
-            sizes="(max-width: 820px) 100vw, 60vw"
-          />
 
           {/* Body: structured sections (h2 + paragraphs) */}
           {article.sections && article.sections.length > 0 && (
