@@ -46,6 +46,7 @@ const clinicians = [
     name: 'Beverly Spector',
     role: 'Hygienist',
     bio: 'Beverly helps keep your teeth and gums healthy with gentle, attentive cleans.',
+    image: '/assets/team/beverly-spector.webp',
   },
 ]
 
@@ -54,6 +55,7 @@ const practiceTeam = [
     name: 'Daniel Loh',
     role: 'Practice Manager',
     bio: 'Daniel keeps the practice running smoothly and looks after your experience from first call to follow-up.',
+    image: '/assets/team/daniel-loh2.webp',
   },
   {
     name: 'Michelle Mirjam',
@@ -95,6 +97,8 @@ export default function AboutTeamPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/meet-the-team.webp"
+            alt="Group photo of the team"
             hint="Warm, real group photo of the team. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
