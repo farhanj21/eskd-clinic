@@ -40,8 +40,11 @@ export default function FirstVisitPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/your-first-image-1.webp"
+            alt="Patient completing first visit paperwork with a dental team member"
             hint="Warm, real photo: a friendly welcome at reception, or a relaxed patient with the dentist."
             sizes="(max-width: 860px) 100vw, 48vw"
+            priority
           />
         </div>
       </section>
@@ -79,6 +82,8 @@ export default function FirstVisitPage() {
               </p>
             </div>
             <Photo
+              src="/assets/incoming/your-first-image-2.webp"
+              alt="Dentist showing a patient their dental X-ray during a consultation"
               hint="Calm photo: the consult room, or a relaxed patient-and-dentist moment."
               sizes="(max-width: 820px) 100vw, 50vw"
             />
