@@ -2465,10 +2465,12 @@ body{overflow-x:hidden;max-width:100%;}
 
 .post-back{display:inline-flex;align-items:center;gap:6px;color:var(--sage-deep);font-weight:600;font-size:14px;text-decoration:none;margin-bottom:22px;}
 .post-back:hover{color:var(--clay-deep);}
+.post-head-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.8fr);gap:36px;align-items:center;margin:0 0 32px;}
+.post-head-grid h1{margin-bottom:0;}
 .post-cat{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:10px;}
 .byline{font-size:14px;color:var(--ink-faint);margin:10px 0 28px;}
 .answer{font-size:19px;line-height:1.7;color:var(--ink);background:var(--sage-tint);border-radius:14px;padding:24px 28px;margin:24px 0 32px;border-left:4px solid var(--sage);}
-.post-hero{width:100%;min-height:300px;margin:0 0 40px;border-radius:18px;}
+.post-hero{width:100%;min-height:300px;margin:0;border-radius:18px;}
 .post-body h2{font-size:clamp(20px,2.5vw,26px);font-family:var(--display);margin:40px 0 14px;color:var(--ink);}
 .post-body p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin:0 0 20px;}
 .post-cta{background:var(--sage-tint);border:1px solid var(--sage-soft);border-radius:18px;padding:36px;text-align:center;margin:44px 0;}
@@ -2479,6 +2481,11 @@ body{overflow-x:hidden;max-width:100%;}
 .ansbox{background:var(--sage-tint);border:1px solid var(--sage-soft);border-radius:14px;padding:24px 28px;margin:28px 0;}
 .ansbox .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:8px;}
 .ansbox p{font-size:17px;line-height:1.7;color:var(--ink);margin:0;}
+
+@media(max-width:820px){
+  .post-head-grid{grid-template-columns:1fr;gap:22px;align-items:start;}
+  .post-hero{min-height:260px;}
+}
 
 /* ── New Patients pages ──────────────────────────────────── */
 

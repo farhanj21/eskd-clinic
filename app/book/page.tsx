@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import MapEmbed from '@/components/MapEmbed'
 import { withSocial } from '@/lib/seo'
 import { business, fullAddress, telHref } from '@/lib/business'
 
@@ -123,9 +124,12 @@ export default function BookingPage() {
       <section className="sec alt">
         <div className="container">
           <div className="loc-grid">
-            <div className="ph reveal" style={{ minHeight: '340px' }}>
-              <span>Embedded Google Map &middot; {fullAddress}</span>
-            </div>
+            <MapEmbed
+              className="reveal"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${business.name}, ${fullAddress}`)}&output=embed`}
+              title={`${business.name} — ${fullAddress}`}
+              style={{ minHeight: '340px', borderRadius: '18px' }}
+            />
             <div className="reveal">
               <p style={{ marginBottom: '6px' }}>
                 <b style={{ color: 'var(--ink)' }}>{fullAddress}</b>
@@ -134,9 +138,9 @@ export default function BookingPage() {
                 On the corner of Orrong Road, where East St Kilda, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
               </p>
               <ul className="hours">
-                <li><span>Monday &ndash; Thursday</span><b>8.30am &ndash; 4.00pm</b></li>
-                <li><span>Friday</span><b>8.30am &ndash; 4.30pm</b></li>
-                <li><span>Saturday (monthly)</span><b>8.00am &ndash; 4.00pm</b></li>
+                <li><span>Monday &ndash; Thursday</span><b>8.30am &ndash; 6.00pm</b></li>
+                <li><span>Friday</span><b>8.30am &ndash; 5.00pm</b></li>
+                <li><span>Saturday</span><b>10.00am &ndash; 4.00pm</b></li>
                 <li><span>Sunday</span><b>Closed</b></li>
               </ul>
             </div>

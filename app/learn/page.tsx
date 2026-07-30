@@ -94,8 +94,11 @@ export default function LearnIndex() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/dental-ed-hero.webp"
+            alt="Dentist explaining an X-ray to a smiling patient in the treatment room"
             hint="Warm, calm editorial image. Never stock-clinical."
             sizes="(max-width: 860px) 100vw, 48vw"
+            priority
           />
         </div>
       </section>
