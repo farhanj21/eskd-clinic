@@ -47,9 +47,9 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
           <div className="gt-hours">
             <h4>Opening hours</h4>
             <ul>
-              <li><span>Mon &ndash; Thu</span><b>8.30am &ndash; 4.00pm</b></li>
-              <li><span>Friday</span><b>8.30am &ndash; 4.30pm</b></li>
-              <li><span>Saturday (monthly)</span><b>8.00am &ndash; 4.00pm</b></li>
+              <li><span>Mon &ndash; Thu</span><b>8.30am &ndash; 6.00pm</b></li>
+              <li><span>Friday</span><b>8.30am &ndash; 5.00pm</b></li>
+              <li><span>Saturday</span><b>10.00am &ndash; 4.00pm</b></li>
               <li><span>Sunday</span><b>Closed</b></li>
             </ul>
           </div>

@@ -676,9 +676,9 @@ export default function Home() {
                 On the corner of Dandenong and Orrong Roads, easy to reach by car, tram or train.
               </p>
               <ul className="hours-list">
-                <li><span>Monday – Thursday</span><b>8.30am – 4.00pm</b></li>
-                <li><span>Friday</span><b>8.30am – 4.30pm</b></li>
-                <li><span>Saturday (monthly)</span><b>8.00am – 4.00pm</b></li>
+                <li><span>Monday – Thursday</span><b>8.30am – 6.00pm</b></li>
+                <li><span>Friday</span><b>8.30am – 5.00pm</b></li>
+                <li><span>Saturday</span><b>10.00am – 4.00pm</b></li>
                 <li><span>Sunday</span><b>Closed</b></li>
               </ul>
             </div>
