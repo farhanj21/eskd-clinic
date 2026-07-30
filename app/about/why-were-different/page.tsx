@@ -67,8 +67,11 @@ export default function AboutDifferentPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/meet-the-team.webp"
+            alt="East St Kilda Dental team standing outside the clinic"
             hint="Warm, real photo of the team with a patient. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
+            priority
           />
         </div>
       </section>
