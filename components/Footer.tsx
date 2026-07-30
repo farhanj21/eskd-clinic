@@ -61,7 +61,6 @@ export default function Footer() {
               <li><a href={telHref}>{business.telephoneDisplay}</a></li>
               <li><a href={emailHref}>{business.email}</a></li>
             </ul>
-            <p style={{ marginTop: '14px', fontSize: '13px' }}>We speak 7 languages</p>
           </div>
 
         </div>

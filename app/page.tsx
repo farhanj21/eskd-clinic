@@ -466,9 +466,9 @@ export default function Home() {
               <span>Hygienist</span>
             </div>
           </div>
-          <div className="lang-band reveal">
+          {/* <div className="lang-band reveal">
             <b>We speak your language.</b> Our team can care for you in English, Mandarin, Hebrew, Russian, Hindi, Tamil and Kannada.
-          </div>
+          </div> */}
         </div>
       </section>
 
