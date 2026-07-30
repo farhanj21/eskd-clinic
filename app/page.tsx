@@ -590,24 +590,69 @@ export default function Home() {
             </p>
           </div>
           <div className="edu-grid">
-            <div className="edu-art reveal">
-              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
-              <span>Nervous patients</span>
+            <Link
+              href="/learn/havent-been-to-the-dentist-in-years"
+              className="svc reveal"
+              style={{ cursor: 'pointer', textDecoration: 'none' }}
+            >
+              <Photo
+                src="/assets/incoming/article-1.webp"
+                alt="Dentist explaining an X-ray to a patient in the chair"
+                hint="Article image"
+                sizes="(max-width: 820px) 100vw, 33vw"
+                style={{ height: '140px', marginBottom: '12px' }}
+              />
+              <span style={{ fontSize: '12.5px', color: 'var(--clay-deep)', fontWeight: 600, letterSpacing: '.05em', textTransform: 'uppercase' }}>
+                Nervous patients
+              </span>
               <h4>Haven&apos;t been in years? Here&apos;s exactly what to expect.</h4>
               <p>A calm, step-by-step walk-through for an easier return.</p>
-            </div>
-            <div className="edu-art reveal">
-              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
-              <span>Sore gums</span>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+                Read article &rarr;
+              </span>
+            </Link>
+            <Link
+              href="/learn/bleeding-gums"
+              className="svc reveal"
+              style={{ cursor: 'pointer', textDecoration: 'none' }}
+            >
+              <Photo
+                src="/assets/incoming/article-2.webp"
+                alt="Dentist using a dental model to explain gum health to a patient"
+                hint="Article image"
+                sizes="(max-width: 820px) 100vw, 33vw"
+                style={{ height: '140px', marginBottom: '12px' }}
+              />
+              <span style={{ fontSize: '12.5px', color: 'var(--clay-deep)', fontWeight: 600, letterSpacing: '.05em', textTransform: 'uppercase' }}>
+                Gum health
+              </span>
               <h4>Why are my gums bleeding?</h4>
               <p>What bleeding gums are trying to tell you, and when to act.</p>
-            </div>
-            <div className="edu-art reveal">
-              <Photo hint="Article image" sizes="(max-width: 820px) 100vw, 33vw" />
-              <span>Your visit</span>
-              <h4>Do I really need a crown?</h4>
-              <p>How to tell, in plain language and without the pressure.</p>
-            </div>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+                Read article &rarr;
+              </span>
+            </Link>
+            <Link
+              href="/learn/how-often-should-you-see-the-dentist"
+              className="svc reveal"
+              style={{ cursor: 'pointer', textDecoration: 'none' }}
+            >
+              <Photo
+                src="/assets/incoming/article-3.webp"
+                alt="Patient receiving a dental check-up in the clinic"
+                hint="Article image"
+                sizes="(max-width: 820px) 100vw, 33vw"
+                style={{ height: '140px', marginBottom: '12px' }}
+              />
+              <span style={{ fontSize: '12.5px', color: 'var(--clay-deep)', fontWeight: 600, letterSpacing: '.05em', textTransform: 'uppercase' }}>
+                Prevention
+              </span>
+              <h4>How Often Should You Really See the Dentist?</h4>
+              <p>What actually determines your ideal check-up schedule.</p>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+                Read article &rarr;
+              </span>
+            </Link>
           </div>
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
             <Link href="/learn" className="btn btn-ghost">Browse the full library</Link>
