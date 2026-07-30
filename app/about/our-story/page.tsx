@@ -32,6 +32,8 @@ export default function AboutStoryPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/our-story-hero.webp"
+            alt="Clinic exterior on the corner"
             hint="Warm, real hero photo of the clinic exterior on the corner, with local character. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -43,6 +45,8 @@ export default function AboutStoryPage() {
         <div className="container">
           <div className="band reveal">
             <Photo
+              src="/assets/incoming/our-story-hero2.webp"
+              alt="Image of the clinic exterior on the corner"
               hint="Warm, real photo: the building or street today, or an early/archival image if one exists. Never stock."
               sizes="(max-width: 860px) 100vw, 48vw"
               style={{ minHeight: '320px' }}
@@ -63,9 +67,12 @@ export default function AboutStoryPage() {
         <div className="container">
           <div className="band rev reveal">
             <Photo
-              hint="Warm, real photo of Dr Eddie Goldman, or a long-standing patient or family. Never stock."
-              sizes="(max-width: 860px) 100vw, 48vw"
-              style={{ minHeight: '320px' }}
+               src="/assets/team/edmund-goldman.webp"
+               alt="Dr Edmund Goldman smiling in the clinic"
+               hint="Warm, real photo of Dr Eddie Goldman, or a long-standing patient or family. Never stock."
+               sizes="(max-width: 860px) 100vw, 48vw"
+               style={{ minHeight: '320px' }}
+               objectPosition="center 38%"
             />
             <div className="bandtext">
               <div className="eyebrow">Chapter two</div>
@@ -86,9 +93,11 @@ export default function AboutStoryPage() {
         <div className="container">
           <div className="band reveal">
             <Photo
-              hint="Warm, real photo of Dr Anbar with a patient, gentle and reassuring. Never stock."
-              sizes="(max-width: 860px) 100vw, 48vw"
-              style={{ minHeight: '320px' }}
+               src="/assets/team/anbar-ganatra.webp"
+               alt="Dr Edmund Goldman smiling in the clinic"
+               hint="Warm, real photo of Dr Anbar with a patient, gentle and reassuring. Never stock"
+               sizes="(max-width: 860px) 100vw, 48vw"
+               style={{ minHeight: '320px' }}
             />
             <div className="bandtext">
               <div className="eyebrow">Chapter three</div>
