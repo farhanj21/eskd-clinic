@@ -265,10 +265,9 @@ export default function Home() {
             </div>
             <Photo
               style={{ borderRadius: 0, minHeight: '100%' }}
-              src="/assets/incoming/comprehensive-care-visit.webp"
+              src="/assets/incoming/comprehensive2.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
-              objectPosition="center 40%"
-              sizes="(max-width: 820px) 100vw, 50vw"
+     
             />
           </div>
         </div>
