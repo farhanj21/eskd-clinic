@@ -641,6 +641,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'extractions & wisdom teeth',
+    heroImage: '/assets/incoming/gentle-extractions.webp',
+    heroAlt: 'A dentist reassuringly speaking with a patient in the treatment chair before a procedure',
     heroLead: 'When a tooth can\'t be saved, we remove it as gently and calmly as possible, and plan what comes next.',
     whatItIsH2: 'What an extraction involves',
     whatItIs: [
