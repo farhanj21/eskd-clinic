@@ -538,9 +538,6 @@ export default function Home() {
             className="reveal"
             src="/assets/incoming/honest-about-cost.webp"
             alt="A friendly receptionist smiling while helping a patient at the front desk"
-            objectPosition="15% 95%"
-            scale={1.05}
-            sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
       </section>
