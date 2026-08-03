@@ -195,6 +195,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Custom',
     h1em: 'sports mouthguards',
+    heroImage: '/assets/incoming/mouthguards.webp',
+    heroAlt: 'A dentist discussing treatment options with a patient in the clinic',
     heroLead: 'A properly fitted, custom mouthguard that actually protects, far better than the boil-and-bite kind.',
     whatItIsH2: 'What a custom mouthguard is',
     whatItIs: [
