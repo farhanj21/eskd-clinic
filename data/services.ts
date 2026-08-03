@@ -753,6 +753,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Natural-looking',
     h1em: 'veneers',
+    heroImage: '/assets/incoming/veneers.webp',
+    heroAlt: 'A dental assistant and a smiling patient taking a selfie together in the treatment chair',
     heroLead: 'Thin, custom shells that refine the shape, colour or alignment of front teeth, designed to look like your own, only better.',
     whatItIsH2: 'What veneers are',
     whatItIs: [
