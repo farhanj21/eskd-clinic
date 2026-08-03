@@ -689,6 +689,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: '',
     h1em: 'Smile design',
+    heroImage: '/assets/incoming/smile-design.webp',
+    heroAlt: 'A smiling patient having her teeth examined with a dental mirror during a smile design consultation',
     heroLead: 'A considered, natural-looking care plan to refresh your smile, never overdone, always in proportion to you.',
     whatItIsH2: 'What smile design is',
     whatItIs: [
