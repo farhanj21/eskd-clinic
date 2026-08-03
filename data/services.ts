@@ -415,6 +415,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Crowns & bridges that',
     h1em: 'look and last',
+    heroImage: '/assets/incoming/crowns-bridges.webp',
+    heroAlt: 'A smiling patient having their teeth examined with a dental mirror',
     heroLead: 'When a tooth is cracked, worn or missing, a crown or bridge restores its strength and appearance, custom-made to blend in so no one can tell.',
     whatItIsH2: 'What crowns and bridges actually are',
     whatItIs: [
