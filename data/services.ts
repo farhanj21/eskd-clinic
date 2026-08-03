@@ -359,6 +359,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Tooth-coloured',
     h1em: 'fillings',
+    heroImage: '/assets/incoming/fillings.webp',
+    heroAlt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
     heroLead: 'Natural-looking fillings that repair decay or damage gently, and blend in so no one can tell.',
     whatItIsH2: 'What a filling does',
     whatItIs: [
