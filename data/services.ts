@@ -305,6 +305,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: '',
     h1em: 'Myofunctional therapy',
+    heroImage: '/assets/incoming/myofunctional.webp',
+    heroAlt: 'A dental assistant reviewing scans with a smiling patient in the treatment chair',
     heroLead: 'Gentle exercises that retrain the muscles of the mouth and face, to improve breathing, tongue position and jaw development.',
     whatItIsH2: 'What myofunctional therapy is',
     whatItIs: [
