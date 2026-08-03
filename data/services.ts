@@ -579,6 +579,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Comfortable',
     h1em: 'dentures',
+    heroImage: '/assets/incoming/dentures.webp',
+    heroAlt: 'A smiling patient chatting with her dentist during a consultation',
     heroLead: 'Natural-looking, well-fitting dentures that restore your smile, and let you eat and speak with confidence.',
     whatItIsH2: 'What modern dentures are like',
     whatItIs: [
