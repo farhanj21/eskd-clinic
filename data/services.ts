@@ -529,6 +529,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: '',
     h1em: 'Onlays & inlays',
+    heroImage: '/assets/incoming/onlays.webp',
+    heroAlt: 'A happy patient high-fiving his dentist, pleased with his treatment',
     heroLead: 'A strong, conservative middle ground between a filling and a crown, preserving more of your natural tooth.',
     whatItIsH2: 'What onlays and inlays are',
     whatItIs: [
