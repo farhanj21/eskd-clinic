@@ -473,6 +473,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'root canal therapy',
+    heroImage: '/assets/incoming/rootcanal.webp',
+    heroAlt: 'A dental assistant holding instruments, with a patient seated in the treatment chair behind her',
     heroLead: 'Root canals have a fearsome reputation they don\'t deserve. Done gently, the treatment relieves pain and saves your tooth.',
     whatItIsH2: 'What root canal therapy actually is',
     whatItIs: [
