@@ -249,6 +249,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Help for',
     h1em: 'jaw pain & TMJ',
+    heroImage: '/assets/incoming/tmj-jaw.webp',
+    heroAlt: 'A dentist gently assessing a patient\'s jaw joint and muscles during a TMJ examination',
     heroLead: 'Jaw pain, clicking, headaches or grinding? We\'ll help you understand why, and find real relief.',
     whatItIsH2: 'What TMJ and grinding problems are',
     whatItIs: [
