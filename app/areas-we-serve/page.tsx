@@ -42,7 +42,9 @@ export default function AreasWeServePage() {
           <Photo
             tall
             className="reveal"
-            hint="Warm, real photo of the clinic exterior or local street. Never stock imagery."
+            priority
+            src="/assets/incoming/hero.webp"
+            alt="A dentist chatting with a smiling patient during a check-up at our East St Kilda clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
