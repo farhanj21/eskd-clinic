@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { suburbs, getSuburb } from '@/data/suburbs'
 import GetInTouch from '@/components/GetInTouch'
+import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
 import { SITE_URL, streetAddress } from '@/lib/business'
 
@@ -46,6 +47,14 @@ export default async function AreaPage({ params }: Props) {
                 <Link href="/comprehensive-care-visit" className="btn btn-ghost">New Patient Offer</Link>
               </div>
             </div>
+            <Photo
+              tall
+              className="page-hero-media reveal"
+              priority
+              src="/assets/incoming/hero.webp"
+              alt={`A dentist chatting with a smiling patient during a check-up at our clinic near ${data.name}`}
+              sizes="(max-width: 768px) 100vw, 42vw"
+            />
           </div>
         </div>
       </section>

@@ -40,7 +40,9 @@ export default function DentistBalaclavaPage() {
           <Photo
             tall
             className="reveal"
-            hint="Warm, real photo of the clinic or team, with a calm local feel. Never stock imagery."
+            priority
+            src="/assets/incoming/hero.webp"
+            alt="A dentist chatting with a smiling patient during a check-up at our clinic near Balaclava"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>

@@ -195,6 +195,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Custom',
     h1em: 'sports mouthguards',
+    heroImage: '/assets/incoming/mouthguards.webp',
+    heroAlt: 'A dentist discussing treatment options with a patient in the clinic',
     heroLead: 'A properly fitted, custom mouthguard that actually protects, far better than the boil-and-bite kind.',
     whatItIsH2: 'What a custom mouthguard is',
     whatItIs: [
@@ -249,6 +251,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Help for',
     h1em: 'jaw pain & TMJ',
+    heroImage: '/assets/incoming/tmj-jaw.webp',
+    heroAlt: 'A dentist gently assessing a patient\'s jaw joint and muscles during a TMJ examination',
     heroLead: 'Jaw pain, clicking, headaches or grinding? We\'ll help you understand why, and find real relief.',
     whatItIsH2: 'What TMJ and grinding problems are',
     whatItIs: [
@@ -303,6 +307,8 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: '',
     h1em: 'Myofunctional therapy',
+    heroImage: '/assets/incoming/myofunctional.webp',
+    heroAlt: 'A dental assistant reviewing scans with a smiling patient in the treatment chair',
     heroLead: 'Gentle exercises that retrain the muscles of the mouth and face, to improve breathing, tongue position and jaw development.',
     whatItIsH2: 'What myofunctional therapy is',
     whatItIs: [
@@ -357,6 +363,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Tooth-coloured',
     h1em: 'fillings',
+    heroImage: '/assets/incoming/fillings.webp',
+    heroAlt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
     heroLead: 'Natural-looking fillings that repair decay or damage gently, and blend in so no one can tell.',
     whatItIsH2: 'What a filling does',
     whatItIs: [
@@ -411,6 +419,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Crowns & bridges that',
     h1em: 'look and last',
+    heroImage: '/assets/incoming/crowns-bridges.webp',
+    heroAlt: 'A smiling patient having their teeth examined with a dental mirror',
     heroLead: 'When a tooth is cracked, worn or missing, a crown or bridge restores its strength and appearance, custom-made to blend in so no one can tell.',
     whatItIsH2: 'What crowns and bridges actually are',
     whatItIs: [
@@ -465,6 +475,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'root canal therapy',
+    heroImage: '/assets/incoming/rootcanal.webp',
+    heroAlt: 'A dental assistant holding instruments, with a patient seated in the treatment chair behind her',
     heroLead: 'Root canals have a fearsome reputation they don\'t deserve. Done gently, the treatment relieves pain and saves your tooth.',
     whatItIsH2: 'What root canal therapy actually is',
     whatItIs: [
@@ -519,6 +531,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: '',
     h1em: 'Onlays & inlays',
+    heroImage: '/assets/incoming/onlays.webp',
+    heroAlt: 'A happy patient high-fiving his dentist, pleased with his treatment',
     heroLead: 'A strong, conservative middle ground between a filling and a crown, preserving more of your natural tooth.',
     whatItIsH2: 'What onlays and inlays are',
     whatItIs: [
@@ -573,6 +587,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Comfortable',
     h1em: 'dentures',
+    heroImage: '/assets/incoming/dentures.webp',
+    heroAlt: 'A smiling patient chatting with her dentist during a consultation',
     heroLead: 'Natural-looking, well-fitting dentures that restore your smile, and let you eat and speak with confidence.',
     whatItIsH2: 'What modern dentures are like',
     whatItIs: [
@@ -627,6 +643,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'extractions & wisdom teeth',
+    heroImage: '/assets/incoming/gentle-extractions.webp',
+    heroAlt: 'A dentist reassuringly speaking with a patient in the treatment chair before a procedure',
     heroLead: 'When a tooth can\'t be saved, we remove it as gently and calmly as possible, and plan what comes next.',
     whatItIsH2: 'What an extraction involves',
     whatItIs: [
@@ -681,6 +699,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: '',
     h1em: 'Smile design',
+    heroImage: '/assets/incoming/smile-design.webp',
+    heroAlt: 'A smiling patient having her teeth examined with a dental mirror during a smile design consultation',
     heroLead: 'A considered, natural-looking care plan to refresh your smile, never overdone, always in proportion to you.',
     whatItIsH2: 'What smile design is',
     whatItIs: [
@@ -735,6 +755,8 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Natural-looking',
     h1em: 'veneers',
+    heroImage: '/assets/incoming/veneers.webp',
+    heroAlt: 'A dental assistant and a smiling patient taking a selfie together in the treatment chair',
     heroLead: 'Thin, custom shells that refine the shape, colour or alignment of front teeth, designed to look like your own, only better.',
     whatItIsH2: 'What veneers are',
     whatItIs: [

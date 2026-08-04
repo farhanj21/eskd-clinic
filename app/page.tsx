@@ -265,10 +265,9 @@ export default function Home() {
             </div>
             <Photo
               style={{ borderRadius: 0, minHeight: '100%' }}
-              src="/assets/incoming/comprehensive-care-visit.webp"
+              src="/assets/incoming/comprehensive2.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
-              objectPosition="center 40%"
-              sizes="(max-width: 820px) 100vw, 50vw"
+     
             />
           </div>
         </div>
@@ -538,9 +537,6 @@ export default function Home() {
             className="reveal"
             src="/assets/incoming/honest-about-cost.webp"
             alt="A friendly receptionist smiling while helping a patient at the front desk"
-            objectPosition="15% 95%"
-            scale={1.05}
-            sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>
       </section>
