@@ -141,6 +141,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
+    heroImage: '/assets/incoming/children-dentistry.webp',
     heroLead: 'Calm, positive visits that help children feel comfortable, and grow up without fear of the dentist.',
     whatItIsH2: 'What children\'s dentistry looks like here',
     whatItIs: [
