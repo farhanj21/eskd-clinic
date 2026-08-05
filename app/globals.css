@@ -2141,20 +2141,36 @@ body{overflow-x:hidden;max-width:100%;}
 }
 .hero-video-media.is-ready{opacity:1;}
 /* Two stacked washes: a left-to-right sage scrim that carries the copy, and a
-   softer top-down one so the sticky header keeps its contrast. */
+   softer top-down one so the sticky header keeps its contrast. The horizontal
+   wash clears before the people on the right side of the frame. */
 .hero-video-scrim{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(102deg,rgba(24,38,31,.93) 0%,rgba(24,38,31,.87) 44%,rgba(24,38,31,.50) 72%,rgba(24,38,31,.26) 100%),
-    linear-gradient(180deg,rgba(24,38,31,.45) 0%,transparent 24%);
+    linear-gradient(90deg,
+      rgba(24,38,31,.96) 0%,
+      rgba(24,38,31,.91) 25%,
+      rgba(24,38,31,.72) 34%,
+      rgba(24,38,31,.20) 43%,
+      rgba(24,38,31,.04) 49%,
+      transparent 54%
+    ),
+    linear-gradient(180deg,rgba(24,38,31,.35) 0%,transparent 24%);
 }
 .hero-video-inner{
   position:relative;z-index:2;
   flex:1;
-  display:flex;align-items:center;
+  width:100%;max-width:none;margin:0;
+  display:grid;
+  grid-template-columns:minmax(0,clamp(480px,32vw,560px)) minmax(0,1fr);
+  align-items:center;
+  padding-inline:clamp(32px,8.5vw,172px);
   padding-block:clamp(76px,11vh,124px) clamp(52px,8vh,92px);
 }
-.hero-video-copy{max-width:38rem;}
+.hero-video-copy{
+  grid-column:1;
+  width:100%;max-width:560px;
+  text-align:left;
+}
 .hero-video .eyebrow{color:var(--clay-soft);}
 .hero-video .eyebrow::before{background:var(--clay-soft);}
 .hero-video h1{
@@ -2188,21 +2204,55 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-video-band .proof-stars{color:var(--clay-soft);}
 .hero-video-band .proof-dot{background:#fff;opacity:.45;}
 
-/* Stacked: the subject sits centre-frame on narrow screens, so the scrim
-   turns top-down and the copy sits over the darkest part of it. */
-@media(max-width:860px){
-  .hero-video{min-height:clamp(480px,72vh,640px);}
-  .hero-video-scrim{
-    background:linear-gradient(180deg,rgba(24,38,31,.58) 0%,rgba(24,38,31,.80) 52%,rgba(24,38,31,.92) 100%);
+/* A narrower left column protects the subjects as the frame contracts, while
+   keeping the same desktop composition through landscape tablet sizes. */
+@media(max-width:1100px) and (min-width:601px){
+  .hero-video-media{object-position:left center;}
+  .hero-video{
+    background-position:left center;
+    min-height:clamp(520px,72vh,680px);
   }
-  .hero-video-inner{padding-block:60px 44px;}
+  .hero-video-inner{
+    grid-template-columns:minmax(0,420px) minmax(0,1fr);
+    padding-inline:clamp(32px,6vw,66px);
+    padding-block:60px 44px;
+  }
+  .hero-video-copy{max-width:420px;}
+  .hero-video-scrim{
+    background:
+      linear-gradient(90deg,
+        rgba(24,38,31,.96) 0%,
+        rgba(24,38,31,.90) 30%,
+        rgba(24,38,31,.62) 42%,
+        rgba(24,38,31,.14) 54%,
+        transparent 64%
+      ),
+      linear-gradient(180deg,rgba(24,38,31,.35) 0%,transparent 24%);
+  }
   .hero-video .lead{margin:16px 0 24px;}
+}
+@media(max-width:860px) and (min-width:601px){
+  .hero-video{min-height:clamp(480px,72vh,640px);}
+  .hero-video-inner{
+    grid-template-columns:minmax(0,400px) minmax(0,1fr);
+    padding-inline:clamp(28px,5vw,43px);
+  }
+  .hero-video-copy{max-width:400px;}
 }
 @media(max-width:600px){
   .hero-video{min-height:auto;}
+  .hero-video-media{object-position:center;}
+  .hero-video-scrim{
+    background:linear-gradient(180deg,rgba(24,38,31,.58) 0%,rgba(24,38,31,.80) 52%,rgba(24,38,31,.92) 100%);
+  }
   .hero-video h1{font-size:clamp(34px,9.5vw,44px);line-height:1.08;}
-  .hero-video .lead{font-size:16.5px;}
-  .hero-video-inner{padding-block:48px 36px;}
+  .hero-video .lead{font-size:16.5px;margin:16px auto 24px;}
+  .hero-video-inner{
+    display:block;
+    padding-inline:var(--gutter);
+    padding-block:48px 36px;
+  }
+  .hero-video-copy{text-align:center;margin:0 auto;}
   .hero-video-copy .hero-cta{flex-direction:column;align-items:stretch;}
   .hero-video-copy .hero-cta .btn{text-align:center;}
   .hero-video-band{padding:13px 0;}
