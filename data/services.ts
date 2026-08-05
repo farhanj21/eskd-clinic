@@ -1032,6 +1032,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'All-on-4 & full-arch implants',
+    heroImage: '/assets/incoming/full-arch.webp',
     heroLead: 'A fixed, full set of teeth supported by just a few implants, a stable, natural-looking alternative to removable dentures.',
     whatItIsH2: 'What All-on-4 is',
     whatItIs: [
