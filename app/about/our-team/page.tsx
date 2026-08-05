@@ -35,6 +35,7 @@ const clinicians = [
     name: 'Dr Marina Bekheet',
     role: 'General Dentist',
     bio: 'Marina offers warm, careful general dentistry and takes the time to explain every step.',
+    image: '/assets/team/marina-bakheet.webp',
   },
   {
     name: 'Michelle Callaghan',

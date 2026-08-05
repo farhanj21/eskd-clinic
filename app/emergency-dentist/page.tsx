@@ -147,7 +147,7 @@ export default function EmergencyPage() {
             {/* The emotional line stays the only H1. This H2 carries the search
                 term and the suburb, honestly hedged — not a guarantee. */}
             <h1>In pain? <em>We&apos;ll help you today.</em></h1>
-            <h2 className="hero-keyline">Emergency dentist in East St Kilda, same-day care where possible.</h2>
+            <h2 className="hero-keyline"></h2>
             <p className="lead">
               Take a breath. Most dental emergencies look scarier than they feel, and as an emergency dentist in East St Kilda we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
             </p>
@@ -157,12 +157,13 @@ export default function EmergencyPage() {
             </div>
 
             <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
-              Open Mon&ndash;Thu to 4pm, Fri to 4.30pm, monthly Saturdays.
+              Emergency dentist in East St Kilda, same-day care where possible. 
             </p>
           </div>
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/emergency-dentistry.webp"
             hint="Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical."
             sizes="(max-width: 860px) 100vw, 48vw"
           />

@@ -13,11 +13,11 @@ export default function Footer() {
             <p style={{ fontSize: '14px' }}>
               Gentle, no-judgement dental care for the East St Kilda community since 1980.
             </p>
-            <div className="news">
+            {/* <div className="news">
               <input type="email" placeholder="Your email" />
               <button type="button">Sign up</button>
             </div>
-            <p style={{ fontSize: '12.5px', marginTop: '10px' }}>Dental tips and clinic news. No spam.</p>
+            <p style={{ fontSize: '12.5px', marginTop: '10px' }}>Dental tips and clinic news. No spam.</p> */}
           </div>
 
           {/* ── Col 2: Care ───────────────────────────────── */}

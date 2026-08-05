@@ -86,6 +86,7 @@ export default function SuperPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/super.webp"
             hint="Warm, real photo: a calm conversation between patient and dentist, care plan on the table."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
