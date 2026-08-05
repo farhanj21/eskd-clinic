@@ -977,6 +977,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Single dental implants',
+    heroImage: '/assets/incoming/single-implant.webp',
     heroLead: 'The closest thing to a natural tooth: a single implant replaces a missing tooth without affecting the teeth around it.',
     whatItIsH2: 'What a dental implant is',
     whatItIs: [
