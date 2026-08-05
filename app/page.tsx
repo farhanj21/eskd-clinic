@@ -465,6 +465,9 @@ export default function Home() {
               <span>Hygienist</span>
             </div>
           </div>
+          <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
+            <Link href="/about/our-team" className="btn btn-ghost">Meet the Team</Link>
+          </div>
           {/* <div className="lang-band reveal">
             <b>We speak your language.</b> Our team can care for you in English, Mandarin, Hebrew, Russian, Hindi, Tamil and Kannada.
           </div> */}
@@ -566,11 +569,26 @@ export default function Home() {
             <div className="eyebrow">Real smiles</div>
             <h2>Gentle, natural-looking results</h2>
           </div>
-          <div className="gallery-v2">
-            <Photo className="reveal" hint="Before / after (understated)" sizes="(max-width: 820px) 50vw, 25vw" />
-            <Photo className="reveal" hint="Real smile, real patient" sizes="(max-width: 820px) 50vw, 25vw" />
-            <Photo className="reveal" hint="Subtle, natural result" sizes="(max-width: 820px) 50vw, 25vw" />
-            <Photo className="reveal" hint="Everyday result" sizes="(max-width: 820px) 50vw, 25vw" />
+          <div className="edu-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <div className="svc reveal">
+              <Photo src="/assets/incoming/smile-1.webp" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <h4>Gentle smile refresh</h4>
+            </div>
+            <div className="svc reveal">
+              <Photo src="/assets/incoming/smile-2.webp" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <h4>Restoring a damaged tooth</h4>
+            </div>
+            <div className="svc reveal">
+              <Photo src="/assets/incoming/smile-3.webp" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <h4>Replacing a missing tooth</h4>
+            </div>
+            <div className="svc reveal">
+              <Photo src="/assets/incoming/smile-4.webp" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <h4>A nervous patient's journey</h4>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
+            <Link href="/our-work" className="btn btn-ghost">View more</Link>
           </div>
         </div>
       </section>
@@ -663,30 +681,30 @@ export default function Home() {
             <div className="eyebrow">Your local dentist in Melbourne&apos;s inner south-east</div>
             <h2>Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
-              From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a calm, welcoming dental home here.
+              From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a welcoming dental home here.
             </p>
           </div>
           <div className="areas-grid reveal">
-            <Link href="/">East St Kilda</Link>
-            <Link href="/dentist-st-kilda">St Kilda</Link>
-            <Link href="/dentist-st-kilda-west">St Kilda West</Link>
-            <Link href="/dentist-balaclava">Balaclava</Link>
-            <Link href="/dentist-elwood">Elwood</Link>
-            <Link href="/dentist-elsternwick">Elsternwick</Link>
-            <Link href="/areas-we-serve/ripponlea">Ripponlea</Link>
-            <Link href="/dentist-caulfield">Caulfield</Link>
-            <Link href="/dentist-caulfield-north">Caulfield North</Link>
-            <Link href="/dentist-windsor">Windsor</Link>
-            <Link href="/dentist-prahran">Prahran</Link>
-            <Link href="/dentist-armadale">Armadale</Link>
-            <Link href="/areas-we-serve/glen-huntly">Glen Huntly</Link>
-            <Link href="/dentist-carnegie">Carnegie</Link>
-            <Link href="/areas-we-serve/gardenvale">Gardenvale</Link>
-            <Link href="/dentist-albert-park">Albert Park</Link>
-            <Link href="/areas-we-serve/middle-park">Middle Park</Link>
-            <Link href="/dentist-south-yarra">South Yarra</Link>
-            <Link href="/areas-we-serve/toorak">Toorak</Link>
-            <Link href="/areas-we-serve/malvern">Malvern</Link>
+            <span>East St Kilda</span>
+            <span>St Kilda</span>
+            <span>St Kilda West</span>
+            <span>Balaclava</span>
+            <span>Elwood</span>
+            <span>Elsternwick</span>
+            <span>Ripponlea</span>
+            <span>Caulfield</span>
+            <span>Caulfield North</span>
+            <span>Windsor</span>
+            <span>Prahran</span>
+            <span>Armadale</span>
+            <span>Glen Huntly</span>
+            <span>Carnegie</span>
+            <span>Gardenvale</span>
+            <span>Albert Park</span>
+            <span>Middle Park</span>
+            <span>South Yarra</span>
+            <span>Toorak</span>
+            <span>Malvern</span>
           </div>
           <p className="areas-wider reveal">
             We also welcome patients from across the wider inner-Melbourne area, from Brighton and Bentleigh to South Melbourne, Richmond and beyond.
