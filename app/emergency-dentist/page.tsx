@@ -157,7 +157,7 @@ export default function EmergencyPage() {
             </div>
 
             <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
-              Emergency dentist in East St Kilda, same-day care where possible.
+              Emergency dentist in East St Kilda, same-day care where possible. 
             </p>
           </div>
           <Photo
