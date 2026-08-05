@@ -1087,6 +1087,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Bone grafting',
+    heroImage: '/assets/incoming/bone-grafting.webp',
     heroLead: 'A straightforward, well-established step that rebuilds jawbone where it\'s been lost, so implants have a strong foundation.',
     whatItIsH2: 'What bone grafting is',
     whatItIs: [
