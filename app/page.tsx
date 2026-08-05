@@ -136,7 +136,7 @@ export default function Home() {
         <div className="container container-wide hero-video-inner">
           <div className="hero-video-copy">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
-            <h1>Quality dentistry in <em>East St Kilda</em></h1>
+            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in East St Kilda</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
