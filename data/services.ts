@@ -141,6 +141,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
+    heroImage: '/assets/incoming/children-dentistry.webp',
     heroLead: 'Calm, positive visits that help children feel comfortable, and grow up without fear of the dentist.',
     whatItIsH2: 'What children\'s dentistry looks like here',
     whatItIs: [
@@ -811,6 +812,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Professional',
     h1em: 'teeth whitening',
+    heroImage: '/assets/incoming/teeth-white.webp',
     heroLead: 'Safe, dentist-supervised whitening for a brighter smile, without the guesswork or sensitivity of shop-bought kits.',
     whatItIsH2: 'What professional whitening is',
     whatItIs: [
@@ -865,6 +867,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Invisalign & clear aligners',
+    heroImage: '/assets/incoming/invisalign.webp',
     heroLead: 'Straighten your teeth discreetly with clear, removable aligners, most people won\'t even notice you\'re wearing them.',
     whatItIsH2: 'What clear aligners are',
     whatItIs: [
@@ -919,6 +922,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Braces',
+    heroImage: '/assets/incoming/braces.webp',
     heroLead: 'Traditional braces remain one of the most effective ways to straighten teeth and correct the bite, for children and adults alike.',
     whatItIsH2: 'What braces are',
     whatItIs: [
@@ -973,6 +977,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Single dental implants',
+    heroImage: '/assets/incoming/single-implant.webp',
     heroLead: 'The closest thing to a natural tooth: a single implant replaces a missing tooth without affecting the teeth around it.',
     whatItIsH2: 'What a dental implant is',
     whatItIs: [
@@ -1027,6 +1032,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'All-on-4 & full-arch implants',
+    heroImage: '/assets/incoming/full-arch.webp',
     heroLead: 'A fixed, full set of teeth supported by just a few implants, a stable, natural-looking alternative to removable dentures.',
     whatItIsH2: 'What All-on-4 is',
     whatItIs: [
@@ -1081,6 +1087,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Bone grafting',
+    heroImage: '/assets/incoming/bone-grafting.webp',
     heroLead: 'A straightforward, well-established step that rebuilds jawbone where it\'s been lost, so implants have a strong foundation.',
     whatItIsH2: 'What bone grafting is',
     whatItIs: [
