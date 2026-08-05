@@ -59,6 +59,7 @@ export default function OurWorkPage() {
           <Photo
             tall
             className="reveal"
+            src="/assets/incoming/gallery-hero.webp"
             hint="Warm, real before/after or smile photo (with consent). Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -87,6 +88,7 @@ export default function OurWorkPage() {
             {cases.map((c, i) => (
               <div key={i} className="svc">
                 <Photo
+                  src={`/assets/incoming/smile-${i + 1}.webp`}
                   hint="Before & after (with patient consent)"
                   sizes="(max-width: 820px) 100vw, 33vw"
                   style={{ height: '170px', marginBottom: '10px' }}
@@ -96,9 +98,6 @@ export default function OurWorkPage() {
               </div>
             ))}
           </div>
-          <p className="reveal" style={{ textAlign: 'center', marginTop: '18px', fontSize: '13px', opacity: .7 }}>
-            Placeholder cases for layout. All images require patient consent and must comply with AHPRA advertising guidelines (no misleading before/after, no testimonials) before publishing. Clinical sign-off required.
-          </p>
         </div>
       </section>
 
