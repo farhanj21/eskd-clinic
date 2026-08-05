@@ -812,6 +812,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Professional',
     h1em: 'teeth whitening',
+    heroImage: '/assets/incoming/teeth-white.webp',
     heroLead: 'Safe, dentist-supervised whitening for a brighter smile, without the guesswork or sensitivity of shop-bought kits.',
     whatItIsH2: 'What professional whitening is',
     whatItIs: [
