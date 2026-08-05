@@ -922,6 +922,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Braces',
+    heroImage: '/assets/incoming/braces.webp',
     heroLead: 'Traditional braces remain one of the most effective ways to straighten teeth and correct the bite, for children and adults alike.',
     whatItIsH2: 'What braces are',
     whatItIs: [
