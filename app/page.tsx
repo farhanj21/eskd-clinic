@@ -3,6 +3,7 @@ import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
+import HeroVideoBg from '@/components/HeroVideoBg'
 import MapEmbed from '@/components/MapEmbed'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
@@ -123,45 +124,40 @@ const homeSchema = {
 export default function Home() {
   return (
     <main style={whiteTheme}>
+      {/* The hero poster is a CSS background, so it isn't discoverable until the
+          stylesheet parses. Preloading it keeps it the LCP candidate. */}
+      <link rel="preload" as="image" href="/assets/video/hero-clinic-poster.webp" fetchPriority="high" />
       <JsonLd data={homeSchema} />
 
-      {/* HERO */}
-      <section className="hero-v2">
-        <div className="container hero-v2-grid">
-          <div className="reveal">
+      {/* HERO — full-bleed video frame, with the proof points along its foot */}
+      <section className="hero-video">
+        <HeroVideoBg />
+        <div className="hero-video-scrim" aria-hidden="true" />
+        <div className="container container-wide hero-video-inner">
+          <div className="hero-video-copy">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
             <h1>Quality dentistry in <em>East St Kilda</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
-              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
+              <a href={telHref} className="btn btn-ghost-light">Call {business.telephoneDisplay}</a>
             </div>
-            <p style={{ marginTop: '14px', fontSize: '15px' }}>
-              <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+            <p className="hero-video-note">
+              <Link href="/comprehensive-care-visit">
                 New patient? Experience the Comprehensive Care Visit &rarr;
               </Link>
             </p>
           </div>
-          <Photo
-            tall
-            className="reveal"
-            priority
-            src="/assets/incoming/hero.webp"
-            alt="A smiling clinician showing a dental model to a patient in the treatment room"
-            sizes="(max-width: 860px) 100vw, 48vw"
-          />
         </div>
-      </section>
-
-      {/* PROOF BAND */}
-      <section className="hero-proof-band">
-        <div className="container">
-          <div className="hero-proof">
-            <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
-            <span className="proof-dot" />
-            <span>40+ years local</span>
-            <span className="proof-dot" />
-            <span>All health funds accepted</span>
+        <div className="hero-video-band">
+          <div className="container container-wide">
+            <div className="hero-proof">
+              <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
+              <span className="proof-dot" />
+              <span>40+ years local</span>
+              <span className="proof-dot" />
+              <span>All health funds accepted</span>
+            </div>
           </div>
         </div>
       </section>

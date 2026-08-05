@@ -2116,6 +2116,101 @@ body{overflow-x:hidden;max-width:100%;}
 .proof-stars{color:var(--clay);letter-spacing:2px;}
 .proof-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
 
+/* ── Home hero: full-bleed video frame ────────────────────────
+   A broad, welcoming frame rather than the boxed two-column hero. The poster
+   still is a CSS background on the section itself, so the hero paints in full
+   on the server render; components/HeroVideoBg then layers the muted loop on
+   top and fades it in. The proof points sit in a glass bar along the bottom
+   edge of the frame, which is why the home page no longer renders a separate
+   .hero-proof-band. */
+.hero-video{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:clamp(560px,80vh,800px);
+  overflow:hidden;
+  background:#1E2F27 url('/assets/video/hero-clinic-poster.webp') center/cover no-repeat;
+}
+.hero-video-media{
+  position:absolute;inset:0;z-index:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1.1s ease;
+}
+.hero-video-media.is-ready{opacity:1;}
+/* Two stacked washes: a left-to-right sage scrim that carries the copy, and a
+   softer top-down one so the sticky header keeps its contrast. */
+.hero-video-scrim{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(102deg,rgba(24,38,31,.93) 0%,rgba(24,38,31,.87) 44%,rgba(24,38,31,.50) 72%,rgba(24,38,31,.26) 100%),
+    linear-gradient(180deg,rgba(24,38,31,.45) 0%,transparent 24%);
+}
+.hero-video-inner{
+  position:relative;z-index:2;
+  flex:1;
+  display:flex;align-items:center;
+  padding-block:clamp(76px,11vh,124px) clamp(52px,8vh,92px);
+}
+.hero-video-copy{max-width:38rem;}
+.hero-video .eyebrow{color:var(--clay-soft);}
+.hero-video .eyebrow::before{background:var(--clay-soft);}
+.hero-video h1{
+  font-size:clamp(42px,5.4vw,72px);
+  font-weight:600;line-height:1.05;letter-spacing:0;
+  color:#fff;margin:0;
+  text-shadow:0 2px 30px rgba(12,22,17,.4);
+}
+.hero-video h1 em{font-style:italic;color:var(--clay-soft);}
+.hero-video .lead{
+  font-size:clamp(17px,1.5vw,20px);
+  color:rgba(255,255,255,.88);
+  max-width:34em;margin:22px 0 30px;
+}
+.hero-video .btn{background:var(--clay);border:1.5px solid var(--clay);}
+.hero-video .btn:hover{background:var(--clay-deep);border-color:var(--clay-deep);}
+.hero-video .btn-ghost-light{background:rgba(255,255,255,.06);}
+.hero-video-note{margin:18px 0 0;font-size:15px;}
+.hero-video-note a{color:var(--clay-soft);font-weight:600;}
+.hero-video-note a:hover{color:#fff;}
+/* Glass proof bar pinned to the foot of the frame */
+.hero-video-band{
+  position:relative;z-index:2;
+  padding:15px 0;
+  background:rgba(255,255,255,.10);
+  border-top:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.hero-video-band .hero-proof{color:rgba(255,255,255,.92);}
+.hero-video-band .proof-stars{color:var(--clay-soft);}
+.hero-video-band .proof-dot{background:#fff;opacity:.45;}
+
+/* Stacked: the subject sits centre-frame on narrow screens, so the scrim
+   turns top-down and the copy sits over the darkest part of it. */
+@media(max-width:860px){
+  .hero-video{min-height:clamp(480px,72vh,640px);}
+  .hero-video-scrim{
+    background:linear-gradient(180deg,rgba(24,38,31,.58) 0%,rgba(24,38,31,.80) 52%,rgba(24,38,31,.92) 100%);
+  }
+  .hero-video-inner{padding-block:60px 44px;}
+  .hero-video .lead{margin:16px 0 24px;}
+}
+@media(max-width:600px){
+  .hero-video{min-height:auto;}
+  .hero-video h1{font-size:clamp(34px,9.5vw,44px);line-height:1.08;}
+  .hero-video .lead{font-size:16.5px;}
+  .hero-video-inner{padding-block:48px 36px;}
+  .hero-video-copy .hero-cta{flex-direction:column;align-items:stretch;}
+  .hero-video-copy .hero-cta .btn{text-align:center;}
+  .hero-video-band{padding:13px 0;}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-video-media{transition:none;}
+}
+
 /* Click-to-load map facade. Keeps a megabyte of Google Maps JavaScript off the
    critical path until a visitor actually asks for the map. */
 .map-facade{
