@@ -867,6 +867,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Invisalign & clear aligners',
+    heroImage: '/assets/incoming/invisalign.webp',
     heroLead: 'Straighten your teeth discreetly with clear, removable aligners, most people won\'t even notice you\'re wearing them.',
     whatItIsH2: 'What clear aligners are',
     whatItIs: [
