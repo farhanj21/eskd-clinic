@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { services, getService } from '@/data/services'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
+import ServiceEducation from '@/components/ServiceEducation'
 import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
@@ -213,6 +214,9 @@ export default async function ServicePage({ params }: Props) {
 
       {/* ── 12. GET IN TOUCH ─────────────────────────────── */}
       <GetInTouch variant="default" id="contact" />
+
+      {/* ── 13. DENTAL EDUCATION ─────────────────────────── */}
+      <ServiceEducation slug={slug} />
     </main>
   )
 }
