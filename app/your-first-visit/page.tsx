@@ -49,6 +49,57 @@ export default function FirstVisitPage() {
         </div>
       </section>
 
+            {/* FIRST VISIT */}
+      <section className="sec alt">
+        <div className="container">
+          <div className="sec-head reveal">
+            <div className="eyebrow">Before you arrive</div>
+            <h2>What your first visit <em>actually</em> looks like</h2>
+          </div>
+          <div className="steps-v2">
+            <div className="step-v2 reveal">
+              <div className="num" />
+              <h4>A warm welcome</h4>
+              <p>A friendly hello, a comfortable seat, and a chat about what&apos;s on your mind.</p>
+            </div>
+            <div className="step-v2 reveal">
+              <div className="num" />
+              <h4>We listen first</h4>
+              <p>You tell us your history and worries before anyone picks up an instrument.</p>
+            </div>
+            <div className="step-v2 reveal">
+              <div className="num" />
+              <h4>A gentle, full check</h4>
+              <p>A calm, comprehensive look at your teeth, gums and bite. We show you what we see on screen and explain it in plain language.</p>
+            </div>
+            <div className="step-v2 reveal">
+              <div className="num" />
+              <h4>Your clear care plan</h4>
+              <p>A simple, prioritised care plan and our honest recommendation. You decide in your own time, at your own pace.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            {/* CTA BAND */}
+            <section className="sec">
+              <div className="container">
+                <div className="ctaband reveal">
+                  <h3>Not sure where to start?</h3>
+                  <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
+                  <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
+                    <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
+                      New here? Start with the Comprehensive Care Visit, $297 &rarr;
+                    </Link>
+                  </p>
+                  <div className="ctaband-actions">
+                    <Link href="/book" className="btn">Book your visit</Link>
+                    <Link href="/contact" className="btn btn-ghost-light">Request a callback</Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+
       {/* ── WHAT'S INCLUDED ──────────────────────────────── */}
       <section className="sec alt">
         <div className="container reveal">

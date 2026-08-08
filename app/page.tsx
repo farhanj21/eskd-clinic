@@ -162,8 +162,59 @@ export default function Home() {
         </div>
       </section>
 
+            {/* SERVICES OVERVIEW */}
+      <section className="sec">
+        <div className="container">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">How we can help</div>
+            <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Care for every stage of life</h2>
+            <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
+              From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after East St Kilda and the surrounding suburbs.
+            </p>
+          </div>
+          <div className="svc-grid-v2">
+            <div className="svc-item reveal">
+              <h4 style={{ fontWeight: 700 }}>Check-ups &amp; cleans</h4>
+              <p>Gentle, thorough preventive care to keep small things small.</p>
+              <Link href="/services/check-ups">Learn more</Link>
+            </div>
+            <div className="svc-item reveal">
+              <h4 style={{ fontWeight: 700 }}>Emergency dentistry</h4>
+              <p>In pain? We&apos;ll see you quickly and get you comfortable.</p>
+              <Link href="/emergency-dentist">Learn more</Link>
+            </div>
+            <div className="svc-item reveal">
+              <h4 style={{ fontWeight: 700 }}>Fillings &amp; restorations</h4>
+              <p>Quietly fixing what needs fixing, preserving your natural teeth.</p>
+              <Link href="/services/fillings">Learn more</Link>
+            </div>
+            <div className="svc-item reveal">
+              <h4 style={{ fontWeight: 700 }}>Crowns &amp; root canals</h4>
+              <p>Saving teeth and easing pain, explained every step of the way.</p>
+              <Link href="/services/crowns-and-bridges">Learn more</Link>
+            </div>
+            <div className="svc-item reveal">
+              <h4 style={{ fontWeight: 700 }}>Dental implants</h4>
+              <p>Replacing missing teeth so you can eat and smile with ease.</p>
+              <Link href="/services/dental-implants">Learn more</Link>
+            </div>
+            <div className="svc-item reveal">
+              <h4 style={{ fontWeight: 700 }}>Cosmetic dentistry</h4>
+              <p>Subtle, natural improvements when you&apos;re ready, never pushed.</p>
+              <Link href="/services/smile-design">Learn more</Link>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
+            <Link href="/services/check-ups" className="btn btn-ghost">See all services</Link>
+          </div>
+          <p style={{ textAlign: 'center', marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }} className="reveal">
+            Implants, Invisalign and cosmetic work included.
+          </p>
+        </div>
+      </section>
+
       {/* HOW WE'RE DIFFERENT */}
-      <section className="sec alt">
+      {/* <section className="sec alt">
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">The way we care</div>
@@ -195,10 +246,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* REVIEWS */}
-      <section className="sec">
+      {/* <section className="sec">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">In our patients&apos; words</div>
@@ -225,7 +276,7 @@ export default function Home() {
             Rated <b>5.0 on Google</b> by our local patients
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* OFFER CARD */}
       <section className="sec" id="first-visit">
@@ -269,56 +320,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES OVERVIEW */}
-      <section className="sec">
-        <div className="container">
-          <div className="sec-head center reveal">
-            <div className="eyebrow">How we can help</div>
-            <h2>Care for every stage of life</h2>
-            <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
-              From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after East St Kilda and the surrounding suburbs.
-            </p>
-          </div>
-          <div className="svc-grid-v2">
-            <div className="svc-item reveal">
-              <h4>Check-ups &amp; cleans</h4>
-              <p>Gentle, thorough preventive care to keep small things small.</p>
-              <Link href="/services/check-ups">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4>Emergency dentistry</h4>
-              <p>In pain? We&apos;ll see you quickly and get you comfortable.</p>
-              <Link href="/emergency-dentist">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4>Fillings &amp; restorations</h4>
-              <p>Quietly fixing what needs fixing, preserving your natural teeth.</p>
-              <Link href="/services/fillings">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4>Crowns &amp; root canals</h4>
-              <p>Saving teeth and easing pain, explained every step of the way.</p>
-              <Link href="/services/crowns-and-bridges">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4>Dental implants</h4>
-              <p>Replacing missing teeth so you can eat and smile with ease.</p>
-              <Link href="/services/dental-implants">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4>Cosmetic dentistry</h4>
-              <p>Subtle, natural improvements when you&apos;re ready, never pushed.</p>
-              <Link href="/services/smile-design">Learn more</Link>
-            </div>
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
-            <Link href="/services/check-ups" className="btn btn-ghost">See all services</Link>
-          </div>
-          <p style={{ textAlign: 'center', marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }} className="reveal">
-            Implants, Invisalign and cosmetic work included.
-          </p>
-        </div>
-      </section>
+
 
       {/* NERVOUS PATIENTS */}
       <section className="sec sage-bg" id="nervous">
@@ -350,56 +352,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FIRST VISIT */}
-      <section className="sec alt">
-        <div className="container">
-          <div className="sec-head reveal">
-            <div className="eyebrow">Before you arrive</div>
-            <h2>What your first visit <em>actually</em> looks like</h2>
-          </div>
-          <div className="steps-v2">
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>A warm welcome</h4>
-              <p>A friendly hello, a comfortable seat, and a chat about what&apos;s on your mind.</p>
-            </div>
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>We listen first</h4>
-              <p>You tell us your history and worries before anyone picks up an instrument.</p>
-            </div>
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>A gentle, full check</h4>
-              <p>A calm, comprehensive look at your teeth, gums and bite. We show you what we see on screen and explain it in plain language.</p>
-            </div>
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>Your clear care plan</h4>
-              <p>A simple, prioritised care plan and our honest recommendation. You decide in your own time, at your own pace.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA BAND */}
-      <section className="sec">
-        <div className="container">
-          <div className="ctaband reveal">
-            <h3>Not sure where to start?</h3>
-            <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
-            <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
-              <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
-                New here? Start with the Comprehensive Care Visit, $297 &rarr;
-              </Link>
-            </p>
-            <div className="ctaband-actions">
-              <Link href="/book" className="btn">Book your visit</Link>
-              <Link href="/contact" className="btn btn-ghost-light">Request a callback</Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* TEAM */}
       <section className="sec">
@@ -541,7 +493,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="sec" id="faq">
+      {/* <section className="sec" id="faq">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">The quiet questions</div>
@@ -556,7 +508,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* GALLERY */}
       <section className="sec alt">
@@ -681,14 +633,14 @@ export default function Home() {
             </p>
           </div>
           <div className="areas-grid reveal">
-            <span>East St Kilda</span>
-            <span>St Kilda</span>
+            <Link href="/">East St Kilda</Link>
+            <Link href="/dentist-st-kilda">St Kilda</Link>
             <span>St Kilda West</span>
-            <span>Balaclava</span>
-            <span>Elwood</span>
-            <span>Elsternwick</span>
+            <Link href="/dentist-balaclava">Balaclava</Link>
+            <Link href="/dentist-elwood">Elwood</Link>
+            <Link href="/dentist-elsternwick">Elsternwick</Link>
             <span>Ripponlea</span>
-            <span>Caulfield</span>
+            <Link href="/dentist-caulfield">Caulfield</Link>
             <span>Caulfield North</span>
             <span>Windsor</span>
             <span>Prahran</span>
