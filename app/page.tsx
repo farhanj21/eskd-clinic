@@ -633,14 +633,14 @@ export default function Home() {
             </p>
           </div>
           <div className="areas-grid reveal">
-            <span>East St Kilda</span>
-            <span>St Kilda</span>
+            <Link href="/">East St Kilda</Link>
+            <Link href="/dentist-st-kilda">St Kilda</Link>
             <span>St Kilda West</span>
-            <span>Balaclava</span>
-            <span>Elwood</span>
-            <span>Elsternwick</span>
+            <Link href="/dentist-balaclava">Balaclava</Link>
+            <Link href="/dentist-elwood">Elwood</Link>
+            <Link href="/dentist-elsternwick">Elsternwick</Link>
             <span>Ripponlea</span>
-            <span>Caulfield</span>
+            <Link href="/dentist-caulfield">Caulfield</Link>
             <span>Caulfield North</span>
             <span>Windsor</span>
             <span>Prahran</span>
