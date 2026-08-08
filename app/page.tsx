@@ -162,114 +162,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW WE'RE DIFFERENT */}
-      <section className="sec alt">
-        <div className="container">
-          <div className="sec-head reveal">
-            <div className="eyebrow">The way we care</div>
-            <h2>Dentistry that feels <em>safe</em>, not stressful</h2>
-            <p style={{ marginTop: '16px', fontSize: '18px' }}>
-              Whoever you are, and however long it&apos;s been, you&apos;re in exactly the right place. There&apos;s nothing here to be embarrassed about.
-            </p>
-          </div>
-          <div className="pillars">
-            <div className="pillar reveal">
-              <div className="n">01</div>
-              <h3>The full picture, not just one tooth</h3>
-              <p>We look at how everything fits together, your teeth, gums, bite and long-term health, so the things quick check-ups miss don&apos;t get missed.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">02</div>
-              <h3>No shame, no judgement</h3>
-              <p>Whatever state things are in, you&apos;ll be supported without criticism. Ever.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">03</div>
-              <h3>Built to last, not patched up</h3>
-              <p>We treat the cause, not just the symptom, and help you prevent problems before they start. The aim is less dentistry over a lifetime, not more.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">04</div>
-              <h3>Gentle, never vague</h3>
-              <p>Being gentle doesn&apos;t stop us being honest. We give you our clear, confident recommendation, kindly, then leave the decision to you. No scare tactics, and no glossing over what matters.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* REVIEWS */}
-      <section className="sec">
-        <div className="container">
-          <div className="sec-head center reveal">
-            <div className="eyebrow">In our patients&apos; words</div>
-            <h2>Kind, gentle, and never rushed</h2>
-          </div>
-          <div className="reviews-v2">
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>I&apos;d been putting it off for ages and felt embarrassed to even call. From the first phone call the team made it easy, with a warm welcome and not a single lecture.</p>
-              <div className="who">Patient review · returning after a break</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>I rang in a panic and reception were calm and kind, and found me a time straight away. They turned a stressful morning into an easy one.</p>
-              <div className="who">Patient review · first call</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>The front desk always remembers us by name and the whole team makes our family feel welcome, kids included. We wouldn&apos;t go anywhere else.</p>
-              <div className="who">Patient review · family patient</div>
-            </div>
-          </div>
-          <div className="gscore reveal">
-            Rated <b>5.0 on Google</b> by our local patients
-          </div>
-        </div>
-      </section>
-
-      {/* OFFER CARD */}
-      <section className="sec" id="first-visit">
-        <div className="container reveal">
-          <div className="offer-card-v2">
-            <div className="body">
-              <div className="eyebrow">Your first visit, in full</div>
-              <h2>The <em>Comprehensive Care</em> Visit</h2>
-              <p>A thorough, gentle 60 to 75 minute appointment that gives you a complete understanding of your oral health and where things are heading, not a quick clean and out the door. Together we look at your health, function, longevity, aesthetics and prevention, and you leave with a personalised dental care plan. Your visit includes:</p>
-              <ul className="offer-includes">
-                <li>Comprehensive dental examination</li>
-                <li>Full medical and dental history review</li>
-                <li>Digital X-rays and intraoral photos</li>
-                <li>Oral cancer screening</li>
-                <li>Gum and periodontal assessment</li>
-                <li>Full scale, clean and polish</li>
-                <li>Fluoride treatment</li>
-                <li>Smile and bite assessment</li>
-                <li>Your personalised dental care plan</li>
-              </ul>
-              <div className="offer-meta">
-                <div><b>60–75 min</b>gentle and thorough</div>
-                <div><b>$297</b>everything above, one price</div>
-                <div><b>A care plan</b>clear and easy to follow</div>
-              </div>
-              <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px', color: 'var(--ink)' }}>
-                Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
-              </p>
-              <Link href="/book" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
-              <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
-              </p>
-            </div>
-            <Photo
-              style={{ borderRadius: 0, minHeight: '100%' }}
-              src="/assets/incoming/comprehensive2.webp"
-              alt="A dentist talking with a seated patient during a comprehensive care consultation"
-     
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES OVERVIEW */}
+            {/* SERVICES OVERVIEW */}
       <section className="sec">
         <div className="container">
           <div className="sec-head center reveal">
@@ -320,6 +213,115 @@ export default function Home() {
         </div>
       </section>
 
+      {/* HOW WE'RE DIFFERENT */}
+      {/* <section className="sec alt">
+        <div className="container">
+          <div className="sec-head reveal">
+            <div className="eyebrow">The way we care</div>
+            <h2>Dentistry that feels <em>safe</em>, not stressful</h2>
+            <p style={{ marginTop: '16px', fontSize: '18px' }}>
+              Whoever you are, and however long it&apos;s been, you&apos;re in exactly the right place. There&apos;s nothing here to be embarrassed about.
+            </p>
+          </div>
+          <div className="pillars">
+            <div className="pillar reveal">
+              <div className="n">01</div>
+              <h3>The full picture, not just one tooth</h3>
+              <p>We look at how everything fits together, your teeth, gums, bite and long-term health, so the things quick check-ups miss don&apos;t get missed.</p>
+            </div>
+            <div className="pillar reveal">
+              <div className="n">02</div>
+              <h3>No shame, no judgement</h3>
+              <p>Whatever state things are in, you&apos;ll be supported without criticism. Ever.</p>
+            </div>
+            <div className="pillar reveal">
+              <div className="n">03</div>
+              <h3>Built to last, not patched up</h3>
+              <p>We treat the cause, not just the symptom, and help you prevent problems before they start. The aim is less dentistry over a lifetime, not more.</p>
+            </div>
+            <div className="pillar reveal">
+              <div className="n">04</div>
+              <h3>Gentle, never vague</h3>
+              <p>Being gentle doesn&apos;t stop us being honest. We give you our clear, confident recommendation, kindly, then leave the decision to you. No scare tactics, and no glossing over what matters.</p>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* REVIEWS */}
+      {/* <section className="sec">
+        <div className="container">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">In our patients&apos; words</div>
+            <h2>Kind, gentle, and never rushed</h2>
+          </div>
+          <div className="reviews-v2">
+            <div className="review-card reveal">
+              <div className="review-stars">★★★★★</div>
+              <p>I&apos;d been putting it off for ages and felt embarrassed to even call. From the first phone call the team made it easy, with a warm welcome and not a single lecture.</p>
+              <div className="who">Patient review · returning after a break</div>
+            </div>
+            <div className="review-card reveal">
+              <div className="review-stars">★★★★★</div>
+              <p>I rang in a panic and reception were calm and kind, and found me a time straight away. They turned a stressful morning into an easy one.</p>
+              <div className="who">Patient review · first call</div>
+            </div>
+            <div className="review-card reveal">
+              <div className="review-stars">★★★★★</div>
+              <p>The front desk always remembers us by name and the whole team makes our family feel welcome, kids included. We wouldn&apos;t go anywhere else.</p>
+              <div className="who">Patient review · family patient</div>
+            </div>
+          </div>
+          <div className="gscore reveal">
+            Rated <b>5.0 on Google</b> by our local patients
+          </div>
+        </div>
+      </section> */}
+
+      {/* OFFER CARD */}
+      <section className="sec" id="first-visit">
+        <div className="container reveal">
+          <div className="offer-card-v2">
+            <div className="body">
+              <div className="eyebrow">Your first visit, in full</div>
+              <h2>The <em>Comprehensive Care</em> Visit</h2>
+              <p>A thorough, gentle 60 to 75 minute appointment that gives you a complete understanding of your oral health and where things are heading, not a quick clean and out the door. Together we look at your health, function, longevity, aesthetics and prevention, and you leave with a personalised dental care plan. Your visit includes:</p>
+              <ul className="offer-includes">
+                <li>Comprehensive dental examination</li>
+                <li>Full medical and dental history review</li>
+                <li>Digital X-rays and intraoral photos</li>
+                <li>Oral cancer screening</li>
+                <li>Gum and periodontal assessment</li>
+                <li>Full scale, clean and polish</li>
+                <li>Fluoride treatment</li>
+                <li>Smile and bite assessment</li>
+                <li>Your personalised dental care plan</li>
+              </ul>
+              <div className="offer-meta">
+                <div><b>60–75 min</b>gentle and thorough</div>
+                <div><b>$297</b>everything above, one price</div>
+                <div><b>A care plan</b>clear and easy to follow</div>
+              </div>
+              <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px', color: 'var(--ink)' }}>
+                Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
+              </p>
+              <Link href="/book" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
+              <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
+                $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+              </p>
+            </div>
+            <Photo
+              style={{ borderRadius: 0, minHeight: '100%' }}
+              src="/assets/incoming/comprehensive2.webp"
+              alt="A dentist talking with a seated patient during a comprehensive care consultation"
+     
+            />
+          </div>
+        </div>
+      </section>
+
+
+
       {/* NERVOUS PATIENTS */}
       <section className="sec sage-bg" id="nervous">
         <div className="container nervous-grid">
@@ -350,56 +352,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FIRST VISIT */}
-      <section className="sec alt">
-        <div className="container">
-          <div className="sec-head reveal">
-            <div className="eyebrow">Before you arrive</div>
-            <h2>What your first visit <em>actually</em> looks like</h2>
-          </div>
-          <div className="steps-v2">
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>A warm welcome</h4>
-              <p>A friendly hello, a comfortable seat, and a chat about what&apos;s on your mind.</p>
-            </div>
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>We listen first</h4>
-              <p>You tell us your history and worries before anyone picks up an instrument.</p>
-            </div>
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>A gentle, full check</h4>
-              <p>A calm, comprehensive look at your teeth, gums and bite. We show you what we see on screen and explain it in plain language.</p>
-            </div>
-            <div className="step-v2 reveal">
-              <div className="num" />
-              <h4>Your clear care plan</h4>
-              <p>A simple, prioritised care plan and our honest recommendation. You decide in your own time, at your own pace.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA BAND */}
-      <section className="sec">
-        <div className="container">
-          <div className="ctaband reveal">
-            <h3>Not sure where to start?</h3>
-            <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
-            <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
-              <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
-                New here? Start with the Comprehensive Care Visit, $297 &rarr;
-              </Link>
-            </p>
-            <div className="ctaband-actions">
-              <Link href="/book" className="btn">Book your visit</Link>
-              <Link href="/contact" className="btn btn-ghost-light">Request a callback</Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* TEAM */}
       <section className="sec">
@@ -541,7 +493,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="sec" id="faq">
+      {/* <section className="sec" id="faq">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">The quiet questions</div>
@@ -556,7 +508,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* GALLERY */}
       <section className="sec alt">
