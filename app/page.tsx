@@ -167,39 +167,39 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">How we can help</div>
-            <h2>Care for every stage of life</h2>
+            <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Care for every stage of life</h2>
             <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
               From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after East St Kilda and the surrounding suburbs.
             </p>
           </div>
           <div className="svc-grid-v2">
             <div className="svc-item reveal">
-              <h4>Check-ups &amp; cleans</h4>
+              <h4 style={{ fontWeight: 700 }}>Check-ups &amp; cleans</h4>
               <p>Gentle, thorough preventive care to keep small things small.</p>
               <Link href="/services/check-ups">Learn more</Link>
             </div>
             <div className="svc-item reveal">
-              <h4>Emergency dentistry</h4>
+              <h4 style={{ fontWeight: 700 }}>Emergency dentistry</h4>
               <p>In pain? We&apos;ll see you quickly and get you comfortable.</p>
               <Link href="/emergency-dentist">Learn more</Link>
             </div>
             <div className="svc-item reveal">
-              <h4>Fillings &amp; restorations</h4>
+              <h4 style={{ fontWeight: 700 }}>Fillings &amp; restorations</h4>
               <p>Quietly fixing what needs fixing, preserving your natural teeth.</p>
               <Link href="/services/fillings">Learn more</Link>
             </div>
             <div className="svc-item reveal">
-              <h4>Crowns &amp; root canals</h4>
+              <h4 style={{ fontWeight: 700 }}>Crowns &amp; root canals</h4>
               <p>Saving teeth and easing pain, explained every step of the way.</p>
               <Link href="/services/crowns-and-bridges">Learn more</Link>
             </div>
             <div className="svc-item reveal">
-              <h4>Dental implants</h4>
+              <h4 style={{ fontWeight: 700 }}>Dental implants</h4>
               <p>Replacing missing teeth so you can eat and smile with ease.</p>
               <Link href="/services/dental-implants">Learn more</Link>
             </div>
             <div className="svc-item reveal">
-              <h4>Cosmetic dentistry</h4>
+              <h4 style={{ fontWeight: 700 }}>Cosmetic dentistry</h4>
               <p>Subtle, natural improvements when you&apos;re ready, never pushed.</p>
               <Link href="/services/smile-design">Learn more</Link>
             </div>
