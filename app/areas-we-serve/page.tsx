@@ -3,6 +3,7 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
+import { suburbs, suburbPath } from '@/data/suburbs'
 import { business, streetAddress, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
@@ -12,13 +13,24 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/areas-we-serve' },
 })
 
-const suburbs = [
-  { href: '/',                    h4: 'East St Kilda',  p: `Our home. We're at ${streetAddress}, ${business.address.addressLocality} (corner Orrong Road).`, cta: 'Our clinic' },
-  { href: '/dentist-st-kilda',    h4: 'St Kilda',       p: 'Your local dentist, a few minutes from the bay.',                             cta: 'View St Kilda' },
-  { href: '/dentist-balaclava',   h4: 'Balaclava',      p: 'One of our closest neighbourhoods.',                                          cta: 'View Balaclava' },
-  { href: '/dentist-caulfield',   h4: 'Caulfield',      p: 'An easy trip west along Dandenong Road.',                                     cta: 'View Caulfield' },
-  { href: '/dentist-elsternwick', h4: 'Elsternwick',    p: 'Just north of the Glen Huntly Road village.',                                 cta: 'View Elsternwick' },
-  { href: '/dentist-elwood',      h4: 'Elwood',         p: 'A short trip from the Elwood village and beach.',                             cta: 'View Elwood' },
+/**
+ * Every suburb we publish a page for, plus East St Kilda itself, which is the
+ * home page rather than a landing page. The list is generated from
+ * data/suburbs.ts so this hub can never fall behind the pages themselves.
+ */
+const areaCards = [
+  {
+    href: '/',
+    name: 'East St Kilda',
+    blurb: `Our home. We're at ${streetAddress}, ${business.address.addressLocality} (corner Orrong Road).`,
+    cta: 'Our clinic',
+  },
+  ...suburbs.map((s) => ({
+    href: suburbPath(s.slug),
+    name: s.name,
+    blurb: s.localHeading,
+    cta: `View ${s.name}`,
+  })),
 ]
 
 export default function AreasWeServePage() {
@@ -58,16 +70,16 @@ export default function AreasWeServePage() {
             <h2>Caring for families across the neighbourhood</h2>
           </div>
           <div className="svc-grid reveal" style={{ transitionDelay: '.08s' }}>
-            {suburbs.map(s => (
-              <Link key={s.href} href={s.href} className="svc" style={{ textDecoration: 'none' }}>
-                <h4>{s.h4}</h4>
-                <p>{s.p}</p>
-                <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>{s.cta} &rarr;</span>
+            {areaCards.map(a => (
+              <Link key={a.href} href={a.href} className="svc" style={{ textDecoration: 'none' }}>
+                <h4>{a.name}</h4>
+                <p>{a.blurb}</p>
+                <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>{a.cta} &rarr;</span>
               </Link>
             ))}
           </div>
           <p className="reveal" style={{ textAlign: 'center', marginTop: '22px', maxWidth: '46em', marginLeft: 'auto', marginRight: 'auto', color: 'var(--ink)', opacity: 0.8 }}>
-            We also warmly welcome patients from Caulfield North, Caulfield South, Ripponlea, Windsor, Prahran, Armadale, Glen Huntly, Carnegie, Gardenvale, St Kilda West and the surrounding suburbs.
+            We also warmly welcome patients from Caulfield South, Brighton, Bentleigh, South Melbourne, Richmond and the surrounding suburbs.
           </p>
         </div>
       </section>

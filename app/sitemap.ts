@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/business'
 import { services } from '@/data/services'
 import { publishedArticles } from '@/data/articles'
 import { populatedTopics } from '@/data/topics'
-import { suburbs } from '@/data/suburbs'
+import { suburbs, suburbPath } from '@/data/suburbs'
 
 /**
  * Every indexable route, as an absolute production URL.
@@ -26,11 +26,6 @@ const STATIC_PATHS = [
   '/book',
   '/comprehensive-care-visit',
   '/contact',
-  '/dentist-balaclava',
-  '/dentist-caulfield',
-  '/dentist-elsternwick',
-  '/dentist-elwood',
-  '/dentist-st-kilda',
   '/emergency-dentist',
   '/fees',
   '/learn',
@@ -51,7 +46,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...publishedArticles.map((a) => `/learn/${a.slug}`),
     // Topic pages that actually have guides. An empty topic has no page.
     ...populatedTopics.map((t) => `/learn/${t.slug}`),
-    ...suburbs.map((s) => `/areas/${s.slug}`),
+    // Suburb landing pages. Adding an entry to data/suburbs.ts (and its stub
+    // route) is all it takes for a new suburb page to appear here.
+    ...suburbs.map((s) => suburbPath(s.slug)),
   ]
 
   // No lastModified: we have no real per-page modification date, and stamping

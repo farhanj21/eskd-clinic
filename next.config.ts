@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import { suburbs, suburbPath } from './data/suburbs'
 
 // Vercel sets VERCEL_ENV automatically:
 //   "production"  → main production deployment
@@ -11,6 +12,19 @@ const nextConfig: NextConfig = {
   images: {
     // AVIF first (smaller), WebP fallback; browsers get the best format they support
     formats: ['image/avif', 'image/webp'],
+  },
+  /**
+   * The suburb landing pages used to live at two URLs: /areas/<slug> (generated
+   * from data/suburbs.ts) and /dentist-<slug> (hand-written). That was duplicate
+   * content competing for the same searches. /dentist-<slug> is now the only
+   * one, so the old /areas/<slug> URLs redirect permanently rather than 404.
+   */
+  async redirects() {
+    return suburbs.map((s) => ({
+      source: `/areas/${s.slug}`,
+      destination: suburbPath(s.slug),
+      permanent: true,
+    }))
   },
   async headers() {
     if (isProduction) return []

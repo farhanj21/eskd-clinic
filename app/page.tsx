@@ -5,6 +5,7 @@ import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
 import HeroVideoBg from '@/components/HeroVideoBg'
 import MapEmbed from '@/components/MapEmbed'
+import { suburbs, suburbPath } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
 
@@ -632,27 +633,13 @@ export default function Home() {
               From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a welcoming dental home here.
             </p>
           </div>
+          {/* Every suburb here has its own page, generated from data/suburbs.ts.
+              Add a suburb there and it appears in this grid and the sitemap. */}
           <div className="areas-grid reveal">
             <Link href="/">East St Kilda</Link>
-            <Link href="/dentist-st-kilda">St Kilda</Link>
-            <span>St Kilda West</span>
-            <Link href="/dentist-balaclava">Balaclava</Link>
-            <Link href="/dentist-elwood">Elwood</Link>
-            <Link href="/dentist-elsternwick">Elsternwick</Link>
-            <span>Ripponlea</span>
-            <Link href="/dentist-caulfield">Caulfield</Link>
-            <span>Caulfield North</span>
-            <span>Windsor</span>
-            <span>Prahran</span>
-            <span>Armadale</span>
-            <span>Glen Huntly</span>
-            <span>Carnegie</span>
-            <span>Gardenvale</span>
-            <span>Albert Park</span>
-            <span>Middle Park</span>
-            <span>South Yarra</span>
-            <span>Toorak</span>
-            <span>Malvern</span>
+            {suburbs.map((s) => (
+              <Link key={s.slug} href={suburbPath(s.slug)}>{s.name}</Link>
+            ))}
           </div>
           <p className="areas-wider reveal">
             We also welcome patients from across the wider inner-Melbourne area, from Brighton and Bentleigh to South Melbourne, Richmond and beyond.

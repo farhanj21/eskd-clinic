@@ -87,7 +87,7 @@ export default function ContactPage() {
               We&apos;re on Dandenong Road at the corner of Orrong Road, with free off-street parking off Orrong Road. Trams 5 and 64 stop along Dandenong Road, and Balaclava Station on the Sandringham line is a short walk away.
             </p>
             <div style={{ marginTop: '14px' }}>
-              <Link href="/areas-we-serve/east-st-kilda" className="btn btn-ghost">See areas we serve</Link>
+              <Link href="/areas-we-serve" className="btn btn-ghost">See areas we serve</Link>
             </div>
           </div>
         </div>

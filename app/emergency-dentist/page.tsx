@@ -4,6 +4,7 @@ import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import JsonLd from '@/components/JsonLd'
 import StickyCallBar from '@/components/StickyCallBar'
+import { suburbs, suburbPath } from '@/data/suburbs'
 import { withSocial } from '@/lib/seo'
 import { SCHEMA_ID, SITE_URL, areasServed, business, openingHours, telHref } from '@/lib/business'
 
@@ -22,16 +23,10 @@ const FILLINGS = { label: 'fillings', href: '/services/fillings' }
 const ROOT_CANAL = { label: 'root canal therapy', href: '/services/root-canal' }
 
 // Nearby suburbs, for "emergency dentist near me" and per-suburb intent.
-// Only suburbs with a live, dedicated page are listed — these are the pages the
-// nav and /areas-we-serve already point at. East St Kilda is the home page, so
-// it is not repeated here.
-const nearbySuburbs = [
-  { label: 'St Kilda', href: '/dentist-st-kilda' },
-  { label: 'Balaclava', href: '/dentist-balaclava' },
-  { label: 'Elwood', href: '/dentist-elwood' },
-  { label: 'Elsternwick', href: '/dentist-elsternwick' },
-  { label: 'Caulfield', href: '/dentist-caulfield' },
-]
+// Generated from data/suburbs.ts, so every suburb with a live page is listed and
+// a new one needs no edit here. East St Kilda is the home page, so it is not
+// repeated.
+const nearbySuburbs = suburbs.map((s) => ({ label: s.name, href: suburbPath(s.slug) }))
 
 /**
  * First aid, as question-and-answer pairs.
