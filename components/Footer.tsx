@@ -44,8 +44,8 @@ export default function Footer() {
               <li><Link href="/dentist-caulfield">Caulfield</Link></li>
               <li><Link href="/dentist-elwood">Elwood</Link></li>
               <li><Link href="/dentist-elsternwick">Elsternwick</Link></li>
-              <li><Link href="/areas-we-serve">Windsor</Link></li>
-              <li><Link href="/areas-we-serve">Prahran</Link></li>
+              <li><Link href="/dentist-windsor">Windsor</Link></li>
+              <li><Link href="/dentist-prahran">Prahran</Link></li>
               <li><Link href="/areas-we-serve">All areas we serve</Link></li>
             </ul>
           </div>
