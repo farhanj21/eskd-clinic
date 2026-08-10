@@ -3,6 +3,9 @@
   /* V2 brand palette */
   --sage:#4C6B5A;
   --sage-deep:#37503F;
+  /* Deepest green in the band. Used for the full-bleed dark sections
+     (.sage-bg) and the footer, so the page has one consistent "dark end". */
+  --sage-darker:#1E2F27;
   --sage-soft:#DCE6DD;
   --sage-tint:#EAF0E8;
   --clay:#BC7A4E;
@@ -2082,8 +2085,10 @@ body{overflow-x:hidden;max-width:100%;}
 .sec h2{font-size:clamp(28px,3.6vw,42px);color:var(--ink);margin-top:12px;}
 .sec h2 em{font-style:italic;color:var(--clay-deep);}
 .alt{background:var(--paper);}
-.sage-bg{background:var(--sage-deep);color:var(--cream);}
+.sage-bg{background:var(--sage-darker);color:var(--cream);}
 .sage-bg h2,.sage-bg h3{color:var(--cream);}
+/* clay-deep (the light-background accent) is unreadable on the deep green */
+.sage-bg h2 em,.sage-bg h3 em{color:var(--clay-soft);}
 .sage-bg p{color:rgba(247,243,236,.82);}
 .sage-bg .eyebrow{color:var(--clay-soft);}
 
@@ -2120,9 +2125,15 @@ body{overflow-x:hidden;max-width:100%;}
    A broad, welcoming frame rather than the boxed two-column hero. The poster
    still is a CSS background on the section itself, so the hero paints in full
    on the server render; components/HeroVideoBg then layers the muted loop on
-   top and fades it in. The proof points sit in a glass bar along the bottom
-   edge of the frame, which is why the home page no longer renders a separate
-   .hero-proof-band. */
+   top and fades it in. The proof points sit in stat cards (.hero-stats)
+   straddling the bottom edge of the frame, which is why the home page does not
+   render a separate .hero-proof-band. */
+/* How far the stat cards ride up over the hero. Declared once here because two
+   rules derive from it and must never disagree: the card row's negative margin,
+   and the hero's own bottom padding, which reserves the same distance as
+   copy-free space so the cards can't land on the "New patient?" link. Every
+   breakpoint below overrides this one value rather than both rules. */
+:root{--hero-overlap:64px;}
 .hero-video{
   position:relative;
   display:flex;
@@ -2164,7 +2175,10 @@ body{overflow-x:hidden;max-width:100%;}
   grid-template-columns:minmax(0,clamp(480px,32vw,560px)) minmax(0,1fr);
   align-items:center;
   padding-inline:clamp(32px,8.5vw,172px);
-  padding-block:clamp(76px,11vh,124px) clamp(52px,8vh,92px);
+  /* The overlap is added to the bottom padding, not absorbed by it: the hero's
+     min-height lets the section grow instead of clipping if the copy needs the
+     room back. */
+  padding-block:clamp(76px,11vh,124px) calc(clamp(52px,8vh,92px) + var(--hero-overlap));
 }
 .hero-video-copy{
   grid-column:1;
@@ -2191,18 +2205,29 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-video-note{margin:18px 0 0;font-size:15px;}
 .hero-video-note a{color:var(--clay-soft);font-weight:600;}
 .hero-video-note a:hover{color:#fff;}
-/* Glass proof bar pinned to the foot of the frame */
-.hero-video-band{
-  position:relative;z-index:2;
-  padding:15px 0;
-  background:rgba(255,255,255,.10);
-  border-top:1px solid rgba(255,255,255,.20);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+/* Stat cards straddling the foot of the hero.
+   They are a SIBLING of .hero-video, not a child, because that section is
+   overflow:hidden — a child pushed past its bottom edge would have both the
+   card and its shadow sliced off. Pulling the row up from outside instead
+   leaves the hero's own min-height untouched at every breakpoint.
+   Sizes and spacing reuse values already established elsewhere in this file:
+   the number/label pair from .story-stats, the 24px gap from .svc-grid-v2,
+   the 34px/30px padding from .ctaband. */
+.hero-stats-wrap{position:relative;z-index:3;margin-top:calc(var(--hero-overlap) * -1);}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:0;}
+.hero-stat{
+  background:var(--paper);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md);
+  padding:28px 26px;
+  text-align:center;
 }
-.hero-video-band .hero-proof{color:rgba(255,255,255,.92);}
-.hero-video-band .proof-stars{color:var(--clay-soft);}
-.hero-video-band .proof-dot{background:#fff;opacity:.45;}
+.hero-stat dt{
+  font-family:var(--display);
+  font-size:52px;font-weight:500;line-height:1;
+  color:var(--clay);
+}
+.hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
 
 /* A narrower left column protects the subjects as the frame contracts, while
    keeping the same desktop composition through landscape tablet sizes. */
@@ -2212,10 +2237,11 @@ body{overflow-x:hidden;max-width:100%;}
     background-position:left center;
     min-height:clamp(520px,72vh,680px);
   }
+  :root{--hero-overlap:48px;}
   .hero-video-inner{
     grid-template-columns:minmax(0,420px) minmax(0,1fr);
     padding-inline:clamp(32px,6vw,66px);
-    padding-block:60px 44px;
+    padding-block:60px calc(44px + var(--hero-overlap));
   }
   .hero-video-copy{max-width:420px;}
   .hero-video-scrim{
@@ -2238,6 +2264,13 @@ body{overflow-x:hidden;max-width:100%;}
     padding-inline:clamp(28px,5vw,43px);
   }
   .hero-video-copy{max-width:400px;}
+  /* Three across still reads on tablet — 3 stats split badly into 2 columns,
+     so the type and padding tighten instead of the grid reflowing. */
+  :root{--hero-overlap:40px;}
+  .hero-stats{gap:14px;}
+  .hero-stat{padding:22px 14px;}
+  .hero-stat dt{font-size:38px;}
+  .hero-stat dd{font-size:14.5px;}
 }
 @media(max-width:600px){
   .hero-video{min-height:auto;}
@@ -2250,12 +2283,17 @@ body{overflow-x:hidden;max-width:100%;}
   .hero-video-inner{
     display:block;
     padding-inline:var(--gutter);
-    padding-block:48px 36px;
+    padding-block:48px calc(36px + var(--hero-overlap));
   }
   .hero-video-copy{text-align:center;margin:0 auto;}
   .hero-video-copy .hero-cta{flex-direction:column;align-items:stretch;}
   .hero-video-copy .hero-cta .btn{text-align:center;}
-  .hero-video-band{padding:13px 0;}
+  /* Full-width stack, so the overlap drops to a token gesture — three stacked
+     cards riding up any further would swallow the hero on a short phone. */
+  :root{--hero-overlap:20px;}
+  .hero-stats{grid-template-columns:1fr;gap:12px;}
+  .hero-stat{padding:22px 20px;}
+  .hero-stat dt{font-size:46px;}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-video-media{transition:none;}
@@ -2328,6 +2366,10 @@ body{overflow-x:hidden;max-width:100%;}
 /* Nervous patients */
 .nervous-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;}
 .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+/* Locks the row to exactly two chips at any width. The flex-wrap default
+   reflows to 1, 2 or 3 per row depending on how long each label is. */
+.chips.chips-2{display:grid;grid-template-columns:1fr 1fr;}
+.chips.chips-2 .chip{display:flex;align-items:center;justify-content:center;text-align:center;}
 .chip{background:rgba(247,243,236,.14);border:1px solid rgba(247,243,236,.28);padding:10px 18px;border-radius:30px;font-size:15px;font-weight:500;}
 .nervous-proof{margin:28px 0 0;border-left:3px solid var(--clay);padding:4px 0 4px 20px;font-family:var(--display);font-style:italic;font-size:18px;line-height:1.5;color:var(--cream);}
 .nervous-proof cite{display:block;margin-top:10px;font-family:var(--body);font-style:normal;font-size:13px;color:rgba(247,243,236,.7);font-weight:600;}
@@ -2369,6 +2411,18 @@ body{overflow-x:hidden;max-width:100%;}
 /* Insurance */
 .ins-logos{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:34px;}
 .ins-logos .lg{background:var(--paper);border:1px solid var(--line);border-radius:12px;height:64px;min-width:120px;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--ink-faint);font-size:14px;padding:0 22px;}
+/* Logos are sized by HEIGHT, never width — their aspect ratios run from 1:1
+   (Bupa) to 3.6:1 (Australian Unity), so matching widths would make some
+   enormous and others unreadable. Height 30px is the row default; a mark that
+   needs a different one carries `opticalHeight` in data/healthFunds.ts. */
+.ins-logos .lg img{height:var(--logo-h,30px);width:auto;max-width:100%;object-fit:contain;}
+@media(max-width:560px){
+  .ins-logos{gap:12px;}
+  .ins-logos .lg{height:56px;min-width:104px;padding:0 16px;}
+  /* Scales the per-logo height too, rather than flattening every mark to one
+     value and undoing the optical balance set above. */
+  .ins-logos .lg img{height:calc(var(--logo-h,30px) * .86);}
+}
 .ins-pill{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--sage-tint);border-radius:40px;padding:12px 24px;font-weight:600;color:var(--sage-deep);font-size:15px;}
 
 /* Fees */
@@ -2490,20 +2544,26 @@ body{overflow-x:hidden;max-width:100%;}
 @media(max-width:480px){.gt-row2{grid-template-columns:1fr;}.gt-treat{grid-template-columns:1fr;}}
 
 /* Footer V2 */
-.footer-v2{background:var(--ink);color:rgba(247,243,236,.7);padding:64px 0 30px;font-size:14.5px;}
+/* Text sits on the deep green (--sage-darker), so the cream is carried at a
+   higher opacity than it was on --ink and the headings go to pure white. */
+.footer-v2{background:var(--sage-darker);color:rgba(247,243,236,.86);padding:64px 0 30px;font-size:14.5px;}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;}
-.footer-v2 h4{color:var(--cream);font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
+.footer-v2 h4{color:#fff;font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
+/* The global `p{color:var(--ink-soft)}` rule wins over the inherited footer
+   colour, which left the brand blurb as dark ink on the deep green. */
+.footer-v2 p{color:rgba(247,243,236,.86);line-height:1.6;}
 .footer-v2 ul{list-style:none;margin:0;padding:0;}
 .footer-v2 li{margin-bottom:10px;}
+.footer-v2 a{color:rgba(247,243,236,.86);transition:color .2s;}
 .footer-v2 a:hover{color:var(--clay-soft);}
-.foot-logo{font-family:var(--display);font-size:22px;color:var(--cream);font-weight:600;margin-bottom:14px;}
+.foot-logo{font-family:var(--display);font-size:22px;color:#fff;font-weight:600;margin-bottom:14px;}
 .news{display:flex;gap:8px;margin-top:14px;}
 .news input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(247,243,236,.2);background:rgba(247,243,236,.08);color:var(--cream);font-family:var(--body);font-size:14px;}
 .news input::placeholder{color:rgba(247,243,236,.45);}
 .news button{padding:0 18px;border-radius:10px;border:none;background:var(--clay);color:#fff;font-weight:600;cursor:pointer;font-family:var(--body);font-size:14px;transition:.2s;}
 .news button:hover{background:var(--clay-deep);}
-.foot-bottom{border-top:1px solid rgba(247,243,236,.15);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(247,243,236,.5);}
-.foot-bottom a{color:rgba(247,243,236,.5);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(247,243,236,.62);}
+.foot-bottom a{color:rgba(247,243,236,.62);}
 .foot-bottom a:hover{color:var(--clay-soft);}
 @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.foot-grid{grid-template-columns:1fr;}}

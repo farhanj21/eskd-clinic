@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import HealthFundLogos from '@/components/HealthFundLogos'
 import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
@@ -111,11 +112,7 @@ export default function FeesPage() {
               Bring your health fund card and we&apos;ll claim through HICAPS on the day, so usually you only pay any gap. We accept every major Australian fund.
             </p>
           </div>
-          <div className="ins-logos reveal">
-            {['Bupa', 'Medibank', 'HCF', 'nib', 'Australian Unity', 'CBHS', '+ all major funds'].map(f => (
-              <div key={f} className="lg">{f}</div>
-            ))}
-          </div>
+          <HealthFundLogos className="reveal" otherLabel="+ all major funds" />
         </div>
       </section>
 

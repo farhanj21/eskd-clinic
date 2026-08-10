@@ -3,6 +3,7 @@ import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
+import HealthFundLogos from '@/components/HealthFundLogos'
 import HeroVideoBg from '@/components/HeroVideoBg'
 import MapEmbed from '@/components/MapEmbed'
 import { suburbs, suburbPath } from '@/data/suburbs'
@@ -52,6 +53,15 @@ const faqs = [
     q: 'What happens at my first visit?',
     a: "A relaxed chat about your history and concerns, then a gentle, comprehensive check, and finally a clear, prioritised care plan. You're never rushed.",
   },
+]
+
+// The three proof points that sit in cards across the foot of the hero,
+// replacing the old glass band. Rendered as a <dl>, so each number is announced
+// with the label that gives it meaning.
+const heroStats = [
+  { value: '10,000+', label: 'Patients Served' },
+  { value: '45+', label: 'Years In The Local Area' },
+  { value: '15+', label: 'Suburbs Served' },
 ]
 
 // One self-contained, factual sentence for AI answer engines and featured
@@ -150,18 +160,22 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="hero-video-band">
-          <div className="container container-wide">
-            <div className="hero-proof">
-              <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
-              <span className="proof-dot" />
-              <span>40+ years local</span>
-              <span className="proof-dot" />
-              <span>All health funds accepted</span>
-            </div>
-          </div>
-        </div>
       </section>
+
+      {/* Stat cards straddling the foot of the hero. Deliberately a sibling of
+          .hero-video rather than a child: that section is overflow:hidden, so
+          anything pushed past its bottom edge — the cards and their shadow —
+          would be clipped. */}
+      <div className="container hero-stats-wrap">
+        <dl className="hero-stats">
+          {heroStats.map(({ value, label }) => (
+            <div className="hero-stat" key={label}>
+              <dt>{value}</dt>
+              <dd>{label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
 
             {/* SERVICES OVERVIEW */}
       <section className="sec">
@@ -339,10 +353,10 @@ export default function Home() {
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
             <p>Many of our patients arrive having avoided the dentist for years, often after a bad experience long ago. Looking after frightened patients is one of the things we are known for. Our gentle approach pairs careful clinical care with a calm, coaching-informed way of working, developed specifically for dental fear, so it feels safe from the moment you walk in. Tell us you&apos;re anxious, and we go entirely at your pace.</p>
-            <div className="chips">
+            <div className="chips chips-2">
               <span className="chip">Happy gas and sedation options</span>
               <span className="chip">Calm, unhurried pacing</span>
-              <span className="chip">A coaching-informed approach to fear</span>
+              <span className="chip">A coaching-informed approach</span>
               <span className="chip">Stop any time, no questions asked</span>
             </div>
             <blockquote className="nervous-proof">
@@ -447,21 +461,14 @@ export default function Home() {
       </section>
 
       {/* INSURANCE */}
-      <section className="sec" style={{ textAlign: 'center' }}>
+      <section className="sec sage-bg" style={{ textAlign: 'center' }}>
         <div className="container reveal">
           <div className="eyebrow">Using your health fund</div>
-          <h2 style={{ marginTop: '12px' }}>We accept <em>all</em> major health funds</h2>
+          <h2 style={{ marginTop: '12px', fontSize: 'clamp(38px, 4.8vw, 62px)' }}>We accept <em>all</em> major health funds</h2>
           <p style={{ maxWidth: '36em', margin: '14px auto 0' }}>
             Whatever fund you&apos;re with, you&apos;re covered here. We claim on the spot, so most of the time there&apos;s nothing to pay upfront beyond your gap.
           </p>
-          <div className="ins-logos">
-            <div className="lg">Bupa</div>
-            <div className="lg">Medibank</div>
-            <div className="lg">HCF</div>
-            <div className="lg">nib</div>
-            <div className="lg">Australian Unity</div>
-            <div className="lg">+ all others</div>
-          </div>
+          <HealthFundLogos />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
             <div className="ins-pill">On-the-spot HICAPS claiming · Medicare CDBS for eligible kids</div>
           </div>
@@ -516,7 +523,7 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Real smiles</div>
-            <h2>Gentle, natural-looking results</h2>
+            <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Gentle, natural-looking results</h2>
           </div>
           <div className="edu-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <div className="svc reveal">
@@ -547,7 +554,8 @@ export default function Home() {
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">Learn at your own pace, no appointment needed</div>
-            <h2>Answers to the things you&apos;ve been <em>wondering</em></h2>
+            {/* Same one-line treatment as the Areas heading — see note there. */}
+            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Answers to the things you&apos;ve been <em>wondering</em></h2>
             <p style={{ marginTop: '14px', fontSize: '18px' }}>
               Clear, judgement-free guides to the questions we hear most, from bleeding gums to nervous visits. Understanding your mouth is the first step to looking after it.
             </p>
@@ -628,7 +636,10 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Your local dentist in Melbourne&apos;s inner south-east</div>
-            <h2>Wherever you are, you&apos;re <em>welcome</em> here</h2>
+            {/* nowrap + a purely viewport-derived size: the .sec-head 46em cap
+                would otherwise break this over two lines. min() keeps it from
+                growing past the 1180px container on wide screens. */}
+            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
               From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a welcoming dental home here.
             </p>
