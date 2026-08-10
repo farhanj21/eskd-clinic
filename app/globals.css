@@ -3,6 +3,9 @@
   /* V2 brand palette */
   --sage:#4C6B5A;
   --sage-deep:#37503F;
+  /* Deepest green in the band. Used for the full-bleed dark sections
+     (.sage-bg) and the footer, so the page has one consistent "dark end". */
+  --sage-darker:#1E2F27;
   --sage-soft:#DCE6DD;
   --sage-tint:#EAF0E8;
   --clay:#BC7A4E;
@@ -2082,8 +2085,10 @@ body{overflow-x:hidden;max-width:100%;}
 .sec h2{font-size:clamp(28px,3.6vw,42px);color:var(--ink);margin-top:12px;}
 .sec h2 em{font-style:italic;color:var(--clay-deep);}
 .alt{background:var(--paper);}
-.sage-bg{background:var(--sage-deep);color:var(--cream);}
+.sage-bg{background:var(--sage-darker);color:var(--cream);}
 .sage-bg h2,.sage-bg h3{color:var(--cream);}
+/* clay-deep (the light-background accent) is unreadable on the deep green */
+.sage-bg h2 em,.sage-bg h3 em{color:var(--clay-soft);}
 .sage-bg p{color:rgba(247,243,236,.82);}
 .sage-bg .eyebrow{color:var(--clay-soft);}
 
@@ -2490,20 +2495,26 @@ body{overflow-x:hidden;max-width:100%;}
 @media(max-width:480px){.gt-row2{grid-template-columns:1fr;}.gt-treat{grid-template-columns:1fr;}}
 
 /* Footer V2 */
-.footer-v2{background:var(--ink);color:rgba(247,243,236,.7);padding:64px 0 30px;font-size:14.5px;}
+/* Text sits on the deep green (--sage-darker), so the cream is carried at a
+   higher opacity than it was on --ink and the headings go to pure white. */
+.footer-v2{background:var(--sage-darker);color:rgba(247,243,236,.86);padding:64px 0 30px;font-size:14.5px;}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;}
-.footer-v2 h4{color:var(--cream);font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
+.footer-v2 h4{color:#fff;font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
+/* The global `p{color:var(--ink-soft)}` rule wins over the inherited footer
+   colour, which left the brand blurb as dark ink on the deep green. */
+.footer-v2 p{color:rgba(247,243,236,.86);line-height:1.6;}
 .footer-v2 ul{list-style:none;margin:0;padding:0;}
 .footer-v2 li{margin-bottom:10px;}
+.footer-v2 a{color:rgba(247,243,236,.86);transition:color .2s;}
 .footer-v2 a:hover{color:var(--clay-soft);}
-.foot-logo{font-family:var(--display);font-size:22px;color:var(--cream);font-weight:600;margin-bottom:14px;}
+.foot-logo{font-family:var(--display);font-size:22px;color:#fff;font-weight:600;margin-bottom:14px;}
 .news{display:flex;gap:8px;margin-top:14px;}
 .news input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(247,243,236,.2);background:rgba(247,243,236,.08);color:var(--cream);font-family:var(--body);font-size:14px;}
 .news input::placeholder{color:rgba(247,243,236,.45);}
 .news button{padding:0 18px;border-radius:10px;border:none;background:var(--clay);color:#fff;font-weight:600;cursor:pointer;font-family:var(--body);font-size:14px;transition:.2s;}
 .news button:hover{background:var(--clay-deep);}
-.foot-bottom{border-top:1px solid rgba(247,243,236,.15);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(247,243,236,.5);}
-.foot-bottom a{color:rgba(247,243,236,.5);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(247,243,236,.62);}
+.foot-bottom a{color:rgba(247,243,236,.62);}
 .foot-bottom a:hover{color:var(--clay-soft);}
 @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.foot-grid{grid-template-columns:1fr;}}

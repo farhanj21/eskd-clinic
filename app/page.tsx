@@ -447,7 +447,7 @@ export default function Home() {
       </section>
 
       {/* INSURANCE */}
-      <section className="sec" style={{ textAlign: 'center' }}>
+      <section className="sec sage-bg" style={{ textAlign: 'center' }}>
         <div className="container reveal">
           <div className="eyebrow">Using your health fund</div>
           <h2 style={{ marginTop: '12px' }}>We accept <em>all</em> major health funds</h2>
