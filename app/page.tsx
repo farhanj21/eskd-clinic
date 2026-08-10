@@ -450,7 +450,7 @@ export default function Home() {
       <section className="sec sage-bg" style={{ textAlign: 'center' }}>
         <div className="container reveal">
           <div className="eyebrow">Using your health fund</div>
-          <h2 style={{ marginTop: '12px' }}>We accept <em>all</em> major health funds</h2>
+          <h2 style={{ marginTop: '12px', fontSize: 'clamp(38px, 4.8vw, 62px)' }}>We accept <em>all</em> major health funds</h2>
           <p style={{ maxWidth: '36em', margin: '14px auto 0' }}>
             Whatever fund you&apos;re with, you&apos;re covered here. We claim on the spot, so most of the time there&apos;s nothing to pay upfront beyond your gap.
           </p>
@@ -516,7 +516,7 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Real smiles</div>
-            <h2>Gentle, natural-looking results</h2>
+            <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Gentle, natural-looking results</h2>
           </div>
           <div className="edu-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <div className="svc reveal">
@@ -547,7 +547,8 @@ export default function Home() {
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">Learn at your own pace, no appointment needed</div>
-            <h2>Answers to the things you&apos;ve been <em>wondering</em></h2>
+            {/* Same one-line treatment as the Areas heading — see note there. */}
+            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Answers to the things you&apos;ve been <em>wondering</em></h2>
             <p style={{ marginTop: '14px', fontSize: '18px' }}>
               Clear, judgement-free guides to the questions we hear most, from bleeding gums to nervous visits. Understanding your mouth is the first step to looking after it.
             </p>
@@ -628,7 +629,10 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Your local dentist in Melbourne&apos;s inner south-east</div>
-            <h2>Wherever you are, you&apos;re <em>welcome</em> here</h2>
+            {/* nowrap + a purely viewport-derived size: the .sec-head 46em cap
+                would otherwise break this over two lines. min() keeps it from
+                growing past the 1180px container on wide screens. */}
+            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
               From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a welcoming dental home here.
             </p>
