@@ -3,6 +3,7 @@ import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
+import HealthFundLogos from '@/components/HealthFundLogos'
 import HeroVideoBg from '@/components/HeroVideoBg'
 import MapEmbed from '@/components/MapEmbed'
 import { suburbs, suburbPath } from '@/data/suburbs'
@@ -339,10 +340,10 @@ export default function Home() {
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
             <p>Many of our patients arrive having avoided the dentist for years, often after a bad experience long ago. Looking after frightened patients is one of the things we are known for. Our gentle approach pairs careful clinical care with a calm, coaching-informed way of working, developed specifically for dental fear, so it feels safe from the moment you walk in. Tell us you&apos;re anxious, and we go entirely at your pace.</p>
-            <div className="chips">
+            <div className="chips chips-2">
               <span className="chip">Happy gas and sedation options</span>
               <span className="chip">Calm, unhurried pacing</span>
-              <span className="chip">A coaching-informed approach to fear</span>
+              <span className="chip">A coaching-informed approach</span>
               <span className="chip">Stop any time, no questions asked</span>
             </div>
             <blockquote className="nervous-proof">
@@ -454,14 +455,7 @@ export default function Home() {
           <p style={{ maxWidth: '36em', margin: '14px auto 0' }}>
             Whatever fund you&apos;re with, you&apos;re covered here. We claim on the spot, so most of the time there&apos;s nothing to pay upfront beyond your gap.
           </p>
-          <div className="ins-logos">
-            <div className="lg">Bupa</div>
-            <div className="lg">Medibank</div>
-            <div className="lg">HCF</div>
-            <div className="lg">nib</div>
-            <div className="lg">Australian Unity</div>
-            <div className="lg">+ all others</div>
-          </div>
+          <HealthFundLogos />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
             <div className="ins-pill">On-the-spot HICAPS claiming · Medicare CDBS for eligible kids</div>
           </div>
