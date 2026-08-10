@@ -2125,9 +2125,15 @@ body{overflow-x:hidden;max-width:100%;}
    A broad, welcoming frame rather than the boxed two-column hero. The poster
    still is a CSS background on the section itself, so the hero paints in full
    on the server render; components/HeroVideoBg then layers the muted loop on
-   top and fades it in. The proof points sit in a glass bar along the bottom
-   edge of the frame, which is why the home page no longer renders a separate
-   .hero-proof-band. */
+   top and fades it in. The proof points sit in stat cards (.hero-stats)
+   straddling the bottom edge of the frame, which is why the home page does not
+   render a separate .hero-proof-band. */
+/* How far the stat cards ride up over the hero. Declared once here because two
+   rules derive from it and must never disagree: the card row's negative margin,
+   and the hero's own bottom padding, which reserves the same distance as
+   copy-free space so the cards can't land on the "New patient?" link. Every
+   breakpoint below overrides this one value rather than both rules. */
+:root{--hero-overlap:64px;}
 .hero-video{
   position:relative;
   display:flex;
@@ -2169,7 +2175,10 @@ body{overflow-x:hidden;max-width:100%;}
   grid-template-columns:minmax(0,clamp(480px,32vw,560px)) minmax(0,1fr);
   align-items:center;
   padding-inline:clamp(32px,8.5vw,172px);
-  padding-block:clamp(76px,11vh,124px) clamp(52px,8vh,92px);
+  /* The overlap is added to the bottom padding, not absorbed by it: the hero's
+     min-height lets the section grow instead of clipping if the copy needs the
+     room back. */
+  padding-block:clamp(76px,11vh,124px) calc(clamp(52px,8vh,92px) + var(--hero-overlap));
 }
 .hero-video-copy{
   grid-column:1;
@@ -2196,18 +2205,29 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-video-note{margin:18px 0 0;font-size:15px;}
 .hero-video-note a{color:var(--clay-soft);font-weight:600;}
 .hero-video-note a:hover{color:#fff;}
-/* Glass proof bar pinned to the foot of the frame */
-.hero-video-band{
-  position:relative;z-index:2;
-  padding:15px 0;
-  background:rgba(255,255,255,.10);
-  border-top:1px solid rgba(255,255,255,.20);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+/* Stat cards straddling the foot of the hero.
+   They are a SIBLING of .hero-video, not a child, because that section is
+   overflow:hidden — a child pushed past its bottom edge would have both the
+   card and its shadow sliced off. Pulling the row up from outside instead
+   leaves the hero's own min-height untouched at every breakpoint.
+   Sizes and spacing reuse values already established elsewhere in this file:
+   the number/label pair from .story-stats, the 24px gap from .svc-grid-v2,
+   the 34px/30px padding from .ctaband. */
+.hero-stats-wrap{position:relative;z-index:3;margin-top:calc(var(--hero-overlap) * -1);}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:0;}
+.hero-stat{
+  background:var(--paper);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md);
+  padding:28px 26px;
+  text-align:center;
 }
-.hero-video-band .hero-proof{color:rgba(255,255,255,.92);}
-.hero-video-band .proof-stars{color:var(--clay-soft);}
-.hero-video-band .proof-dot{background:#fff;opacity:.45;}
+.hero-stat dt{
+  font-family:var(--display);
+  font-size:52px;font-weight:500;line-height:1;
+  color:var(--clay);
+}
+.hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
 
 /* A narrower left column protects the subjects as the frame contracts, while
    keeping the same desktop composition through landscape tablet sizes. */
@@ -2217,10 +2237,11 @@ body{overflow-x:hidden;max-width:100%;}
     background-position:left center;
     min-height:clamp(520px,72vh,680px);
   }
+  :root{--hero-overlap:48px;}
   .hero-video-inner{
     grid-template-columns:minmax(0,420px) minmax(0,1fr);
     padding-inline:clamp(32px,6vw,66px);
-    padding-block:60px 44px;
+    padding-block:60px calc(44px + var(--hero-overlap));
   }
   .hero-video-copy{max-width:420px;}
   .hero-video-scrim{
@@ -2243,6 +2264,13 @@ body{overflow-x:hidden;max-width:100%;}
     padding-inline:clamp(28px,5vw,43px);
   }
   .hero-video-copy{max-width:400px;}
+  /* Three across still reads on tablet — 3 stats split badly into 2 columns,
+     so the type and padding tighten instead of the grid reflowing. */
+  :root{--hero-overlap:40px;}
+  .hero-stats{gap:14px;}
+  .hero-stat{padding:22px 14px;}
+  .hero-stat dt{font-size:38px;}
+  .hero-stat dd{font-size:14.5px;}
 }
 @media(max-width:600px){
   .hero-video{min-height:auto;}
@@ -2255,12 +2283,17 @@ body{overflow-x:hidden;max-width:100%;}
   .hero-video-inner{
     display:block;
     padding-inline:var(--gutter);
-    padding-block:48px 36px;
+    padding-block:48px calc(36px + var(--hero-overlap));
   }
   .hero-video-copy{text-align:center;margin:0 auto;}
   .hero-video-copy .hero-cta{flex-direction:column;align-items:stretch;}
   .hero-video-copy .hero-cta .btn{text-align:center;}
-  .hero-video-band{padding:13px 0;}
+  /* Full-width stack, so the overlap drops to a token gesture — three stacked
+     cards riding up any further would swallow the hero on a short phone. */
+  :root{--hero-overlap:20px;}
+  .hero-stats{grid-template-columns:1fr;gap:12px;}
+  .hero-stat{padding:22px 20px;}
+  .hero-stat dt{font-size:46px;}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-video-media{transition:none;}

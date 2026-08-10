@@ -55,6 +55,15 @@ const faqs = [
   },
 ]
 
+// The three proof points that sit in cards across the foot of the hero,
+// replacing the old glass band. Rendered as a <dl>, so each number is announced
+// with the label that gives it meaning.
+const heroStats = [
+  { value: '10,000+', label: 'Patients Served' },
+  { value: '45+', label: 'Years In The Local Area' },
+  { value: '15+', label: 'Suburbs Served' },
+]
+
 // One self-contained, factual sentence for AI answer engines and featured
 // snippets to quote whole: who we are, what we are, where, since when, and the
 // entry price. Assembled from lib/business.ts so it can never contradict the
@@ -151,18 +160,22 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="hero-video-band">
-          <div className="container container-wide">
-            <div className="hero-proof">
-              <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
-              <span className="proof-dot" />
-              <span>40+ years local</span>
-              <span className="proof-dot" />
-              <span>All health funds accepted</span>
-            </div>
-          </div>
-        </div>
       </section>
+
+      {/* Stat cards straddling the foot of the hero. Deliberately a sibling of
+          .hero-video rather than a child: that section is overflow:hidden, so
+          anything pushed past its bottom edge — the cards and their shadow —
+          would be clipped. */}
+      <div className="container hero-stats-wrap">
+        <dl className="hero-stats">
+          {heroStats.map(({ value, label }) => (
+            <div className="hero-stat" key={label}>
+              <dt>{value}</dt>
+              <dd>{label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
 
             {/* SERVICES OVERVIEW */}
       <section className="sec">
