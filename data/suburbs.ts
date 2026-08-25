@@ -331,6 +331,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'armadale',
+    heroImage: '/assets/incoming/armadale.webp',
     name: 'Armadale',
     postcode: '3143',
     lead:
@@ -357,6 +358,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'glen-huntly',
+    heroImage: '/assets/incoming/glen-huntly.webp',
     name: 'Glen Huntly',
     postcode: '3163',
     lead:
@@ -383,6 +385,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'carnegie',
+    heroImage: '/assets/incoming/carnegie.webp',
     name: 'Carnegie',
     postcode: '3163',
     lead:
@@ -409,6 +412,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'gardenvale',
+    heroImage: '/assets/incoming/gardenvale.webp',
     name: 'Gardenvale',
     postcode: '3185',
     lead:
@@ -435,6 +439,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'albert-park',
+    heroImage: '/assets/incoming/albert-park.webp',
     name: 'Albert Park',
     postcode: '3206',
     lead:
@@ -461,6 +466,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'middle-park',
+    heroImage: '/assets/incoming/middle-park.webp',
     name: 'Middle Park',
     postcode: '3206',
     lead:
@@ -487,6 +493,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'port-melbourne',
+    heroImage: '/assets/incoming/port-melbourne.webp',
     name: 'Port Melbourne',
     postcode: '3207',
     lead:
@@ -513,6 +520,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'south-yarra',
+    heroImage: '/assets/incoming/dentures.webp',
     name: 'South Yarra',
     postcode: '3141',
     lead:
@@ -539,6 +547,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'toorak',
+    heroImage: '/assets/incoming/toorak.webp',
     name: 'Toorak',
     postcode: '3142',
     lead:
@@ -565,6 +574,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'malvern',
+    heroImage: '/assets/incoming/honest-about-cost.webp',
     name: 'Malvern',
     postcode: '3144',
     lead:
