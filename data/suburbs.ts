@@ -58,7 +58,7 @@ export interface SuburbData {
 export const suburbs: SuburbData[] = [
   {
     slug: 'st-kilda',
-    heroImage: '/assets/incoming/st-kilda.webp',
+    heroImage: '/assets/suburbs/st-kilda.webp',
     name: 'St Kilda',
     postcode: '3182',
     lead:
@@ -86,7 +86,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'st-kilda-west',
-    heroImage: '/assets/incoming/st-kilda-west.webp',
+    heroImage: '/assets/suburbs/st-kilda-west.webp',
     name: 'St Kilda West',
     postcode: '3182',
     lead:
@@ -114,7 +114,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'balaclava',
-    heroImage: '/assets/incoming/balaclava.webp',
+    heroImage: '/assets/suburbs/balaclava.webp',
     name: 'Balaclava',
     postcode: '3183',
     lead:
@@ -141,7 +141,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'elwood',
-    heroImage: '/assets/incoming/elwood.webp',
+    heroImage: '/assets/suburbs/elwood.webp',
     name: 'Elwood',
     postcode: '3184',
     lead:
@@ -168,7 +168,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'elsternwick',
-    heroImage: '/assets/incoming/elsternwick.webp',
+    heroImage: '/assets/suburbs/elsternwick.webp',
     name: 'Elsternwick',
     postcode: '3185',
     lead:
@@ -195,7 +195,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'ripponlea',
-    heroImage: '/assets/incoming/ripponlea.webp',
+    heroImage: '/assets/suburbs/ripponlea.webp',
     name: 'Ripponlea',
     postcode: '3185',
     lead:
@@ -222,7 +222,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'caulfield',
-    heroImage: '/assets/incoming/caulfield.webp',
+    heroImage: '/assets/suburbs/caulfield.webp',
     name: 'Caulfield',
     postcode: '3162',
     lead:
@@ -250,7 +250,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'caulfield-north',
-    heroImage: '/assets/incoming/caulfield-north.webp',
+    heroImage: '/assets/suburbs/caulfield-north.webp',
     name: 'Caulfield North',
     postcode: '3161',
     lead:
@@ -277,7 +277,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'windsor',
-    heroImage: '/assets/incoming/windsor.webp',
+    heroImage: '/assets/suburbs/windsor.webp',
     name: 'Windsor',
     postcode: '3181',
     lead:
@@ -304,7 +304,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'prahran',
-    heroImage: '/assets/incoming/prahran.webp',
+    heroImage: '/assets/suburbs/prahran.webp',
     name: 'Prahran',
     postcode: '3181',
     lead:
@@ -331,7 +331,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'armadale',
-    heroImage: '/assets/incoming/armadale.webp',
+    heroImage: '/assets/suburbs/armadale.webp',
     name: 'Armadale',
     postcode: '3143',
     lead:
@@ -358,7 +358,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'glen-huntly',
-    heroImage: '/assets/incoming/glen-huntly.webp',
+    heroImage: '/assets/suburbs/glen-huntly.webp',
     name: 'Glen Huntly',
     postcode: '3163',
     lead:
@@ -385,7 +385,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'carnegie',
-    heroImage: '/assets/incoming/carnegie.webp',
+    heroImage: '/assets/suburbs/carnegie.webp',
     name: 'Carnegie',
     postcode: '3163',
     lead:
@@ -412,7 +412,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'gardenvale',
-    heroImage: '/assets/incoming/gardenvale.webp',
+    heroImage: '/assets/suburbs/gardenvale.webp',
     name: 'Gardenvale',
     postcode: '3185',
     lead:
@@ -439,7 +439,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'albert-park',
-    heroImage: '/assets/incoming/albert-park.webp',
+    heroImage: '/assets/suburbs/albert-park.webp',
     name: 'Albert Park',
     postcode: '3206',
     lead:
@@ -466,7 +466,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'middle-park',
-    heroImage: '/assets/incoming/middle-park.webp',
+    heroImage: '/assets/suburbs/middle-park.webp',
     name: 'Middle Park',
     postcode: '3206',
     lead:
@@ -493,7 +493,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'port-melbourne',
-    heroImage: '/assets/incoming/port-melbourne.webp',
+    heroImage: '/assets/suburbs/port-melbourne.webp',
     name: 'Port Melbourne',
     postcode: '3207',
     lead:
@@ -520,7 +520,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'south-yarra',
-    heroImage: '/assets/incoming/dentures.webp',
+    heroImage: '/assets/suburbs/south-yarra.webp',
     name: 'South Yarra',
     postcode: '3141',
     lead:
@@ -547,7 +547,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'toorak',
-    heroImage: '/assets/incoming/toorak.webp',
+    heroImage: '/assets/suburbs/toorak.webp',
     name: 'Toorak',
     postcode: '3142',
     lead:
@@ -574,7 +574,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'malvern',
-    heroImage: '/assets/incoming/honest-about-cost.webp',
+    heroImage: '/assets/suburbs/malvern.webp',
     name: 'Malvern',
     postcode: '3144',
     lead:

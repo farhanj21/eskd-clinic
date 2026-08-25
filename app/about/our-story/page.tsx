@@ -32,7 +32,7 @@ export default function AboutStoryPage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/our-story-hero.webp"
+            src="/assets/about/our-story-hero.webp"
             alt="Clinic exterior on the corner"
             hint="Warm, real hero photo of the clinic exterior on the corner, with local character. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
@@ -45,7 +45,7 @@ export default function AboutStoryPage() {
         <div className="container">
           <div className="band reveal">
             <Photo
-              src="/assets/incoming/our-story-hero2.webp"
+              src="/assets/about/our-story-hero2.webp"
               alt="Image of the clinic exterior on the corner"
               hint="Warm, real photo: the building or street today, or an early/archival image if one exists. Never stock."
               sizes="(max-width: 860px) 100vw, 48vw"

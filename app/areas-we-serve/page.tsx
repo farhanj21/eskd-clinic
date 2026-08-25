@@ -55,7 +55,7 @@ export default function AreasWeServePage() {
             tall
             className="reveal"
             priority
-            src="/assets/incoming/hero.webp"
+            src="/assets/shared/hero.webp"
             alt="A dentist chatting with a smiling patient during a check-up at our East St Kilda clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />

@@ -123,7 +123,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
             tall
             className="reveal"
             priority
-            src={s.heroImage ?? '/assets/incoming/hero.webp'}
+            src={s.heroImage ?? '/assets/shared/hero.webp'}
             alt={`A dentist chatting with a smiling patient during a check-up at our clinic near ${s.name}`}
             sizes="(max-width: 860px) 100vw, 48vw"
           />

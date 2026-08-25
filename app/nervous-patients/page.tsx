@@ -41,7 +41,7 @@ export default function GentlePage() {
             tall
             className="reveal"
             priority
-            src="/assets/incoming/how-we-look-after.webp"
+            src="/assets/nervous-patients/how-we-look-after.webp"
             alt="A clinician gently reassuring a relaxed patient in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -134,7 +134,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/hero.webp"
+            src="/assets/shared/hero.webp"
             alt="A smiling, relaxed patient chatting with the dental team in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -203,7 +203,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/meet-the-team.webp"
+            src="/assets/shared/meet-the-team.webp"
             alt="The friendly East St Kilda Dental team smiling and waving outside the clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />

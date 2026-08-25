@@ -87,7 +87,7 @@ const homeSchema = {
       '@id': SCHEMA_ID.practice,
       name: business.name,
       url: business.url,
-      image: `${SITE_URL}/assets/incoming/meet-the-team.webp`,
+      image: `${SITE_URL}/assets/shared/meet-the-team.webp`,
       telephone: business.telephone,
       email: business.email,
       priceRange: business.priceRange,
@@ -327,7 +327,7 @@ export default function Home() {
             </div>
             <Photo
               style={{ borderRadius: 0, minHeight: '100%' }}
-              src="/assets/incoming/comprehensive2.webp"
+              src="/assets/home/comprehensive2.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
      
             />
@@ -343,7 +343,7 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/nervous-patients.webp"
+            src="/assets/home/nervous-patients.webp"
             alt="A relaxed patient smiling warmly in the dental chair"
             objectPosition="0% 40%"
             scale={1.1}
@@ -375,7 +375,7 @@ export default function Home() {
             <Photo
               tall
               className="reveal"
-              src="/assets/incoming/meet-the-team.webp"
+              src="/assets/shared/meet-the-team.webp"
               alt="The East St Kilda Dental team standing together outside the clinic entrance"
               objectPosition="center top"
               sizes="(max-width: 820px) 100vw, 40vw"
@@ -453,7 +453,7 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/heritage.webp"
+            src="/assets/home/heritage.webp"
             alt="Three generations of a family embracing and laughing together"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -494,7 +494,7 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/honest-about-cost.webp"
+            src="/assets/home/honest-about-cost.webp"
             alt="A friendly receptionist smiling while helping a patient at the front desk"
           />
         </div>
@@ -527,19 +527,19 @@ export default function Home() {
           </div>
           <div className="edu-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-1.webp" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-1.webp" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Gentle smile refresh</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-2.webp" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-2.webp" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Restoring a damaged tooth</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-3.webp" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-3.webp" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Replacing a missing tooth</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-4.webp" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-4.webp" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>A nervous patient's journey</h4>
             </div>
           </div>
@@ -567,7 +567,7 @@ export default function Home() {
               style={{ cursor: 'pointer', textDecoration: 'none' }}
             >
               <Photo
-                src="/assets/incoming/article-1.webp"
+                src="/assets/articles/article-1.webp"
                 alt="Dentist explaining an X-ray to a patient in the chair"
                 hint="Article image"
                 sizes="(max-width: 820px) 100vw, 33vw"
@@ -588,7 +588,7 @@ export default function Home() {
               style={{ cursor: 'pointer', textDecoration: 'none' }}
             >
               <Photo
-                src="/assets/incoming/article-2.webp"
+                src="/assets/articles/article-2.webp"
                 alt="Dentist using a dental model to explain gum health to a patient"
                 hint="Article image"
                 sizes="(max-width: 820px) 100vw, 33vw"
@@ -609,7 +609,7 @@ export default function Home() {
               style={{ cursor: 'pointer', textDecoration: 'none' }}
             >
               <Photo
-                src="/assets/incoming/article-3.webp"
+                src="/assets/articles/article-3.webp"
                 alt="Patient receiving a dental check-up in the clinic"
                 hint="Article image"
                 sizes="(max-width: 820px) 100vw, 33vw"

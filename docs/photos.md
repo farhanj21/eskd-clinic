@@ -6,7 +6,15 @@ The `sizes` attr is already set at every call-site — don't change it. `priorit
 
 ## Folder convention under `public/assets/`
 
-- `heroes/` — page-top hero photos · `clinic/` — rooms, exterior, front desk · `team/` — people (already exists) · `gallery/` — consented results · `articles/` — learn/education images · `services/` — service-page heroes
+One folder per page, named after the route it serves:
+
+- `home/` · `about/` · `contact/` · `learn/` · `emergency/` · `nervous-patients/` · `comprehensive-care-visit/` · `your-first-visit/` · `using-your-super/`
+- `services/` — all 20 service heroes, one flat folder, named for the service slug in `data/services.ts`
+- `suburbs/` — all 20 suburb heroes, one flat folder, named for the suburb slug in `data/suburbs.ts`
+- `articles/` — learn article images · `gallery/` — consented results, shared by the home page and `/our-work`
+- `team/` — portraits and group shots · `funds/` — health fund logos · `social/` · `video/`
+- `shared/` — the handful of photos genuinely used across unrelated pages (`hero`, `meet-the-team`)
+- `incoming/` — the pipeline's landing zone only. Nothing live is served from here; a file sitting in it is one that hasn't been wired to a call-site yet.
 
 ## Home — `app/page.tsx`
 
