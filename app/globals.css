@@ -2982,4 +2982,8 @@ body{overflow-x:hidden;max-width:100%;}
   .gt-seg label{flex:1 1 100%;}
   .terms-band p{font-size:20px;}
   .post-cta h3{font-size:20px;}
+  /* `.btn` is nowrap, so two CTAs always wrap to two lines at this width.
+     Stacking them full-width reads better than a ragged centred pair. */
+  .ctaband-actions{flex-direction:column;align-items:stretch;}
+  .ctaband-actions .btn{width:100%;}
 }

@@ -142,12 +142,18 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* ── 7. CTA BAND ──────────────────────────────────── */}
-      <section className="ctaband" style={{ background: 'var(--sage)', color: 'var(--paper)', padding: '60px 0', textAlign: 'center' }}>
-        <div className="container reveal">
-          <h3 style={{ color: 'var(--paper)', fontFamily: 'var(--display)', fontSize: 'clamp(24px,4vw,36px)', margin: '0 0 24px' }}>{service.ctaH3}</h3>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/book" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a visit</Link>
-            <Link href="#contact" className="btn btn-ghost" style={{ borderColor: 'rgba(252,250,245,.5)', color: 'var(--paper)' }}>Request a callback</Link>
+      {/* Card inside the container, the same as /fees and /your-first-visit.
+          It used to be a full-bleed <section class="ctaband">, which kept the
+          class's 18px corner radius but ran the panel edge-to-edge, so on a
+          phone the rounded card sat hard against both screen edges. */}
+      <section className="sec">
+        <div className="container">
+          <div className="ctaband reveal">
+            <h3>{service.ctaH3}</h3>
+            <div className="ctaband-actions">
+              <Link href="/book" className="btn">Book a visit</Link>
+              <Link href="#contact" className="btn btn-ghost-light">Request a callback</Link>
+            </div>
           </div>
         </div>
       </section>
