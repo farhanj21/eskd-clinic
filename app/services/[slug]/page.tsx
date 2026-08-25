@@ -59,7 +59,6 @@ export default async function ServicePage({ params }: Props) {
             alt={service.heroAlt}
             hint={`Service image: ${service.h1em}`}
             sizes="(max-width: 860px) 100vw, 48vw"
-            style={{ minHeight: '420px' }}
           />
         </div>
       </section>
@@ -121,8 +120,10 @@ export default async function ServicePage({ params }: Props) {
             {service.steps.map((step, i) => (
               <div key={i} className="p">
                 <div className="pn">{i + 1}</div>
-                <h4 style={{ margin: '0 0 8px', fontSize: '16px', fontFamily: 'var(--display)', fontWeight: 500 }}>{step.h4}</h4>
-                <p style={{ margin: 0, fontSize: '14px', color: 'var(--ink-soft)', lineHeight: 1.5 }}>{step.p}</p>
+                {/* Type and spacing come from `.proc h4` / `.proc p` — inline
+                    values here would win over the mobile breakpoints. */}
+                <h4>{step.h4}</h4>
+                <p>{step.p}</p>
               </div>
             ))}
           </div>
