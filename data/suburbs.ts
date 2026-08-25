@@ -29,6 +29,11 @@ export interface SuburbData {
   name: string
   /** Used to disambiguate the "get directions" origin, e.g. "Windsor VIC 3181". */
   postcode: string
+  /**
+   * Hero photograph for this suburb's page. Suburbs we don't have a photo for
+   * yet simply omit it and fall back to the shared clinic hero.
+   */
+  heroImage?: string
   /** Hero paragraph. One sentence, specific to this suburb. */
   lead: string
   /** The H2 of the "your local dentist" section. */
@@ -53,6 +58,7 @@ export interface SuburbData {
 export const suburbs: SuburbData[] = [
   {
     slug: 'st-kilda',
+    heroImage: '/assets/incoming/st-kilda.webp',
     name: 'St Kilda',
     postcode: '3182',
     lead:
@@ -80,6 +86,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'st-kilda-west',
+    heroImage: '/assets/incoming/st-kilda-west.webp',
     name: 'St Kilda West',
     postcode: '3182',
     lead:
@@ -107,6 +114,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'balaclava',
+    heroImage: '/assets/incoming/balaclava.webp',
     name: 'Balaclava',
     postcode: '3183',
     lead:
@@ -133,6 +141,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'elwood',
+    heroImage: '/assets/incoming/elwood.webp',
     name: 'Elwood',
     postcode: '3184',
     lead:
@@ -159,6 +168,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'elsternwick',
+    heroImage: '/assets/incoming/elsternwick.webp',
     name: 'Elsternwick',
     postcode: '3185',
     lead:
@@ -185,6 +195,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'ripponlea',
+    heroImage: '/assets/incoming/ripponlea.webp',
     name: 'Ripponlea',
     postcode: '3185',
     lead:
@@ -211,6 +222,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'caulfield',
+    heroImage: '/assets/incoming/caulfield.webp',
     name: 'Caulfield',
     postcode: '3162',
     lead:
@@ -238,6 +250,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'caulfield-north',
+    heroImage: '/assets/incoming/caulfield-north.webp',
     name: 'Caulfield North',
     postcode: '3161',
     lead:
@@ -264,6 +277,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'windsor',
+    heroImage: '/assets/incoming/windsor.webp',
     name: 'Windsor',
     postcode: '3181',
     lead:
@@ -290,6 +304,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'prahran',
+    heroImage: '/assets/incoming/prahran.webp',
     name: 'Prahran',
     postcode: '3181',
     lead:
