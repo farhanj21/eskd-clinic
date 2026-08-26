@@ -108,11 +108,6 @@ h1,h2,h3,h4{
   letter-spacing:-.01em;
 }
 h1{font-size:clamp(40px,5.6vw,78px);}
-/* Home page only: the hero h1 and section h2s render in Hanken Grotesk
-   (--body) instead of Cormorant. Scoped via the class on the home <main>;
-   main.… h1 (0,1,2) outranks later component rules like .gt-form h2. */
-main.home-hanken-headings h1,
-main.home-hanken-headings h2{font-family:var(--body);letter-spacing:-.02em;}
 h2{font-size:clamp(32px,4vw,54px);line-height:1.1;}
 h3{font-size:clamp(22px,2.2vw,30px);line-height:1.2;}
 h4{font-size:20px;}
