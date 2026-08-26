@@ -134,7 +134,7 @@ const homeSchema = {
 
 export default function Home() {
   return (
-    <main style={whiteTheme}>
+    <main style={whiteTheme} className="home-hanken-headings">
       {/* The hero poster is a CSS background, so it isn't discoverable until the
           stylesheet parses. Preloading it keeps it the LCP candidate. */}
       <link rel="preload" as="image" href="/assets/video/hero-clinic-poster.webp" fetchPriority="high" />
