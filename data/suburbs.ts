@@ -619,3 +619,22 @@ export function requireSuburb(slug: string): SuburbData {
   if (!found) throw new Error(`Unknown suburb slug "${slug}" — add it to data/suburbs.ts`)
   return found
 }
+
+/**
+ * The other suburb pages to link to from a suburb page.
+ *
+ * Walks forward through the array and wraps, so every page links out to the
+ * same number of siblings and — because the walk is a closed ring — receives
+ * exactly that many links back. No suburb page can end up orphaned, and none
+ * hoards the internal links, whatever order the array is in.
+ *
+ * Deliberately not "nearby": the array runs roughly outward from the clinic,
+ * which is not a true adjacency map, so the copy that renders these says
+ * "other areas we serve" rather than claiming a geographic neighbour.
+ */
+export function otherSuburbs(slug: string, count = 5): SuburbData[] {
+  const start = suburbs.findIndex((s) => s.slug === slug)
+  if (start < 0) return suburbs.slice(0, count)
+  const take = Math.min(count, suburbs.length - 1)
+  return Array.from({ length: take }, (_, i) => suburbs[(start + 1 + i) % suburbs.length])
+}

@@ -94,9 +94,9 @@ export const articles: ArticleData[] = [
       },
     ],
     related: [
-      { label: 'Gentle dentistry', href: '/gentle' },
-      { label: 'Your first visit', href: '/first-visit' },
-      { label: 'The $297 visit', href: '/offer' },
+      { label: 'Gentle dentistry', href: '/nervous-patients' },
+      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'The $297 visit', href: '/comprehensive-care-visit' },
     ],
     meta: {
       title: "Haven't Been to the Dentist in Years? Here's What to Expect | East St Kilda Dental",
@@ -165,9 +165,9 @@ export const articles: ArticleData[] = [
       },
     ],
     related: [
-      { label: 'Cleans & hygiene', href: '/services/svc-cleans' },
-      { label: 'Gentle check-ups', href: '/services/svc-checkups' },
-      { label: 'Nervous patients', href: '/gentle' },
+      { label: 'Cleans & hygiene', href: '/services/cleans-and-hygiene' },
+      { label: 'Gentle check-ups', href: '/services/check-ups' },
+      { label: 'Nervous patients', href: '/nervous-patients' },
     ],
     meta: {
       title: 'Why Are My Gums Bleeding? | East St Kilda Dental',

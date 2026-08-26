@@ -216,6 +216,14 @@ export default async function ServicePage({ params }: Props) {
               <Link key={i} href={rel.href} className="btn btn-ghost">{rel.label}</Link>
             ))}
           </div>
+          {/* Treatment → location. Suburb pages are out of the main menu, so
+              this is the contextual path into them from the service they are
+              most often searched alongside, and the hook the suburb+treatment
+              pages will hang off. */}
+          <p style={{ marginTop: '22px', fontSize: '14.5px' }}>
+            Caring for {business.address.addressLocality} and the surrounding suburbs.{' '}
+            <Link href="/areas-we-serve">See the areas we serve &rarr;</Link>
+          </p>
         </div>
       </section>
 

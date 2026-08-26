@@ -1,5 +1,27 @@
 import Link from 'next/link'
+import { requireSuburb, suburbPath } from '@/data/suburbs'
 import { business, emailHref, localityLine, streetAddress, telHref } from '@/lib/business'
+
+/**
+ * The suburb pages promoted in the footer, by slug.
+ *
+ * Suburb pages are kept out of the main menu by design, so the footer is one of
+ * the site-wide paths into them — every page on the site links to these, and to
+ * the hub beneath them, which in turn links to all of the rest.
+ *
+ * A curated shortlist rather than the whole array: names and paths are read
+ * from data/suburbs.ts through requireSuburb, so a renamed suburb follows
+ * automatically and a slug that no longer exists fails the build.
+ */
+const FOOTER_SUBURBS = [
+  'st-kilda',
+  'balaclava',
+  'caulfield',
+  'elwood',
+  'elsternwick',
+  'windsor',
+  'prahran',
+].map(requireSuburb)
 
 export default function Footer() {
   return (
@@ -39,13 +61,9 @@ export default function Footer() {
             <h4>Areas we serve</h4>
             <ul>
               <li><Link href="/">St Kilda East</Link></li>
-              <li><Link href="/dentist-st-kilda">St Kilda</Link></li>
-              <li><Link href="/dentist-balaclava">Balaclava</Link></li>
-              <li><Link href="/dentist-caulfield">Caulfield</Link></li>
-              <li><Link href="/dentist-elwood">Elwood</Link></li>
-              <li><Link href="/dentist-elsternwick">Elsternwick</Link></li>
-              <li><Link href="/dentist-windsor">Windsor</Link></li>
-              <li><Link href="/dentist-prahran">Prahran</Link></li>
+              {FOOTER_SUBURBS.map((s) => (
+                <li key={s.slug}><Link href={suburbPath(s.slug)}>{s.name}</Link></li>
+              ))}
               <li><Link href="/areas-we-serve">All areas we serve</Link></li>
             </ul>
           </div>

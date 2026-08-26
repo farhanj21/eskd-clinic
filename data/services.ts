@@ -72,8 +72,8 @@ export const services: ServiceData[] = [
       { q: 'Does a check-up hurt?', a: 'No, it\'s gentle and there\'s rarely any discomfort.' },
     ],
     related: [
-      { label: 'Cleans & hygiene', href: '/services/svc-cleans' },
-      { label: 'Your first visit', href: '/first-visit' },
+      { label: 'Cleans & hygiene', href: '/services/cleans-and-hygiene' },
+      { label: 'Your first visit', href: '/your-first-visit' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -127,8 +127,8 @@ export const services: ServiceData[] = [
       { q: 'Will it remove all staining?', a: 'Surface staining, yes; deeper discolouration may need whitening.' },
     ],
     related: [
-      { label: 'Check-ups', href: '/services/svc-checkups' },
-      { label: 'Teeth whitening', href: '/services/svc-whitening' },
+      { label: 'Check-ups', href: '/services/check-ups' },
+      { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -182,8 +182,8 @@ export const services: ServiceData[] = [
       { q: 'What if my child won\'t cooperate?', a: 'That\'s normal and we\'re used to it, we never force a visit.' },
     ],
     related: [
-      { label: 'Mouthguards', href: '/services/svc-mouthguards' },
-      { label: 'Check-ups', href: '/services/svc-checkups' },
+      { label: 'Mouthguards', href: '/services/mouthguards' },
+      { label: 'Check-ups', href: '/services/check-ups' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -238,8 +238,8 @@ export const services: ServiceData[] = [
       { q: 'Do you make night guards for grinding?', a: 'Yes, a custom night splint, see our TMJ & jaw pain care.' },
     ],
     related: [
-      { label: 'Kids', href: '/services/svc-kids' },
-      { label: 'TMJ & jaw pain', href: '/services/svc-tmj' },
+      { label: 'Kids', href: '/services/childrens-dentistry' },
+      { label: 'TMJ & jaw pain', href: '/services/tmj-jaw-pain' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -294,8 +294,8 @@ export const services: ServiceData[] = [
       { q: 'How long until I feel better?', a: 'It varies, many people improve within a few weeks.' },
     ],
     related: [
-      { label: 'Mouthguards', href: '/services/svc-mouthguards' },
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
+      { label: 'Mouthguards', href: '/services/mouthguards' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -350,8 +350,8 @@ export const services: ServiceData[] = [
       { q: 'Is it suitable for young children?', a: 'Often yes, we\'ll assess what\'s appropriate for their age.' },
     ],
     related: [
-      { label: 'Kids', href: '/services/svc-kids' },
-      { label: 'Invisalign', href: '/services/svc-invisalign' },
+      { label: 'Kids', href: '/services/childrens-dentistry' },
+      { label: 'Invisalign', href: '/services/invisalign' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -406,8 +406,8 @@ export const services: ServiceData[] = [
       { q: 'Why is my tooth sensitive after?', a: 'Mild, short-lived sensitivity is normal; tell us if it lingers.' },
     ],
     related: [
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
-      { label: 'Check-ups', href: '/services/svc-checkups' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
+      { label: 'Check-ups', href: '/services/check-ups' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -462,8 +462,8 @@ export const services: ServiceData[] = [
       { q: 'Can a bridge replace more than one tooth?', a: 'Often yes, provided there are healthy teeth or implants to anchor it. We\'ll assess what suits you.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'Root canal therapy', href: '/services/svc-rootcanal' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'Root canal therapy', href: '/services/root-canal' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -518,8 +518,8 @@ export const services: ServiceData[] = [
       { q: 'How long does it take?', a: 'Often one or two visits, depending on the tooth.' },
     ],
     related: [
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
-      { label: 'Emergency', href: '/emergency' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
+      { label: 'Emergency', href: '/emergency-dentist' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -574,8 +574,8 @@ export const services: ServiceData[] = [
       { q: 'Will it match my tooth?', a: 'Yes, it\'s tooth-coloured and made to blend in.' },
     ],
     related: [
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
-      { label: 'Fillings', href: '/services/svc-fillings' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
+      { label: 'Fillings', href: '/services/fillings' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -630,8 +630,8 @@ export const services: ServiceData[] = [
       { q: 'Will people be able to tell?', a: 'Modern dentures are made to look natural.' },
     ],
     related: [
-      { label: 'All-on-4 / full arch', href: '/services/svc-implant-allon4' },
-      { label: 'Extractions', href: '/services/svc-extractions' },
+      { label: 'All-on-4 / full arch', href: '/services/all-on-4-implants' },
+      { label: 'Extractions', href: '/services/extractions-wisdom-teeth' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -686,8 +686,8 @@ export const services: ServiceData[] = [
       { q: 'How long is recovery?', a: 'Most people feel much better within a few days.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'Emergency', href: '/emergency' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'Emergency', href: '/emergency-dentist' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -742,8 +742,8 @@ export const services: ServiceData[] = [
       { q: 'How do I know what it\'ll look like?', a: 'Where helpful, we can preview the result before you commit.' },
     ],
     related: [
-      { label: 'Veneers', href: '/services/svc-veneers' },
-      { label: 'Teeth whitening', href: '/services/svc-whitening' },
+      { label: 'Veneers', href: '/services/veneers' },
+      { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -798,8 +798,8 @@ export const services: ServiceData[] = [
       { q: 'How long do they last?', a: 'Many years with good care.' },
     ],
     related: [
-      { label: 'Smile design', href: '/services/svc-smiledesign' },
-      { label: 'Teeth whitening', href: '/services/svc-whitening' },
+      { label: 'Smile design', href: '/services/smile-design' },
+      { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -853,8 +853,8 @@ export const services: ServiceData[] = [
       { q: 'Does it whiten crowns or fillings?', a: 'No, whitening only affects natural teeth, we\'ll factor that in.' },
     ],
     related: [
-      { label: 'Veneers', href: '/services/svc-veneers' },
-      { label: 'Smile design', href: '/services/svc-smiledesign' },
+      { label: 'Veneers', href: '/services/veneers' },
+      { label: 'Smile design', href: '/services/smile-design' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -908,8 +908,8 @@ export const services: ServiceData[] = [
       { q: 'Will I need a retainer?', a: 'Yes, to hold the result, this is normal for any straightening.' },
     ],
     related: [
-      { label: 'Braces', href: '/services/svc-braces' },
-      { label: 'Smile design', href: '/services/svc-smiledesign' },
+      { label: 'Braces', href: '/services/braces' },
+      { label: 'Smile design', href: '/services/smile-design' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -963,8 +963,8 @@ export const services: ServiceData[] = [
       { q: 'Are they just for kids?', a: 'No, adults are treated successfully too.' },
     ],
     related: [
-      { label: 'Invisalign', href: '/services/svc-invisalign' },
-      { label: 'Kids', href: '/services/svc-kids' },
+      { label: 'Invisalign', href: '/services/invisalign' },
+      { label: 'Kids', href: '/services/childrens-dentistry' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -1018,8 +1018,8 @@ export const services: ServiceData[] = [
       { q: 'How long do implants last?', a: 'Often many years, with good care and check-ups.' },
     ],
     related: [
-      { label: 'All-on-4 / full arch', href: '/services/svc-implant-allon4' },
-      { label: 'Bone grafting', href: '/services/svc-bonegraft' },
+      { label: 'All-on-4 / full arch', href: '/services/all-on-4-implants' },
+      { label: 'Bone grafting', href: '/services/bone-grafting' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -1073,8 +1073,8 @@ export const services: ServiceData[] = [
       { q: 'Will I be without teeth at any point?', a: 'We plan to avoid that, and we\'ll explain your timeline clearly.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'Dentures', href: '/services/svc-dentures' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'Dentures', href: '/services/dentures' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -1128,58 +1128,13 @@ export const services: ServiceData[] = [
       { q: 'Does every implant need one?', a: 'No, only when there isn\'t enough bone, we\'ll check.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'All-on-4 / full arch', href: '/services/svc-implant-allon4' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'All-on-4 / full arch', href: '/services/all-on-4-implants' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Bone Grafting | East St Kilda Dental',
       description: 'Bone grafting in St Kilda East to prepare the jaw for dental implants. Predictable, comfortable and effective. Book today.',
-    },
-  },
-
-  /* ── Legacy slugs kept for any existing inbound links ──── */
-  {
-    slug: 'check-up-clean',
-    eyebrow: 'Preventive Care',
-    h1pre: 'Gentle, thorough',
-    h1em: 'check-ups & cleans',
-    heroLead: 'A thorough check-up and professional clean is the foundation of lifelong dental health.',
-    whatItIsH2: 'What a check-up and clean involves',
-    whatItIs: ['A comprehensive examination of your teeth, gums, bite and soft tissues, followed by a gentle scale, clean and polish.'],
-    whyH2: 'Why regular visits matter',
-    whyIntro: 'Most dental problems are painless until advanced. Regular check-ups catch them while they\'re small and easy to treat.',
-    whyCards: [
-      { h4: 'Catch problems early', p: 'Small issues are cheaper and gentler to treat.' },
-      { h4: 'Professional clean', p: 'Removes tartar brushing can\'t reach.' },
-      { h4: 'Peace of mind', p: 'Leave knowing exactly where your oral health stands.' },
-    ],
-    whoH2: 'Book a check-up if…',
-    whoItems: ['It\'s been more than 6 months since your last visit', 'You\'ve noticed sensitivity or bleeding gums', 'You want peace of mind about your oral health'],
-    howH2: 'What happens at your visit',
-    steps: [
-      { h4: 'A relaxed chat', p: 'We start with how you\'ve been.' },
-      { h4: 'Full examination', p: 'Teeth, gums, bite and soft tissues.' },
-      { h4: 'X-rays if needed', p: 'Only when clinically useful.' },
-      { h4: 'Scale and clean', p: 'Gentle removal of tartar and staining.' },
-      { h4: 'Clear care plan', p: 'Your priorities explained with no pressure.' },
-    ],
-    aftercareH2: 'After your visit',
-    aftercare: 'Nothing to recover from — carry straight on with your day.',
-    ctaH3: 'Ready to book a check-up?',
-    costPara: 'Your first visit is our Comprehensive Care Visit, $297 with everything included. We claim on the spot through HICAPS.',
-    faq: [
-      { q: 'How often should I come in?', a: 'Every 6 months for most people.' },
-      { q: 'Will it hurt?', a: 'No, check-ups are gentle and comfortable.' },
-    ],
-    related: [
-      { label: 'Check-ups & Exams', href: '/services/svc-checkups' },
-      { label: 'Your first visit', href: '/first-visit' },
-      { label: 'Fees & funds', href: '/fees' },
-    ],
-    meta: {
-      title: 'Check-Up & Clean | East St Kilda Dental',
-      description: 'Comprehensive dental check-ups and professional cleans in St Kilda East. Book online.',
     },
   },
 ]

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Breadcrumb, { AREAS_SECTION, areasChildTrail } from '@/components/Breadcrumb'
 import GetInTouch from '@/components/GetInTouch'
 import JsonLd from '@/components/JsonLd'
 import MapEmbed from '@/components/MapEmbed'
 import Photo from '@/components/Photo'
-import { requireSuburb, suburbPath, type SuburbData } from '@/data/suburbs'
+import { otherSuburbs, requireSuburb, suburbPath, type SuburbData } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, business, fullAddress, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
 
@@ -54,6 +55,9 @@ export default function SuburbPage({ slug }: { slug: string }) {
   // so this page adds `areaServed` to the existing entity instead of creating a
   // competing one. The FAQ node is page-scoped and quotes the visible questions
   // verbatim, which is what FAQ rich results require.
+  //
+  // No BreadcrumbList here: <Breadcrumb> below emits it from the same trail it
+  // renders, so the visible trail and the markup cannot disagree.
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -78,15 +82,6 @@ export default function SuburbPage({ slug }: { slug: string }) {
         areaServed: { '@type': 'City', name: s.name },
       },
       {
-        '@type': 'BreadcrumbList',
-        '@id': `${url}#breadcrumb`,
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-          { '@type': 'ListItem', position: 2, name: 'Areas we serve', item: `${SITE_URL}/areas-we-serve` },
-          { '@type': 'ListItem', position: 3, name: s.name },
-        ],
-      },
-      {
         '@type': 'FAQPage',
         '@id': `${url}#faq`,
         mainEntity: s.faqs.map(({ q, a }) => ({
@@ -104,6 +99,9 @@ export default function SuburbPage({ slug }: { slug: string }) {
 
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className="hero-v2">
+        <div className="container">
+          <Breadcrumb trail={areasChildTrail(s.name)} />
+        </div>
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Local to {s.name}</div>
@@ -246,6 +244,30 @@ export default function SuburbPage({ slug }: { slug: string }) {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── OTHER AREAS ───────────────────────────────────
+          Suburb pages are deliberately absent from the main menu, so this
+          block plus the breadcrumb above are what keep them linked to each
+          other and to the hub rather than depending on the footer alone. */}
+      <section className="sec">
+        <div className="container reveal" style={{ textAlign: 'center', maxWidth: '48em', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="eyebrow">More local areas</div>
+          <h2>Other areas we serve</h2>
+          <p style={{ marginTop: '12px' }}>
+            We welcome patients from right across Melbourne&apos;s inner south-east.
+          </p>
+          <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            {otherSuburbs(s.slug).map((o) => (
+              <Link key={o.slug} href={suburbPath(o.slug)} className="btn btn-ghost">
+                Dentist {o.name}
+              </Link>
+            ))}
+          </div>
+          <p style={{ marginTop: '18px', fontSize: '14.5px' }}>
+            <Link href={AREAS_SECTION.href}>See every area we serve &rarr;</Link>
+          </p>
         </div>
       </section>
 

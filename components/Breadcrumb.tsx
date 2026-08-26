@@ -36,6 +36,18 @@ export const learnChildTrail = (name: string): Crumb[] => [HOME, LEARN_SECTION, 
 export const learnArticleTrail = learnChildTrail
 
 /**
+ * The locations hub, defined once, for the same reason as LEARN_SECTION.
+ *
+ * Suburb pages are kept out of the main menu by design, so this trail is the
+ * link that puts every one of them one click from the hub — and the hub one
+ * click from home — for a crawler as well as a reader.
+ */
+export const AREAS_SECTION = { name: 'Areas we serve', href: '/areas-we-serve' }
+
+/** Home → Areas we serve → this suburb. Pass the suburb's name. */
+export const areasChildTrail = (name: string): Crumb[] => [HOME, AREAS_SECTION, { name }]
+
+/**
  * Breadcrumb trail, visible and structured.
  *
  * Both outputs are generated from the same `trail`, so the BreadcrumbList and
