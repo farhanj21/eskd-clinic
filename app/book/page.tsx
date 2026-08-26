@@ -82,8 +82,11 @@ export default function BookingPage() {
               <div className="book-form">
                 <input type="text" placeholder="First name" />
                 <input type="tel" placeholder="Phone" />
-                <select className="full">
-                  <option>I&apos;d like to&hellip; (new patient, nervous, emergency, general)</option>
+                <select className="full" defaultValue="">
+                  <option value="" disabled>I&apos;d like to&hellip;</option>
+                  <option>Book a new patient visit</option>
+                  <option>Book an emergency visit</option>
+                  <option>Book for a dental consultation</option>
                 </select>
                 <button className="btn" type="submit">Request my callback</button>
               </div>
