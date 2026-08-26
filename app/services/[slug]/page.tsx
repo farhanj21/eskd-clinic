@@ -59,7 +59,6 @@ export default async function ServicePage({ params }: Props) {
             alt={service.heroAlt}
             hint={`Service image: ${service.h1em}`}
             sizes="(max-width: 860px) 100vw, 48vw"
-            style={{ minHeight: '420px' }}
           />
         </div>
       </section>
@@ -121,8 +120,10 @@ export default async function ServicePage({ params }: Props) {
             {service.steps.map((step, i) => (
               <div key={i} className="p">
                 <div className="pn">{i + 1}</div>
-                <h4 style={{ margin: '0 0 8px', fontSize: '16px', fontFamily: 'var(--display)', fontWeight: 500 }}>{step.h4}</h4>
-                <p style={{ margin: 0, fontSize: '14px', color: 'var(--ink-soft)', lineHeight: 1.5 }}>{step.p}</p>
+                {/* Type and spacing come from `.proc h4` / `.proc p` — inline
+                    values here would win over the mobile breakpoints. */}
+                <h4>{step.h4}</h4>
+                <p>{step.p}</p>
               </div>
             ))}
           </div>
@@ -141,12 +142,18 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* ── 7. CTA BAND ──────────────────────────────────── */}
-      <section className="ctaband" style={{ background: 'var(--sage)', color: 'var(--paper)', padding: '60px 0', textAlign: 'center' }}>
-        <div className="container reveal">
-          <h3 style={{ color: 'var(--paper)', fontFamily: 'var(--display)', fontSize: 'clamp(24px,4vw,36px)', margin: '0 0 24px' }}>{service.ctaH3}</h3>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/book" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a visit</Link>
-            <Link href="#contact" className="btn btn-ghost" style={{ borderColor: 'rgba(252,250,245,.5)', color: 'var(--paper)' }}>Request a callback</Link>
+      {/* Card inside the container, the same as /fees and /your-first-visit.
+          It used to be a full-bleed <section class="ctaband">, which kept the
+          class's 18px corner radius but ran the panel edge-to-edge, so on a
+          phone the rounded card sat hard against both screen edges. */}
+      <section className="sec">
+        <div className="container">
+          <div className="ctaband reveal">
+            <h3>{service.ctaH3}</h3>
+            <div className="ctaband-actions">
+              <Link href="/book" className="btn">Book a visit</Link>
+              <Link href="#contact" className="btn btn-ghost-light">Request a callback</Link>
+            </div>
           </div>
         </div>
       </section>
@@ -209,6 +216,14 @@ export default async function ServicePage({ params }: Props) {
               <Link key={i} href={rel.href} className="btn btn-ghost">{rel.label}</Link>
             ))}
           </div>
+          {/* Treatment → location. Suburb pages are out of the main menu, so
+              this is the contextual path into them from the service they are
+              most often searched alongside, and the hook the suburb+treatment
+              pages will hang off. */}
+          <p style={{ marginTop: '22px', fontSize: '14.5px' }}>
+            Caring for {business.address.addressLocality} and the surrounding suburbs.{' '}
+            <Link href="/areas-we-serve">See the areas we serve &rarr;</Link>
+          </p>
         </div>
       </section>
 

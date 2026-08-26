@@ -42,7 +42,7 @@ export default function OfferPage() {
             tall
             className="reveal"
             priority
-            src="/assets/incoming/comprehensive-care-1.webp"
+            src="/assets/comprehensive-care-visit/comprehensive-care-1.webp"
             alt="A smiling clinician demonstrating brushing on a dental model for a seated patient"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -82,7 +82,7 @@ export default function OfferPage() {
               </p>
             </div>
             <Photo
-              src="/assets/incoming/comprehensive-care-2.webp"
+              src="/assets/comprehensive-care-visit/comprehensive-care-2.webp"
               alt="A dentist and patient reviewing a dental X-ray together on screen during a consultation"
               sizes="(max-width: 820px) 100vw, 50vw"
             />
@@ -150,7 +150,7 @@ export default function OfferPage() {
             </a>
           </p>
           <p style={{ textAlign: 'center', marginTop: '14px', maxWidth: '40em', marginLeft: 'auto', marginRight: 'auto' }}>
-            Caring for East St Kilda since around 1980, with a gentle team you&apos;ll get to know. We accept all major health funds and claim on the spot.
+            Caring for St Kilda East since around 1980, with a gentle team you&apos;ll get to know. We accept all major health funds and claim on the spot.
           </p>
         </div>
       </section>

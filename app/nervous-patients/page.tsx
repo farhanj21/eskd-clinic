@@ -41,7 +41,7 @@ export default function GentlePage() {
             tall
             className="reveal"
             priority
-            src="/assets/incoming/how-we-look-after.webp"
+            src="/assets/nervous-patients/how-we-look-after.webp"
             alt="A clinician gently reassuring a relaxed patient in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -134,7 +134,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/hero.webp"
+            src="/assets/shared/hero.webp"
             alt="A smiling, relaxed patient chatting with the dental team in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -163,7 +163,7 @@ export default function GentlePage() {
             <h3>Take the first step, gently</h3>
             <p>Book a visit, or just leave your number and we&apos;ll call you, whatever feels easier. No judgement, no pressure, ever.</p>
             <div className="ctaband-actions">
-              <Link href="/book" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a gentle visit</Link>
+              <Link href="/book" className="btn btn-light">Book a gentle visit</Link>
               <Link href="#contact" className="btn btn-ghost ctaband-ghost">Request a callback</Link>
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/meet-the-team.webp"
+            src="/assets/shared/meet-the-team.webp"
             alt="The friendly East St Kilda Dental team smiling and waving outside the clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />

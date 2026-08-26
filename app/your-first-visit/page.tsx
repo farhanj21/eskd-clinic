@@ -40,7 +40,7 @@ export default function FirstVisitPage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/your-first-image-1.webp"
+            src="/assets/your-first-visit/your-first-image-1.webp"
             alt="Patient completing first visit paperwork with a dental team member"
             hint="Warm, real photo: a friendly welcome at reception, or a relaxed patient with the dentist."
             sizes="(max-width: 860px) 100vw, 48vw"
@@ -133,7 +133,7 @@ export default function FirstVisitPage() {
               </p>
             </div>
             <Photo
-              src="/assets/incoming/your-first-image-2.webp"
+              src="/assets/your-first-visit/your-first-image-2.webp"
               alt="Dentist showing a patient their dental X-ray during a consultation"
               hint="Calm photo: the consult room, or a relaxed patient-and-dentist moment."
               sizes="(max-width: 820px) 100vw, 50vw"
@@ -265,11 +265,11 @@ export default function FirstVisitPage() {
           <div className="stories-grid reveal">
             <blockquote className="nervous-proof light">
               <p>&ldquo;First dentist in years who actually explained everything and didn&apos;t make me feel bad for leaving it so long. I left with a care plan I understood.&rdquo;</p>
-              <cite>New patient — East St Kilda</cite>
+              <cite>New patient — St Kilda East</cite>
             </blockquote>
             <blockquote className="nervous-proof light">
               <p>&ldquo;They showed me the photos of my own teeth on the screen. I finally understood what was going on and what to do about it.&rdquo;</p>
-              <cite>New patient — East St Kilda</cite>
+              <cite>New patient — St Kilda East</cite>
             </blockquote>
           </div>
         </div>

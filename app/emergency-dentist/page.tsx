@@ -11,7 +11,7 @@ import { SCHEMA_ID, SITE_URL, areasServed, business, openingHours, telHref } fro
 export const metadata: Metadata = withSocial({
   title: 'Emergency Dental Care | East St Kilda Dental',
   description:
-    `Dental emergency in East St Kilda? Call ${business.telephoneDisplay} for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.`,
+    `Dental emergency in St Kilda East? Call ${business.telephoneDisplay} for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
 })
 
@@ -24,7 +24,7 @@ const ROOT_CANAL = { label: 'root canal therapy', href: '/services/root-canal' }
 
 // Nearby suburbs, for "emergency dentist near me" and per-suburb intent.
 // Generated from data/suburbs.ts, so every suburb with a live page is listed and
-// a new one needs no edit here. East St Kilda is the home page, so it is not
+// a new one needs no edit here. St Kilda East is the home page, so it is not
 // repeated.
 const nearbySuburbs = suburbs.map((s) => ({ label: s.name, href: suburbPath(s.slug) }))
 
@@ -144,7 +144,7 @@ export default function EmergencyPage() {
             <h1>In pain? <em>We&apos;ll help you today.</em></h1>
             <h2 className="hero-keyline"></h2>
             <p className="lead">
-              Take a breath. Most dental emergencies look scarier than they feel, and as an emergency dentist in East St Kilda we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
+              Take a breath. Most dental emergencies look scarier than they feel, and as an emergency dentist in St Kilda East we keep time aside every day to see people quickly. Call us and we&apos;ll talk you through what to do.
             </p>
             <div className="hero-cta">
               <a href={telHref} className="btn">Call {business.telephoneDisplay}</a>
@@ -152,13 +152,13 @@ export default function EmergencyPage() {
             </div>
 
             <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
-              Emergency dentist in East St Kilda, same-day care where possible. 
+              Emergency dentist in St Kilda East, same-day care where possible. 
             </p>
           </div>
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/emergency-dentistry.webp"
+            src="/assets/emergency/emergency-dentistry.webp"
             hint="Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical."
             sizes="(max-width: 860px) 100vw, 48vw"
           />

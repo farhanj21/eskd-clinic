@@ -59,7 +59,7 @@ export default function OurWorkPage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/gallery-hero.webp"
+            src="/assets/gallery/gallery-hero.webp"
             hint="Warm, real before/after or smile photo (with consent). Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -88,7 +88,7 @@ export default function OurWorkPage() {
             {cases.map((c, i) => (
               <div key={i} className="svc">
                 <Photo
-                  src={`/assets/incoming/smile-${i + 1}.webp`}
+                  src={`/assets/gallery/smile-${i + 1}.webp`}
                   hint="Before & after (with patient consent)"
                   sizes="(max-width: 820px) 100vw, 33vw"
                   style={{ height: '170px', marginBottom: '10px' }}

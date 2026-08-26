@@ -20,11 +20,25 @@ const nextConfig: NextConfig = {
    * one, so the old /areas/<slug> URLs redirect permanently rather than 404.
    */
   async redirects() {
-    return suburbs.map((s) => ({
-      source: `/areas/${s.slug}`,
-      destination: suburbPath(s.slug),
-      permanent: true,
-    }))
+    return [
+      ...suburbs.map((s) => ({
+        source: `/areas/${s.slug}`,
+        destination: suburbPath(s.slug),
+        permanent: true,
+      })),
+      /**
+       * /services/check-up-clean was a legacy duplicate of /services/check-ups
+       * and /services/cleans-and-hygiene — the same treatment on a third URL,
+       * competing with both and linked from nowhere on the site. The page is
+       * gone from data/services.ts; this keeps any existing inbound link or
+       * indexed result landing on the page that replaced it.
+       */
+      {
+        source: '/services/check-up-clean',
+        destination: '/services/check-ups',
+        permanent: true,
+      },
+    ]
   },
   async headers() {
     if (isProduction) return []

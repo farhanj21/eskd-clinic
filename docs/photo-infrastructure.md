@@ -23,7 +23,7 @@ Every image placeholder on the site is a `<Photo>` call. Without `src` it render
   className="reveal"                        // extra classes pass through
   priority                                  // ONLY the above-the-fold hero, one per page
   hint="Warm, real photo of the team."      // brief shown until src exists
-  src="/assets/heroes/services-hero.webp"   // add this line when the photo arrives
+  src="/assets/services/veneers.webp"       // add this line when the photo arrives
   alt="The East St Kilda Dental team"       // required with src — describe for screen readers
   sizes="(max-width: 860px) 100vw, 48vw"    // already set per call-site, don't change
   objectPosition="center top"               // optional crop anchor (faces near top edge)

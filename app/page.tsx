@@ -24,7 +24,7 @@ const whiteTheme: CSSProperties = {
 export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
-    'Gentle, judgement-free dentist in East St Kilda. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
+    'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
 })
 
@@ -87,7 +87,7 @@ const homeSchema = {
       '@id': SCHEMA_ID.practice,
       name: business.name,
       url: business.url,
-      image: `${SITE_URL}/assets/incoming/meet-the-team.webp`,
+      image: `${SITE_URL}/assets/shared/meet-the-team.webp`,
       telephone: business.telephone,
       email: business.email,
       priceRange: business.priceRange,
@@ -147,7 +147,7 @@ export default function Home() {
         <div className="container container-wide hero-video-inner">
           <div className="hero-video-copy">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
-            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in East St Kilda</em></h1>
+            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
@@ -184,7 +184,7 @@ export default function Home() {
             <div className="eyebrow">How we can help</div>
             <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Care for every stage of life</h2>
             <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
-              From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after East St Kilda and the surrounding suburbs.
+              From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after St Kilda East and the surrounding suburbs.
             </p>
           </div>
           <div className="svc-grid-v2">
@@ -327,7 +327,7 @@ export default function Home() {
             </div>
             <Photo
               style={{ borderRadius: 0, minHeight: '100%' }}
-              src="/assets/incoming/comprehensive2.webp"
+              src="/assets/home/comprehensive2.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
      
             />
@@ -343,7 +343,7 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/nervous-patients.webp"
+            src="/assets/home/nervous-patients.webp"
             alt="A relaxed patient smiling warmly in the dental chair"
             objectPosition="0% 40%"
             scale={1.1}
@@ -375,7 +375,7 @@ export default function Home() {
             <Photo
               tall
               className="reveal"
-              src="/assets/incoming/meet-the-team.webp"
+              src="/assets/shared/meet-the-team.webp"
               alt="The East St Kilda Dental team standing together outside the clinic entrance"
               objectPosition="center top"
               sizes="(max-width: 820px) 100vw, 40vw"
@@ -453,7 +453,7 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/heritage.webp"
+            src="/assets/home/heritage.webp"
             alt="Three generations of a family embracing and laughing together"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -494,7 +494,7 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/incoming/honest-about-cost.webp"
+            src="/assets/home/honest-about-cost.webp"
             alt="A friendly receptionist smiling while helping a patient at the front desk"
           />
         </div>
@@ -527,19 +527,19 @@ export default function Home() {
           </div>
           <div className="edu-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-1.webp" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-1.webp" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Gentle smile refresh</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-2.webp" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-2.webp" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Restoring a damaged tooth</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-3.webp" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-3.webp" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Replacing a missing tooth</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/incoming/smile-4.webp" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-4.webp" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>A nervous patient's journey</h4>
             </div>
           </div>
@@ -567,7 +567,7 @@ export default function Home() {
               style={{ cursor: 'pointer', textDecoration: 'none' }}
             >
               <Photo
-                src="/assets/incoming/article-1.webp"
+                src="/assets/articles/article-1.webp"
                 alt="Dentist explaining an X-ray to a patient in the chair"
                 hint="Article image"
                 sizes="(max-width: 820px) 100vw, 33vw"
@@ -588,7 +588,7 @@ export default function Home() {
               style={{ cursor: 'pointer', textDecoration: 'none' }}
             >
               <Photo
-                src="/assets/incoming/article-2.webp"
+                src="/assets/articles/article-2.webp"
                 alt="Dentist using a dental model to explain gum health to a patient"
                 hint="Article image"
                 sizes="(max-width: 820px) 100vw, 33vw"
@@ -609,7 +609,7 @@ export default function Home() {
               style={{ cursor: 'pointer', textDecoration: 'none' }}
             >
               <Photo
-                src="/assets/incoming/article-3.webp"
+                src="/assets/articles/article-3.webp"
                 alt="Patient receiving a dental check-up in the clinic"
                 hint="Article image"
                 sizes="(max-width: 820px) 100vw, 33vw"
@@ -641,13 +641,13 @@ export default function Home() {
                 growing past the 1180px container on wide screens. */}
             <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
-              From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a welcoming dental home here.
+              Find your suburb below, or get directions straight to our door in Google or Apple Maps, from wherever you&apos;re starting.
             </p>
           </div>
           {/* Every suburb here has its own page, generated from data/suburbs.ts.
               Add a suburb there and it appears in this grid and the sitemap. */}
           <div className="areas-grid reveal">
-            <Link href="/">East St Kilda</Link>
+            <Link href="/">St Kilda East</Link>
             {suburbs.map((s) => (
               <Link key={s.slug} href={suburbPath(s.slug)}>{s.name}</Link>
             ))}

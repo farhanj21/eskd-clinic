@@ -29,6 +29,11 @@ export interface SuburbData {
   name: string
   /** Used to disambiguate the "get directions" origin, e.g. "Windsor VIC 3181". */
   postcode: string
+  /**
+   * Hero photograph for this suburb's page. Suburbs we don't have a photo for
+   * yet simply omit it and fall back to the shared clinic hero.
+   */
+  heroImage?: string
   /** Hero paragraph. One sentence, specific to this suburb. */
   lead: string
   /** The H2 of the "your local dentist" section. */
@@ -47,12 +52,13 @@ export interface SuburbData {
 
 /**
  * In the order they appear in the home page's areas grid, which runs roughly
- * outward from the clinic. East St Kilda is deliberately absent: it is the home
+ * outward from the clinic. St Kilda East is deliberately absent: it is the home
  * page, not a landing page.
  */
 export const suburbs: SuburbData[] = [
   {
     slug: 'st-kilda',
+    heroImage: '/assets/suburbs/st-kilda.webp',
     name: 'St Kilda',
     postcode: '3182',
     lead:
@@ -80,6 +86,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'st-kilda-west',
+    heroImage: '/assets/suburbs/st-kilda-west.webp',
     name: 'St Kilda West',
     postcode: '3182',
     lead:
@@ -107,6 +114,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'balaclava',
+    heroImage: '/assets/suburbs/balaclava.webp',
     name: 'Balaclava',
     postcode: '3183',
     lead:
@@ -133,6 +141,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'elwood',
+    heroImage: '/assets/suburbs/elwood.webp',
     name: 'Elwood',
     postcode: '3184',
     lead:
@@ -159,6 +168,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'elsternwick',
+    heroImage: '/assets/suburbs/elsternwick.webp',
     name: 'Elsternwick',
     postcode: '3185',
     lead:
@@ -185,6 +195,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'ripponlea',
+    heroImage: '/assets/suburbs/ripponlea.webp',
     name: 'Ripponlea',
     postcode: '3185',
     lead:
@@ -211,6 +222,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'caulfield',
+    heroImage: '/assets/suburbs/caulfield.webp',
     name: 'Caulfield',
     postcode: '3162',
     lead:
@@ -238,6 +250,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'caulfield-north',
+    heroImage: '/assets/suburbs/caulfield-north.webp',
     name: 'Caulfield North',
     postcode: '3161',
     lead:
@@ -264,6 +277,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'windsor',
+    heroImage: '/assets/suburbs/windsor.webp',
     name: 'Windsor',
     postcode: '3181',
     lead:
@@ -290,6 +304,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'prahran',
+    heroImage: '/assets/suburbs/prahran.webp',
     name: 'Prahran',
     postcode: '3181',
     lead:
@@ -316,6 +331,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'armadale',
+    heroImage: '/assets/suburbs/armadale.webp',
     name: 'Armadale',
     postcode: '3143',
     lead:
@@ -342,6 +358,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'glen-huntly',
+    heroImage: '/assets/suburbs/glen-huntly.webp',
     name: 'Glen Huntly',
     postcode: '3163',
     lead:
@@ -368,6 +385,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'carnegie',
+    heroImage: '/assets/suburbs/carnegie.webp',
     name: 'Carnegie',
     postcode: '3163',
     lead:
@@ -394,6 +412,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'gardenvale',
+    heroImage: '/assets/suburbs/gardenvale.webp',
     name: 'Gardenvale',
     postcode: '3185',
     lead:
@@ -420,6 +439,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'albert-park',
+    heroImage: '/assets/suburbs/albert-park.webp',
     name: 'Albert Park',
     postcode: '3206',
     lead:
@@ -446,6 +466,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'middle-park',
+    heroImage: '/assets/suburbs/middle-park.webp',
     name: 'Middle Park',
     postcode: '3206',
     lead:
@@ -472,6 +493,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'port-melbourne',
+    heroImage: '/assets/suburbs/port-melbourne.webp',
     name: 'Port Melbourne',
     postcode: '3207',
     lead:
@@ -498,6 +520,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'south-yarra',
+    heroImage: '/assets/suburbs/south-yarra.webp',
     name: 'South Yarra',
     postcode: '3141',
     lead:
@@ -524,6 +547,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'toorak',
+    heroImage: '/assets/suburbs/toorak.webp',
     name: 'Toorak',
     postcode: '3142',
     lead:
@@ -550,6 +574,7 @@ export const suburbs: SuburbData[] = [
   },
   {
     slug: 'malvern',
+    heroImage: '/assets/suburbs/malvern.webp',
     name: 'Malvern',
     postcode: '3144',
     lead:
@@ -593,4 +618,23 @@ export function requireSuburb(slug: string): SuburbData {
   const found = getSuburb(slug)
   if (!found) throw new Error(`Unknown suburb slug "${slug}" — add it to data/suburbs.ts`)
   return found
+}
+
+/**
+ * The other suburb pages to link to from a suburb page.
+ *
+ * Walks forward through the array and wraps, so every page links out to the
+ * same number of siblings and — because the walk is a closed ring — receives
+ * exactly that many links back. No suburb page can end up orphaned, and none
+ * hoards the internal links, whatever order the array is in.
+ *
+ * Deliberately not "nearby": the array runs roughly outward from the clinic,
+ * which is not a true adjacency map, so the copy that renders these says
+ * "other areas we serve" rather than claiming a geographic neighbour.
+ */
+export function otherSuburbs(slug: string, count = 5): SuburbData[] {
+  const start = suburbs.findIndex((s) => s.slug === slug)
+  if (start < 0) return suburbs.slice(0, count)
+  const take = Math.min(count, suburbs.length - 1)
+  return Array.from({ length: take }, (_, i) => suburbs[(start + 1 + i) % suburbs.length])
 }

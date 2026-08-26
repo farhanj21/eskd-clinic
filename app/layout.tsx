@@ -30,8 +30,8 @@ export const viewport: Viewport = {
 
 const SITE_TITLE = 'East St Kilda Dental | gentle family and emergency dentist'
 const SITE_DESCRIPTION =
-  'Gentle, judgement-free dentist in East St Kilda, caring for local families since 1980. Comprehensive check-ups, nervous-patient care, kids and emergencies.'
-const SOCIAL_DESCRIPTION = 'Gentle, judgement-free dentist in East St Kilda since 1980.'
+  'Gentle, judgement-free dentist in St Kilda East, caring for local families since 1980. Comprehensive check-ups, nervous-patient care, kids and emergencies.'
+const SOCIAL_DESCRIPTION = 'Gentle, judgement-free dentist in St Kilda East since 1980.'
 
 // Site-wide defaults. Every page overrides the title, description, canonical
 // and share-card text via withSocial() in lib/seo.ts — these are the fallback

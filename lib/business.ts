@@ -41,7 +41,7 @@ export const business = {
   serviceRegion: "Melbourne's inner south-east",
   address: {
     streetAddress: '364 Dandenong Rd',
-    addressLocality: 'East St Kilda',
+    addressLocality: 'St Kilda East',
     addressRegion: 'VIC',
     postalCode: '3183',
     addressCountry: 'AU',
@@ -56,7 +56,7 @@ export const business = {
     longitude: '145.0060',
   },
   hasMap:
-    'https://www.google.com/maps?q=East+St+Kilda+Dental,+364+Dandenong+Rd,+East+St+Kilda+VIC+3183',
+    'https://www.google.com/maps?q=East+St+Kilda+Dental,+364+Dandenong+Rd,+St+Kilda+East+VIC+3183',
 } as const
 
 /**
@@ -71,9 +71,9 @@ export const emailHref = `mailto:${business.email}`
 
 /** "364 Dandenong Rd" */
 export const streetAddress = business.address.streetAddress
-/** "East St Kilda VIC 3183" */
+/** "St Kilda East VIC 3183" */
 export const localityLine = `${business.address.addressLocality} ${business.address.addressRegion} ${business.address.postalCode}`
-/** "364 Dandenong Rd, East St Kilda VIC 3183" */
+/** "364 Dandenong Rd, St Kilda East VIC 3183" */
 export const fullAddress = `${streetAddress}, ${localityLine}`
 
 /**
@@ -88,7 +88,7 @@ export const openingHours = [
 ] as const
 
 export const areasServed = [
-  'East St Kilda',
+  'St Kilda East',
   'St Kilda',
   'Balaclava',
   'Elwood',

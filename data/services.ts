@@ -30,7 +30,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Gentle, thorough',
     h1em: 'check-ups',
-    heroImage: '/assets/incoming/checkup-hero.webp',
+    heroImage: '/assets/services/checkup-hero.webp',
     heroAlt: 'A gentle dentist examining a young patient wearing protective glasses in the treatment chair',
     heroLead: 'A calm, comprehensive look at your teeth, gums and bite, so small problems are found early, while they\'re still small.',
     whatItIsH2: 'What a comprehensive check-up involves',
@@ -72,13 +72,13 @@ export const services: ServiceData[] = [
       { q: 'Does a check-up hurt?', a: 'No, it\'s gentle and there\'s rarely any discomfort.' },
     ],
     related: [
-      { label: 'Cleans & hygiene', href: '/services/svc-cleans' },
-      { label: 'Your first visit', href: '/first-visit' },
+      { label: 'Cleans & hygiene', href: '/services/cleans-and-hygiene' },
+      { label: 'Your first visit', href: '/your-first-visit' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Dental Check-ups & Exams | East St Kilda Dental',
-      description: 'Thorough, gentle dental check-ups in East St Kilda. We catch problems early and leave you with a clear care plan. New patient offer $297. Book today.',
+      description: 'Thorough, gentle dental check-ups in St Kilda East. We catch problems early and leave you with a clear care plan. New patient offer $297. Book today.',
     },
   },
   {
@@ -86,7 +86,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Professional',
     h1em: 'cleans & hygiene',
-    heroImage: '/assets/incoming/cleans-hero.webp',
+    heroImage: '/assets/services/cleans-hero.webp',
     heroLead: 'A gentle, thorough clean that removes what brushing can\'t reach, and keeps your gums healthy for life.',
     whatItIsH2: 'What a professional clean does',
     whatItIs: [
@@ -127,13 +127,13 @@ export const services: ServiceData[] = [
       { q: 'Will it remove all staining?', a: 'Surface staining, yes; deeper discolouration may need whitening.' },
     ],
     related: [
-      { label: 'Check-ups', href: '/services/svc-checkups' },
-      { label: 'Teeth whitening', href: '/services/svc-whitening' },
+      { label: 'Check-ups', href: '/services/check-ups' },
+      { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Professional Dental Cleans & Hygiene | East St Kilda Dental',
-      description: 'Gentle professional dental cleans in East St Kilda. Scale, clean and polish — removes tartar and keeps gums healthy. Book today.',
+      description: 'Gentle professional dental cleans in St Kilda East. Scale, clean and polish — removes tartar and keeps gums healthy. Book today.',
     },
   },
   {
@@ -141,7 +141,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
-    heroImage: '/assets/incoming/children-dentistry.webp',
+    heroImage: '/assets/services/children-dentistry.webp',
     heroLead: 'Calm, positive visits that help children feel comfortable, and grow up without fear of the dentist.',
     whatItIsH2: 'What children\'s dentistry looks like here',
     whatItIs: [
@@ -182,13 +182,13 @@ export const services: ServiceData[] = [
       { q: 'What if my child won\'t cooperate?', a: 'That\'s normal and we\'re used to it, we never force a visit.' },
     ],
     related: [
-      { label: 'Mouthguards', href: '/services/svc-mouthguards' },
-      { label: 'Check-ups', href: '/services/svc-checkups' },
+      { label: 'Mouthguards', href: '/services/mouthguards' },
+      { label: 'Check-ups', href: '/services/check-ups' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: "Children's Dentistry | East St Kilda Dental",
-      description: "Gentle children's dentistry in East St Kilda. Medicare CDBS accepted. Building positive dental habits from the first tooth.",
+      description: "Gentle children's dentistry in St Kilda East. Medicare CDBS accepted. Building positive dental habits from the first tooth.",
     },
   },
   {
@@ -196,7 +196,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Custom',
     h1em: 'sports mouthguards',
-    heroImage: '/assets/incoming/mouthguards.webp',
+    heroImage: '/assets/services/mouthguards.webp',
     heroAlt: 'A dentist discussing treatment options with a patient in the clinic',
     heroLead: 'A properly fitted, custom mouthguard that actually protects, far better than the boil-and-bite kind.',
     whatItIsH2: 'What a custom mouthguard is',
@@ -238,13 +238,13 @@ export const services: ServiceData[] = [
       { q: 'Do you make night guards for grinding?', a: 'Yes, a custom night splint, see our TMJ & jaw pain care.' },
     ],
     related: [
-      { label: 'Kids', href: '/services/svc-kids' },
-      { label: 'TMJ & jaw pain', href: '/services/svc-tmj' },
+      { label: 'Kids', href: '/services/childrens-dentistry' },
+      { label: 'TMJ & jaw pain', href: '/services/tmj-jaw-pain' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Custom Mouthguards | East St Kilda Dental',
-      description: 'Custom sports mouthguards and night guards in East St Kilda. Superior fit and protection for sport and grinding. Book online.',
+      description: 'Custom sports mouthguards and night guards in St Kilda East. Superior fit and protection for sport and grinding. Book online.',
     },
   },
   {
@@ -252,7 +252,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: 'Help for',
     h1em: 'jaw pain & TMJ',
-    heroImage: '/assets/incoming/tmj-jaw.webp',
+    heroImage: '/assets/services/tmj-jaw.webp',
     heroAlt: 'A dentist gently assessing a patient\'s jaw joint and muscles during a TMJ examination',
     heroLead: 'Jaw pain, clicking, headaches or grinding? We\'ll help you understand why, and find real relief.',
     whatItIsH2: 'What TMJ and grinding problems are',
@@ -294,13 +294,13 @@ export const services: ServiceData[] = [
       { q: 'How long until I feel better?', a: 'It varies, many people improve within a few weeks.' },
     ],
     related: [
-      { label: 'Mouthguards', href: '/services/svc-mouthguards' },
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
+      { label: 'Mouthguards', href: '/services/mouthguards' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'TMJ & Jaw Pain Treatment | East St Kilda Dental',
-      description: 'TMJ assessment and jaw pain treatment in East St Kilda. Custom splints, bite analysis and expert care. Book today.',
+      description: 'TMJ assessment and jaw pain treatment in St Kilda East. Custom splints, bite analysis and expert care. Book today.',
     },
   },
   {
@@ -308,7 +308,7 @@ export const services: ServiceData[] = [
     eyebrow: 'General & preventive',
     h1pre: '',
     h1em: 'Myofunctional therapy',
-    heroImage: '/assets/incoming/myofunctional.webp',
+    heroImage: '/assets/services/myofunctional.webp',
     heroAlt: 'A dental assistant reviewing scans with a smiling patient in the treatment chair',
     heroLead: 'Gentle exercises that retrain the muscles of the mouth and face, to improve breathing, tongue position and jaw development.',
     whatItIsH2: 'What myofunctional therapy is',
@@ -350,13 +350,13 @@ export const services: ServiceData[] = [
       { q: 'Is it suitable for young children?', a: 'Often yes, we\'ll assess what\'s appropriate for their age.' },
     ],
     related: [
-      { label: 'Kids', href: '/services/svc-kids' },
-      { label: 'Invisalign', href: '/services/svc-invisalign' },
+      { label: 'Kids', href: '/services/childrens-dentistry' },
+      { label: 'Invisalign', href: '/services/invisalign' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Myofunctional Therapy | East St Kilda Dental',
-      description: 'Myofunctional therapy in East St Kilda. Correct tongue posture, breathing and swallowing to improve orthodontic and airway health.',
+      description: 'Myofunctional therapy in St Kilda East. Correct tongue posture, breathing and swallowing to improve orthodontic and airway health.',
     },
   },
   {
@@ -364,7 +364,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Tooth-coloured',
     h1em: 'fillings',
-    heroImage: '/assets/incoming/fillings.webp',
+    heroImage: '/assets/services/fillings.webp',
     heroAlt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
     heroLead: 'Natural-looking fillings that repair decay or damage gently, and blend in so no one can tell.',
     whatItIsH2: 'What a filling does',
@@ -406,13 +406,13 @@ export const services: ServiceData[] = [
       { q: 'Why is my tooth sensitive after?', a: 'Mild, short-lived sensitivity is normal; tell us if it lingers.' },
     ],
     related: [
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
-      { label: 'Check-ups', href: '/services/svc-checkups' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
+      { label: 'Check-ups', href: '/services/check-ups' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Tooth-Coloured Fillings | East St Kilda Dental',
-      description: 'Natural tooth-coloured fillings in East St Kilda. Gentle, minimally invasive composite restorations. Book today.',
+      description: 'Natural tooth-coloured fillings in St Kilda East. Gentle, minimally invasive composite restorations. Book today.',
     },
   },
   {
@@ -420,7 +420,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Crowns & bridges that',
     h1em: 'look and last',
-    heroImage: '/assets/incoming/crowns-bridges.webp',
+    heroImage: '/assets/services/crowns-bridges.webp',
     heroAlt: 'A smiling patient having their teeth examined with a dental mirror',
     heroLead: 'When a tooth is cracked, worn or missing, a crown or bridge restores its strength and appearance, custom-made to blend in so no one can tell.',
     whatItIsH2: 'What crowns and bridges actually are',
@@ -462,13 +462,13 @@ export const services: ServiceData[] = [
       { q: 'Can a bridge replace more than one tooth?', a: 'Often yes, provided there are healthy teeth or implants to anchor it. We\'ll assess what suits you.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'Root canal therapy', href: '/services/svc-rootcanal' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'Root canal therapy', href: '/services/root-canal' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Dental Crowns & Bridges | East St Kilda Dental',
-      description: 'Custom crowns and bridges in East St Kilda. Natural ceramic and zirconia restorations that look and last. Book today.',
+      description: 'Custom crowns and bridges in St Kilda East. Natural ceramic and zirconia restorations that look and last. Book today.',
     },
   },
   {
@@ -476,7 +476,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'root canal therapy',
-    heroImage: '/assets/incoming/rootcanal.webp',
+    heroImage: '/assets/services/rootcanal.webp',
     heroAlt: 'A dental assistant holding instruments, with a patient seated in the treatment chair behind her',
     heroLead: 'Root canals have a fearsome reputation they don\'t deserve. Done gently, the treatment relieves pain and saves your tooth.',
     whatItIsH2: 'What root canal therapy actually is',
@@ -518,13 +518,13 @@ export const services: ServiceData[] = [
       { q: 'How long does it take?', a: 'Often one or two visits, depending on the tooth.' },
     ],
     related: [
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
-      { label: 'Emergency', href: '/emergency' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
+      { label: 'Emergency', href: '/emergency-dentist' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Root Canal Therapy | East St Kilda Dental',
-      description: 'Gentle root canal therapy in East St Kilda. Save your tooth, relieve pain, and restore full function. Book today.',
+      description: 'Gentle root canal therapy in St Kilda East. Save your tooth, relieve pain, and restore full function. Book today.',
     },
   },
   {
@@ -532,7 +532,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: '',
     h1em: 'Onlays & inlays',
-    heroImage: '/assets/incoming/onlays.webp',
+    heroImage: '/assets/services/onlays.webp',
     heroAlt: 'A happy patient high-fiving his dentist, pleased with his treatment',
     heroLead: 'A strong, conservative middle ground between a filling and a crown, preserving more of your natural tooth.',
     whatItIsH2: 'What onlays and inlays are',
@@ -574,13 +574,13 @@ export const services: ServiceData[] = [
       { q: 'Will it match my tooth?', a: 'Yes, it\'s tooth-coloured and made to blend in.' },
     ],
     related: [
-      { label: 'Crowns & bridges', href: '/services/svc-crowns' },
-      { label: 'Fillings', href: '/services/svc-fillings' },
+      { label: 'Crowns & bridges', href: '/services/crowns-and-bridges' },
+      { label: 'Fillings', href: '/services/fillings' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Onlays & Inlays | East St Kilda Dental',
-      description: 'Ceramic onlays and inlays in East St Kilda — stronger than a filling, more conservative than a crown. Book today.',
+      description: 'Ceramic onlays and inlays in St Kilda East — stronger than a filling, more conservative than a crown. Book today.',
     },
   },
   {
@@ -588,7 +588,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Comfortable',
     h1em: 'dentures',
-    heroImage: '/assets/incoming/dentures.webp',
+    heroImage: '/assets/services/dentures.webp',
     heroAlt: 'A smiling patient chatting with her dentist during a consultation',
     heroLead: 'Natural-looking, well-fitting dentures that restore your smile, and let you eat and speak with confidence.',
     whatItIsH2: 'What modern dentures are like',
@@ -630,13 +630,13 @@ export const services: ServiceData[] = [
       { q: 'Will people be able to tell?', a: 'Modern dentures are made to look natural.' },
     ],
     related: [
-      { label: 'All-on-4 / full arch', href: '/services/svc-implant-allon4' },
-      { label: 'Extractions', href: '/services/svc-extractions' },
+      { label: 'All-on-4 / full arch', href: '/services/all-on-4-implants' },
+      { label: 'Extractions', href: '/services/extractions-wisdom-teeth' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Dentures | East St Kilda Dental',
-      description: 'Custom full and partial dentures in East St Kilda. Natural appearance, comfortable fit — including implant-supported options. Book today.',
+      description: 'Custom full and partial dentures in St Kilda East. Natural appearance, comfortable fit — including implant-supported options. Book today.',
     },
   },
   {
@@ -644,7 +644,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'extractions & wisdom teeth',
-    heroImage: '/assets/incoming/gentle-extractions.webp',
+    heroImage: '/assets/services/gentle-extractions.webp',
     heroAlt: 'A dentist reassuringly speaking with a patient in the treatment chair before a procedure',
     heroLead: 'When a tooth can\'t be saved, we remove it as gently and calmly as possible, and plan what comes next.',
     whatItIsH2: 'What an extraction involves',
@@ -686,13 +686,13 @@ export const services: ServiceData[] = [
       { q: 'How long is recovery?', a: 'Most people feel much better within a few days.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'Emergency', href: '/emergency' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'Emergency', href: '/emergency-dentist' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Extractions & Wisdom Teeth | East St Kilda Dental',
-      description: 'Gentle tooth extractions and wisdom teeth removal in East St Kilda. Same-week appointments for urgent cases. Book today.',
+      description: 'Gentle tooth extractions and wisdom teeth removal in St Kilda East. Same-week appointments for urgent cases. Book today.',
     },
   },
   {
@@ -700,7 +700,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: '',
     h1em: 'Smile design',
-    heroImage: '/assets/incoming/smile-design.webp',
+    heroImage: '/assets/services/smile-design.webp',
     heroAlt: 'A smiling patient having her teeth examined with a dental mirror during a smile design consultation',
     heroLead: 'A considered, natural-looking care plan to refresh your smile, never overdone, always in proportion to you.',
     whatItIsH2: 'What smile design is',
@@ -742,13 +742,13 @@ export const services: ServiceData[] = [
       { q: 'How do I know what it\'ll look like?', a: 'Where helpful, we can preview the result before you commit.' },
     ],
     related: [
-      { label: 'Veneers', href: '/services/svc-veneers' },
-      { label: 'Teeth whitening', href: '/services/svc-whitening' },
+      { label: 'Veneers', href: '/services/veneers' },
+      { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Smile Design | East St Kilda Dental',
-      description: 'Smile design consultations in East St Kilda. Digital preview, personalised plan — veneers, whitening, bonding and more. Book today.',
+      description: 'Smile design consultations in St Kilda East. Digital preview, personalised plan — veneers, whitening, bonding and more. Book today.',
     },
   },
   {
@@ -756,7 +756,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Natural-looking',
     h1em: 'veneers',
-    heroImage: '/assets/incoming/veneers.webp',
+    heroImage: '/assets/services/veneers.webp',
     heroAlt: 'A dental assistant and a smiling patient taking a selfie together in the treatment chair',
     heroLead: 'Thin, custom shells that refine the shape, colour or alignment of front teeth, designed to look like your own, only better.',
     whatItIsH2: 'What veneers are',
@@ -798,13 +798,13 @@ export const services: ServiceData[] = [
       { q: 'How long do they last?', a: 'Many years with good care.' },
     ],
     related: [
-      { label: 'Smile design', href: '/services/svc-smiledesign' },
-      { label: 'Teeth whitening', href: '/services/svc-whitening' },
+      { label: 'Smile design', href: '/services/smile-design' },
+      { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Porcelain Veneers | East St Kilda Dental',
-      description: 'Custom porcelain veneers in East St Kilda. Natural-looking, designed to suit your face. Book a smile design consultation today.',
+      description: 'Custom porcelain veneers in St Kilda East. Natural-looking, designed to suit your face. Book a smile design consultation today.',
     },
   },
   {
@@ -812,7 +812,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Professional',
     h1em: 'teeth whitening',
-    heroImage: '/assets/incoming/teeth-white.webp',
+    heroImage: '/assets/services/teeth-white.webp',
     heroLead: 'Safe, dentist-supervised whitening for a brighter smile, without the guesswork or sensitivity of shop-bought kits.',
     whatItIsH2: 'What professional whitening is',
     whatItIs: [
@@ -853,13 +853,13 @@ export const services: ServiceData[] = [
       { q: 'Does it whiten crowns or fillings?', a: 'No, whitening only affects natural teeth, we\'ll factor that in.' },
     ],
     related: [
-      { label: 'Veneers', href: '/services/svc-veneers' },
-      { label: 'Smile design', href: '/services/svc-smiledesign' },
+      { label: 'Veneers', href: '/services/veneers' },
+      { label: 'Smile design', href: '/services/smile-design' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Teeth Whitening | East St Kilda Dental',
-      description: 'Professional teeth whitening in East St Kilda. In-chair and custom take-home options. Safe, dentist-supervised and effective. Book today.',
+      description: 'Professional teeth whitening in St Kilda East. In-chair and custom take-home options. Safe, dentist-supervised and effective. Book today.',
     },
   },
   {
@@ -867,7 +867,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Invisalign & clear aligners',
-    heroImage: '/assets/incoming/invisalign.webp',
+    heroImage: '/assets/services/invisalign.webp',
     heroLead: 'Straighten your teeth discreetly with clear, removable aligners, most people won\'t even notice you\'re wearing them.',
     whatItIsH2: 'What clear aligners are',
     whatItIs: [
@@ -908,13 +908,13 @@ export const services: ServiceData[] = [
       { q: 'Will I need a retainer?', a: 'Yes, to hold the result, this is normal for any straightening.' },
     ],
     related: [
-      { label: 'Braces', href: '/services/svc-braces' },
-      { label: 'Smile design', href: '/services/svc-smiledesign' },
+      { label: 'Braces', href: '/services/braces' },
+      { label: 'Smile design', href: '/services/smile-design' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Invisalign & Clear Aligners | East St Kilda Dental',
-      description: 'Certified Invisalign provider in East St Kilda. Discreet teeth straightening with a digital preview of your new smile. Book today.',
+      description: 'Certified Invisalign provider in St Kilda East. Discreet teeth straightening with a digital preview of your new smile. Book today.',
     },
   },
   {
@@ -922,7 +922,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Braces',
-    heroImage: '/assets/incoming/braces.webp',
+    heroImage: '/assets/services/braces.webp',
     heroLead: 'Traditional braces remain one of the most effective ways to straighten teeth and correct the bite, for children and adults alike.',
     whatItIsH2: 'What braces are',
     whatItIs: [
@@ -963,13 +963,13 @@ export const services: ServiceData[] = [
       { q: 'Are they just for kids?', a: 'No, adults are treated successfully too.' },
     ],
     related: [
-      { label: 'Invisalign', href: '/services/svc-invisalign' },
-      { label: 'Kids', href: '/services/svc-kids' },
+      { label: 'Invisalign', href: '/services/invisalign' },
+      { label: 'Kids', href: '/services/childrens-dentistry' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Braces | East St Kilda Dental',
-      description: 'Traditional and ceramic braces in East St Kilda. Effective orthodontic treatment for teens and adults. Book a consultation today.',
+      description: 'Traditional and ceramic braces in St Kilda East. Effective orthodontic treatment for teens and adults. Book a consultation today.',
     },
   },
   {
@@ -977,7 +977,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Single dental implants',
-    heroImage: '/assets/incoming/single-implant.webp',
+    heroImage: '/assets/services/single-implant.webp',
     heroLead: 'The closest thing to a natural tooth: a single implant replaces a missing tooth without affecting the teeth around it.',
     whatItIsH2: 'What a dental implant is',
     whatItIs: [
@@ -1018,13 +1018,13 @@ export const services: ServiceData[] = [
       { q: 'How long do implants last?', a: 'Often many years, with good care and check-ups.' },
     ],
     related: [
-      { label: 'All-on-4 / full arch', href: '/services/svc-implant-allon4' },
-      { label: 'Bone grafting', href: '/services/svc-bonegraft' },
+      { label: 'All-on-4 / full arch', href: '/services/all-on-4-implants' },
+      { label: 'Bone grafting', href: '/services/bone-grafting' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Single Dental Implants | East St Kilda Dental',
-      description: 'Permanent single tooth replacement with dental implants in East St Kilda. Natural look and feel — can last a lifetime. Book today.',
+      description: 'Permanent single tooth replacement with dental implants in St Kilda East. Natural look and feel — can last a lifetime. Book today.',
     },
   },
   {
@@ -1032,7 +1032,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'All-on-4 & full-arch implants',
-    heroImage: '/assets/incoming/full-arch.webp',
+    heroImage: '/assets/services/full-arch.webp',
     heroLead: 'A fixed, full set of teeth supported by just a few implants, a stable, natural-looking alternative to removable dentures.',
     whatItIsH2: 'What All-on-4 is',
     whatItIs: [
@@ -1073,13 +1073,13 @@ export const services: ServiceData[] = [
       { q: 'Will I be without teeth at any point?', a: 'We plan to avoid that, and we\'ll explain your timeline clearly.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'Dentures', href: '/services/svc-dentures' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'Dentures', href: '/services/dentures' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'All-on-4 & Full Arch Implants | East St Kilda Dental',
-      description: 'All-on-4 and full arch dental implants in East St Kilda. Permanent complete-smile restoration from four implants. Book today.',
+      description: 'All-on-4 and full arch dental implants in St Kilda East. Permanent complete-smile restoration from four implants. Book today.',
     },
   },
   {
@@ -1087,7 +1087,7 @@ export const services: ServiceData[] = [
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Bone grafting',
-    heroImage: '/assets/incoming/bone-grafting.webp',
+    heroImage: '/assets/services/bone-grafting.webp',
     heroLead: 'A straightforward, well-established step that rebuilds jawbone where it\'s been lost, so implants have a strong foundation.',
     whatItIsH2: 'What bone grafting is',
     whatItIs: [
@@ -1128,58 +1128,13 @@ export const services: ServiceData[] = [
       { q: 'Does every implant need one?', a: 'No, only when there isn\'t enough bone, we\'ll check.' },
     ],
     related: [
-      { label: 'Single implants', href: '/services/svc-implant-single' },
-      { label: 'All-on-4 / full arch', href: '/services/svc-implant-allon4' },
+      { label: 'Single implants', href: '/services/dental-implants' },
+      { label: 'All-on-4 / full arch', href: '/services/all-on-4-implants' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
       title: 'Bone Grafting | East St Kilda Dental',
-      description: 'Bone grafting in East St Kilda to prepare the jaw for dental implants. Predictable, comfortable and effective. Book today.',
-    },
-  },
-
-  /* ── Legacy slugs kept for any existing inbound links ──── */
-  {
-    slug: 'check-up-clean',
-    eyebrow: 'Preventive Care',
-    h1pre: 'Gentle, thorough',
-    h1em: 'check-ups & cleans',
-    heroLead: 'A thorough check-up and professional clean is the foundation of lifelong dental health.',
-    whatItIsH2: 'What a check-up and clean involves',
-    whatItIs: ['A comprehensive examination of your teeth, gums, bite and soft tissues, followed by a gentle scale, clean and polish.'],
-    whyH2: 'Why regular visits matter',
-    whyIntro: 'Most dental problems are painless until advanced. Regular check-ups catch them while they\'re small and easy to treat.',
-    whyCards: [
-      { h4: 'Catch problems early', p: 'Small issues are cheaper and gentler to treat.' },
-      { h4: 'Professional clean', p: 'Removes tartar brushing can\'t reach.' },
-      { h4: 'Peace of mind', p: 'Leave knowing exactly where your oral health stands.' },
-    ],
-    whoH2: 'Book a check-up if…',
-    whoItems: ['It\'s been more than 6 months since your last visit', 'You\'ve noticed sensitivity or bleeding gums', 'You want peace of mind about your oral health'],
-    howH2: 'What happens at your visit',
-    steps: [
-      { h4: 'A relaxed chat', p: 'We start with how you\'ve been.' },
-      { h4: 'Full examination', p: 'Teeth, gums, bite and soft tissues.' },
-      { h4: 'X-rays if needed', p: 'Only when clinically useful.' },
-      { h4: 'Scale and clean', p: 'Gentle removal of tartar and staining.' },
-      { h4: 'Clear care plan', p: 'Your priorities explained with no pressure.' },
-    ],
-    aftercareH2: 'After your visit',
-    aftercare: 'Nothing to recover from — carry straight on with your day.',
-    ctaH3: 'Ready to book a check-up?',
-    costPara: 'Your first visit is our Comprehensive Care Visit, $297 with everything included. We claim on the spot through HICAPS.',
-    faq: [
-      { q: 'How often should I come in?', a: 'Every 6 months for most people.' },
-      { q: 'Will it hurt?', a: 'No, check-ups are gentle and comfortable.' },
-    ],
-    related: [
-      { label: 'Check-ups & Exams', href: '/services/svc-checkups' },
-      { label: 'Your first visit', href: '/first-visit' },
-      { label: 'Fees & funds', href: '/fees' },
-    ],
-    meta: {
-      title: 'Check-Up & Clean | East St Kilda Dental',
-      description: 'Comprehensive dental check-ups and professional cleans in East St Kilda. Book online.',
+      description: 'Bone grafting in St Kilda East to prepare the jaw for dental implants. Predictable, comfortable and effective. Book today.',
     },
   },
 ]

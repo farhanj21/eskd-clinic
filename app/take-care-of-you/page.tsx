@@ -64,7 +64,7 @@ export default function CampaignPage() {
           </div>
           <div className="features-grid reveal" style={{ transitionDelay: '.1s' }}>
             {[
-              { title: 'Trusted Since 1984', body: 'Over 40 years serving the East St Kilda community — multi-generational families, neighbours and newcomers alike.' },
+              { title: 'Trusted Since 1984', body: 'Over 40 years serving the St Kilda East community — multi-generational families, neighbours and newcomers alike.' },
               { title: '5-Star Rated', body: 'Consistently high Google reviews from patients who value our gentle approach and transparent, honest care.' },
               { title: 'No Surprises', body: 'Full written treatment plans with costs before we proceed with anything. You always know what you\'re agreeing to.' },
               { title: 'Open Saturdays', body: 'Monday to Saturday with early morning options. Dental care that fits your schedule, not just ours.' },

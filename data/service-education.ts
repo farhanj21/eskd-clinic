@@ -170,14 +170,6 @@ export const serviceEducation: Record<string, ServiceEducation> = {
     ],
     topics: ['nervous-patients'],
   },
-  'check-up-clean': {
-    guides: [
-      'how-often-should-you-see-the-dentist',
-      'bleeding-gums',
-      'what-to-expect-at-your-first-dental-visit',
-    ],
-    topics: ['prevention'],
-  },
 }
 
 /** How many guides the section shows. Matches the three-column card grid. */

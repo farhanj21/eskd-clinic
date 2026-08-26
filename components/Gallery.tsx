@@ -78,7 +78,7 @@ export default function Gallery() {
         <div className="section-head reveal">
           <span className="eyebrow center">Smile Gallery</span>
           <h2>Real patients. Real results.</h2>
-          <p className="lede">Every smile we craft is a partnership. Here are a few recent transformations from our East St Kilda chair.</p>
+          <p className="lede">Every smile we craft is a partnership. Here are a few recent transformations from our St Kilda East chair.</p>
         </div>
 
         <div className="gallery-grid">

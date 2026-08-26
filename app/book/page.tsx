@@ -82,8 +82,11 @@ export default function BookingPage() {
               <div className="book-form">
                 <input type="text" placeholder="First name" />
                 <input type="tel" placeholder="Phone" />
-                <select className="full">
-                  <option>I&apos;d like to&hellip; (new patient, nervous, emergency, general)</option>
+                <select className="full" defaultValue="">
+                  <option value="" disabled>I&apos;d like to&hellip;</option>
+                  <option>Book a new patient visit</option>
+                  <option>Book an emergency visit</option>
+                  <option>Book for a dental consultation</option>
                 </select>
                 <button className="btn" type="submit">Request my callback</button>
               </div>
@@ -135,7 +138,7 @@ export default function BookingPage() {
                 <b style={{ color: 'var(--ink)' }}>{fullAddress}</b>
               </p>
               <p style={{ fontSize: '14.5px', marginBottom: '18px' }}>
-                On the corner of Orrong Road, where East St Kilda, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
+                On the corner of Orrong Road, where St Kilda East, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
               </p>
               <ul className="hours">
                 <li><span>Monday &ndash; Thursday</span><b>8.30am &ndash; 6.00pm</b></li>
