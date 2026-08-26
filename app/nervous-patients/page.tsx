@@ -163,7 +163,7 @@ export default function GentlePage() {
             <h3>Take the first step, gently</h3>
             <p>Book a visit, or just leave your number and we&apos;ll call you, whatever feels easier. No judgement, no pressure, ever.</p>
             <div className="ctaband-actions">
-              <Link href="/book" className="btn" style={{ background: 'var(--paper)', color: 'var(--sage-deep)' }}>Book a gentle visit</Link>
+              <Link href="/book" className="btn btn-light">Book a gentle visit</Link>
               <Link href="#contact" className="btn btn-ghost ctaband-ghost">Request a callback</Link>
             </div>
           </div>

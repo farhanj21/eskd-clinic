@@ -2408,6 +2408,10 @@ body{overflow-x:hidden;max-width:100%;}
 .ctaband h3{font-family:var(--display);font-size:25px;margin:0 0 12px;color:var(--cream);}
 .ctaband p{margin:0 0 20px;color:rgba(247,243,236,.92);font-size:16px;line-height:1.6;}
 .ctaband .btn-ghost-light{color:var(--cream);border-color:rgba(255,255,255,.5);}
+/* .btn-ghost recoloured for the dark band: the default sage-deep text and
+   sage-tint hover both disappear against the sage-deep background. */
+.ctaband-ghost{color:var(--cream);border-color:rgba(255,255,255,.55);}
+.ctaband-ghost:hover{background:rgba(255,255,255,.14);color:var(--cream);}
 .ctaband-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;}
 
 /* Team */
