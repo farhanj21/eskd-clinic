@@ -641,7 +641,7 @@ export default function Home() {
                 growing past the 1180px container on wide screens. */}
             <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
-              From our home on Dandenong Road in East St Kilda, we welcome patients from right across the inner south-east. Wherever you are, you&apos;ll find a welcoming dental home here.
+              Find your suburb below, or get directions straight to our door in Google or Apple Maps, from wherever you&apos;re starting.
             </p>
           </div>
           {/* Every suburb here has its own page, generated from data/suburbs.ts.
