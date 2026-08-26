@@ -150,7 +150,7 @@ export default function OfferPage() {
             </a>
           </p>
           <p style={{ textAlign: 'center', marginTop: '14px', maxWidth: '40em', marginLeft: 'auto', marginRight: 'auto' }}>
-            Caring for East St Kilda since around 1980, with a gentle team you&apos;ll get to know. We accept all major health funds and claim on the spot.
+            Caring for St Kilda East since around 1980, with a gentle team you&apos;ll get to know. We accept all major health funds and claim on the spot.
           </p>
         </div>
       </section>

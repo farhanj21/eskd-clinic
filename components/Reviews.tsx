@@ -24,7 +24,7 @@ const reviews = [
     initial: "C",
   },
   {
-    quote: "Have been to this clinic for over 20 years even though I live 45 mins away. Always professional and skillful. Will continue visiting East St Kilda every 6 months for my check ups!",
+    quote: "Have been to this clinic for over 20 years even though I live 45 mins away. Always professional and skillful. Will continue visiting St Kilda East every 6 months for my check ups!",
     name: "Jackie Perkins",
     source: "Google Review",
     initial: "J",

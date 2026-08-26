@@ -14,14 +14,14 @@ export const metadata: Metadata = withSocial({
 })
 
 /**
- * Every suburb we publish a page for, plus East St Kilda itself, which is the
+ * Every suburb we publish a page for, plus St Kilda East itself, which is the
  * home page rather than a landing page. The list is generated from
  * data/suburbs.ts so this hub can never fall behind the pages themselves.
  */
 const areaCards = [
   {
     href: '/',
-    name: 'East St Kilda',
+    name: 'St Kilda East',
     blurb: `Our home. We're at ${streetAddress}, ${business.address.addressLocality} (corner Orrong Road).`,
     cta: 'Our clinic',
   },
@@ -42,7 +42,7 @@ export default function AreasWeServePage() {
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Areas we serve</div>
-            <h1>A trusted local dentist for <em>East St Kilda</em> and the inner south-east</h1>
+            <h1>A trusted local dentist for <em>St Kilda East</em> and the inner south-east</h1>
             <p className="lead">
               We&apos;ve cared for families across the neighbourhood for over 40 years, from our home on Dandenong Road, on the corner of Orrong Road. Today we welcome patients from right across Melbourne, and from regional Victoria too.
             </p>
@@ -56,7 +56,7 @@ export default function AreasWeServePage() {
             className="reveal"
             priority
             src="/assets/shared/hero.webp"
-            alt="A dentist chatting with a smiling patient during a check-up at our East St Kilda clinic"
+            alt="A dentist chatting with a smiling patient during a check-up at our St Kilda East clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>

@@ -138,7 +138,7 @@ export default function BookingPage() {
                 <b style={{ color: 'var(--ink)' }}>{fullAddress}</b>
               </p>
               <p style={{ fontSize: '14.5px', marginBottom: '18px' }}>
-                On the corner of Orrong Road, where East St Kilda, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
+                On the corner of Orrong Road, where St Kilda East, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
               </p>
               <ul className="hours">
                 <li><span>Monday &ndash; Thursday</span><b>8.30am &ndash; 6.00pm</b></li>

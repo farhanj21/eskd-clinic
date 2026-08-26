@@ -24,7 +24,7 @@ const whiteTheme: CSSProperties = {
 export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
-    'Gentle, judgement-free dentist in East St Kilda. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
+    'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
 })
 
@@ -147,7 +147,7 @@ export default function Home() {
         <div className="container container-wide hero-video-inner">
           <div className="hero-video-copy">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
-            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in East St Kilda</em></h1>
+            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/book" className="btn">Book your visit</Link>
@@ -184,7 +184,7 @@ export default function Home() {
             <div className="eyebrow">How we can help</div>
             <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Care for every stage of life</h2>
             <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
-              From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after East St Kilda and the surrounding suburbs.
+              From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after St Kilda East and the surrounding suburbs.
             </p>
           </div>
           <div className="svc-grid-v2">
@@ -647,7 +647,7 @@ export default function Home() {
           {/* Every suburb here has its own page, generated from data/suburbs.ts.
               Add a suburb there and it appears in this grid and the sitemap. */}
           <div className="areas-grid reveal">
-            <Link href="/">East St Kilda</Link>
+            <Link href="/">St Kilda East</Link>
             {suburbs.map((s) => (
               <Link key={s.slug} href={suburbPath(s.slug)}>{s.name}</Link>
             ))}

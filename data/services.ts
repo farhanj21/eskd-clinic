@@ -78,7 +78,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Dental Check-ups & Exams | East St Kilda Dental',
-      description: 'Thorough, gentle dental check-ups in East St Kilda. We catch problems early and leave you with a clear care plan. New patient offer $297. Book today.',
+      description: 'Thorough, gentle dental check-ups in St Kilda East. We catch problems early and leave you with a clear care plan. New patient offer $297. Book today.',
     },
   },
   {
@@ -133,7 +133,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Professional Dental Cleans & Hygiene | East St Kilda Dental',
-      description: 'Gentle professional dental cleans in East St Kilda. Scale, clean and polish — removes tartar and keeps gums healthy. Book today.',
+      description: 'Gentle professional dental cleans in St Kilda East. Scale, clean and polish — removes tartar and keeps gums healthy. Book today.',
     },
   },
   {
@@ -188,7 +188,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: "Children's Dentistry | East St Kilda Dental",
-      description: "Gentle children's dentistry in East St Kilda. Medicare CDBS accepted. Building positive dental habits from the first tooth.",
+      description: "Gentle children's dentistry in St Kilda East. Medicare CDBS accepted. Building positive dental habits from the first tooth.",
     },
   },
   {
@@ -244,7 +244,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Custom Mouthguards | East St Kilda Dental',
-      description: 'Custom sports mouthguards and night guards in East St Kilda. Superior fit and protection for sport and grinding. Book online.',
+      description: 'Custom sports mouthguards and night guards in St Kilda East. Superior fit and protection for sport and grinding. Book online.',
     },
   },
   {
@@ -300,7 +300,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'TMJ & Jaw Pain Treatment | East St Kilda Dental',
-      description: 'TMJ assessment and jaw pain treatment in East St Kilda. Custom splints, bite analysis and expert care. Book today.',
+      description: 'TMJ assessment and jaw pain treatment in St Kilda East. Custom splints, bite analysis and expert care. Book today.',
     },
   },
   {
@@ -356,7 +356,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Myofunctional Therapy | East St Kilda Dental',
-      description: 'Myofunctional therapy in East St Kilda. Correct tongue posture, breathing and swallowing to improve orthodontic and airway health.',
+      description: 'Myofunctional therapy in St Kilda East. Correct tongue posture, breathing and swallowing to improve orthodontic and airway health.',
     },
   },
   {
@@ -412,7 +412,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Tooth-Coloured Fillings | East St Kilda Dental',
-      description: 'Natural tooth-coloured fillings in East St Kilda. Gentle, minimally invasive composite restorations. Book today.',
+      description: 'Natural tooth-coloured fillings in St Kilda East. Gentle, minimally invasive composite restorations. Book today.',
     },
   },
   {
@@ -468,7 +468,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Dental Crowns & Bridges | East St Kilda Dental',
-      description: 'Custom crowns and bridges in East St Kilda. Natural ceramic and zirconia restorations that look and last. Book today.',
+      description: 'Custom crowns and bridges in St Kilda East. Natural ceramic and zirconia restorations that look and last. Book today.',
     },
   },
   {
@@ -524,7 +524,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Root Canal Therapy | East St Kilda Dental',
-      description: 'Gentle root canal therapy in East St Kilda. Save your tooth, relieve pain, and restore full function. Book today.',
+      description: 'Gentle root canal therapy in St Kilda East. Save your tooth, relieve pain, and restore full function. Book today.',
     },
   },
   {
@@ -580,7 +580,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Onlays & Inlays | East St Kilda Dental',
-      description: 'Ceramic onlays and inlays in East St Kilda — stronger than a filling, more conservative than a crown. Book today.',
+      description: 'Ceramic onlays and inlays in St Kilda East — stronger than a filling, more conservative than a crown. Book today.',
     },
   },
   {
@@ -636,7 +636,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Dentures | East St Kilda Dental',
-      description: 'Custom full and partial dentures in East St Kilda. Natural appearance, comfortable fit — including implant-supported options. Book today.',
+      description: 'Custom full and partial dentures in St Kilda East. Natural appearance, comfortable fit — including implant-supported options. Book today.',
     },
   },
   {
@@ -692,7 +692,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Extractions & Wisdom Teeth | East St Kilda Dental',
-      description: 'Gentle tooth extractions and wisdom teeth removal in East St Kilda. Same-week appointments for urgent cases. Book today.',
+      description: 'Gentle tooth extractions and wisdom teeth removal in St Kilda East. Same-week appointments for urgent cases. Book today.',
     },
   },
   {
@@ -748,7 +748,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Smile Design | East St Kilda Dental',
-      description: 'Smile design consultations in East St Kilda. Digital preview, personalised plan — veneers, whitening, bonding and more. Book today.',
+      description: 'Smile design consultations in St Kilda East. Digital preview, personalised plan — veneers, whitening, bonding and more. Book today.',
     },
   },
   {
@@ -804,7 +804,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Porcelain Veneers | East St Kilda Dental',
-      description: 'Custom porcelain veneers in East St Kilda. Natural-looking, designed to suit your face. Book a smile design consultation today.',
+      description: 'Custom porcelain veneers in St Kilda East. Natural-looking, designed to suit your face. Book a smile design consultation today.',
     },
   },
   {
@@ -859,7 +859,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Teeth Whitening | East St Kilda Dental',
-      description: 'Professional teeth whitening in East St Kilda. In-chair and custom take-home options. Safe, dentist-supervised and effective. Book today.',
+      description: 'Professional teeth whitening in St Kilda East. In-chair and custom take-home options. Safe, dentist-supervised and effective. Book today.',
     },
   },
   {
@@ -914,7 +914,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Invisalign & Clear Aligners | East St Kilda Dental',
-      description: 'Certified Invisalign provider in East St Kilda. Discreet teeth straightening with a digital preview of your new smile. Book today.',
+      description: 'Certified Invisalign provider in St Kilda East. Discreet teeth straightening with a digital preview of your new smile. Book today.',
     },
   },
   {
@@ -969,7 +969,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Braces | East St Kilda Dental',
-      description: 'Traditional and ceramic braces in East St Kilda. Effective orthodontic treatment for teens and adults. Book a consultation today.',
+      description: 'Traditional and ceramic braces in St Kilda East. Effective orthodontic treatment for teens and adults. Book a consultation today.',
     },
   },
   {
@@ -1024,7 +1024,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Single Dental Implants | East St Kilda Dental',
-      description: 'Permanent single tooth replacement with dental implants in East St Kilda. Natural look and feel — can last a lifetime. Book today.',
+      description: 'Permanent single tooth replacement with dental implants in St Kilda East. Natural look and feel — can last a lifetime. Book today.',
     },
   },
   {
@@ -1079,7 +1079,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'All-on-4 & Full Arch Implants | East St Kilda Dental',
-      description: 'All-on-4 and full arch dental implants in East St Kilda. Permanent complete-smile restoration from four implants. Book today.',
+      description: 'All-on-4 and full arch dental implants in St Kilda East. Permanent complete-smile restoration from four implants. Book today.',
     },
   },
   {
@@ -1134,7 +1134,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Bone Grafting | East St Kilda Dental',
-      description: 'Bone grafting in East St Kilda to prepare the jaw for dental implants. Predictable, comfortable and effective. Book today.',
+      description: 'Bone grafting in St Kilda East to prepare the jaw for dental implants. Predictable, comfortable and effective. Book today.',
     },
   },
 
@@ -1179,7 +1179,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Check-Up & Clean | East St Kilda Dental',
-      description: 'Comprehensive dental check-ups and professional cleans in East St Kilda. Book online.',
+      description: 'Comprehensive dental check-ups and professional cleans in St Kilda East. Book online.',
     },
   },
 ]

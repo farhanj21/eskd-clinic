@@ -78,7 +78,7 @@ export default function AboutStoryPage() {
               <div className="eyebrow">Chapter two</div>
               <h2>The Goldman years</h2>
               <p>
-                For more than thirty of those years, the practice was cared for by Dr Eddie Goldman. He became the familiar face people trusted, the dentist who had seen their parents, then them, and in time their children. That kind of continuity is almost unheard of, and it&apos;s the reason generations of East St Kilda families still think of this as their dental home.
+                For more than thirty of those years, the practice was cared for by Dr Eddie Goldman. He became the familiar face people trusted, the dentist who had seen their parents, then them, and in time their children. That kind of continuity is almost unheard of, and it&apos;s the reason generations of St Kilda East families still think of this as their dental home.
               </p>
               <p>
                 Eddie still sees patients here today.

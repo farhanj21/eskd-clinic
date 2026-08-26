@@ -8,7 +8,7 @@ import { business, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'All Dental Services | East St Kilda Dental',
   description:
-    'From everyday check-ups and cleans to implants, cosmetic care and orthodontics — all in one gentle, no-judgement practice in East St Kilda.',
+    'From everyday check-ups and cleans to implants, cosmetic care and orthodontics — all in one gentle, no-judgement practice in St Kilda East.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/services' },
 })
 

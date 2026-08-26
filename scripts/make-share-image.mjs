@@ -42,7 +42,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
 
   <!-- address -->
   <text x="96" y="560" fill="${CREAM}" font-family="Georgia, 'Times New Roman', serif"
-        font-size="26" opacity="0.62">364 Dandenong Rd, East St Kilda VIC 3183</text>
+        font-size="26" opacity="0.62">364 Dandenong Rd, St Kilda East VIC 3183</text>
 </svg>`
 
 await mkdir('public/assets/social', { recursive: true })

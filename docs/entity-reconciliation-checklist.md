@@ -20,7 +20,7 @@ Copy these exactly. Do not abbreviate, expand or reformat them.
 | --- | --- |
 | Name | `East St Kilda Dental` |
 | Street | `364 Dandenong Rd` (**Rd**, never "Road") |
-| Locality | `East St Kilda` |
+| Locality | `St Kilda East` |
 | State | `VIC` |
 | Postcode | `3183` |
 | Country | `AU` |

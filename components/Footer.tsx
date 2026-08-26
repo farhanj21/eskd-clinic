@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="foot-logo">East St Kilda Dental</div>
             <p style={{ fontSize: '14px' }}>
-              Gentle, no-judgement dental care for the East St Kilda community since 1980.
+              Gentle, no-judgement dental care for the St Kilda East community since 1980.
             </p>
             {/* <div className="news">
               <input type="email" placeholder="Your email" />
@@ -38,7 +38,7 @@ export default function Footer() {
           <div>
             <h4>Areas we serve</h4>
             <ul>
-              <li><Link href="/">East St Kilda</Link></li>
+              <li><Link href="/">St Kilda East</Link></li>
               <li><Link href="/dentist-st-kilda">St Kilda</Link></li>
               <li><Link href="/dentist-balaclava">Balaclava</Link></li>
               <li><Link href="/dentist-caulfield">Caulfield</Link></li>

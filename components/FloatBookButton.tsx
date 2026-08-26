@@ -102,7 +102,7 @@ export default function FloatBookButton() {
           <div>
             <p className="modal-greeting-name">Anbar</p>
             <p className="modal-greeting-text">
-              Hi, Anbar here from East St Kilda. Enter your details and I will be in touch. Speak soon!
+              Hi, Anbar here from St Kilda East. Enter your details and I will be in touch. Speak soon!
             </p>
           </div>
         </div>

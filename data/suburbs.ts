@@ -52,7 +52,7 @@ export interface SuburbData {
 
 /**
  * In the order they appear in the home page's areas grid, which runs roughly
- * outward from the clinic. East St Kilda is deliberately absent: it is the home
+ * outward from the clinic. St Kilda East is deliberately absent: it is the home
  * page, not a landing page.
  */
 export const suburbs: SuburbData[] = [

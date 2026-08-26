@@ -265,11 +265,11 @@ export default function FirstVisitPage() {
           <div className="stories-grid reveal">
             <blockquote className="nervous-proof light">
               <p>&ldquo;First dentist in years who actually explained everything and didn&apos;t make me feel bad for leaving it so long. I left with a care plan I understood.&rdquo;</p>
-              <cite>New patient — East St Kilda</cite>
+              <cite>New patient — St Kilda East</cite>
             </blockquote>
             <blockquote className="nervous-proof light">
               <p>&ldquo;They showed me the photos of my own teeth on the screen. I finally understood what was going on and what to do about it.&rdquo;</p>
-              <cite>New patient — East St Kilda</cite>
+              <cite>New patient — St Kilda East</cite>
             </blockquote>
           </div>
         </div>
