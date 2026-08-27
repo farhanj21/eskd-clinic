@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { getInTouchCopy, type GetInTouchVariant } from '@/data/getintouch'
 import { business, emailHref, fullAddress, telHref } from '@/lib/business'
+import { TREATMENTS } from '@/lib/enquiry'
 
 interface GetInTouchProps {
   variant?: GetInTouchVariant
@@ -12,10 +13,50 @@ interface GetInTouchProps {
 export default function GetInTouch({ variant = 'default', id = 'contact' }: GetInTouchProps) {
   const copy = getInTouchCopy[variant]
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    if (sending) return
+
+    const form = e.currentTarget
+    const fd = new FormData(form)
+    setSending(true)
+    setError(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patienttype: fd.get('patienttype'),
+          intent: fd.get('intent'),
+          treatments: fd.getAll('treat'),
+          firstName: fd.get('firstName'),
+          lastName: fd.get('lastName'),
+          email: fd.get('email'),
+          phone: fd.get('phone'),
+          message: fd.get('message'),
+          company: fd.get('company'),
+          source: window.location.pathname,
+        }),
+      })
+
+      const data = await res.json().catch(() => null)
+
+      if (!res.ok) {
+        setError(data?.error ?? 'We could not send your message. Please try again, or call us.')
+        return
+      }
+
+      form.reset()
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong sending your message. Please check your connection, or call us.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -91,52 +132,60 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
               <div className="gt-field">
                 <span className="gt-label">I&apos;m interested in&hellip;</span>
                 <div className="gt-treat">
-                  <label><input type="checkbox" name="treat" value="checkup" /> Check-up &amp; clean</label>
-                  <label><input type="checkbox" name="treat" value="cosmetic" /> Cosmetic</label>
-                  <label><input type="checkbox" name="treat" value="whitening" /> Teeth whitening</label>
-                  <label><input type="checkbox" name="treat" value="implants" /> Implants</label>
-                  <label><input type="checkbox" name="treat" value="crowns" /> Crowns &amp; root canal</label>
-                  <label><input type="checkbox" name="treat" value="ortho" /> Orthodontics</label>
-                  <label><input type="checkbox" name="treat" value="kids" /> Children&apos;s dentistry</label>
-                  <label><input type="checkbox" name="treat" value="emergency" /> Emergency</label>
-                  <label><input type="checkbox" name="treat" value="notsure" /> Not sure yet</label>
+                  {TREATMENTS.map(t => (
+                    <label key={t.value}>
+                      <input type="checkbox" name="treat" value={t.value} /> {t.label}
+                    </label>
+                  ))}
                 </div>
               </div>
 
               <div className="gt-row2">
                 <div>
                   <label className="gt-label" htmlFor="gt-fn">First name</label>
-                  <input id="gt-fn" type="text" placeholder="First name" required />
+                  <input id="gt-fn" name="firstName" type="text" autoComplete="given-name" placeholder="First name" required />
                 </div>
                 <div>
                   <label className="gt-label" htmlFor="gt-ln">Last name</label>
-                  <input id="gt-ln" type="text" placeholder="Last name" required />
+                  <input id="gt-ln" name="lastName" type="text" autoComplete="family-name" placeholder="Last name" required />
                 </div>
               </div>
 
               <div className="gt-row2">
                 <div>
                   <label className="gt-label" htmlFor="gt-em">Email</label>
-                  <input id="gt-em" type="email" placeholder="your@email.com" required />
+                  <input id="gt-em" name="email" type="email" autoComplete="email" placeholder="your@email.com" required />
                 </div>
                 <div>
                   <label className="gt-label" htmlFor="gt-ph">Phone</label>
-                  <input id="gt-ph" type="tel" placeholder="(03) 9527 3678" />
+                  <input id="gt-ph" name="phone" type="tel" autoComplete="tel" placeholder="(03) 9527 3678" />
                 </div>
               </div>
 
               <div>
                 <label className="gt-label" htmlFor="gt-msg">How can we help?</label>
-                <textarea id="gt-msg" rows={4} placeholder="Tell us a little about what you need." />
+                <textarea id="gt-msg" name="message" rows={4} placeholder="Tell us a little about what you need." />
               </div>
+
+              {/* Honeypot: hidden from people, catnip for bots. */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                <label htmlFor="gt-company">Company</label>
+                <input id="gt-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+
+              {error && (
+                <p role="alert" style={{ color: '#ffb4a2', fontSize: '14px', marginTop: '14px' }}>
+                  {error}
+                </p>
+              )}
 
               <p className="gt-finehint">
                 We respond to all enquiries within one business day. Prefer to call?{' '}
                 <a href={telHref}>{business.telephoneDisplay}</a>
               </p>
 
-              <button type="submit" className="gt-btn">
-                Send my message
+              <button type="submit" className="gt-btn" disabled={sending} aria-busy={sending}>
+                {sending ? 'Sending…' : 'Send my message'}
               </button>
             </form>
           )}
