@@ -2565,6 +2565,29 @@ body{overflow-x:hidden;max-width:100%;}
 .gt-finehint{font-size:12.5px;color:rgba(247,243,236,.6);margin-top:14px;}
 .gt-btn{display:block;width:100%;padding:15px 24px;background:var(--clay);color:#fff;border:none;border-radius:40px;font-family:var(--body);font-weight:700;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:18px;text-align:center;}
 .gt-btn:hover{background:var(--clay-deep);}
+/* Confirmation state — replaces the form in place once an enquiry sends.
+   Lives inside .gt-form, so it inherits the sage panel and cream text. */
+.gt-done{display:flex;flex-direction:column;align-items:center;text-align:center;padding:18px 0 6px;}
+.gt-done-badge{width:66px;height:66px;border-radius:50%;background:rgba(247,243,236,.10);border:1px solid rgba(247,243,236,.30);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.gt-done-badge svg{width:30px;height:30px;fill:none;stroke:var(--clay-soft);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+/* The tick draws itself rather than just appearing. 32 comfortably exceeds the
+   path length, so the dash fully hides it before the animation runs. */
+.gt-done-badge path{stroke-dasharray:32;stroke-dashoffset:32;animation:gt-tick .5s cubic-bezier(.22,1,.36,1) .15s forwards;}
+@keyframes gt-tick{to{stroke-dashoffset:0;}}
+.gt-done h3{font-family:var(--display);font-weight:500;font-size:30px;color:var(--cream);margin:0 0 10px;line-height:1.15;}
+.gt-done>p{color:rgba(247,243,236,.78);font-size:15.5px;line-height:1.65;margin:0;max-width:32em;}
+.gt-done-next{list-style:none;width:100%;margin:26px 0 0;padding:22px 0 0;border-top:1px solid rgba(247,243,236,.18);display:grid;gap:13px;text-align:left;}
+.gt-done-next li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.55;color:rgba(247,243,236,.78);}
+.gt-done-next .ic{color:var(--clay-soft);font-weight:700;width:18px;flex:none;text-align:center;}
+.gt-done-actions{display:flex;flex-wrap:wrap;gap:12px;width:100%;margin-top:26px;}
+.gt-done-actions>*{flex:1 1 190px;display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:40px;font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.11em;text-transform:uppercase;text-align:center;cursor:pointer;transition:.2s;text-decoration:none;}
+.gt-done-call{background:var(--clay);color:#fff;border:none;}
+.gt-done-call:hover{background:var(--clay-deep);color:#fff;}
+.gt-done-again{background:transparent;color:var(--cream);border:1.5px solid rgba(247,243,236,.40);}
+.gt-done-again:hover{background:rgba(247,243,236,.10);}
+@media(prefers-reduced-motion:reduce){.gt-done-badge path{animation:none;stroke-dashoffset:0;}}
+@media(max-width:480px){.gt-done-actions>*{flex:1 1 100%;}}
+
 @media(max-width:860px){.gt-grid{grid-template-columns:1fr;}.gt-treat{grid-template-columns:repeat(2,1fr);}.gt-info,.gt-form{padding:40px 26px;}}
 @media(max-width:480px){.gt-row2{grid-template-columns:1fr;}.gt-treat{grid-template-columns:1fr;}}
 

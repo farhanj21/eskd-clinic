@@ -20,8 +20,35 @@ export const dynamic = 'force-dynamic'
  * CONTACT_FROM_EMAIL must be on a domain verified in the Resend dashboard.
  * Until that domain is verified, Resend's shared onboarding@resend.dev sender
  * works but will only deliver to the Resend account owner's own address.
+ *
+ * CONTACT_TO_EMAIL takes one address or a comma-separated list, so the whole
+ * front desk can be on it:
+ *   CONTACT_TO_EMAIL=hello@example.com, reception@example.com
+ * Everyone named is a normal To: recipient, so they can all see each other and
+ * reply-all keeps the thread together. Resend caps a single send at 50.
  */
-const TO = process.env.CONTACT_TO_EMAIL || business.email
+const ADDRESS_RE = /^[^\s@,]+@[^\s@,]+\.[^\s@,]{2,}$/
+
+function parseRecipients(raw: string | undefined): string[] {
+  const entries = (raw ?? '').split(',').map(a => a.trim()).filter(Boolean)
+
+  /*
+   * A malformed address makes Resend reject the entire send, which would lose
+   * the enquiry for everyone on the list. Dropping the bad one and delivering
+   * to the rest is the lesser failure — it is logged so a typo is still
+   * findable rather than silent.
+   */
+  const valid = entries.filter(a => {
+    if (ADDRESS_RE.test(a)) return true
+    console.warn(`[contact] Ignoring malformed CONTACT_TO_EMAIL entry: ${a}`)
+    return false
+  })
+
+  const unique = [...new Set(valid)]
+  return unique.length > 0 ? unique : [business.email]
+}
+
+const TO = parseRecipients(process.env.CONTACT_TO_EMAIL)
 const FROM = process.env.CONTACT_FROM_EMAIL || `${business.name} <onboarding@resend.dev>`
 
 /**
@@ -133,7 +160,7 @@ export async function POST(request: Request) {
   try {
     const { data, error } = await new Resend(apiKey).emails.send({
       from: FROM,
-      to: [TO],
+      to: TO,
       replyTo: d.email,
       subject: `${intentLabel} — ${name}${treatmentLabels.length ? ` (${treatmentLabels[0]})` : ''}`,
       html,
