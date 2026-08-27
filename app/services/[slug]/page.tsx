@@ -12,8 +12,14 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+/**
+ * Every service except check-ups, which has its own bespoke page at
+ * app/services/check-ups/page.tsx. The static segment already wins the route,
+ * so prerendering it here as well would only build a second, unreachable copy
+ * of that URL.
+ */
 export async function generateStaticParams() {
-  return services.map(s => ({ slug: s.slug }))
+  return services.filter(s => s.slug !== 'check-ups').map(s => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -66,10 +66,10 @@ export const services: ServiceData[] = [
     ctaH3: 'Thinking about a check-up?',
     costPara: 'Your first visit is our Comprehensive Care Visit, one simple price of $297 with everything included, and we claim through HICAPS on the spot, so with most funds you pay only a minimal gap on the day.',
     faq: [
-      { q: 'How often should I have a check-up?', a: 'For most people every six months, though we\'ll tailor it to you.' },
-      { q: 'It\'s been years, will you judge me?', a: 'Never. We see this every week, you\'ll get a way forward, not a lecture.' },
-      { q: 'Will I need X-rays?', a: 'Only when they genuinely help us see something we can\'t otherwise.' },
-      { q: 'Does a check-up hurt?', a: 'No, it\'s gentle and there\'s rarely any discomfort.' },
+      { q: 'How often should I have a check-up?', a: 'For most people, every six months. If your mouth is healthy and stable we may suggest a longer interval, and if something needs watching, a shorter one. We\'ll tell you what we think is right for you, and why.' },
+      { q: 'It\'s been years, will you judge me?', a: 'No. Many of our patients come to us after a long gap. We start with a conversation, work at your pace, and explain what we find without lectures.' },
+      { q: 'Will I need X-rays?', a: 'Only when they show us something we can\'t see by looking. If we recommend an image, we explain what we\'re checking for before we take it.' },
+      { q: 'Does a check-up hurt?', a: 'A check-up is an examination, so there\'s nothing to recover from afterwards. If anything ever feels uncomfortable, tell us and we stop.' },
     ],
     related: [
       { label: 'Cleans & hygiene', href: '/services/cleans-and-hygiene' },
