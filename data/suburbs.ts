@@ -77,7 +77,13 @@ export interface SuburbData {
   goodToKnow: SuburbSection
   /** Four questions someone in this suburb actually asks. */
   faqs: [SuburbFaq, SuburbFaq, SuburbFaq, SuburbFaq]
-  /** Treatment and first-visit pages this suburb's angle points at. */
+  /**
+   * Treatment and first-visit pages this suburb's angle points at.
+   *
+   * Currently held but not rendered: the "Where to next" link block was removed
+   * so the questions run straight into the enquiry form. Kept because it is the
+   * per-suburb half of the spec's internal-linking, and cheap to put back.
+   */
   links: { label: string; href: string }[]
   /** Search title and description. Unique per page — never templated wholesale. */
   meta: { title: string; description: string }

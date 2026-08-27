@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import Breadcrumb, { AREAS_SECTION, areasChildTrail } from '@/components/Breadcrumb'
+import Breadcrumb, { areasChildTrail } from '@/components/Breadcrumb'
 import GetInTouch from '@/components/GetInTouch'
+import HealthFundLogos from '@/components/HealthFundLogos'
 import JsonLd from '@/components/JsonLd'
 import MapEmbed from '@/components/MapEmbed'
 import StickyCallBar from '@/components/StickyCallBar'
-import { otherSuburbs, requireSuburb, suburbPath, type SuburbData, type SuburbHeading } from '@/data/suburbs'
+import { requireSuburb, suburbPath, type SuburbData, type SuburbHeading } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, business, fullAddress, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
 import styles from './SuburbPage.module.css'
@@ -17,6 +18,9 @@ import styles from './SuburbPage.module.css'
  * Built to the suburb-page spec, section for section: breadcrumb, hero and
  * quick-facts card, About [suburb], Getting here, Good to know, services, the
  * $297 visit, why choose, the team, health funds, the questions, get in touch.
+ *
+ * The questions run straight into the enquiry form: nothing sits between the
+ * last answer and the place to act on it.
  *
  * The split matters more than the order. Everything in this file is SHARED —
  * identical on all twenty pages, which is boilerplate a search engine expects
@@ -97,8 +101,6 @@ const TEAM = [
   { name: 'Dr Jarrod Dean', role: 'General Dentist', image: '/assets/team/jarrod-dean.webp' },
   { name: 'Dr Marina Bekheet', role: 'General Dentist', image: '/assets/team/marina-bakheet.webp' },
 ]
-
-const FUNDS = ['Bupa', 'HCF', 'Medibank', 'nib', 'CBHS', 'HBF', 'Australian Unity', 'All major funds']
 
 /**
  * The page's search title, description and canonical URL, all read from the
@@ -284,9 +286,12 @@ export default function SuburbPage({ slug }: { slug: string }) {
           <div className={`${styles.svcGrid} reveal`}>
             {SERVICES.map((svc) => (
               <Link key={svc.title} href={svc.href} className={styles.svc}>
-                <div className={styles.si} aria-hidden="true">•</div>
                 <h3>{svc.title}</h3>
                 <p>{svc.copy}</p>
+                {/* The whole card is the link, so this is an affordance rather
+                    than a second target — hidden from screen readers, which
+                    already announce the card's own text as the link. */}
+                <span className={styles.svcMore} aria-hidden="true">Learn more &rarr;</span>
               </Link>
             ))}
           </div>
@@ -361,13 +366,14 @@ export default function SuburbPage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ── HEALTH FUNDS (shared) ─────────────────────────── */}
+      {/* ── HEALTH FUNDS (shared) ─────────────────────────
+          The same logo row as the home page and /fees, from the one list in
+          data/healthFunds.ts, so a fund can never be shown on one page and
+          missing from another. */}
       <section className={styles.sec} style={{ paddingTop: '56px', paddingBottom: '56px' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <div className="eyebrow" style={{ marginBottom: '18px' }}>Claim on the spot</div>
-          <div className={styles.funds}>
-            {FUNDS.map((f) => <span key={f} className={styles.fund}>{f}</span>)}
-          </div>
+          <div className="eyebrow">Claim on the spot</div>
+          <HealthFundLogos className="reveal" />
         </div>
       </section>
 
@@ -386,36 +392,6 @@ export default function SuburbPage({ slug }: { slug: string }) {
               </details>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── WHERE TO NEXT ─────────────────────────────────
-          The pages this suburb's angle actually points at, then the ring of
-          other suburb pages and the hub above them. Suburb pages are kept out
-          of the main menu by design, so these links plus the breadcrumb are
-          what keep them connected to the rest of the site. */}
-      <section className={styles.sec}>
-        <div className="container">
-          <div className={`${styles.secHead} ${styles.center} reveal`} style={{ maxWidth: '40em' }}>
-            <div className="eyebrow">Where to next</div>
-            <h2>Read a little <em>further</em></h2>
-          </div>
-          <div className={`${styles.linkRow} reveal`}>
-            {s.links.map((l) => (
-              <Link key={l.href} href={l.href} className="btn btn-ghost">{l.label}</Link>
-            ))}
-            {/* Shared, so every suburb page also points into the Learn hub. */}
-            <Link href="/learn" className="btn btn-ghost">Dental education</Link>
-          </div>
-          <p className={styles.hubLink} style={{ marginTop: '34px', fontWeight: 600 }}>Other areas we serve</p>
-          <div className={styles.linkRow} style={{ marginTop: '10px' }}>
-            {otherSuburbs(s.slug).map((o) => (
-              <Link key={o.slug} href={suburbPath(o.slug)} className="btn btn-ghost">Dentist {o.name}</Link>
-            ))}
-          </div>
-          <p className={styles.hubLink}>
-            <Link href={AREAS_SECTION.href}>See every area we serve &rarr;</Link>
-          </p>
         </div>
       </section>
 
