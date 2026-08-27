@@ -48,7 +48,8 @@
       "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-windsor\" \"c:\\\\Users\\\\f-jaf\\\\Desktop\\\\Code\\\\eskd-clinic\\\\eskd-clinic\\\\app\\\\dentist-prahran\")",
       "Bash(node scripts/optimize-images.mjs \"public/assets/clinic.png\" --out public/assets --width 1200)",
       "Bash(npm run *)",
-      "Bash(py --version)"
+      "Bash(py --version)",
+      "PowerShell(npm install *)"
     ]
   }
 }
