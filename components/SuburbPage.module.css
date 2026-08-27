@@ -50,11 +50,16 @@
   margin-left: auto;
   margin-right: auto;
 }
+/* The About and Good to know sections are a heading over one paragraph, with
+   nothing beside them. Centred, as the same shape is on /areas-we-serve and the
+   About pages — left-aligned, the measure left a lopsided gap down the right. */
 .bodyLg {
   font-size: 18px;
   line-height: 1.75;
   color: var(--ink-soft);
   max-width: 40em;
+  margin: 0 auto;
+  text-align: center;
 }
 .alt {
   background: var(--paper);
@@ -373,11 +378,19 @@
 }
 
 /* ── why choose ───────────────────────────────────────── */
+/* Outlined cards on the sage band: a cream hairline, with the band's own green
+   left showing through the middle. Nothing overrides .sageBg's light-on-dark
+   type, because the card interior is still that background. */
 .whyGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 34px 40px;
+  gap: 20px;
   margin-top: 14px;
+}
+.why {
+  border: 1px solid var(--cream);
+  border-radius: 16px;
+  padding: 28px 26px;
 }
 .why h3 {
   font-family: var(--display);
@@ -399,7 +412,7 @@
 @media (max-width: 760px) {
   .whyGrid {
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 16px;
   }
 }
 

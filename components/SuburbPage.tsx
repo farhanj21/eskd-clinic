@@ -192,11 +192,11 @@ export default function SuburbPage({ slug }: { slug: string }) {
             {/* Plain facts only. No rating number, no review count. */}
             <div className={styles.heroProof}>
               <span className={styles.stars} aria-hidden="true">★★★★★</span>
-              <span>Rated by our patients on Google</span>
+              <span>Rated on Google</span>
               <span className={styles.dot} />
               <span>Caring for the area since 1980</span>
               <span className={styles.dot} />
-              <span>Onsite parking</span>
+              {/* <span>Onsite parking</span> */}
             </div>
           </div>
 
@@ -234,7 +234,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
       {/* ── ABOUT THE SUBURB ──────────────────────────────── */}
       <section className={styles.sec}>
         <div className="container">
-          <div className={`${styles.secHead} reveal`}>
+          <div className={`${styles.secHead} ${styles.center} reveal`}>
             <div className="eyebrow">Your part of town</div>
             <h2><Heading h={s.about.heading} /></h2>
           </div>
@@ -268,7 +268,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
       {/* ── GOOD TO KNOW ──────────────────────────────────── */}
       <section className={styles.sec}>
         <div className="container">
-          <div className={`${styles.secHead} reveal`}>
+          <div className={`${styles.secHead} ${styles.center} reveal`}>
             <div className="eyebrow">Good to know</div>
             <h2><Heading h={s.goodToKnow.heading} /></h2>
           </div>
