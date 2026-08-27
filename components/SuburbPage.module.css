@@ -425,6 +425,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Anchored to the top, as the same portraits are on the home page and
+     /about/our-team. Only Dr Ganatra's photo is a tall portrait (591×842), so
+     it is the one the square crop trims vertically, and centring it cut off the
+     top of her head. The other three are landscape or square: cover trims them
+     horizontally, so this line leaves them untouched. */
+  object-position: center top;
 }
 .member h3 {
   font-family: var(--display);
