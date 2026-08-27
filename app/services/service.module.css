@@ -1,10 +1,10 @@
 /*
- * Scoped styles for /services/check-ups only.
+ * Scoped styles for every service page — app/services/[slug]/page.tsx.
  *
- * A CSS Module rather than a global stylesheet on purpose: this page is the one
- * service page with a bespoke layout, and every other service still renders
- * through app/services/[slug]/page.tsx. Hashed class names mean nothing here can
- * reach another page, however close a name gets to an existing global one.
+ * A CSS Module rather than a global stylesheet on purpose: the service layout
+ * has its own type scale, buttons and section rhythm, and hashed class names
+ * mean nothing here can reach another page, however close a name gets to an
+ * existing global one.
  *
  * Colours are the site tokens from globals.css, never the raw hexes from the
  * design file — the design was drawn against a slightly different palette, and
@@ -230,6 +230,13 @@
   font-size: 34px;
   color: var(--sage-deep);
   line-height: 1;
+}
+
+/* Services quoted as an estimate rather than a fixed price put a word in the
+   badge instead of a figure, which needs to sit a size down from the numeral. */
+.priceBadgeWord {
+  font-size: 26px;
+  letter-spacing: 0.01em;
 }
 
 .priceBadgeNote {
@@ -648,6 +655,17 @@
   padding: clamp(32px, 4vw, 54px) clamp(26px, 4vw, 56px);
   box-shadow: 0 20px 46px rgba(44, 42, 38, 0.07);
   margin-top: 46px;
+}
+
+/* Most services are quoted as a written estimate, so there's no figure to put
+   in the left column — the card drops to a single centred column instead of
+   leaving an empty half. */
+.costCardPlain {
+  grid-template-columns: 1fr;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .costFigureCol {

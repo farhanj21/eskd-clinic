@@ -1,5 +1,32 @@
 export interface ServiceData {
   slug: string
+  /**
+   * The service as a noun phrase for running prose ("Questions about …").
+   * Only needed where h1em can't stand on its own — either because it's a
+   * sentence fragment ("look and last") or because it's title-cased and would
+   * read oddly mid-sentence. Falls back to h1em.
+   */
+  shortName?: string
+  /** One-line subtitle used wherever this service appears as a related-care card. */
+  cardSub: string
+  /**
+   * The four-column strip under the opening copy: what this treatment covers,
+   * in four short terms. Grounded in the same copy as whatItIs.
+   */
+  scope: { term: string; def: string }[]
+  /**
+   * Third figure in the stats band. The first two are the same on every
+   * service page; this one is the service's own, and falls back to the
+   * suburbs figure the home page uses when a service has no meaningful number.
+   */
+  stat?: { count: number; suffix: string; label: string }
+  /**
+   * How this service is paid for, which drives the hero badge and the cost
+   * band. 'flat' is the fixed Comprehensive Care Visit price, 'cdbs' is
+   * Medicare's Child Dental Benefits Schedule, and everything else is quoted
+   * as a written estimate. Defaults to 'estimate'.
+   */
+  pricing?: 'flat' | 'cdbs' | 'estimate'
   eyebrow: string
   h1pre: string   // text before the <em> (empty string if em comes first)
   h1em: string    // the italic portion
@@ -27,6 +54,15 @@ export interface ServiceData {
 export const services: ServiceData[] = [
   {
     slug: 'check-ups',
+    cardSub: 'Gentle, thorough examinations',
+    pricing: 'flat',
+    scope: [
+      { term: 'Teeth', def: 'Decay, wear and cracks' },
+      { term: 'Gums', def: 'Bleeding, recession, health' },
+      { term: 'Bite', def: 'How your teeth meet' },
+      { term: 'Soft tissues', def: 'Screening you can\'t do at home' },
+    ],
+    stat: { count: 6, suffix: '', label: 'Months between most check-ups' },
     eyebrow: 'General & preventive',
     h1pre: 'Gentle, thorough',
     h1em: 'check-ups',
@@ -83,6 +119,15 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'cleans-and-hygiene',
+    cardSub: 'Keeping things fresh between visits',
+    pricing: 'flat',
+    scope: [
+      { term: 'Plaque', def: 'The soft build-up brushing leaves behind' },
+      { term: 'Tartar', def: 'Hardened deposits, gently scaled away' },
+      { term: 'Gumline', def: 'Cleaned below where you can reach' },
+      { term: 'Staining', def: 'Lifted with a smooth polish' },
+    ],
+    stat: { count: 6, suffix: '', label: 'Months between most cleans' },
     eyebrow: 'General & preventive',
     h1pre: 'Professional',
     h1em: 'cleans & hygiene',
@@ -138,6 +183,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'childrens-dentistry',
+    cardSub: 'Calm, positive visits for kids',
+    pricing: 'cdbs',
+    scope: [
+      { term: 'First visits', def: 'Unhurried, and never rushed' },
+      { term: 'Prevention', def: 'Habits that hold for life' },
+      { term: 'Growth', def: 'Watching how teeth come through' },
+      { term: 'Confidence', def: 'Visits that feel normal, not scary' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
@@ -193,6 +246,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'mouthguards',
+    cardSub: 'Custom-fitted protection for sport',
+    scope: [
+      { term: 'Fit', def: 'Moulded from your own impression' },
+      { term: 'Comfort', def: 'Stays put, and doesn\'t get in the way' },
+      { term: 'Protection', def: 'Made for real contact sport' },
+      { term: 'Colours', def: 'Pick your team, or keep it clear' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: 'Custom',
     h1em: 'sports mouthguards',
@@ -249,6 +309,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'tmj-jaw-pain',
+    cardSub: 'Relief for jaw ache, clicking and grinding',
+    scope: [
+      { term: 'Jaw joint', def: 'Clicking, locking and ache' },
+      { term: 'Muscles', def: 'Clenching, tension and headaches' },
+      { term: 'Tooth wear', def: 'What grinding leaves behind' },
+      { term: 'Night splint', def: 'Custom-made to protect and settle' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: 'Help for',
     h1em: 'jaw pain & TMJ',
@@ -305,6 +372,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'myofunctional-therapy',
+    shortName: 'myofunctional therapy',
+    cardSub: 'Retraining breathing and tongue habits',
+    scope: [
+      { term: 'Breathing', def: 'Encouraging nasal over mouth' },
+      { term: 'Tongue posture', def: 'Where it rests, all day' },
+      { term: 'Swallowing', def: 'Retraining the pattern' },
+      { term: 'Development', def: 'How jaws and teeth grow' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: '',
     h1em: 'Myofunctional therapy',
@@ -361,6 +436,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'fillings',
+    cardSub: 'Tooth-coloured repairs that blend in',
+    scope: [
+      { term: 'Decay', def: 'Removed gently, back to sound tooth' },
+      { term: 'Small cracks', def: 'Repaired before they spread' },
+      { term: 'Composite', def: 'Bonded, tooth-coloured, no metal' },
+      { term: 'Shape', def: 'Polished back to a natural bite' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Tooth-coloured',
     h1em: 'fillings',
@@ -417,6 +499,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'crowns-and-bridges',
+    shortName: 'crowns and bridges',
+    cardSub: 'Strength and shape, custom-made',
+    scope: [
+      { term: 'Crowns', def: 'A cap over a weakened tooth' },
+      { term: 'Bridges', def: 'A gap filled using the teeth beside it' },
+      { term: 'Materials', def: 'Matched to your own shade and shape' },
+      { term: 'Bite', def: 'Checked so everything meets evenly' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Crowns & bridges that',
     h1em: 'look and last',
@@ -473,6 +563,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'root-canal',
+    cardSub: 'Ending the pain, saving the tooth',
+    scope: [
+      { term: 'Infection', def: 'Removed from inside the tooth' },
+      { term: 'Pain', def: 'Usually eases from the first visit' },
+      { term: 'Sealing', def: 'Cleaned canals, closed properly' },
+      { term: 'Protection', def: 'Often a crown to finish' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'root canal therapy',
@@ -529,6 +626,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'onlays-and-inlays',
+    shortName: 'onlays and inlays',
+    cardSub: 'A conservative middle ground',
+    scope: [
+      { term: 'Inlays', def: 'Sit within the biting surface' },
+      { term: 'Onlays', def: 'Cover a cusp as well' },
+      { term: 'Fit', def: 'Digitally impressed, custom-made' },
+      { term: 'Tooth saved', def: 'Less removed than for a crown' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: '',
     h1em: 'Onlays & inlays',
@@ -585,6 +690,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'dentures',
+    cardSub: 'Comfortable, natural-looking replacements',
+    scope: [
+      { term: 'Full', def: 'A complete set, upper or lower' },
+      { term: 'Partial', def: 'Filling specific gaps' },
+      { term: 'Fit', def: 'Adjusted until it feels right' },
+      { term: 'Implant support', def: 'For a more secure hold' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Comfortable',
     h1em: 'dentures',
@@ -641,6 +753,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'extractions-wisdom-teeth',
+    cardSub: 'Gentle removal, and a plan for the gap',
+    scope: [
+      { term: 'Wisdom teeth', def: 'Impacted, crowded or infected' },
+      { term: 'Comfort', def: 'Fully numb before anything starts' },
+      { term: 'Healing', def: 'Clear aftercare, written down' },
+      { term: 'The gap', def: 'Planned for, not left to chance' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'extractions & wisdom teeth',
@@ -697,6 +816,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'smile-design',
+    shortName: 'smile design',
+    cardSub: 'A considered plan for your whole smile',
+    scope: [
+      { term: 'Your face', def: 'Proportion, not a template' },
+      { term: 'Options', def: 'Whitening, bonding, veneers, alignment' },
+      { term: 'Preview', def: 'See it before you commit' },
+      { term: 'Pace', def: 'Phased over visits that suit you' },
+    ],
     eyebrow: 'Cosmetic dentistry',
     h1pre: '',
     h1em: 'Smile design',
@@ -753,6 +880,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'veneers',
+    cardSub: 'Thin, custom shells for front teeth',
+    scope: [
+      { term: 'Colour', def: 'Even, natural, chosen with you' },
+      { term: 'Shape', def: 'Length, width and edges refined' },
+      { term: 'Gaps', def: 'Small spaces closed' },
+      { term: 'Longevity', def: 'Cared for, they last years' },
+    ],
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Natural-looking',
     h1em: 'veneers',
@@ -809,6 +943,13 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'teeth-whitening',
+    cardSub: 'Safe, dentist-supervised brightening',
+    scope: [
+      { term: 'Suitability', def: 'Checked before anything starts' },
+      { term: 'Method', def: 'In-chair, take-home, or both' },
+      { term: 'Safety', def: 'Gums and teeth protected throughout' },
+      { term: 'Sensitivity', def: 'Managed, and short-lived' },
+    ],
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Professional',
     h1em: 'teeth whitening',
@@ -864,6 +1005,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'invisalign',
+    shortName: 'Invisalign',
+    cardSub: 'Straightening you can barely see',
+    scope: [
+      { term: 'Aligners', def: 'Clear, removable, near-invisible' },
+      { term: 'Scanning', def: 'Digital, no goopy impressions' },
+      { term: 'The plan', def: 'Your result mapped out first' },
+      { term: 'Retainers', def: 'Holding the result afterwards' },
+    ],
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Invisalign & clear aligners',
@@ -919,6 +1068,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'braces',
+    shortName: 'braces',
+    cardSub: 'Proven, precise tooth movement',
+    scope: [
+      { term: 'Brackets', def: 'Small, and fixed in place' },
+      { term: 'Wires', def: 'Adjusted gently over time' },
+      { term: 'Complex cases', def: 'Where aligners may not suit' },
+      { term: 'All ages', def: 'Children, teenagers and adults' },
+    ],
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Braces',
@@ -974,6 +1131,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'dental-implants',
+    shortName: 'dental implants',
+    cardSub: 'The closest thing to a natural tooth',
+    scope: [
+      { term: 'The post', def: 'Titanium, acting as a root' },
+      { term: 'Healing', def: 'Bone integrates over months' },
+      { term: 'The crown', def: 'Matched to the teeth beside it' },
+      { term: 'Neighbours', def: 'Left untouched, unlike a bridge' },
+    ],
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Single dental implants',
@@ -1029,6 +1194,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'all-on-4-implants',
+    shortName: 'All-on-4',
+    cardSub: 'A fixed full arch on four implants',
+    scope: [
+      { term: 'Full arch', def: 'Upper, lower or both' },
+      { term: 'Four implants', def: 'Angled for maximum support' },
+      { term: 'Fixed', def: 'It stays in, you don\'t take it out' },
+      { term: 'Planning', def: 'Scanned and mapped in detail' },
+    ],
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'All-on-4 & full-arch implants',
@@ -1084,6 +1257,14 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'bone-grafting',
+    shortName: 'bone grafting',
+    cardSub: 'A strong foundation for implants',
+    scope: [
+      { term: 'Bone loss', def: 'What happens after a tooth goes' },
+      { term: 'The graft', def: 'Rebuilding a solid base' },
+      { term: 'Healing', def: 'A few months before the implant' },
+      { term: 'Routine', def: 'A common, well-established step' },
+    ],
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Bone grafting',
@@ -1141,4 +1322,24 @@ export const services: ServiceData[] = [
 
 export function getService(slug: string): ServiceData | undefined {
   return services.find(s => s.slug === slug)
+}
+
+/**
+ * Subtitles for the non-service destinations that turn up in `related` lists.
+ * Service destinations get their own `cardSub` instead, so each page is
+ * described the same way wherever it's linked from.
+ */
+const PAGE_SUB: Record<string, string> = {
+  '/your-first-visit': 'Exactly what happens, start to finish',
+  '/fees': 'Costs and health funds, up front',
+  '/emergency-dentist': 'Same-day care when it hurts',
+  '/nervous-patients': 'How we look after anxious patients',
+  '/comprehensive-care-visit': 'Your first visit, one simple price',
+  '/services': 'Everything we offer, in one place',
+}
+
+/** The one-line subtitle for a related-care card, by href. Empty if unknown. */
+export function relatedSub(href: string): string {
+  const service = href.startsWith('/services/') ? getService(href.slice('/services/'.length)) : undefined
+  return service?.cardSub ?? PAGE_SUB[href] ?? ''
 }
