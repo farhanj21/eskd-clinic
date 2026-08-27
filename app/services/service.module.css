@@ -254,9 +254,11 @@
 
 /* ---------- 2. What it involves ---------- */
 
+/* Photo column first, copy second — the ratio is flipped from the original
+   text-left layout so the copy keeps the wider share of the row. */
 .introGrid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 0.95fr 1.05fr;
   gap: clamp(28px, 5vw, 68px);
   align-items: center;
 }

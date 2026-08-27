@@ -161,7 +161,17 @@ export default async function ServicePage({ params }: Props) {
       {/* ── 2. WHAT IT IS ────────────────────────────────── */}
       <section className={`${s.bgPaper} ${s.lineTop}`}>
         <div className={`${s.inner} ${s.innerWide} ${s.sectionPad}`}>
+          {/* Photo leads on the left, copy follows on the right — and because
+              the photo is first in the markup, it stays on top when the grid
+              stacks, without needing an order swap at the breakpoint. */}
           <div className={s.introGrid}>
+            <div className={`${s.frame} ${s.frameTall} reveal`} style={{ transitionDelay: '.16s' }}>
+              <Photo
+                src={DETAIL_PHOTO.src}
+                alt={DETAIL_PHOTO.alt}
+                sizes="(max-width: 1040px) 100vw, 46vw"
+              />
+            </div>
             <div>
               <p className={`${s.kicker} reveal`}>In plain language</p>
               <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
@@ -178,13 +188,6 @@ export default async function ServicePage({ params }: Props) {
                   </p>
                 ))}
               </div>
-            </div>
-            <div className={`${s.frame} ${s.frameTall} reveal`} style={{ transitionDelay: '.16s' }}>
-              <Photo
-                src={DETAIL_PHOTO.src}
-                alt={DETAIL_PHOTO.alt}
-                sizes="(max-width: 1040px) 100vw, 46vw"
-              />
             </div>
           </div>
 
