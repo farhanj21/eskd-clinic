@@ -32,6 +32,18 @@ export interface ServiceData {
   h1em: string    // the italic portion
   heroImage?: string  // path under /public for the hero photo; falls back to a placeholder hint when absent
   heroAlt?: string
+  /**
+   * The three supporting photos below the hero: the opening "what it is"
+   * frame, the "who it's for" portrait, and the nervous-patient quote. Each
+   * falls back to the shared shot declared in the page when a service has no
+   * photo of its own, so a service can supply one, two or all three.
+   */
+  detailImage?: string
+  detailAlt?: string
+  whoImage?: string
+  whoAlt?: string
+  quoteImage?: string
+  quoteAlt?: string
   heroLead: string
   whatItIsH2: string
   whatItIs: string[]
@@ -68,6 +80,12 @@ export const services: ServiceData[] = [
     h1em: 'check-ups',
     heroImage: '/assets/services/checkup-hero.webp',
     heroAlt: 'A gentle dentist examining a young patient wearing protective glasses in the treatment chair',
+    detailImage: '/assets/services/check-ups-1.webp',
+    detailAlt: 'A dentist examining a patient\'s teeth with a mirror, her panoramic X-ray on the screen behind',
+    whoImage: '/assets/services/check-ups-2.webp',
+    whoAlt: 'A smiling patient having her teeth checked, with her X-ray on the screen behind her',
+    quoteImage: '/assets/services/check-ups-3.webp',
+    quoteAlt: 'A relaxed patient smiling in the dental chair after her check-up',
     heroLead: 'A calm, comprehensive look at your teeth, gums and bite, so small problems are found early, while they\'re still small.',
     whatItIsH2: 'What a comprehensive check-up involves',
     whatItIs: [
@@ -132,6 +150,12 @@ export const services: ServiceData[] = [
     h1pre: 'Professional',
     h1em: 'cleans & hygiene',
     heroImage: '/assets/services/cleans-hero.webp',
+    detailImage: '/assets/services/cleans-and-hygiene-1.webp',
+    detailAlt: 'A hygienist using an ultrasonic scaler to clean a relaxed patient\'s teeth, her scan on the screen behind',
+    whoImage: '/assets/services/cleans-and-hygiene-2.webp',
+    whoAlt: 'A hygienist scaling and polishing a smiling patient\'s teeth, with her X-ray on the screen behind',
+    quoteImage: '/assets/services/cleans-and-hygiene-3.webp',
+    quoteAlt: 'A patient smiling during a gentle scale and clean',
     heroLead: 'A gentle, thorough clean that removes what brushing can\'t reach, and keeps your gums healthy for life.',
     whatItIsH2: 'What a professional clean does',
     whatItIs: [
@@ -195,6 +219,12 @@ export const services: ServiceData[] = [
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
     heroImage: '/assets/services/children-dentistry.webp',
+    detailImage: '/assets/services/childrens-dentistry-1.webp',
+    detailAlt: 'A dentist gently examining a young girl who is holding her teddy bear, in a bright children\'s treatment room',
+    whoImage: '/assets/services/childrens-dentistry-2.webp',
+    whoAlt: 'A young girl laughing in the chair while a hygienist checks her teeth in a colourful children\'s room',
+    quoteImage: '/assets/services/childrens-dentistry-3.webp',
+    quoteAlt: 'A hygienist teaching a young girl how to brush using a model of teeth',
     heroLead: 'Calm, positive visits that help children feel comfortable, and grow up without fear of the dentist.',
     whatItIsH2: 'What children\'s dentistry looks like here',
     whatItIs: [
@@ -258,6 +288,12 @@ export const services: ServiceData[] = [
     h1em: 'sports mouthguards',
     heroImage: '/assets/services/mouthguards.webp',
     heroAlt: 'A dentist discussing treatment options with a patient in the clinic',
+    detailImage: '/assets/services/mouthguards-1.webp',
+    detailAlt: 'A dentist showing a custom-fitted clear mouthguard to a young sportsperson in the treatment chair',
+    whoImage: '/assets/services/mouthguards-2.webp',
+    whoAlt: 'A dentist fitting a custom mouthguard for a smiling young man, a scan of his teeth on the screen behind',
+    quoteImage: '/assets/services/mouthguards-3.webp',
+    quoteAlt: 'A young patient smiling while her teeth and bite are checked',
     heroLead: 'A properly fitted, custom mouthguard that actually protects, far better than the boil-and-bite kind.',
     whatItIsH2: 'What a custom mouthguard is',
     whatItIs: [
@@ -321,6 +357,12 @@ export const services: ServiceData[] = [
     h1em: 'jaw pain & TMJ',
     heroImage: '/assets/services/tmj-jaw.webp',
     heroAlt: 'A dentist gently assessing a patient\'s jaw joint and muscles during a TMJ examination',
+    detailImage: '/assets/services/tmj-jaw-pain-1.webp',
+    detailAlt: 'A clinician showing a patient the jaw joint on a skull model, with jaw scans on the screen behind',
+    whoImage: '/assets/services/tmj-jaw-pain-2.webp',
+    whoAlt: 'A dentist pointing out the jaw joint on a skull model for a patient, jaw X-rays displayed behind',
+    quoteImage: '/assets/services/tmj-jaw-pain-3.webp',
+    quoteAlt: 'A dentist reassuring a relaxed patient before a jaw assessment',
     heroLead: 'Jaw pain, clicking, headaches or grinding? We\'ll help you understand why, and find real relief.',
     whatItIsH2: 'What TMJ and grinding problems are',
     whatItIs: [
@@ -385,6 +427,12 @@ export const services: ServiceData[] = [
     h1em: 'Myofunctional therapy',
     heroImage: '/assets/services/myofunctional.webp',
     heroAlt: 'A dental assistant reviewing scans with a smiling patient in the treatment chair',
+    detailImage: '/assets/services/myofunctional-therapy-1.webp',
+    detailAlt: 'A clinician guiding a patient through a tongue and facial muscle exercise, oral photographs on the screen behind',
+    whoImage: '/assets/services/myofunctional-therapy-2.webp',
+    whoAlt: 'A clinician demonstrating a facial muscle exercise for a patient in the treatment chair',
+    quoteImage: '/assets/services/myofunctional-therapy-3.webp',
+    quoteAlt: 'A patient smiling and chatting with her clinician in the treatment room',
     heroLead: 'Gentle exercises that retrain the muscles of the mouth and face, to improve breathing, tongue position and jaw development.',
     whatItIsH2: 'What myofunctional therapy is',
     whatItIs: [
@@ -448,6 +496,12 @@ export const services: ServiceData[] = [
     h1em: 'fillings',
     heroImage: '/assets/services/fillings.webp',
     heroAlt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
+    detailImage: '/assets/services/fillings-1.webp',
+    detailAlt: 'A dentist wearing magnifying loupes placing a tooth-coloured filling for a patient in the treatment chair',
+    whoImage: '/assets/services/fillings-2.webp',
+    whoAlt: 'A dentist shaping a new filling with a handpiece while the patient rests in the chair',
+    quoteImage: '/assets/services/fillings-3.webp',
+    quoteAlt: 'A clinician reassuring a relaxed patient in the dental chair',
     heroLead: 'Natural-looking fillings that repair decay or damage gently, and blend in so no one can tell.',
     whatItIsH2: 'What a filling does',
     whatItIs: [

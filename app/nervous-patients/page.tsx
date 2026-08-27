@@ -134,8 +134,8 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/shared/hero.webp"
-            alt="A smiling, relaxed patient chatting with the dental team in the treatment room"
+            src="/assets/nervous-patients/comfort-options.webp"
+            alt="A dentist reassuring a smiling, relaxed patient in the treatment chair"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
           <div className="reveal">

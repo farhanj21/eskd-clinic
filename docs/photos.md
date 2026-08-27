@@ -9,8 +9,8 @@ The `sizes` attr is already set at every call-site — don't change it. `priorit
 One folder per page, named after the route it serves:
 
 - `home/` · `about/` · `contact/` · `learn/` · `emergency/` · `nervous-patients/` · `comprehensive-care-visit/` · `your-first-visit/` · `using-your-super/`
-- `services/` — all 20 service heroes, one flat folder, named for the service slug in `data/services.ts`
-- `suburbs/` — 20 suburb photos, one flat folder, named for the suburb slug in `data/suburbs.ts`. Currently unreferenced: the suburb pages have no hero photo
+- `services/` — service photography, one flat folder. The hero is named for the service, and the three supporting photos are `<slug>-1` (opening frame), `<slug>-2` (who it's for) and `<slug>-3` (the quote portrait), named for the service slug in `data/services.ts`
+- `suburbs/` — the remaining 13 suburb photos, named for the suburb slug in `data/suburbs.ts`. Unreferenced: the suburb pages have no hero photo. Seven of the original 20 were repurposed as `services/<slug>-3.webp`
 - `articles/` — learn article images · `gallery/` — consented results, shared by the home page and `/our-work`
 - `team/` — portraits and group shots · `funds/` — health fund logos · `social/` · `video/`
 - `shared/` — the handful of photos genuinely used across unrelated pages (`hero`, `meet-the-team`)
@@ -50,7 +50,7 @@ One folder per page, named after the route it serves:
 | ✓ | Page | Shot brief | Target file |
 |---|---|---|---|
 | ☐ | `app/nervous-patients/page.tsx` hero | Calm, relaxed patient with gentle clinician | `heroes/nervous-hero.webp` |
-| ☐ | nervous-patients comfort | Happy-gas setup, calm treatment room, or patient with headphones | `clinic/comfort-options.webp` |
+| ☑ | nervous-patients comfort | Happy-gas setup, calm treatment room, or patient with headphones | `nervous-patients/comfort-options.webp` |
 | ☐ | nervous-patients team | Warm team photo, real faces in the clinic | `team/team-home.webp` (reuse) |
 | ☐ | `app/your-first-visit/page.tsx` hero | Friendly welcome at reception | `clinic/reception-welcome.webp` |
 | ☐ | your-first-visit offer card | Consult room | `clinic/consult-room.webp` (reuse) |
@@ -61,7 +61,7 @@ One folder per page, named after the route it serves:
 | ☐ | `app/services/page.tsx` hero | Team or a treatment room | `heroes/services-hero.webp` |
 | ☐ | `app/using-your-super/page.tsx` hero | Calm patient-dentist conversation, care plan on table | `clinic/care-plan-chat.webp` |
 | ☐ | `app/areas-we-serve/page.tsx` hero | Clinic exterior or local street | `clinic/exterior-corner.webp` (reuse) |
-| — | `app/dentist-*/page.tsx` heroes | *No hero photo* — the suburb pages were rebuilt to the suburb-page spec, whose hero is the copy plus the quick-facts card. The 20 photos in `suburbs/` are unused until a photo band is added back |
+| — | `app/dentist-*/page.tsx` heroes | *No hero photo* — the suburb pages were rebuilt to the suburb-page spec, whose hero is the copy plus the quick-facts card. The 13 photos left in `suburbs/` are unused until a photo band is added back |
 | ☐ | `app/learn/page.tsx` hero | Warm, calm editorial image | `heroes/learn-hero.webp` |
 | ☐ | learn cards ×2 | Article image / coming soon | `articles/<slug>.webp` |
 | ☐ | `app/our-work/page.tsx` hero + gallery cards | Consented before/after photos | `gallery/case-<n>.webp` — consent + AHPRA review before publishing |
@@ -69,5 +69,5 @@ One folder per page, named after the route it serves:
 
 ## Template pages (data-driven, add photos via the data files later)
 
-- `app/services/[slug]/page.tsx` — one hero per service (20 services). Suggest `services/<slug>.webp`; wiring will need an `image` field in `data/services.ts` passed to the `<Photo>`.
+- `app/services/[slug]/page.tsx` — four photos per service: the hero (`heroImage`) plus `detailImage`, `whoImage` and `quoteImage`, all set per service in `data/services.ts`. A service that sets none falls back to the shared shots declared at the top of the page. Photographed so far: check-ups, cleans-and-hygiene, childrens-dentistry, mouthguards, tmj-jaw-pain, myofunctional-therapy and fillings — all three slots each. Shoot square (1:1, 1024px+): the frames are 0.95:1 to 1.09:1, so a 16:9 source loses 39% of its width to the cover-crop and goes soft on high-DPI screens.
 - `app/learn/[slug]/page.tsx` — one hero per article. Suggest `articles/<slug>.webp` via an `image` field in `data/articles.ts`.

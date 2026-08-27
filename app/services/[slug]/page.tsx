@@ -27,18 +27,32 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
-/** Supporting photography, shared across the service pages. */
-const DETAIL_PHOTO = {
+/**
+ * The three supporting photos below the hero. A service that has been
+ * photographed supplies its own in data/services.ts; these are the fallbacks
+ * for the ones that haven't, so no page is ever left with an empty frame.
+ */
+interface SupportPhoto {
+  src: string
+  alt: string
+  objectPosition?: string
+  scale?: number
+}
+
+const DETAIL_PHOTO: SupportPhoto = {
   src: '/assets/home/comprehensive2.webp',
   alt: 'A dentist talking with a seated patient during a comprehensive care consultation',
 }
 
-const WHO_PHOTO = {
+const WHO_PHOTO: SupportPhoto = {
   src: '/assets/home/nervous-patients.webp',
   alt: 'A relaxed patient smiling warmly in the dental chair',
+  // Crop tuned to this shot alone; a service's own photo gets the default.
+  objectPosition: '0% 40%',
+  scale: 1.1,
 }
 
-const QUOTE_PHOTO = {
+const QUOTE_PHOTO: SupportPhoto = {
   src: '/assets/nervous-patients/how-we-look-after.webp',
   alt: 'A clinician gently reassuring a relaxed patient in the treatment room',
 }
@@ -84,6 +98,15 @@ function heroBadge(service: ServiceData) {
   }
 }
 
+/** A service's own supporting photo where it has one, otherwise the shared shot. */
+function supportPhoto(
+  src: string | undefined,
+  alt: string | undefined,
+  fallback: SupportPhoto,
+): SupportPhoto {
+  return src ? { src, alt: alt ?? fallback.alt } : fallback
+}
+
 export async function generateStaticParams() {
   return services.map(service => ({ slug: service.slug }))
 }
@@ -107,6 +130,9 @@ export default async function ServicePage({ params }: Props) {
   const badge = heroBadge(service)
   const stats = [...SHARED_STATS, service.stat ?? FALLBACK_STAT]
   const subject = service.shortName ?? service.h1em
+  const detailPhoto = supportPhoto(service.detailImage, service.detailAlt, DETAIL_PHOTO)
+  const whoPhoto = supportPhoto(service.whoImage, service.whoAlt, WHO_PHOTO)
+  const quotePhoto = supportPhoto(service.quoteImage, service.quoteAlt, QUOTE_PHOTO)
 
   return (
     <main className={s.wrap}>
@@ -167,8 +193,10 @@ export default async function ServicePage({ params }: Props) {
           <div className={s.introGrid}>
             <div className={`${s.frame} ${s.frameTall} reveal`} style={{ transitionDelay: '.16s' }}>
               <Photo
-                src={DETAIL_PHOTO.src}
-                alt={DETAIL_PHOTO.alt}
+                src={detailPhoto.src}
+                alt={detailPhoto.alt}
+                objectPosition={detailPhoto.objectPosition}
+                scale={detailPhoto.scale}
                 sizes="(max-width: 1040px) 100vw, 46vw"
               />
             </div>
@@ -255,10 +283,10 @@ export default async function ServicePage({ params }: Props) {
           <div className={s.whoGrid}>
             <div className={`${s.frame} ${s.framePortrait} ${s.whoMedia} reveal`}>
               <Photo
-                src={WHO_PHOTO.src}
-                alt={WHO_PHOTO.alt}
-                objectPosition="0% 40%"
-                scale={1.1}
+                src={whoPhoto.src}
+                alt={whoPhoto.alt}
+                objectPosition={whoPhoto.objectPosition}
+                scale={whoPhoto.scale}
                 sizes="(max-width: 1040px) 100vw, 40vw"
               />
             </div>
@@ -353,8 +381,10 @@ export default async function ServicePage({ params }: Props) {
           <div className={s.quoteGrid}>
             <div className={`${s.frame} ${s.framePortrait} ${s.quoteMedia} reveal`}>
               <Photo
-                src={QUOTE_PHOTO.src}
-                alt={QUOTE_PHOTO.alt}
+                src={quotePhoto.src}
+                alt={quotePhoto.alt}
+                objectPosition={quotePhoto.objectPosition}
+                scale={quotePhoto.scale}
                 sizes="(max-width: 1040px) 100vw, 38vw"
               />
             </div>
