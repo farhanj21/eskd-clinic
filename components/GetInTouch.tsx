@@ -8,9 +8,20 @@ import { TREATMENTS } from '@/lib/enquiry'
 interface GetInTouchProps {
   variant?: GetInTouchVariant
   id?: string
+  /**
+   * Overrides the heading above the contact details.
+   *
+   * Suburb pages pass "Make us your [suburb] dentist" so the one section of
+   * shared furniture that should name the reader's suburb does.
+   */
+  heading?: string
 }
 
-export default function GetInTouch({ variant = 'default', id = 'contact' }: GetInTouchProps) {
+export default function GetInTouch({
+  variant = 'default',
+  id = 'contact',
+  heading = 'We’re here whenever you’re ready',
+}: GetInTouchProps) {
   const copy = getInTouchCopy[variant]
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
@@ -69,7 +80,7 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
         {/* ── LEFT: contact info ─────────────────────────── */}
         <div className="gt-info">
           <div className="gt-eyebrow">Get in touch</div>
-          <h2>We&apos;re here whenever you&apos;re ready</h2>
+          <h2>{heading}</h2>
           <p className="gt-sub">{copy.sub}</p>
 
           <div className="gt-detail">

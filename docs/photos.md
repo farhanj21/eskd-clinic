@@ -10,7 +10,7 @@ One folder per page, named after the route it serves:
 
 - `home/` · `about/` · `contact/` · `learn/` · `emergency/` · `nervous-patients/` · `comprehensive-care-visit/` · `your-first-visit/` · `using-your-super/`
 - `services/` — all 20 service heroes, one flat folder, named for the service slug in `data/services.ts`
-- `suburbs/` — all 20 suburb heroes, one flat folder, named for the suburb slug in `data/suburbs.ts`
+- `suburbs/` — 20 suburb photos, one flat folder, named for the suburb slug in `data/suburbs.ts`. Currently unreferenced: the suburb pages have no hero photo
 - `articles/` — learn article images · `gallery/` — consented results, shared by the home page and `/our-work`
 - `team/` — portraits and group shots · `funds/` — health fund logos · `social/` · `video/`
 - `shared/` — the handful of photos genuinely used across unrelated pages (`hero`, `meet-the-team`)
@@ -61,7 +61,7 @@ One folder per page, named after the route it serves:
 | ☐ | `app/services/page.tsx` hero | Team or a treatment room | `heroes/services-hero.webp` |
 | ☐ | `app/using-your-super/page.tsx` hero | Calm patient-dentist conversation, care plan on table | `clinic/care-plan-chat.webp` |
 | ☐ | `app/areas-we-serve/page.tsx` hero | Clinic exterior or local street | `clinic/exterior-corner.webp` (reuse) |
-| ☐ | 5× `app/dentist-*/page.tsx` heroes (st-kilda, balaclava, caulfield, elwood, elsternwick) | Clinic or team with calm local feel | `heroes/local-hero.webp` — one shared photo works for all five |
+| — | `app/dentist-*/page.tsx` heroes | *No hero photo* — the suburb pages were rebuilt to the suburb-page spec, whose hero is the copy plus the quick-facts card. The 20 photos in `suburbs/` are unused until a photo band is added back |
 | ☐ | `app/learn/page.tsx` hero | Warm, calm editorial image | `heroes/learn-hero.webp` |
 | ☐ | learn cards ×2 | Article image / coming soon | `articles/<slug>.webp` |
 | ☐ | `app/our-work/page.tsx` hero + gallery cards | Consented before/after photos | `gallery/case-<n>.webp` — consent + AHPRA review before publishing |

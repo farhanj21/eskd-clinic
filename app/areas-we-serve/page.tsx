@@ -28,7 +28,7 @@ const areaCards = [
   ...suburbs.map((s) => ({
     href: suburbPath(s.slug),
     name: s.name,
-    blurb: s.localHeading,
+    blurb: s.about.heading.text,
     cta: `View ${s.name}`,
   })),
 ]
