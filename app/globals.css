@@ -3068,6 +3068,15 @@ body{overflow-x:hidden;max-width:100%;}
   border:1px solid var(--sage);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-sm);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+/* focus-within as well as hover: tabbing to the card's CTA should light the
+   same card up that a mouse would. */
+.offers-card:hover,
+.offers-card:focus-within{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+  border-color:var(--sage-deep);
 }
 
 .offers-icon{
@@ -3078,6 +3087,13 @@ body{overflow-x:hidden;max-width:100%;}
   border-radius:var(--radius-sm);
   color:var(--sage-deep);
   margin-bottom:16px;
+  transition:background .28s ease,border-color .28s ease,color .28s ease;
+}
+.offers-card:hover .offers-icon,
+.offers-card:focus-within .offers-icon{
+  background:var(--sage-deep);
+  border-color:var(--sage-deep);
+  color:var(--paper);
 }
 .offers-icon svg{width:21px;height:21px;}
 
@@ -3117,8 +3133,18 @@ body{overflow-x:hidden;max-width:100%;}
   text-decoration:none;
 }
 .offers-arrow{width:15px;height:15px;transition:transform .22s ease;}
-.offers-cta:hover .offers-arrow{transform:translateX(4px);}
+/* Driven from the card, not just the link, so the whole card reads as one
+   hover target even when the pointer is nowhere near the CTA. */
+.offers-card:hover .offers-arrow,
+.offers-card:focus-within .offers-arrow{transform:translateX(4px);}
 .offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:2px;}
+
+@media(prefers-reduced-motion:reduce){
+  .offers-card,.offers-icon,.offers-arrow{transition:none;}
+  .offers-card:hover,.offers-card:focus-within{transform:none;}
+  .offers-card:hover .offers-arrow,
+  .offers-card:focus-within .offers-arrow{transform:none;}
+}
 
 /* 2x2, then stacked. Each card keeps its own border and corners at every
    width, so only the track count changes. */
