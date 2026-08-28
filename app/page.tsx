@@ -150,7 +150,7 @@ export default function Home() {
             <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost-light">Call {business.telephoneDisplay}</a>
             </div>
             <p className="hero-video-note">
@@ -320,7 +320,7 @@ export default function Home() {
               <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px', color: 'var(--ink)' }}>
                 Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
               </p>
-              <Link href="/book" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
+              <Link href="/online-booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>

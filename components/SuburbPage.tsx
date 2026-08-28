@@ -186,7 +186,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
             <h1><Heading h={s.h1} /></h1>
             <p className={styles.lead}>{s.lead}</p>
             <div className={styles.heroCta}>
-              <Link href="/book" className="btn">Book online</Link>
+              <Link href="/online-booking" className="btn">Book online</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             {/* Plain facts only. No rating number, no review count. */}

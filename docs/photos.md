@@ -10,7 +10,7 @@ One folder per page, named after the route it serves:
 
 - `home/` · `about/` · `contact/` · `learn/` · `emergency/` · `nervous-patients/` · `comprehensive-care-visit/` · `your-first-visit/` · `using-your-super/`
 - `services/` — service photography, one flat folder. The hero is named for the service, and the three supporting photos are `<slug>-1` (opening frame), `<slug>-2` (who it's for) and `<slug>-3` (the quote portrait), named for the service slug in `data/services.ts`
-- `suburbs/` — the remaining 3 suburb photos, named for the suburb slug in `data/suburbs.ts`. Unreferenced: the suburb pages have no hero photo. Seventeen of the original 20 were repurposed as `services/<slug>-3.webp`
+- `unused/` — the parking bay for photos nothing references. Three ex-suburb shots (`caulfield-north`, `prahran`, `south-yarra`) plus four unwired leftovers (`comfort-is-part`, `comprehensive-care-visit`, `see-our-fees-1/2`). **Still served to production** — `public/` ships whole, so anything parked here is dead weight in the deploy until it is either wired to a call-site or deleted
 - `articles/` — learn article images · `gallery/` — consented results, shared by the home page and `/our-work`
 - `team/` — portraits and group shots · `funds/` — health fund logos · `social/` · `video/`
 - `shared/` — the handful of photos genuinely used across unrelated pages (`hero`, `meet-the-team`)
@@ -61,11 +61,11 @@ One folder per page, named after the route it serves:
 | ☐ | `app/services/page.tsx` hero | Team or a treatment room | `heroes/services-hero.webp` |
 | ☐ | `app/using-your-super/page.tsx` hero | Calm patient-dentist conversation, care plan on table | `clinic/care-plan-chat.webp` |
 | ☐ | `app/areas-we-serve/page.tsx` hero | Clinic exterior or local street | `clinic/exterior-corner.webp` (reuse) |
-| — | `app/dentist-*/page.tsx` heroes | *No hero photo* — the suburb pages were rebuilt to the suburb-page spec, whose hero is the copy plus the quick-facts card. The 3 photos left in `suburbs/` are unused until a photo band is added back |
+| — | `app/dentist-*/page.tsx` heroes | *No hero photo* — the suburb pages were rebuilt to the suburb-page spec, whose hero is the copy plus the quick-facts card. All 20 suburb photos are gone from `suburbs/`: 17 became `services/<slug>-3.webp` and the folder was removed; the last 3 sit in `unused/` |
 | ☐ | `app/learn/page.tsx` hero | Warm, calm editorial image | `heroes/learn-hero.webp` |
 | ☐ | learn cards ×2 | Article image / coming soon | `articles/<slug>.webp` |
 | ☐ | `app/our-work/page.tsx` hero + gallery cards | Consented before/after photos | `gallery/case-<n>.webp` — consent + AHPRA review before publishing |
-| — | `app/book/page.tsx` map | *Not a photo* — awaiting Google Maps iframe | — |
+| — | `app/online-booking/page.tsx` map | *Not a photo* — awaiting Google Maps iframe | — |
 
 ## Template pages (data-driven, add photos via the data files later)
 

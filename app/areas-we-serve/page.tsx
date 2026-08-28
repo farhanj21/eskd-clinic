@@ -47,7 +47,7 @@ export default function AreasWeServePage() {
               We&apos;ve cared for families across the neighbourhood for over 40 years, from our home on Dandenong Road, on the corner of Orrong Road. Today we welcome patients from right across Melbourne, and from regional Victoria too.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>

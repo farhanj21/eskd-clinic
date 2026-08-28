@@ -176,7 +176,7 @@ export default function Header() {
             <span className="phone-full">{business.telephoneDisplay}</span>
             <span className="phone-mini">Call us</span>
           </a>
-          <Link href="/book" className="btn">
+          <Link href="/online-booking" className="btn">
             Book your visit
           </Link>
           <button

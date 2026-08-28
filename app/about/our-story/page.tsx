@@ -25,7 +25,7 @@ export default function AboutStoryPage() {
               Every long-standing practice has a story. Ours began around 1980, on the corner of Dandenong and Orrong Roads, and it&apos;s still being written by the same neighbourhood today.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>

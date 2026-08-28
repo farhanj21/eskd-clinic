@@ -23,7 +23,7 @@ export default function OfferPage() {
             <h1>Finally know exactly where your teeth <em>stand</em></h1>
             <p className="lead">The Comprehensive Care Visit is a thorough, gentle 60 to 75 minute appointment, with no judgement and no rush. You leave with a clear, prioritised care plan you choose at your own pace.</p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book online</Link>
+              <Link href="/online-booking" className="btn">Book online</Link>
               <Link href="#offer-callback" className="btn btn-ghost">Request a callback</Link>
             </div>
             <div className="hero-proof">
@@ -76,7 +76,7 @@ export default function OfferPage() {
               <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px' }}>
                 Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
               </p>
-              <Link href="/book" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book online</Link>
+              <Link href="/online-booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book online</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
                 $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
@@ -120,7 +120,7 @@ export default function OfferPage() {
             <div>
               <h4 style={{ marginBottom: '8px', fontFamily: 'var(--display)', fontSize: '22px' }}>Book online</h4>
               <p style={{ fontSize: '15px', marginBottom: '16px' }}>Pick a time that suits you in under a minute through our secure online booking system.</p>
-              <Link href="/book" className="btn">Book online now</Link>
+              <Link href="/online-booking" className="btn">Book online now</Link>
             </div>
             <div>
               <h4 style={{ marginBottom: '8px', fontFamily: 'var(--display)', fontSize: '22px' }}>Prefer we call you?</h4>

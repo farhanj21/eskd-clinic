@@ -24,7 +24,7 @@ export default function ContactPage() {
             <h1>We&apos;d love to <em>see you</em></h1>
             <p className="lead">Call us, book online, or leave your details and we&apos;ll call you back. Whatever&apos;s easiest, we&apos;ll make it simple.</p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book online</Link>
+              <Link href="/online-booking" className="btn">Book online</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>

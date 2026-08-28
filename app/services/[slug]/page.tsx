@@ -154,7 +154,7 @@ export default async function ServicePage({ params }: Props) {
               {service.heroLead}
             </p>
             <div className={`${s.heroCta} reveal`} style={{ transitionDelay: '.24s' }}>
-              <Link href="/book" className={s.btnSolid}>Book your visit</Link>
+              <Link href="/online-booking" className={s.btnSolid}>Book your visit</Link>
               <a href={telHref} className={s.btnOutline}>Call {business.telephoneDisplay}</a>
             </div>
             <div className={`${s.heroProof} reveal`} style={{ transitionDelay: '.3s' }}>
@@ -367,7 +367,7 @@ export default async function ServicePage({ params }: Props) {
             <div className={s.ctaInner}>
               <h3 className={s.ctaTitle}>{service.ctaH3}</h3>
               <div className={s.ctaActions}>
-                <Link href="/book" className={s.btnCream}>Book a visit</Link>
+                <Link href="/online-booking" className={s.btnCream}>Book a visit</Link>
                 <Link href="#contact" className={s.btnOutlineLight}>Request a callback</Link>
               </div>
             </div>

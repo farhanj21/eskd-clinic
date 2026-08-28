@@ -23,7 +23,7 @@ export default function GentlePage() {
             <h1>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best with.</em></h1>
             <p className="lead">If fear has kept you away, you&apos;re in the right place. Looking after anxious patients is one of the things we&apos;re known for. Tell us you&apos;re nervous, and we go entirely at your pace, with no judgement and no pressure.</p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book a gentle visit</Link>
+              <Link href="/online-booking" className="btn">Book a gentle visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
@@ -163,7 +163,7 @@ export default function GentlePage() {
             <h3>Take the first step, gently</h3>
             <p>Book a visit, or just leave your number and we&apos;ll call you, whatever feels easier. No judgement, no pressure, ever.</p>
             <div className="ctaband-actions">
-              <Link href="/book" className="btn btn-light">Book a gentle visit</Link>
+              <Link href="/online-booking" className="btn btn-light">Book a gentle visit</Link>
               <Link href="#contact" className="btn btn-ghost ctaband-ghost">Request a callback</Link>
             </div>
           </div>

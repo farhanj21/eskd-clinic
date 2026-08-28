@@ -62,7 +62,7 @@ export default function FeesPage() {
             You&apos;ll always know what something costs before it happens. A written estimate, one simple price for your first visit, and flexible ways to pay. Money worries shouldn&apos;t get in the way of looking after yourself.
           </p>
           <div className="hero-cta" style={{ justifyContent: 'center' }}>
-            <Link href="/book" className="btn">Book your visit</Link>
+            <Link href="/online-booking" className="btn">Book your visit</Link>
             <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
           </div>
           <div className="hero-proof" style={{ justifyContent: 'center' }}>
@@ -85,7 +85,7 @@ export default function FeesPage() {
             </p>
             <div className="ctaband-actions">
               <Link href="/comprehensive-care-visit" className="btn">See what&apos;s included</Link>
-              <Link href="/book" className="btn btn-ghost-light">Book online</Link>
+              <Link href="/online-booking" className="btn btn-ghost-light">Book online</Link>
             </div>
           </div>
         </div>

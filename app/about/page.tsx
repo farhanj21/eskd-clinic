@@ -25,7 +25,7 @@ export default function AboutPage() {
               East St Kilda Dental has looked after this neighbourhood for over 40 years. Here&apos;s our story, what makes us different, and the people who&apos;ll care for you.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">

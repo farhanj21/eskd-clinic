@@ -52,7 +52,7 @@ export default function OurWorkPage() {
               Natural-looking outcomes from gentle, considered care, always in proportion to the person, never overdone.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book a consultation</Link>
+              <Link href="/online-booking" className="btn">Book a consultation</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
