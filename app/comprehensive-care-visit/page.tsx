@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import CallbackForm from '@/components/CallbackForm'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
@@ -125,12 +126,11 @@ export default function OfferPage() {
             <div>
               <h4 style={{ marginBottom: '8px', fontFamily: 'var(--display)', fontSize: '22px' }}>Prefer we call you?</h4>
               <p style={{ fontSize: '15px', marginBottom: '16px' }}>Leave your name and number and our friendly team will call you back to find a time. No commitment.</p>
-              <div className="form">
-                <input type="text" placeholder="First name" />
-                <input type="tel" placeholder="Phone" />
-                <input type="email" placeholder="Email (optional)" style={{ width: '100%' }} />
-                <button className="btn" type="submit">Request my callback</button>
-              </div>
+              <CallbackForm
+                className="form"
+                namePlaceholder="First name"
+                showEmail
+              />
               <p style={{ fontSize: '13px', marginTop: '10px', color: 'var(--ink-faint)' }}>
                 Or call us on{' '}
                 <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.

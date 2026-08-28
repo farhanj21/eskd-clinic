@@ -61,6 +61,10 @@ export type ValidationResult =
 /**
  * Validate an untrusted request body.
  *
+ * Requires a first name plus at least one of email or phone; everything else
+ * is optional, so both the full enquiry form and the shorter callback forms
+ * post to the same endpoint.
+ *
  * Everything reaching the email is either a label looked up from the lists above
  * or a trimmed, length-capped string — nothing is echoed back verbatim from the
  * request without passing through here first.
@@ -82,8 +86,22 @@ export function validateEnquiry(body: unknown): ValidationResult {
   const source = str(raw.source, MAX.source)
 
   if (!firstName) return { ok: false, error: 'Please enter your first name.' }
-  if (!lastName) return { ok: false, error: 'Please enter your last name.' }
-  if (!EMAIL_RE.test(email)) return { ok: false, error: 'Please enter a valid email address.' }
+
+  /*
+   * Only the first name and one way to reach them are truly required.
+   *
+   * The Get in touch form asks for a last name and an email and marks both
+   * required in the markup, so it is unaffected. The callback forms deliberately
+   * ask for a name and a phone number only — demanding an email on a "call me
+   * back" form is the fastest way to lose the enquiry — so the rule here is one
+   * contact method, not one specific field.
+   */
+  if (email && !EMAIL_RE.test(email)) {
+    return { ok: false, error: 'Please enter a valid email address.' }
+  }
+  if (!email && !phone) {
+    return { ok: false, error: 'Please leave an email address or a phone number so we can reply.' }
+  }
 
   const oneOf = (v: unknown, list: readonly { value: string }[], fallback: string) =>
     typeof v === 'string' && list.some(o => o.value === v) ? v : fallback

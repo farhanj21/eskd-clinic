@@ -1,19 +1,10 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
+import CallbackForm from '@/components/CallbackForm'
 import Photo from '@/components/Photo'
 import MapEmbed from '@/components/MapEmbed'
 import { business, localityLine, streetAddress, telHref } from '@/lib/business'
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
   return (
     <main>
       {/* ── HERO ─────────────────────────────────────────── */}
@@ -64,9 +55,9 @@ export default function ContactPage() {
             <div className="svc">
               <h4>Opening hours</h4>
               <p>
-                Mon&ndash;Thu: 8.30am&ndash;4.00pm<br />
-                Fri: 8.30am&ndash;4.30pm<br />
-                Sat: 8.00am&ndash;4.00pm (monthly)<br />
+                Mon&ndash;Thu: 8.30am&ndash;6.00pm<br />
+                Fri: 8.30am&ndash;5.00pm<br />
+                Sat: 10.00am&ndash;4.00pm<br />
                 Sun: Closed
               </p>
             </div>
@@ -101,28 +92,17 @@ export default function ContactPage() {
             <h2>Leave your details</h2>
           </div>
           <div className="reveal">
-            {submitted ? (
-              <div style={{ maxWidth: '30em', margin: '0 auto', textAlign: 'center', padding: '32px 0' }}>
-                <h3 style={{ color: 'var(--sage-deep)', fontFamily: 'var(--display)' }}>Thanks — we&apos;ll call you back</h3>
-                <p>We&apos;ll be in touch during opening hours. For a dental emergency call us directly on{' '}
-                  <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.
-                </p>
-              </div>
-            ) : (
-              <form className="callback-form" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Your name" aria-label="Your name" required />
-                <input type="tel" placeholder="Phone number" aria-label="Phone number" required />
-                <input type="text" placeholder="Best time to call" aria-label="Best time to call" />
-                <textarea placeholder="Anything you'd like us to know (optional)" aria-label="Message" />
-                <button className="btn" type="submit" style={{ justifyContent: 'center' }}>
-                  Request a callback
-                </button>
+            <CallbackForm
+              showBestTime
+              showMessage
+              submitLabel="Request a callback"
+              note={
                 <p style={{ fontSize: '13px', color: 'var(--ink-faint)', textAlign: 'center', margin: 0 }}>
                   We&apos;ll call during opening hours. For a dental emergency, please{' '}
                   <a href={telHref} style={{ color: 'var(--sage-deep)' }}>call us straight away</a>.
                 </p>
-              </form>
-            )}
+              }
+            />
           </div>
         </div>
       </section>

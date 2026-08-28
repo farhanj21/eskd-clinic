@@ -117,14 +117,14 @@ export async function POST(request: Request) {
   }
 
   const d = result.data
-  const name = `${d.firstName} ${d.lastName}`
+  const name = [d.firstName, d.lastName].filter(Boolean).join(' ')
   const patientLabel = labelFor(PATIENT_TYPES, d.patienttype)
   const intentLabel = labelFor(INTENTS, d.intent)
   const treatmentLabels = d.treatments.map(v => labelFor(TREATMENTS, v))
 
   const rows: [string, string][] = [
     ['Name', name],
-    ['Email', d.email],
+    ['Email', d.email || '—'],
     ['Phone', d.phone || '—'],
     ['Patient', patientLabel],
     ['Wants to', intentLabel],
@@ -151,7 +151,9 @@ export async function POST(request: Request) {
           .join('')}
       </table>
       <p style="margin:20px 0 0;color:#6b645c;font-size:13px">
-        Reply to this email to answer ${escapeHtml(d.firstName)} directly.
+        ${d.email
+          ? `Reply to this email to answer ${escapeHtml(d.firstName)} directly.`
+          : `No email address given — call ${escapeHtml(d.phone)} to reply.`}
       </p>
     </div>`
 
@@ -161,7 +163,7 @@ export async function POST(request: Request) {
     const { data, error } = await new Resend(apiKey).emails.send({
       from: FROM,
       to: TO,
-      replyTo: d.email,
+      ...(d.email ? { replyTo: d.email } : {}),
       subject: `${intentLabel} — ${name}${treatmentLabels.length ? ` (${treatmentLabels[0]})` : ''}`,
       html,
       text,

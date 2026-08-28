@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import CallbackForm from '@/components/CallbackForm'
 import GetInTouch from '@/components/GetInTouch'
 import MapEmbed from '@/components/MapEmbed'
 import { withSocial } from '@/lib/seo'
@@ -79,17 +80,11 @@ export default function BookingPage() {
               <div className="eyebrow">Rather we called you?</div>
               <h3>Ask us to call you back</h3>
               <p>Leave your details and we&apos;ll call to find a time that suits.</p>
-              <div className="book-form">
-                <input type="text" placeholder="First name" />
-                <input type="tel" placeholder="Phone" />
-                <select className="full" defaultValue="">
-                  <option value="" disabled>I&apos;d like to&hellip;</option>
-                  <option>Book a new patient visit</option>
-                  <option>Book an emergency visit</option>
-                  <option>Book for a dental consultation</option>
-                </select>
-                <button className="btn" type="submit">Request my callback</button>
-              </div>
+              <CallbackForm
+                className="book-form"
+                namePlaceholder="First name"
+                showReason
+              />
             </div>
           </div>
         </div>
