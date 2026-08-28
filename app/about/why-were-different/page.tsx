@@ -60,7 +60,7 @@ export default function AboutDifferentPage() {
               Plenty of clinics can clean your teeth. Here&apos;s what you get with us that you won&apos;t find just anywhere.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>

@@ -56,11 +56,17 @@ export const areasChildTrail = (name: string): Crumb[] => [HOME, AREAS_SECTION, 
  *
  * Pass the trail from the route, not hand-written strings, so a new article
  * gets the correct breadcrumb with no extra edit.
+ *
+ * `id` is optional: pass "<page url>#breadcrumb" on a page whose own JSON-LD
+ * references the list, and leave it off everywhere else.
  */
-export default function Breadcrumb({ trail }: { trail: Crumb[] }) {
+export default function Breadcrumb({ trail, id }: { trail: Crumb[]; id?: string }) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    // Given an @id, another node on the page can point at this list rather than
+    // restate it — which is how the suburb pages link WebPage to its breadcrumb.
+    ...(id ? { '@id': id } : {}),
     itemListElement: trail.map((crumb, i) => ({
       '@type': 'ListItem',
       position: i + 1,

@@ -69,7 +69,7 @@ export default function SuperPage() {
               If significant dental treatment is affecting your daily life, you may be able to access some of your superannuation early, on compassionate grounds, to pay for it. We&apos;ll prepare the report the ATO needs and connect you with AccessMySuper, who guide you through the rest.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book a consultation</Link>
+              <Link href="/online-booking" className="btn">Book a consultation</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">

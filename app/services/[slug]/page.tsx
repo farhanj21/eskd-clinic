@@ -1,25 +1,114 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { services, getService } from '@/data/services'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import ServiceEducation from '@/components/ServiceEducation'
+import { services, getService, relatedSub, type ServiceData } from '@/data/services'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, comprehensiveCareVisit, telHref } from '@/lib/business'
+import s from '../service.module.css'
+
+/**
+ * Every service page.
+ *
+ * The layout started life as a bespoke redesign of /services/check-ups, which
+ * lived in its own static segment. It now renders all twenty services from the
+ * shared `services` array, so the copy still has a single source of truth and
+ * nothing can drift between pages.
+ *
+ * What the redesign added on top of the original copy — the scope strip, the
+ * stats band, the related-card subtitles, the hero badge — is declared per
+ * service in data/services.ts, with the fallbacks below covering the parts that
+ * are the same on every page.
+ */
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 /**
- * Every service except check-ups, which has its own bespoke page at
- * app/services/check-ups/page.tsx. The static segment already wins the route,
- * so prerendering it here as well would only build a second, unreachable copy
- * of that URL.
+ * The three supporting photos below the hero. A service that has been
+ * photographed supplies its own in data/services.ts; these are the fallbacks
+ * for the ones that haven't, so no page is ever left with an empty frame.
  */
+interface SupportPhoto {
+  src: string
+  alt: string
+  objectPosition?: string
+  scale?: number
+}
+
+const DETAIL_PHOTO: SupportPhoto = {
+  src: '/assets/home/comprehensive2.webp',
+  alt: 'A dentist talking with a seated patient during a comprehensive care consultation',
+}
+
+const WHO_PHOTO: SupportPhoto = {
+  src: '/assets/home/nervous-patients.webp',
+  alt: 'A relaxed patient smiling warmly in the dental chair',
+  // Crop tuned to this shot alone; a service's own photo gets the default.
+  objectPosition: '0% 40%',
+  scale: 1.1,
+}
+
+const QUOTE_PHOTO: SupportPhoto = {
+  src: '/assets/nervous-patients/how-we-look-after.webp',
+  alt: 'A clinician gently reassuring a relaxed patient in the treatment room',
+}
+
+/** The first two figures in the stats band are the same on every service page. */
+const SHARED_STATS = [
+  { count: 40, suffix: '+', label: `Years caring for ${business.address.addressLocality}` },
+  { count: 10000, suffix: '+', label: 'Patients looked after' },
+]
+
+/** Used as the third figure when a service has no meaningful number of its own. */
+const FALLBACK_STAT = { count: 15, suffix: '', label: 'Suburbs we care for' }
+
+/** "10000" + "+" → "10,000+". The count-up observer reads the raw number. */
+const statDisplay = (stat: { count: number; suffix: string }) =>
+  `${stat.count.toLocaleString('en-AU')}${stat.suffix}`
+
+/**
+ * The floating hero badge. Services on the flat new-patient price lead with the
+ * figure; the rest lead with how they're paid for, since there is no single
+ * number to quote before we've seen you.
+ */
+function heroBadge(service: ServiceData) {
+  switch (service.pricing) {
+    case 'flat':
+      return {
+        figure: `$${comprehensiveCareVisit.price}`,
+        note: `${comprehensiveCareVisit.name}, everything included`,
+        isWord: false,
+      }
+    case 'cdbs':
+      return {
+        figure: 'CDBS',
+        note: 'Eligible children may be fully covered under Medicare',
+        isWord: true,
+      }
+    default:
+      return {
+        figure: 'HICAPS',
+        note: 'Claimed on the spot, so most funds leave only a gap to pay',
+        isWord: true,
+      }
+  }
+}
+
+/** A service's own supporting photo where it has one, otherwise the shared shot. */
+function supportPhoto(
+  src: string | undefined,
+  alt: string | undefined,
+  fallback: SupportPhoto,
+): SupportPhoto {
+  return src ? { src, alt: alt ?? fallback.alt } : fallback
+}
+
 export async function generateStaticParams() {
-  return services.filter(s => s.slug !== 'check-ups').map(s => ({ slug: s.slug }))
+  return services.map(service => ({ slug: service.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,62 +127,150 @@ export default async function ServicePage({ params }: Props) {
   const service = getService(slug)
   if (!service) notFound()
 
+  const badge = heroBadge(service)
+  const stats = [...SHARED_STATS, service.stat ?? FALLBACK_STAT]
+  const subject = service.shortName ?? service.h1em
+  const detailPhoto = supportPhoto(service.detailImage, service.detailAlt, DETAIL_PHOTO)
+  const whoPhoto = supportPhoto(service.whoImage, service.whoAlt, WHO_PHOTO)
+  const quotePhoto = supportPhoto(service.quoteImage, service.quoteAlt, QUOTE_PHOTO)
+
   return (
-    <main>
+    <main className={s.wrap}>
+
       {/* ── 1. HERO ──────────────────────────────────────── */}
-      <section className="hero-v2">
-        <div className="container hero-v2-grid">
-          <div className="reveal">
-            <div className="eyebrow">{service.eyebrow}</div>
-            <h1>
-              {service.h1pre ? <>{service.h1pre} <em>{service.h1em}</em></> : <em>{service.h1em}</em>}
+      <section className={s.hero} id="top">
+        <div className={s.heroBlobClay} aria-hidden="true" />
+        <div className={s.heroBlobSage} aria-hidden="true" />
+        <div className={`${s.inner} ${s.innerWide} ${s.heroGrid}`}>
+          <div>
+            <p className={`${s.kicker} reveal`}>{service.eyebrow}</p>
+            {/* Several services lead with the italic phrase and have no h1pre,
+                so the line break only goes in when there's a line above it. */}
+            <h1 className={`${s.h1} reveal`} style={{ transitionDelay: '.08s' }}>
+              {service.h1pre && <>{service.h1pre} <br /></>}
+              <em>{service.h1em}</em>
             </h1>
-            <p className="lead">{service.heroLead}</p>
-            <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
-              <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
-            </div>
-            <p style={{ marginTop: '14px', fontSize: '14px', color: 'var(--ink-faint)' }}>
-              Gentle, no-judgement care &nbsp;·&nbsp; 40+ years local
+            <p className={`${s.heroLead} reveal`} style={{ transitionDelay: '.16s' }}>
+              {service.heroLead}
             </p>
+            <div className={`${s.heroCta} reveal`} style={{ transitionDelay: '.24s' }}>
+              <Link href="/online-booking" className={s.btnSolid}>Book your visit</Link>
+              <a href={telHref} className={s.btnOutline}>Call {business.telephoneDisplay}</a>
+            </div>
+            <div className={`${s.heroProof} reveal`} style={{ transitionDelay: '.3s' }}>
+              <span>Gentle, no-judgement care</span>
+              <span className={s.proofDot} aria-hidden="true" />
+              <span>40+ years local</span>
+            </div>
           </div>
-          <Photo
-            tall
-            className="reveal"
-            priority
-            src={service.heroImage}
-            alt={service.heroAlt}
-            hint={`Service image: ${service.h1em}`}
-            sizes="(max-width: 860px) 100vw, 48vw"
-          />
+
+          <div className={`${s.heroMedia} reveal`} style={{ transitionDelay: '.12s' }}>
+            <div className={s.heroFrame}>
+              <Photo
+                priority
+                src={service.heroImage}
+                alt={service.heroAlt}
+                hint={`Service image: ${service.h1em}`}
+                sizes="(max-width: 1040px) 100vw, 48vw"
+              />
+            </div>
+            <div className={s.priceBadge}>
+              <div className={`${s.priceBadgeFigure} ${badge.isWord ? s.priceBadgeWord : ''}`}>
+                {badge.figure}
+              </div>
+              <div className={s.priceBadgeNote}>{badge.note}</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── 2. WHAT IT IS ────────────────────────────────── */}
-      <section className="sec alt" style={{ textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '760px' }}>
-          <div className="reveal">
-            <div className="eyebrow">In plain language</div>
-            <h2>{service.whatItIsH2}</h2>
-            {service.whatItIs.map((para, i) => (
-              <p key={i} style={{ marginTop: i === 0 ? '20px' : '14px', fontSize: '17px', lineHeight: 1.7 }}>{para}</p>
+      <section className={`${s.bgPaper} ${s.lineTop}`}>
+        <div className={`${s.inner} ${s.innerWide} ${s.sectionPad}`}>
+          {/* Photo leads on the left, copy follows on the right — and because
+              the photo is first in the markup, it stays on top when the grid
+              stacks, without needing an order swap at the breakpoint. */}
+          <div className={s.introGrid}>
+            <div className={`${s.frame} ${s.frameTall} reveal`} style={{ transitionDelay: '.16s' }}>
+              <Photo
+                src={detailPhoto.src}
+                alt={detailPhoto.alt}
+                objectPosition={detailPhoto.objectPosition}
+                scale={detailPhoto.scale}
+                sizes="(max-width: 1040px) 100vw, 46vw"
+              />
+            </div>
+            <div>
+              <p className={`${s.kicker} reveal`}>In plain language</p>
+              <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
+                {service.whatItIsH2}
+              </h2>
+              <div className={s.splitCopy}>
+                {service.whatItIs.map((para, i) => (
+                  <p
+                    key={i}
+                    className={`${i === 0 ? s.leadPara : s.bodyPara} reveal`}
+                    style={{ transitionDelay: `${0.12 + i * 0.08}s` }}
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={`${s.scopeRow} reveal`} style={{ transitionDelay: '.28s' }}>
+            {service.scope.map(item => (
+              <div key={item.term} className={s.scopeItem}>
+                <div className={s.scopeTerm}>{item.term}</div>
+                <div className={s.scopeDef}>{item.def}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── 3. WHY IT MATTERS ────────────────────────────── */}
-      <section className="sec">
-        <div className="container">
-          <div className="sec-head center reveal">
-            <h2>{service.whyH2}</h2>
-            <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '44em', marginLeft: 'auto', marginRight: 'auto' }}>{service.whyIntro}</p>
+      <section className={s.dark}>
+        <div className={s.darkBlob} aria-hidden="true" />
+        <div className={`${s.inner} ${s.sectionPad} ${s.darkInner}`}>
+          <div className={s.darkHead}>
+            <p className={`${s.kicker} ${s.kickerLight} reveal`}>Worth the visit</p>
+            <h2 className={`${s.h2} ${s.h2Light} reveal`} style={{ transitionDelay: '.08s' }}>
+              {service.whyH2}
+            </h2>
+            <p className={`${s.darkIntro} reveal`} style={{ transitionDelay: '.16s' }}>
+              {service.whyIntro}
+            </p>
           </div>
-          <div className="svc-grid reveal" style={{ marginTop: '36px', transitionDelay: '.1s' }}>
+
+          <div className={s.whyGrid}>
             {service.whyCards.map((card, i) => (
-              <div key={i} className="svc">
-                <h4>{card.h4}</h4>
-                <p>{card.p}</p>
+              <div
+                key={i}
+                className={`${s.whyCard} reveal`}
+                style={{ transitionDelay: `${0.12 + i * 0.08}s` }}
+              >
+                <div className={s.whyNum}>{String(i + 1).padStart(2, '0')}</div>
+                <h3 className={s.whyTitle}>{card.h4}</h3>
+                <p className={s.whyBody}>{card.p}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* data-count is picked up by the same observer that drives the
+              figures on the home page, so these count up on scroll. */}
+          <div className={s.statsRow}>
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`${s.stat} reveal`}
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                <div className={s.statNum} data-count={stat.count} data-suffix={stat.suffix}>
+                  {statDisplay(stat)}
+                </div>
+                <div className={s.statLabel}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -101,111 +278,184 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* ── 4. WHO IT'S FOR ──────────────────────────────── */}
-      <section className="sec alt" style={{ textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '680px' }}>
-          <div className="reveal">
-            <div className="eyebrow">Is this right for you?</div>
-            <h2>{service.whoH2}</h2>
-            <ul className="checks">
-              {service.whoItems.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
+      <section className={s.bgPaper}>
+        <div className={`${s.inner} ${s.sectionPad}`}>
+          <div className={s.whoGrid}>
+            <div className={`${s.frame} ${s.framePortrait} ${s.whoMedia} reveal`}>
+              <Photo
+                src={whoPhoto.src}
+                alt={whoPhoto.alt}
+                objectPosition={whoPhoto.objectPosition}
+                scale={whoPhoto.scale}
+                sizes="(max-width: 1040px) 100vw, 40vw"
+              />
+            </div>
+            <div>
+              <p className={`${s.kicker} reveal`}>Is this right for you?</p>
+              <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
+                {service.whoH2}
+              </h2>
+              <ul className={s.whoList}>
+                {service.whoItems.map((item, i) => (
+                  <li
+                    key={i}
+                    className={`${s.whoRow} reveal`}
+                    style={{ transitionDelay: `${0.12 + i * 0.06}s` }}
+                  >
+                    <span className={s.whoDot} aria-hidden="true" />
+                    <span className={s.whoText}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 5. HOW IT'S DONE ─────────────────────────────── */}
-      <section className="sec">
-        <div className="container">
-          <div className="sec-head center reveal">
-            <div className="eyebrow">A calm, step-by-step process</div>
-            <h2>{service.howH2}</h2>
+      <section className={`${s.bgCream2} ${s.lineTop} ${s.lineBottom}`}>
+        <div className={`${s.inner} ${s.innerWide} ${s.sectionPad}`}>
+          <div className={s.stepsHead}>
+            <p className={`${s.kicker} reveal`}>A calm, step-by-step process</p>
+            <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
+              {service.howH2}
+            </h2>
           </div>
-          <div className="proc reveal" style={{ transitionDelay: '.1s' }}>
-            {service.steps.map((step, i) => (
-              <div key={i} className="p">
-                <div className="pn">{i + 1}</div>
-                {/* Type and spacing come from `.proc h4` / `.proc p` — inline
-                    values here would win over the mobile breakpoints. */}
-                <h4>{step.h4}</h4>
-                <p>{step.p}</p>
-              </div>
-            ))}
+
+          <div className={s.stepsWrap}>
+            <div className={s.stepsTrack} aria-hidden="true" />
+            {/* Draws left-to-right once scrolled into view — .visible comes from
+                the site-wide reveal observer in ScrollEffects. */}
+            <div className={`${s.stepsTrackFill} reveal`} aria-hidden="true" />
+            <ol className={s.stepsGrid}>
+              {service.steps.map((step, i) => (
+                <li
+                  key={i}
+                  className={`${s.step} reveal`}
+                  style={{ transitionDelay: `${0.12 + i * 0.1}s` }}
+                >
+                  <div className={s.stepNum}>{i + 1}</div>
+                  <h3 className={s.stepTitle}>{step.h4}</h3>
+                  <p className={s.stepBody}>{step.p}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
       {/* ── 6. AFTERCARE ─────────────────────────────────── */}
-      <section className="sec alt" style={{ textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '700px' }}>
-          <div className="reveal">
-            <div className="eyebrow">Honest about what to expect</div>
-            <h2>{service.aftercareH2}</h2>
-            <p style={{ marginTop: '18px', fontSize: '17px', lineHeight: 1.7 }}>{service.aftercare}</p>
+      <section className={s.bgPaper}>
+        <div className={`${s.inner} ${s.sectionPad}`}>
+          <div className={s.innerNarrow} style={{ margin: '0 auto', padding: 0 }}>
+            <p className={`${s.kicker} reveal`}>Honest about what to expect</p>
+            <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
+              {service.aftercareH2}
+            </h2>
+            <p className={`${s.aftercarePara} reveal`} style={{ transitionDelay: '.16s' }}>
+              {service.aftercare}
+            </p>
           </div>
         </div>
       </section>
 
       {/* ── 7. CTA BAND ──────────────────────────────────── */}
-      {/* Card inside the container, the same as /fees and /your-first-visit.
-          It used to be a full-bleed <section class="ctaband">, which kept the
-          class's 18px corner radius but ran the panel edge-to-edge, so on a
-          phone the rounded card sat hard against both screen edges. */}
-      <section className="sec">
-        <div className="container">
-          <div className="ctaband reveal">
-            <h3>{service.ctaH3}</h3>
-            <div className="ctaband-actions">
-              <Link href="/book" className="btn">Book a visit</Link>
-              <Link href="#contact" className="btn btn-ghost-light">Request a callback</Link>
+      <section className={s.ctaSection}>
+        <div className={`${s.inner} ${s.innerWide}`}>
+          <div className={`${s.ctaCard} reveal`}>
+            <div className={s.ctaBlob} aria-hidden="true" />
+            <div className={s.ctaInner}>
+              <h3 className={s.ctaTitle}>{service.ctaH3}</h3>
+              <div className={s.ctaActions}>
+                <Link href="/online-booking" className={s.btnCream}>Book a visit</Link>
+                <Link href="#contact" className={s.btnOutlineLight}>Request a callback</Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── 8. NERVOUS PATIENTS ──────────────────────────── */}
-      <section className="sec" style={{ background: 'var(--cream)' }}>
-        <div className="container">
-          <div className="svc-nervous-band reveal">
-            <p>&ldquo;I haven&rsquo;t been to the dentist in years. I was embarrassed and anxious. The team here made me feel completely at ease — no judgement, just kindness.&rdquo;</p>
-            <p style={{ marginTop: '16px', fontSize: '16px', fontFamily: 'var(--body)' }}>
-              <Link href="/nervous-patients" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
-                How we look after nervous patients →
+      <section className={`${s.bgCream2} ${s.lineTop}`}>
+        <div className={`${s.inner} ${s.sectionPad} ${s.quoteSection}`}>
+          <div className={s.quoteGrid}>
+            <div className={`${s.frame} ${s.framePortrait} ${s.quoteMedia} reveal`}>
+              <Photo
+                src={quotePhoto.src}
+                alt={quotePhoto.alt}
+                objectPosition={quotePhoto.objectPosition}
+                scale={quotePhoto.scale}
+                sizes="(max-width: 1040px) 100vw, 38vw"
+              />
+            </div>
+            <div>
+              <div className={`${s.quoteMark} reveal`} aria-hidden="true">&ldquo;</div>
+              <blockquote className={`${s.quote} reveal`} style={{ transitionDelay: '.1s' }}>
+                I haven&rsquo;t been to the dentist in years. I was embarrassed and anxious. The
+                team here made me feel completely at ease &mdash; no judgement, just kindness.
+              </blockquote>
+              <Link href="/nervous-patients" className={`${s.quoteLink} reveal`} style={{ transitionDelay: '.18s' }}>
+                How we look after nervous patients &rarr;
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 9. COST & PAYMENT ────────────────────────────── */}
-      <section className="sec alt" style={{ textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '700px' }}>
-          <div className="reveal">
-            <div className="eyebrow">No surprises</div>
-            <h2>Clear on cost, before anything begins</h2>
-            <p style={{ marginTop: '18px', fontSize: '17px', lineHeight: 1.7 }}>{service.costPara}</p>
-            <p style={{ marginTop: '16px' }}>
-              <Link href="/fees" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
-                See our fees &amp; health fund information →
+      <section className={`${s.bgPaper} ${s.lineTop}`} id="cost">
+        <div className={`${s.inner} ${s.sectionPad}`}>
+          <div style={{ textAlign: 'center' }}>
+            <p className={`${s.kicker} reveal`}>No surprises</p>
+            <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
+              Clear on cost, before anything begins
+            </h2>
+          </div>
+
+          {/* Only the flat-price services have a figure to lead with. Everything
+              else is quoted as a written estimate, so the card drops its
+              figure column rather than inventing a number. */}
+          <div
+            className={`${s.costCard} ${service.pricing === 'flat' ? '' : s.costCardPlain} reveal`}
+            style={{ transitionDelay: '.16s' }}
+          >
+            {service.pricing === 'flat' && (
+              <div className={s.costFigureCol}>
+                <div className={s.costFigure}>${comprehensiveCareVisit.price}</div>
+                <div className={s.costLabel}>{comprehensiveCareVisit.name}</div>
+                <div className={s.costValue}>Valued at $499</div>
+              </div>
+            )}
+            <div>
+              <p className={s.costPara}>{service.costPara}</p>
+              <Link href="/fees" className={s.inlineLink}>
+                See our fees &amp; health fund information &rarr;
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 10. FAQ ──────────────────────────────────────── */}
-      <section className="sec">
-        <div className="container">
-          <div className="sec-head center reveal">
-            <div className="eyebrow">Common questions</div>
-            <h2>Questions about {service.h1em.toLowerCase()}</h2>
+      <section className={`${s.bgCream2} ${s.lineTop}`}>
+        <div className={`${s.inner} ${s.innerNarrow} ${s.sectionPad}`}>
+          <div style={{ textAlign: 'center' }}>
+            <p className={`${s.kicker} reveal`}>Common questions</p>
+            <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>
+              Questions about {subject}
+            </h2>
           </div>
-          <div className="faq reveal" style={{ transitionDelay: '.1s' }}>
+
+          {/* <details> rather than a scripted accordion: it opens without JS,
+              and screen readers get the expand/collapse state for free. */}
+          <div className={`${s.faqList} reveal`} style={{ transitionDelay: '.14s' }}>
             {service.faq.map((item, i) => (
-              <details key={i}>
-                <summary>{item.q}</summary>
-                <p>{item.a}</p>
+              <details key={i} className={s.faqItem}>
+                <summary className={s.faqSummary}>
+                  {item.q}
+                  <span className={s.faqIcon} aria-hidden="true">+</span>
+                </summary>
+                <p className={s.faqAnswer}>{item.a}</p>
               </details>
             ))}
           </div>
@@ -213,20 +463,32 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* ── 11. RELATED CARE ─────────────────────────────── */}
-      <section className="sec alt" style={{ textAlign: 'center' }}>
-        <div className="container reveal">
-          <div className="eyebrow">Explore more</div>
-          <h2>Related care</h2>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '24px' }}>
+      <section className={`${s.bgPaper} ${s.lineTop}`}>
+        <div className={`${s.inner} ${s.sectionPad}`}>
+          <div style={{ textAlign: 'center' }}>
+            <p className={`${s.kicker} reveal`}>Explore more</p>
+            <h2 className={`${s.h2} reveal`} style={{ transitionDelay: '.08s' }}>Related care</h2>
+          </div>
+
+          <div className={s.relatedGrid}>
             {service.related.map((rel, i) => (
-              <Link key={i} href={rel.href} className="btn btn-ghost">{rel.label}</Link>
+              <Link
+                key={rel.href}
+                href={rel.href}
+                className={`${s.relatedCard} reveal`}
+                style={{ transitionDelay: `${0.12 + i * 0.08}s` }}
+              >
+                <div className={s.relatedTitle}>{rel.label}</div>
+                <div className={s.relatedSub}>{relatedSub(rel.href)}</div>
+                <div className={s.relatedMore}>Learn more &rarr;</div>
+              </Link>
             ))}
           </div>
+
           {/* Treatment → location. Suburb pages are out of the main menu, so
               this is the contextual path into them from the service they are
-              most often searched alongside, and the hook the suburb+treatment
-              pages will hang off. */}
-          <p style={{ marginTop: '22px', fontSize: '14.5px' }}>
+              most often searched alongside. */}
+          <p className={`${s.areasNote} reveal`} style={{ transitionDelay: '.34s' }}>
             Caring for {business.address.addressLocality} and the surrounding suburbs.{' '}
             <Link href="/areas-we-serve">See the areas we serve &rarr;</Link>
           </p>

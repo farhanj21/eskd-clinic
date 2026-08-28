@@ -47,8 +47,19 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
+  /*
+   * favicon.ico holds 16/32/48px for browser tabs, history and bookmarks; the
+   * PNG is the high-resolution version modern browsers prefer, and doubles as
+   * the Apple touch icon. Both are declared here rather than relying on the
+   * app/favicon.ico file convention, which takes precedence over this block and
+   * would silently drop the PNG.
+   */
   icons: {
-    icon: '/assets/favicon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/assets/favicon.png', type: 'image/png' },
+    ],
+    apple: '/assets/favicon.png',
   },
   openGraph: {
     type: 'website',

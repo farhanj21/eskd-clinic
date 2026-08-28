@@ -46,7 +46,7 @@ export default function CampaignPage() {
                 </li>
               </ul>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="/book" className="btn btn-primary" style={{ fontSize: '1.05rem', padding: '16px 36px' }}>
+                <Link href="/online-booking" className="btn btn-primary" style={{ fontSize: '1.05rem', padding: '16px 36px' }}>
                   Claim This Offer
                 </Link>
                 <a href={telHref} className="btn btn-ghost">{business.telephoneDisplay}</a>

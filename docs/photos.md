@@ -9,8 +9,8 @@ The `sizes` attr is already set at every call-site — don't change it. `priorit
 One folder per page, named after the route it serves:
 
 - `home/` · `about/` · `contact/` · `learn/` · `emergency/` · `nervous-patients/` · `comprehensive-care-visit/` · `your-first-visit/` · `using-your-super/`
-- `services/` — all 20 service heroes, one flat folder, named for the service slug in `data/services.ts`
-- `suburbs/` — all 20 suburb heroes, one flat folder, named for the suburb slug in `data/suburbs.ts`
+- `services/` — service photography, one flat folder. The hero is named for the service, and the three supporting photos are `<slug>-1` (opening frame), `<slug>-2` (who it's for) and `<slug>-3` (the quote portrait), named for the service slug in `data/services.ts`
+- `unused/` — the parking bay for photos nothing references. Three ex-suburb shots (`caulfield-north`, `prahran`, `south-yarra`) plus four unwired leftovers (`comfort-is-part`, `comprehensive-care-visit`, `see-our-fees-1/2`). **Still served to production** — `public/` ships whole, so anything parked here is dead weight in the deploy until it is either wired to a call-site or deleted
 - `articles/` — learn article images · `gallery/` — consented results, shared by the home page and `/our-work`
 - `team/` — portraits and group shots · `funds/` — health fund logos · `social/` · `video/`
 - `shared/` — the handful of photos genuinely used across unrelated pages (`hero`, `meet-the-team`)
@@ -50,7 +50,7 @@ One folder per page, named after the route it serves:
 | ✓ | Page | Shot brief | Target file |
 |---|---|---|---|
 | ☐ | `app/nervous-patients/page.tsx` hero | Calm, relaxed patient with gentle clinician | `heroes/nervous-hero.webp` |
-| ☐ | nervous-patients comfort | Happy-gas setup, calm treatment room, or patient with headphones | `clinic/comfort-options.webp` |
+| ☑ | nervous-patients comfort | Happy-gas setup, calm treatment room, or patient with headphones | `nervous-patients/comfort-options.webp` |
 | ☐ | nervous-patients team | Warm team photo, real faces in the clinic | `team/team-home.webp` (reuse) |
 | ☐ | `app/your-first-visit/page.tsx` hero | Friendly welcome at reception | `clinic/reception-welcome.webp` |
 | ☐ | your-first-visit offer card | Consult room | `clinic/consult-room.webp` (reuse) |
@@ -61,13 +61,13 @@ One folder per page, named after the route it serves:
 | ☐ | `app/services/page.tsx` hero | Team or a treatment room | `heroes/services-hero.webp` |
 | ☐ | `app/using-your-super/page.tsx` hero | Calm patient-dentist conversation, care plan on table | `clinic/care-plan-chat.webp` |
 | ☐ | `app/areas-we-serve/page.tsx` hero | Clinic exterior or local street | `clinic/exterior-corner.webp` (reuse) |
-| ☐ | 5× `app/dentist-*/page.tsx` heroes (st-kilda, balaclava, caulfield, elwood, elsternwick) | Clinic or team with calm local feel | `heroes/local-hero.webp` — one shared photo works for all five |
+| — | `app/dentist-*/page.tsx` heroes | *No hero photo* — the suburb pages were rebuilt to the suburb-page spec, whose hero is the copy plus the quick-facts card. All 20 suburb photos are gone from `suburbs/`: 17 became `services/<slug>-3.webp` and the folder was removed; the last 3 sit in `unused/` |
 | ☐ | `app/learn/page.tsx` hero | Warm, calm editorial image | `heroes/learn-hero.webp` |
 | ☐ | learn cards ×2 | Article image / coming soon | `articles/<slug>.webp` |
 | ☐ | `app/our-work/page.tsx` hero + gallery cards | Consented before/after photos | `gallery/case-<n>.webp` — consent + AHPRA review before publishing |
-| — | `app/book/page.tsx` map | *Not a photo* — awaiting Google Maps iframe | — |
+| — | `app/online-booking/page.tsx` map | *Not a photo* — awaiting Google Maps iframe | — |
 
 ## Template pages (data-driven, add photos via the data files later)
 
-- `app/services/[slug]/page.tsx` — one hero per service (20 services). Suggest `services/<slug>.webp`; wiring will need an `image` field in `data/services.ts` passed to the `<Photo>`.
+- `app/services/[slug]/page.tsx` — four photos per service: the hero (`heroImage`) plus `detailImage`, `whoImage` and `quoteImage`, all set per service in `data/services.ts`. A service that sets none falls back to the shared shots declared at the top of the page. Photographed: all 20 services. Every slot is filled except the `quoteImage` on invisalign and bone-grafting, which keep the shared fallback — the suburb pool ran out of shots that suit that slot, and the fallback is sharper than what remained. `all-on-4-implants-3` (ex-malvern) is the one image below 1.00x, at 0.98x — identical to the fallback it replaced, and kept for the much better subject match. Shoot square (1:1, 1024px+): the frames are 0.95:1 to 1.09:1, so a 16:9 source loses 39% of its width to the cover-crop and goes soft on high-DPI screens.
 - `app/learn/[slug]/page.tsx` — one hero per article. Suggest `articles/<slug>.webp` via an `image` field in `data/articles.ts`.

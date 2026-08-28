@@ -25,7 +25,7 @@ export default function AboutStoryPage() {
               Every long-standing practice has a story. Ours began around 1980, on the corner of Dandenong and Orrong Roads, and it&apos;s still being written by the same neighbourhood today.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
@@ -92,12 +92,16 @@ export default function AboutStoryPage() {
       <section className="sec">
         <div className="container">
           <div className="band reveal">
+            {/* Hers is a tall portrait (591×842) in a wide band, so cover trims it
+                hard vertically and centring cut the top of her head off. 15%
+                keeps the whole head in, with a little air above it. */}
             <Photo
                src="/assets/team/anbar-ganatra.webp"
-               alt="Dr Edmund Goldman smiling in the clinic"
+               alt="Dr Anbar Ganatra smiling in the clinic"
                hint="Warm, real photo of Dr Anbar with a patient, gentle and reassuring. Never stock"
                sizes="(max-width: 860px) 100vw, 48vw"
                style={{ minHeight: '320px' }}
+               objectPosition="center 15%"
             />
             <div className="bandtext">
               <div className="eyebrow">Chapter three</div>
@@ -113,9 +117,11 @@ export default function AboutStoryPage() {
       {/* ── IN OUR WORDS ─────────────────────────────────── */}
       <section className="sec alt">
         <div className="container reveal">
-          <p className="pq">
-            <span className="mk">&ldquo;</span>Generations of local families have trusted us. We intend to keep it that way.<span className="mk">&rdquo;</span>
-          </p>
+          <div className="pqfit">
+            <p className="pq">
+              <span className="mk">&ldquo;</span>Generations of local families have trusted us. We intend to keep it that way.<span className="mk">&rdquo;</span>
+            </p>
+          </div>
         </div>
       </section>
 

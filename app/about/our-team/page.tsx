@@ -91,7 +91,7 @@ export default function AboutTeamPage() {
               A warm, experienced team who genuinely care, and who&apos;ll remember you next time. Here&apos;s who you&apos;ll meet.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function AboutTeamPage() {
           <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/about/our-story" className="btn btn-ghost">Our story</Link>
             <Link href="/about/why-were-different" className="btn btn-ghost">Why we&apos;re different</Link>
-            <Link href="/book" className="btn">Book your visit</Link>
+            <Link href="/online-booking" className="btn">Book your visit</Link>
           </div>
         </div>
       </section>

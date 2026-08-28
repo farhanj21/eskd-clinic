@@ -27,7 +27,7 @@ export default function TopicView({ topic }: { topic: Topic }) {
             <h1>{topic.label}</h1>
             <p className="lead">{topic.intro}</p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book a check-up</Link>
+              <Link href="/online-booking" className="btn">Book a check-up</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>

@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
       /**
+       * The booking page moved from /book to /online-booking. /book was the
+       * live URL, so it is linked from outside the site and indexed; this
+       * keeps those hits landing on the page rather than a 404.
+       */
+      {
+        source: '/book',
+        destination: '/online-booking',
+        permanent: true,
+      },
+      /**
        * /services/check-up-clean was a legacy duplicate of /services/check-ups
        * and /services/cleans-and-hygiene — the same treatment on a third URL,
        * competing with both and linked from nowhere on the site. The page is

@@ -148,7 +148,7 @@ export default function EmergencyPage() {
             </p>
             <div className="hero-cta">
               <a href={telHref} className="btn">Call {business.telephoneDisplay}</a>
-              <Link href="/book" className="btn btn-ghost">Book online</Link>
+              <Link href="/online-booking" className="btn btn-ghost">Book online</Link>
             </div>
 
             <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
@@ -300,7 +300,7 @@ export default function EmergencyPage() {
             <a className="btn" href={telHref}>Call {business.telephoneDisplay}</a>
           </div>
           <p style={{ marginTop: '14px', fontSize: '14px', opacity: 0.85 }}>
-            <Link href="/book" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>
+            <Link href="/online-booking" style={{ color: 'var(--cream)', textDecoration: 'underline' }}>or book online</Link>
           </p>
         </div>
       </section>

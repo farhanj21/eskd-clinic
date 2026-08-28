@@ -76,7 +76,7 @@ export default function ServicesPage() {
               From everyday check-ups and cleans to implants and cosmetic care, here&apos;s everything we offer, with calm, no-judgement care at the centre of all of it.
             </p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book your visit</Link>
+              <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">

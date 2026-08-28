@@ -8,13 +8,26 @@ import { TREATMENTS } from '@/lib/enquiry'
 interface GetInTouchProps {
   variant?: GetInTouchVariant
   id?: string
+  /**
+   * Overrides the heading above the contact details.
+   *
+   * Suburb pages pass "Make us your [suburb] dentist" so the one section of
+   * shared furniture that should name the reader's suburb does.
+   */
+  heading?: string
 }
 
-export default function GetInTouch({ variant = 'default', id = 'contact' }: GetInTouchProps) {
+export default function GetInTouch({
+  variant = 'default',
+  id = 'contact',
+  heading = 'We’re here whenever you’re ready',
+}: GetInTouchProps) {
   const copy = getInTouchCopy[variant]
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  /** Kept so the confirmation can greet them by name. */
+  const [sentName, setSentName] = useState('')
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -50,6 +63,7 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
         return
       }
 
+      setSentName(String(fd.get('firstName') ?? '').trim())
       form.reset()
       setSubmitted(true)
     } catch {
@@ -66,7 +80,7 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
         {/* ── LEFT: contact info ─────────────────────────── */}
         <div className="gt-info">
           <div className="gt-eyebrow">Get in touch</div>
-          <h2>We&apos;re here whenever you&apos;re ready</h2>
+          <h2>{heading}</h2>
           <p className="gt-sub">{copy.sub}</p>
 
           <div className="gt-detail">
@@ -106,9 +120,48 @@ export default function GetInTouch({ variant = 'default', id = 'contact' }: GetI
           <h2>{copy.cta}</h2>
 
           {submitted ? (
-            <div style={{ padding: '40px 0', textAlign: 'center' }}>
-              <h3 style={{ color: 'var(--cream)' }}>Message sent</h3>
-              <p>Thanks &mdash; we&apos;ll be in touch within one business day.<br />Prefer to call? <a href={telHref}>{business.telephoneDisplay}</a></p>
+            /* role="status" so a screen reader announces the confirmation —
+               the form it replaced is gone, so nothing else would say it. */
+            <div className="gt-done" role="status">
+              <div className="gt-done-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+
+              <h3>Message sent</h3>
+              <p>
+                {sentName ? `Thanks ${sentName} — your` : 'Thanks — your'} message is with our
+                front desk, and one of the team will get back to you personally.
+              </p>
+
+              <ul className="gt-done-next">
+                <li>
+                  <span className="ic" aria-hidden="true">&#9678;</span>
+                  <span>We reply to every enquiry within one business day, usually sooner.</span>
+                </li>
+                <li>
+                  <span className="ic" aria-hidden="true">&#9993;</span>
+                  <span>Our reply comes from {business.email} &mdash; worth a look in junk if it hasn&apos;t landed.</span>
+                </li>
+                <li>
+                  <span className="ic" aria-hidden="true">&#9742;</span>
+                  <span>In pain or it&apos;s urgent? Call us and we&apos;ll do our best to see you today.</span>
+                </li>
+              </ul>
+
+              <div className="gt-done-actions">
+                <a href={telHref} className="gt-done-call">
+                  Call {business.telephoneDisplay}
+                </a>
+                <button
+                  type="button"
+                  className="gt-done-again"
+                  onClick={() => { setSubmitted(false); setSentName('') }}
+                >
+                  Send another message
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>

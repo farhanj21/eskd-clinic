@@ -90,7 +90,7 @@ export default function Footer() {
             {' · '}
             <Link href="/terms">Terms</Link>
             {' · '}
-            <Link href="/book">Book online</Link>
+            <Link href="/online-booking">Book online</Link>
           </span>
         </div>
       </div>

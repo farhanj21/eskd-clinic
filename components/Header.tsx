@@ -129,7 +129,7 @@ export default function Header() {
                 About
               </button>
               <div className="dd">
-                <Link href="/about" onClick={close}>About Us</Link>
+                <Link href="/areas-we-serve" onClick={close}>Areas We Serve</Link>
                 <Link href="/about/our-story" onClick={close}>Our Story</Link>
                 <Link href="/about/why-were-different" onClick={close}>Why We&apos;re Different</Link>
                 <Link href="/about/our-team" onClick={close}>Meet the Team</Link>
@@ -176,7 +176,7 @@ export default function Header() {
             <span className="phone-full">{business.telephoneDisplay}</span>
             <span className="phone-mini">Call us</span>
           </a>
-          <Link href="/book" className="btn">
+          <Link href="/online-booking" className="btn">
             Book your visit
           </Link>
           <button

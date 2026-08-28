@@ -87,7 +87,7 @@ export default function LearnIndex() {
             <h1>Clear, calm answers to your <em>dental questions</em></h1>
             <p className="lead">Honest, easy-to-read guides written to help you understand your mouth — no jargon, no scare tactics, no selling.</p>
             <div className="hero-cta">
-              <Link href="/book" className="btn">Book a check-up</Link>
+              <Link href="/online-booking" className="btn">Book a check-up</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
           </div>

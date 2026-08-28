@@ -1,10 +1,49 @@
 export interface ServiceData {
   slug: string
+  /**
+   * The service as a noun phrase for running prose ("Questions about …").
+   * Only needed where h1em can't stand on its own — either because it's a
+   * sentence fragment ("look and last") or because it's title-cased and would
+   * read oddly mid-sentence. Falls back to h1em.
+   */
+  shortName?: string
+  /** One-line subtitle used wherever this service appears as a related-care card. */
+  cardSub: string
+  /**
+   * The four-column strip under the opening copy: what this treatment covers,
+   * in four short terms. Grounded in the same copy as whatItIs.
+   */
+  scope: { term: string; def: string }[]
+  /**
+   * Third figure in the stats band. The first two are the same on every
+   * service page; this one is the service's own, and falls back to the
+   * suburbs figure the home page uses when a service has no meaningful number.
+   */
+  stat?: { count: number; suffix: string; label: string }
+  /**
+   * How this service is paid for, which drives the hero badge and the cost
+   * band. 'flat' is the fixed Comprehensive Care Visit price, 'cdbs' is
+   * Medicare's Child Dental Benefits Schedule, and everything else is quoted
+   * as a written estimate. Defaults to 'estimate'.
+   */
+  pricing?: 'flat' | 'cdbs' | 'estimate'
   eyebrow: string
   h1pre: string   // text before the <em> (empty string if em comes first)
   h1em: string    // the italic portion
   heroImage?: string  // path under /public for the hero photo; falls back to a placeholder hint when absent
   heroAlt?: string
+  /**
+   * The three supporting photos below the hero: the opening "what it is"
+   * frame, the "who it's for" portrait, and the nervous-patient quote. Each
+   * falls back to the shared shot declared in the page when a service has no
+   * photo of its own, so a service can supply one, two or all three.
+   */
+  detailImage?: string
+  detailAlt?: string
+  whoImage?: string
+  whoAlt?: string
+  quoteImage?: string
+  quoteAlt?: string
   heroLead: string
   whatItIsH2: string
   whatItIs: string[]
@@ -27,11 +66,26 @@ export interface ServiceData {
 export const services: ServiceData[] = [
   {
     slug: 'check-ups',
+    cardSub: 'Gentle, thorough examinations',
+    pricing: 'flat',
+    scope: [
+      { term: 'Teeth', def: 'Decay, wear and cracks' },
+      { term: 'Gums', def: 'Bleeding, recession, health' },
+      { term: 'Bite', def: 'How your teeth meet' },
+      { term: 'Soft tissues', def: 'Screening you can\'t do at home' },
+    ],
+    stat: { count: 6, suffix: '', label: 'Months between most check-ups' },
     eyebrow: 'General & preventive',
     h1pre: 'Gentle, thorough',
     h1em: 'check-ups',
     heroImage: '/assets/services/checkup-hero.webp',
     heroAlt: 'A gentle dentist examining a young patient wearing protective glasses in the treatment chair',
+    detailImage: '/assets/services/check-ups-1.webp',
+    detailAlt: 'A dentist examining a patient\'s teeth with a mirror, her panoramic X-ray on the screen behind',
+    whoImage: '/assets/services/check-ups-2.webp',
+    whoAlt: 'A smiling patient having her teeth checked, with her X-ray on the screen behind her',
+    quoteImage: '/assets/services/check-ups-3.webp',
+    quoteAlt: 'A relaxed patient smiling in the dental chair after her check-up',
     heroLead: 'A calm, comprehensive look at your teeth, gums and bite, so small problems are found early, while they\'re still small.',
     whatItIsH2: 'What a comprehensive check-up involves',
     whatItIs: [
@@ -83,10 +137,25 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'cleans-and-hygiene',
+    cardSub: 'Keeping things fresh between visits',
+    pricing: 'flat',
+    scope: [
+      { term: 'Plaque', def: 'The soft build-up brushing leaves behind' },
+      { term: 'Tartar', def: 'Hardened deposits, gently scaled away' },
+      { term: 'Gumline', def: 'Cleaned below where you can reach' },
+      { term: 'Staining', def: 'Lifted with a smooth polish' },
+    ],
+    stat: { count: 6, suffix: '', label: 'Months between most cleans' },
     eyebrow: 'General & preventive',
     h1pre: 'Professional',
     h1em: 'cleans & hygiene',
     heroImage: '/assets/services/cleans-hero.webp',
+    detailImage: '/assets/services/cleans-and-hygiene-1.webp',
+    detailAlt: 'A hygienist using an ultrasonic scaler to clean a relaxed patient\'s teeth, her scan on the screen behind',
+    whoImage: '/assets/services/cleans-and-hygiene-2.webp',
+    whoAlt: 'A hygienist scaling and polishing a smiling patient\'s teeth, with her X-ray on the screen behind',
+    quoteImage: '/assets/services/cleans-and-hygiene-3.webp',
+    quoteAlt: 'A patient smiling during a gentle scale and clean',
     heroLead: 'A gentle, thorough clean that removes what brushing can\'t reach, and keeps your gums healthy for life.',
     whatItIsH2: 'What a professional clean does',
     whatItIs: [
@@ -138,10 +207,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'childrens-dentistry',
+    cardSub: 'Calm, positive visits for kids',
+    pricing: 'cdbs',
+    scope: [
+      { term: 'First visits', def: 'Unhurried, and never rushed' },
+      { term: 'Prevention', def: 'Habits that hold for life' },
+      { term: 'Growth', def: 'Watching how teeth come through' },
+      { term: 'Confidence', def: 'Visits that feel normal, not scary' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: 'Friendly',
     h1em: 'dentistry for kids',
     heroImage: '/assets/services/children-dentistry.webp',
+    detailImage: '/assets/services/childrens-dentistry-1.webp',
+    detailAlt: 'A dentist gently examining a young girl who is holding her teddy bear, in a bright children\'s treatment room',
+    whoImage: '/assets/services/childrens-dentistry-2.webp',
+    whoAlt: 'A young girl laughing in the chair while a hygienist checks her teeth in a colourful children\'s room',
+    quoteImage: '/assets/services/childrens-dentistry-3.webp',
+    quoteAlt: 'A hygienist teaching a young girl how to brush using a model of teeth',
     heroLead: 'Calm, positive visits that help children feel comfortable, and grow up without fear of the dentist.',
     whatItIsH2: 'What children\'s dentistry looks like here',
     whatItIs: [
@@ -193,11 +276,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'mouthguards',
+    cardSub: 'Custom-fitted protection for sport',
+    scope: [
+      { term: 'Fit', def: 'Moulded from your own impression' },
+      { term: 'Comfort', def: 'Stays put, and doesn\'t get in the way' },
+      { term: 'Protection', def: 'Made for real contact sport' },
+      { term: 'Colours', def: 'Pick your team, or keep it clear' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: 'Custom',
     h1em: 'sports mouthguards',
     heroImage: '/assets/services/mouthguards.webp',
     heroAlt: 'A dentist discussing treatment options with a patient in the clinic',
+    detailImage: '/assets/services/mouthguards-1.webp',
+    detailAlt: 'A dentist showing a custom-fitted clear mouthguard to a young sportsperson in the treatment chair',
+    whoImage: '/assets/services/mouthguards-2.webp',
+    whoAlt: 'A dentist fitting a custom mouthguard for a smiling young man, a scan of his teeth on the screen behind',
+    quoteImage: '/assets/services/mouthguards-3.webp',
+    quoteAlt: 'A young patient smiling while her teeth and bite are checked',
     heroLead: 'A properly fitted, custom mouthguard that actually protects, far better than the boil-and-bite kind.',
     whatItIsH2: 'What a custom mouthguard is',
     whatItIs: [
@@ -249,11 +345,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'tmj-jaw-pain',
+    cardSub: 'Relief for jaw ache, clicking and grinding',
+    scope: [
+      { term: 'Jaw joint', def: 'Clicking, locking and ache' },
+      { term: 'Muscles', def: 'Clenching, tension and headaches' },
+      { term: 'Tooth wear', def: 'What grinding leaves behind' },
+      { term: 'Night splint', def: 'Custom-made to protect and settle' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: 'Help for',
     h1em: 'jaw pain & TMJ',
     heroImage: '/assets/services/tmj-jaw.webp',
     heroAlt: 'A dentist gently assessing a patient\'s jaw joint and muscles during a TMJ examination',
+    detailImage: '/assets/services/tmj-jaw-pain-1.webp',
+    detailAlt: 'A clinician showing a patient the jaw joint on a skull model, with jaw scans on the screen behind',
+    whoImage: '/assets/services/tmj-jaw-pain-2.webp',
+    whoAlt: 'A dentist pointing out the jaw joint on a skull model for a patient, jaw X-rays displayed behind',
+    quoteImage: '/assets/services/tmj-jaw-pain-3.webp',
+    quoteAlt: 'A dentist reassuring a relaxed patient before a jaw assessment',
     heroLead: 'Jaw pain, clicking, headaches or grinding? We\'ll help you understand why, and find real relief.',
     whatItIsH2: 'What TMJ and grinding problems are',
     whatItIs: [
@@ -305,11 +414,25 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'myofunctional-therapy',
+    shortName: 'myofunctional therapy',
+    cardSub: 'Retraining breathing and tongue habits',
+    scope: [
+      { term: 'Breathing', def: 'Encouraging nasal over mouth' },
+      { term: 'Tongue posture', def: 'Where it rests, all day' },
+      { term: 'Swallowing', def: 'Retraining the pattern' },
+      { term: 'Development', def: 'How jaws and teeth grow' },
+    ],
     eyebrow: 'General & preventive',
     h1pre: '',
     h1em: 'Myofunctional therapy',
     heroImage: '/assets/services/myofunctional.webp',
     heroAlt: 'A dental assistant reviewing scans with a smiling patient in the treatment chair',
+    detailImage: '/assets/services/myofunctional-therapy-1.webp',
+    detailAlt: 'A clinician guiding a patient through a tongue and facial muscle exercise, oral photographs on the screen behind',
+    whoImage: '/assets/services/myofunctional-therapy-2.webp',
+    whoAlt: 'A clinician demonstrating a facial muscle exercise for a patient in the treatment chair',
+    quoteImage: '/assets/services/myofunctional-therapy-3.webp',
+    quoteAlt: 'A patient smiling and chatting with her clinician in the treatment room',
     heroLead: 'Gentle exercises that retrain the muscles of the mouth and face, to improve breathing, tongue position and jaw development.',
     whatItIsH2: 'What myofunctional therapy is',
     whatItIs: [
@@ -361,11 +484,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'fillings',
+    cardSub: 'Tooth-coloured repairs that blend in',
+    scope: [
+      { term: 'Decay', def: 'Removed gently, back to sound tooth' },
+      { term: 'Small cracks', def: 'Repaired before they spread' },
+      { term: 'Composite', def: 'Bonded, tooth-coloured, no metal' },
+      { term: 'Shape', def: 'Polished back to a natural bite' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Tooth-coloured',
     h1em: 'fillings',
     heroImage: '/assets/services/fillings.webp',
     heroAlt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
+    detailImage: '/assets/services/fillings-1.webp',
+    detailAlt: 'A dentist wearing magnifying loupes placing a tooth-coloured filling for a patient in the treatment chair',
+    whoImage: '/assets/services/fillings-2.webp',
+    whoAlt: 'A dentist shaping a new filling with a handpiece while the patient rests in the chair',
+    quoteImage: '/assets/services/fillings-3.webp',
+    quoteAlt: 'A clinician reassuring a relaxed patient in the dental chair',
     heroLead: 'Natural-looking fillings that repair decay or damage gently, and blend in so no one can tell.',
     whatItIsH2: 'What a filling does',
     whatItIs: [
@@ -417,11 +553,25 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'crowns-and-bridges',
+    shortName: 'crowns and bridges',
+    cardSub: 'Strength and shape, custom-made',
+    scope: [
+      { term: 'Crowns', def: 'A cap over a weakened tooth' },
+      { term: 'Bridges', def: 'A gap filled using the teeth beside it' },
+      { term: 'Materials', def: 'Matched to your own shade and shape' },
+      { term: 'Bite', def: 'Checked so everything meets evenly' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Crowns & bridges that',
     h1em: 'look and last',
     heroImage: '/assets/services/crowns-bridges.webp',
     heroAlt: 'A smiling patient having their teeth examined with a dental mirror',
+    detailImage: '/assets/services/crowns-and-bridges-1.webp',
+    detailAlt: 'A dentist examining a patient\'s teeth with a mirror, a close-up of her upper teeth on the screen behind',
+    whoImage: '/assets/services/crowns-and-bridges-2.webp',
+    whoAlt: 'A dentist preparing a tooth for a crown, a digital 3D scan of the patient\'s bite on the screen behind',
+    quoteImage: '/assets/services/crowns-and-bridges-3.webp',
+    quoteAlt: 'A dentist showing a patient how to care for a new crown using a model of teeth',
     heroLead: 'When a tooth is cracked, worn or missing, a crown or bridge restores its strength and appearance, custom-made to blend in so no one can tell.',
     whatItIsH2: 'What crowns and bridges actually are',
     whatItIs: [
@@ -473,11 +623,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'root-canal',
+    cardSub: 'Ending the pain, saving the tooth',
+    scope: [
+      { term: 'Infection', def: 'Removed from inside the tooth' },
+      { term: 'Pain', def: 'Usually eases from the first visit' },
+      { term: 'Sealing', def: 'Cleaned canals, closed properly' },
+      { term: 'Protection', def: 'Often a crown to finish' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'root canal therapy',
     heroImage: '/assets/services/rootcanal.webp',
     heroAlt: 'A dental assistant holding instruments, with a patient seated in the treatment chair behind her',
+    detailImage: '/assets/services/root-canal-1.webp',
+    detailAlt: 'A dentist working under magnification with a handpiece, the tooth\'s root canal X-ray on the screen behind',
+    whoImage: '/assets/services/root-canal-2.webp',
+    whoAlt: 'A dentist using a treatment microscope during root canal therapy, the patient relaxed in the chair',
+    quoteImage: '/assets/services/root-canal-3.webp',
+    quoteAlt: 'A dentist pointing out a tooth on an X-ray for a smiling patient',
     heroLead: 'Root canals have a fearsome reputation they don\'t deserve. Done gently, the treatment relieves pain and saves your tooth.',
     whatItIsH2: 'What root canal therapy actually is',
     whatItIs: [
@@ -529,11 +692,25 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'onlays-and-inlays',
+    shortName: 'onlays and inlays',
+    cardSub: 'A conservative middle ground',
+    scope: [
+      { term: 'Inlays', def: 'Sit within the biting surface' },
+      { term: 'Onlays', def: 'Cover a cusp as well' },
+      { term: 'Fit', def: 'Digitally impressed, custom-made' },
+      { term: 'Tooth saved', def: 'Less removed than for a crown' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: '',
     h1em: 'Onlays & inlays',
     heroImage: '/assets/services/onlays.webp',
     heroAlt: 'A happy patient high-fiving his dentist, pleased with his treatment',
+    detailImage: '/assets/services/onlays-and-inlays-1.webp',
+    detailAlt: 'A dentist examining a back tooth, a close-up of the molars on the screen behind',
+    whoImage: '/assets/services/onlays-and-inlays-2.webp',
+    whoAlt: 'A dentist checking a patient\'s molars under magnification, with ceramic shade samples on the tray',
+    quoteImage: '/assets/services/onlays-and-inlays-3.webp',
+    quoteAlt: 'A relaxed patient smiling as her restored teeth are checked',
     heroLead: 'A strong, conservative middle ground between a filling and a crown, preserving more of your natural tooth.',
     whatItIsH2: 'What onlays and inlays are',
     whatItIs: [
@@ -585,11 +762,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'dentures',
+    cardSub: 'Comfortable, natural-looking replacements',
+    scope: [
+      { term: 'Full', def: 'A complete set, upper or lower' },
+      { term: 'Partial', def: 'Filling specific gaps' },
+      { term: 'Fit', def: 'Adjusted until it feels right' },
+      { term: 'Implant support', def: 'For a more secure hold' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Comfortable',
     h1em: 'dentures',
     heroImage: '/assets/services/dentures.webp',
     heroAlt: 'A smiling patient chatting with her dentist during a consultation',
+    detailImage: '/assets/services/dentures-1.webp',
+    detailAlt: 'A dentist showing a full denture to a smiling patient in the treatment chair',
+    whoImage: '/assets/services/dentures-2.webp',
+    whoAlt: 'A dentist talking a patient through a new set of dentures at her fitting appointment',
+    quoteImage: '/assets/services/dentures-3.webp',
+    quoteAlt: 'An older patient laughing as he sees his new smile in a hand mirror',
     heroLead: 'Natural-looking, well-fitting dentures that restore your smile, and let you eat and speak with confidence.',
     whatItIsH2: 'What modern dentures are like',
     whatItIs: [
@@ -641,11 +831,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'extractions-wisdom-teeth',
+    cardSub: 'Gentle removal, and a plan for the gap',
+    scope: [
+      { term: 'Wisdom teeth', def: 'Impacted, crowded or infected' },
+      { term: 'Comfort', def: 'Fully numb before anything starts' },
+      { term: 'Healing', def: 'Clear aftercare, written down' },
+      { term: 'The gap', def: 'Planned for, not left to chance' },
+    ],
     eyebrow: 'Restorative dentistry',
     h1pre: 'Gentle',
     h1em: 'extractions & wisdom teeth',
     heroImage: '/assets/services/gentle-extractions.webp',
     heroAlt: 'A dentist reassuringly speaking with a patient in the treatment chair before a procedure',
+    detailImage: '/assets/services/extractions-wisdom-teeth-1.webp',
+    detailAlt: 'A dentist examining a relaxed patient, her panoramic X-ray on the screen behind',
+    whoImage: '/assets/services/extractions-wisdom-teeth-2.webp',
+    whoAlt: 'A dentist checking a smiling patient\'s wisdom teeth, her panoramic X-ray on the screen behind',
+    quoteImage: '/assets/services/extractions-wisdom-teeth-3.webp',
+    quoteAlt: 'A dentist showing a patient her panoramic X-ray while an assistant looks on',
     heroLead: 'When a tooth can\'t be saved, we remove it as gently and calmly as possible, and plan what comes next.',
     whatItIsH2: 'What an extraction involves',
     whatItIs: [
@@ -697,11 +900,25 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'smile-design',
+    shortName: 'smile design',
+    cardSub: 'A considered plan for your whole smile',
+    scope: [
+      { term: 'Your face', def: 'Proportion, not a template' },
+      { term: 'Options', def: 'Whitening, bonding, veneers, alignment' },
+      { term: 'Preview', def: 'See it before you commit' },
+      { term: 'Pace', def: 'Phased over visits that suit you' },
+    ],
     eyebrow: 'Cosmetic dentistry',
     h1pre: '',
     h1em: 'Smile design',
     heroImage: '/assets/services/smile-design.webp',
     heroAlt: 'A smiling patient having her teeth examined with a dental mirror during a smile design consultation',
+    detailImage: '/assets/services/smile-design-1.webp',
+    detailAlt: 'A dentist showing a patient her digital smile design on a tablet, before-and-after images on the screen behind',
+    whoImage: '/assets/services/smile-design-2.webp',
+    whoAlt: 'A dentist talking a smiling patient through a model of her planned smile',
+    quoteImage: '/assets/services/smile-design-3.webp',
+    quoteAlt: 'A dentist working closely with an assistant on a patient in the treatment chair',
     heroLead: 'A considered, natural-looking care plan to refresh your smile, never overdone, always in proportion to you.',
     whatItIsH2: 'What smile design is',
     whatItIs: [
@@ -753,11 +970,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'veneers',
+    cardSub: 'Thin, custom shells for front teeth',
+    scope: [
+      { term: 'Colour', def: 'Even, natural, chosen with you' },
+      { term: 'Shape', def: 'Length, width and edges refined' },
+      { term: 'Gaps', def: 'Small spaces closed' },
+      { term: 'Longevity', def: 'Cared for, they last years' },
+    ],
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Natural-looking',
     h1em: 'veneers',
     heroImage: '/assets/services/veneers.webp',
     heroAlt: 'A dental assistant and a smiling patient taking a selfie together in the treatment chair',
+    detailImage: '/assets/services/veneers-1.webp',
+    detailAlt: 'A dentist matching a shade guide to a smiling patient\'s teeth, a close-up of her smile on the screen behind',
+    whoImage: '/assets/services/veneers-2.webp',
+    whoAlt: 'A dentist holding a shade guide beside a smiling patient who is holding a hand mirror',
+    quoteImage: '/assets/services/veneers-3.webp',
+    quoteAlt: 'A clinician reassuring a smiling patient in the treatment chair',
     heroLead: 'Thin, custom shells that refine the shape, colour or alignment of front teeth, designed to look like your own, only better.',
     whatItIsH2: 'What veneers are',
     whatItIs: [
@@ -809,10 +1039,23 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'teeth-whitening',
+    cardSub: 'Safe, dentist-supervised brightening',
+    scope: [
+      { term: 'Suitability', def: 'Checked before anything starts' },
+      { term: 'Method', def: 'In-chair, take-home, or both' },
+      { term: 'Safety', def: 'Gums and teeth protected throughout' },
+      { term: 'Sensitivity', def: 'Managed, and short-lived' },
+    ],
     eyebrow: 'Cosmetic dentistry',
     h1pre: 'Professional',
     h1em: 'teeth whitening',
     heroImage: '/assets/services/teeth-white.webp',
+    detailImage: '/assets/services/teeth-whitening-1.webp',
+    detailAlt: 'A clinician positioning a whitening lamp for a patient wearing protective glasses',
+    whoImage: '/assets/services/teeth-whitening-2.webp',
+    whoAlt: 'A patient in protective eyewear during an in-chair whitening treatment',
+    quoteImage: '/assets/services/teeth-whitening-3.webp',
+    quoteAlt: 'A dentist checking a patient\'s tooth shade against a shade guide',
     heroLead: 'Safe, dentist-supervised whitening for a brighter smile, without the guesswork or sensitivity of shop-bought kits.',
     whatItIsH2: 'What professional whitening is',
     whatItIs: [
@@ -864,10 +1107,22 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'invisalign',
+    shortName: 'Invisalign',
+    cardSub: 'Straightening you can barely see',
+    scope: [
+      { term: 'Aligners', def: 'Clear, removable, near-invisible' },
+      { term: 'Scanning', def: 'Digital, no goopy impressions' },
+      { term: 'The plan', def: 'Your result mapped out first' },
+      { term: 'Retainers', def: 'Holding the result afterwards' },
+    ],
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Invisalign & clear aligners',
     heroImage: '/assets/services/invisalign.webp',
+    detailImage: '/assets/services/invisalign-1.webp',
+    detailAlt: 'A clinician holding up a clear aligner for a patient, a 3D scan of her teeth on the screen behind',
+    whoImage: '/assets/services/invisalign-2.webp',
+    whoAlt: 'A clinician handing a patient her clear aligner, with her digital treatment plan on the screen behind',
     heroLead: 'Straighten your teeth discreetly with clear, removable aligners, most people won\'t even notice you\'re wearing them.',
     whatItIsH2: 'What clear aligners are',
     whatItIs: [
@@ -919,10 +1174,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'braces',
+    shortName: 'braces',
+    cardSub: 'Proven, precise tooth movement',
+    scope: [
+      { term: 'Brackets', def: 'Small, and fixed in place' },
+      { term: 'Wires', def: 'Adjusted gently over time' },
+      { term: 'Complex cases', def: 'Where aligners may not suit' },
+      { term: 'All ages', def: 'Children, teenagers and adults' },
+    ],
     eyebrow: 'Orthodontics',
     h1pre: '',
     h1em: 'Braces',
     heroImage: '/assets/services/braces.webp',
+    detailImage: '/assets/services/braces-1.webp',
+    detailAlt: 'A dentist chatting with a smiling young patient wearing metal braces in the treatment chair',
+    whoImage: '/assets/services/braces-2.webp',
+    whoAlt: 'A dentist showing a model of braces to a smiling young patient, her panoramic X-ray on the screen behind',
+    quoteImage: '/assets/services/braces-3.webp',
+    quoteAlt: 'A young patient smiling with her braces on, partway through treatment',
     heroLead: 'Traditional braces remain one of the most effective ways to straighten teeth and correct the bite, for children and adults alike.',
     whatItIsH2: 'What braces are',
     whatItIs: [
@@ -974,10 +1243,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'dental-implants',
+    shortName: 'dental implants',
+    cardSub: 'The closest thing to a natural tooth',
+    scope: [
+      { term: 'The post', def: 'Titanium, acting as a root' },
+      { term: 'Healing', def: 'Bone integrates over months' },
+      { term: 'The crown', def: 'Matched to the teeth beside it' },
+      { term: 'Neighbours', def: 'Left untouched, unlike a bridge' },
+    ],
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Single dental implants',
     heroImage: '/assets/services/single-implant.webp',
+    detailImage: '/assets/services/dental-implants-1.webp',
+    detailAlt: 'A dentist showing a patient a single-implant model, her implant X-ray on the screen behind',
+    whoImage: '/assets/services/dental-implants-2.webp',
+    whoAlt: 'A dentist explaining an implant model to a smiling patient, her 3D scan on the screen behind',
+    quoteImage: '/assets/services/dental-implants-3.webp',
+    quoteAlt: 'A dentist reviewing a patient\'s panoramic X-ray on a lightbox while planning an implant',
     heroLead: 'The closest thing to a natural tooth: a single implant replaces a missing tooth without affecting the teeth around it.',
     whatItIsH2: 'What a dental implant is',
     whatItIs: [
@@ -1029,10 +1312,24 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'all-on-4-implants',
+    shortName: 'All-on-4',
+    cardSub: 'A fixed full arch on four implants',
+    scope: [
+      { term: 'Full arch', def: 'Upper, lower or both' },
+      { term: 'Four implants', def: 'Angled for maximum support' },
+      { term: 'Fixed', def: 'It stays in, you don\'t take it out' },
+      { term: 'Planning', def: 'Scanned and mapped in detail' },
+    ],
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'All-on-4 & full-arch implants',
     heroImage: '/assets/services/full-arch.webp',
+    detailImage: '/assets/services/all-on-4-implants-1.webp',
+    detailAlt: 'A clinician showing a full-arch implant bridge model to a smiling patient, his treatment plan on the screen behind',
+    whoImage: '/assets/services/all-on-4-implants-2.webp',
+    whoAlt: 'A dentist talking a patient through a full-arch implant bridge, her 3D scan on the screen behind',
+    quoteImage: '/assets/services/all-on-4-implants-3.webp',
+    quoteAlt: 'A hygienist with a smiling older patient, a full set of replacement teeth on the bench',
     heroLead: 'A fixed, full set of teeth supported by just a few implants, a stable, natural-looking alternative to removable dentures.',
     whatItIsH2: 'What All-on-4 is',
     whatItIs: [
@@ -1084,10 +1381,22 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'bone-grafting',
+    shortName: 'bone grafting',
+    cardSub: 'A strong foundation for implants',
+    scope: [
+      { term: 'Bone loss', def: 'What happens after a tooth goes' },
+      { term: 'The graft', def: 'Rebuilding a solid base' },
+      { term: 'Healing', def: 'A few months before the implant' },
+      { term: 'Routine', def: 'A common, well-established step' },
+    ],
     eyebrow: 'Dental implants',
     h1pre: '',
     h1em: 'Bone grafting',
     heroImage: '/assets/services/bone-grafting.webp',
+    detailImage: '/assets/services/bone-grafting-1.webp',
+    detailAlt: 'A clinician pointing out the jaw bone on a model for a patient, a 3D scan of her jaw on the screen behind',
+    whoImage: '/assets/services/bone-grafting-2.webp',
+    whoAlt: 'A dentist explaining a bone graft site on a model, a 3D scan of the lower jaw on the screen behind',
     heroLead: 'A straightforward, well-established step that rebuilds jawbone where it\'s been lost, so implants have a strong foundation.',
     whatItIsH2: 'What bone grafting is',
     whatItIs: [
@@ -1141,4 +1450,24 @@ export const services: ServiceData[] = [
 
 export function getService(slug: string): ServiceData | undefined {
   return services.find(s => s.slug === slug)
+}
+
+/**
+ * Subtitles for the non-service destinations that turn up in `related` lists.
+ * Service destinations get their own `cardSub` instead, so each page is
+ * described the same way wherever it's linked from.
+ */
+const PAGE_SUB: Record<string, string> = {
+  '/your-first-visit': 'Exactly what happens, start to finish',
+  '/fees': 'Costs and health funds, up front',
+  '/emergency-dentist': 'Same-day care when it hurts',
+  '/nervous-patients': 'How we look after anxious patients',
+  '/comprehensive-care-visit': 'Your first visit, one simple price',
+  '/services': 'Everything we offer, in one place',
+}
+
+/** The one-line subtitle for a related-care card, by href. Empty if unknown. */
+export function relatedSub(href: string): string {
+  const service = href.startsWith('/services/') ? getService(href.slice('/services/'.length)) : undefined
+  return service?.cardSub ?? PAGE_SUB[href] ?? ''
 }
