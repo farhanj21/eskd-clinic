@@ -3032,16 +3032,14 @@ body{overflow-x:hidden;max-width:100%;}
 
 /* ── Home offers row ─────────────────────────────────────────
    Sits between the hero stat cards and the services grid. Four
-   offers share one tinted, bordered container split by hairline
-   dividers, rather than four floating cards with gaps — that,
-   plus the icon tiles, is what stops it reading as a second
-   services grid a screen-length above the real one.
+   equal cards sit inside one tinted, bordered container — the
+   container, plus the icon tiles, is what stops the row reading
+   as a second services grid a screen-length above the real one.
 
    The home page overrides --paper and --cream to #FFFFFF on
    <main>, so --cream-2 is the only surface here with any tint in
-   it. That makes the band, and it is what lets the featured card
-   be genuinely *lighter* than its neighbours rather than merely
-   different. */
+   it. That makes the band, and it is what lets the cards read as
+   genuinely *lighter* than the surface they sit on. */
 .offers{padding:clamp(48px,6vw,72px) 0 0;}
 .offers-sr-only{
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;
@@ -3050,33 +3048,27 @@ body{overflow-x:hidden;max-width:100%;}
 .offers-row{
   display:grid;
   grid-template-columns:repeat(4,1fr);
+  gap:8px;
   background:var(--cream-2);
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
-  /* Insets the cards so the featured one can show all four of its own
-     corners instead of being clipped by the container's curve. */
+  /* Insets the cards so each one can show all four of its own corners
+     instead of being clipped by the container's curve. */
   padding:8px;
 }
+/* Lighter surface + accent border + a soft lift, so the cards read as
+   raised out of the tinted band rather than merely tinted differently. */
 .offers-card{
   display:flex;flex-direction:column;align-items:flex-start;
   padding:26px 24px 24px;
   /* min-width:0 stops long words forcing the track wider than its
      share of the grid, which is what overflows at 320px. */
   min-width:0;
-}
-.offers-card+.offers-card{border-left:1px solid var(--line);}
-
-/* The featured card. Lighter surface + accent border + a soft lift, so it
-   reads as raised out of the row rather than merely tinted differently. */
-.offers-card.is-featured{
   background:var(--paper);
   border:1px solid var(--sage);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-sm);
 }
-/* Its own right-hand border already draws the division, so the next card
-   must not add a second hairline beside it. */
-.offers-card.is-featured+.offers-card{border-left:0;}
 
 .offers-icon{
   display:inline-flex;align-items:center;justify-content:center;
@@ -3128,24 +3120,14 @@ body{overflow-x:hidden;max-width:100%;}
 .offers-cta:hover .offers-arrow{transform:translateX(4px);}
 .offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:2px;}
 
-/* 2x2. The dividers become a grid: a left border on the right-hand column,
-   a top border on the second row. */
+/* 2x2, then stacked. Each card keeps its own border and corners at every
+   width, so only the track count changes. */
 @media(max-width:1023px){
   .offers-row{grid-template-columns:1fr 1fr;}
-  .offers-card+.offers-card{border-left:0;}
-  .offers-card:nth-child(2n){border-left:1px solid var(--line);}
-  .offers-card:nth-child(n+3){border-top:1px solid var(--line);}
-  .offers-card.is-featured+.offers-card{border-left:0;}
 }
 
-/* Stacked. Dividers turn horizontal; the featured card keeps its full
-   border and corners. */
 @media(max-width:639px){
   .offers{padding-top:clamp(36px,8vw,48px);}
-  .offers-row{grid-template-columns:1fr;padding:6px;}
+  .offers-row{grid-template-columns:1fr;padding:6px;gap:6px;}
   .offers-card{padding:22px 18px;}
-  .offers-card:nth-child(n){border-left:0;border-top:0;}
-  .offers-card+.offers-card{border-top:1px solid var(--line);}
-  .offers-card.is-featured{border:1px solid var(--sage);}
-  .offers-card.is-featured+.offers-card{border-top:0;}
 }

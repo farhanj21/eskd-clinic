@@ -4,10 +4,9 @@ import { comprehensiveCareVisit } from '@/lib/business'
 /**
  * The offers row that sits between the hero stat cards and the services grid.
  *
- * Four offers in one bordered, tinted container split by hairline dividers,
- * rather than four floating cards with gaps — that, the icon tiles and the
- * tinted surface are what keep it from reading as a second services grid a
- * screen-length above the real one.
+ * Four identically styled cards inside one bordered, tinted container — that
+ * container, the icon tiles and the tinted surface are what keep it from
+ * reading as a second services grid a screen-length above the real one.
  *
  * The first offer is the only one with a price attached, so it is the only one
  * that leads straight to a booking page; the other three link to the page that
@@ -19,27 +18,25 @@ interface Offer {
   pill: string
   title: string
   body: string
-  /** Featured card only: the health-fund caveat, set in italics. */
+  /** First card only: the health-fund caveat, set in italics. */
   fineprint?: string
   cta: string
   href: string
   /** Links are otherwise near-identical to a screen reader tabbing the row. */
   ariaLabel: string
   icon: 'shield' | 'clock' | 'heart' | 'tooth'
-  featured?: boolean
 }
 
 const OFFERS: Offer[] = [
   {
     pill: 'Valued at $499',
-    title: comprehensiveCareVisit.name,
+    title: 'Comprehensive Care Visit',
     body: `A thorough 60–75 minute first visit — exam, X-rays, photos, oral cancer screening, full scale and clean, and your personalised care plan. $${comprehensiveCareVisit.price}, valued at $499.`,
-    fineprint: 'Claim on the spot with most health funds; your gap depends on your cover.',
+    // fineprint: 'Claim on the spot with most health funds; your gap depends on your cover.',
     cta: 'Book your visit',
     href: '/comprehensive-care-visit',
     ariaLabel: 'Book the Comprehensive Care Visit',
     icon: 'shield',
-    featured: true,
   },
   {
     pill: 'Seen today',
@@ -100,10 +97,7 @@ export default function HomeOffers() {
 
         <div className="offers-row">
           {OFFERS.map(offer => (
-            <article
-              key={offer.title}
-              className={`offers-card${offer.featured ? ' is-featured' : ''}`}
-            >
+            <article key={offer.title} className="offers-card">
               <span className="offers-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   {ICONS[offer.icon]}
