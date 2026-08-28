@@ -5,6 +5,7 @@ import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
 import HealthFundLogos from '@/components/HealthFundLogos'
 import HeroVideoBg from '@/components/HeroVideoBg'
+import HomeOffers from '@/components/HomeOffers'
 import MapEmbed from '@/components/MapEmbed'
 import { suburbs, suburbPath } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
@@ -176,6 +177,9 @@ export default function Home() {
           ))}
         </dl>
       </div>
+
+      {/* NEW PATIENT OFFERS */}
+      <HomeOffers />
 
             {/* SERVICES OVERVIEW */}
       <section className="sec">

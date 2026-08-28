@@ -3029,3 +3029,123 @@ body{overflow-x:hidden;max-width:100%;}
   .ctaband-actions{flex-direction:column;align-items:stretch;}
   .ctaband-actions .btn{width:100%;}
 }
+
+/* ── Home offers row ─────────────────────────────────────────
+   Sits between the hero stat cards and the services grid. Four
+   offers share one tinted, bordered container split by hairline
+   dividers, rather than four floating cards with gaps — that,
+   plus the icon tiles, is what stops it reading as a second
+   services grid a screen-length above the real one.
+
+   The home page overrides --paper and --cream to #FFFFFF on
+   <main>, so --cream-2 is the only surface here with any tint in
+   it. That makes the band, and it is what lets the featured card
+   be genuinely *lighter* than its neighbours rather than merely
+   different. */
+.offers{padding:clamp(48px,6vw,72px) 0 0;}
+.offers-sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.offers-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:var(--cream-2);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  /* Insets the cards so the featured one can show all four of its own
+     corners instead of being clipped by the container's curve. */
+  padding:8px;
+}
+.offers-card{
+  display:flex;flex-direction:column;align-items:flex-start;
+  padding:26px 24px 24px;
+  /* min-width:0 stops long words forcing the track wider than its
+     share of the grid, which is what overflows at 320px. */
+  min-width:0;
+}
+.offers-card+.offers-card{border-left:1px solid var(--line);}
+
+/* The featured card. Lighter surface + accent border + a soft lift, so it
+   reads as raised out of the row rather than merely tinted differently. */
+.offers-card.is-featured{
+  background:var(--paper);
+  border:1px solid var(--sage);
+  border-radius:var(--radius-md);
+  box-shadow:var(--shadow-sm);
+}
+/* Its own right-hand border already draws the division, so the next card
+   must not add a second hairline beside it. */
+.offers-card.is-featured+.offers-card{border-left:0;}
+
+.offers-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;flex:none;
+  background:var(--sage-tint);
+  border:1px solid var(--sage-soft);
+  border-radius:var(--radius-sm);
+  color:var(--sage-deep);
+  margin-bottom:16px;
+}
+.offers-icon svg{width:21px;height:21px;}
+
+.offers-pill{
+  font-family:var(--body);
+  font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--sage-deep);
+  background:var(--sage-tint);
+  border-radius:999px;
+  padding:5px 11px;
+  margin-bottom:10px;
+}
+.offers-title{
+  font-family:var(--display);
+  font-size:20px;font-weight:600;line-height:1.25;
+  color:var(--ink);
+  margin:0 0 8px;
+}
+/* --ink-soft, not --ink-faint: the faint token is 3.7:1 on white and fails
+   AA at body size. */
+.offers-body{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0;}
+.offers-fine{
+  font-family:var(--display);
+  font-style:italic;font-size:13.5px;line-height:1.5;
+  color:var(--ink-soft);
+  margin:12px 0 0;
+}
+
+.offers-cta{
+  display:inline-flex;align-items:center;gap:7px;
+  margin-top:auto;padding-top:18px;
+  font-family:var(--body);
+  font-size:12px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--sage-deep);
+  text-decoration:none;
+}
+.offers-arrow{width:15px;height:15px;transition:transform .22s ease;}
+.offers-cta:hover .offers-arrow{transform:translateX(4px);}
+.offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:2px;}
+
+/* 2x2. The dividers become a grid: a left border on the right-hand column,
+   a top border on the second row. */
+@media(max-width:1023px){
+  .offers-row{grid-template-columns:1fr 1fr;}
+  .offers-card+.offers-card{border-left:0;}
+  .offers-card:nth-child(2n){border-left:1px solid var(--line);}
+  .offers-card:nth-child(n+3){border-top:1px solid var(--line);}
+  .offers-card.is-featured+.offers-card{border-left:0;}
+}
+
+/* Stacked. Dividers turn horizontal; the featured card keeps its full
+   border and corners. */
+@media(max-width:639px){
+  .offers{padding-top:clamp(36px,8vw,48px);}
+  .offers-row{grid-template-columns:1fr;padding:6px;}
+  .offers-card{padding:22px 18px;}
+  .offers-card:nth-child(n){border-left:0;border-top:0;}
+  .offers-card+.offers-card{border-top:1px solid var(--line);}
+  .offers-card.is-featured{border:1px solid var(--sage);}
+  .offers-card.is-featured+.offers-card{border-top:0;}
+}
