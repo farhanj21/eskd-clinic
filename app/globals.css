@@ -3031,7 +3031,7 @@ body{overflow-x:hidden;max-width:100%;}
 }
 
 /* ── Home offers row ─────────────────────────────────────────
-   Sits between the hero stat cards and the services grid. Four
+   Sits between the hero stat cards and the services grid. Three
    equal cards sit inside one tinted, bordered container — the
    container, plus the icon tiles, is what stops the row reading
    as a second services grid a screen-length above the real one.
@@ -3047,7 +3047,7 @@ body{overflow-x:hidden;max-width:100%;}
 }
 .offers-row{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:8px;
   background:var(--cream-2);
   border:1px solid var(--line);
@@ -3146,16 +3146,19 @@ body{overflow-x:hidden;max-width:100%;}
   .offers-card:focus-within .offers-arrow{transform:none;}
 }
 
-/* 2x2, then stacked. Each card keeps its own border and corners at every
-   width, so only the track count changes. */
+/* Two up with the third run full width beneath them, then stacked. Each card
+   keeps its own border and corners at every width, so only the track count
+   changes — and an odd card count never leaves a half-empty gap. */
 @media(max-width:1023px){
   .offers-row{grid-template-columns:1fr 1fr;}
+  .offers-card:last-child{grid-column:1/-1;}
 }
 
 @media(max-width:639px){
   .offers{padding-top:clamp(36px,8vw,48px);}
   .offers-row{grid-template-columns:1fr;padding:6px;gap:6px;}
-  /* Stacked, the four bodies turn the row into a wall of prose the reader
+  .offers-card:last-child{grid-column:1;}
+  /* Stacked, the bodies turn the row into a wall of prose the reader
      has to scroll past to reach the services grid. On phones the cards keep
      only what identifies and actions them: pill, heading, CTA. */
   .offers-body,

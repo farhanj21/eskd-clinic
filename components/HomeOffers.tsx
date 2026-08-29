@@ -1,16 +1,14 @@
 import Link from 'next/link'
-import { comprehensiveCareVisit } from '@/lib/business'
 
 /**
  * The offers row that sits between the hero stat cards and the services grid.
  *
- * Four identically styled cards inside one bordered, tinted container — that
+ * Three identically styled cards inside one bordered, tinted container — that
  * container, the icon tiles and the tinted surface are what keep it from
  * reading as a second services grid a screen-length above the real one.
  *
- * The first offer is the only one with a price attached, so it is the only one
- * that leads straight to a booking page; the other three link to the page that
- * explains them, which is where their own booking CTA lives.
+ * Each card links to the page that explains the offer rather than straight to
+ * booking, because that page is where the offer's own booking CTA lives.
  */
 
 interface Offer {
@@ -28,16 +26,6 @@ interface Offer {
 }
 
 const OFFERS: Offer[] = [
-  {
-    pill: 'Valued at $499',
-    title: 'Comprehensive Care Visit',
-    body: `A thorough 60–75 minute first visit — exam, X-rays, photos, oral cancer screening, full scale and clean, and your personalised care plan. $${comprehensiveCareVisit.price}, valued at $499.`,
-    // fineprint: 'Claim on the spot with most health funds; your gap depends on your cover.',
-    cta: 'Book your visit',
-    href: '/comprehensive-care-visit',
-    ariaLabel: 'Book the Comprehensive Care Visit',
-    icon: 'shield',
-  },
   {
     pill: 'Seen today',
     title: 'Emergency Appointment',
