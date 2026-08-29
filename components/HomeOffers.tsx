@@ -1,16 +1,14 @@
 import Link from 'next/link'
-import { comprehensiveCareVisit } from '@/lib/business'
 
 /**
  * The offers row that sits between the hero stat cards and the services grid.
  *
- * Four identically styled cards inside one bordered, tinted container — that
+ * Three identically styled cards inside one bordered, tinted container — that
  * container, the icon tiles and the tinted surface are what keep it from
  * reading as a second services grid a screen-length above the real one.
  *
- * The first offer is the only one with a price attached, so it is the only one
- * that leads straight to a booking page; the other three link to the page that
- * explains them, which is where their own booking CTA lives.
+ * Each card links to the page that explains the offer rather than straight to
+ * booking, because that page is where the offer's own booking CTA lives.
  */
 
 interface Offer {
@@ -29,16 +27,6 @@ interface Offer {
 
 const OFFERS: Offer[] = [
   {
-    pill: 'Valued at $499',
-    title: 'Comprehensive Care Visit',
-    body: `A thorough 60–75 minute first visit — exam, X-rays, photos, oral cancer screening, full scale and clean, and your personalised care plan. $${comprehensiveCareVisit.price}, valued at $499.`,
-    // fineprint: 'Claim on the spot with most health funds; your gap depends on your cover.',
-    cta: 'Book your visit',
-    href: '/comprehensive-care-visit',
-    ariaLabel: 'Book the Comprehensive Care Visit',
-    icon: 'shield',
-  },
-  {
     pill: 'Seen today',
     title: 'Emergency Appointment',
     body: 'In pain or broken a tooth? We keep time aside each day for emergencies and will get you comfortable quickly.',
@@ -48,21 +36,21 @@ const OFFERS: Offer[] = [
     icon: 'clock',
   },
   {
-    pill: 'No treatment',
-    title: 'Nervous Patient Consult',
-    body: 'Avoided the dentist for years? Come in for a no-treatment chat first. Calm, unhurried, and you can stop any time.',
+    pill: 'Always welcome',
+    title: 'New Patient Visit',
+    body: 'New to the practice? An unhurried first appointment — we get to know you, check everything properly, and explain what we find in plain English.',
     cta: 'Learn more',
-    href: '/nervous-patients',
-    ariaLabel: 'Learn about nervous patient consults',
+    href: '/your-first-visit',
+    ariaLabel: 'Learn about the new patient visit',
     icon: 'heart',
   },
   {
-    pill: 'Complimentary',
-    title: 'Invisalign Consultation',
-    body: 'Complimentary clear-aligner consultation with a full-mouth scan and a personalised plan before you commit to anything.',
+    pill: 'No obligation',
+    title: 'Dental Consultation',
+    body: 'Considering straightening, whitening or replacing a tooth? Talk it through first — your options, what each involves, and what it costs.',
     cta: 'Learn more',
-    href: '/services/invisalign',
-    ariaLabel: 'Learn about the Invisalign consultation',
+    href: '/services',
+    ariaLabel: 'Learn about a dental consultation',
     icon: 'tooth',
   },
 ]

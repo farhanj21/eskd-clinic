@@ -3031,7 +3031,7 @@ body{overflow-x:hidden;max-width:100%;}
 }
 
 /* ── Home offers row ─────────────────────────────────────────
-   Sits between the hero stat cards and the services grid. Four
+   Sits between the hero stat cards and the services grid. Three
    equal cards sit inside one tinted, bordered container — the
    container, plus the icon tiles, is what stops the row reading
    as a second services grid a screen-length above the real one.
@@ -3047,7 +3047,7 @@ body{overflow-x:hidden;max-width:100%;}
 }
 .offers-row{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:8px;
   background:var(--cream-2);
   border:1px solid var(--line);
@@ -3068,6 +3068,15 @@ body{overflow-x:hidden;max-width:100%;}
   border:1px solid var(--sage);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-sm);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+/* focus-within as well as hover: tabbing to the card's CTA should light the
+   same card up that a mouse would. */
+.offers-card:hover,
+.offers-card:focus-within{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+  border-color:var(--sage-deep);
 }
 
 .offers-icon{
@@ -3078,6 +3087,13 @@ body{overflow-x:hidden;max-width:100%;}
   border-radius:var(--radius-sm);
   color:var(--sage-deep);
   margin-bottom:16px;
+  transition:background .28s ease,border-color .28s ease,color .28s ease;
+}
+.offers-card:hover .offers-icon,
+.offers-card:focus-within .offers-icon{
+  background:var(--sage-deep);
+  border-color:var(--sage-deep);
+  color:var(--paper);
 }
 .offers-icon svg{width:21px;height:21px;}
 
@@ -3117,17 +3133,48 @@ body{overflow-x:hidden;max-width:100%;}
   text-decoration:none;
 }
 .offers-arrow{width:15px;height:15px;transition:transform .22s ease;}
-.offers-cta:hover .offers-arrow{transform:translateX(4px);}
+/* Driven from the card, not just the link, so the whole card reads as one
+   hover target even when the pointer is nowhere near the CTA. */
+.offers-card:hover .offers-arrow,
+.offers-card:focus-within .offers-arrow{transform:translateX(4px);}
 .offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:2px;}
 
-/* 2x2, then stacked. Each card keeps its own border and corners at every
-   width, so only the track count changes. */
+@media(prefers-reduced-motion:reduce){
+  .offers-card,.offers-icon,.offers-arrow{transition:none;}
+  .offers-card:hover,.offers-card:focus-within{transform:none;}
+  .offers-card:hover .offers-arrow,
+  .offers-card:focus-within .offers-arrow{transform:none;}
+}
+
+/* Two up with the third run full width beneath them, then stacked. Each card
+   keeps its own border and corners at every width, so only the track count
+   changes — and an odd card count never leaves a half-empty gap. */
 @media(max-width:1023px){
   .offers-row{grid-template-columns:1fr 1fr;}
+  .offers-card:last-child{grid-column:1/-1;}
 }
 
 @media(max-width:639px){
   .offers{padding-top:clamp(36px,8vw,48px);}
   .offers-row{grid-template-columns:1fr;padding:6px;gap:6px;}
-  .offers-card{padding:22px 18px;}
+  .offers-card:last-child{grid-column:1;}
+  /* Stacked, the bodies turn the row into a wall of prose the reader
+     has to scroll past to reach the services grid. On phones the cards keep
+     only what identifies and actions them: pill, heading, CTA. */
+  .offers-body,
+  .offers-fine{display:none;}
+  /* Grid rather than the column flex, so the icon and the pill can share the
+     top row and the heading can still run the full width beneath them. */
+  .offers-card{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    align-items:center;
+    column-gap:12px;
+    padding:18px;
+  }
+  .offers-icon{grid-column:1;grid-row:1;width:36px;height:36px;margin-bottom:0;}
+  .offers-pill{grid-column:2;grid-row:1;justify-self:start;margin-bottom:0;}
+  .offers-title{grid-column:1/-1;grid-row:2;margin:12px 0 0;}
+  /* margin-top:auto is a flex trick that would eat the free row space here. */
+  .offers-cta{grid-column:1/-1;grid-row:3;margin-top:0;padding-top:14px;}
 }
