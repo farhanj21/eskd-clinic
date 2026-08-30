@@ -95,9 +95,9 @@ export default function AboutDifferentPage() {
       </section>
 
       {/* ── IN SHORT ─────────────────────────────────────── */}
-      <section className="sec">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ maxWidth: '48em', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>
-          <p style={{ fontSize: '21px', fontFamily: 'var(--display)', color: 'var(--sage-deep)', lineHeight: 1.45 }}>
+          <p style={{ fontSize: '21px', fontFamily: 'var(--display)', color: 'var(--cream)', lineHeight: 1.45 }}>
             Decades of trust, a gentle team, and honest, comprehensive care. <em>That&apos;s the difference.</em>
           </p>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>

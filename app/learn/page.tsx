@@ -104,7 +104,7 @@ export default function LearnIndex() {
       </section>
 
       {/* ── TOPICS ───────────────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Browse by topic</div>
           <h2>What would you like to understand?</h2>

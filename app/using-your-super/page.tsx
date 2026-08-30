@@ -170,7 +170,7 @@ export default function SuperPage() {
       </section>
 
       {/* ── ACCESSMYSUPER ────────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ maxWidth: '48em', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="eyebrow">You&apos;re in good hands</div>
           <h2>AccessMySuper handles the application</h2>

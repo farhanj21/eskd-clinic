@@ -32,13 +32,13 @@ export default function ContactPage() {
       </section>
 
       {/* ── CONTACT DETAILS ──────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container">
           <div className="contact-detail-grid reveal">
             <div className="svc">
               <h4>Call us</h4>
               <p>
-                <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+                <a href={telHref} style={{ color: 'var(--clay-soft)', fontWeight: 600 }}>
                   {business.telephoneDisplay}
                 </a>
               </p>

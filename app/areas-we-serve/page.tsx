@@ -85,7 +85,7 @@ export default function AreasWeServePage() {
       </section>
 
       {/* ── EASY TO REACH ─────────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ maxWidth: '48em', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="eyebrow">Getting here</div>
           <h2>Simple to reach, easy to park</h2>

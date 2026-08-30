@@ -162,7 +162,7 @@ export default function AboutTeamPage() {
       </section>
 
       {/* ── KEEP EXPLORING ───────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center' }}>
           <div className="eyebrow">More about us</div>
           <h2>Get to know us</h2>

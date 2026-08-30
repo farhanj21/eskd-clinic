@@ -91,7 +91,7 @@ export default function BookingPage() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────── */}
-      <section className="sec">
+      <section className="sec sage-bg">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Before you book</div>

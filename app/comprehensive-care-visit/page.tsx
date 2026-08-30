@@ -92,7 +92,7 @@ export default function OfferPage() {
       </section>
 
       {/* ── YOU'RE WELCOME HERE ───────────────────────────── */}
-      <section className="sec">
+      <section className="sec sage-bg">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">However long it&apos;s been</div>
