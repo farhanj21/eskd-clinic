@@ -190,9 +190,9 @@ export default function FirstVisitPage() {
       </section>
 
       {/* ── NERVOUS CROSS-LINK ───────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center', maxWidth: '46em' }}>
-          <p style={{ fontSize: '21px', fontFamily: 'var(--display)', color: 'var(--sage-deep)', lineHeight: 1.4 }}>
+          <p style={{ fontSize: '21px', fontFamily: 'var(--display)', color: 'var(--cream)', lineHeight: 1.4 }}>
             Nervous, or has it been a while? <em>That&apos;s exactly who we&apos;re best with.</em>
           </p>
           <div style={{ marginTop: '18px' }}>

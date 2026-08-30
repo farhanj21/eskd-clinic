@@ -76,7 +76,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── OUR APPROACH ─────────────────────────────────── */}
-      <section className="sec">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ maxWidth: '48em', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="eyebrow">Responsible dentistry</div>
           <h2>Not the cheapest, not the pushiest, the most honest</h2>

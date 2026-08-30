@@ -115,7 +115,7 @@ export default function AboutStoryPage() {
       </section>
 
       {/* ── IN OUR WORDS ─────────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal">
           <div className="pqfit">
             <p className="pq">

@@ -92,7 +92,7 @@ export default function FeesPage() {
       </section>
 
       {/* ── FIRST VISIT ──────────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center', maxWidth: '48em', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="eyebrow">One simple price</div>
           <h2>Your first visit is the <em>Comprehensive Care Visit</em></h2>

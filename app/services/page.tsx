@@ -177,9 +177,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ── NOT SURE? ───────────────────────────────────── */}
-      <section className="sec alt">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center', maxWidth: '46em', marginLeft: 'auto', marginRight: 'auto' }}>
-          <p style={{ fontSize: '20px', fontFamily: 'var(--display)', color: 'var(--sage-deep)', lineHeight: 1.45 }}>
+          <p style={{ fontSize: '20px', fontFamily: 'var(--display)', color: 'var(--cream)', lineHeight: 1.45 }}>
             Not sure what you need? That&apos;s what your first visit is for, <em>we&apos;ll help you work it out.</em>
           </p>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>

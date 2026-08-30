@@ -102,7 +102,7 @@ export default function OurWorkPage() {
       </section>
 
       {/* ── RELATED TREATMENTS ───────────────────────────── */}
-      <section className="sec">
+      <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Considering treatment?</div>
           <h2>Explore the options</h2>

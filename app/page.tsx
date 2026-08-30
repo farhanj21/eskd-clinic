@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
@@ -10,17 +9,6 @@ import MapEmbed from '@/components/MapEmbed'
 import { suburbs, suburbPath } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
-
-// V3 white theme — scoped to the home page only. Overriding these CSS
-// custom properties on <main> cascades to every section inside it
-// (.sec, .sec.alt, .hero-v2, cards) without affecting other routes,
-// the header, or the footer (which live outside this <main>).
-const whiteTheme: CSSProperties = {
-  ['--cream' as string]: '#FFFFFF',
-  ['--paper' as string]: '#FFFFFF',
-  ['--cream-2' as string]: '#F1EFEA',
-  background: '#FFFFFF',
-}
 
 export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
@@ -135,7 +123,7 @@ const homeSchema = {
 
 export default function Home() {
   return (
-    <main style={whiteTheme}>
+    <main>
       {/* The hero poster is a CSS background, so it isn't discoverable until the
           stylesheet parses. Preloading it keeps it the LCP candidate. */}
       <link rel="preload" as="image" href="/assets/video/hero-clinic-poster.webp" fetchPriority="high" />

@@ -78,7 +78,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--cream) 0%, #F4EDE1 55%, var(--cream-2) 100%);
+  background: linear-gradient(160deg, var(--paper) 0%, var(--cream) 55%, var(--cream-2) 100%);
 }
 
 /* Decorative wash behind the hero. Pointer-events off so they never sit over
@@ -321,7 +321,7 @@
 /* ---------- 3. Why it matters (dark) ---------- */
 
 .dark {
-  background: var(--sage-deep);
+  background: var(--sage-darker);
   color: var(--cream);
   position: relative;
   overflow: hidden;
@@ -350,7 +350,7 @@
 .darkIntro {
   font-size: clamp(17px, 1.5vw, 19px);
   line-height: 1.7;
-  color: rgba(247, 243, 236, 0.78);
+  color: rgba(255, 255, 255, 0.78);
   margin: 24px 0 0;
   text-wrap: pretty;
 }
@@ -364,7 +364,7 @@
 
 .whyCard {
   background: rgba(252, 250, 245, 0.06);
-  border: 1px solid rgba(247, 243, 236, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 18px;
   padding: 34px 30px 38px;
   transition: transform 0.4s ease, background 0.4s ease;
@@ -394,7 +394,7 @@
 .whyBody {
   font-size: 16px;
   line-height: 1.65;
-  color: rgba(247, 243, 236, 0.72);
+  color: rgba(255, 255, 255, 0.72);
   margin-top: 12px;
 }
 
@@ -854,7 +854,7 @@
   gap: 24px;
   margin-top: clamp(40px, 5vw, 64px);
   padding-top: clamp(30px, 4vw, 48px);
-  border-top: 1px solid rgba(247, 243, 236, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .stat { text-align: center; }
@@ -870,7 +870,7 @@
 .statLabel {
   font-size: 14.5px;
   line-height: 1.5;
-  color: rgba(247, 243, 236, 0.72);
+  color: rgba(255, 255, 255, 0.72);
   margin-top: 10px;
 }
 
