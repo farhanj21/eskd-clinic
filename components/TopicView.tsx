@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import Breadcrumb, { learnChildTrail } from '@/components/Breadcrumb'
+import BreadcrumbBar from '@/components/BreadcrumbBar'
+import { learnChildTrail } from '@/components/Breadcrumb'
 import GuideGrid from '@/components/GuideGrid'
 import TopicChips from '@/components/TopicChips'
 import GetInTouch from '@/components/GetInTouch'
@@ -17,10 +18,11 @@ export default function TopicView({ topic }: { topic: Topic }) {
 
   return (
     <main>
+      {/* ── BREADCRUMB ───────────────────────────────────── */}
+      <BreadcrumbBar trail={learnChildTrail(topic.label)} />
+
+      {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
-        <div className="container">
-          <Breadcrumb trail={learnChildTrail(topic.label)} />
-        </div>
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Dental education</div>

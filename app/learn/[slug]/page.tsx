@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { publishedArticles, getPublishedArticle } from '@/data/articles'
 import GetInTouch from '@/components/GetInTouch'
 import JsonLd from '@/components/JsonLd'
-import Breadcrumb, { learnArticleTrail } from '@/components/Breadcrumb'
+import BreadcrumbBar from '@/components/BreadcrumbBar'
+import { learnArticleTrail } from '@/components/Breadcrumb'
 import Photo from '@/components/Photo'
 import TopicView from '@/components/TopicView'
 import { getPopulatedTopic, populatedTopics } from '@/data/topics'
@@ -60,9 +61,17 @@ export default async function LearnEntryPage({ params }: Props) {
   const article = getPublishedArticle(slug)
   if (!article) notFound()
 
+  const url = `${SITE_URL}/learn/${slug}`
+
+  // The BreadcrumbList is not restated here: <BreadcrumbBar> emits it from the
+  // same trail it renders, so the visible trail and the markup cannot disagree.
+  // This node points at it by @id, the way the suburb and service pages do.
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
+    '@id': `${url}#webpage`,
+    url,
+    breadcrumb: { '@id': `${url}#breadcrumb` },
     name: article.title,
     author: article.author
       ? { '@type': 'Person', name: article.author }
@@ -76,17 +85,16 @@ export default async function LearnEntryPage({ params }: Props) {
   return (
     <main>
       <JsonLd data={schema} />
+
+      {/* ── BREADCRUMB ───────────────────────────────────── */}
+      <BreadcrumbBar trail={learnArticleTrail(article.title)} id={`${url}#breadcrumb`} />
+
       <div className="container">
         <article className="post">
-          <Breadcrumb trail={learnArticleTrail(article.title)} />
-
-          {/* Back link */}
-          <Link href="/learn" className="post-back">&larr; Back to dental education</Link>
-
           <div className="post-head-grid">
             <div>
               {/* Category breadcrumb */}
-              <div className="post-cat">Learn / {article.eyebrow}</div>
+              {/* <div className="post-cat">Learn / {article.eyebrow}</div> */}
 
               {/* Title */}
               <h1>{article.title}</h1>

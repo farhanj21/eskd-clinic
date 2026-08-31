@@ -9,21 +9,7 @@
  * from globals.css, so these pages stay in step with the header and footer.
  */
 
-/* ── breadcrumb strip ─────────────────────────────────── */
-.crumb {
-  background: var(--paper);
-  border-bottom: 1px solid var(--line-soft);
-}
-.crumb > div {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 12px var(--gutter);
-}
-/* The shared <Breadcrumb> carries a bottom margin for page heroes; inside the
-   strip it sits on the line instead. */
-.crumb :global(.breadcrumb) {
-  margin-bottom: 0;
-}
+/* The breadcrumb strip is components/BreadcrumbBar, shared with Learn. */
 
 /* ── shared section furniture ─────────────────────────── */
 .sec {

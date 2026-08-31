@@ -150,9 +150,6 @@ export default async function ServicePage({ params }: Props) {
   //
   // No Review or aggregateRating, per AHPRA advertising guidance.
   const url = `${SITE_URL}/services/${slug}`
-  const breadcrumbName = service.h1pre
-    ? `${service.h1pre} ${service.h1em}`
-    : service.h1em.charAt(0).toUpperCase() + service.h1em.slice(1)
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -198,7 +195,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* ── BREADCRUMB ────────────────────────────────────── */}
       <div className={s.inner} style={{ paddingTop: '18px' }}>
-        <Breadcrumb trail={servicesChildTrail(breadcrumbName)} id={`${url}#breadcrumb`} />
+        <Breadcrumb trail={servicesChildTrail(service.name)} id={`${url}#breadcrumb`} />
       </div>
 
       {/* ── 1. HERO ──────────────────────────────────────── */}

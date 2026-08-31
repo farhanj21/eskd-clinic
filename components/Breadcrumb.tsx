@@ -55,7 +55,12 @@ export const areasChildTrail = (name: string): Crumb[] => [HOME, AREAS_SECTION, 
  */
 export const SERVICES_SECTION = { name: 'Services', href: '/services' }
 
-/** Home → Services → this service. Pass the service's visible H1 / name. */
+/**
+ * Home → Services → this service.
+ *
+ * Pass the service's plain `name` from data/services.ts, never its H1: the H1 is
+ * a marketing line and the last crumb has to read as the thing itself.
+ */
 export const servicesChildTrail = (name: string): Crumb[] => [HOME, SERVICES_SECTION, { name }]
 
 /**
