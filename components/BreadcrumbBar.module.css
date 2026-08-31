@@ -1,0 +1,27 @@
+/*
+ * The page-top breadcrumb strip.
+ *
+ * One band, full width, sitting between the header and the hero: the shape the
+ * suburb and service pages already use. It lives here rather than in each
+ * page's own stylesheet so a section cannot end up with the trail tucked inside
+ * its hero on one route and above it on the next.
+ *
+ * Colours and spacing are the site tokens, so the strip stays in step with the
+ * header rule it sits under.
+ */
+.bar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 12px var(--gutter);
+}
+
+/* The shared <Breadcrumb> carries a bottom margin for page heroes; inside the
+   strip it sits on the line instead. */
+.inner :global(.breadcrumb) {
+  margin-bottom: 0;
+}

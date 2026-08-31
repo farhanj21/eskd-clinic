@@ -1,9 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import JsonLd from '@/components/JsonLd'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import {
+  SCHEMA_ID,
+  SITE_URL,
+  business,
+  clinicianId,
+  clinicianJobTitle,
+  telHref,
+} from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Meet the Team | East St Kilda Dental',
@@ -12,38 +20,51 @@ export const metadata: Metadata = withSocial({
   alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-team' },
 })
 
+/**
+ * The clinical team, in the order shown on the page.
+ *
+ * `slug` is not decoration: it is the fragment in each person's @id, so the
+ * four clinicians who also appear on the home page must keep the slugs
+ * lib/business.ts uses, or their two nodes stop being the same entity.
+ */
 const clinicians = [
   {
+    slug: 'anbar-ganatra',
     name: 'Dr Anbar Ganatra',
     role: 'Principal Dentist',
     bio: 'Anbar leads the practice with a calm, gentle, no-judgement approach, and is known for putting nervous patients at ease.',
     image: '/assets/team/anbar-ganatra.webp',
   },
   {
+    slug: 'edmund-goldman',
     name: 'Dr Edmund Goldman',
     role: 'Dentist & Prosthodontist',
     bio: 'Edmund has cared for local families on this corner for decades, with a focus on rebuilding and replacing teeth.',
     image: '/assets/team/edmund-goldman.webp',
   },
   {
+    slug: 'jarrod-dean',
     name: 'Dr Jarrod Dean',
     role: 'General Dentist',
     bio: 'Jarrod provides gentle, thorough general and family dentistry across the practice.',
     image: '/assets/team/jarrod-dean.webp',
   },
   {
+    slug: 'marina-bekheet',
     name: 'Dr Marina Bekheet',
     role: 'General Dentist',
     bio: 'Marina offers warm, careful general dentistry and takes the time to explain every step.',
     image: '/assets/team/marina-bakheet.webp',
   },
   {
+    slug: 'michelle-callaghan',
     name: 'Michelle Callaghan',
     role: 'Hygienist',
     bio: 'Michelle looks after gum health and preventive care with a light, reassuring touch.',
     image: '/assets/team/michelle-callaghan.webp',
   },
   {
+    slug: 'beverly-spector',
     name: 'Beverly Spector',
     role: 'Hygienist',
     bio: 'Beverly helps keep your teeth and gums healthy with gentle, attentive cleans.',
@@ -78,9 +99,61 @@ const practiceTeam = [
   },
 ]
 
+const TEAM_URL = `${SITE_URL}/about/our-team`
+
+// This page holds the @id anchors for the clinician nodes the home page graph
+// references, so it is the natural place to describe them properly: the four on
+// the home page are the same nodes, restated here with a photo, a bio and a
+// URL, and the two who are not on the home page are declared here for the first
+// time.
+//
+// jobTitle comes from lib/business.ts wherever that file pins one, so the
+// markup keeps the cautious title even where the visible card is warmer — see
+// the AHPRA note on Dr Goldman there.
+//
+// The practice team below is deliberately left out of the markup: the graph
+// names the people whose professional identity is part of the entity, and
+// reception and assisting roles are not that.
+const teamSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      '@id': SCHEMA_ID.teamPage,
+      url: TEAM_URL,
+      name: 'Meet the Team',
+      description:
+        `The dentists, hygienists and practice team at ${business.name} in ` +
+        `${business.address.addressLocality}.`,
+      isPartOf: { '@id': SCHEMA_ID.website },
+      about: { '@id': SCHEMA_ID.practice },
+      inLanguage: 'en-AU',
+    },
+    // A reference to the practice node, not a second copy of it: this page is
+    // where the full clinical roster is listed, so it is where employee belongs.
+    {
+      '@type': 'Dentist',
+      '@id': SCHEMA_ID.practice,
+      name: business.name,
+      employee: clinicians.map(c => ({ '@id': clinicianId(c.slug) })),
+    },
+    ...clinicians.map(c => ({
+      '@type': 'Person',
+      '@id': clinicianId(c.slug),
+      name: c.name,
+      jobTitle: clinicianJobTitle(c.slug) ?? c.role,
+      description: c.bio,
+      image: `${SITE_URL}${c.image}`,
+      url: clinicianId(c.slug),
+      worksFor: { '@id': SCHEMA_ID.practice },
+    })),
+  ],
+}
+
 export default function AboutTeamPage() {
   return (
     <main>
+      <JsonLd data={teamSchema} />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
         <div className="container hero-v2-grid">

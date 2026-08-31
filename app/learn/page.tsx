@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
 import JsonLd from '@/components/JsonLd'
-import Breadcrumb, { learnHubTrail } from '@/components/Breadcrumb'
+import BreadcrumbBar from '@/components/BreadcrumbBar'
+import { learnHubTrail } from '@/components/Breadcrumb'
 import GuideGrid from '@/components/GuideGrid'
 import TopicChips from '@/components/TopicChips'
 import { withSocial } from '@/lib/seo'
@@ -56,6 +57,11 @@ const learnSchema = {
         'Clear, calm answers to common dental questions. Honest, easy-to-read guides from East St Kilda Dental.',
       isPartOf: { '@id': SCHEMA_ID.website },
       about: { '@id': SCHEMA_ID.practice },
+      // The BreadcrumbList is not restated here: <BreadcrumbBar> emits it from
+      // the same trail it renders, so the visible trail and the markup cannot
+      // disagree. This node just points at it by @id, as the suburb and service
+      // pages do.
+      breadcrumb: { '@id': `${LEARN_URL}#breadcrumb` },
       mainEntity: { '@id': SCHEMA_ID.learnGuides },
     },
     {
@@ -76,11 +82,12 @@ export default function LearnIndex() {
   return (
     <main>
       <JsonLd data={learnSchema} />
+
+      {/* ── BREADCRUMB ───────────────────────────────────── */}
+      <BreadcrumbBar trail={learnHubTrail} id={`${LEARN_URL}#breadcrumb`} />
+
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
-        <div className="container">
-          <Breadcrumb trail={learnHubTrail} />
-        </div>
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Learn</div>

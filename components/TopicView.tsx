@@ -1,10 +1,19 @@
 import Link from 'next/link'
-import Breadcrumb, { learnChildTrail } from '@/components/Breadcrumb'
+import BreadcrumbBar from '@/components/BreadcrumbBar'
+import { learnChildTrail } from '@/components/Breadcrumb'
 import GuideGrid from '@/components/GuideGrid'
+import JsonLd from '@/components/JsonLd'
 import TopicChips from '@/components/TopicChips'
 import GetInTouch from '@/components/GetInTouch'
 import { guidesByTopic, type Topic } from '@/data/topics'
-import { business, telHref } from '@/lib/business'
+import {
+  SCHEMA_ID,
+  SITE_URL,
+  business,
+  telHref,
+  topicCollectionId,
+  topicGuidesId,
+} from '@/lib/business'
 
 /**
  * A single Browse-by-topic landing page: /learn/<topic-slug>.
@@ -14,13 +23,51 @@ import { business, telHref } from '@/lib/business'
  */
 export default function TopicView({ topic }: { topic: Topic }) {
   const guides = guidesByTopic(topic.slug)
+  const url = `${SITE_URL}/learn/${topic.slug}`
+
+  // The same two-node shape as the Learn hub, one level down: the topic as a
+  // curated collection, and the guides it holds as an ItemList. Both are built
+  // from guidesByTopic(), the same call that renders the grid below, so a guide
+  // tagged with this topic enters the markup with no extra edit.
+  const topicSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': topicCollectionId(topic.slug),
+        url,
+        name: `${topic.label} — dental guides`,
+        description: topic.intro,
+        isPartOf: { '@id': SCHEMA_ID.website },
+        about: { '@id': SCHEMA_ID.practice },
+        // Emitted by <BreadcrumbBar> from the trail it renders, so the visible
+        // trail and the markup cannot disagree. This node just points at it.
+        breadcrumb: { '@id': `${url}#breadcrumb` },
+        mainEntity: { '@id': topicGuidesId(topic.slug) },
+      },
+      {
+        '@type': 'ItemList',
+        '@id': topicGuidesId(topic.slug),
+        name: `Guides on ${topic.label.toLowerCase()}`,
+        itemListElement: guides.map((guide, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${SITE_URL}/learn/${guide.slug}`,
+          name: guide.title,
+        })),
+      },
+    ],
+  }
 
   return (
     <main>
+      <JsonLd data={topicSchema} />
+
+      {/* ── BREADCRUMB ───────────────────────────────────── */}
+      <BreadcrumbBar trail={learnChildTrail(topic.label)} id={`${url}#breadcrumb`} />
+
+      {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-v2">
-        <div className="container">
-          <Breadcrumb trail={learnChildTrail(topic.label)} />
-        </div>
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Dental education</div>

@@ -48,6 +48,22 @@ export const AREAS_SECTION = { name: 'Areas we serve', href: '/areas-we-serve' }
 export const areasChildTrail = (name: string): Crumb[] => [HOME, AREAS_SECTION, { name }]
 
 /**
+ * The services hub, defined once, for the same reason as LEARN_SECTION.
+ *
+ * Service pages sit under this hub in the breadcrumb trail, giving crawlers and
+ * readers a clear path back: Home → Services → this service.
+ */
+export const SERVICES_SECTION = { name: 'Services', href: '/services' }
+
+/**
+ * Home → Services → this service.
+ *
+ * Pass the service's plain `name` from data/services.ts, never its H1: the H1 is
+ * a marketing line and the last crumb has to read as the thing itself.
+ */
+export const servicesChildTrail = (name: string): Crumb[] => [HOME, SERVICES_SECTION, { name }]
+
+/**
  * Breadcrumb trail, visible and structured.
  *
  * Both outputs are generated from the same `trail`, so the BreadcrumbList and

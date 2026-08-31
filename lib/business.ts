@@ -23,7 +23,21 @@ export const SCHEMA_ID = {
   /** Emergency dental care as a service, and that page's questions. */
   emergencyService: `${SITE_URL}/emergency-dentist#service`,
   emergencyFaq: `${SITE_URL}/emergency-dentist#faq`,
+  /** The locations hub as a collection, and the list of suburbs it contains. */
+  areasCollection: `${SITE_URL}/areas-we-serve#collection`,
+  areasSuburbs: `${SITE_URL}/areas-we-serve#suburbs`,
+  /** The team page itself. The Person nodes it anchors use clinicianId(). */
+  teamPage: `${SITE_URL}/about/our-team#webpage`,
 } as const
+
+/**
+ * A topic listing page's own two nodes: /learn/<topic-slug>.
+ *
+ * The Learn hub's equivalents are fixed strings above; a topic's are built per
+ * slug, the way the suburb and service pages build theirs.
+ */
+export const topicCollectionId = (slug: string) => `${SITE_URL}/learn/${slug}#collection`
+export const topicGuidesId = (slug: string) => `${SITE_URL}/learn/${slug}#guides`
 
 export const business = {
   name: 'East St Kilda Dental',
@@ -132,6 +146,17 @@ export const clinicians = [
 ] as const
 
 export const clinicianId = (slug: string) => `${SITE_URL}/about/our-team#${slug}`
+
+/**
+ * The jobTitle to publish for a clinician, where the entity graph pins one.
+ *
+ * The team page shows each person's role in its own words; where that person is
+ * one of the four named above, the structured data uses the title from this
+ * file instead. That is what keeps Dr Goldman's markup reading "Dentist" while
+ * the visible card says "Dentist & Prosthodontist" — see the TODO above.
+ */
+export const clinicianJobTitle = (slug: string): string | undefined =>
+  clinicians.find(c => c.slug === slug)?.jobTitle
 
 export const comprehensiveCareVisit = {
   name: 'The Comprehensive Care Visit',

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import Breadcrumb, { areasChildTrail } from '@/components/Breadcrumb'
+import BreadcrumbBar from '@/components/BreadcrumbBar'
+import { areasChildTrail } from '@/components/Breadcrumb'
 import GetInTouch from '@/components/GetInTouch'
 import HealthFundLogos from '@/components/HealthFundLogos'
 import JsonLd from '@/components/JsonLd'
@@ -130,7 +131,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
   // guidelines put testimonials about clinical care off limits, and marking up
   // a star rating is exactly that in machine-readable form.
   //
-  // The BreadcrumbList itself is not restated here: <Breadcrumb> below emits it
+  // The BreadcrumbList itself is not restated here: <BreadcrumbBar> below emits it
   // from the same trail it renders, so the visible trail and the markup cannot
   // disagree. The WebPage node just points at it by @id.
   const schema = {
@@ -172,11 +173,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
       <JsonLd data={schema} />
 
       {/* ── BREADCRUMB ────────────────────────────────────── */}
-      <div className={styles.crumb}>
-        <div>
-          <Breadcrumb trail={areasChildTrail(s.name)} id={`${url}#breadcrumb`} />
-        </div>
-      </div>
+      <BreadcrumbBar trail={areasChildTrail(s.name)} id={`${url}#breadcrumb`} />
 
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className={styles.hero}>

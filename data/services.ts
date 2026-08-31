@@ -1,6 +1,16 @@
 export interface ServiceData {
   slug: string
   /**
+   * The service's plain name — what this treatment is called, matching how the
+   * /services hub lists it.
+   *
+   * Kept separate from the H1, which is a marketing line ("Gentle, thorough
+   * check-ups", "Crowns & bridges that look and last") and reads wrong as the
+   * last step of a breadcrumb. Required, so a new service cannot ship without
+   * one and fall back to its heading.
+   */
+  name: string
+  /**
    * The service as a noun phrase for running prose ("Questions about …").
    * Only needed where h1em can't stand on its own — either because it's a
    * sentence fragment ("look and last") or because it's title-cased and would
@@ -66,6 +76,7 @@ export interface ServiceData {
 export const services: ServiceData[] = [
   {
     slug: 'check-ups',
+    name: 'Check-ups',
     cardSub: 'Gentle, thorough examinations',
     pricing: 'flat',
     scope: [
@@ -137,6 +148,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'cleans-and-hygiene',
+    name: 'Cleans & hygiene',
     cardSub: 'Keeping things fresh between visits',
     pricing: 'flat',
     scope: [
@@ -207,6 +219,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'childrens-dentistry',
+    name: "Children's dentistry",
     cardSub: 'Calm, positive visits for kids',
     pricing: 'cdbs',
     scope: [
@@ -276,6 +289,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'mouthguards',
+    name: 'Mouthguards',
     cardSub: 'Custom-fitted protection for sport',
     scope: [
       { term: 'Fit', def: 'Moulded from your own impression' },
@@ -345,6 +359,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'tmj-jaw-pain',
+    name: 'TMJ & jaw pain',
     cardSub: 'Relief for jaw ache, clicking and grinding',
     scope: [
       { term: 'Jaw joint', def: 'Clicking, locking and ache' },
@@ -414,6 +429,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'myofunctional-therapy',
+    name: 'Myofunctional therapy',
     shortName: 'myofunctional therapy',
     cardSub: 'Retraining breathing and tongue habits',
     scope: [
@@ -484,6 +500,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'fillings',
+    name: 'Fillings',
     cardSub: 'Tooth-coloured repairs that blend in',
     scope: [
       { term: 'Decay', def: 'Removed gently, back to sound tooth' },
@@ -553,6 +570,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'crowns-and-bridges',
+    name: 'Crowns & bridges',
     shortName: 'crowns and bridges',
     cardSub: 'Strength and shape, custom-made',
     scope: [
@@ -623,6 +641,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'root-canal',
+    name: 'Root canal therapy',
     cardSub: 'Ending the pain, saving the tooth',
     scope: [
       { term: 'Infection', def: 'Removed from inside the tooth' },
@@ -692,6 +711,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'onlays-and-inlays',
+    name: 'Onlays & inlays',
     shortName: 'onlays and inlays',
     cardSub: 'A conservative middle ground',
     scope: [
@@ -762,6 +782,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'dentures',
+    name: 'Dentures',
     cardSub: 'Comfortable, natural-looking replacements',
     scope: [
       { term: 'Full', def: 'A complete set, upper or lower' },
@@ -831,6 +852,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'extractions-wisdom-teeth',
+    name: 'Extractions & wisdom teeth',
     cardSub: 'Gentle removal, and a plan for the gap',
     scope: [
       { term: 'Wisdom teeth', def: 'Impacted, crowded or infected' },
@@ -900,6 +922,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'smile-design',
+    name: 'Smile design',
     shortName: 'smile design',
     cardSub: 'A considered plan for your whole smile',
     scope: [
@@ -970,6 +993,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'veneers',
+    name: 'Veneers',
     cardSub: 'Thin, custom shells for front teeth',
     scope: [
       { term: 'Colour', def: 'Even, natural, chosen with you' },
@@ -1039,6 +1063,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'teeth-whitening',
+    name: 'Teeth whitening',
     cardSub: 'Safe, dentist-supervised brightening',
     scope: [
       { term: 'Suitability', def: 'Checked before anything starts' },
@@ -1107,6 +1132,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'invisalign',
+    name: 'Invisalign & clear aligners',
     shortName: 'Invisalign',
     cardSub: 'Straightening you can barely see',
     scope: [
@@ -1174,6 +1200,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'braces',
+    name: 'Braces',
     shortName: 'braces',
     cardSub: 'Proven, precise tooth movement',
     scope: [
@@ -1243,6 +1270,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'dental-implants',
+    name: 'Dental implants',
     shortName: 'dental implants',
     cardSub: 'The closest thing to a natural tooth',
     scope: [
@@ -1312,6 +1340,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'all-on-4-implants',
+    name: 'All-on-4 implants',
     shortName: 'All-on-4',
     cardSub: 'A fixed full arch on four implants',
     scope: [
@@ -1381,6 +1410,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'bone-grafting',
+    name: 'Bone grafting',
     shortName: 'bone grafting',
     cardSub: 'A strong foundation for implants',
     scope: [
