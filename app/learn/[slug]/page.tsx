@@ -10,7 +10,28 @@ import Photo from '@/components/Photo'
 import TopicView from '@/components/TopicView'
 import { getPopulatedTopic, populatedTopics } from '@/data/topics'
 import { withSocial } from '@/lib/seo'
-import { SITE_URL } from '@/lib/business'
+import { SCHEMA_ID, SITE_URL, business, clinicianId, clinicians } from '@/lib/business'
+
+/** The practice as a node reference: same entity as the home page's #practice. */
+const practiceRef = { '@type': 'Dentist', '@id': SCHEMA_ID.practice, name: business.name }
+
+/**
+ * The author node for a guide.
+ *
+ * A guide reviewed by one of the named clinicians carries the @id the home page
+ * graph declares for that Person, so the byline resolves to a real entity
+ * rather than to a loose name. Anything else — a team byline, or no byline at
+ * all — is authored by the practice itself.
+ *
+ * The name is repeated alongside the @id deliberately: the @id is what joins
+ * the node to the site graph, and the name is what makes it readable on its own
+ * to anything that reads this page in isolation.
+ */
+function byline(author: string | undefined) {
+  const clinician = clinicians.find(c => c.name === author)
+  if (!clinician) return practiceRef
+  return { '@type': 'Person', '@id': clinicianId(clinician.slug), name: clinician.name }
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -66,17 +87,23 @@ export default async function LearnEntryPage({ params }: Props) {
   // The BreadcrumbList is not restated here: <BreadcrumbBar> emits it from the
   // same trail it renders, so the visible trail and the markup cannot disagree.
   // This node points at it by @id, the way the suburb and service pages do.
+  //
+  // isPartOf, publisher and author all reference the site-wide nodes by @id
+  // rather than restating a name, so each guide joins the one entity graph
+  // instead of standing alone as an unattached page.
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
     '@id': `${url}#webpage`,
     url,
+    isPartOf: { '@id': SCHEMA_ID.website },
     breadcrumb: { '@id': `${url}#breadcrumb` },
     name: article.title,
-    author: article.author
-      ? { '@type': 'Person', name: article.author }
-      : { '@type': 'Organization', name: 'East St Kilda Dental' },
-    publisher: { '@type': 'Dentist', name: 'East St Kilda Dental' },
+    headline: article.title,
+    description: article.meta.description,
+    ...(article.image ? { image: `${SITE_URL}${article.image}` } : {}),
+    author: byline(article.author),
+    publisher: practiceRef,
     inLanguage: 'en-AU',
     datePublished: article.date,
     dateModified: article.date,

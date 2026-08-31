@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
+import JsonLd from '@/components/JsonLd'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
 import { suburbs, suburbPath } from '@/data/suburbs'
-import { business, streetAddress, telHref } from '@/lib/business'
+import { SCHEMA_ID, SITE_URL, business, streetAddress, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Areas We Serve | East St Kilda Dental',
@@ -33,9 +34,47 @@ const areaCards = [
   })),
 ]
 
+const AREAS_URL = `${SITE_URL}/areas-we-serve`
+
+// Marks the locations hub as a collection rather than a page that happens to
+// carry twenty links, and connects it to the website and practice nodes
+// declared on the home page. The ItemList is built from the same areaCards
+// array the grid renders, so a new suburb page enters the markup with no extra
+// edit — and each entry's URL matches the suburb page whose WebPage node names
+// this hub in its breadcrumb.
+const areasSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': SCHEMA_ID.areasCollection,
+      url: AREAS_URL,
+      name: 'Areas we serve',
+      description:
+        `Suburbs cared for by ${business.name}, a family and emergency dentist in ` +
+        `${business.address.addressLocality} serving ${business.serviceRegion}.`,
+      isPartOf: { '@id': SCHEMA_ID.website },
+      about: { '@id': SCHEMA_ID.practice },
+      mainEntity: { '@id': SCHEMA_ID.areasSuburbs },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': SCHEMA_ID.areasSuburbs,
+      name: 'Suburbs we serve',
+      itemListElement: areaCards.map((area, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${SITE_URL}${area.href}`,
+        name: area.name,
+      })),
+    },
+  ],
+}
+
 export default function AreasWeServePage() {
   return (
     <main>
+      <JsonLd data={areasSchema} />
 
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className="hero-v2">
