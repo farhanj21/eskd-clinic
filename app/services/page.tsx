@@ -88,7 +88,8 @@ export default function ServicesPage() {
           <Photo
             tall
             className="reveal"
-            hint="Warm, real photo of the team or a treatment room. Never stock."
+            src="/assets/unused/comfort-is-part.webp"
+            alt="A dentist speaking with a smiling patient in the treatment room"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
         </div>

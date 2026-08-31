@@ -47,6 +47,7 @@ export default function Header() {
               <div className="dd mega">
                 <div className="mega-start">
                   <span className="col-title">Start here</span>
+                  <Link href="/services" onClick={close}>All Services</Link>
                   <Link href="/your-first-visit" onClick={close}>New patients</Link>
                   <Link href="/nervous-patients" onClick={close}>Nervous patients</Link>
                   <Link href="/emergency-dentist" onClick={close}>Emergency</Link>
@@ -92,7 +93,7 @@ export default function Header() {
                   <Link href="/services/check-ups" onClick={close}>Sensitive teeth</Link>
                   <Link href="/emergency-dentist" onClick={close}>Toothache</Link>
                   <Link href="/services/cleans-and-hygiene" onClick={close}>Bad breath</Link>
-                  <Link href="/emergency-dentist" onClick={close}>Chipped or broken tooth</Link>
+                  <Link href="/emergency-dentist" onClick={close}>Broken tooth</Link>
                 </div>
               </div>
             </li>

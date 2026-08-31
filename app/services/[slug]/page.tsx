@@ -1,12 +1,14 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Breadcrumb, { servicesChildTrail } from '@/components/Breadcrumb'
 import GetInTouch from '@/components/GetInTouch'
+import JsonLd from '@/components/JsonLd'
 import Photo from '@/components/Photo'
 import ServiceEducation from '@/components/ServiceEducation'
 import { services, getService, relatedSub, type ServiceData } from '@/data/services'
 import { withSocial } from '@/lib/seo'
-import { business, comprehensiveCareVisit, telHref } from '@/lib/business'
+import { SCHEMA_ID, SITE_URL, business, comprehensiveCareVisit, telHref } from '@/lib/business'
 import s from '../service.module.css'
 
 /**
@@ -134,8 +136,70 @@ export default async function ServicePage({ params }: Props) {
   const whoPhoto = supportPhoto(service.whoImage, service.whoAlt, WHO_PHOTO)
   const quotePhoto = supportPhoto(service.quoteImage, service.quoteAlt, QUOTE_PHOTO)
 
+  // ── STRUCTURED DATA ─────────────────────────────────────
+  //
+  // The same graph shape as the suburb pages: WebPage, Service and FAQPage,
+  // each referencing the practice and website entities declared on the home page
+  // rather than redeclaring them. This gives search engines a Service node for
+  // every treatment the practice offers, with its FAQ questions quoted verbatim
+  // from the visible page — the requirement for FAQ rich results.
+  //
+  // The BreadcrumbList is emitted separately by the <Breadcrumb> component and
+  // referenced by @id from the WebPage node, so the visible trail and the
+  // markup can never disagree.
+  //
+  // No Review or aggregateRating, per AHPRA advertising guidance.
+  const url = `${SITE_URL}/services/${slug}`
+  const breadcrumbName = service.h1pre
+    ? `${service.h1pre} ${service.h1em}`
+    : service.h1em.charAt(0).toUpperCase() + service.h1em.slice(1)
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: service.meta.title,
+        description: service.meta.description,
+        isPartOf: { '@id': SCHEMA_ID.website },
+        about: { '@id': SCHEMA_ID.practice },
+        breadcrumb: { '@id': `${url}#breadcrumb` },
+        inLanguage: 'en-AU',
+      },
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        serviceType: service.eyebrow,
+        name: service.meta.title.replace(/ \| .+$/, ''),
+        description: service.meta.description,
+        provider: { '@id': SCHEMA_ID.practice },
+        areaServed: {
+          '@type': 'City',
+          name: `${business.address.addressLocality}, Victoria, Australia`,
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        mainEntity: service.faq.map(({ q, a }) => ({
+          '@type': 'Question',
+          name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      },
+    ],
+  }
+
   return (
     <main className={s.wrap}>
+      <JsonLd data={serviceSchema} />
+
+      {/* ── BREADCRUMB ────────────────────────────────────── */}
+      <div className={s.inner} style={{ paddingTop: '18px' }}>
+        <Breadcrumb trail={servicesChildTrail(breadcrumbName)} id={`${url}#breadcrumb`} />
+      </div>
 
       {/* ── 1. HERO ──────────────────────────────────────── */}
       <section className={s.hero} id="top">
