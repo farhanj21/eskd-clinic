@@ -87,6 +87,7 @@ export default function SuperPage() {
             tall
             className="reveal"
             src="/assets/using-your-super/super.webp"
+            alt="A dentist and patient talking through a care plan together at the clinic"
             hint="Warm, real photo: a calm conversation between patient and dentist, care plan on the table."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
