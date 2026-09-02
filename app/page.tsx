@@ -519,19 +519,19 @@ export default function Home() {
           </div>
           <div className="edu-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <div className="svc reveal">
-              <Photo src="/assets/gallery/smile-1.webp" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-1.webp" alt="Before and after of a gentle smile refresh at East St Kilda Dental" hint="Before / after (understated)" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Gentle smile refresh</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/gallery/smile-2.webp" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-2.webp" alt="Before and after of a damaged tooth restored with a crown" hint="Real smile, real patient" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Restoring a damaged tooth</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/gallery/smile-3.webp" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-3.webp" alt="Before and after of a missing tooth replaced with a single implant" hint="Subtle, natural result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>Replacing a missing tooth</h4>
             </div>
             <div className="svc reveal">
-              <Photo src="/assets/gallery/smile-4.webp" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
+              <Photo src="/assets/gallery/smile-4.webp" alt="A once-nervous patient smiling comfortably after treatment" hint="Everyday result" sizes="(max-width: 820px) 100vw, 50vw" style={{ height: '140px', marginBottom: '12px' }} />
               <h4>A nervous patient's journey</h4>
             </div>
           </div>

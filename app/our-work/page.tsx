@@ -60,6 +60,7 @@ export default function OurWorkPage() {
             tall
             className="reveal"
             src="/assets/gallery/gallery-hero.webp"
+            alt="A patient smiling after treatment at East St Kilda Dental"
             hint="Warm, real before/after or smile photo (with consent). Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -89,6 +90,7 @@ export default function OurWorkPage() {
               <div key={i} className="svc">
                 <Photo
                   src={`/assets/gallery/smile-${i + 1}.webp`}
+                  alt={`${c.h4} — before and after, shared with patient consent`}
                   hint="Before & after (with patient consent)"
                   sizes="(max-width: 820px) 100vw, 33vw"
                   style={{ height: '170px', marginBottom: '10px' }}

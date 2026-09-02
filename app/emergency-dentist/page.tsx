@@ -159,6 +159,7 @@ export default function EmergencyPage() {
             tall
             className="reveal"
             src="/assets/emergency/emergency-dentistry.webp"
+            alt="A friendly team member taking a call at the East St Kilda Dental reception"
             hint="Calm, reassuring photo: a friendly team member on the phone, or a warm reception. Nothing graphic or clinical."
             sizes="(max-width: 860px) 100vw, 48vw"
           />

@@ -37,6 +37,7 @@ export default function AboutPage() {
           <Photo
             tall
             className="reveal"
+            alt="East St Kilda Dental clinic exterior on the corner of Dandenong and Orrong Roads"
             hint="Warm, real photo of the clinic exterior on the corner of Dandenong and Orrong Roads. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
           />
