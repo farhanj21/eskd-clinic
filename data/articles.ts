@@ -1,6 +1,44 @@
+/**
+ * A video in a guide.
+ *
+ * Two kinds of `src` are understood, and nothing else needs to change to swap
+ * between them:
+ *
+ *   • a file we host — '/assets/articles/video/bleeding-gums.mp4' — which plays
+ *     in the browser's own player. Give it a `poster`, or it opens on a black
+ *     frame;
+ *   • a YouTube or Vimeo link in any of its usual shapes (youtu.be/ID,
+ *     watch?v=ID, /embed/ID, vimeo.com/ID), which is normalised to the
+ *     privacy-preserving embed and loaded lazily.
+ *
+ * `title` is required either way: it is the iframe's accessible name and the
+ * name of the VideoObject the article page emits. The optional fields only
+ * feed that markup, so fill them in when you have them — a video with a
+ * description, thumbnail, upload date and duration is the one that can earn a
+ * video result in search.
+ */
+export interface ArticleVideo {
+  /** Hosted file under /public, or a YouTube/Vimeo link. */
+  src: string
+  /** What the video is. Required: used as the accessible name. */
+  title: string
+  /** Still frame shown before play. Required in practice for hosted files. */
+  poster?: string
+  /** One line under the player. */
+  caption?: string
+  /** ISO 8601 duration, e.g. 'PT4M12S'. Markup only. */
+  duration?: string
+  /** ISO date the video was published. Defaults to the guide's own date. */
+  uploadDate?: string
+  /** A sentence or two for the markup. Defaults to the caption. */
+  description?: string
+}
+
 export interface ArticleSection {
   h2: string
   paragraphs: string[]
+  /** Plays after this section's paragraphs. */
+  video?: ArticleVideo
 }
 
 export interface ArticleData {
@@ -12,7 +50,29 @@ export interface ArticleData {
   readTime: string
   excerpt: string       // shown on card and as .answer intro
   image?: string        // image used on guide cards and article pages
+  /**
+   * The guide's own video, played straight after the opening answer.
+   *
+   * A guide can also carry a video inside any section; this one is the
+   * feature, and it is what flags the guide as a watch-or-read on its card.
+   *
+   * Example:
+   *   video: {
+   *     src: 'https://youtu.be/dQw4w9WgXcQ',
+   *     title: 'Dr Anbar Ganatra on what bleeding gums mean',
+   *     caption: 'Two minutes on why gums bleed and when to have it looked at.',
+   *     duration: 'PT2M08S',
+   *   },
+   */
+  video?: ArticleVideo
   shortAnswer?: string  // optional .ansbox callout
+  /**
+   * The wrap-up that closes the guide, above the CTA.
+   *
+   * Written to be read on its own by someone who scrolled straight to it, so
+   * it restates the answer rather than pointing back at the sections above.
+   */
+  summary?: string
   body?: string[]       // flat paragraphs (legacy / fallback)
   sections?: ArticleSection[]   // structured h2 + paragraphs
   faq?: { q: string; a: string }[]
@@ -77,6 +137,8 @@ export const articles: ArticleData[] = [
         ],
       },
     ],
+    summary:
+      'However long it has been, the first appointment is a calm conversation and a gentle look — no lectures, no judgement, and nothing done without your say-so. You leave knowing where your dental health stands and with a prioritised plan you can take at your own pace. Tell us you are nervous when you book and we will set aside the extra time.',
     ctaH3: 'Ready when you are',
     ctaBody: "Whenever you feel ready, we'll make coming back as gentle as possible. No judgement, just a warm welcome and a clear care plan.",
     faq: [
@@ -112,7 +174,7 @@ export const articles: ArticleData[] = [
     date: '2026-06-07',
     readTime: '5 min read',
     status: 'published',
-    topics: ['prevention'],
+    topics: ['gum-health', 'prevention'],
     image: '/assets/articles/article-2.webp',
     excerpt:
       "If your gums bleed when you brush or floss, you're not alone, and it's usually very treatable. Here's what it means and what to do, without any judgement.",
@@ -147,6 +209,8 @@ export const articles: ArticleData[] = [
         ],
       },
     ],
+    summary:
+      "Gums that bleed when you brush or floss are usually inflamed from plaque sitting along the gumline, and at that early stage it is common and often reversible. Better home care helps, but only a professional clean removes hardened tartar. Left for months or years it can progress to periodontitis, where the damage is permanent — so it is worth looking at early.",
     ctaH3: "However long it's been, there's no lecture here",
     ctaBody:
       "A gentle check-up and clean is usually all it takes to get on top of bleeding gums, and to know exactly where you stand. We'll explain what we see, in plain language, and leave the decisions to you.",
@@ -188,13 +252,35 @@ export const articles: ArticleData[] = [
     image: '/assets/articles/article-3.webp',
     excerpt:
       'The "every six months" rule is widely quoted — but is it right for everyone? Our dentists explain what actually determines your ideal recall schedule.',
-    body: [
-      'Most people have heard that you should visit the dentist every six months. But where did that recommendation come from, and is it actually right for you?',
-      'The six-month recall originates from a 1950s US advertising campaign for a toothpaste brand — not clinical research. Since then, dental associations have softened the guidance, with most now recommending a frequency tailored to your individual risk profile.',
-      'Low-risk patients — those with healthy gums, good oral hygiene habits, no active decay, and stable restorations — may be well served by an annual check-up and clean. High-risk patients — those with a history of gum disease, a tendency toward decay, dry mouth, or certain medical conditions — often benefit from visits every three to four months.',
-      'The best way to know your ideal frequency is to ask your dentist at your next appointment. They\'ll assess your gum health, cavity risk, and oral hygiene habits and give you a personalised recommendation — not a one-size-fits-all interval.',
-      'The bottom line: more frequent visits aren\'t always better. But skipping routine care entirely is how small problems become expensive ones. Find your right frequency and stick to it.',
+    sections: [
+      {
+        h2: 'Where does the six-month rule come from?',
+        paragraphs: [
+          'Most people have heard that you should visit the dentist every six months. But where did that recommendation come from, and is it actually right for you?',
+          'The six-month recall originates from a 1950s US advertising campaign for a toothpaste brand — not clinical research. Since then, dental associations have softened the guidance, with most now recommending a frequency tailored to your individual risk profile.',
+        ],
+      },
+      {
+        h2: 'What actually decides how often you should come in?',
+        paragraphs: [
+          'Low-risk patients — those with healthy gums, good oral hygiene habits, no active decay, and stable restorations — may be well served by an annual check-up and clean. High-risk patients — those with a history of gum disease, a tendency toward decay, dry mouth, or certain medical conditions — often benefit from visits every three to four months.',
+        ],
+      },
+      {
+        h2: 'How do you find your own right frequency?',
+        paragraphs: [
+          'The best way to know your ideal frequency is to ask your dentist at your next appointment. They\'ll assess your gum health, cavity risk, and oral hygiene habits and give you a personalised recommendation — not a one-size-fits-all interval.',
+        ],
+      },
+      {
+        h2: 'The bottom line',
+        paragraphs: [
+          'The bottom line: more frequent visits aren\'t always better. But skipping routine care entirely is how small problems become expensive ones. Find your right frequency and stick to it.',
+        ],
+      },
     ],
+    summary:
+      'There is no single correct interval. Six months is a marketing legacy, not a clinical rule: low-risk mouths are often fine once a year, while a history of gum disease or decay usually warrants every three to four months. Ask at your next visit and have the interval set to your own risk rather than to a number.',
     faq: [
       { q: 'Can I go to the dentist less often if my teeth feel fine?', a: 'Dental problems often have no symptoms until they become advanced. Decay and early gum disease can progress silently for months or years. Regular check-ups detect issues when they\'re small and inexpensive to treat.' },
       { q: 'Does health insurance cover more than two cleans a year?', a: 'Most extras policies cover two standard cleans per year. Some higher-tier policies may cover additional hygienist visits, particularly if periodontal (gum) treatment is involved. Check your policy schedule or ask our reception team.' },
@@ -211,17 +297,44 @@ export const articles: ArticleData[] = [
     date: '2025-07-20',
     readTime: '5 min read',
     status: 'published',
-    topics: ['nervous-patients'],
+    topics: ['new-patients', 'nervous-patients'],
     image: '/assets/articles/article-4.webp',
     excerpt: 'First visits can feel daunting if you\'re not sure what\'s involved. Here\'s a clear, honest overview of exactly what happens and how long it takes.',
-    body: [
-      'If you haven\'t been to the dentist in a while — or if you\'re visiting a new practice for the first time — it\'s natural to feel a little uncertain about what lies ahead. Here\'s what a comprehensive new patient appointment looks like at East St Kilda Dental.',
-      'We start with a conversation. Before any clinical examination, your dentist will take time to understand your dental history, any current concerns or discomfort, and your overall health. This is your chance to ask questions and share any anxiety you may have — we genuinely want to know.',
-      'Next comes the clinical examination. Your dentist will systematically check every tooth for signs of decay, existing restorations, and wear. They\'ll also examine your gums for signs of periodontal disease, check your bite and jaw joints, and screen the soft tissues for any abnormalities.',
-      'Digital x-rays are taken to see what\'s happening between and beneath the teeth — areas where decay or bone loss can develop unseen. Our digital system uses a fraction of the radiation of older x-ray equipment.',
-      'Finally, our hygienist performs a professional scale and clean, removing hardened tartar and plaque from above and below the gumline before polishing your teeth.',
-      'From start to finish, a new patient appointment takes approximately 60–75 minutes. At the end, your dentist will walk you through any findings and discuss a treatment plan — with no pressure to proceed with anything beyond what you\'re comfortable with.',
+    sections: [
+      {
+        h2: 'What happens before anything clinical?',
+        paragraphs: [
+          'If you haven\'t been to the dentist in a while — or if you\'re visiting a new practice for the first time — it\'s natural to feel a little uncertain about what lies ahead. Here\'s what a comprehensive new patient appointment looks like at East St Kilda Dental.',
+          'We start with a conversation. Before any clinical examination, your dentist will take time to understand your dental history, any current concerns or discomfort, and your overall health. This is your chance to ask questions and share any anxiety you may have — we genuinely want to know.',
+        ],
+      },
+      {
+        h2: 'What does the examination involve?',
+        paragraphs: [
+          'Next comes the clinical examination. Your dentist will systematically check every tooth for signs of decay, existing restorations, and wear. They\'ll also examine your gums for signs of periodontal disease, check your bite and jaw joints, and screen the soft tissues for any abnormalities.',
+        ],
+      },
+      {
+        h2: 'Why are X-rays taken?',
+        paragraphs: [
+          'Digital x-rays are taken to see what\'s happening between and beneath the teeth — areas where decay or bone loss can develop unseen. Our digital system uses a fraction of the radiation of older x-ray equipment.',
+        ],
+      },
+      {
+        h2: 'Do you get a clean on the day?',
+        paragraphs: [
+          'Finally, our hygienist performs a professional scale and clean, removing hardened tartar and plaque from above and below the gumline before polishing your teeth.',
+        ],
+      },
+      {
+        h2: 'How long does it take, and what happens afterwards?',
+        paragraphs: [
+          'From start to finish, a new patient appointment takes approximately 60–75 minutes. At the end, your dentist will walk you through any findings and discuss a treatment plan — with no pressure to proceed with anything beyond what you\'re comfortable with.',
+        ],
+      },
     ],
+    summary:
+      'A first visit here is a conversation, a thorough examination, digital X-rays and a professional clean, running about 60 to 75 minutes. You finish with a clear picture of your dental health and a plan you can take away and think about — nothing is decided for you on the day.',
     faq: [
       { q: 'Do I need to bring anything to my first appointment?', a: 'If you have any recent x-rays from a previous dentist, it\'s helpful to bring them. Otherwise, just bring your Medicare card and health fund card if applicable.' },
       { q: 'What if I\'m nervous or have dental anxiety?', a: 'Please tell us — before or at the start of your appointment. We have significant experience with anxious patients and will adjust our approach, pace and communication accordingly.' },
@@ -238,16 +351,43 @@ export const articles: ArticleData[] = [
     date: '2025-06-10',
     readTime: '6 min read',
     status: 'published',
-    topics: ['treatments-explained'],
+    topics: ['orthodontics', 'treatments-explained'],
     image: '/assets/articles/article-5.webp',
     excerpt: 'Both Invisalign and traditional braces can deliver excellent results — but they\'re not interchangeable. We break down the honest pros, cons and costs of each.',
-    body: [
-      'Straight teeth are no longer the exclusive domain of teenagers in metal braces. Invisalign has made orthodontic treatment accessible and discreet for adults, and braces themselves have come a long way.',
-      'Invisalign uses a series of clear, removable plastic aligners to move teeth gradually. The main advantages are aesthetic (virtually invisible), comfort (no wires or brackets), and convenience. The main limitation is compliance — aligners must be worn 20–22 hours per day.',
-      'Traditional fixed braces are non-removable, meaning compliance isn\'t an issue. They also have an advantage in certain complex cases — significant bite corrections, severe crowding, and rotation of certain teeth.',
-      'Ceramic or tooth-coloured braces split the difference: they\'re fixed and much less visible than metal. Cost is broadly similar — both typically fall in the $5,000–$8,500 range depending on complexity.',
-      'Our recommendation: book a consultation. Bring your questions, your photos, and your lifestyle realities. We\'ll give you a straight assessment of which option will give you the best result for your specific teeth.',
+    sections: [
+      {
+        h2: 'Is orthodontics still just for teenagers?',
+        paragraphs: [
+          'Straight teeth are no longer the exclusive domain of teenagers in metal braces. Invisalign has made orthodontic treatment accessible and discreet for adults, and braces themselves have come a long way.',
+        ],
+      },
+      {
+        h2: 'How does Invisalign work, and what is the catch?',
+        paragraphs: [
+          'Invisalign uses a series of clear, removable plastic aligners to move teeth gradually. The main advantages are aesthetic (virtually invisible), comfort (no wires or brackets), and convenience. The main limitation is compliance — aligners must be worn 20–22 hours per day.',
+        ],
+      },
+      {
+        h2: 'When are fixed braces the better choice?',
+        paragraphs: [
+          'Traditional fixed braces are non-removable, meaning compliance isn\'t an issue. They also have an advantage in certain complex cases — significant bite corrections, severe crowding, and rotation of certain teeth.',
+        ],
+      },
+      {
+        h2: 'What about ceramic braces, and what does each cost?',
+        paragraphs: [
+          'Ceramic or tooth-coloured braces split the difference: they\'re fixed and much less visible than metal. Cost is broadly similar — both typically fall in the $5,000–$8,500 range depending on complexity.',
+        ],
+      },
+      {
+        h2: 'How do you decide between them?',
+        paragraphs: [
+          'Our recommendation: book a consultation. Bring your questions, your photos, and your lifestyle realities. We\'ll give you a straight assessment of which option will give you the best result for your specific teeth.',
+        ],
+      },
     ],
+    summary:
+      'Both straighten teeth well, and the cost is broadly similar. Invisalign wins on appearance and comfort but depends on you wearing it 20 to 22 hours a day; fixed braces take that decision out of your hands and handle complex bite and rotation cases more predictably. Which suits you comes down to your teeth and your habits, which is what a consultation is for.',
     faq: [
       { q: 'Can Invisalign fix overbites and underbites?', a: 'Invisalign has improved significantly in treating bite issues. Mild to moderate overbites and underbites can often be treated effectively. Your consultation will clarify what\'s achievable.' },
       { q: 'How old do you have to be for Invisalign?', a: 'Invisalign offers a Teen product with compliance indicators. Most teenagers from around 12–13 are suitable candidates. Adults of any age can use standard Invisalign.' },
@@ -264,16 +404,43 @@ export const articles: ArticleData[] = [
     date: '2025-05-05',
     readTime: '5 min read',
     status: 'published',
-    topics: ['treatments-explained'],
+    topics: ['oral-health', 'treatments-explained'],
     image: '/assets/articles/article-6.webp',
     excerpt: 'Bruxism — teeth grinding — affects up to 10% of adults and can cause serious damage before you even know it\'s happening. Here\'s what to look for.',
-    body: [
-      'Bruxism — the technical term for teeth grinding and jaw clenching — is surprisingly common. Many people grind at night and have no idea until a dentist notices the telltale wear patterns.',
-      'The most common signs include: worn, flattened, or chipped teeth; tooth sensitivity that\'s getting progressively worse; jaw soreness or stiffness in the morning; headaches, particularly at the temples.',
-      'In the short term, grinding is uncomfortable. Over years, it can grind away significant tooth structure, fracture teeth, damage existing restorations, and contribute to jaw joint (TMJ) disorders.',
-      'Treatment starts with a custom-fitted occlusal splint (night guard). This doesn\'t stop you grinding, but it provides a protective surface that absorbs the forces instead of your teeth.',
-      'If grinding has already caused visible tooth wear, your dentist will discuss whether any restorative treatment is needed. Early intervention is significantly less complex and costly than waiting.',
+    sections: [
+      {
+        h2: 'What is bruxism?',
+        paragraphs: [
+          'Bruxism — the technical term for teeth grinding and jaw clenching — is surprisingly common. Many people grind at night and have no idea until a dentist notices the telltale wear patterns.',
+        ],
+      },
+      {
+        h2: 'What are the signs you might be grinding?',
+        paragraphs: [
+          'The most common signs include: worn, flattened, or chipped teeth; tooth sensitivity that\'s getting progressively worse; jaw soreness or stiffness in the morning; headaches, particularly at the temples.',
+        ],
+      },
+      {
+        h2: 'Why does grinding matter?',
+        paragraphs: [
+          'In the short term, grinding is uncomfortable. Over years, it can grind away significant tooth structure, fracture teeth, damage existing restorations, and contribute to jaw joint (TMJ) disorders.',
+        ],
+      },
+      {
+        h2: 'How is teeth grinding treated?',
+        paragraphs: [
+          'Treatment starts with a custom-fitted occlusal splint (night guard). This doesn\'t stop you grinding, but it provides a protective surface that absorbs the forces instead of your teeth.',
+        ],
+      },
+      {
+        h2: 'What if the damage is already done?',
+        paragraphs: [
+          'If grinding has already caused visible tooth wear, your dentist will discuss whether any restorative treatment is needed. Early intervention is significantly less complex and costly than waiting.',
+        ],
+      },
     ],
+    summary:
+      'Grinding usually happens while you sleep, so the first signs are indirect: flattened or chipped teeth, worsening sensitivity, a sore jaw or morning headaches. A custom night guard will not stop the grinding, but it takes the force instead of your teeth, and catching it early is far simpler than rebuilding worn teeth later.',
     faq: [
       { q: 'Can I get a night guard from the chemist?', a: 'Over-the-counter boil-and-bite guards are generally inferior to custom-fitted appliances. A custom guard is a worthwhile investment.' },
       { q: 'Will a night guard fix my jaw pain?', a: 'A night guard can significantly reduce jaw muscle soreness and headaches in most bruxism patients. However, if you have an established TMJ disorder, additional treatment may be needed.' },
@@ -290,16 +457,43 @@ export const articles: ArticleData[] = [
     date: '2025-04-18',
     readTime: '6 min read',
     status: 'published',
-    topics: ['treatments-explained'],
+    topics: ['tooth-replacement', 'treatments-explained'],
     image: '/assets/articles/article-7.webp',
     excerpt: 'If you\'re missing a tooth (or several), you have choices. We explain when implants are the better long-term decision — and when a bridge makes more sense.',
-    body: [
-      'Losing a tooth is more consequential than many people realise. Beyond aesthetics, a missing tooth allows adjacent teeth to drift, affects your bite, and triggers bone loss in the jaw beneath the gap.',
-      'A dental bridge has been the standard solution for decades. A false tooth is suspended between two crowns cemented over the neighbouring teeth. Bridges are fixed, functional, and relatively fast to place.',
-      'Dental implants are a newer and increasingly preferred solution. A titanium post is placed in the jawbone to replicate the root, then a ceramic crown is attached. No adjacent teeth are involved.',
-      'Implants are more expensive upfront ($3,500–$6,500 per tooth versus $2,500–$4,500 for a bridge) and take longer (4–9 months versus 4–6 weeks). But over a 20-year horizon the comparative cost narrows, and long-term outcomes for implants are arguably superior.',
-      'Bridges remain a good option in certain situations — when bone volume is insufficient for an implant, when adjacent teeth already need crowning, or when the patient wants a faster solution.',
+    sections: [
+      {
+        h2: 'Why does a missing tooth matter?',
+        paragraphs: [
+          'Losing a tooth is more consequential than many people realise. Beyond aesthetics, a missing tooth allows adjacent teeth to drift, affects your bite, and triggers bone loss in the jaw beneath the gap.',
+        ],
+      },
+      {
+        h2: 'How does a dental bridge work?',
+        paragraphs: [
+          'A dental bridge has been the standard solution for decades. A false tooth is suspended between two crowns cemented over the neighbouring teeth. Bridges are fixed, functional, and relatively fast to place.',
+        ],
+      },
+      {
+        h2: 'How do dental implants work?',
+        paragraphs: [
+          'Dental implants are a newer and increasingly preferred solution. A titanium post is placed in the jawbone to replicate the root, then a ceramic crown is attached. No adjacent teeth are involved.',
+        ],
+      },
+      {
+        h2: 'What do they cost, and how long do they take?',
+        paragraphs: [
+          'Implants are more expensive upfront ($3,500–$6,500 per tooth versus $2,500–$4,500 for a bridge) and take longer (4–9 months versus 4–6 weeks). But over a 20-year horizon the comparative cost narrows, and long-term outcomes for implants are arguably superior.',
+        ],
+      },
+      {
+        h2: 'When is a bridge still the better option?',
+        paragraphs: [
+          'Bridges remain a good option in certain situations — when bone volume is insufficient for an implant, when adjacent teeth already need crowning, or when the patient wants a faster solution.',
+        ],
+      },
     ],
+    summary:
+      'An implant replaces the root as well as the tooth, leaves the neighbouring teeth untouched and tends to win over a long horizon, but it costs more upfront and takes months rather than weeks. A bridge is faster and cheaper today, and still the sensible choice where bone volume is short or the adjacent teeth need crowning anyway.',
     faq: [
       { q: 'How long do dental implants last?', a: 'Dental implants can last a lifetime with proper oral hygiene and regular check-ups. The porcelain crown on top typically lasts 15–20+ years.' },
       { q: 'Is the implant surgery painful?', a: 'Implant surgery is performed under local anaesthesia. Most patients report the experience is much more comfortable than they expected.' },
@@ -319,13 +513,35 @@ export const articles: ArticleData[] = [
     topics: ['costs-and-funds'],
     image: '/assets/articles/article-8.webp',
     excerpt: 'Many Australians don\'t realise they may be able to access their superannuation early for dental care. We explain how the process works — and when it applies.',
-    body: [
-      'Significant dental treatment can be a substantial expense, and many Australians struggle to afford the care they need. What\'s less widely known is that it may be possible to access your superannuation early to fund dental treatment under specific circumstances.',
-      'The Australian Tax Office (ATO) administers the Compassionate Grounds early release scheme. Eligible medical and dental expenses may qualify — but there are conditions, and not all dental treatment qualifies.',
-      'Dental treatment that may qualify includes: procedures to alleviate acute or chronic pain, treatment to prevent serious deterioration of health, and treatment that cannot be funded any other way. Treatment that is primarily cosmetic in nature is unlikely to qualify.',
-      'The application is made directly through MyGov. Approval is not guaranteed and can take several weeks, so this process isn\'t suitable for emergency situations.',
-      'Important: accessing your superannuation early has long-term financial consequences, including reduced retirement savings and potential tax implications. We strongly recommend speaking with a financial adviser before proceeding.',
+    sections: [
+      {
+        h2: 'Can you really use super for dental treatment?',
+        paragraphs: [
+          'Significant dental treatment can be a substantial expense, and many Australians struggle to afford the care they need. What\'s less widely known is that it may be possible to access your superannuation early to fund dental treatment under specific circumstances.',
+          'The Australian Tax Office (ATO) administers the Compassionate Grounds early release scheme. Eligible medical and dental expenses may qualify — but there are conditions, and not all dental treatment qualifies.',
+        ],
+      },
+      {
+        h2: 'Which dental treatment qualifies?',
+        paragraphs: [
+          'Dental treatment that may qualify includes: procedures to alleviate acute or chronic pain, treatment to prevent serious deterioration of health, and treatment that cannot be funded any other way. Treatment that is primarily cosmetic in nature is unlikely to qualify.',
+        ],
+      },
+      {
+        h2: 'How do you apply?',
+        paragraphs: [
+          'The application is made directly through MyGov. Approval is not guaranteed and can take several weeks, so this process isn\'t suitable for emergency situations.',
+        ],
+      },
+      {
+        h2: 'What should you weigh up first?',
+        paragraphs: [
+          'Important: accessing your superannuation early has long-term financial consequences, including reduced retirement savings and potential tax implications. We strongly recommend speaking with a financial adviser before proceeding.',
+        ],
+      },
     ],
+    summary:
+      'The ATO\'s Compassionate Grounds scheme can release super early for dental treatment that relieves acute or chronic pain or prevents serious deterioration of health — not for cosmetic work. You apply through MyGov, approval takes weeks and is not guaranteed, and because the money comes out of your retirement savings it is worth talking to a financial adviser before you start.',
     faq: [
       { q: 'Can I use super for cosmetic dental work?', a: 'Generally no. The Compassionate Grounds scheme requires demonstrated medical necessity. Purely cosmetic procedures such as whitening or veneers would not typically qualify.' },
       { q: 'How long does the super approval process take?', a: 'Processing times vary but typically take 2–4 weeks once a complete application is submitted through the ATO via MyGov.' },

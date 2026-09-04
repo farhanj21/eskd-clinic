@@ -4,11 +4,12 @@ import Photo from '@/components/Photo'
 import JsonLd from '@/components/JsonLd'
 import BreadcrumbBar from '@/components/BreadcrumbBar'
 import { learnHubTrail } from '@/components/Breadcrumb'
-import GuideGrid from '@/components/GuideGrid'
-import TopicChips from '@/components/TopicChips'
+import GuideLibrary from '@/components/GuideLibrary'
+import GetInTouch from '@/components/GetInTouch'
 import { withSocial } from '@/lib/seo'
 import { SCHEMA_ID, SITE_URL, business, telHref } from '@/lib/business'
 import { publishedArticles } from '@/data/articles'
+import { populatedTopics } from '@/data/topics'
 
 export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
@@ -30,6 +31,29 @@ const LEARN_URL = `${SITE_URL}/learn`
 const publishedGuides = publishedArticles
 
 /**
+ * What the grid actually needs, and the chips that filter it.
+ *
+ * The library filters in the browser, so only the card fields cross into the
+ * client bundle — the bodies, FAQs and schema copy stay on the server. Chips
+ * come from populatedTopics, so every one of them narrows the grid to at least
+ * one guide.
+ */
+const guideCards = publishedGuides.map(
+  ({ slug, title, eyebrow, author, readTime, image, topics, date, video }) => ({
+    slug,
+    title,
+    eyebrow,
+    author,
+    readTime,
+    image,
+    topics,
+    date,
+    video,
+  }),
+)
+const chipTopics = populatedTopics.map(({ slug, label }) => ({ slug, label }))
+
+/**
  * Topics we intend to write, shown as one quiet non-linked line.
  *
  * These are not pages and must never be rendered as cards or links — an empty
@@ -41,6 +65,44 @@ const upcomingTopics = [
   'Do I really need a crown?',
   'Is teeth whitening safe?',
   'Helping an anxious child at the dentist',
+]
+
+/**
+ * The clinicians the guides come from.
+ *
+ * Photos and roles match the team section on the home page — the same four
+ * faces, so the library reads as written by the people you will actually sit
+ * with rather than by an anonymous content desk.
+ */
+const writers = [
+  {
+    name: 'Dr Anbar Ganatra',
+    role: 'Principal Dentist',
+    photo: '/assets/team/anbar-ganatra.webp',
+    alt: 'Dr Anbar Ganatra – Principal Dentist',
+    objectPosition: 'center top',
+  },
+  {
+    name: 'Dr Edmund Goldman',
+    role: 'Dentist & Prosthodontist',
+    photo: '/assets/team/edmund-goldman.webp',
+    alt: 'Dr Edmund Goldman – Dentist & Prosthodontist',
+    objectPosition: 'center top',
+  },
+  {
+    name: 'Dr Jarrod Dean',
+    role: 'General Dentist',
+    photo: '/assets/team/jarrod-dean.webp',
+    alt: 'Dr Jarrod Dean – General Dentist',
+    objectPosition: 'center top',
+  },
+  {
+    name: 'Michelle Callaghan',
+    role: 'Hygienist',
+    photo: '/assets/team/michelle-callaghan.webp',
+    alt: 'Michelle Callaghan – Hygienist',
+    objectPosition: '40% 95%',
+  },
 ]
 
 // Marks the Learn hub as a curated library rather than a page with links, and
@@ -91,12 +153,19 @@ export default function LearnIndex() {
         <div className="container hero-v2-grid">
           <div className="reveal">
             <div className="eyebrow">Learn</div>
-            <h1>Clear, calm answers to your <em>dental questions</em></h1>
-            <p className="lead">Honest, easy-to-read guides written to help you understand your mouth — no jargon, no scare tactics, no selling.</p>
+            <h1>Dental Education</h1>
+            <p className="lead">Explore a wide range of helpful resources to learn more about dental health, treatments, and proper oral care.</p>
             <div className="hero-cta">
               <Link href="/online-booking" className="btn">Book a check-up</Link>
               <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
             </div>
+            {/* The third way in, for the question no guide answers. */}
+            <p style={{ marginTop: '18px', fontSize: '15px' }}>
+              Can&apos;t find your question?{' '}
+              <Link href="#contact" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+                Ask us directly &rarr;
+              </Link>
+            </p>
           </div>
           <Photo
             tall
@@ -110,32 +179,57 @@ export default function LearnIndex() {
         </div>
       </section>
 
-      {/* ── TOPICS ───────────────────────────────────────── */}
-      <section className="sec sage-bg">
-        <div className="container reveal" style={{ textAlign: 'center' }}>
-          <div className="eyebrow">Browse by topic</div>
-          <h2>What would you like to understand?</h2>
-          <TopicChips />
-        </div>
-      </section>
+      {/* ── TOPICS & ARTICLES ────────────────────────────── */}
+      <GuideLibrary guides={guideCards} topics={chipTopics} upcoming={upcomingTopics} />
 
-      {/* ── ARTICLES ─────────────────────────────────────── */}
+      {/* ── CTA BAND ─────────────────────────────────────── */}
       <section className="sec">
         <div className="container">
-          <div className="sec-head center reveal">
-            <div className="eyebrow">Latest</div>
-            <h2>Guides &amp; articles</h2>
-          </div>
-          <GuideGrid guides={publishedGuides} />
-
-          {/* Plain text, never links: these guides do not exist yet. */}
-          {upcomingTopics.length > 0 && (
-            <p className="publishing-soon reveal">
-              Publishing soon: {upcomingTopics.join(' · ')}
+          <div className="ctaband reveal">
+            <h3>Still not sure what you need?</h3>
+            <p>
+              Reading only gets you so far. Come in for a check-up and we&apos;ll show you what we see on the screen, explain it in plain language, and leave you with a clear, prioritised plan. Nothing happens without your say-so.
             </p>
-          )}
+            <div className="ctaband-actions">
+              <Link href="/online-booking" className="btn btn-light">Book a check-up</Link>
+              <a href={telHref} className="btn btn-ghost ctaband-ghost">Call {business.telephoneDisplay}</a>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* ── WHO WRITES THESE ─────────────────────────────── */}
+      <section className="sec alt">
+        <div className="container">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">Who writes these guides</div>
+            <h2>Written by the people who&apos;d <em>treat you</em></h2>
+            <p style={{ marginTop: '14px', fontSize: '17px' }}>
+              Every guide comes from the questions we answer in the chair each week, written and checked by our own clinicians — not bought in, and never written to sell you a treatment.
+            </p>
+          </div>
+          <div className="team-grid-v2">
+            {writers.map((writer) => (
+              <div className="team-member reveal" key={writer.name}>
+                <Photo
+                  src={writer.photo}
+                  alt={writer.alt}
+                  objectPosition={writer.objectPosition}
+                  sizes="(max-width: 820px) 50vw, 25vw"
+                />
+                <h4>{writer.name}</h4>
+                <span>{writer.role}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
+            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ASK US ───────────────────────────────────────── */}
+      <GetInTouch variant="default" id="contact" />
     </main>
   )
 }
