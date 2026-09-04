@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { publishedArticles, getPublishedArticle, type ArticleData } from '@/data/articles'
 import GetInTouch from '@/components/GetInTouch'
 import GuideGrid from '@/components/GuideGrid'
+import ArticleVideo, { embedUrl, isHostedVideo } from '@/components/ArticleVideo'
 import JsonLd from '@/components/JsonLd'
 import BreadcrumbBar from '@/components/BreadcrumbBar'
 import { learnArticleTrail } from '@/components/Breadcrumb'
@@ -59,6 +60,21 @@ function readMoreGuides(article: ArticleData, limit = 3) {
   const sameTopic = others.filter(a => a.topics?.some(t => article.topics?.includes(t)))
   const rest = others.filter(a => !sameTopic.includes(a))
   return [...sameTopic, ...rest].slice(0, limit)
+}
+
+/**
+ * Every video on the page, in the order it appears: the feature video first,
+ * then any inside a section.
+ *
+ * One list drives both the markup and nothing else — the players themselves
+ * are rendered where they belong — so a video can never be described in the
+ * schema without being on the page.
+ */
+function articleVideos(article: ArticleData) {
+  return [
+    ...(article.video ? [article.video] : []),
+    ...(article.sections ?? []).flatMap(section => (section.video ? [section.video] : [])),
+  ]
 }
 
 interface Props {
@@ -119,6 +135,7 @@ export default async function LearnEntryPage({ params }: Props) {
   // the body sections first, then the summary and the FAQs, which are headings
   // in their own right and the two things people scroll for.
   const contents = [
+    ...(article.video ? [{ id: 'watch', label: `Watch: ${article.video.title}` }] : []),
     ...(article.sections ?? []).map(section => ({ id: anchorId(section.h2), label: section.h2 })),
     ...(article.summary ? [{ id: 'summary', label: 'Summary' }] : []),
     ...(hasFaq ? [{ id: 'faqs', label: faqHeading }] : []),
@@ -128,6 +145,29 @@ export default async function LearnEntryPage({ params }: Props) {
   // against the populated list so a chip can never point at an empty page.
   const topicChips = populatedTopics.filter(t => article.topics?.includes(t.slug))
   const readMore = readMoreGuides(article)
+  const videos = articleVideos(article)
+
+  // A VideoObject per player on the page. A hosted file gets contentUrl (the
+  // file itself); an embed gets embedUrl (the player), which is what each of
+  // those properties means. Thumbnail falls back to the guide's cover, since a
+  // video result needs one.
+  const videoNodes = videos.map((video, i) => {
+    const thumbnail = video.poster ?? article.image
+    return {
+      '@type': 'VideoObject',
+      '@id': `${url}#video-${i + 1}`,
+      name: video.title,
+      description: video.description ?? video.caption ?? article.meta.description,
+      ...(thumbnail ? { thumbnailUrl: `${SITE_URL}${thumbnail}` } : {}),
+      uploadDate: video.uploadDate ?? article.date,
+      ...(video.duration ? { duration: video.duration } : {}),
+      ...(isHostedVideo(video.src)
+        ? { contentUrl: `${SITE_URL}${video.src}` }
+        : { embedUrl: embedUrl(video.src) }),
+      isPartOf: { '@id': `${url}#webpage` },
+      publisher: practiceRef,
+    }
+  })
 
   // isPartOf, publisher and author all reference the site-wide nodes by @id
   // rather than restating a name, so each guide joins the one entity graph
@@ -152,6 +192,9 @@ export default async function LearnEntryPage({ params }: Props) {
     datePublished: article.date,
     dateModified: article.date,
     ...(hasFaq ? { mainEntity: { '@id': `${url}#faq` } } : {}),
+    ...(videoNodes.length > 0
+      ? { video: videoNodes.map(node => ({ '@id': node['@id'] })) }
+      : {}),
   }
 
   // The questions on the page, marked up as the questions they are. Built from
@@ -172,7 +215,7 @@ export default async function LearnEntryPage({ params }: Props) {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': faqNode ? [webPage, faqNode] : [webPage],
+    '@graph': [webPage, ...(faqNode ? [faqNode] : []), ...videoNodes],
   }
 
   return (
@@ -271,6 +314,13 @@ export default async function LearnEntryPage({ params }: Props) {
                 <p className="answer">{article.excerpt}</p>
               )}
 
+              {/* The guide's feature video, straight after the answer */}
+              {article.video && (
+                <div id="watch">
+                  <ArticleVideo video={article.video} />
+                </div>
+              )}
+
               {/* Body: structured sections, each anchored from the contents */}
               {article.sections && article.sections.length > 0 && (
                 <div className="post-body">
@@ -280,6 +330,7 @@ export default async function LearnEntryPage({ params }: Props) {
                       {section.paragraphs.map((p, j) => (
                         <p key={j}>{p}</p>
                       ))}
+                      {section.video && <ArticleVideo video={section.video} />}
                     </div>
                   ))}
                 </div>

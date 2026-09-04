@@ -11,7 +11,7 @@ import type { ArticleData } from '@/data/articles'
  */
 export type GuideCard = Pick<
   ArticleData,
-  'slug' | 'title' | 'eyebrow' | 'author' | 'readTime' | 'image' | 'topics' | 'date'
+  'slug' | 'title' | 'eyebrow' | 'author' | 'readTime' | 'image' | 'topics' | 'date' | 'video'
 >
 
 /**
@@ -39,6 +39,15 @@ export default function GuideGrid({ guides }: { guides: GuideCard[] }) {
               sizes="(max-width: 900px) 50vw, 33vw"
             />
             <span className="guide-tag">{guide.eyebrow}</span>
+            {/* A guide you can watch rather than read says so on the cover. */}
+            {guide.video && (
+              <span className="guide-video-flag">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M8 5v14l11-7z" fill="currentColor" />
+                </svg>
+                Video
+              </span>
+            )}
             {/* The title set over the cover, the way their cover art carries
                 it. Hidden from screen readers: the real heading is below, and
                 hearing every title twice helps nobody. */}

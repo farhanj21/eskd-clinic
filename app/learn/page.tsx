@@ -39,7 +39,7 @@ const publishedGuides = publishedArticles
  * one guide.
  */
 const guideCards = publishedGuides.map(
-  ({ slug, title, eyebrow, author, readTime, image, topics, date }) => ({
+  ({ slug, title, eyebrow, author, readTime, image, topics, date, video }) => ({
     slug,
     title,
     eyebrow,
@@ -48,6 +48,7 @@ const guideCards = publishedGuides.map(
     image,
     topics,
     date,
+    video,
   }),
 )
 const chipTopics = populatedTopics.map(({ slug, label }) => ({ slug, label }))

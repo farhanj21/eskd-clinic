@@ -1,6 +1,44 @@
+/**
+ * A video in a guide.
+ *
+ * Two kinds of `src` are understood, and nothing else needs to change to swap
+ * between them:
+ *
+ *   • a file we host — '/assets/articles/video/bleeding-gums.mp4' — which plays
+ *     in the browser's own player. Give it a `poster`, or it opens on a black
+ *     frame;
+ *   • a YouTube or Vimeo link in any of its usual shapes (youtu.be/ID,
+ *     watch?v=ID, /embed/ID, vimeo.com/ID), which is normalised to the
+ *     privacy-preserving embed and loaded lazily.
+ *
+ * `title` is required either way: it is the iframe's accessible name and the
+ * name of the VideoObject the article page emits. The optional fields only
+ * feed that markup, so fill them in when you have them — a video with a
+ * description, thumbnail, upload date and duration is the one that can earn a
+ * video result in search.
+ */
+export interface ArticleVideo {
+  /** Hosted file under /public, or a YouTube/Vimeo link. */
+  src: string
+  /** What the video is. Required: used as the accessible name. */
+  title: string
+  /** Still frame shown before play. Required in practice for hosted files. */
+  poster?: string
+  /** One line under the player. */
+  caption?: string
+  /** ISO 8601 duration, e.g. 'PT4M12S'. Markup only. */
+  duration?: string
+  /** ISO date the video was published. Defaults to the guide's own date. */
+  uploadDate?: string
+  /** A sentence or two for the markup. Defaults to the caption. */
+  description?: string
+}
+
 export interface ArticleSection {
   h2: string
   paragraphs: string[]
+  /** Plays after this section's paragraphs. */
+  video?: ArticleVideo
 }
 
 export interface ArticleData {
@@ -12,6 +50,21 @@ export interface ArticleData {
   readTime: string
   excerpt: string       // shown on card and as .answer intro
   image?: string        // image used on guide cards and article pages
+  /**
+   * The guide's own video, played straight after the opening answer.
+   *
+   * A guide can also carry a video inside any section; this one is the
+   * feature, and it is what flags the guide as a watch-or-read on its card.
+   *
+   * Example:
+   *   video: {
+   *     src: 'https://youtu.be/dQw4w9WgXcQ',
+   *     title: 'Dr Anbar Ganatra on what bleeding gums mean',
+   *     caption: 'Two minutes on why gums bleed and when to have it looked at.',
+   *     duration: 'PT2M08S',
+   *   },
+   */
+  video?: ArticleVideo
   shortAnswer?: string  // optional .ansbox callout
   /**
    * The wrap-up that closes the guide, above the CTA.
