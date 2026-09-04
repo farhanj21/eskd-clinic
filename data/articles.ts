@@ -112,7 +112,7 @@ export const articles: ArticleData[] = [
     date: '2026-06-07',
     readTime: '5 min read',
     status: 'published',
-    topics: ['prevention'],
+    topics: ['gum-health', 'prevention'],
     image: '/assets/articles/article-2.webp',
     excerpt:
       "If your gums bleed when you brush or floss, you're not alone, and it's usually very treatable. Here's what it means and what to do, without any judgement.",
@@ -211,7 +211,7 @@ export const articles: ArticleData[] = [
     date: '2025-07-20',
     readTime: '5 min read',
     status: 'published',
-    topics: ['nervous-patients'],
+    topics: ['new-patients', 'nervous-patients'],
     image: '/assets/articles/article-4.webp',
     excerpt: 'First visits can feel daunting if you\'re not sure what\'s involved. Here\'s a clear, honest overview of exactly what happens and how long it takes.',
     body: [
@@ -238,7 +238,7 @@ export const articles: ArticleData[] = [
     date: '2025-06-10',
     readTime: '6 min read',
     status: 'published',
-    topics: ['treatments-explained'],
+    topics: ['orthodontics', 'treatments-explained'],
     image: '/assets/articles/article-5.webp',
     excerpt: 'Both Invisalign and traditional braces can deliver excellent results — but they\'re not interchangeable. We break down the honest pros, cons and costs of each.',
     body: [
@@ -264,7 +264,7 @@ export const articles: ArticleData[] = [
     date: '2025-05-05',
     readTime: '5 min read',
     status: 'published',
-    topics: ['treatments-explained'],
+    topics: ['oral-health', 'treatments-explained'],
     image: '/assets/articles/article-6.webp',
     excerpt: 'Bruxism — teeth grinding — affects up to 10% of adults and can cause serious damage before you even know it\'s happening. Here\'s what to look for.',
     body: [
@@ -290,7 +290,7 @@ export const articles: ArticleData[] = [
     date: '2025-04-18',
     readTime: '6 min read',
     status: 'published',
-    topics: ['treatments-explained'],
+    topics: ['tooth-replacement', 'treatments-explained'],
     image: '/assets/articles/article-7.webp',
     excerpt: 'If you\'re missing a tooth (or several), you have choices. We explain when implants are the better long-term decision — and when a bridge makes more sense.',
     body: [
