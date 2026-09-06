@@ -8,7 +8,7 @@ import { business, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Dental Fees & Costs | East St Kilda Dental — No Surprises',
   description:
-    "You'll always know what something costs before it happens. $297 first visit, all major health funds, HUMM payment plans. East St Kilda Dental.",
+    "You'll always know what something costs before it happens. One simple price for your first visit, all major health funds, HUMM payment plans. East St Kilda Dental.",
   alternates: { canonical: 'https://www.eaststkildadental.com.au/fees' },
 })
 
@@ -38,7 +38,7 @@ const faq = [
   },
   {
     q: 'What does the first visit cost?',
-    a: "Your first visit is the Comprehensive Care Visit, a flat $297 with everything included. With most health funds you claim on the day and pay only a minimal gap, and your exact gap depends on your level of cover. We'll always give you the price before you book.",
+    a: "Your first visit is the Comprehensive Care Visit, one flat price with everything included. With most health funds you claim on the day and pay only a minimal gap, and your exact gap depends on your level of cover. We'll always give you the price before you book.",
   },
   {
     q: "What if I can't pay for treatment all at once?",
@@ -66,7 +66,7 @@ export default function FeesPage() {
             <a href={telHref} className="btn btn-ghost">Call {business.telephoneDisplay}</a>
           </div>
           <div className="hero-proof" style={{ justifyContent: 'center' }}>
-            <span>$297 first visit, all included</span>
+            <span>One price, first visit all included</span>
             <span className="proof-dot" />
             <span>All major funds</span>
             <span className="proof-dot" />
@@ -81,7 +81,7 @@ export default function FeesPage() {
           <div className="ctaband reveal">
             <h3>New patient? Start with the Comprehensive Care Visit</h3>
             <p>
-              Your thorough first visit, the exam, X-rays, scale, clean, fluoride and a clear care plan, for one simple price of $297 (valued at $499). With most health funds you claim on the day and pay only a minimal gap.
+              Your thorough first visit, the exam, X-rays, scale, clean, fluoride and a clear care plan, for one simple price. With most health funds you claim on the day and pay only a minimal gap.
             </p>
             <div className="ctaband-actions">
               <Link href="/comprehensive-care-visit" className="btn">See what&apos;s included</Link>
@@ -97,7 +97,7 @@ export default function FeesPage() {
           <div className="eyebrow">One simple price</div>
           <h2>Your first visit is the <em>Comprehensive Care Visit</em></h2>
           <p style={{ fontSize: '18px', marginTop: '14px' }}>
-            A thorough first visit with everything included, for one simple price of $297 (valued at $499). With most health funds you claim on the day and pay only a minimal gap; your exact gap depends on your level of cover. No cover? We&apos;ll tell you the cost up front, before you book. Either way, you&apos;ll know exactly where you stand.
+            A thorough first visit with everything included, for one simple price. With most health funds you claim on the day and pay only a minimal gap; your exact gap depends on your level of cover. No cover? We&apos;ll tell you the cost up front, before you book. Either way, you&apos;ll know exactly where you stand.
           </p>
         </div>
       </section>

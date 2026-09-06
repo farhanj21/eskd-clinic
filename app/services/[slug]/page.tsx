@@ -73,17 +73,17 @@ const statDisplay = (stat: { count: number; suffix: string }) =>
   `${stat.count.toLocaleString('en-AU')}${stat.suffix}`
 
 /**
- * The floating hero badge. Services on the flat new-patient price lead with the
- * figure; the rest lead with how they're paid for, since there is no single
- * number to quote before we've seen you.
+ * The floating hero badge. Services covered by the flat new-patient visit lead
+ * with that; the rest lead with how they're paid for, since nothing is quoted
+ * before we've seen you.
  */
 function heroBadge(service: ServiceData) {
   switch (service.pricing) {
     case 'flat':
       return {
-        figure: `$${comprehensiveCareVisit.price}`,
-        note: `${comprehensiveCareVisit.name}, everything included`,
-        isWord: false,
+        figure: 'All included',
+        note: `${comprehensiveCareVisit.name}, everything in one visit`,
+        isWord: true,
       }
     case 'cdbs':
       return {
@@ -473,20 +473,12 @@ export default async function ServicePage({ params }: Props) {
             </h2>
           </div>
 
-          {/* Only the flat-price services have a figure to lead with. Everything
-              else is quoted as a written estimate, so the card drops its
-              figure column rather than inventing a number. */}
+          {/* Nothing is quoted before we've seen you, so the card carries the
+              written-estimate promise rather than a figure column. */}
           <div
-            className={`${s.costCard} ${service.pricing === 'flat' ? '' : s.costCardPlain} reveal`}
+            className={`${s.costCard} ${s.costCardPlain} reveal`}
             style={{ transitionDelay: '.16s' }}
           >
-            {service.pricing === 'flat' && (
-              <div className={s.costFigureCol}>
-                <div className={s.costFigure}>${comprehensiveCareVisit.price}</div>
-                <div className={s.costLabel}>{comprehensiveCareVisit.name}</div>
-                <div className={s.costValue}>Valued at $499</div>
-              </div>
-            )}
             <div>
               <p className={s.costPara}>{service.costPara}</p>
               <Link href="/fees" className={s.inlineLink}>

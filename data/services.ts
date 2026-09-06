@@ -129,7 +129,7 @@ export const services: ServiceData[] = [
     aftercareH2: 'After your visit',
     aftercare: 'There\'s nothing to recover from after a check-up, you can carry straight on with your day. If we spot anything, you\'ll leave with a clear, prioritised care plan and honest guidance, never a hard sell.',
     ctaH3: 'Thinking about a check-up?',
-    costPara: 'Your first visit is our Comprehensive Care Visit, one simple price of $297 with everything included, and we claim through HICAPS on the spot, so with most funds you pay only a minimal gap on the day.',
+    costPara: 'Your first visit is our Comprehensive Care Visit, one simple price with everything included, and we claim through HICAPS on the spot, so with most funds you pay only a minimal gap on the day.',
     faq: [
       { q: 'How often should I have a check-up?', a: 'For most people, every six months. If your mouth is healthy and stable we may suggest a longer interval, and if something needs watching, a shorter one. We\'ll tell you what we think is right for you, and why.' },
       { q: 'It\'s been years, will you judge me?', a: 'No. Many of our patients come to us after a long gap. We start with a conversation, work at your pace, and explain what we find without lectures.' },
@@ -143,7 +143,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Dental Check-ups & Exams | East St Kilda Dental',
-      description: 'Thorough, gentle dental check-ups in St Kilda East. We catch problems early and leave you with a clear care plan. New patient offer $297. Book today.',
+      description: 'Thorough, gentle dental check-ups in St Kilda East. We catch problems early and leave you with a clear care plan. New patient offer available. Book today.',
     },
   },
   {
@@ -201,7 +201,7 @@ export const services: ServiceData[] = [
     aftercareH2: 'After your clean',
     aftercare: 'Your teeth may feel a little sensitive for a day or two, which settles quickly, and you can eat and drink as normal. If your gums were inflamed, some tenderness as they heal is normal.',
     ctaH3: 'Thinking about a clean?',
-    costPara: 'Your first visit is our Comprehensive Care Visit, one simple price of $297 with everything included, and we claim through HICAPS on the spot, so with most funds you pay only a minimal gap on the day.',
+    costPara: 'Your first visit is our Comprehensive Care Visit, one simple price with everything included, and we claim through HICAPS on the spot, so with most funds you pay only a minimal gap on the day.',
     faq: [
       { q: 'Does a clean hurt?', a: 'It\'s gentle, and we go at your pace, just tell us if anything feels uncomfortable.' },
       { q: 'My gums bleed, is that bad?', a: 'Bleeding usually means inflammation, which is common and very treatable.' },

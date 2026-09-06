@@ -8,7 +8,7 @@ import { business, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
-    `Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment for $297 (valued at $499). No surprises, no rush. Book online or call ${business.telephoneDisplay}.`,
+    `Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment with everything included. No surprises, no rush. Book online or call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
 })
 
@@ -34,7 +34,7 @@ export default function FirstVisitPage() {
               <span>All health funds accepted</span>
             </div>
             <p style={{ marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }}>
-              One simple price of $297, everything included. Nervous or overdue? You&apos;re especially welcome.
+              One simple price, everything included. Nervous or overdue? You&apos;re especially welcome.
             </p>
           </div>
           <Photo
@@ -89,7 +89,7 @@ export default function FirstVisitPage() {
                   <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
                   <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
                     <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
-                      New here? Start with the Comprehensive Care Visit, $297 &rarr;
+                      New here? Start with the Comprehensive Care Visit &rarr;
                     </Link>
                   </p>
                   <div className="ctaband-actions">
@@ -121,15 +121,12 @@ export default function FirstVisitPage() {
               </ul>
               <div className="offer-meta">
                 <div><b>60&ndash;75 min</b>gentle and thorough</div>
-                <div><b>$297</b>everything above, one price</div>
+                <div><b>All included</b>everything above, one visit</div>
                 <div><b>A care plan</b>clear and easy to follow</div>
               </div>
-              <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px' }}>
-                Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
-              </p>
               <Link href="/online-booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+                Everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
             <Photo
@@ -211,7 +208,7 @@ export default function FirstVisitPage() {
           <div className="svc-grid reveal">
             <div className="svc">
               <h4>One simple price</h4>
-              <p>Your first visit is the Comprehensive Care Visit: $297 with everything included, valued at $499.</p>
+              <p>Your first visit is the Comprehensive Care Visit, one flat price with everything included.</p>
             </div>
             <div className="svc">
               <h4>Claim on the spot</h4>
@@ -293,7 +290,7 @@ export default function FirstVisitPage() {
             </details>
             <details>
               <summary>What will it cost?</summary>
-              <p>Your first visit is the Comprehensive Care Visit, a flat $297 with everything included (valued at $499). With most health funds you claim on the day and pay only a minimal gap. If you need further treatment, you&apos;ll get a clear written estimate before anything goes ahead.</p>
+              <p>Your first visit is the Comprehensive Care Visit, one flat price with everything included. With most health funds you claim on the day and pay only a minimal gap. If you need further treatment, you&apos;ll get a clear written estimate before anything goes ahead.</p>
             </details>
             <details>
               <summary>I&apos;m nervous, or it&apos;s been years. Is that okay?</summary>

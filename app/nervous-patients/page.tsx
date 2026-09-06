@@ -216,7 +216,7 @@ export default function GentlePage() {
           <div className="eyebrow">No financial surprises</div>
           <h2>Clear costs, decided together</h2>
           <p style={{ fontSize: '18px', marginTop: '14px' }}>
-            Cost worries can be as stressful as the dentistry itself. You&apos;ll always get a clear written estimate before anything goes ahead, your first visit is our Comprehensive Care Visit at one simple price of $297 with everything included, and we offer payment plans for larger treatment. Nothing is a surprise.
+            Cost worries can be as stressful as the dentistry itself. You&apos;ll always get a clear written estimate before anything goes ahead, your first visit is our Comprehensive Care Visit at one simple price with everything included, and we offer payment plans for larger treatment. Nothing is a surprise.
           </p>
           <div style={{ marginTop: '24px' }}>
             <Link href="/fees" className="btn btn-ghost">See fees and health funds</Link>

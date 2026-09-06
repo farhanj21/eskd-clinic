@@ -293,7 +293,7 @@
   }
 }
 
-/* ── the $297 offer ───────────────────────────────────── */
+/* ── the first-visit offer ────────────────────────────── */
 .offerCard {
   background: var(--paper);
   border: 1px solid var(--clay-soft);
