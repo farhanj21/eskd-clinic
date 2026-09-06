@@ -158,7 +158,7 @@ export const articles: ArticleData[] = [
     related: [
       { label: 'Gentle dentistry', href: '/nervous-patients' },
       { label: 'Your first visit', href: '/your-first-visit' },
-      { label: 'The $297 visit', href: '/comprehensive-care-visit' },
+      { label: 'The Comprehensive Care Visit', href: '/comprehensive-care-visit' },
     ],
     meta: {
       title: "Haven't Been to the Dentist in Years? Here's What to Expect | East St Kilda Dental",
@@ -376,7 +376,7 @@ export const articles: ArticleData[] = [
       {
         h2: 'What about ceramic braces, and what does each cost?',
         paragraphs: [
-          'Ceramic or tooth-coloured braces split the difference: they\'re fixed and much less visible than metal. Cost is broadly similar — both typically fall in the $5,000–$8,500 range depending on complexity.',
+          'Ceramic or tooth-coloured braces split the difference: they\'re fixed and much less visible than metal. Cost is broadly similar between the two, varying with how complex the case is, and you\'ll have a written estimate before anything begins.',
         ],
       },
       {
@@ -482,7 +482,7 @@ export const articles: ArticleData[] = [
       {
         h2: 'What do they cost, and how long do they take?',
         paragraphs: [
-          'Implants are more expensive upfront ($3,500–$6,500 per tooth versus $2,500–$4,500 for a bridge) and take longer (4–9 months versus 4–6 weeks). But over a 20-year horizon the comparative cost narrows, and long-term outcomes for implants are arguably superior.',
+          'Implants cost more upfront than a bridge and take longer (4–9 months versus 4–6 weeks). But over a 20-year horizon the comparative cost narrows, and long-term outcomes for implants are arguably superior.',
         ],
       },
       {

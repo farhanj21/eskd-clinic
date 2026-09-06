@@ -53,7 +53,7 @@ export default function TermsPage() {
 
             <h2>6. New Patient Offer</h2>
             <p>
-              The $297 (valued at $499) new patient offer is available to first-time patients only. It includes a comprehensive oral examination, digital bitewing x-rays, and a standard scale and polish. Health fund benefits are applied in addition to the offer price. The Practice reserves the right to withdraw or modify this offer at any time.
+              The new patient offer is available to first-time patients only. It includes a comprehensive oral examination, digital bitewing x-rays, and a standard scale and polish. Health fund benefits are applied in addition to the offer. The Practice reserves the right to withdraw or modify this offer at any time.
             </p>
 
             <h2>7. Intellectual Property</h2>

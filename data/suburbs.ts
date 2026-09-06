@@ -11,7 +11,7 @@
  *
  * The shape below follows the suburb-page build spec: the entries here are the
  * PER-SUBURB half of the page, and nothing else. Everything shared — the
- * services, the $297 visit, the team, the funds, the map, the CTAs — lives in
+ * services, the first visit, the team, the funds, the map, the CTAs — lives in
  * <SuburbPage> and is deliberately identical on all twenty pages, because
  * repeated furniture is boilerplate to a search engine while duplicated main
  * content is not.
