@@ -331,11 +331,8 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/home/nervous-patients.webp"
+            src="/assets/unused/south-yarra.webp"
             alt="A relaxed patient smiling warmly in the dental chair"
-            objectPosition="0% 40%"
-            scale={1.1}
-            sizes="(max-width: 860px) 100vw, 48vw"
           />
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
