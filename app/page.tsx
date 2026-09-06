@@ -344,7 +344,6 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <p>Many of our patients arrive having avoided the dentist for years, often after a bad experience long ago. Looking after frightened patients is one of the things we are known for. Our gentle approach pairs careful clinical care with a calm, coaching-informed way of working, developed specifically for dental fear, so it feels safe from the moment you walk in. Tell us you&apos;re anxious, and we go entirely at your pace.</p>
             <div className="chips chips-2">
               <span className="chip">Happy gas and sedation options</span>
               <span className="chip">Calm, unhurried pacing</span>
