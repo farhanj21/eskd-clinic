@@ -45,7 +45,7 @@ export function withSocial(meta: Metadata): Metadata {
   // not the production deployment emits noindex, nofollow — a robots.txt
   // disallow alone does not reliably keep staging out of the index, because a
   // blocked URL can still be indexed if something links to it. On production a
-  // page may still opt itself out (the campaign landing page does).
+  // page may still opt itself out by passing its own `robots`.
   const robots: Metadata['robots'] = isProduction
     ? meta.robots ?? { index: true, follow: true }
     : { index: false, follow: false }

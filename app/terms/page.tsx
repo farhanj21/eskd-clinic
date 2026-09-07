@@ -51,9 +51,9 @@ export default function TermsPage() {
               Fees are payable on the day of service unless a prior arrangement has been made. Health fund benefits are applied at point of service via HICAPS. Any outstanding balance is the patient&apos;s responsibility. Fee estimates provided are indicative and may vary if clinical circumstances change.
             </p>
 
-            <h2>6. New Patient Offer</h2>
+            <h2>6. New Patient Comprehensive Care Visit</h2>
             <p>
-              The new patient offer is available to first-time patients only. It includes a comprehensive oral examination, digital bitewing x-rays, and a standard scale and polish. Health fund benefits are applied in addition to the offer. The Practice reserves the right to withdraw or modify this offer at any time.
+              The New Patient Comprehensive Care Visit is available to first-time patients only. It includes a comprehensive oral examination, digital bitewing x-rays, and a standard scale and polish. Health fund benefits are applied in addition to the advertised price. The Practice reserves the right to withdraw or modify it at any time.
             </p>
 
             <h2>7. Intellectual Property</h2>

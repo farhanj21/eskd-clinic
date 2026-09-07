@@ -8,7 +8,7 @@ import { business, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Dental Fees & Costs | East St Kilda Dental — No Surprises',
   description:
-    "You'll always know what something costs before it happens. One simple price for your first visit, all major health funds, HUMM payment plans. East St Kilda Dental.",
+    "You'll always know what something costs before it happens. One simple price for your first visit, all major health funds welcome, HUMM payment plans. East St Kilda Dental.",
   alternates: { canonical: 'https://www.eaststkildadental.com.au/fees' },
 })
 
@@ -38,7 +38,7 @@ const faq = [
   },
   {
     q: 'What does the first visit cost?',
-    a: "Your first visit is the Comprehensive Care Visit, one flat price with everything included. With most health funds you claim on the day and pay only a minimal gap, and your exact gap depends on your level of cover. We'll always give you the price before you book.",
+    a: "Your first visit is the New Patient Comprehensive Care Visit, one flat price with everything included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover. We'll always give you the price before you book.",
   },
   {
     q: "What if I can't pay for treatment all at once?",
@@ -79,12 +79,12 @@ export default function FeesPage() {
       <section className="sec">
         <div className="container">
           <div className="ctaband reveal">
-            <h3>New patient? Start with the Comprehensive Care Visit</h3>
+            <h3>Start with the New Patient Comprehensive Care Visit</h3>
             <p>
-              Your thorough first visit, the exam, X-rays, scale, clean, fluoride and a clear care plan, for one simple price. With most health funds you claim on the day and pay only a minimal gap.
+              Your thorough first visit, the exam, X-rays, scale, clean, fluoride and a clear care plan, for one simple price. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
             </p>
             <div className="ctaband-actions">
-              <Link href="/comprehensive-care-visit" className="btn">See what&apos;s included</Link>
+              <Link href="/new-patient-comprehensive-care-visit" className="btn">See what&apos;s included</Link>
               <Link href="/online-booking" className="btn btn-ghost-light">Book online</Link>
             </div>
           </div>
@@ -95,9 +95,9 @@ export default function FeesPage() {
       <section className="sec sage-bg">
         <div className="container reveal" style={{ textAlign: 'center', maxWidth: '48em', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="eyebrow">One simple price</div>
-          <h2>Your first visit is the <em>Comprehensive Care Visit</em></h2>
+          <h2>Your first visit is the <em>New Patient Comprehensive Care Visit</em></h2>
           <p style={{ fontSize: '18px', marginTop: '14px' }}>
-            A thorough first visit with everything included, for one simple price. With most health funds you claim on the day and pay only a minimal gap; your exact gap depends on your level of cover. No cover? We&apos;ll tell you the cost up front, before you book. Either way, you&apos;ll know exactly where you stand.
+            A thorough first visit with everything included, for one simple price. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover. No cover? We&apos;ll tell you the cost up front, before you book. Either way, you&apos;ll know exactly where you stand.
           </p>
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function FeesPage() {
             <div className="eyebrow">Claim on the spot</div>
             <h2>All major health funds, <em>claimed instantly</em></h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
-              Bring your health fund card and we&apos;ll claim through HICAPS on the day, so usually you only pay any gap. We accept every major Australian fund.
+              We welcome patients from all major Australian funds. Bring your health fund card and we can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
             </p>
           </div>
           <HealthFundLogos className="reveal" otherLabel="+ all major funds" />

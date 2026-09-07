@@ -97,8 +97,8 @@ const WHY = [
 
 /** The four dentists, as named on /about/our-team. Bios stay on that page. */
 const TEAM = [
-  { name: 'Dr Anbar Ganatra', role: 'Principal Dentist', image: '/assets/team/anbar-ganatra.webp' },
-  { name: 'Dr Edmund Goldman', role: 'Dentist & Prosthodontist', image: '/assets/team/edmund-goldman.webp' },
+  { name: 'Dr Anbar Ganatra', role: 'Cosmetic & General Dentist', image: '/assets/team/anbar-ganatra.webp' },
+  { name: 'Dr Edmund Goldman', role: 'Dentist', image: '/assets/team/edmund-goldman.webp' },
   { name: 'Dr Jarrod Dean', role: 'General Dentist', image: '/assets/team/jarrod-dean.webp' },
   { name: 'Dr Marina Bekheet', role: 'General Dentist', image: '/assets/team/marina-bakheet.webp' },
 ]
@@ -214,7 +214,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
             </div>
             <div className={styles.qrow}>
               <span className={styles.qi} aria-hidden="true">●</span>
-              <span><b>One price, first visit</b> — the Comprehensive Care Visit</span>
+              <span><b>One price, first visit</b> — the New Patient Comprehensive Care Visit</span>
             </div>
             <div className={styles.dirbtns}>
               <a className={styles.dirbtn} href={googleDirections(s)} target="_blank" rel="noopener noreferrer">
@@ -301,7 +301,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
           <div className={`${styles.offerCard} reveal`}>
             <div>
               <div className="eyebrow">New patients</div>
-              <h2>The Comprehensive Care Visit</h2>
+              <h2>The New Patient Comprehensive Care Visit</h2>
               <p>
                 A thorough, unhurried first appointment where we get to know you and your mouth, and
                 leave you with a clear, honest plan.
@@ -311,7 +311,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
                 <div><span className={styles.k}>Includes</span><b>Everything</b></div>
                 <div><span className={styles.k}>Length</span><b>60–75 min</b></div>
               </div>
-              <Link href="/comprehensive-care-visit" className="btn">Book your first visit</Link>
+              <Link href="/new-patient-comprehensive-care-visit" className="btn">Book your first visit</Link>
             </div>
             <ul className={styles.offerIncludes}>
               {OFFER_INCLUDES.map((item) => <li key={item}>{item}</li>)}

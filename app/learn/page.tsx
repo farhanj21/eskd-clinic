@@ -77,16 +77,16 @@ const upcomingTopics = [
 const writers = [
   {
     name: 'Dr Anbar Ganatra',
-    role: 'Principal Dentist',
+    role: 'Cosmetic & General Dentist',
     photo: '/assets/team/anbar-ganatra.webp',
-    alt: 'Dr Anbar Ganatra – Principal Dentist',
+    alt: 'Dr Anbar Ganatra – Cosmetic & General Dentist',
     objectPosition: 'center top',
   },
   {
     name: 'Dr Edmund Goldman',
-    role: 'Dentist & Prosthodontist',
+    role: 'Dentist',
     photo: '/assets/team/edmund-goldman.webp',
-    alt: 'Dr Edmund Goldman – Dentist & Prosthodontist',
+    alt: 'Dr Edmund Goldman – Dentist',
     objectPosition: 'center top',
   },
   {

@@ -37,11 +37,11 @@ const OFFERS: Offer[] = [
   },
   {
     pill: 'Always welcome',
-    title: 'New Patient Visit',
+    title: 'New Patient Comprehensive Care Visit',
     body: 'New to the practice? An unhurried first appointment — we get to know you, check everything properly, and explain what we find in plain English.',
     cta: 'Learn more',
     href: '/your-first-visit',
-    ariaLabel: 'Learn about the new patient visit',
+    ariaLabel: 'Learn about the New Patient Comprehensive Care Visit',
     icon: 'heart',
   },
   {
@@ -79,9 +79,16 @@ export default function HomeOffers() {
   return (
     <section className="offers" aria-labelledby="offers-heading">
       <div className="container">
-        {/* The design has no visible title — the cards are self-describing — but
-            the section still needs an accessible name to be navigable. */}
-        <h2 id="offers-heading" className="offers-sr-only">New patient offers</h2>
+        {/* The cards are self-describing, but the home page now leads the
+            reader through a sequence — who we are, what to book, why us — and
+            this row is the "what to book" step, so it says so out loud. */}
+        <div className="sec-head center reveal" style={{ marginBottom: '34px' }}>
+          <div className="eyebrow">New to East St Kilda Dental?</div>
+          <h2 id="offers-heading">Choose the visit that fits</h2>
+          <p style={{ marginTop: '14px', fontSize: '17px' }}>
+            Three ways to start with us. Not sure which? Book the first one, or call and we&apos;ll help you pick.
+          </p>
+        </div>
 
         <div className="offers-row">
           {OFFERS.map(offer => (

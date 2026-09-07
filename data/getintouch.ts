@@ -35,7 +35,7 @@ export const getInTouchCopy: Record<GetInTouchVariant, GetInTouchCopy> = {
     sub: 'We move at your pace. Let\'s start with a relaxed, no-pressure chat.',
   },
   offer: {
-    cta: 'Claim your New Patient Offer',
+    cta: 'Ready to book your first visit?',
     sub: 'Comprehensive exam, digital x-rays and scale & clean, all in one visit.',
   },
   implants: {
@@ -60,7 +60,7 @@ export const getInTouchCopy: Record<GetInTouchVariant, GetInTouchCopy> = {
   },
   fees: {
     cta: 'Let\'s make dentistry accessible for you',
-    sub: 'Talk to our team about health fund claims, gap-free options, and payment plans.',
+    sub: 'Talk to our team about health fund claims and payment plans.',
   },
   super: {
     cta: 'Use your super for dental care',

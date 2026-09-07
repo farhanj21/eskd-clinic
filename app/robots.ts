@@ -27,21 +27,29 @@ const AI_CRAWLERS = [
   'CCBot', // Common Crawl — feeds many models
 ]
 
+/**
+ * /api/* is the only path anything is kept out of. It is the contact form's
+ * POST endpoint — there is nothing there to read, a crawler's GET only earns a
+ * 405, and it should never surface as a result. Everything else is content and
+ * is open to every crawler named above.
+ */
+const DISALLOW = ['/api/']
+
 export default function robots(): MetadataRoute.Robots {
-  // Staging and preview deployments stay fully blocked.
+  // Staging and preview deployments stay fully blocked. No sitemap is
+  // advertised either: pointing a crawler at a list of URLs it is disallowed
+  // from fetching is the one way a blocked deployment still leaks into search.
   if (!isProduction) {
     return { rules: [{ userAgent: '*', disallow: '/' }] }
   }
 
-  // Nothing is disallowed on production. There are no private paths, and the
-  // one page kept out of the index (/take-care-of-you) is handled with a
-  // robots meta tag — deliberately not disallowed here, because a crawler that
-  // is blocked from fetching a page can never read the noindex on it.
+  // On production the only closed path is the contact endpoint below.
   return {
     rules: [
-      { userAgent: '*', allow: '/' },
-      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/' })),
+      { userAgent: '*', allow: '/', disallow: DISALLOW },
+      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/', disallow: DISALLOW })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }

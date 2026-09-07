@@ -7,7 +7,7 @@ import { business, telHref } from '@/lib/business'
  * The "leave your details and we'll call you back" form.
  *
  * Three pages ask for a callback — /contact, /online-booking and
- * /comprehensive-care-visit — each with its own copy, field set and layout.
+ * /new-patient-comprehensive-care-visit — each with its own copy, field set and layout.
  * They all posted nowhere until now, so this is the one place that talks to
  * /api/contact and the pages keep their existing wrapper class, which is what
  * gives each one its layout.
@@ -31,7 +31,7 @@ interface CallbackFormProps {
 }
 
 const REASONS = [
-  'Book a new patient visit',
+  'Book a New Patient Comprehensive Care Visit',
   'Book an emergency visit',
   'Book for a dental consultation',
 ]

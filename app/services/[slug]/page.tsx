@@ -73,7 +73,8 @@ const statDisplay = (stat: { count: number; suffix: string }) =>
   `${stat.count.toLocaleString('en-AU')}${stat.suffix}`
 
 /**
- * The floating hero badge. Services covered by the flat new-patient visit lead
+ * The floating hero badge. Services covered by the flat New Patient
+ * Comprehensive Care Visit lead
  * with that; the rest lead with how they're paid for, since nothing is quoted
  * before we've seen you.
  */

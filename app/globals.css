@@ -2162,6 +2162,46 @@ body{overflow-x:hidden;max-width:100%;}
   color:var(--sage);margin:16px 0 0;
 }
 .hero-v2 .lead{font-size:20px;margin:24px 0 30px;max-width:30em;color:var(--ink-soft);}
+/* A hero headline set on ONE line at every width. Same technique as .pqfit and
+   .fundfit: the copy column becomes a query container, so 1cqw is a hundredth
+   of the column's own width — which is what the headline has to fit inside,
+   and is narrower than the container because .hero-v2-grid splits it 1.05/.95
+   with a 54px gap. Measured in Cormorant at 600 with "check-up" italic, "More
+   than a check-up" runs 8.12em, so 11.7cqw leaves about 5% in hand. At the
+   74px cap it would need 601px against a 541px column, i.e. it wrapped before
+   this rule existed. Any reword needs the 11.7cqw remeasured.
+
+   The body paragraphs carry their own rhythm here because the .lead that used
+   to space them off the headline is gone. */
+.hero-fit{container-type:inline-size;}
+.hero-fit h1{font-size:min(74px,11.7cqw);white-space:nowrap;}
+.hero-fit>p{margin-top:20px;font-size:17px;line-height:1.7;max-width:34em;}
+.hero-fit .hero-cta{margin-top:30px;}
+
+/* A one-line "if that isn't what you came for" link. Used at the handful of
+   points on a landing page where the reader's intent naturally shifts — urgent
+   care, who they'll see, routine visits, cost — so the paths sit where they are
+   wanted instead of piling into one block of links. */
+.pathlink{margin-top:16px;font-size:14.5px;color:var(--ink-faint);}
+.pathlink a{color:var(--sage-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+.pathlink a:hover{color:var(--clay-deep);}
+/* On the deep green bands, sage-deep on sage-darker is invisible. clay-soft is
+   the accent this file already uses for links and emphasis over that green —
+   see .sage-bg h2 em and .hero-video-note a. */
+.sage-bg .pathlink{color:rgba(255,255,255,.72);}
+.sage-bg .pathlink a{color:var(--clay-soft);}
+.sage-bg .pathlink a:hover{color:#fff;}
+
+/* "Put it off for years? You're exactly who we're best with" on ONE line at
+   every width. Same technique as .pqfit, .fundfit and .hero-fit: the heading
+   box becomes a query container, so 1cqw is a hundredth of its own width —
+   which here is .sec-head's 46em measure, not the container. Measured in
+   Cormorant at 500 with "best" italic and the h2's -.01em tracking, the line
+   runs 20.39em, so 4.67cqw leaves about 5% in hand. At the 42px .sec h2 cap it
+   would need 856px against a ~736px box, i.e. it wrapped before this rule.
+   Any reword needs the 4.67cqw remeasured. */
+.welcome-fit{container-type:inline-size;}
+.welcome-fit h2{font-size:min(42px,4.67cqw);white-space:nowrap;}
 .hero-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
 .hero-proof-band{background:var(--paper);border-bottom:1px solid var(--line);padding:15px 0;}
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px;font-weight:600;color:var(--ink-soft);justify-content:center;}
@@ -2173,14 +2213,14 @@ body{overflow-x:hidden;max-width:100%;}
    A broad, welcoming frame rather than the boxed two-column hero. The poster
    still is a CSS background on the section itself, so the hero paints in full
    on the server render; components/HeroVideoBg then layers the muted loop on
-   top and fades it in. The proof points sit in stat cards (.hero-stats)
-   straddling the bottom edge of the frame, which is why the home page does not
-   render a separate .hero-proof-band. */
+   top and fades it in. The proof points sit in a .hero-proof line at the foot
+   of the hero copy, with stat cards (.hero-stats) straddling the bottom edge of
+   the frame, which is why the home page does not render a .hero-proof-band. */
 /* How far the stat cards ride up over the hero. Declared once here because two
    rules derive from it and must never disagree: the card row's negative margin,
    and the hero's own bottom padding, which reserves the same distance as
-   copy-free space so the cards can't land on the "New patient?" link. Every
-   breakpoint below overrides this one value rather than both rules. */
+   copy-free space so the cards can't land on the visit link. Every breakpoint
+   below overrides this one value rather than both rules. */
 :root{--hero-overlap:64px;}
 .hero-video{
   position:relative;
@@ -2253,6 +2293,10 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-video-note{margin:18px 0 0;font-size:15px;}
 .hero-video-note a{color:var(--clay-soft);font-weight:600;}
 .hero-video-note a:hover{color:#fff;}
+/* .hero-proof is built for the light hero-v2 pages, where it sits on paper.
+   Over the video it only needs its two colours lifted; the layout is the same. */
+.hero-video .hero-proof{justify-content:flex-start;margin-top:22px;color:rgba(255,255,255,.85);}
+.hero-video .proof-dot{background:#fff;opacity:.45;}
 /* Stat cards straddling the foot of the hero.
    They are a SIBLING of .hero-video, not a child, because that section is
    overflow:hidden — a child pushed past its bottom edge would have both the
@@ -2276,6 +2320,10 @@ body{overflow-x:hidden;max-width:100%;}
   color:var(--clay);
 }
 .hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
+/* The stars ride in the 52px figure, so they are sized against it rather than
+   set at 1em: five glyphs at full size overflow the card at every breakpoint.
+   They inherit the figure's clay, so only the size and baseline need setting. */
+.hero-stat dt .proof-stars{font-size:.55em;vertical-align:.1em;}
 
 /* A narrower left column protects the subjects as the frame contracts, while
    keeping the same desktop composition through landscape tablet sizes. */
@@ -2476,6 +2524,17 @@ body{overflow-x:hidden;max-width:100%;}
   .ins-logos .lg img{height:calc(var(--logo-h,30px) * .86);}
 }
 .ins-pill{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--sage-tint);border-radius:40px;padding:12px 24px;font-weight:600;color:var(--sage-deep);font-size:15px;}
+
+/* Set on ONE line at every width, the same way .pq is. .fundfit is a query
+   container, so 1cqw is a hundredth of the heading's own content width — which
+   matters because the gutter is itself a clamp(), and because 100vw would
+   include the gutter and the scrollbar. Measured in Cormorant at the h2's
+   -.01em tracking, with "all" italic, the line runs 18.82em, so 5cqw leaves
+   about 6% in hand. The 62px cap is the size the heading was designed at; at
+   the 1180px container it works out to ~54px, so the cap never binds. Any
+   reword of this heading needs the 5cqw remeasured. */
+.fundfit{container-type:inline-size;}
+.fundfit h2{font-size:min(62px,5cqw);white-space:nowrap;}
 
 /* Fees */
 .fees-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;}
@@ -3256,10 +3315,6 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
    it. That makes the band, and it is what lets the cards read as
    genuinely *lighter* than the surface they sit on. */
 .offers{padding:clamp(48px,6vw,72px) 0 0;}
-.offers-sr-only{
-  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
-}
 .offers-row{
   display:grid;
   grid-template-columns:repeat(3,1fr);

@@ -5,8 +5,13 @@ import { suburbs, suburbPath } from './data/suburbs'
 //   "production"  → main production deployment
 //   "preview"     → all staging / preview deployments
 //   "development" → local dev (next dev)
-// No manual env variable needed — noindex applies everywhere except production.
-const isProduction = process.env.VERCEL_ENV === 'production'
+// This repeats lib/env.ts's expression inline, because the Next config is
+// loaded before the "@/" path alias exists and so cannot import that file.
+// The two must stay in step — including the NEXT_PUBLIC_SITE_ENV fallback,
+// without which a non-Vercel production host would noindex itself.
+const isProduction =
+  process.env.VERCEL_ENV === 'production' ||
+  process.env.NEXT_PUBLIC_SITE_ENV === 'production'
 
 const nextConfig: NextConfig = {
   images: {
@@ -48,8 +53,26 @@ const nextConfig: NextConfig = {
         destination: '/services/check-ups',
         permanent: true,
       },
+      /**
+       * The first-visit page moved from /comprehensive-care-visit to
+       * /new-patient-comprehensive-care-visit when the offer was renamed, so
+       * the URL says who the visit is for. The old path was live, linked from
+       * the header and the utility bar, and indexed; this keeps those hits and
+       * any outside link landing on the page rather than a 404.
+       */
+      {
+        source: '/comprehensive-care-visit',
+        destination: '/new-patient-comprehensive-care-visit',
+        permanent: true,
+      },
     ]
   },
+  /**
+   * The belt to robots.txt's braces. A disallow only asks a crawler not to
+   * fetch; a URL it never fetched can still be indexed from an inbound link.
+   * X-Robots-Tag travels with the response itself, so a staging URL that is
+   * fetched anyway still carries noindex.
+   */
   async headers() {
     if (isProduction) return []
 

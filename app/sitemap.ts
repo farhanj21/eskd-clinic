@@ -11,10 +11,19 @@ import { suburbs, suburbPath } from '@/data/suburbs'
  * URLs are always built from SITE_URL, so a preview deployment still lists the
  * production host rather than advertising itself.
  *
- * Deliberately excluded:
- *   /home              — a redirect to /, not a page
- *   /take-care-of-you  — campaign landing page, noindex by design
+ * Deliberately excluded, and why each one stays out:
+ *   /home                  — redirects to /, so it is not a page
+ *   /book                  — redirects to /online-booking
+ *   /comprehensive-care-visit — redirects to /new-patient-comprehensive-care-visit
+ *   /services/check-up-clean  — redirects to /services/check-ups
+ *   /areas/<slug>          — redirect to /dentist-<slug>
+ *   /api/*                 — the contact endpoint, not content
  *   /robots.txt, /sitemap.xml — not content
+ *
+ * The rule behind that list: a redirect source never belongs in a sitemap.
+ * Listing one asks Google to crawl a URL we have already told it has moved,
+ * which wastes crawl budget and muddies the canonical signal. Every source in
+ * next.config.ts's redirects() must therefore stay out of STATIC_PATHS.
  */
 const STATIC_PATHS = [
   '/',
@@ -24,7 +33,7 @@ const STATIC_PATHS = [
   '/about/why-were-different',
   '/areas-we-serve',
   '/online-booking',
-  '/comprehensive-care-visit',
+  '/new-patient-comprehensive-care-visit',
   '/contact',
   '/emergency-dentist',
   '/fees',
