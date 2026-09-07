@@ -8,11 +8,12 @@ export const metadata: Metadata = withSocial({
   title: 'New Patient Smile Offer | East St Kilda Dental',
   description:
     'East St Kilda Dental — new patient offer includes comprehensive exam, digital x-rays and scale & clean for $297 (valued at $499). Limited availability.',
-  // Campaign landing page: kept out of the index, but still needs its own
-  // canonical so it does not inherit the layout's "/" and point at the home
-  // page, and so shared links carry the right og:url.
+  // Campaign landing page. It needs its own canonical so it does not inherit
+  // the layout's "/" and point at the home page, and so shared links carry the
+  // right og:url.
+  // TEMPORARY: `robots: { index: false }` removed so AI crawlers can read this
+  // page too — put it back to keep the campaign page out of search results.
   alternates: { canonical: 'https://www.eaststkildadental.com.au/take-care-of-you' },
-  robots: { index: false },
 })
 
 export default function CampaignPage() {

@@ -13,7 +13,7 @@ import { suburbs, suburbPath } from '@/data/suburbs'
  *
  * Deliberately excluded:
  *   /home              — a redirect to /, not a page
- *   /take-care-of-you  — campaign landing page, noindex by design
+ *   /take-care-of-you  — campaign landing page, not a search entry point
  *   /robots.txt, /sitemap.xml — not content
  */
 const STATIC_PATHS = [

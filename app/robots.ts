@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/business'
-import { isProduction } from '@/lib/env'
 
 /**
  * AI answer engines can only cite a site their crawlers are allowed to read.
@@ -27,16 +26,13 @@ const AI_CRAWLERS = [
   'CCBot', // Common Crawl — feeds many models
 ]
 
+/**
+ * TEMPORARY: every deployment, including staging and preview, is crawlable so
+ * that AI assistants can read the site before it is live on the production
+ * host. Staging used to be blocked with `userAgent: '*', disallow: '/'`; put
+ * that back (gated on `isProduction` from lib/env) once it is no longer needed.
+ */
 export default function robots(): MetadataRoute.Robots {
-  // Staging and preview deployments stay fully blocked.
-  if (!isProduction) {
-    return { rules: [{ userAgent: '*', disallow: '/' }] }
-  }
-
-  // Nothing is disallowed on production. There are no private paths, and the
-  // one page kept out of the index (/take-care-of-you) is handled with a
-  // robots meta tag — deliberately not disallowed here, because a crawler that
-  // is blocked from fetching a page can never read the noindex on it.
   return {
     rules: [
       { userAgent: '*', allow: '/' },

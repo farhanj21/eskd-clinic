@@ -1,13 +1,6 @@
 import type { NextConfig } from 'next'
 import { suburbs, suburbPath } from './data/suburbs'
 
-// Vercel sets VERCEL_ENV automatically:
-//   "production"  → main production deployment
-//   "preview"     → all staging / preview deployments
-//   "development" → local dev (next dev)
-// No manual env variable needed — noindex applies everywhere except production.
-const isProduction = process.env.VERCEL_ENV === 'production'
-
 const nextConfig: NextConfig = {
   images: {
     // AVIF first (smaller), WebP fallback; browsers get the best format they support
@@ -50,21 +43,14 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  /**
+   * TEMPORARY: no X-Robots-Tag is sent anywhere. Staging and preview
+   * deployments used to return `noindex, nofollow` on every route (gated on
+   * `process.env.VERCEL_ENV === 'production'`); restore that header block when
+   * those deployments should be hidden from crawlers again.
+   */
   async headers() {
-    if (isProduction) return []
-
-    return [
-      {
-        // Noindex every route on staging / preview deployments
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      },
-    ]
+    return []
   },
 }
 
