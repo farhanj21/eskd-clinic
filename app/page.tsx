@@ -141,6 +141,13 @@ export default function Home() {
               <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost-light">Call {business.telephoneDisplay}</a>
             </div>
+            <div className="hero-proof">
+              <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
+              <span className="proof-dot" />
+              <span>Off-street parking</span>
+              <span className="proof-dot" />
+              <span>HICAPS available</span>
+            </div>
             <p className="hero-video-note">
               <Link href="/comprehensive-care-visit">
                 Experience the New Patient Comprehensive Care Visit &rarr;

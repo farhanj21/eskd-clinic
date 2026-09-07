@@ -2173,14 +2173,14 @@ body{overflow-x:hidden;max-width:100%;}
    A broad, welcoming frame rather than the boxed two-column hero. The poster
    still is a CSS background on the section itself, so the hero paints in full
    on the server render; components/HeroVideoBg then layers the muted loop on
-   top and fades it in. The proof points sit in stat cards (.hero-stats)
-   straddling the bottom edge of the frame, which is why the home page does not
-   render a separate .hero-proof-band. */
+   top and fades it in. The proof points sit in a .hero-proof line at the foot
+   of the hero copy, with stat cards (.hero-stats) straddling the bottom edge of
+   the frame, which is why the home page does not render a .hero-proof-band. */
 /* How far the stat cards ride up over the hero. Declared once here because two
    rules derive from it and must never disagree: the card row's negative margin,
    and the hero's own bottom padding, which reserves the same distance as
-   copy-free space so the cards can't land on the "New patient?" link. Every
-   breakpoint below overrides this one value rather than both rules. */
+   copy-free space so the cards can't land on the visit link. Every breakpoint
+   below overrides this one value rather than both rules. */
 :root{--hero-overlap:64px;}
 .hero-video{
   position:relative;
@@ -2253,6 +2253,10 @@ body{overflow-x:hidden;max-width:100%;}
 .hero-video-note{margin:18px 0 0;font-size:15px;}
 .hero-video-note a{color:var(--clay-soft);font-weight:600;}
 .hero-video-note a:hover{color:#fff;}
+/* .hero-proof is built for the light hero-v2 pages, where it sits on paper.
+   Over the video it only needs its two colours lifted; the layout is the same. */
+.hero-video .hero-proof{justify-content:flex-start;margin-top:22px;color:rgba(255,255,255,.85);}
+.hero-video .proof-dot{background:#fff;opacity:.45;}
 /* Stat cards straddling the foot of the hero.
    They are a SIBLING of .hero-video, not a child, because that section is
    overflow:hidden — a child pushed past its bottom edge would have both the
