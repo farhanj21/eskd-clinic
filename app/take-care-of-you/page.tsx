@@ -26,8 +26,8 @@ export default function CampaignPage() {
               <span className="eyebrow light">Limited Availability</span>
               <h1>A Fresh Start for Your Smile</h1>
               <div className="offer-price" style={{ margin: '24px 0' }}>
-                <span className="price-big">$297</span>
-                <span className="price-valued"> valued at $499</span>
+                <span className="price-big">One visit</span>
+                <span className="price-valued"> everything included</span>
               </div>
               <p className="lede" style={{ color: 'rgba(246,239,227,.85)' }}>
                 Comprehensive oral examination · Digital x-rays · Professional scale &amp; clean
@@ -37,7 +37,7 @@ export default function CampaignPage() {
                   <span>✓</span> New patients only — complete first check-up in a single visit
                 </li>
                 <li style={{ padding: '6px 0', borderBottom: '1px solid rgba(246,239,227,.15)', display: 'flex', gap: '10px' }}>
-                  <span>✓</span> Health fund benefits applied on top of the offer price
+                  <span>✓</span> Health fund benefits applied on top of the offer
                 </li>
                 <li style={{ padding: '6px 0', borderBottom: '1px solid rgba(246,239,227,.15)', display: 'flex', gap: '10px' }}>
                   <span>✓</span> No obligation to proceed with any further treatment

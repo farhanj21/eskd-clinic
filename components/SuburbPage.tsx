@@ -18,7 +18,7 @@ import styles from './SuburbPage.module.css'
  *
  * Built to the suburb-page spec, section for section: breadcrumb, hero and
  * quick-facts card, About [suburb], Getting here, Good to know, services, the
- * $297 visit, why choose, the team, health funds, the questions, get in touch.
+ * first visit, why choose, the team, health funds, the questions, get in touch.
  *
  * The questions run straight into the enquiry form: nothing sits between the
  * last answer and the place to act on it.
@@ -214,7 +214,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
             </div>
             <div className={styles.qrow}>
               <span className={styles.qi} aria-hidden="true">●</span>
-              <span><b>$297 first visit</b> — the Comprehensive Care Visit</span>
+              <span><b>One price, first visit</b> — the Comprehensive Care Visit</span>
             </div>
             <div className={styles.dirbtns}>
               <a className={styles.dirbtn} href={googleDirections(s)} target="_blank" rel="noopener noreferrer">
@@ -295,7 +295,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ── THE $297 VISIT (shared) ───────────────────────── */}
+      {/* ── THE FIRST VISIT (shared) ──────────────────────── */}
       <section className={styles.sec} id="fees">
         <div className="container">
           <div className={`${styles.offerCard} reveal`}>
@@ -307,8 +307,8 @@ export default function SuburbPage({ slug }: { slug: string }) {
                 leave you with a clear, honest plan.
               </p>
               <div className={styles.offerMeta}>
-                <div><span className={styles.k}>Your price</span><b>$297</b></div>
-                <div><span className={styles.k}>Valued at</span><b>$597</b></div>
+                <div><span className={styles.k}>Your price</span><b>One simple price</b></div>
+                <div><span className={styles.k}>Includes</span><b>Everything</b></div>
                 <div><span className={styles.k}>Length</span><b>60–75 min</b></div>
               </div>
               <Link href="/comprehensive-care-visit" className="btn">Book your first visit</Link>

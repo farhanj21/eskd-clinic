@@ -47,7 +47,6 @@ export const business = {
   /** Human-readable, for visible copy. */
   telephoneDisplay: '(03) 9527 3678',
   email: 'hello@eaststkildadental.com.au',
-  priceRange: '$$',
   currenciesAccepted: 'AUD',
   /** The practice has cared for the neighbourhood since around 1980. */
   foundedYear: 1980,
@@ -160,8 +159,6 @@ export const clinicianJobTitle = (slug: string): string | undefined =>
 
 export const comprehensiveCareVisit = {
   name: 'The Comprehensive Care Visit',
-  price: '297',
-  priceCurrency: 'AUD',
   description:
     'A 60 to 75 minute comprehensive first-visit dental appointment including examination, digital X-rays, oral cancer screening, scale and clean, and a personalised care plan.',
 } as const

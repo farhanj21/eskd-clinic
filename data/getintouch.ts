@@ -36,7 +36,7 @@ export const getInTouchCopy: Record<GetInTouchVariant, GetInTouchCopy> = {
   },
   offer: {
     cta: 'Claim your New Patient Offer',
-    sub: 'Comprehensive exam, digital x-rays and scale & clean for $297 (valued at $499).',
+    sub: 'Comprehensive exam, digital x-rays and scale & clean, all in one visit.',
   },
   implants: {
     cta: 'Is a dental implant right for you?',

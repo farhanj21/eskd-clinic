@@ -9,7 +9,7 @@ import { business, fullAddress, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Book an Appointment | East St Kilda Dental',
   description:
-    'Book your dental appointment online at East St Kilda Dental. New patient offer available — comprehensive exam, x-rays and scale & clean for $297 (valued at $499).',
+    'Book your dental appointment online at East St Kilda Dental. New patient offer available — comprehensive exam, x-rays and scale & clean, all in one visit.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/online-booking' },
 })
 
@@ -25,7 +25,7 @@ export default function BookingPage() {
             Choose a time online in under a minute, or call our friendly team. New, returning, nervous or in pain, you&apos;re welcome here.
           </p>
           <div className="hero-proof" style={{ justifyContent: 'center' }}>
-            <span>$297 first visit, all included</span>
+            <span>One price, first visit all included</span>
             <span className="proof-dot" />
             <span>Nervous patients welcome</span>
             <span className="proof-dot" />
@@ -100,7 +100,7 @@ export default function BookingPage() {
           <div className="faq reveal">
             <details open>
               <summary>What does my first visit cost?</summary>
-              <p>Your first visit is the Comprehensive Care Visit, a flat $297 with everything included. With most health funds you claim on the day and pay only a minimal gap. If you need further treatment, you&apos;ll get a written estimate before anything goes ahead.</p>
+              <p>Your first visit is the Comprehensive Care Visit, one flat price with everything included. With most health funds you claim on the day and pay only a minimal gap. If you need further treatment, you&apos;ll get a written estimate before anything goes ahead.</p>
             </details>
             <details>
               <summary>I&apos;m nervous about booking. Can I note that?</summary>

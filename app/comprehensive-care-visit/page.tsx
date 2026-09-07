@@ -7,9 +7,9 @@ import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'The Comprehensive Care Visit — $297 (valued at $499) | East St Kilda Dental',
+  title: 'The Comprehensive Care Visit | East St Kilda Dental',
   description:
-    'New to East St Kilda Dental? The Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment for $297 (valued at $499). Everything included. Book online.',
+    'New to East St Kilda Dental? The Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment. Everything included. Book online.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/comprehensive-care-visit' },
 })
 
@@ -35,8 +35,8 @@ export default function OfferPage() {
               <span>All health funds accepted</span>
             </div>
             <p style={{ marginTop: '18px', fontSize: '20px' }}>
-              <b>$297</b> all included{' '}
-              <span style={{ color: 'var(--ink-faint)', fontSize: '15px' }}>&middot; valued at $499</span>
+              <b>Everything included</b>{' '}
+              <span style={{ color: 'var(--ink-faint)', fontSize: '15px' }}>&middot; in one unhurried appointment</span>
             </p>
           </div>
           <Photo
@@ -56,7 +56,7 @@ export default function OfferPage() {
           <div className="offer-card-v2">
             <div className="body">
               <div className="eyebrow">Everything in one visit</div>
-              <h2>What your <em>$297</em> includes</h2>
+              <h2>What your <em>first visit</em> includes</h2>
               <p>Not a quick clean and out the door. A complete look at your whole mouth and where things are heading, covering your health, function, longevity, aesthetics and prevention. Your visit includes:</p>
               <ul className="offer-includes">
                 <li>Comprehensive dental examination</li>
@@ -71,15 +71,12 @@ export default function OfferPage() {
               </ul>
               <div className="offer-meta">
                 <div><b>60&ndash;75 min</b>gentle and thorough</div>
-                <div><b>$297</b>everything above, one price</div>
+                <div><b>All included</b>everything above, one visit</div>
                 <div><b>A care plan</b>clear and easy to follow</div>
               </div>
-              <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px' }}>
-                Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
-              </p>
               <Link href="/online-booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book online</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+                Everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
             <Photo

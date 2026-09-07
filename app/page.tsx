@@ -54,14 +54,14 @@ const heroStats = [
 ]
 
 // One self-contained, factual sentence for AI answer engines and featured
-// snippets to quote whole: who we are, what we are, where, since when, and the
-// entry price. Assembled from lib/business.ts so it can never contradict the
-// JSON-LD below. Kept plain and descriptive — no superlatives or outcome
-// claims, for AHPRA safety.
+// snippets to quote whole: who we are, what we are, where and since when.
+// Assembled from lib/business.ts so it can never contradict the JSON-LD below.
+// Kept plain and descriptive — no superlatives or outcome claims, for AHPRA
+// safety.
 const summarySentence =
   `${business.name} is a gentle family and emergency dentist at ${business.address.streetAddress}, ` +
   `caring for ${business.serviceRegion} since ${business.foundedYear}, ` +
-  `with a $${comprehensiveCareVisit.price} comprehensive first visit.`
+  `with a comprehensive first visit.`
 
 // One connected JSON-LD @graph for the home page: the practice, the four named
 // clinicians, the FAQ, and the website. Every fact comes from lib/business.ts.
@@ -79,7 +79,6 @@ const homeSchema = {
       image: `${SITE_URL}/assets/shared/meet-the-team.webp`,
       telephone: business.telephone,
       email: business.email,
-      priceRange: business.priceRange,
       currenciesAccepted: business.currenciesAccepted,
       address: { '@type': 'PostalAddress', ...business.address },
       geo: { '@type': 'GeoCoordinates', ...business.geo },
@@ -306,15 +305,12 @@ export default function Home() {
               </ul>
               <div className="offer-meta">
                 <div><b>60–75 min</b>gentle and thorough</div>
-                <div><b>$297</b>everything above, one price</div>
+                <div><b>All included</b>everything above, one visit</div>
                 <div><b>A care plan</b>clear and easy to follow</div>
               </div>
-              <p style={{ marginTop: '14px', marginBottom: 0, fontSize: '14.5px', color: 'var(--ink)' }}>
-                Valued at <b>$499</b>. With us, it&apos;s one simple price of <b>$297</b>.
-              </p>
               <Link href="/online-booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                $297, everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+                Everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
               </p>
             </div>
             <Photo
@@ -335,16 +331,12 @@ export default function Home() {
           <Photo
             tall
             className="reveal"
-            src="/assets/home/nervous-patients.webp"
+            src="/assets/unused/south-yarra.webp"
             alt="A relaxed patient smiling warmly in the dental chair"
-            objectPosition="0% 40%"
-            scale={1.1}
-            sizes="(max-width: 860px) 100vw, 48vw"
           />
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <p>Many of our patients arrive having avoided the dentist for years, often after a bad experience long ago. Looking after frightened patients is one of the things we are known for. Our gentle approach pairs careful clinical care with a calm, coaching-informed way of working, developed specifically for dental fear, so it feels safe from the moment you walk in. Tell us you&apos;re anxious, and we go entirely at your pace.</p>
             <div className="chips chips-2">
               <span className="chip">Happy gas and sedation options</span>
               <span className="chip">Calm, unhurried pacing</span>
