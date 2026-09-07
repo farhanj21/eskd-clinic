@@ -2280,6 +2280,10 @@ body{overflow-x:hidden;max-width:100%;}
   color:var(--clay);
 }
 .hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
+/* The stars ride in the 52px figure, so they are sized against it rather than
+   set at 1em: five glyphs at full size overflow the card at every breakpoint.
+   They inherit the figure's clay, so only the size and baseline need setting. */
+.hero-stat dt .proof-stars{font-size:.55em;vertical-align:.1em;}
 
 /* A narrower left column protects the subjects as the frame contracts, while
    keeping the same desktop composition through landscape tablet sizes. */

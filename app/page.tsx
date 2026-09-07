@@ -48,9 +48,17 @@ const faqs = [
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
 const heroStats = [
-  { value: '10,000+', label: 'Patients Served' },
-  { value: '45+', label: 'Years In The Local Area' },
-  { value: '15+', label: 'Suburbs Served' },
+  { id: 'patients', value: '10,000+', label: 'Patients Served' },
+  { id: 'years', value: '45+', label: 'Years In The Local Area' },
+  {
+    id: 'rating',
+    value: (
+      <>
+        5.0 <span className="proof-stars">★★★★★</span>
+      </>
+    ),
+    label: 'Rating on Google',
+  },
 ]
 
 // One self-contained, factual sentence for AI answer engines and featured
@@ -142,7 +150,7 @@ export default function Home() {
               <a href={telHref} className="btn btn-ghost-light">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
-              <span><span className="proof-stars">★★★★★</span> 5.0 on Google</span>
+              <span>15+ suburbs served</span>
               <span className="proof-dot" />
               <span>Off-street parking</span>
               <span className="proof-dot" />
@@ -163,8 +171,8 @@ export default function Home() {
           would be clipped. */}
       <div className="container hero-stats-wrap">
         <dl className="hero-stats">
-          {heroStats.map(({ value, label }) => (
-            <div className="hero-stat" key={label}>
+          {heroStats.map(({ id, value, label }) => (
+            <div className="hero-stat" key={id}>
               <dt>{value}</dt>
               <dd>{label}</dd>
             </div>
