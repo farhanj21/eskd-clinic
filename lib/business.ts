@@ -133,12 +133,12 @@ export const socialProfiles: string[] = [
 /**
  * Named clinicians, in the order they appear on the home page.
  *
- * TODO Dr Goldman is shown on the site as "Dentist & Prosthodontist". The
- * structured data says "Dentist" until AHPRA specialist registration in
- * prosthodontics is confirmed; only then change it here.
+ * Dr Goldman is titled "Dentist" here and on the site. Do not restore
+ * "Prosthodontist" in either place unless AHPRA specialist registration in
+ * prosthodontics is confirmed.
  */
 export const clinicians = [
-  { slug: 'anbar-ganatra', name: 'Dr Anbar Ganatra', jobTitle: 'Principal Dentist' },
+  { slug: 'anbar-ganatra', name: 'Dr Anbar Ganatra', jobTitle: 'Cosmetic & General Dentist' },
   { slug: 'edmund-goldman', name: 'Dr Edmund Goldman', jobTitle: 'Dentist' },
   { slug: 'jarrod-dean', name: 'Dr Jarrod Dean', jobTitle: 'General Dentist' },
   { slug: 'michelle-callaghan', name: 'Michelle Callaghan', jobTitle: 'Dental Hygienist' },
@@ -151,8 +151,8 @@ export const clinicianId = (slug: string) => `${SITE_URL}/about/our-team#${slug}
  *
  * The team page shows each person's role in its own words; where that person is
  * one of the four named above, the structured data uses the title from this
- * file instead. That is what keeps Dr Goldman's markup reading "Dentist" while
- * the visible card says "Dentist & Prosthodontist" — see the TODO above.
+ * file instead, so a warmer visible card can never drift from the title the
+ * graph publishes.
  */
 export const clinicianJobTitle = (slug: string): string | undefined =>
   clinicians.find(c => c.slug === slug)?.jobTitle

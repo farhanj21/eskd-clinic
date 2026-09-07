@@ -31,14 +31,14 @@ const clinicians = [
   {
     slug: 'anbar-ganatra',
     name: 'Dr Anbar Ganatra',
-    role: 'Principal Dentist',
+    role: 'Cosmetic & General Dentist',
     bio: 'Anbar leads the practice with a calm, gentle, no-judgement approach, and is known for putting nervous patients at ease.',
     image: '/assets/team/anbar-ganatra.webp',
   },
   {
     slug: 'edmund-goldman',
     name: 'Dr Edmund Goldman',
-    role: 'Dentist & Prosthodontist',
+    role: 'Dentist',
     bio: 'Edmund has cared for local families on this corner for decades, with a focus on rebuilding and replacing teeth.',
     image: '/assets/team/edmund-goldman.webp',
   },
@@ -109,7 +109,7 @@ const TEAM_URL = `${SITE_URL}/about/our-team`
 //
 // jobTitle comes from lib/business.ts wherever that file pins one, so the
 // markup keeps the cautious title even where the visible card is warmer — see
-// the AHPRA note on Dr Goldman there.
+// the note on Dr Goldman there.
 //
 // The practice team below is deliberately left out of the markup: the graph
 // names the people whose professional identity is part of the entity, and

@@ -374,22 +374,22 @@ export default function Home() {
             <div className="team-member reveal">
               <Photo
                 src="/assets/team/anbar-ganatra.webp"
-                alt="Dr Anbar Ganatra – Principal Dentist"
+                alt="Dr Anbar Ganatra – Cosmetic & General Dentist"
                 objectPosition="center top"
                 sizes="(max-width: 820px) 50vw, 25vw"
               />
               <h4>Dr Anbar Ganatra</h4>
-              <span>Principal Dentist</span>
+              <span>Cosmetic &amp; General Dentist</span>
             </div>
             <div className="team-member reveal">
               <Photo
                 src="/assets/team/edmund-goldman.webp"
-                alt="Dr Edmund Goldman – Dentist & Prosthodontist"
+                alt="Dr Edmund Goldman – Dentist"
                 objectPosition="center top"
                 sizes="(max-width: 820px) 50vw, 25vw"
               />
               <h4>Dr Edmund Goldman</h4>
-              <span>Dentist &amp; Prosthodontist</span>
+              <span>Dentist</span>
             </div>
             <div className="team-member reveal">
               <Photo
