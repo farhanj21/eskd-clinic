@@ -1,10 +1,10 @@
 /**
- * The health funds shown in the "we accept all major funds" logo rows, on the
+ * The health funds shown in the "all major health funds" logo rows, on the
  * home page and on /fees.
  *
  * Single source of truth so the two rows can never drift apart. A fund with a
  * `logo` renders as an image; one without falls back to its name as text, so a
- * new fund can be listed the moment it is accepted and given artwork later.
+ * new fund can be listed the moment we claim through it and given artwork later.
  *
  * `width` and `height` are the file's INTRINSIC pixel size, not the rendered
  * size. They only exist so the browser can reserve the right box and avoid

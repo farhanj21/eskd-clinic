@@ -37,11 +37,11 @@ const OFFERS: Offer[] = [
   },
   {
     pill: 'Always welcome',
-    title: 'New Patient Visit',
+    title: 'New Patient Comprehensive Care Visit',
     body: 'New to the practice? An unhurried first appointment — we get to know you, check everything properly, and explain what we find in plain English.',
     cta: 'Learn more',
     href: '/your-first-visit',
-    ariaLabel: 'Learn about the new patient visit',
+    ariaLabel: 'Learn about the New Patient Comprehensive Care Visit',
     icon: 'heart',
   },
   {

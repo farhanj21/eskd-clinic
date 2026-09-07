@@ -2477,6 +2477,17 @@ body{overflow-x:hidden;max-width:100%;}
 }
 .ins-pill{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--sage-tint);border-radius:40px;padding:12px 24px;font-weight:600;color:var(--sage-deep);font-size:15px;}
 
+/* Set on ONE line at every width, the same way .pq is. .fundfit is a query
+   container, so 1cqw is a hundredth of the heading's own content width — which
+   matters because the gutter is itself a clamp(), and because 100vw would
+   include the gutter and the scrollbar. Measured in Cormorant at the h2's
+   -.01em tracking, with "all" italic, the line runs 18.82em, so 5cqw leaves
+   about 6% in hand. The 62px cap is the size the heading was designed at; at
+   the 1180px container it works out to ~54px, so the cap never binds. Any
+   reword of this heading needs the 5cqw remeasured. */
+.fundfit{container-type:inline-size;}
+.fundfit h2{font-size:min(62px,5cqw);white-space:nowrap;}
+
 /* Fees */
 .fees-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;}
 .fees-list-v2{list-style:none;margin-top:20px;padding:0;}

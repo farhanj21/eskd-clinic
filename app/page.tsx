@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: 'Do you take my health fund?',
-    a: 'We accept all major Australian health funds and claim on the spot, so usually you only pay any gap on the day.',
+    a: 'We welcome patients from all major Australian health funds. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.',
   },
   {
     q: 'What happens at my first visit?',
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
             <p className="hero-video-note">
               <Link href="/comprehensive-care-visit">
-                New patient? Experience the Comprehensive Care Visit &rarr;
+                Experience the New Patient Comprehensive Care Visit &rarr;
               </Link>
             </p>
           </div>
@@ -310,7 +310,7 @@ export default function Home() {
               </div>
               <Link href="/online-booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                Everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+                Everything above included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
               </p>
             </div>
             <Photo
@@ -448,9 +448,11 @@ export default function Home() {
       <section className="sec sage-bg" style={{ textAlign: 'center' }}>
         <div className="container reveal">
           <div className="eyebrow">Using your health fund</div>
-          <h2 style={{ marginTop: '12px', fontSize: 'clamp(38px, 4.8vw, 62px)' }}>We accept <em>all</em> major health funds</h2>
+          <div className="fundfit">
+            <h2 style={{ marginTop: '12px' }}>We welcome patients from <em>all</em> major health funds</h2>
+          </div>
           <p style={{ maxWidth: '36em', margin: '14px auto 0' }}>
-            Whatever fund you&apos;re with, you&apos;re covered here. We claim on the spot, so most of the time there&apos;s nothing to pay upfront beyond your gap.
+            We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
           </p>
           <HealthFundLogos />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>

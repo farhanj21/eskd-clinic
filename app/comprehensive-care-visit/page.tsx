@@ -7,9 +7,9 @@ import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'The Comprehensive Care Visit | East St Kilda Dental',
+  title: 'The New Patient Comprehensive Care Visit | East St Kilda Dental',
   description:
-    'New to East St Kilda Dental? The Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment. Everything included. Book online.',
+    'New to East St Kilda Dental? The New Patient Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment. Everything included. Book online.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/comprehensive-care-visit' },
 })
 
@@ -22,7 +22,7 @@ export default function OfferPage() {
           <div className="reveal">
             <div className="eyebrow">New patients welcome</div>
             <h1>Finally know exactly where your teeth <em>stand</em></h1>
-            <p className="lead">The Comprehensive Care Visit is a thorough, gentle 60 to 75 minute appointment, with no judgement and no rush. You leave with a clear, prioritised care plan you choose at your own pace.</p>
+            <p className="lead">The New Patient Comprehensive Care Visit is a thorough, gentle 60 to 75 minute appointment, with no judgement and no rush. You leave with a clear, prioritised care plan you choose at your own pace.</p>
             <div className="hero-cta">
               <Link href="/online-booking" className="btn">Book online</Link>
               <Link href="#offer-callback" className="btn btn-ghost">Request a callback</Link>
@@ -76,7 +76,7 @@ export default function OfferPage() {
               </div>
               <Link href="/online-booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book online</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                Everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+                Everything above included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
               </p>
             </div>
             <Photo
@@ -147,7 +147,7 @@ export default function OfferPage() {
             </a>
           </p>
           <p style={{ textAlign: 'center', marginTop: '14px', maxWidth: '40em', marginLeft: 'auto', marginRight: 'auto' }}>
-            Caring for St Kilda East since around 1980, with a gentle team you&apos;ll get to know. We accept all major health funds and claim on the spot.
+            Caring for St Kilda East since around 1980, with a gentle team you&apos;ll get to know. We welcome patients from all major health funds and can process eligible claims on the spot through HICAPS.
           </p>
         </div>
       </section>

@@ -158,7 +158,7 @@ export const articles: ArticleData[] = [
     related: [
       { label: 'Gentle dentistry', href: '/nervous-patients' },
       { label: 'Your first visit', href: '/your-first-visit' },
-      { label: 'The Comprehensive Care Visit', href: '/comprehensive-care-visit' },
+      { label: 'The New Patient Comprehensive Care Visit', href: '/comprehensive-care-visit' },
     ],
     meta: {
       title: "Haven't Been to the Dentist in Years? Here's What to Expect | East St Kilda Dental",

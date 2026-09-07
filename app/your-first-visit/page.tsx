@@ -89,7 +89,7 @@ export default function FirstVisitPage() {
                   <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
                   <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
                     <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
-                      New here? Start with the Comprehensive Care Visit &rarr;
+                      Start with the New Patient Comprehensive Care Visit &rarr;
                     </Link>
                   </p>
                   <div className="ctaband-actions">
@@ -105,7 +105,7 @@ export default function FirstVisitPage() {
         <div className="container reveal">
           <div className="offer-card-v2">
             <div className="body">
-              <div className="eyebrow">The Comprehensive Care Visit</div>
+              <div className="eyebrow">The New Patient Comprehensive Care Visit</div>
               <h2>A complete picture, in one <em>unhurried visit</em></h2>
               <p>Your first visit isn&apos;t a quick look. It&apos;s a thorough, gentle 60 to 75 minute assessment that gives you a clear understanding of your whole mouth, and a simple care plan. It includes:</p>
               <ul className="offer-includes">
@@ -126,7 +126,7 @@ export default function FirstVisitPage() {
               </div>
               <Link href="/online-booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                Everything above included. With most health funds, you claim on the day and pay only a minimal gap. Your exact gap depends on your level of cover.
+                Everything above included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
               </p>
             </div>
             <Photo
@@ -208,11 +208,11 @@ export default function FirstVisitPage() {
           <div className="svc-grid reveal">
             <div className="svc">
               <h4>One simple price</h4>
-              <p>Your first visit is the Comprehensive Care Visit, one flat price with everything included.</p>
+              <p>Your first visit is the New Patient Comprehensive Care Visit, one flat price with everything included.</p>
             </div>
             <div className="svc">
               <h4>Claim on the spot</h4>
-              <p>We accept all major health funds and claim instantly with HICAPS, so usually you only pay any gap on the day.</p>
+              <p>We welcome patients from all major health funds. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.</p>
             </div>
             <div className="svc">
               <h4>A written estimate first</h4>
@@ -290,7 +290,7 @@ export default function FirstVisitPage() {
             </details>
             <details>
               <summary>What will it cost?</summary>
-              <p>Your first visit is the Comprehensive Care Visit, one flat price with everything included. With most health funds you claim on the day and pay only a minimal gap. If you need further treatment, you&apos;ll get a clear written estimate before anything goes ahead.</p>
+              <p>Your first visit is the New Patient Comprehensive Care Visit, one flat price with everything included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover. If you need further treatment, you&apos;ll get a clear written estimate before anything goes ahead.</p>
             </details>
             <details>
               <summary>I&apos;m nervous, or it&apos;s been years. Is that okay?</summary>

@@ -9,7 +9,7 @@ import { business, fullAddress, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Book an Appointment | East St Kilda Dental',
   description:
-    'Book your dental appointment online at East St Kilda Dental. New patient offer available — comprehensive exam, x-rays and scale & clean, all in one visit.',
+    'Book your dental appointment online at East St Kilda Dental. The New Patient Comprehensive Care Visit — comprehensive exam, x-rays and scale & clean, all in one visit.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/online-booking' },
 })
 
@@ -100,7 +100,7 @@ export default function BookingPage() {
           <div className="faq reveal">
             <details open>
               <summary>What does my first visit cost?</summary>
-              <p>Your first visit is the Comprehensive Care Visit, one flat price with everything included. With most health funds you claim on the day and pay only a minimal gap. If you need further treatment, you&apos;ll get a written estimate before anything goes ahead.</p>
+              <p>Your first visit is the New Patient Comprehensive Care Visit, one flat price with everything included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover. If you need further treatment, you&apos;ll get a written estimate before anything goes ahead.</p>
             </details>
             <details>
               <summary>I&apos;m nervous about booking. Can I note that?</summary>

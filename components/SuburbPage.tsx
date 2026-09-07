@@ -214,7 +214,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
             </div>
             <div className={styles.qrow}>
               <span className={styles.qi} aria-hidden="true">●</span>
-              <span><b>One price, first visit</b> — the Comprehensive Care Visit</span>
+              <span><b>One price, first visit</b> — the New Patient Comprehensive Care Visit</span>
             </div>
             <div className={styles.dirbtns}>
               <a className={styles.dirbtn} href={googleDirections(s)} target="_blank" rel="noopener noreferrer">
@@ -301,7 +301,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
           <div className={`${styles.offerCard} reveal`}>
             <div>
               <div className="eyebrow">New patients</div>
-              <h2>The Comprehensive Care Visit</h2>
+              <h2>The New Patient Comprehensive Care Visit</h2>
               <p>
                 A thorough, unhurried first appointment where we get to know you and your mouth, and
                 leave you with a clear, honest plan.

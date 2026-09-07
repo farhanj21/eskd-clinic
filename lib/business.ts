@@ -158,7 +158,7 @@ export const clinicianJobTitle = (slug: string): string | undefined =>
   clinicians.find(c => c.slug === slug)?.jobTitle
 
 export const comprehensiveCareVisit = {
-  name: 'The Comprehensive Care Visit',
+  name: 'The New Patient Comprehensive Care Visit',
   description:
     'A 60 to 75 minute comprehensive first-visit dental appointment including examination, digital X-rays, oral cancer screening, scale and clean, and a personalised care plan.',
 } as const
