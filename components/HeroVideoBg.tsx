@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 // Ambient background video for the home hero.
 //
 // The poster frame is painted by CSS on .hero-video itself, so the hero is
-// visually complete on first paint and the 290KB video never competes with
+// visually complete on first paint and the 12.9MB video never competes with
 // the LCP — this component only mounts the <video> after hydration, then
 // fades it in once it can actually play. Visitors who ask for reduced motion
 // keep the still poster and never download the clip.
