@@ -61,6 +61,54 @@ const heroStats = [
   },
 ]
 
+// The six services in the "Care for every stage of life" grid. Each photo is
+// the same one the service's own page leads with, so the card and the page it
+// opens show the reader the same picture.
+const homeServices = [
+  {
+    href: '/services/check-ups',
+    title: 'Check-ups & cleans',
+    blurb: 'Gentle, thorough preventive care to keep small things small.',
+    src: '/assets/services/checkup-hero.webp',
+    alt: 'A gentle dentist examining a young patient wearing protective glasses in the treatment chair',
+  },
+  {
+    href: '/emergency-dentist',
+    title: 'Emergency dentistry',
+    blurb: "In pain? We'll see you quickly and get you comfortable.",
+    src: '/assets/emergency/emergency-dentistry.webp',
+    alt: 'A friendly team member taking a call at the East St Kilda Dental reception',
+  },
+  {
+    href: '/services/fillings',
+    title: 'Fillings & restorations',
+    blurb: 'Quietly fixing what needs fixing, preserving your natural teeth.',
+    src: '/assets/services/fillings.webp',
+    alt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
+  },
+  {
+    href: '/services/crowns-and-bridges',
+    title: 'Crowns & root canals',
+    blurb: 'Saving teeth and easing pain, explained every step of the way.',
+    src: '/assets/services/crowns-bridges.webp',
+    alt: 'A smiling patient having their teeth examined with a dental mirror',
+  },
+  {
+    href: '/services/dental-implants',
+    title: 'Dental implants',
+    blurb: 'Replacing missing teeth so you can eat and smile with ease.',
+    src: '/assets/services/single-implant.webp',
+    alt: "Close-up of a patient's smile as a dentist matches the shade of a replacement tooth against the front teeth",
+  },
+  {
+    href: '/services/smile-design',
+    title: 'Cosmetic dentistry',
+    blurb: "Subtle, natural improvements when you're ready, never pushed.",
+    src: '/assets/services/smile-design.webp',
+    alt: 'A smiling patient having her teeth examined with a dental mirror during a smile design consultation',
+  },
+]
+
 // One self-contained, factual sentence for AI answer engines and featured
 // snippets to quote whole: who we are, what we are, where and since when.
 // Assembled from lib/business.ts so it can never contradict the JSON-LD below.
@@ -196,36 +244,20 @@ export default function Home() {
             </p>
           </div>
           <div className="svc-grid-v2">
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Check-ups &amp; cleans</h4>
-              <p>Gentle, thorough preventive care to keep small things small.</p>
-              <Link href="/services/check-ups">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Emergency dentistry</h4>
-              <p>In pain? We&apos;ll see you quickly and get you comfortable.</p>
-              <Link href="/emergency-dentist">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Fillings &amp; restorations</h4>
-              <p>Quietly fixing what needs fixing, preserving your natural teeth.</p>
-              <Link href="/services/fillings">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Crowns &amp; root canals</h4>
-              <p>Saving teeth and easing pain, explained every step of the way.</p>
-              <Link href="/services/crowns-and-bridges">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Dental implants</h4>
-              <p>Replacing missing teeth so you can eat and smile with ease.</p>
-              <Link href="/services/dental-implants">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Cosmetic dentistry</h4>
-              <p>Subtle, natural improvements when you&apos;re ready, never pushed.</p>
-              <Link href="/services/smile-design">Learn more</Link>
-            </div>
+            {homeServices.map(({ href, title, blurb, src, alt }) => (
+              <Link href={href} className="svc-item reveal" key={href}>
+                <Photo
+                  src={src}
+                  alt={alt}
+                  sizes="(max-width: 820px) 100vw, 33vw"
+                />
+                <div className="svc-item-body">
+                  <h4 style={{ fontWeight: 700 }}>{title}</h4>
+                  <p>{blurb}</p>
+                  <span className="svc-item-more">Learn more</span>
+                </div>
+              </Link>
+            ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
             <Link href="/services/check-ups" className="btn btn-ghost">See all services</Link>

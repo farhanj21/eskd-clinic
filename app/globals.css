@@ -2452,11 +2452,15 @@ body{overflow-x:hidden;max-width:100%;}
 
 /* Services grid */
 .svc-grid-v2{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.svc-item{background:var(--paper);border:1px solid var(--line-soft);border-radius:16px;padding:28px;transition:.25s;}
+.svc-item{display:block;background:var(--paper);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden;transition:.25s;text-decoration:none;color:inherit;}
 .svc-item:hover{border-color:var(--sage);transform:translateY(-3px);}
+/* The card's own rounded corners and border do the framing, so the photo drops
+   the .ph frame and sits flush against the top edge. */
+.svc-item .ph{border:0;border-radius:0;min-height:0;height:190px;}
+.svc-item-body{padding:24px 28px 28px;}
 .svc-item h4{font-size:21px;margin-bottom:8px;}
 .svc-item p{font-size:15px;}
-.svc-item a{display:inline-block;margin-top:14px;color:var(--sage-deep);font-weight:600;font-size:14px;}
+.svc-item-more{display:inline-block;margin-top:14px;color:var(--sage-deep);font-weight:600;font-size:14px;}
 @media(max-width:820px){.svc-grid-v2{grid-template-columns:1fr;}}
 
 /* Nervous patients */
