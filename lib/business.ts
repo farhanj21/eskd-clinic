@@ -10,7 +10,22 @@
  * they match the canonical URL.
  */
 
-export const SITE_URL = 'https://www.eaststkildadental.com.au'
+/**
+ * The production origin, and the bare domain rather than www on purpose.
+ *
+ * The host serves the site on eaststkildadental.com.au and 301s
+ * www.eaststkildadental.com.au to it, and every URL Google has indexed is the
+ * bare form. A canonical, an og:url or a schema @id on the www host would
+ * therefore name a URL that immediately redirects — pointing the strongest
+ * signal a page has at an address that does not serve it.
+ *
+ * If the practice ever moves to www as the primary host, this is the one line
+ * to change, but it is not a free swap: the redirect at the host has to be
+ * reversed and the Search Console property re-pointed on the same day, or the
+ * canonical and the redirect will contradict each other. Domain-level DNS
+ * verification already covers both hosts, so that part needs nothing.
+ */
+export const SITE_URL = 'https://eaststkildadental.com.au'
 
 /** Stable @id values for the nodes in the site-wide entity graph. */
 export const SCHEMA_ID = {
