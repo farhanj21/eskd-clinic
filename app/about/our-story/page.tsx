@@ -6,9 +6,9 @@ import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'Our Story | East St Kilda Dental — Four Decades on the Same Corner',
+  title: 'Our Story | East St Kilda Dental',
   description:
-    'East St Kilda Dental began around 1980. For over thirty years it was led by Dr Eddie Goldman, and is now guided by Dr Anbar Ganatra — same corner, same heart, a higher standard.',
+    'East St Kilda Dental began around 1980. Led for over thirty years by Dr Eddie Goldman, and now by Dr Anbar Ganatra — same corner, same heart.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-story' },
 })
 

@@ -8,7 +8,7 @@ import { business, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
-    `Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment with everything included. No surprises, no rush. Book online or call ${business.telephoneDisplay}.`,
+    `Your complete first visit, done properly. A gentle 60–75 minute appointment, everything included. No surprises, no rush. Call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
 })
 

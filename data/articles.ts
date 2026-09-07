@@ -161,7 +161,7 @@ export const articles: ArticleData[] = [
       { label: 'The New Patient Comprehensive Care Visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
-      title: "Haven't Been to the Dentist in Years? Here's What to Expect | East St Kilda Dental",
+      title: "Haven't Been to the Dentist in Years? What to Expect",
       description:
         "A gentle, no-judgement guide to coming back to the dentist after a long absence — what to expect, and why it's never too late.",
     },
@@ -340,7 +340,7 @@ export const articles: ArticleData[] = [
       { q: 'What if I\'m nervous or have dental anxiety?', a: 'Please tell us — before or at the start of your appointment. We have significant experience with anxious patients and will adjust our approach, pace and communication accordingly.' },
     ],
     meta: {
-      title: 'What to Expect at Your First Dental Visit | East St Kilda Dental',
+      title: 'What to Expect at Your First Visit | East St Kilda Dental',
       description: 'Wondering what happens at your first dental appointment? We walk you through every step — honest, clear, and no surprises.',
     },
   },
@@ -547,7 +547,7 @@ export const articles: ArticleData[] = [
       { q: 'How long does the super approval process take?', a: 'Processing times vary but typically take 2–4 weeks once a complete application is submitted through the ATO via MyGov.' },
     ],
     meta: {
-      title: 'Using Superannuation for Dental Treatment | East St Kilda Dental',
+      title: 'Using Super for Dental Treatment | East St Kilda Dental',
       description: 'Can you use your super for dental care? We explain when the ATO Compassionate Grounds early release scheme applies to dental treatment.',
     },
   },

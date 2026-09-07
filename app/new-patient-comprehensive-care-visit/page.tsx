@@ -6,7 +6,7 @@ import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'The New Patient Comprehensive Care Visit | East St Kilda Dental',
+  title: 'New Patient Comprehensive Care Visit | East St Kilda Dental',
   description:
     'New to East St Kilda Dental? The New Patient Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment. Everything included. Book online.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/new-patient-comprehensive-care-visit' },

@@ -13,7 +13,7 @@ import { withSocial } from '@/lib/seo'
 export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
-    'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
+    'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 — check-ups, nervous-patient care, kids and emergencies. Book today.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
 })
 

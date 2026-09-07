@@ -9,7 +9,7 @@ import { business, fullAddress, telHref } from '@/lib/business'
 export const metadata: Metadata = withSocial({
   title: 'Book an Appointment | East St Kilda Dental',
   description:
-    'Book your dental appointment online at East St Kilda Dental. The New Patient Comprehensive Care Visit — comprehensive exam, x-rays and scale & clean, all in one visit.',
+    'Book your dental appointment online at East St Kilda Dental. The New Patient Comprehensive Care Visit — exam, x-rays and scale & clean in one visit.',
   alternates: { canonical: 'https://www.eaststkildadental.com.au/online-booking' },
 })
 

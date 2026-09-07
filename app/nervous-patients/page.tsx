@@ -6,7 +6,7 @@ import { withSocial } from '@/lib/seo'
 import { business, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
+  title: 'Gentle Dentistry for Nervous Patients | East St Kilda Dental',
   description:
     `Scared of the dentist? ${business.name} specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call ${business.telephoneDisplay}.`,
   alternates: { canonical: 'https://www.eaststkildadental.com.au/nervous-patients' },
