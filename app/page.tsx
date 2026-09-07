@@ -180,10 +180,12 @@ export default function Home() {
         </dl>
       </div>
 
-      {/* NEW PATIENT OFFERS */}
+      {/* CHOOSE YOUR VISIT */}
       <HomeOffers />
 
-            {/* SERVICES OVERVIEW */}
+      {/* SERVICES OVERVIEW — the "can you help me?" beat, placed directly
+          after the visit types so the reader sees the range of care before
+          being asked to trust us or to book. */}
       <section className="sec">
         <div className="container">
           <div className="sec-head center reveal">
@@ -234,8 +236,71 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW WE'RE DIFFERENT */}
-      {/* <section className="sec alt">
+      {/* REVIEWS — deliberately live.
+
+          Four other places in this repo say testimonials are off limits under
+          AHPRA's advertising guidelines, and that is why this block sat
+          commented out. Re-enabling it was an explicit product decision by the
+          practice, who own that call. Do not silently re-comment it; raise it
+          with them instead. The structured data stays clean either way — there
+          is still no Review or aggregateRating node anywhere on the site. */}
+      <section className="sec">
+        <div className="container">
+          <div className="sec-head center reveal">
+            <div className="eyebrow">In our patients&apos; words</div>
+            <h2>Kind, gentle, and never rushed</h2>
+          </div>
+          <div className="reviews-v2">
+            <div className="review-card reveal">
+              <div className="review-stars">★★★★★</div>
+              <p>I&apos;d been putting it off for ages and felt embarrassed to even call. From the first phone call the team made it easy, with a warm welcome and not a single lecture.</p>
+              <div className="who">Patient review · returning after a break</div>
+            </div>
+            <div className="review-card reveal">
+              <div className="review-stars">★★★★★</div>
+              <p>I rang in a panic and reception were calm and kind, and found me a time straight away. They turned a stressful morning into an easy one.</p>
+              <div className="who">Patient review · first call</div>
+            </div>
+            <div className="review-card reveal">
+              <div className="review-stars">★★★★★</div>
+              <p>The front desk always remembers us by name and the whole team makes our family feel welcome, kids included. We wouldn&apos;t go anywhere else.</p>
+              <div className="who">Patient review · family patient</div>
+            </div>
+          </div>
+          <div className="gscore reveal">
+            Rated <b>5.0 on Google</b> by our local patients &middot;{' '}
+            <a href="https://share.google/M1ZtOT5z13fj2mhWf" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
+              Read all reviews
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      {/* CTA — the first real ask of the page, made only once the visit types,
+          the difference and the reviews are all behind the reader. Reuses
+          .ctaband from /fees rather than introducing a second band style. */}
+      <section className="sec">
+        <div className="container">
+          <div className="ctaband reveal">
+            <h3>Ready when you are</h3>
+            <p>
+              Whether you need a new dentist, haven&apos;t been for some time, have something bothering you, or you simply want to take better care of your teeth, we&apos;d be happy to help.
+            </p>
+            <div className="ctaband-actions">
+              <Link href="/online-booking" className="btn">Book an appointment</Link>
+              <a href={telHref} className="btn btn-ghost ctaband-ghost">Call {business.telephoneDisplay}</a>
+            </div>
+            <p style={{ margin: '20px 0 0', fontSize: '14.5px' }}>{fullAddress}</p>
+          </div>
+        </div>
+      </section>
+
+
+      {/* HOW WE'RE DIFFERENT — the differentiators, kept after the CTA: the
+          page makes its ask off the services and the reviews, and this reads
+          as supporting argument for anyone still scrolling. */}
+      <section className="sec alt">
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">The way we care</div>
@@ -267,37 +332,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* REVIEWS */}
-      {/* <section className="sec">
-        <div className="container">
-          <div className="sec-head center reveal">
-            <div className="eyebrow">In our patients&apos; words</div>
-            <h2>Kind, gentle, and never rushed</h2>
-          </div>
-          <div className="reviews-v2">
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>I&apos;d been putting it off for ages and felt embarrassed to even call. From the first phone call the team made it easy, with a warm welcome and not a single lecture.</p>
-              <div className="who">Patient review · returning after a break</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>I rang in a panic and reception were calm and kind, and found me a time straight away. They turned a stressful morning into an easy one.</p>
-              <div className="who">Patient review · first call</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>The front desk always remembers us by name and the whole team makes our family feel welcome, kids included. We wouldn&apos;t go anywhere else.</p>
-              <div className="who">Patient review · family patient</div>
-            </div>
-          </div>
-          <div className="gscore reveal">
-            Rated <b>5.0 on Google</b> by our local patients
-          </div>
-        </div>
-      </section> */}
 
       {/* OFFER CARD */}
       <section className="sec" id="first-visit">
@@ -305,7 +341,7 @@ export default function Home() {
           <div className="offer-card-v2">
             <div className="body">
               <div className="eyebrow">Your first visit, in full</div>
-              <h2>The <em>Comprehensive Care</em> Visit</h2>
+              <h2>The <em>New Patient Comprehensive Care</em> Visit</h2>
               <p>A thorough, gentle 60 to 75 minute appointment that gives you a complete understanding of your oral health and where things are heading, not a quick clean and out the door. Together we look at your health, function, longevity, aesthetics and prevention, and you leave with a personalised dental care plan. Your visit includes:</p>
               <ul className="offer-includes">
                 <li>Comprehensive dental examination</li>
