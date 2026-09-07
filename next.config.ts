@@ -41,6 +41,18 @@ const nextConfig: NextConfig = {
         destination: '/services/check-ups',
         permanent: true,
       },
+      /**
+       * The first-visit page moved from /comprehensive-care-visit to
+       * /new-patient-comprehensive-care-visit when the offer was renamed, so
+       * the URL says who the visit is for. The old path was live, linked from
+       * the header and the utility bar, and indexed; this keeps those hits and
+       * any outside link landing on the page rather than a 404.
+       */
+      {
+        source: '/comprehensive-care-visit',
+        destination: '/new-patient-comprehensive-care-visit',
+        permanent: true,
+      },
     ]
   },
   /**

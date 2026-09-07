@@ -84,7 +84,7 @@ export default function FeesPage() {
               Your thorough first visit, the exam, X-rays, scale, clean, fluoride and a clear care plan, for one simple price. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
             </p>
             <div className="ctaband-actions">
-              <Link href="/comprehensive-care-visit" className="btn">See what&apos;s included</Link>
+              <Link href="/new-patient-comprehensive-care-visit" className="btn">See what&apos;s included</Link>
               <Link href="/online-booking" className="btn btn-ghost-light">Book online</Link>
             </div>
           </div>

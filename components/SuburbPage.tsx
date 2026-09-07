@@ -311,7 +311,7 @@ export default function SuburbPage({ slug }: { slug: string }) {
                 <div><span className={styles.k}>Includes</span><b>Everything</b></div>
                 <div><span className={styles.k}>Length</span><b>60–75 min</b></div>
               </div>
-              <Link href="/comprehensive-care-visit" className="btn">Book your first visit</Link>
+              <Link href="/new-patient-comprehensive-care-visit" className="btn">Book your first visit</Link>
             </div>
             <ul className={styles.offerIncludes}>
               {OFFER_INCLUDES.map((item) => <li key={item}>{item}</li>)}

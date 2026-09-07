@@ -88,7 +88,7 @@ export default function FirstVisitPage() {
                   <h3>Not sure where to start?</h3>
                   <p>Book a visit, or leave your details and we&apos;ll call you back. We&apos;ll help you work out what you actually need, no commitment.</p>
                   <p style={{ fontSize: '14.5px', marginTop: '8px' }}>
-                    <Link href="/comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
+                    <Link href="/new-patient-comprehensive-care-visit" style={{ color: 'var(--sage-tint)', fontWeight: 600 }}>
                       Start with the New Patient Comprehensive Care Visit &rarr;
                     </Link>
                   </p>

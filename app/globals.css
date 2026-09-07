@@ -2162,6 +2162,46 @@ body{overflow-x:hidden;max-width:100%;}
   color:var(--sage);margin:16px 0 0;
 }
 .hero-v2 .lead{font-size:20px;margin:24px 0 30px;max-width:30em;color:var(--ink-soft);}
+/* A hero headline set on ONE line at every width. Same technique as .pqfit and
+   .fundfit: the copy column becomes a query container, so 1cqw is a hundredth
+   of the column's own width — which is what the headline has to fit inside,
+   and is narrower than the container because .hero-v2-grid splits it 1.05/.95
+   with a 54px gap. Measured in Cormorant at 600 with "check-up" italic, "More
+   than a check-up" runs 8.12em, so 11.7cqw leaves about 5% in hand. At the
+   74px cap it would need 601px against a 541px column, i.e. it wrapped before
+   this rule existed. Any reword needs the 11.7cqw remeasured.
+
+   The body paragraphs carry their own rhythm here because the .lead that used
+   to space them off the headline is gone. */
+.hero-fit{container-type:inline-size;}
+.hero-fit h1{font-size:min(74px,11.7cqw);white-space:nowrap;}
+.hero-fit>p{margin-top:20px;font-size:17px;line-height:1.7;max-width:34em;}
+.hero-fit .hero-cta{margin-top:30px;}
+
+/* A one-line "if that isn't what you came for" link. Used at the handful of
+   points on a landing page where the reader's intent naturally shifts — urgent
+   care, who they'll see, routine visits, cost — so the paths sit where they are
+   wanted instead of piling into one block of links. */
+.pathlink{margin-top:16px;font-size:14.5px;color:var(--ink-faint);}
+.pathlink a{color:var(--sage-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+.pathlink a:hover{color:var(--clay-deep);}
+/* On the deep green bands, sage-deep on sage-darker is invisible. clay-soft is
+   the accent this file already uses for links and emphasis over that green —
+   see .sage-bg h2 em and .hero-video-note a. */
+.sage-bg .pathlink{color:rgba(255,255,255,.72);}
+.sage-bg .pathlink a{color:var(--clay-soft);}
+.sage-bg .pathlink a:hover{color:#fff;}
+
+/* "Put it off for years? You're exactly who we're best with" on ONE line at
+   every width. Same technique as .pqfit, .fundfit and .hero-fit: the heading
+   box becomes a query container, so 1cqw is a hundredth of its own width —
+   which here is .sec-head's 46em measure, not the container. Measured in
+   Cormorant at 500 with "best" italic and the h2's -.01em tracking, the line
+   runs 20.39em, so 4.67cqw leaves about 5% in hand. At the 42px .sec h2 cap it
+   would need 856px against a ~736px box, i.e. it wrapped before this rule.
+   Any reword needs the 4.67cqw remeasured. */
+.welcome-fit{container-type:inline-size;}
+.welcome-fit h2{font-size:min(42px,4.67cqw);white-space:nowrap;}
 .hero-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
 .hero-proof-band{background:var(--paper);border-bottom:1px solid var(--line);padding:15px 0;}
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px;font-weight:600;color:var(--ink-soft);justify-content:center;}

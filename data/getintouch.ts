@@ -35,7 +35,7 @@ export const getInTouchCopy: Record<GetInTouchVariant, GetInTouchCopy> = {
     sub: 'We move at your pace. Let\'s start with a relaxed, no-pressure chat.',
   },
   offer: {
-    cta: 'Book your New Patient Comprehensive Care Visit',
+    cta: 'Ready to book your first visit?',
     sub: 'Comprehensive exam, digital x-rays and scale & clean, all in one visit.',
   },
   implants: {

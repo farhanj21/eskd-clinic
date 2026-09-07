@@ -1501,7 +1501,7 @@ const PAGE_SUB: Record<string, string> = {
   '/fees': 'Costs and health funds, up front',
   '/emergency-dentist': 'Same-day care when it hurts',
   '/nervous-patients': 'How we look after anxious patients',
-  '/comprehensive-care-visit': 'Your first visit, one simple price',
+  '/new-patient-comprehensive-care-visit': 'Your first visit, one simple price',
   '/services': 'Everything we offer, in one place',
 }
 

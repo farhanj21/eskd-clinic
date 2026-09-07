@@ -23,7 +23,7 @@ const STATIC_PATHS = [
   '/about/why-were-different',
   '/areas-we-serve',
   '/online-booking',
-  '/comprehensive-care-visit',
+  '/new-patient-comprehensive-care-visit',
   '/contact',
   '/emergency-dentist',
   '/fees',

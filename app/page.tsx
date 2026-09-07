@@ -157,7 +157,7 @@ export default function Home() {
               <span>HICAPS available</span>
             </div>
             <p className="hero-video-note">
-              <Link href="/comprehensive-care-visit">
+              <Link href="/new-patient-comprehensive-care-visit">
                 Experience the New Patient Comprehensive Care Visit &rarr;
               </Link>
             </p>
