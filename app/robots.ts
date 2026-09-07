@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/business'
+import { isProduction } from '@/lib/env'
 
 /**
  * AI answer engines can only cite a site their crawlers are allowed to read.
@@ -27,17 +28,28 @@ const AI_CRAWLERS = [
 ]
 
 /**
- * TEMPORARY: every deployment, including staging and preview, is crawlable so
- * that AI assistants can read the site before it is live on the production
- * host. Staging used to be blocked with `userAgent: '*', disallow: '/'`; put
- * that back (gated on `isProduction` from lib/env) once it is no longer needed.
+ * /api/* is the only path anything is kept out of. It is the contact form's
+ * POST endpoint — there is nothing there to read, a crawler's GET only earns a
+ * 405, and it should never surface as a result. Everything else is content and
+ * is open to every crawler named above.
  */
+const DISALLOW = ['/api/']
+
 export default function robots(): MetadataRoute.Robots {
+  // Staging and preview deployments stay fully blocked. No sitemap is
+  // advertised either: pointing a crawler at a list of URLs it is disallowed
+  // from fetching is the one way a blocked deployment still leaks into search.
+  if (!isProduction) {
+    return { rules: [{ userAgent: '*', disallow: '/' }] }
+  }
+
+  // On production the only closed path is the contact endpoint below.
   return {
     rules: [
-      { userAgent: '*', allow: '/' },
-      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/' })),
+      { userAgent: '*', allow: '/', disallow: DISALLOW },
+      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/', disallow: DISALLOW })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }

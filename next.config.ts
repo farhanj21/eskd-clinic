@@ -1,6 +1,18 @@
 import type { NextConfig } from 'next'
 import { suburbs, suburbPath } from './data/suburbs'
 
+// Vercel sets VERCEL_ENV automatically:
+//   "production"  → main production deployment
+//   "preview"     → all staging / preview deployments
+//   "development" → local dev (next dev)
+// This repeats lib/env.ts's expression inline, because the Next config is
+// loaded before the "@/" path alias exists and so cannot import that file.
+// The two must stay in step — including the NEXT_PUBLIC_SITE_ENV fallback,
+// without which a non-Vercel production host would noindex itself.
+const isProduction =
+  process.env.VERCEL_ENV === 'production' ||
+  process.env.NEXT_PUBLIC_SITE_ENV === 'production'
+
 const nextConfig: NextConfig = {
   images: {
     // AVIF first (smaller), WebP fallback; browsers get the best format they support
@@ -56,13 +68,26 @@ const nextConfig: NextConfig = {
     ]
   },
   /**
-   * TEMPORARY: no X-Robots-Tag is sent anywhere. Staging and preview
-   * deployments used to return `noindex, nofollow` on every route (gated on
-   * `process.env.VERCEL_ENV === 'production'`); restore that header block when
-   * those deployments should be hidden from crawlers again.
+   * The belt to robots.txt's braces. A disallow only asks a crawler not to
+   * fetch; a URL it never fetched can still be indexed from an inbound link.
+   * X-Robots-Tag travels with the response itself, so a staging URL that is
+   * fetched anyway still carries noindex.
    */
   async headers() {
-    return []
+    if (isProduction) return []
+
+    return [
+      {
+        // Noindex every route on staging / preview deployments
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+    ]
   },
 }
 
