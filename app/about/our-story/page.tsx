@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Our Story | East St Kilda Dental',
   description:
     'East St Kilda Dental began around 1980. Led for over thirty years by Dr Eddie Goldman, and now by Dr Anbar Ganatra — same corner, same heart.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-story' },
+  alternates: { canonical: `${SITE_URL}/about/our-story` },
 })
 
 export default function AboutStoryPage() {

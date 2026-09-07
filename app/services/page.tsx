@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'All Dental Services | East St Kilda Dental',
   description:
     'From everyday check-ups and cleans to implants, cosmetic care and orthodontics — all in one gentle, no-judgement practice in St Kilda East.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/services' },
+  alternates: { canonical: `${SITE_URL}/services` },
 })
 
 const general = [

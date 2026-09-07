@@ -82,6 +82,18 @@ export const business = {
 export const telHref = `tel:${business.telephone}`
 export const emailHref = `mailto:${business.email}`
 
+/**
+ * The practice management system's public booking page, embedded on
+ * /online-booking and linked as its fallback.
+ *
+ * It is a different domain, so nothing after the click is visible to our
+ * analytics — a completed booking is counted in the practice software, not
+ * here. BOOKING_HOST exists so the click itself can be recognised as an
+ * outbound conversion wherever it appears; see components/AnalyticsEvents.tsx.
+ */
+export const BOOKING_HOST = 'centaurportal.com'
+export const BOOKING_URL = `https://www.${BOOKING_HOST}/d4w/org-1240/extended_search`
+
 /** "364 Dandenong Rd" */
 export const streetAddress = business.address.streetAddress
 /** "St Kilda East VIC 3183" */

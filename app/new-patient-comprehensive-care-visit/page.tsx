@@ -3,13 +3,13 @@ import Link from 'next/link'
 import CallbackForm from '@/components/CallbackForm'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'New Patient Comprehensive Care Visit | East St Kilda Dental',
   description:
     'New to East St Kilda Dental? The New Patient Comprehensive Care Visit is a thorough, gentle 60–75 minute appointment. Everything included. Book online.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/new-patient-comprehensive-care-visit' },
+  alternates: { canonical: `${SITE_URL}/new-patient-comprehensive-care-visit` },
 })
 
 export default function OfferPage() {

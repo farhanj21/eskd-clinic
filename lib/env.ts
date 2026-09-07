@@ -16,3 +16,18 @@
 export const isProduction =
   process.env.VERCEL_ENV === 'production' ||
   process.env.NEXT_PUBLIC_SITE_ENV === 'production'
+
+/**
+ * Which deployment this is, as a plain string: "production", "preview" or
+ * "development".
+ *
+ * Analytics is the one consumer. GTM loads on every environment so a tag can
+ * be tested on a preview before it goes live, and every dataLayer push carries
+ * this value — so the container can hold a single "site_env equals production"
+ * exception and keep staging traffic out of GA4 without a code change.
+ */
+export const siteEnv: 'production' | 'preview' | 'development' = isProduction
+  ? 'production'
+  : process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_SITE_ENV === 'preview'
+    ? 'preview'
+    : 'development'

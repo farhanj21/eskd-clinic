@@ -13,6 +13,59 @@ const isProduction =
   process.env.VERCEL_ENV === 'production' ||
   process.env.NEXT_PUBLIC_SITE_ENV === 'production'
 
+/**
+ * Every URL this site has served that no longer exists, and where it goes now.
+ *
+ * Each one is a route that was live in the repository under an older name and
+ * was renamed or removed without a redirect, so any inbound link or indexed
+ * result still pointing at it landed on the 404 page — losing both the visitor
+ * and whatever ranking the old URL had earned.
+ *
+ * Two rules held throughout:
+ *
+ *   Every destination is a final URL, never another redirect. /offer's page was
+ *     renamed twice (→ /comprehensive-care-visit → /new-patient-comprehensive-
+ *     care-visit) and /booking's twice (→ /book → /online-booking); each is
+ *     sent straight to where the content actually lives, so nobody pays for two
+ *     round trips and no signal is diluted through a chain.
+ *
+ *   The destination is the page that replaced the old one, not the home page.
+ *     A redirect to "/" reads to Google as a soft 404 and drops the ranking
+ *     entirely — /take-care-of-you was the new-patient offer campaign, so it
+ *     goes to the page carrying that offer today.
+ *
+ * A redirect costs nothing until someone requests the URL, so a path that
+ * turns out never to have been indexed is simply never asked for. The reverse
+ * mistake — a missing redirect — is only discovered from the 404 report weeks
+ * later. Anything renamed from here on belongs in this list on the same commit.
+ */
+const LEGACY_PATHS: Record<string, string> = {
+  // Renamed 2026-06-09, "routes fixed" — short names replaced by descriptive,
+  // keyword-bearing ones.
+  '/emergency': '/emergency-dentist',
+  '/gentle': '/nervous-patients',
+  '/super': '/using-your-super',
+  '/first-visit': '/your-first-visit',
+  '/ourwork': '/our-work',
+  '/about/story': '/about/our-story',
+  '/about/team': '/about/our-team',
+  '/about/different': '/about/why-were-different',
+  '/booking': '/online-booking',
+  '/offer': '/new-patient-comprehensive-care-visit',
+
+  // /home was a second copy of the home page, kept alive as a redirect route
+  // that called next/navigation's redirect() — which issues a 307 Temporary.
+  // A temporary redirect tells Google the old URL is coming back, so it stays
+  // in the index competing with "/". It belongs here, as a permanent one.
+  '/home': '/',
+
+  // The new-patient offer campaign page, live and indexable until it was
+  // removed on 2026-09-07. The offer itself did not go away — it is the
+  // Comprehensive Care Visit — so both of its URLs point at that page.
+  '/campaign': '/new-patient-comprehensive-care-visit',
+  '/take-care-of-you': '/new-patient-comprehensive-care-visit',
+}
+
 const nextConfig: NextConfig = {
   images: {
     // AVIF first (smaller), WebP fallback; browsers get the best format they support
@@ -26,6 +79,19 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      /*
+       * permanent: true is a 308, which is the modern permanent redirect and
+       * what Google treats as equivalent to a 301 for ranking purposes. The
+       * only difference from a 301 is that 308 preserves the request method,
+       * which is irrelevant for page URLs a crawler only ever GETs. Every
+       * redirect on this site uses the one status code; switch the whole table
+       * together, or not at all.
+       */
+      ...Object.entries(LEGACY_PATHS).map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
       ...suburbs.map((s) => ({
         source: `/areas/${s.slug}`,
         destination: suburbPath(s.slug),

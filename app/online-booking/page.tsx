@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import BookingFrame from '@/components/BookingFrame'
 import CallbackForm from '@/components/CallbackForm'
 import GetInTouch from '@/components/GetInTouch'
 import MapEmbed from '@/components/MapEmbed'
 import { withSocial } from '@/lib/seo'
-import { business, fullAddress, telHref } from '@/lib/business'
+import { BOOKING_URL, business, fullAddress, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Book an Appointment | East St Kilda Dental',
   description:
     'Book your dental appointment online at East St Kilda Dental. The New Patient Comprehensive Care Visit — exam, x-rays and scale & clean in one visit.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/online-booking' },
+  alternates: { canonical: `${SITE_URL}/online-booking` },
 })
 
 export default function BookingPage() {
@@ -42,17 +43,12 @@ export default function BookingPage() {
             <h2>Pick a time that <em>works for you</em></h2>
           </div>
           <div className="embed-card reveal">
-            <iframe
-              className="embed-frame"
-              src="https://www.centaurportal.com/d4w/org-1240/extended_search"
-              title="Book an appointment at East St Kilda Dental"
-              loading="lazy"
-            />
+            <BookingFrame />
           </div>
           <p className="reveal" style={{ textAlign: 'center', fontSize: '14px', color: 'var(--ink-faint)', marginTop: '16px' }}>
             If the booking form doesn&apos;t appear,{' '}
             <a
-              href="https://www.centaurportal.com/d4w/org-1240/extended_search"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: 'var(--clay-deep)', fontWeight: 600 }}

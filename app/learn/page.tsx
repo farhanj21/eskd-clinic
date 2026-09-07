@@ -15,7 +15,7 @@ export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
   description:
     'Clear, calm answers to your dental questions. Honest, easy-to-read guides with no jargon, no scare tactics, no selling — from the team at East St Kilda Dental.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/learn' },
+  alternates: { canonical: `${SITE_URL}/learn` },
 })
 
 const LEARN_URL = `${SITE_URL}/learn`

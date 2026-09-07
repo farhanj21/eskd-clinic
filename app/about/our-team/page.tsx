@@ -17,7 +17,7 @@ export const metadata: Metadata = withSocial({
   title: 'Meet the Team | East St Kilda Dental',
   description:
     'A warm, experienced team who genuinely care, and who\'ll remember you next time. Meet the dentists and support team at East St Kilda Dental.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-team' },
+  alternates: { canonical: `${SITE_URL}/about/our-team` },
 })
 
 /**

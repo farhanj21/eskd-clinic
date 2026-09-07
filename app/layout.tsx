@@ -5,6 +5,8 @@ import ScrollEffects from '@/components/ScrollEffects'
 import UtilityBar from '@/components/UtilityBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Analytics, { AnalyticsNoScript } from '@/components/Analytics'
+import AnalyticsEvents from '@/components/AnalyticsEvents'
 import { SITE_URL, business } from '@/lib/business'
 import { SHARE_IMAGE } from '@/lib/seo'
 
@@ -61,6 +63,20 @@ export const metadata: Metadata = {
     ],
     apple: '/assets/favicon.png',
   },
+  /*
+   * Search Console ownership.
+   *
+   * Verification is per-property and the token is public by design — it only
+   * proves control of this domain to Google. It reads from the environment so
+   * the property can be re-verified, or a second property added, without a code
+   * change; set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel. Leaving it
+   * unset emits no tag at all, which is correct if the property was verified by
+   * DNS record instead — that method survives a redeploy on its own and needs
+   * nothing here.
+   */
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   openGraph: {
     type: 'website',
     siteName: business.name,
@@ -82,13 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${hanken.variable}`}>
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MQ9RNSZP');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
+        <Analytics />
         {/*
           No hand-written hero preload here. The one that used to live on this
           line pointed at /assets/Hero Eddy  white.webp, which does not exist —
@@ -99,16 +109,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         */}
       </head>
       <body>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MQ9RNSZP"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
+        <AnalyticsNoScript />
+        <AnalyticsEvents />
         <ScrollEffects />
         <UtilityBar />
         <Header />

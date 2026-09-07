@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
     `Your complete first visit, done properly. A gentle 60–75 minute appointment, everything included. No surprises, no rush. Call ${business.telephoneDisplay}.`,
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
+  alternates: { canonical: `${SITE_URL}/your-first-visit` },
 })
 
 export default function FirstVisitPage() {

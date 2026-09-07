@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import HealthFundLogos from '@/components/HealthFundLogos'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Dental Fees & Costs | East St Kilda Dental — No Surprises',
   description:
     "You'll always know what something costs before it happens. One simple price for your first visit, all major health funds welcome, payment plans available.",
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/fees' },
+  alternates: { canonical: `${SITE_URL}/fees` },
 })
 
 const paymentOptions = [

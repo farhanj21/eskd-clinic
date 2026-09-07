@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return withSocial({
     title: service.meta.title,
     description: service.meta.description,
-    alternates: { canonical: `https://www.eaststkildadental.com.au/services/${slug}` },
+    alternates: { canonical: `${SITE_URL}/services/${slug}` },
   })
 }
 

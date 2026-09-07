@@ -11,7 +11,7 @@ export const metadata: Metadata = withSocial({
   title: 'Areas We Serve | East St Kilda Dental',
   description:
     'East St Kilda Dental — a trusted local dentist for the inner south-east. Serving St Kilda, Balaclava, Caulfield, Elsternwick, Elwood and surrounding suburbs.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/areas-we-serve' },
+  alternates: { canonical: `${SITE_URL}/areas-we-serve` },
 })
 
 /**

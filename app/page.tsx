@@ -14,7 +14,7 @@ export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
     'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 — check-ups, nervous-patient care, kids and emergencies. Book today.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
+  alternates: { canonical: `${SITE_URL}/` },
 })
 
 // The five questions in the "Things you might be wondering" section. Both the

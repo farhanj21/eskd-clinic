@@ -12,7 +12,7 @@ import { suburbs, suburbPath } from '@/data/suburbs'
  * production host rather than advertising itself.
  *
  * Deliberately excluded, and why each one stays out:
- *   /home                  — redirects to /, so it is not a page
+ *   /home                  — redirects permanently to /, so it is not a page
  *   /book                  — redirects to /online-booking
  *   /comprehensive-care-visit — redirects to /new-patient-comprehensive-care-visit
  *   /services/check-up-clean  — redirects to /services/check-ups

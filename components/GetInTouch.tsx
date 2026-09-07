@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { getInTouchCopy, type GetInTouchVariant } from '@/data/getintouch'
 import { business, emailHref, fullAddress, telHref } from '@/lib/business'
+import { track } from '@/lib/analytics'
 import { TREATMENTS } from '@/lib/enquiry'
 
 interface GetInTouchProps {
@@ -59,9 +60,20 @@ export default function GetInTouch({
       const data = await res.json().catch(() => null)
 
       if (!res.ok) {
+        track('form_error', { form_name: 'get-in-touch', page_path: window.location.pathname })
         setError(data?.error ?? 'We could not send your message. Please try again, or call us.')
         return
       }
+
+      /* Only after the API accepts it — see the same note in CallbackForm.
+         patient_type and form_intent ride along so GA4 can separate a new
+         patient's enquiry from an existing one's admin question. */
+      track('generate_lead', {
+        form_name: 'get-in-touch',
+        form_intent: String(fd.get('intent') ?? ''),
+        patient_type: String(fd.get('patienttype') ?? ''),
+        page_path: window.location.pathname,
+      })
 
       setSentName(String(fd.get('firstName') ?? '').trim())
       form.reset()
