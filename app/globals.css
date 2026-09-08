@@ -3419,16 +3419,6 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 }
 .offers-icon svg{width:21px;height:21px;}
 
-.offers-pill{
-  font-family:var(--body);
-  font-size:11px;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--sage-deep);
-  background:var(--sage-tint);
-  border-radius:999px;
-  padding:5px 11px;
-  margin-bottom:10px;
-}
 .offers-title{
   font-family:var(--display);
   font-size:20px;font-weight:600;line-height:1.25;
@@ -3445,21 +3435,32 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   margin:12px 0 0;
 }
 
+/* Solid sage with white text, the same treatment as the header's "Book your
+   visit" .btn — these are the row's actual actions, not footnotes. Stretched
+   to the card width so three different label lengths still line up. */
 .offers-cta{
-  display:inline-flex;align-items:center;gap:7px;
-  margin-top:auto;padding-top:18px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  align-self:stretch;
+  margin-top:auto;
+  padding:13px 20px;
   font-family:var(--body);
-  font-size:12px;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--sage-deep);
+  font-size:14.5px;font-weight:600;
+  background:var(--sage);
+  color:#fff;
+  border-radius:40px;
   text-decoration:none;
+  transition:background .25s ease;
 }
+.offers-cta:hover{background:var(--sage-deep);}
+/* margin-top:auto pins the button to the card foot, so the gap above it has to
+   come from the body rather than the button's own margin. */
+.offers-body{margin-bottom:20px;}
 .offers-arrow{width:15px;height:15px;transition:transform .22s ease;}
 /* Driven from the card, not just the link, so the whole card reads as one
    hover target even when the pointer is nowhere near the CTA. */
 .offers-card:hover .offers-arrow,
 .offers-card:focus-within .offers-arrow{transform:translateX(4px);}
-.offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:2px;}
+.offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;}
 
 @media(prefers-reduced-motion:reduce){
   .offers-card,.offers-icon,.offers-arrow{transition:none;}
@@ -3495,8 +3496,8 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
     padding:18px;
   }
   .offers-icon{grid-column:1;grid-row:1;width:36px;height:36px;margin-bottom:0;}
-  .offers-pill{grid-column:2;grid-row:1;justify-self:start;margin-bottom:0;}
-  .offers-title{grid-column:1/-1;grid-row:2;margin:12px 0 0;}
+  /* The title takes the slot the pill used to hold, beside the icon. */
+  .offers-title{grid-column:2;grid-row:1;margin:0;font-size:17px;}
   /* margin-top:auto is a flex trick that would eat the free row space here. */
-  .offers-cta{grid-column:1/-1;grid-row:3;margin-top:0;padding-top:14px;}
+  .offers-cta{grid-column:1/-1;grid-row:2;margin-top:14px;}
 }
