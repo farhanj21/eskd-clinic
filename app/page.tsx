@@ -626,8 +626,8 @@ Would highly recommend to anyone looking for a new dentist.</p>
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">Learn at your own pace, no appointment needed</div>
-            {/* Same one-line treatment as the Areas heading — see note there. */}
-            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Answers to the things you&apos;ve been <em>wondering</em></h2>
+            {/* Same one-line treatment as the Areas heading — see .oneline-head. */}
+            <h2 className="oneline-head">Answers to the things you&apos;ve been <em>wondering</em></h2>
             <p style={{ marginTop: '14px', fontSize: '18px' }}>
               Clear, judgement-free guides to the questions we hear most, from bleeding gums to nervous visits. Understanding your mouth is the first step to looking after it.
             </p>
@@ -710,8 +710,9 @@ Would highly recommend to anyone looking for a new dentist.</p>
             <div className="eyebrow">Your local dentist in Melbourne&apos;s inner south-east</div>
             {/* nowrap + a purely viewport-derived size: the .sec-head 46em cap
                 would otherwise break this over two lines. min() keeps it from
-                growing past the 1180px container on wide screens. */}
-            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Wherever you are, you&apos;re <em>welcome</em> here</h2>
+                growing past the 1180px container on wide screens, and
+                .oneline-head drops back to a wrapping size below 820px. */}
+            <h2 className="oneline-head">Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
               Find your suburb below, or get directions straight to our door in Google or Apple Maps, from wherever you&apos;re starting.
             </p>

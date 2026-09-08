@@ -2583,6 +2583,21 @@ body{overflow-x:hidden;max-width:100%;}
   .fundfit h2{white-space:normal;font-size:clamp(26px,7.4vw,34px);}
 }
 
+/* ── One-line home headings: Education and Areas ──────────────
+   Both headings are sized off the viewport so they hold a single line on a
+   wide screen. Below 820px that sizing collapses for the same reason it does
+   on .fundfit above: 4.3vw of a phone viewport is ~16px, so the nowrap line
+   either reads smaller than the body copy or runs off the right edge and is
+   clipped by body{overflow-x:hidden}. Wrapping buys a readable ~28px instead.
+
+   Kept as a class rather than the inline styles these headings used to carry,
+   because an inline font-size cannot be undone by a media query. Written as
+   `.sec .oneline-head` so it outweighs the `.sec h2` size rules. */
+.sec .oneline-head{font-size:min(56px,4.3vw);white-space:nowrap;}
+@media(max-width:820px){
+  .sec .oneline-head{white-space:normal;font-size:clamp(26px,7vw,34px);}
+}
+
 /* Fees */
 .fees-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;}
 .fees-list-v2{list-style:none;margin-top:20px;padding:0;}
@@ -3209,6 +3224,26 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .hero-v2 .lead{font-size:16.5px;margin:14px 0 20px;}
   .hero-cta{gap:10px;}
   .hero-proof{font-size:13px;gap:6px 12px;}
+
+  /* The home hero's three proof points on ONE line at phone width. The line
+     measures about 32em all in, so it only fits by being sized off the
+     viewport rather than set in px: inside the 28px gutter a 375px screen
+     lands it near 9.5px, a 430px screen near 11px, and the 13px above is the
+     size it keeps everywhere it already fitted.
+
+     Gaps and the dots are in em so they shrink with the type, and there is
+     deliberately no minimum size — a floor would push the nowrap row past the
+     screen edge on a 320px phone, where body{overflow-x:hidden} would slice
+     both ends off it. Scoped to .hero-video because the other pages using
+     .hero-proof carry different, longer items. */
+  .hero-video .hero-proof>span{flex:none;}
+  .hero-video .hero-proof{
+    flex-wrap:nowrap;
+    white-space:nowrap;
+    gap:0 .8em;
+    font-size:min(13px,calc((100vw - 60px) / 33));
+  }
+  .hero-video .proof-dot{width:.3em;height:.3em;flex:none;}
   .ph.tall{min-height:260px;}
 
   /* Buttons */
