@@ -280,18 +280,20 @@ export default function Home() {
           <div className="reviews-v2">
             <div className="review-card reveal">
               <div className="review-stars">★★★★★</div>
-              <p>I&apos;d been putting it off for ages and felt embarrassed to even call. From the first phone call the team made it easy, with a warm welcome and not a single lecture.</p>
-              <div className="who">Patient review · returning after a break</div>
+              <p>Dr Anbar was fantastic and extremely knowledgeable.
+Very comfortable experience as well, from my perspective there was no pain or discomfort.
+Would highly recommend to anyone looking for a new dentist.</p>
+              <div className="who">Emily Wooton · 3 months ago</div>
             </div>
             <div className="review-card reveal">
               <div className="review-stars">★★★★★</div>
-              <p>I rang in a panic and reception were calm and kind, and found me a time straight away. They turned a stressful morning into an easy one.</p>
-              <div className="who">Patient review · first call</div>
+              <p>I’ve had years of care under this team. They are friendly, do not over charge, offer options of treatments that consider your circumstances. A clinic that has never failed to care and give me the most personalised treatment.</p>
+              <div className="who">Bronwen Drinnan · 4 months ago</div>
             </div>
             <div className="review-card reveal">
               <div className="review-stars">★★★★★</div>
-              <p>The front desk always remembers us by name and the whole team makes our family feel welcome, kids included. We wouldn&apos;t go anywhere else.</p>
-              <div className="who">Patient review · family patient</div>
+              <p>Dr Dean is caring, calm, patient, empathic, professional, warm and open to having a laugh. He and the team at St Kilda East Dental are amazing group who to me practice ‘dentistry as an art form’.</p>
+              <div className="who">Gülşen Özer · 1 month ago</div>
             </div>
           </div>
           <div className="gscore reveal">
@@ -389,7 +391,11 @@ export default function Home() {
                 <div><b>All included</b>in one visit</div>
                 <div><b>Clear care plan</b>before you leave</div>
               </div>
-              <Link href="/online-booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
+              {/* No marginTop: .offer-meta already carries a 28px bottom margin,
+                  and an inline-block button does not collapse margins with it —
+                  the two stacked to a 48px gap, against the 28px rhythm the rest
+                  of the card uses. */}
+              <Link href="/online-booking" className="btn" style={{ display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
                 Everything included. Eligible health-fund claims can be processed through HICAPS.
               </p>
