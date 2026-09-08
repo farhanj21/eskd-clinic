@@ -15,7 +15,7 @@ export const metadata: Metadata = withSocial({
   title: 'Dental Education | East St Kilda Dental',
   description:
     'Clear, calm answers to your dental questions. Honest, easy-to-read guides with no jargon, no scare tactics, no selling — from the team at East St Kilda Dental.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/learn' },
+  alternates: { canonical: `${SITE_URL}/learn` },
 })
 
 const LEARN_URL = `${SITE_URL}/learn`
@@ -91,9 +91,9 @@ const writers = [
   },
   {
     name: 'Dr Jarrod Dean',
-    role: 'General Dentist',
+    role: 'Dentist',
     photo: '/assets/team/jarrod-dean.webp',
-    alt: 'Dr Jarrod Dean – General Dentist',
+    alt: 'Dr Jarrod Dean – Dentist',
     objectPosition: 'center top',
   },
   {
@@ -223,7 +223,7 @@ export default function LearnIndex() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet our team</Link>
           </div>
         </div>
       </section>

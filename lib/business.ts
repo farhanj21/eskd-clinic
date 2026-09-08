@@ -10,7 +10,22 @@
  * they match the canonical URL.
  */
 
-export const SITE_URL = 'https://www.eaststkildadental.com.au'
+/**
+ * The production origin, and the bare domain rather than www on purpose.
+ *
+ * The host serves the site on eaststkildadental.com.au and 301s
+ * www.eaststkildadental.com.au to it, and every URL Google has indexed is the
+ * bare form. A canonical, an og:url or a schema @id on the www host would
+ * therefore name a URL that immediately redirects — pointing the strongest
+ * signal a page has at an address that does not serve it.
+ *
+ * If the practice ever moves to www as the primary host, this is the one line
+ * to change, but it is not a free swap: the redirect at the host has to be
+ * reversed and the Search Console property re-pointed on the same day, or the
+ * canonical and the redirect will contradict each other. Domain-level DNS
+ * verification already covers both hosts, so that part needs nothing.
+ */
+export const SITE_URL = 'https://eaststkildadental.com.au'
 
 /** Stable @id values for the nodes in the site-wide entity graph. */
 export const SCHEMA_ID = {
@@ -82,6 +97,18 @@ export const business = {
 export const telHref = `tel:${business.telephone}`
 export const emailHref = `mailto:${business.email}`
 
+/**
+ * The practice management system's public booking page, embedded on
+ * /online-booking and linked as its fallback.
+ *
+ * It is a different domain, so nothing after the click is visible to our
+ * analytics — a completed booking is counted in the practice software, not
+ * here. BOOKING_HOST exists so the click itself can be recognised as an
+ * outbound conversion wherever it appears; see components/AnalyticsEvents.tsx.
+ */
+export const BOOKING_HOST = 'centaurportal.com'
+export const BOOKING_URL = `https://www.${BOOKING_HOST}/d4w/org-1240/extended_search`
+
 /** "364 Dandenong Rd" */
 export const streetAddress = business.address.streetAddress
 /** "St Kilda East VIC 3183" */
@@ -90,14 +117,16 @@ export const localityLine = `${business.address.addressLocality} ${business.addr
 export const fullAddress = `${streetAddress}, ${localityLine}`
 
 /**
- * Weekly opening hours only.
- *
- * Saturday is deliberately omitted: it runs monthly, not weekly, so it would be
- * wrong as an OpeningHoursSpecification. Saturday stays in the visible hours.
+ * Weekly opening hours, as the OpeningHoursSpecification in the LocalBusiness
+ * JSON-LD. The visible hours lists are still written out by hand in app/page.tsx,
+ * app/contact/page.tsx, app/online-booking/page.tsx and components/GetInTouch.tsx
+ * — change those alongside this, or the markup and the page disagree.
  */
 export const openingHours = [
-  { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '08:30', closes: '16:00' },
-  { days: ['Friday'], opens: '08:30', closes: '16:30' },
+  { days: ['Monday'], opens: '08:30', closes: '17:00' },
+  { days: ['Tuesday', 'Wednesday'], opens: '08:30', closes: '18:00' },
+  { days: ['Thursday', 'Friday'], opens: '08:30', closes: '17:00' },
+  { days: ['Saturday'], opens: '09:00', closes: '16:00' },
 ] as const
 
 export const areasServed = [
@@ -140,7 +169,7 @@ export const socialProfiles: string[] = [
 export const clinicians = [
   { slug: 'anbar-ganatra', name: 'Dr Anbar Ganatra', jobTitle: 'Cosmetic & General Dentist' },
   { slug: 'edmund-goldman', name: 'Dr Edmund Goldman', jobTitle: 'Dentist' },
-  { slug: 'jarrod-dean', name: 'Dr Jarrod Dean', jobTitle: 'General Dentist' },
+  { slug: 'jarrod-dean', name: 'Dr Jarrod Dean', jobTitle: 'Dentist' },
   { slug: 'michelle-callaghan', name: 'Michelle Callaghan', jobTitle: 'Dental Hygienist' },
 ] as const
 

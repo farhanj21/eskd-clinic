@@ -7,13 +7,12 @@ import Link from 'next/link'
  * container, the icon tiles and the tinted surface are what keep it from
  * reading as a second services grid a screen-length above the real one.
  *
- * Each card links to the page that explains the offer rather than straight to
- * booking, because that page is where the offer's own booking CTA lives.
+ * The CTAs now say "book", so they link where they say: two go straight to
+ * /online-booking and the emergency card to the page that carries the phone
+ * number. (They used to read "Learn more" and point at explainer pages.)
  */
 
 interface Offer {
-  /** Short hook above the heading, in the manner of a price sticker. */
-  pill: string
   title: string
   body: string
   /** First card only: the health-fund caveat, set in italics. */
@@ -27,30 +26,27 @@ interface Offer {
 
 const OFFERS: Offer[] = [
   {
-    pill: 'Seen today',
-    title: 'Emergency Appointment',
-    body: 'In pain or broken a tooth? We keep time aside each day for emergencies and will get you comfortable quickly.',
-    cta: 'Learn more',
-    href: '/emergency-dentist',
-    ariaLabel: 'Learn about emergency appointments',
-    icon: 'clock',
-  },
-  {
-    pill: 'Always welcome',
-    title: 'New Patient Comprehensive Care Visit',
-    body: 'New to the practice? An unhurried first appointment — we get to know you, check everything properly, and explain what we find in plain English.',
-    cta: 'Learn more',
-    href: '/your-first-visit',
-    ariaLabel: 'Learn about the New Patient Comprehensive Care Visit',
+    title: 'New patient',
+    body: 'A thorough first visit to understand your oral health and what needs attention.',
+    cta: 'Book your first visit',
+    href: '/online-booking',
+    ariaLabel: 'Book your first visit as a new patient',
     icon: 'heart',
   },
   {
-    pill: 'No obligation',
-    title: 'Dental Consultation',
-    body: 'Considering straightening, whitening or replacing a tooth? Talk it through first — your options, what each involves, and what it costs.',
-    cta: 'Learn more',
-    href: '/services',
-    ariaLabel: 'Learn about a dental consultation',
+    title: 'Dental problem or emergency',
+    body: 'Pain, a broken tooth or something that just doesn’t feel right.',
+    cta: 'Get urgent help',
+    href: '/emergency-dentist',
+    ariaLabel: 'Get urgent help with a dental problem or emergency',
+    icon: 'clock',
+  },
+  {
+    title: 'Existing patient',
+    body: 'Ready for your next check-up, clean or planned treatment.',
+    cta: 'Book your next visit',
+    href: '/online-booking',
+    ariaLabel: 'Book your next visit as an existing patient',
     icon: 'tooth',
   },
 ]
@@ -79,15 +75,11 @@ export default function HomeOffers() {
   return (
     <section className="offers" aria-labelledby="offers-heading">
       <div className="container">
-        {/* The cards are self-describing, but the home page now leads the
-            reader through a sequence — who we are, what to book, why us — and
-            this row is the "what to book" step, so it says so out loud. */}
+        {/* Heading only. The old eyebrow read "New to East St Kilda Dental?",
+            which stopped being true once one of the three cards was aimed at
+            existing patients. */}
         <div className="sec-head center reveal" style={{ marginBottom: '34px' }}>
-          <div className="eyebrow">New to East St Kilda Dental?</div>
           <h2 id="offers-heading">Choose the visit that fits</h2>
-          <p style={{ marginTop: '14px', fontSize: '17px' }}>
-            Three ways to start with us. Not sure which? Book the first one, or call and we&apos;ll help you pick.
-          </p>
         </div>
 
         <div className="offers-row">
@@ -99,7 +91,6 @@ export default function HomeOffers() {
                 </svg>
               </span>
 
-              <span className="offers-pill">{offer.pill}</span>
               <h3 className="offers-title">{offer.title}</h3>
               <p className="offers-body">{offer.body}</p>
 

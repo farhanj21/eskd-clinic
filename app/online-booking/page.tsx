@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import BookingFrame from '@/components/BookingFrame'
 import CallbackForm from '@/components/CallbackForm'
 import GetInTouch from '@/components/GetInTouch'
 import MapEmbed from '@/components/MapEmbed'
 import { withSocial } from '@/lib/seo'
-import { business, fullAddress, telHref } from '@/lib/business'
+import { BOOKING_URL, business, fullAddress, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Book an Appointment | East St Kilda Dental',
   description:
-    'Book your dental appointment online at East St Kilda Dental. The New Patient Comprehensive Care Visit — comprehensive exam, x-rays and scale & clean, all in one visit.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/online-booking' },
+    'Book your dental appointment online at East St Kilda Dental. The New Patient Comprehensive Care Visit — exam, x-rays and scale & clean in one visit.',
+  alternates: { canonical: `${SITE_URL}/online-booking` },
 })
 
 export default function BookingPage() {
@@ -42,17 +43,12 @@ export default function BookingPage() {
             <h2>Pick a time that <em>works for you</em></h2>
           </div>
           <div className="embed-card reveal">
-            <iframe
-              className="embed-frame"
-              src="https://www.centaurportal.com/d4w/org-1240/extended_search"
-              title="Book an appointment at East St Kilda Dental"
-              loading="lazy"
-            />
+            <BookingFrame />
           </div>
           <p className="reveal" style={{ textAlign: 'center', fontSize: '14px', color: 'var(--ink-faint)', marginTop: '16px' }}>
             If the booking form doesn&apos;t appear,{' '}
             <a
-              href="https://www.centaurportal.com/d4w/org-1240/extended_search"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: 'var(--clay-deep)', fontWeight: 600 }}
@@ -73,7 +69,7 @@ export default function BookingPage() {
               <p>Happy to help you find a time, answer a question, or sort an urgent appointment. Just say if you&apos;re nervous or it&apos;s been a while.</p>
               <a className="btn" href={telHref}>Call {business.telephoneDisplay}</a>
               <p style={{ fontSize: '14px', color: 'var(--ink-faint)', marginTop: '14px' }}>
-                Mon&ndash;Thu 8.30am&ndash;4.00pm &middot; Fri 8.30am&ndash;4.30pm
+                Mon 8.30am&ndash;5.00pm &middot; Tue&ndash;Wed 8.30am&ndash;6.00pm &middot; Thu&ndash;Fri 8.30am&ndash;5.00pm &middot; Sat 9.00am&ndash;4.00pm
               </p>
             </div>
             <div className="book-col reveal">
@@ -112,7 +108,7 @@ export default function BookingPage() {
             </details>
             <details>
               <summary>I can&apos;t see a time that suits. What now?</summary>
-              <p>Call us or request a callback above. We can often find a time that isn&apos;t shown online, including our monthly Saturday.</p>
+              <p>Call us or request a callback above. We can often find a time that isn&apos;t shown online, including Saturdays.</p>
             </details>
           </div>
         </div>
@@ -136,9 +132,10 @@ export default function BookingPage() {
                 On the corner of Orrong Road, where St Kilda East, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
               </p>
               <ul className="hours">
-                <li><span>Monday &ndash; Thursday</span><b>8.30am &ndash; 6.00pm</b></li>
-                <li><span>Friday</span><b>8.30am &ndash; 5.00pm</b></li>
-                <li><span>Saturday</span><b>10.00am &ndash; 4.00pm</b></li>
+                <li><span>Monday</span><b>8.30am &ndash; 5.00pm</b></li>
+                <li><span>Tuesday &ndash; Wednesday</span><b>8.30am &ndash; 6.00pm</b></li>
+                <li><span>Thursday &ndash; Friday</span><b>8.30am &ndash; 5.00pm</b></li>
+                <li><span>Saturday</span><b>9.00am &ndash; 4.00pm</b></li>
                 <li><span>Sunday</span><b>Closed</b></li>
               </ul>
             </div>

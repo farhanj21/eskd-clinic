@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'About Us | East St Kilda Dental — Gentle, Local Care Since 1980',
+  title: 'About Us | East St Kilda Dental — Gentle Care Since 1980',
   description:
     'East St Kilda Dental has looked after this neighbourhood for over 40 years. Our story, why we\'re different, and the team who\'ll care for you.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about' },
+  alternates: { canonical: `${SITE_URL}/about` },
 })
 
 export default function AboutPage() {
@@ -63,7 +63,7 @@ export default function AboutPage() {
               <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>Explore &rarr;</span>
             </Link>
             <Link href="/about/our-team" className="svc" style={{ cursor: 'pointer', textDecoration: 'none' }}>
-              <h4>Meet the Team</h4>
+              <h4>Meet Our Team</h4>
               <p>The dentists and people who&apos;ll look after you.</p>
               <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>Explore &rarr;</span>
             </Link>

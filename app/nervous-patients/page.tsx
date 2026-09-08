@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'Gentle Dentistry for Nervous & Anxious Patients | East St Kilda Dental',
+  title: 'Gentle Dentistry for Nervous Patients | East St Kilda Dental',
   description:
     `Scared of the dentist? ${business.name} specialises in gentle care for nervous patients. Happy gas, agreed stop signals, no judgement. Call ${business.telephoneDisplay}.`,
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/nervous-patients' },
+  alternates: { canonical: `${SITE_URL}/nervous-patients` },
 })
 
 export default function GentlePage() {
@@ -190,7 +190,7 @@ export default function GentlePage() {
         </div>
       </section>
 
-      {/* ── MEET THE TEAM ────────────────────────────────── */}
+      {/* ── MEET OUR TEAM ────────────────────────────────── */}
       <section className="sec">
         <div className="container story-grid">
           <div className="reveal">
@@ -203,7 +203,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/shared/meet-the-team.webp"
+            src="/assets/shared/meet-our-team.webp"
             alt="The friendly East St Kilda Dental team smiling and waving outside the clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />
@@ -264,7 +264,7 @@ export default function GentlePage() {
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/your-first-visit" className="btn btn-ghost">Your first visit</Link>
             <Link href="/fees" className="btn btn-ghost">Fees &amp; health funds</Link>
-            <Link href="/services/check-ups" className="btn btn-ghost">All services</Link>
+            <Link href="/services" className="btn btn-ghost">All services</Link>
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ export const metadata: Metadata = withSocial({
   title: 'Emergency Dental Care | East St Kilda Dental',
   description:
     `Dental emergency in St Kilda East? Call ${business.telephoneDisplay} for same-day emergency appointments. Toothache, broken teeth, knocked-out teeth — we're here for you.`,
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/emergency-dentist' },
+  alternates: { canonical: `${SITE_URL}/emergency-dentist` },
 })
 
 // Treatment pages behind the conditions on this page. Only the conditions that

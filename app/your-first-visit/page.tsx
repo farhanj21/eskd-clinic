@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Your First Visit | East St Kilda Dental',
   description:
-    `Your complete first visit, done properly. A thorough, gentle 60–75 minute appointment with everything included. No surprises, no rush. Book online or call ${business.telephoneDisplay}.`,
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/your-first-visit' },
+    `Your complete first visit, done properly. A gentle 60–75 minute appointment, everything included. No surprises, no rush. Call ${business.telephoneDisplay}.`,
+  alternates: { canonical: `${SITE_URL}/your-first-visit` },
 })
 
 export default function FirstVisitPage() {
@@ -108,25 +108,24 @@ export default function FirstVisitPage() {
               <div className="eyebrow">The New Patient Comprehensive Care Visit</div>
               <h2>A complete picture, in one <em>unhurried visit</em></h2>
               <p>Your first visit isn&apos;t a quick look. It&apos;s a thorough, gentle 60 to 75 minute assessment that gives you a clear understanding of your whole mouth, and a simple care plan. It includes:</p>
-              <ul className="offer-includes">
-                <li>Comprehensive dental examination</li>
-                <li>Full medical and dental history review</li>
-                <li>Digital X-rays and intraoral photos</li>
+              <ul className="offer-includes tight">
+                <li>Comprehensive examination</li>
+                <li>X-rays &amp; intraoral photos</li>
                 <li>Oral cancer screening</li>
-                <li>Gum and periodontal assessment</li>
-                <li>Full scale, clean and polish</li>
+                <li>Gum health assessment</li>
+                <li>Scale, clean &amp; polish</li>
                 <li>Fluoride treatment</li>
-                <li>Smile and bite assessment</li>
-                <li>Your personalised dental care plan</li>
+                <li>Smile &amp; bite assessment</li>
+                <li>Personalised care plan</li>
               </ul>
               <div className="offer-meta">
                 <div><b>60&ndash;75 min</b>gentle and thorough</div>
-                <div><b>All included</b>everything above, one visit</div>
-                <div><b>A care plan</b>clear and easy to follow</div>
+                <div><b>All included</b>in one visit</div>
+                <div><b>Clear care plan</b>before you leave</div>
               </div>
               <Link href="/online-booking" className="btn" style={{ marginTop: '22px', display: 'inline-flex' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                Everything above included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
+                Everything above included. Eligible health-fund claims can be processed on the spot through HICAPS.
               </p>
             </div>
             <Photo

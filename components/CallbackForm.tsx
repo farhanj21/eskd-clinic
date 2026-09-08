@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react'
 import { business, telHref } from '@/lib/business'
+import { track } from '@/lib/analytics'
 
 /**
  * The "leave your details and we'll call you back" form.
@@ -96,9 +97,18 @@ export default function CallbackForm({
       const data = await res.json().catch(() => null)
 
       if (!res.ok) {
+        track('form_error', { form_name: 'callback', page_path: window.location.pathname })
         setError(data?.error ?? 'We could not send your request. Please try again, or call us.')
         return
       }
+
+      /* Fired only once the API has accepted it, so the conversion count is
+         enquiries that actually reached the front desk — not submit clicks. */
+      track('generate_lead', {
+        form_name: 'callback',
+        form_intent: 'book',
+        page_path: window.location.pathname,
+      })
 
       form.reset()
       setSubmitted(true)

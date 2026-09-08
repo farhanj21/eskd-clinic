@@ -13,8 +13,8 @@ import { withSocial } from '@/lib/seo'
 export const metadata = withSocial({
   title: 'East St Kilda Dental | Gentle Family & Emergency Dentist',
   description:
-    'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 with comprehensive check-ups, nervous-patient care, kids and emergencies. Book today.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/' },
+    'Gentle, judgement-free dentist in St Kilda East. Caring for local families since 1980 — check-ups, nervous-patient care, kids and emergencies. Book today.',
+  alternates: { canonical: `${SITE_URL}/` },
 })
 
 // The five questions in the "Things you might be wondering" section. Both the
@@ -48,8 +48,8 @@ const faqs = [
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
 const heroStats = [
-  { id: 'patients', value: '10,000+', label: 'Patients Served' },
-  { id: 'years', value: '45+', label: 'Years In The Local Area' },
+  { id: 'patients', value: '10,000+', label: 'Patients Cared For' },
+  { id: 'years', value: '45+', label: 'Caring Locally' },
   {
     id: 'rating',
     value: (
@@ -57,7 +57,55 @@ const heroStats = [
         5.0 <span className="proof-stars">★★★★★</span>
       </>
     ),
-    label: 'Rating on Google',
+    label: 'Google Rating',
+  },
+]
+
+// The six services in the "Care for every stage of life" grid. Each photo is
+// the same one the service's own page leads with, so the card and the page it
+// opens show the reader the same picture.
+const homeServices = [
+  {
+    href: '/services/check-ups',
+    title: 'Check-ups & cleans',
+    blurb: 'Gentle, thorough preventive care to keep small things small.',
+    src: '/assets/services/checkup-hero.webp',
+    alt: 'A gentle dentist examining a young patient wearing protective glasses in the treatment chair',
+  },
+  {
+    href: '/emergency-dentist',
+    title: 'Emergency dentistry',
+    blurb: "In pain? We'll see you quickly and get you comfortable.",
+    src: '/assets/emergency/emergency-dentistry.webp',
+    alt: 'A friendly team member taking a call at the East St Kilda Dental reception',
+  },
+  {
+    href: '/services/fillings',
+    title: 'Fillings & restorations',
+    blurb: 'Quietly fixing what needs fixing, preserving your natural teeth.',
+    src: '/assets/services/fillings.webp',
+    alt: 'Two dentists placing a tooth-coloured filling for a patient in the treatment chair',
+  },
+  {
+    href: '/services/crowns-and-bridges',
+    title: 'Crowns & root canals',
+    blurb: 'Saving teeth and easing pain, explained every step of the way.',
+    src: '/assets/services/crowns-bridges.webp',
+    alt: 'A smiling patient having their teeth examined with a dental mirror',
+  },
+  {
+    href: '/services/dental-implants',
+    title: 'Dental implants',
+    blurb: 'Replacing missing teeth so you can eat and smile with ease.',
+    src: '/assets/services/single-implant.webp',
+    alt: "Close-up of a patient's smile as a dentist matches the shade of a replacement tooth against the front teeth",
+  },
+  {
+    href: '/services/smile-design',
+    title: 'Cosmetic dentistry',
+    blurb: "Subtle, natural improvements when you're ready, never pushed.",
+    src: '/assets/services/smile-design.webp',
+    alt: 'A smiling patient having her teeth examined with a dental mirror during a smile design consultation',
   },
 ]
 
@@ -67,9 +115,7 @@ const heroStats = [
 // Kept plain and descriptive — no superlatives or outcome claims, for AHPRA
 // safety.
 const summarySentence =
-  `${business.name} is a gentle family and emergency dentist at ${business.address.streetAddress}, ` +
-  `caring for ${business.serviceRegion} since ${business.foundedYear}, ` +
-  `with a comprehensive first visit.`
+  `Gentle, thorough dental care for individuals and families, from regular check-ups to emergencies and comprehensive dental care.`
 
 // One connected JSON-LD @graph for the home page: the practice, the four named
 // clinicians, the FAQ, and the website. Every fact comes from lib/business.ts.
@@ -84,7 +130,7 @@ const homeSchema = {
       '@id': SCHEMA_ID.practice,
       name: business.name,
       url: business.url,
-      image: `${SITE_URL}/assets/shared/meet-the-team.webp`,
+      image: `${SITE_URL}/assets/shared/meet-our-team.webp`,
       telephone: business.telephone,
       email: business.email,
       currenciesAccepted: business.currenciesAccepted,
@@ -143,22 +189,22 @@ export default function Home() {
         <div className="container container-wide hero-video-inner">
           <div className="hero-video-copy">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
-            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
+            <h1><span style={{ whiteSpace: 'nowrap' }}>Your local dentist</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost-light">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
-              <span>15+ suburbs served</span>
-              <span className="proof-dot" />
               <span>Off-street parking</span>
               <span className="proof-dot" />
               <span>HICAPS available</span>
+              <span className="proof-dot" />
+              <span>Caring locally since 1980</span>
             </div>
             <p className="hero-video-note">
               <Link href="/new-patient-comprehensive-care-visit">
-                Experience the New Patient Comprehensive Care Visit &rarr;
+                New patient? See what your first visit includes &rarr;
               </Link>
             </p>
           </div>
@@ -196,43 +242,24 @@ export default function Home() {
             </p>
           </div>
           <div className="svc-grid-v2">
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Check-ups &amp; cleans</h4>
-              <p>Gentle, thorough preventive care to keep small things small.</p>
-              <Link href="/services/check-ups">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Emergency dentistry</h4>
-              <p>In pain? We&apos;ll see you quickly and get you comfortable.</p>
-              <Link href="/emergency-dentist">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Fillings &amp; restorations</h4>
-              <p>Quietly fixing what needs fixing, preserving your natural teeth.</p>
-              <Link href="/services/fillings">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Crowns &amp; root canals</h4>
-              <p>Saving teeth and easing pain, explained every step of the way.</p>
-              <Link href="/services/crowns-and-bridges">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Dental implants</h4>
-              <p>Replacing missing teeth so you can eat and smile with ease.</p>
-              <Link href="/services/dental-implants">Learn more</Link>
-            </div>
-            <div className="svc-item reveal">
-              <h4 style={{ fontWeight: 700 }}>Cosmetic dentistry</h4>
-              <p>Subtle, natural improvements when you&apos;re ready, never pushed.</p>
-              <Link href="/services/smile-design">Learn more</Link>
-            </div>
+            {homeServices.map(({ href, title, blurb, src, alt }) => (
+              <Link href={href} className="svc-item reveal" key={href}>
+                <Photo
+                  src={src}
+                  alt={alt}
+                  sizes="(max-width: 820px) 100vw, 33vw"
+                />
+                <div className="svc-item-body">
+                  <h4 style={{ fontWeight: 700 }}>{title}</h4>
+                  <p>{blurb}</p>
+                  <span className="svc-item-more">Learn more</span>
+                </div>
+              </Link>
+            ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
-            <Link href="/services/check-ups" className="btn btn-ghost">See all services</Link>
+            <Link href="/services" className="btn btn-ghost">See all services</Link>
           </div>
-          <p style={{ textAlign: 'center', marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }} className="reveal">
-            Implants, Invisalign and cosmetic work included.
-          </p>
         </div>
       </section>
 
@@ -253,18 +280,20 @@ export default function Home() {
           <div className="reviews-v2">
             <div className="review-card reveal">
               <div className="review-stars">★★★★★</div>
-              <p>I&apos;d been putting it off for ages and felt embarrassed to even call. From the first phone call the team made it easy, with a warm welcome and not a single lecture.</p>
-              <div className="who">Patient review · returning after a break</div>
+              <p>Dr Anbar was fantastic and extremely knowledgeable.
+Very comfortable experience as well, from my perspective there was no pain or discomfort.
+Would highly recommend to anyone looking for a new dentist.</p>
+              <div className="who">Emily Wooton · 3 months ago</div>
             </div>
             <div className="review-card reveal">
               <div className="review-stars">★★★★★</div>
-              <p>I rang in a panic and reception were calm and kind, and found me a time straight away. They turned a stressful morning into an easy one.</p>
-              <div className="who">Patient review · first call</div>
+              <p>I’ve had years of care under this team. They are friendly, do not over charge, offer options of treatments that consider your circumstances. A clinic that has never failed to care and give me the most personalised treatment.</p>
+              <div className="who">Bronwen Drinnan · 4 months ago</div>
             </div>
             <div className="review-card reveal">
               <div className="review-stars">★★★★★</div>
-              <p>The front desk always remembers us by name and the whole team makes our family feel welcome, kids included. We wouldn&apos;t go anywhere else.</p>
-              <div className="who">Patient review · family patient</div>
+              <p>Dr Dean is caring, calm, patient, empathic, professional, warm and open to having a laugh. He and the team at St Kilda East Dental are amazing group who to me practice ‘dentistry as an art form’.</p>
+              <div className="who">Gülşen Özer · 1 month ago</div>
             </div>
           </div>
           <div className="gscore reveal">
@@ -299,38 +328,39 @@ export default function Home() {
 
       {/* HOW WE'RE DIFFERENT — the differentiators, kept after the CTA: the
           page makes its ask off the services and the reviews, and this reads
-          as supporting argument for anyone still scrolling. */}
+          as supporting argument for anyone still scrolling.
+
+          Deliberately .care-points rather than .pillars: as cards this ran two
+          to three screens on a phone before the reader reached anything else.
+          .pillars itself is untouched — /nervous-patients and
+          /new-patient-comprehensive-care-visit still use it as cards. */}
       <section className="sec alt">
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">The way we care</div>
             <h2>Dentistry that feels <em>safe</em>, not stressful</h2>
             <p style={{ marginTop: '16px', fontSize: '18px' }}>
-              Whoever you are, and however long it&apos;s been, you&apos;re in exactly the right place. There&apos;s nothing here to be embarrassed about.
+              However long it&apos;s been, you&apos;re in the right place. No judgement. No pressure.
             </p>
           </div>
-          <div className="pillars">
-            <div className="pillar reveal">
-              <div className="n">01</div>
-              <h3>The full picture, not just one tooth</h3>
-              <p>We look at how everything fits together, your teeth, gums, bite and long-term health, so the things quick check-ups miss don&apos;t get missed.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">02</div>
-              <h3>No shame, no judgement</h3>
-              <p>Whatever state things are in, you&apos;ll be supported without criticism. Ever.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">03</div>
-              <h3>Built to last, not patched up</h3>
-              <p>We treat the cause, not just the symptom, and help you prevent problems before they start. The aim is less dentistry over a lifetime, not more.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">04</div>
-              <h3>Gentle, never vague</h3>
-              <p>Being gentle doesn&apos;t stop us being honest. We give you our clear, confident recommendation, kindly, then leave the decision to you. No scare tactics, and no glossing over what matters.</p>
-            </div>
-          </div>
+          <ul className="care-points">
+            <li className="reveal">
+              <h3>The Full Picture</h3>{' '}
+              <p>We look beyond one tooth to your overall dental health.</p>
+            </li>
+            <li className="reveal">
+              <h3>No Shame, No Judgement</h3>{' '}
+              <p>Whatever state things are in, we&apos;ll help you move forward.</p>
+            </li>
+            <li className="reveal">
+              <h3>At Your Pace</h3>{' '}
+              <p>We explain your options clearly and never rush you.</p>
+            </li>
+            <li className="reveal">
+              <h3>Comfort Matters</h3>{' '}
+              <p>Gentle care for nervous or anxious patients.</p>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -342,26 +372,32 @@ export default function Home() {
             <div className="body">
               <div className="eyebrow">Your first visit, in full</div>
               <h2>The <em>New Patient Comprehensive Care</em> Visit</h2>
-              <p>A thorough, gentle 60 to 75 minute appointment that gives you a complete understanding of your oral health and where things are heading, not a quick clean and out the door. Together we look at your health, function, longevity, aesthetics and prevention, and you leave with a personalised dental care plan. Your visit includes:</p>
-              <ul className="offer-includes">
-                <li>Comprehensive dental examination</li>
-                <li>Full medical and dental history review</li>
-                <li>Digital X-rays and intraoral photos</li>
+              <p>A gentle, thorough 60&ndash;75 minute first visit to understand your oral health, what needs attention, and what can wait. You&apos;ll leave with a clear, personalised care plan.</p>
+              {/* .tight keeps this list two-up on a phone — see globals.css. The
+                  other pages using .offer-includes have longer items and still
+                  fall back to one column. */}
+              <ul className="offer-includes tight">
+                <li>Comprehensive examination</li>
+                <li>X-rays &amp; intraoral photos</li>
                 <li>Oral cancer screening</li>
-                <li>Gum and periodontal assessment</li>
-                <li>Full scale, clean and polish</li>
+                <li>Gum health assessment</li>
+                <li>Scale, clean &amp; polish</li>
                 <li>Fluoride treatment</li>
-                <li>Smile and bite assessment</li>
-                <li>Your personalised dental care plan</li>
+                <li>Smile &amp; bite assessment</li>
+                <li>Personalised care plan</li>
               </ul>
               <div className="offer-meta">
-                <div><b>60–75 min</b>gentle and thorough</div>
-                <div><b>All included</b>everything above, one visit</div>
-                <div><b>A care plan</b>clear and easy to follow</div>
+                <div><b>60&ndash;75 min</b>gentle and thorough</div>
+                <div><b>All included</b>in one visit</div>
+                <div><b>Clear care plan</b>before you leave</div>
               </div>
-              <Link href="/online-booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
+              {/* No marginTop: .offer-meta already carries a 28px bottom margin,
+                  and an inline-block button does not collapse margins with it —
+                  the two stacked to a 48px gap, against the 28px rhythm the rest
+                  of the card uses. */}
+              <Link href="/online-booking" className="btn" style={{ display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                Everything above included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
+                Everything included. Eligible health-fund claims can be processed through HICAPS.
               </p>
             </div>
             <Photo
@@ -388,16 +424,12 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <div className="chips chips-2">
-              <span className="chip">Happy gas and sedation options</span>
-              <span className="chip">Calm, unhurried pacing</span>
-              <span className="chip">A coaching-informed approach</span>
-              <span className="chip">Stop any time, no questions asked</span>
+            <p style={{ marginTop: '16px', fontSize: '17px' }}>
+              We take things slowly, explain everything clearly, and you can stop at any time. No judgement. No pressure.
+            </p>
+            <div style={{ marginTop: '24px' }}>
+              <Link href="/nervous-patients" className="btn btn-clay nervous-cta">See how we help nervous patients</Link>
             </div>
-            <blockquote className="nervous-proof">
-              Most of our most anxious patients tell us the hardest part was making the booking. Once they are in the chair and know they can stop any time, the fear starts to settle.
-              <cite>What nervous patients often tell us</cite>
-            </blockquote>
           </div>
         </div>
       </section>
@@ -410,7 +442,7 @@ export default function Home() {
             <Photo
               tall
               className="reveal"
-              src="/assets/shared/meet-the-team.webp"
+              src="/assets/shared/meet-our-team.webp"
               alt="The East St Kilda Dental team standing together outside the clinic entrance"
               objectPosition="center top"
               sizes="(max-width: 820px) 100vw, 40vw"
@@ -418,8 +450,7 @@ export default function Home() {
             <div className="reveal">
               <div className="eyebrow">The people who&apos;ll care for you</div>
               <h2>A gentle team you&apos;ll get to <em>know</em></h2>
-              <p>Led by Dr Anbar Ganatra, with a team you&apos;ll come to know by name. Calm, unhurried, and genuinely glad you came in. You&apos;ll see the same familiar faces each visit.</p>
-            </div>
+              </div>
           </div>
           <div className="team-grid-v2">
             <div className="team-member reveal">
@@ -445,12 +476,12 @@ export default function Home() {
             <div className="team-member reveal">
               <Photo
                 src="/assets/team/jarrod-dean.webp"
-                alt="Dr Jarrod Dean – General Dentist"
+                alt="Dr Jarrod Dean – Dentist"
                 objectPosition="center top"
                 sizes="(max-width: 820px) 50vw, 25vw"
               />
               <h4>Dr Jarrod Dean</h4>
-              <span>General Dentist</span>
+              <span>Dentist</span>
             </div>
             <div className="team-member reveal">
               <Photo
@@ -464,7 +495,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the Team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet Our Team</Link>
           </div>
           {/* <div className="lang-band reveal">
             <b>We speak your language.</b> Our team can care for you in English, Mandarin, Hebrew, Russian, Hindi, Tamil and Kannada.
@@ -478,11 +509,15 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Here for the long run</div>
             <h2>Four decades of <em>caring</em> for families</h2>
-            <p>East St Kilda Dental has cared for this neighbourhood since around 1980. We&apos;ve looked after children who now bring their own children, and patients who send us their parents, their partners and their friends. The same families have trusted us for decades, and most of our new patients still arrive because someone told a friend.</p>
+            {/* Two versions of the same paragraph, one shown per breakpoint:
+                the full story reads well beside the photo on a wide screen, but
+                costs most of a phone screen on its own. */}
+            <p className="story-copy-full">East St Kilda Dental has cared for this neighbourhood since around 1980. We&apos;ve looked after children who now bring their own children, and patients who send us their parents, their partners and their friends. The same families have trusted us for decades, and most of our new patients still arrive because someone told a friend.</p>
+            <p className="story-copy-short">East St Kilda Dental has cared for local families since around 1980, with generations of patients continuing to trust us with their care.</p>
             <div className="story-stats">
-              <div><b>40+</b><span>years in the suburb</span></div>
-              <div><b>3 gen.</b><span>of families</span></div>
-              <div><b>1</b><span>caring local team</span></div>
+              <div><b>40+</b><span>years in St Kilda</span></div>
+              <div><b>3 gen.</b><span>of local families</span></div>
+              <div><b>Decades</b><span>of trust, built through word of mouth</span></div>
             </div>
           </div>
           <Photo
@@ -503,7 +538,7 @@ export default function Home() {
             <h2 style={{ marginTop: '12px' }}>We welcome patients from <em>all</em> major health funds</h2>
           </div>
           <p style={{ maxWidth: '36em', margin: '14px auto 0' }}>
-            We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
+            On-the-spot HICAPS claims for eligible health funds.
           </p>
           <HealthFundLogos />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
@@ -556,7 +591,7 @@ export default function Home() {
       </section> */}
 
       {/* GALLERY */}
-      <section className="sec alt">
+      {/* <section className="sec alt">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Real smiles</div>
@@ -584,7 +619,7 @@ export default function Home() {
             <Link href="/our-work" className="btn btn-ghost">View more</Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* EDUCATION */}
       <section className="sec alt" id="education">
@@ -718,9 +753,10 @@ export default function Home() {
                 On the corner of Dandenong and Orrong Roads, easy to reach by car, tram or train.
               </p>
               <ul className="hours-list">
-                <li><span>Monday – Thursday</span><b>8.30am – 6.00pm</b></li>
-                <li><span>Friday</span><b>8.30am – 5.00pm</b></li>
-                <li><span>Saturday</span><b>10.00am – 4.00pm</b></li>
+                <li><span>Monday</span><b>8.30am – 5.00pm</b></li>
+                <li><span>Tuesday – Wednesday</span><b>8.30am – 6.00pm</b></li>
+                <li><span>Thursday – Friday</span><b>8.30am – 5.00pm</b></li>
+                <li><span>Saturday</span><b>9.00am – 4.00pm</b></li>
                 <li><span>Sunday</span><b>Closed</b></li>
               </ul>
             </div>

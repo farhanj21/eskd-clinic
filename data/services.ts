@@ -144,7 +144,7 @@ export const services: ServiceData[] = [
     ],
     meta: {
       title: 'Dental Check-ups & Exams | East St Kilda Dental',
-      description: 'Thorough, gentle dental check-ups in St Kilda East. We catch problems early and leave you with a clear care plan. New Patient Comprehensive Care Visit available. Book today.',
+      description: 'Thorough, gentle dental check-ups in St Kilda East. We catch problems early and leave you with a clear care plan. Book your visit today.',
     },
   },
   {

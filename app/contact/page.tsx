@@ -55,9 +55,10 @@ export default function ContactPage() {
             <div className="svc">
               <h4>Opening hours</h4>
               <p>
-                Mon&ndash;Thu: 8.30am&ndash;6.00pm<br />
-                Fri: 8.30am&ndash;5.00pm<br />
-                Sat: 10.00am&ndash;4.00pm<br />
+                Mon: 8.30am&ndash;5.00pm<br />
+                Tue&ndash;Wed: 8.30am&ndash;6.00pm<br />
+                Thu&ndash;Fri: 8.30am&ndash;5.00pm<br />
+                Sat: 9.00am&ndash;4.00pm<br />
                 Sun: Closed
               </p>
             </div>

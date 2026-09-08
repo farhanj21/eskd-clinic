@@ -14,10 +14,10 @@ import {
 } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'Meet the Team | East St Kilda Dental',
+  title: 'Meet Our Team | East St Kilda Dental',
   description:
     'A warm, experienced team who genuinely care, and who\'ll remember you next time. Meet the dentists and support team at East St Kilda Dental.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-team' },
+  alternates: { canonical: `${SITE_URL}/about/our-team` },
 })
 
 /**
@@ -45,7 +45,7 @@ const clinicians = [
   {
     slug: 'jarrod-dean',
     name: 'Dr Jarrod Dean',
-    role: 'General Dentist',
+    role: 'Dentist',
     bio: 'Jarrod provides gentle, thorough general and family dentistry across the practice.',
     image: '/assets/team/jarrod-dean.webp',
   },
@@ -121,7 +121,7 @@ const teamSchema = {
       '@type': 'AboutPage',
       '@id': SCHEMA_ID.teamPage,
       url: TEAM_URL,
-      name: 'Meet the Team',
+      name: 'Meet Our Team',
       description:
         `The dentists, hygienists and practice team at ${business.name} in ` +
         `${business.address.addressLocality}.`,
@@ -158,7 +158,7 @@ export default function AboutTeamPage() {
       <section className="hero-v2">
         <div className="container hero-v2-grid">
           <div className="reveal">
-            <div className="eyebrow">Meet the team</div>
+            <div className="eyebrow">Meet our team</div>
             <h1>The people who&apos;ll <em>look after you</em></h1>
             <p className="lead">
               A warm, experienced team who genuinely care, and who&apos;ll remember you next time. Here&apos;s who you&apos;ll meet.
@@ -171,7 +171,7 @@ export default function AboutTeamPage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/shared/meet-the-team.webp"
+            src="/assets/shared/meet-our-team.webp"
             alt="Group photo of the team"
             hint="Warm, real group photo of the team. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
@@ -187,6 +187,12 @@ export default function AboutTeamPage() {
             <h2>Dentists &amp; clinicians</h2>
           </div>
           <div className="team-grid reveal">
+            {/* 280px, not the 150px these cards used to use. At 150 the frame is
+                a ~2.5:1 letterbox, and anbar-ganatra's portrait-orientation
+                source (0.70:1) renders her head about 207px tall at the card's
+                width — taller than the frame itself, so it cropped to her
+                forehead. Raising the height for the whole row fixes that
+                without leaving one card taller than the two beside it. */}
             {clinicians.map((member, i) => (
               <div key={i} className="svc">
                 <Photo
@@ -195,7 +201,7 @@ export default function AboutTeamPage() {
                   alt={`Photo of ${member.name}`}
                   sizes="(max-width: 768px) 100vw, 300px"
                   objectPosition="center top"
-                  style={{ height: '150px', marginBottom: '12px' }}
+                  style={{ height: '280px', marginBottom: '12px' }}
                 />
                 <h4 style={{ marginBottom: '2px' }}>{member.name}</h4>
                 <p style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px', margin: '2px 0 8px' }}>{member.role}</p>

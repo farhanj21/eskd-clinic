@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
   title: 'Using Your Super for Dental Treatment | East St Kilda Dental',
   description:
-    'If significant dental treatment is affecting your daily life, you may be able to access superannuation early on compassionate grounds. East St Kilda Dental prepares the ATO report.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/using-your-super' },
+    'If dental treatment is affecting your daily life, you may be able to access super early on compassionate grounds. East St Kilda Dental prepares the ATO report.',
+  alternates: { canonical: `${SITE_URL}/using-your-super` },
 })
 
 const canFund = [

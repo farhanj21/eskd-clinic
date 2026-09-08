@@ -39,15 +39,15 @@ export interface HealthFund {
 
 export const healthFunds: HealthFund[] = [
   {
+    name: 'Medibank',
+    logo: { src: '/assets/funds/Medibank_logo_2013.svg', width: 140, height: 45 },
+  },
+  {
     name: 'Bupa',
-    // A full-bleed white-on-blue tile at 1.8:1, against wordmarks at 2.4–3.6:1.
+    // A full-bleed white-on-blue tile at 1.8:1, against wordmarks at 2.4-3.6:1.
     // At the row's 30px default its lettering reads well under the marks either
     // side, because the tile's padding is part of the artwork. 44px matches them.
     logo: { src: '/assets/funds/bupa.webp', width: 290, height: 161, opticalHeight: 44 },
-  },
-  {
-    name: 'Medibank',
-    logo: { src: '/assets/funds/Medibank_logo_2013.svg', width: 140, height: 45 },
   },
   {
     name: 'HCF',
@@ -58,15 +58,42 @@ export const healthFunds: HealthFund[] = [
     logo: { src: '/assets/funds/nib.webp', width: 351, height: 144 },
   },
   {
+    name: 'AHM',
+    // A stacked lockup ("ahm" over "by Medibank") inside a dashed coupon
+    // border, at 1.6:1 — squarer even than Bupa, and the type sits well inside
+    // the frame. Needs the largest bump in the row to match its neighbours.
+    logo: { src: '/assets/funds/ahm.webp', width: 635, height: 393, opticalHeight: 46 },
+  },
+  {
+    name: 'HBF',
+    // Lowercase wordmark cropped tight to its ascenders, so the box height is
+    // very nearly the glyph height. Trimmed back a little from the 30px default.
+    logo: { src: '/assets/funds/hbf.webp', width: 1280, height: 458, opticalHeight: 26 },
+  },
+  {
+    name: 'GMHBA',
+    // The supplied file was a 1215x747 canvas holding a 958x151 mark — at the
+    // row default the lettering would have rendered about 6px tall. Trimmed to
+    // the artwork, it is a 6.3:1 all-caps wordmark whose caps fill the full box,
+    // so it needs to come DOWN to sit level with the mixed-case marks near it.
+    logo: { src: '/assets/funds/gmhba.webp', width: 958, height: 151, opticalHeight: 20 },
+  },
+  {
     name: 'Australian Unity',
     logo: { src: '/assets/funds/australian-unity-logo.webp', width: 599, height: 166 },
   },
   {
-    name: 'CBHS',
-    // Stacked lockup (CBHS over HEALTH) at 1.8:1, so it needs the same
-    // treatment as Bupa to stop the two-line type reading small.
-    logo: { src: '/assets/funds/cbhs.webp', width: 739, height: 415, opticalHeight: 42 },
+    name: 'Teachers Health',
+    // Two lines of caps beside a heart symbol: each line is about 40% of the
+    // box, so the mark reads small at a shared height.
+    logo: { src: '/assets/funds/teachers-health.webp', width: 790, height: 316, opticalHeight: 36 },
   },
+  {
+    name: 'Defence Health',
+    // Same two-line problem as Teachers Health, in a slightly squarer box.
+    logo: { src: '/assets/funds/defence-health.webp', width: 334, height: 151, opticalHeight: 38 },
+  },
+  // CBHS artwork is still at /assets/funds/cbhs.webp if it needs to come back.
 ]
 
 /** The closing tile. Always text — it stands for every fund not named above. */

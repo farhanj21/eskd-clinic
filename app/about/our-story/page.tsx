@@ -3,13 +3,13 @@ import Link from 'next/link'
 import GetInTouch from '@/components/GetInTouch'
 import Photo from '@/components/Photo'
 import { withSocial } from '@/lib/seo'
-import { business, telHref } from '@/lib/business'
+import { business, SITE_URL, telHref } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'Our Story | East St Kilda Dental — Four Decades on the Same Corner',
+  title: 'Our Story | East St Kilda Dental',
   description:
-    'East St Kilda Dental began around 1980. For over thirty years it was led by Dr Eddie Goldman, and is now guided by Dr Anbar Ganatra — same corner, same heart, a higher standard.',
-  alternates: { canonical: 'https://www.eaststkildadental.com.au/about/our-story' },
+    'East St Kilda Dental began around 1980. Led for over thirty years by Dr Eddie Goldman, and now by Dr Anbar Ganatra — same corner, same heart.',
+  alternates: { canonical: `${SITE_URL}/about/our-story` },
 })
 
 export default function AboutStoryPage() {
@@ -151,7 +151,7 @@ export default function AboutStoryPage() {
           <div className="eyebrow">Keep exploring</div>
           <h2>Get to know us</h2>
           <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet our team</Link>
             <Link href="/about/why-were-different" className="btn btn-ghost">Why we&apos;re different</Link>
             <Link href="/nervous-patients" className="btn btn-ghost">Nervous patients</Link>
           </div>
