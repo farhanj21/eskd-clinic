@@ -47,9 +47,15 @@ const faqs = [
 // The three proof points that sit in cards across the foot of the hero,
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
+//
+// `short` takes over below 600px, where the three cards sit side by side and
+// each is only about 100px wide. Every full label wraps to two or three lines
+// at that width, and the longest of them sets the height of all three cards —
+// so the phone gets one-word labels instead. Same technique as the
+// .story-copy-full / .story-copy-short pair further down this page.
 const heroStats = [
-  { id: 'patients', value: '10,000+', label: 'Patients Cared For' },
-  { id: 'years', value: '45+ years', label: 'Caring Locally' },
+  { id: 'patients', value: '10,000+', label: 'Patients Cared For', short: 'Patients Treated' },
+  { id: 'years', value: '45+ years', label: 'Caring Locally', short: 'Caring Locally' },
   {
     id: 'rating',
     value: (
@@ -58,6 +64,7 @@ const heroStats = [
       </>
     ),
     label: 'Google Rating',
+    short: 'Google',
   },
 ]
 
@@ -217,10 +224,13 @@ export default function Home() {
           would be clipped. */}
       <div className="container hero-stats-wrap">
         <dl className="hero-stats">
-          {heroStats.map(({ id, value, label }) => (
+          {heroStats.map(({ id, value, label, short }) => (
             <div className="hero-stat" key={id}>
               <dt>{value}</dt>
-              <dd>{label}</dd>
+              <dd>
+                <span className="hero-stat-label-full">{label}</span>
+                <span className="hero-stat-label-short">{short}</span>
+              </dd>
             </div>
           ))}
         </dl>

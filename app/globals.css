@@ -2320,6 +2320,10 @@ body{overflow-x:hidden;max-width:100%;}
   color:var(--clay);
 }
 .hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
+/* Each label ships in two lengths — the phone swaps to the short one in the
+   ≤600px block below, where a wrapping label would set the height of all
+   three cards. See the note on heroStats in app/page.tsx. */
+.hero-stat-label-short{display:none;}
 /* The stars ride in the 52px figure, so they are sized against it rather than
    set at 1em: five glyphs at full size overflow the card at every breakpoint.
    They inherit the figure's clay, so only the size and baseline need setting. */
@@ -2384,12 +2388,27 @@ body{overflow-x:hidden;max-width:100%;}
   .hero-video-copy{text-align:center;margin:0 auto;}
   .hero-video-copy .hero-cta{flex-direction:column;align-items:stretch;}
   .hero-video-copy .hero-cta .btn{text-align:center;}
-  /* Full-width stack, so the overlap drops to a token gesture — three stacked
-     cards riding up any further would swallow the hero on a short phone. */
+  /* The row is one card tall here, but the overlap still drops to a token
+     gesture: the hero is already short on a phone and a deeper ride-up would
+     crowd the CTA sitting above it. */
   :root{--hero-overlap:20px;}
-  .hero-stats{grid-template-columns:1fr;gap:12px;}
-  .hero-stat{padding:22px 20px;}
-  .hero-stat dt{font-size:46px;}
+  /* Three across on the phone as well, so all three proof points are taken in
+     at a glance instead of costing three screens of scroll. That leaves each
+     card about 101px wide at 375px and 83px at 320px, so the figure is sized
+     off the viewport rather than set in px, and the stars come down with it. */
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px;}
+  .hero-stat{padding:14px 8px 13px;}
+  .hero-stat dt{font-size:clamp(15px,5.1vw,24px);}
+  /* "5.0 ★★★★★" is the widest of the three figures, and it is the one with no
+     break opportunity to spare. The 2px tracking the stars carry on the hero's
+     proof line costs 10px they cannot afford in an 83px card, and .42em keeps
+     the run inside the card at 320px. */
+  .hero-stat dt .proof-stars{font-size:.42em;letter-spacing:0;}
+  .hero-stat dd{margin:6px 0 0;font-size:clamp(10.5px,3.1vw,13px);line-height:1.3;}
+  /* One word each — "Patients", "Locally", "Google" — so every card is a
+     single line of label tall at 320px as well as 375px. */
+  .hero-stat-label-full{display:none;}
+  .hero-stat-label-short{display:inline;}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-video-media{transition:none;}
