@@ -14,7 +14,7 @@ import {
 } from '@/lib/business'
 
 export const metadata: Metadata = withSocial({
-  title: 'Meet the Team | East St Kilda Dental',
+  title: 'Meet Our Team | East St Kilda Dental',
   description:
     'A warm, experienced team who genuinely care, and who\'ll remember you next time. Meet the dentists and support team at East St Kilda Dental.',
   alternates: { canonical: `${SITE_URL}/about/our-team` },
@@ -121,7 +121,7 @@ const teamSchema = {
       '@type': 'AboutPage',
       '@id': SCHEMA_ID.teamPage,
       url: TEAM_URL,
-      name: 'Meet the Team',
+      name: 'Meet Our Team',
       description:
         `The dentists, hygienists and practice team at ${business.name} in ` +
         `${business.address.addressLocality}.`,
@@ -158,7 +158,7 @@ export default function AboutTeamPage() {
       <section className="hero-v2">
         <div className="container hero-v2-grid">
           <div className="reveal">
-            <div className="eyebrow">Meet the team</div>
+            <div className="eyebrow">Meet our team</div>
             <h1>The people who&apos;ll <em>look after you</em></h1>
             <p className="lead">
               A warm, experienced team who genuinely care, and who&apos;ll remember you next time. Here&apos;s who you&apos;ll meet.
@@ -171,7 +171,7 @@ export default function AboutTeamPage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/shared/meet-the-team.webp"
+            src="/assets/shared/meet-our-team.webp"
             alt="Group photo of the team"
             hint="Warm, real group photo of the team. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"

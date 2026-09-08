@@ -151,7 +151,7 @@ export default function AboutStoryPage() {
           <div className="eyebrow">Keep exploring</div>
           <h2>Get to know us</h2>
           <div style={{ marginTop: '18px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet our team</Link>
             <Link href="/about/why-were-different" className="btn btn-ghost">Why we&apos;re different</Link>
             <Link href="/nervous-patients" className="btn btn-ghost">Nervous patients</Link>
           </div>

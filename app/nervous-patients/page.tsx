@@ -190,7 +190,7 @@ export default function GentlePage() {
         </div>
       </section>
 
-      {/* ── MEET THE TEAM ────────────────────────────────── */}
+      {/* ── MEET OUR TEAM ────────────────────────────────── */}
       <section className="sec">
         <div className="container story-grid">
           <div className="reveal">
@@ -203,7 +203,7 @@ export default function GentlePage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/shared/meet-the-team.webp"
+            src="/assets/shared/meet-our-team.webp"
             alt="The friendly East St Kilda Dental team smiling and waving outside the clinic"
             sizes="(max-width: 860px) 100vw, 48vw"
           />

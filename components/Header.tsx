@@ -122,7 +122,7 @@ export default function Header() {
                 <Link href="/areas-we-serve" onClick={close}>Areas We Serve</Link>
                 <Link href="/about/our-story" onClick={close}>Our Story</Link>
                 <Link href="/about/why-were-different" onClick={close}>Why We&apos;re Different</Link>
-                <Link href="/about/our-team" onClick={close}>Meet the Team</Link>
+                <Link href="/about/our-team" onClick={close}>Meet Our Team</Link>
                 <Link href="/our-work" onClick={close}>Smile Gallery</Link>
               </div>
             </li>

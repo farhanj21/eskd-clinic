@@ -223,7 +223,7 @@ export default function LearnIndex() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet our team</Link>
           </div>
         </div>
       </section>

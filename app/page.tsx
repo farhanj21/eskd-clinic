@@ -132,7 +132,7 @@ const homeSchema = {
       '@id': SCHEMA_ID.practice,
       name: business.name,
       url: business.url,
-      image: `${SITE_URL}/assets/shared/meet-the-team.webp`,
+      image: `${SITE_URL}/assets/shared/meet-our-team.webp`,
       telephone: business.telephone,
       email: business.email,
       currenciesAccepted: business.currenciesAccepted,
@@ -443,7 +443,7 @@ export default function Home() {
             <Photo
               tall
               className="reveal"
-              src="/assets/shared/meet-the-team.webp"
+              src="/assets/shared/meet-our-team.webp"
               alt="The East St Kilda Dental team standing together outside the clinic entrance"
               objectPosition="center top"
               sizes="(max-width: 820px) 100vw, 40vw"
@@ -496,7 +496,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the Team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet Our Team</Link>
           </div>
           {/* <div className="lang-band reveal">
             <b>We speak your language.</b> Our team can care for you in English, Mandarin, Hebrew, Russian, Hindi, Tamil and Kannada.

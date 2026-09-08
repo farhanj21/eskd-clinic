@@ -67,7 +67,7 @@ export default function AboutDifferentPage() {
           <Photo
             tall
             className="reveal"
-            src="/assets/shared/meet-the-team.webp"
+            src="/assets/shared/meet-our-team.webp"
             alt="East St Kilda Dental team standing outside the clinic"
             hint="Warm, real photo of the team with a patient. Never stock."
             sizes="(max-width: 860px) 100vw, 48vw"
@@ -102,7 +102,7 @@ export default function AboutDifferentPage() {
           </p>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/about/our-story" className="btn btn-ghost">Our story</Link>
-            <Link href="/about/our-team" className="btn btn-ghost">Meet the team</Link>
+            <Link href="/about/our-team" className="btn btn-ghost">Meet our team</Link>
             <Link href="/nervous-patients" className="btn btn-ghost">Nervous patients</Link>
           </div>
         </div>
