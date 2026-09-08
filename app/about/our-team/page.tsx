@@ -33,10 +33,7 @@ const clinicians = [
     name: 'Dr Anbar Ganatra',
     role: 'Cosmetic & General Dentist',
     bio: 'Anbar leads the practice with a calm, gentle, no-judgement approach, and is known for putting nervous patients at ease.',
-    // The wide crop, used on this page only. Everywhere else keeps the original
-    // portrait file; this grid's 150px frame is the one that needs a landscape
-    // source to avoid cropping to the head alone.
-    image: '/assets/team/anbar-ganatra-wide.webp',
+    image: '/assets/team/anbar-ganatra.webp',
   },
   {
     slug: 'edmund-goldman',
@@ -190,6 +187,12 @@ export default function AboutTeamPage() {
             <h2>Dentists &amp; clinicians</h2>
           </div>
           <div className="team-grid reveal">
+            {/* 280px, not the 150px these cards used to use. At 150 the frame is
+                a ~2.5:1 letterbox, and anbar-ganatra's portrait-orientation
+                source (0.70:1) renders her head about 207px tall at the card's
+                width — taller than the frame itself, so it cropped to her
+                forehead. Raising the height for the whole row fixes that
+                without leaving one card taller than the two beside it. */}
             {clinicians.map((member, i) => (
               <div key={i} className="svc">
                 <Photo
@@ -198,7 +201,7 @@ export default function AboutTeamPage() {
                   alt={`Photo of ${member.name}`}
                   sizes="(max-width: 768px) 100vw, 300px"
                   objectPosition="center top"
-                  style={{ height: '150px', marginBottom: '12px' }}
+                  style={{ height: '280px', marginBottom: '12px' }}
                 />
                 <h4 style={{ marginBottom: '2px' }}>{member.name}</h4>
                 <p style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px', margin: '2px 0 8px' }}>{member.role}</p>
