@@ -370,26 +370,28 @@ export default function Home() {
             <div className="body">
               <div className="eyebrow">Your first visit, in full</div>
               <h2>The <em>New Patient Comprehensive Care</em> Visit</h2>
-              <p>A thorough, gentle 60 to 75 minute appointment that gives you a complete understanding of your oral health and where things are heading, not a quick clean and out the door. Together we look at your health, function, longevity, aesthetics and prevention, and you leave with a personalised dental care plan. Your visit includes:</p>
-              <ul className="offer-includes">
-                <li>Comprehensive dental examination</li>
-                <li>Full medical and dental history review</li>
-                <li>Digital X-rays and intraoral photos</li>
+              <p>A gentle, thorough 60&ndash;75 minute first visit to understand your oral health, what needs attention, and what can wait. You&apos;ll leave with a clear, personalised care plan.</p>
+              {/* .tight keeps this list two-up on a phone — see globals.css. The
+                  other pages using .offer-includes have longer items and still
+                  fall back to one column. */}
+              <ul className="offer-includes tight">
+                <li>Comprehensive examination</li>
+                <li>X-rays &amp; intraoral photos</li>
                 <li>Oral cancer screening</li>
-                <li>Gum and periodontal assessment</li>
-                <li>Full scale, clean and polish</li>
+                <li>Gum health assessment</li>
+                <li>Scale, clean &amp; polish</li>
                 <li>Fluoride treatment</li>
-                <li>Smile and bite assessment</li>
-                <li>Your personalised dental care plan</li>
+                <li>Smile &amp; bite assessment</li>
+                <li>Personalised care plan</li>
               </ul>
               <div className="offer-meta">
-                <div><b>60–75 min</b>gentle and thorough</div>
-                <div><b>All included</b>everything above, one visit</div>
-                <div><b>A care plan</b>clear and easy to follow</div>
+                <div><b>60&ndash;75 min</b>gentle and thorough</div>
+                <div><b>All included</b>in one visit</div>
+                <div><b>Clear care plan</b>before you leave</div>
               </div>
               <Link href="/online-booking" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
-                Everything above included. We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
+                Everything included. Eligible health-fund claims can be processed through HICAPS.
               </p>
             </div>
             <Photo
