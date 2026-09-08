@@ -33,7 +33,10 @@ const clinicians = [
     name: 'Dr Anbar Ganatra',
     role: 'Cosmetic & General Dentist',
     bio: 'Anbar leads the practice with a calm, gentle, no-judgement approach, and is known for putting nervous patients at ease.',
-    image: '/assets/team/anbar-ganatra.webp',
+    // The wide crop, used on this page only. Everywhere else keeps the original
+    // portrait file; this grid's 150px frame is the one that needs a landscape
+    // source to avoid cropping to the head alone.
+    image: '/assets/team/anbar-ganatra-wide.webp',
   },
   {
     slug: 'edmund-goldman',
