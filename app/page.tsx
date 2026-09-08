@@ -275,8 +275,11 @@ export default function Home() {
       </section>
 
       {/* REVIEWS — deliberately live. The quotes, and the note on why they are
-          shown at all, live in components/ReviewMarquee.tsx. */}
-      <section className="sec">
+          shown at all, live in components/ReviewMarquee.tsx.
+
+          .sec-reviews rather than plain .sec: see the note on it in globals.css
+          for why this one section carries less padding than its neighbours. */}
+      <section className="sec sec-reviews">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">In our patients&apos; words</div>

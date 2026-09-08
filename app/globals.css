@@ -2577,6 +2577,17 @@ body{overflow-x:hidden;max-width:100%;}
   .rmq-track{animation:none;}
 }
 
+/* The marquee sits between two sections that both carry the full .sec rhythm,
+   so the gaps either side of it were 88+88 on a desktop — far more air than a
+   band of cards needs, and enough that the reviews read as marooned between the
+   services grid and the CTA. Trimming this section's own padding closes both
+   gaps at once without touching .sec itself, which every other page relies on,
+   and without special-casing the two neighbours. The remaining space either
+   side is the neighbour's padding, so the rhythm of the page is unchanged. */
+.sec.sec-reviews{padding:24px 0 28px;}
+@media(max-width:768px){.sec.sec-reviews{padding:18px 0 22px;}}
+@media(max-width:600px){.sec.sec-reviews{padding:12px 0 16px;}}
+
 /* Offer card */
 /* Match the reference .wrap (28px gutters) so the offer card isn't narrowed
    by the wider responsive --gutter, which was wrapping the heading onto two lines. */
