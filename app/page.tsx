@@ -331,38 +331,39 @@ export default function Home() {
 
       {/* HOW WE'RE DIFFERENT — the differentiators, kept after the CTA: the
           page makes its ask off the services and the reviews, and this reads
-          as supporting argument for anyone still scrolling. */}
+          as supporting argument for anyone still scrolling.
+
+          Deliberately .care-points rather than .pillars: as cards this ran two
+          to three screens on a phone before the reader reached anything else.
+          .pillars itself is untouched — /nervous-patients and
+          /new-patient-comprehensive-care-visit still use it as cards. */}
       <section className="sec alt">
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">The way we care</div>
             <h2>Dentistry that feels <em>safe</em>, not stressful</h2>
             <p style={{ marginTop: '16px', fontSize: '18px' }}>
-              Whoever you are, and however long it&apos;s been, you&apos;re in exactly the right place. There&apos;s nothing here to be embarrassed about.
+              However long it&apos;s been, you&apos;re in the right place. No judgement. No pressure.
             </p>
           </div>
-          <div className="pillars">
-            <div className="pillar reveal">
-              <div className="n">01</div>
-              <h3>The full picture, not just one tooth</h3>
-              <p>We look at how everything fits together, your teeth, gums, bite and long-term health, so the things quick check-ups miss don&apos;t get missed.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">02</div>
-              <h3>No shame, no judgement</h3>
-              <p>Whatever state things are in, you&apos;ll be supported without criticism. Ever.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">03</div>
-              <h3>Built to last, not patched up</h3>
-              <p>We treat the cause, not just the symptom, and help you prevent problems before they start. The aim is less dentistry over a lifetime, not more.</p>
-            </div>
-            <div className="pillar reveal">
-              <div className="n">04</div>
-              <h3>Gentle, never vague</h3>
-              <p>Being gentle doesn&apos;t stop us being honest. We give you our clear, confident recommendation, kindly, then leave the decision to you. No scare tactics, and no glossing over what matters.</p>
-            </div>
-          </div>
+          <ul className="care-points">
+            <li className="reveal">
+              <h3>The Full Picture</h3>{' '}
+              <p>We look beyond one tooth to your overall dental health.</p>
+            </li>
+            <li className="reveal">
+              <h3>No Shame, No Judgement</h3>{' '}
+              <p>Whatever state things are in, we&apos;ll help you move forward.</p>
+            </li>
+            <li className="reveal">
+              <h3>At Your Pace</h3>{' '}
+              <p>We explain your options clearly and never rush you.</p>
+            </li>
+            <li className="reveal">
+              <h3>Comfort Matters</h3>{' '}
+              <p>Gentle care for nervous or anxious patients.</p>
+            </li>
+          </ul>
         </div>
       </section>
 

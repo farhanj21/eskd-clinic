@@ -2423,6 +2423,23 @@ body{overflow-x:hidden;max-width:100%;}
 .pillar p{font-size:15px;line-height:1.6;color:var(--ink-soft);}
 @media(max-width:820px){.pillars{grid-template-columns:1fr;}}
 
+/* Care points — the run-in rows under "Dentistry that feels safe" on the home
+   page. Separate from .pillars on purpose: those stay card-sized where they
+   are still used, while this section had to lose most of its mobile height.
+   Each row is one flowing line of text: an inline h3 in clay, then the
+   sentence. Colour alone separates the two, so a point costs ~70-95px on a
+   phone instead of ~350-450px. */
+.care-points{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 22px;list-style:none;padding:0;margin:0;}
+.care-points li{background:var(--paper);border:1px solid var(--line-soft);border-radius:14px;padding:16px 20px;line-height:1.55;}
+.care-points h3{display:inline;font-size:18px;color:var(--clay-deep);}
+.care-points p{display:inline;font-size:15px;color:var(--ink-soft);}
+@media(max-width:820px){
+  .care-points{grid-template-columns:1fr;gap:10px;}
+  .care-points li{padding:14px 16px;}
+  .care-points h3{font-size:16.5px;}
+  .care-points p{font-size:14.5px;}
+}
+
 /* Reviews */
 .reviews-v2{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .review-card{background:var(--paper);border:1px solid var(--line-soft);border-radius:18px;padding:30px;}
