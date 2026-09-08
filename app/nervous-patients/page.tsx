@@ -262,7 +262,7 @@ export default function GentlePage() {
           <div className="eyebrow">Helpful next steps</div>
           <h2>Before you book</h2>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/your-first-visit" className="btn btn-ghost">Your first visit</Link>
+            <Link href="/new-patient-comprehensive-care-visit" className="btn btn-ghost">Your first visit</Link>
             <Link href="/fees" className="btn btn-ghost">Fees &amp; health funds</Link>
             <Link href="/services" className="btn btn-ghost">All services</Link>
           </div>

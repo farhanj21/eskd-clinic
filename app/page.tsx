@@ -49,7 +49,7 @@ const faqs = [
 // with the label that gives it meaning.
 const heroStats = [
   { id: 'patients', value: '10,000+', label: 'Patients Cared For' },
-  { id: 'years', value: '45+', label: 'Caring Locally' },
+  { id: 'years', value: '45+ years', label: 'Caring Locally' },
   {
     id: 'rating',
     value: (

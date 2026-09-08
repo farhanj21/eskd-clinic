@@ -136,7 +136,7 @@ export const suburbs: SuburbData[] = [
       { q: 'How long from St Kilda?', a: 'About seven minutes, straight east along Carlisle Street.' },
     ],
     links: [
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Nervous patients', href: '/nervous-patients' },
     ],
     meta: {
@@ -183,7 +183,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees', href: '/fees' },
     ],
     meta: {
@@ -234,7 +234,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees', href: '/fees' },
     ],
     meta: {
@@ -286,7 +286,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Children’s dentistry', href: '/services/childrens-dentistry' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees', href: '/fees' },
     ],
     meta: {
@@ -335,7 +335,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Children’s dentistry', href: '/services/childrens-dentistry' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
     ],
     meta: {
@@ -384,7 +384,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Emergency dentist', href: '/emergency-dentist' },
     ],
     meta: {
@@ -437,7 +437,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Children’s dentistry', href: '/services/childrens-dentistry' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees', href: '/fees' },
     ],
     meta: {
@@ -486,7 +486,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees', href: '/fees' },
     ],
     meta: {
@@ -534,7 +534,7 @@ export const suburbs: SuburbData[] = [
       { q: 'How long from Windsor?', a: 'Around five minutes, east along Dandenong Road.' },
     ],
     links: [
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Nervous patients', href: '/nervous-patients' },
     ],
     meta: {
@@ -585,7 +585,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Teeth whitening', href: '/services/teeth-whitening' },
       { label: 'Cosmetic dentistry', href: '/services/smile-design' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in Prahran | East St Kilda Dental',
@@ -635,7 +635,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Crowns and bridges', href: '/services/crowns-and-bridges' },
       { label: 'Cosmetic dentistry', href: '/services/smile-design' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in Armadale | East St Kilda Dental',
@@ -683,7 +683,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Fees', href: '/fees' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
     ],
     meta: {
@@ -733,7 +733,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Children’s dentistry', href: '/services/childrens-dentistry' },
       { label: 'Emergency dentist', href: '/emergency-dentist' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in Carnegie | East St Kilda Dental',
@@ -781,7 +781,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Emergency dentist', href: '/emergency-dentist' },
     ],
     meta: {
@@ -832,7 +832,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Children’s dentistry', href: '/services/childrens-dentistry' },
       { label: 'Emergency dentist', href: '/emergency-dentist' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in Albert Park | East St Kilda Dental',
@@ -881,7 +881,7 @@ export const suburbs: SuburbData[] = [
     ],
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees', href: '/fees' },
     ],
     meta: {
@@ -931,7 +931,7 @@ export const suburbs: SuburbData[] = [
       { q: 'How far is Port Melbourne?', a: 'About twenty minutes, a clean run via Kings Way.' },
     ],
     links: [
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
       { label: 'Fees', href: '/fees' },
     ],
@@ -982,7 +982,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Cosmetic dentistry', href: '/services/smile-design' },
       { label: 'Teeth whitening', href: '/services/teeth-whitening' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in South Yarra | East St Kilda Dental',
@@ -1031,7 +1031,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Crowns and bridges', href: '/services/crowns-and-bridges' },
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in Toorak | East St Kilda Dental',
@@ -1074,7 +1074,7 @@ export const suburbs: SuburbData[] = [
     links: [
       { label: 'Check-ups and cleans', href: '/services/check-ups' },
       { label: 'Children’s dentistry', href: '/services/childrens-dentistry' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
       title: 'Dentist in Malvern | East St Kilda Dental',

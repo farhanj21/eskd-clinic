@@ -2468,7 +2468,7 @@ body{overflow-x:hidden;max-width:100%;}
 @media(max-width:560px){.offer-includes{grid-template-columns:1fr;}}
 /* .tight — the home page's shortened list. Short enough to stay two-up on a
    phone, which halves the block's height. Scoped so the longer lists on
-   /emergency-dentist, /using-your-super and /your-first-visit are unaffected. */
+   /emergency-dentist and /using-your-super are unaffected. */
 @media(max-width:560px){
   .offer-includes.tight{grid-template-columns:1fr 1fr;gap:8px 14px;}
   .offer-includes.tight li{font-size:13.5px;padding-left:22px;}
@@ -3129,15 +3129,6 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 .terms-band p{font-family:var(--display);font-size:clamp(22px,3vw,30px);color:var(--sage-deep);margin:0 0 12px;line-height:1.35;}
 .terms-band span{font-size:16px;color:var(--ink-soft);}
 
-/* Vertical numbered steps (first-visit & offer) */
-.steps{counter-reset:fv;display:flex;flex-direction:column;margin-top:28px;}
-.step{display:grid;grid-template-columns:60px 1fr;gap:20px;padding-bottom:36px;position:relative;counter-increment:fv;}
-.step:not(:last-child)::before{content:"";position:absolute;left:29px;top:60px;bottom:0;width:2px;background:var(--sage-soft);}
-.step .num{width:58px;height:58px;border-radius:50%;background:var(--sage-deep);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:22px;font-weight:500;flex-shrink:0;position:relative;z-index:1;}
-.step .num::before{content:counter(fv);}
-.step h4{font-size:19px;font-family:var(--display);margin:14px 0 8px;color:var(--ink);}
-.step p{font-size:15.5px;color:var(--ink-soft);margin:0;line-height:1.65;}
-
 /* Stories grid (testimonials on light bg) */
 .stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;}
 .nervous-proof.light{background:var(--paper);border:1px solid var(--line-soft);border-radius:16px;padding:28px 30px;margin:0;border-left:none;color:var(--ink);font-family:var(--display);font-style:italic;}
@@ -3307,13 +3298,13 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   :root{--section-pad:52px;}
   .sec-head{margin-bottom:26px;}
 
-  /* Offer card — comprehensive-care-visit, your-first-visit.
+  /* Offer card — comprehensive-care-visit.
      Stacked at 820px but kept 46px of side padding inside the gutter. */
   .offer-card-v2 .body{padding:32px 22px;}
   .offer-meta{gap:18px;margin:20px 0 22px;}
   .offer-meta b{font-size:21px;}
 
-  /* CTA bands — fees, nervous-patients, your-first-visit, service pages */
+  /* CTA bands — fees, nervous-patients, service pages */
   .ctaband{padding:26px 20px;}
   .ctaband h3{font-size:21px;}
 
@@ -3326,13 +3317,6 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .svc-nervous-band p{font-size:18px;}
   .lang-band{padding:18px 20px;}
 
-  /* Vertical numbered steps (your-first-visit). The 60px number column and
-     the connecting rule are re-measured together so the line stays centred
-     under the circle. */
-  .step{grid-template-columns:46px 1fr;gap:14px;padding-bottom:28px;}
-  .step .num{width:46px;height:46px;font-size:19px;}
-  .step:not(:last-child)::before{left:22px;top:48px;}
-  .step h4{margin:8px 0 6px;font-size:18px;}
 
   /* Article pages (/learn/<slug>) */
   .post{padding:40px 0 56px;}

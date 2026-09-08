@@ -184,7 +184,7 @@ export default function ServicesPage() {
             Not sure what you need? That&apos;s what your first visit is for, <em>we&apos;ll help you work it out.</em>
           </p>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/your-first-visit" className="btn btn-ghost">Your first visit</Link>
+            <Link href="/new-patient-comprehensive-care-visit" className="btn btn-ghost">Your first visit</Link>
             <Link href="/nervous-patients" className="btn btn-ghost">Nervous patients</Link>
             <Link href="/fees" className="btn btn-ghost">Fees &amp; health funds</Link>
           </div>

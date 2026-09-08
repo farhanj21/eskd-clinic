@@ -157,7 +157,6 @@ export const articles: ArticleData[] = [
     ],
     related: [
       { label: 'Gentle dentistry', href: '/nervous-patients' },
-      { label: 'Your first visit', href: '/your-first-visit' },
       { label: 'The New Patient Comprehensive Care Visit', href: '/new-patient-comprehensive-care-visit' },
     ],
     meta: {
