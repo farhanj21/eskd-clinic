@@ -91,9 +91,9 @@ const writers = [
   },
   {
     name: 'Dr Jarrod Dean',
-    role: 'General Dentist',
+    role: 'Dentist',
     photo: '/assets/team/jarrod-dean.webp',
-    alt: 'Dr Jarrod Dean – General Dentist',
+    alt: 'Dr Jarrod Dean – Dentist',
     objectPosition: 'center top',
   },
   {

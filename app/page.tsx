@@ -451,8 +451,7 @@ export default function Home() {
             <div className="reveal">
               <div className="eyebrow">The people who&apos;ll care for you</div>
               <h2>A gentle team you&apos;ll get to <em>know</em></h2>
-              <p>Led by Dr Anbar Ganatra, with a team you&apos;ll come to know by name. Calm, unhurried, and genuinely glad you came in. You&apos;ll see the same familiar faces each visit.</p>
-            </div>
+              </div>
           </div>
           <div className="team-grid-v2">
             <div className="team-member reveal">
@@ -478,12 +477,12 @@ export default function Home() {
             <div className="team-member reveal">
               <Photo
                 src="/assets/team/jarrod-dean.webp"
-                alt="Dr Jarrod Dean – General Dentist"
+                alt="Dr Jarrod Dean – Dentist"
                 objectPosition="center top"
                 sizes="(max-width: 820px) 50vw, 25vw"
               />
               <h4>Dr Jarrod Dean</h4>
-              <span>General Dentist</span>
+              <span>Dentist</span>
             </div>
             <div className="team-member reveal">
               <Photo

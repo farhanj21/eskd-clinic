@@ -45,7 +45,7 @@ const clinicians = [
   {
     slug: 'jarrod-dean',
     name: 'Dr Jarrod Dean',
-    role: 'General Dentist',
+    role: 'Dentist',
     bio: 'Jarrod provides gentle, thorough general and family dentistry across the practice.',
     image: '/assets/team/jarrod-dean.webp',
   },

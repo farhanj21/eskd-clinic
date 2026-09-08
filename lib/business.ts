@@ -169,7 +169,7 @@ export const socialProfiles: string[] = [
 export const clinicians = [
   { slug: 'anbar-ganatra', name: 'Dr Anbar Ganatra', jobTitle: 'Cosmetic & General Dentist' },
   { slug: 'edmund-goldman', name: 'Dr Edmund Goldman', jobTitle: 'Dentist' },
-  { slug: 'jarrod-dean', name: 'Dr Jarrod Dean', jobTitle: 'General Dentist' },
+  { slug: 'jarrod-dean', name: 'Dr Jarrod Dean', jobTitle: 'Dentist' },
   { slug: 'michelle-callaghan', name: 'Michelle Callaghan', jobTitle: 'Dental Hygienist' },
 ] as const
 

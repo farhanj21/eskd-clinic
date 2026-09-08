@@ -99,7 +99,7 @@ const WHY = [
 const TEAM = [
   { name: 'Dr Anbar Ganatra', role: 'Cosmetic & General Dentist', image: '/assets/team/anbar-ganatra.webp' },
   { name: 'Dr Edmund Goldman', role: 'Dentist', image: '/assets/team/edmund-goldman.webp' },
-  { name: 'Dr Jarrod Dean', role: 'General Dentist', image: '/assets/team/jarrod-dean.webp' },
+  { name: 'Dr Jarrod Dean', role: 'Dentist', image: '/assets/team/jarrod-dean.webp' },
   { name: 'Dr Marina Bekheet', role: 'General Dentist', image: '/assets/team/marina-bakheet.webp' },
 ]
 
