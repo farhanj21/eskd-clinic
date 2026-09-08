@@ -260,7 +260,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
-            <Link href="/services/check-ups" className="btn btn-ghost">See all services</Link>
+            <Link href="/services" className="btn btn-ghost">See all services</Link>
           </div>
           <p style={{ textAlign: 'center', marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }} className="reveal">
             Implants, Invisalign and cosmetic work included.

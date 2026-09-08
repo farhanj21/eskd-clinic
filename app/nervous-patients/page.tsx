@@ -264,7 +264,7 @@ export default function GentlePage() {
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/your-first-visit" className="btn btn-ghost">Your first visit</Link>
             <Link href="/fees" className="btn btn-ghost">Fees &amp; health funds</Link>
-            <Link href="/services/check-ups" className="btn btn-ghost">All services</Link>
+            <Link href="/services" className="btn btn-ghost">All services</Link>
           </div>
         </div>
       </section>
