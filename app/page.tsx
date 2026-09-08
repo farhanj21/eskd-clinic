@@ -6,6 +6,7 @@ import HealthFundLogos from '@/components/HealthFundLogos'
 import HeroVideoBg from '@/components/HeroVideoBg'
 import HomeOffers from '@/components/HomeOffers'
 import MapEmbed from '@/components/MapEmbed'
+import ReviewMarquee from '@/components/ReviewMarquee'
 import { suburbs, suburbPath } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
@@ -273,39 +274,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REVIEWS — deliberately live.
-
-          Four other places in this repo say testimonials are off limits under
-          AHPRA's advertising guidelines, and that is why this block sat
-          commented out. Re-enabling it was an explicit product decision by the
-          practice, who own that call. Do not silently re-comment it; raise it
-          with them instead. The structured data stays clean either way — there
-          is still no Review or aggregateRating node anywhere on the site. */}
+      {/* REVIEWS — deliberately live. The quotes, and the note on why they are
+          shown at all, live in components/ReviewMarquee.tsx. */}
       <section className="sec">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">In our patients&apos; words</div>
             <h2>Kind, gentle, and never rushed</h2>
           </div>
-          <div className="reviews-v2">
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>Dr Anbar was fantastic and extremely knowledgeable.
-Very comfortable experience as well, from my perspective there was no pain or discomfort.
-Would highly recommend to anyone looking for a new dentist.</p>
-              <div className="who">Emily Wooton · 3 months ago</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>I’ve had years of care under this team. They are friendly, do not over charge, offer options of treatments that consider your circumstances. A clinic that has never failed to care and give me the most personalised treatment.</p>
-              <div className="who">Bronwen Drinnan · 4 months ago</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>Dr Dean is caring, calm, patient, empathic, professional, warm and open to having a laugh. He and the team at St Kilda East Dental are amazing group who to me practice ‘dentistry as an art form’.</p>
-              <div className="who">Gülşen Özer · 1 month ago</div>
-            </div>
-          </div>
+        </div>
+        {/* Outside the container on purpose — the row runs off both edges. */}
+        <ReviewMarquee />
+        <div className="container">
           <div className="gscore reveal">
             Rated <b>5.0 on Google</b> by our local patients &middot;{' '}
             <a href="https://share.google/M1ZtOT5z13fj2mhWf" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>

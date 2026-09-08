@@ -2469,6 +2469,114 @@ body{overflow-x:hidden;max-width:100%;}
 .gscore b{color:var(--sage-deep);}
 @media(max-width:820px){.reviews-v2{grid-template-columns:1fr;}}
 
+/* ── Home reviews marquee ────────────────────────────────────
+   Six cards drifting right to left, forever. The track holds the six twice
+   over and slides by exactly half its own width, so the second copy is already
+   under the reader's eye when the first wraps — which is why this needs no
+   JavaScript at all. See components/ReviewMarquee.tsx.
+
+   Deliberately full-bleed rather than inside .container: the row is meant to
+   run off both edges of the screen, and the mask below is what makes that read
+   as a fade rather than a slice. */
+.rmq{
+  position:relative;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+}
+.rmq-track{
+  display:flex;
+  width:max-content;
+  /* Slow on purpose: one lap of the six cards takes a minute and a half, which
+     is roughly 25px a second on a desktop and slower still on a phone. */
+  animation:rmq-drift 96s linear infinite;
+  will-change:transform;
+}
+/* The second lap. A flex box of its own, so the track's direct children are
+   six cards plus one group of exactly the same width — which is what makes the
+   -50% land on a whole copy. */
+.rmq-loop{display:flex;}
+/* Hover or tab into the row and it stops, so a quote can actually be read. */
+.rmq:hover .rmq-track,
+.rmq:focus-within .rmq-track{animation-play-state:paused;}
+@keyframes rmq-drift{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+.rmq-card{
+  position:relative;
+  flex:0 0 350px;
+  display:flex;flex-direction:column;
+  /* The gap rides on the card rather than being a flex `gap` on the track: with
+     a gap, half the track width lands half a gap short of a whole copy and the
+     loop jumps 12px every lap. The 0 on the other three sides also clears the
+     UA margin a <figure> carries. */
+  margin:0 24px 0 0;
+  padding:30px 28px 26px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow-sm);
+}
+/* Set in Cormorant rather than drawn as an icon — the serif's own quote mark is
+   the closest thing the site has to a house mark. */
+.rmq-mark{
+  position:absolute;top:12px;right:24px;
+  font-family:var(--display);
+  font-size:74px;line-height:1;
+  color:var(--clay);
+  opacity:.18;
+  pointer-events:none;
+}
+.rmq-stars{color:var(--clay);letter-spacing:3px;font-size:15px;}
+/* Body font, not the display italic the old .review-card used: at six cards
+   wide the italic serif was doing more work than the quotes needed. */
+.rmq-quote{
+  margin:14px 0 18px;
+  font-size:15.5px;line-height:1.7;
+  color:var(--ink-soft);
+}
+.rmq-badge{
+  align-self:flex-start;
+  margin-bottom:20px;
+  padding:4px 12px;
+  border-radius:40px;
+  background:rgba(188,122,78,.11);
+  color:var(--clay-deep);
+  font-size:12.5px;font-weight:600;
+}
+/* margin-top:auto pins the person to the card foot, so the rule above them
+   lines up across cards whatever length the quote ran to. */
+.rmq-person{
+  margin-top:auto;
+  display:flex;align-items:center;gap:12px;
+  padding-top:16px;
+  border-top:1px solid var(--line-soft);
+}
+.rmq-avatar{
+  width:44px;height:44px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--sage-deep);color:var(--paper);
+  font-family:var(--display);font-size:20px;font-weight:600;
+}
+.rmq-name{display:block;font-size:15px;font-weight:600;color:var(--ink);}
+.rmq-when{display:block;font-size:13px;color:var(--ink-faint);}
+
+@media(max-width:820px){
+  .rmq-card{flex-basis:320px;margin-right:20px;}
+}
+@media(max-width:600px){
+  .rmq-card{flex-basis:280px;margin-right:16px;padding:26px 22px 22px;}
+  .rmq-quote{font-size:15px;}
+  .rmq-mark{font-size:62px;right:20px;}
+}
+/* Nothing moves on its own; the row becomes a plain horizontal scroller. */
+@media(prefers-reduced-motion:reduce){
+  .rmq{overflow-x:auto;}
+  .rmq-track{animation:none;}
+}
+
 /* Offer card */
 /* Match the reference .wrap (28px gutters) so the offer card isn't narrowed
    by the wider responsive --gutter, which was wrapping the heading onto two lines. */
