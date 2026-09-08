@@ -57,18 +57,42 @@ export const healthFunds: HealthFund[] = [
     name: 'nib',
     logo: { src: '/assets/funds/nib.webp', width: 351, height: 144 },
   },
-  // The five below have no artwork in /public/assets/funds yet, so they fall
-  // back to their name as text — see the `logo?` note above. Drop each fund's
-  // own supplied file in and add a `logo` block to promote it to a mark.
-  { name: 'AHM' },
-  { name: 'HBF' },
-  { name: 'GMHBA' },
+  {
+    name: 'AHM',
+    // A stacked lockup ("ahm" over "by Medibank") inside a dashed coupon
+    // border, at 1.6:1 — squarer even than Bupa, and the type sits well inside
+    // the frame. Needs the largest bump in the row to match its neighbours.
+    logo: { src: '/assets/funds/ahm.webp', width: 635, height: 393, opticalHeight: 46 },
+  },
+  {
+    name: 'HBF',
+    // Lowercase wordmark cropped tight to its ascenders, so the box height is
+    // very nearly the glyph height. Trimmed back a little from the 30px default.
+    logo: { src: '/assets/funds/hbf.webp', width: 1280, height: 458, opticalHeight: 26 },
+  },
+  {
+    name: 'GMHBA',
+    // The supplied file was a 1215x747 canvas holding a 958x151 mark — at the
+    // row default the lettering would have rendered about 6px tall. Trimmed to
+    // the artwork, it is a 6.3:1 all-caps wordmark whose caps fill the full box,
+    // so it needs to come DOWN to sit level with the mixed-case marks near it.
+    logo: { src: '/assets/funds/gmhba.webp', width: 958, height: 151, opticalHeight: 20 },
+  },
   {
     name: 'Australian Unity',
     logo: { src: '/assets/funds/australian-unity-logo.webp', width: 599, height: 166 },
   },
-  { name: 'Teachers Health' },
-  { name: 'Defence Health' },
+  {
+    name: 'Teachers Health',
+    // Two lines of caps beside a heart symbol: each line is about 40% of the
+    // box, so the mark reads small at a shared height.
+    logo: { src: '/assets/funds/teachers-health.webp', width: 790, height: 316, opticalHeight: 36 },
+  },
+  {
+    name: 'Defence Health',
+    // Same two-line problem as Teachers Health, in a slightly squarer box.
+    logo: { src: '/assets/funds/defence-health.webp', width: 334, height: 151, opticalHeight: 38 },
+  },
   // CBHS artwork is still at /assets/funds/cbhs.webp if it needs to come back.
 ]
 
