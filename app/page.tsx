@@ -510,11 +510,15 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Here for the long run</div>
             <h2>Four decades of <em>caring</em> for families</h2>
-            <p>East St Kilda Dental has cared for this neighbourhood since around 1980. We&apos;ve looked after children who now bring their own children, and patients who send us their parents, their partners and their friends. The same families have trusted us for decades, and most of our new patients still arrive because someone told a friend.</p>
+            {/* Two versions of the same paragraph, one shown per breakpoint:
+                the full story reads well beside the photo on a wide screen, but
+                costs most of a phone screen on its own. */}
+            <p className="story-copy-full">East St Kilda Dental has cared for this neighbourhood since around 1980. We&apos;ve looked after children who now bring their own children, and patients who send us their parents, their partners and their friends. The same families have trusted us for decades, and most of our new patients still arrive because someone told a friend.</p>
+            <p className="story-copy-short">East St Kilda Dental has cared for local families since around 1980, with generations of patients continuing to trust us with their care.</p>
             <div className="story-stats">
-              <div><b>40+</b><span>years in the suburb</span></div>
-              <div><b>3 gen.</b><span>of families</span></div>
-              <div><b>1</b><span>caring local team</span></div>
+              <div><b>40+</b><span>years in St Kilda</span></div>
+              <div><b>3 gen.</b><span>of local families</span></div>
+              <div><b>Decades</b><span>of trust, built through word of mouth</span></div>
             </div>
           </div>
           <Photo

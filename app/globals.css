@@ -2525,9 +2525,21 @@ body{overflow-x:hidden;max-width:100%;}
 /* Our Story */
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
 .story-stats{display:flex;gap:40px;margin-top:28px;}
+/* flex:1 with min-width:0 — the labels are longer than they used to be, so the
+   items share the row evenly and wrap their text rather than sizing to it and
+   pushing the row past the column. */
+.story-stats>div{flex:1 1 0;min-width:0;}
 .story-stats b{display:block;font-family:var(--display);font-size:40px;color:var(--clay);font-weight:500;line-height:1;}
-.story-stats span{font-size:14px;}
-@media(max-width:820px){.story-grid{grid-template-columns:1fr;gap:30px;}}
+.story-stats span{display:block;font-size:14px;line-height:1.4;margin-top:4px;}
+/* The long paragraph is desktop-only; the short one replaces it on phones. */
+.story-copy-short{display:none;}
+@media(max-width:820px){
+  .story-grid{grid-template-columns:1fr;gap:30px;}
+  .story-copy-full{display:none;}
+  .story-copy-short{display:block;}
+  .story-stats{gap:22px;}
+  .story-stats span{font-size:13px;}
+}
 
 /* Insurance */
 .ins-logos{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:34px;}
@@ -3310,9 +3322,11 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 @media(max-width:420px){
   :root{--section-pad:44px;}
   .offer-card-v2 .body{padding:26px 18px;}
-  /* Three stats in one nowrap row overflowed a 360px screen. */
-  .story-stats{gap:22px;flex-wrap:wrap;}
-  .story-stats b{font-size:32px;}
+  /* Three stats in one row on a 360px screen: ~105px each, so the numbers
+     come down far enough for "Decades" to fit on its line. */
+  .story-stats{gap:14px;}
+  .story-stats b{font-size:26px;}
+  .story-stats span{font-size:12px;}
   /* Segmented control in the GetInTouch form — labels are nowrap, so the row
      has to break instead of the labels. */
   .gt-seg{flex-wrap:wrap;}
