@@ -588,7 +588,7 @@ export default function Home() {
       </section> */}
 
       {/* GALLERY */}
-      <section className="sec alt">
+      {/* <section className="sec alt">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Real smiles</div>
@@ -616,7 +616,7 @@ export default function Home() {
             <Link href="/our-work" className="btn btn-ghost">View more</Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* EDUCATION */}
       <section className="sec alt" id="education">
