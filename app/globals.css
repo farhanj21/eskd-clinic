@@ -3417,18 +3417,55 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   padding:8px;
 }
 /* Lighter surface + accent border + a soft lift, so the cards read as
-   raised out of the tinted band rather than merely tinted differently. */
+   raised out of the tinted band rather than merely tinted differently.
+
+   The row is clay rather than the sage the rest of the page runs on — it is
+   the one place asking the reader to pick a path, and the warm accent is what
+   separates it from the sage-bordered service cards a screen below. Every
+   colour comes from the four --offer-accent-* variables, so the whole row
+   re-accents from the four lines below and nowhere else. */
 .offers-card{
+  --offer-accent:var(--clay);
+  --offer-accent-deep:var(--clay-deep);
+  --offer-accent-tile:var(--clay-soft);
+  /* The accent at about a third strength. Softer than the flat border this
+     replaces, but still crisp against the tinted band — --clay-soft alone
+     disappeared into it. */
+  --offer-accent-line:rgba(188,122,78,.34);
+  /* A wash down the top of the card rather than a hard accent bar across it:
+     the icon tile sits inside the tint, which reads warmer than a rule and
+     keeps the card feeling like one surface. */
+  --offer-wash:rgba(188,122,78,.12);
+
+  position:relative;
+  /* Clips the watermark to the card's rounded corners. */
+  overflow:hidden;
   display:flex;flex-direction:column;align-items:flex-start;
   padding:26px 24px 24px;
   /* min-width:0 stops long words forcing the track wider than its
      share of the grid, which is what overflows at 320px. */
   min-width:0;
-  background:var(--paper);
-  border:1px solid var(--sage);
+  background:linear-gradient(180deg,var(--offer-wash) 0,rgba(255,255,255,0) 108px),var(--paper);
+  border:1px solid var(--offer-accent-line);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-sm);
   transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+/* Lifts the card's own content clear of the watermark, which is positioned and
+   would otherwise paint over the title and body. Declared before the watermark
+   rule so that absolute positioning still wins. */
+.offers-card>*{position:relative;}
+/* An oversized, barely-there restatement of the card's icon, bleeding out of
+   the top corner. This is what gives each card a face of its own without
+   another word of copy. */
+.offers-watermark{
+  position:absolute;
+  top:-18px;right:-18px;
+  width:118px;height:118px;
+  color:var(--offer-accent);
+  opacity:.07;
+  pointer-events:none;
+  transition:opacity .28s ease;
 }
 /* focus-within as well as hover: tabbing to the card's CTA should light the
    same card up that a mouse would. */
@@ -3436,26 +3473,28 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 .offers-card:focus-within{
   transform:translateY(-4px);
   box-shadow:var(--shadow-md);
-  border-color:var(--sage-deep);
+  border-color:var(--offer-accent);
 }
+.offers-card:hover .offers-watermark,
+.offers-card:focus-within .offers-watermark{opacity:.13;}
 
 .offers-icon{
   display:inline-flex;align-items:center;justify-content:center;
-  width:40px;height:40px;flex:none;
-  background:var(--sage-tint);
-  border:1px solid var(--sage-soft);
-  border-radius:var(--radius-sm);
-  color:var(--sage-deep);
+  width:44px;height:44px;flex:none;
+  background:var(--offer-accent-tile);
+  border:1px solid var(--offer-accent-line);
+  border-radius:12px;
+  color:var(--offer-accent-deep);
   margin-bottom:16px;
   transition:background .28s ease,border-color .28s ease,color .28s ease;
 }
 .offers-card:hover .offers-icon,
 .offers-card:focus-within .offers-icon{
-  background:var(--sage-deep);
-  border-color:var(--sage-deep);
+  background:var(--offer-accent-deep);
+  border-color:var(--offer-accent-deep);
   color:var(--paper);
 }
-.offers-icon svg{width:21px;height:21px;}
+.offers-icon svg{width:22px;height:22px;}
 
 .offers-title{
   font-family:var(--display);
@@ -3473,23 +3512,46 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   margin:12px 0 0;
 }
 
-/* Solid sage with white text, the same treatment as the header's "Book your
+/* Solid accent with white text, the same treatment as the header's "Book your
    visit" .btn — these are the row's actual actions, not footnotes. Stretched
    to the card width so three different label lengths still line up. */
 .offers-cta{
   display:flex;align-items:center;justify-content:center;gap:8px;
   align-self:stretch;
   margin-top:auto;
-  padding:13px 20px;
+  /* 12/19 rather than 13/20: the 1.5px outline is new, and the pill keeps the
+     height it had when it was a borderless fill. */
+  padding:12px 19px;
   font-family:var(--body);
   font-size:14.5px;font-weight:600;
-  background:var(--sage);
-  color:#fff;
+  /* Outlined, not filled. The card already carries the clay wash and the clay
+     watermark, and a solid clay pill on top of that left the whole card one
+     flat colour. The gradient is still here — it wipes in on hover.
+
+     background-image cannot be interpolated but background-size can, so the
+     gradient sits on the button at all times and is simply revealed from 0% to
+     100% width. */
+  background-image:linear-gradient(135deg,var(--offer-accent) 0%,var(--offer-accent-deep) 100%);
+  background-repeat:no-repeat;
+  background-size:0% 100%;
+  border:1.5px solid var(--offer-accent);
+  /* --offer-accent is 3.1:1 on the white card and fails AA at this size; the
+     deep step clears it at about 5.1:1. The border is a UI edge, not text, so
+     the lighter accent is fine there. */
+  color:var(--offer-accent-deep);
   border-radius:40px;
   text-decoration:none;
-  transition:background .25s ease;
+  /* Leaving: the label drops back to clay immediately as the fill empties. */
+  transition:background-size .34s ease,color .16s ease,border-color .25s ease;
 }
-.offers-cta:hover{background:var(--sage-deep);}
+.offers-cta:hover{
+  background-size:100% 100%;
+  border-color:var(--offer-accent-deep);
+  color:#fff;
+  /* Arriving: the label turns white just behind the wipe, so it is never white
+     on a stretch of pill the fill has not reached yet. */
+  transition:background-size .34s ease,color .16s ease .12s,border-color .25s ease;
+}
 /* margin-top:auto pins the button to the card foot, so the gap above it has to
    come from the body rather than the button's own margin. */
 .offers-body{margin-bottom:20px;}
@@ -3498,10 +3560,10 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
    hover target even when the pointer is nowhere near the CTA. */
 .offers-card:hover .offers-arrow,
 .offers-card:focus-within .offers-arrow{transform:translateX(4px);}
-.offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;}
+.offers-cta:focus-visible{outline:2px solid var(--offer-accent-deep);outline-offset:3px;}
 
 @media(prefers-reduced-motion:reduce){
-  .offers-card,.offers-icon,.offers-arrow{transition:none;}
+  .offers-card,.offers-icon,.offers-arrow,.offers-watermark,.offers-cta{transition:none;}
   .offers-card:hover,.offers-card:focus-within{transform:none;}
   .offers-card:hover .offers-arrow,
   .offers-card:focus-within .offers-arrow{transform:none;}
@@ -3532,8 +3594,14 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
     align-items:center;
     column-gap:12px;
     padding:18px;
+    /* Same wash, re-measured: the card is barely taller than the 108px fade of
+       the desktop one, which would tint it from top to bottom. */
+    background:linear-gradient(180deg,var(--offer-wash) 0,rgba(255,255,255,0) 70px),var(--paper);
   }
-  .offers-icon{grid-column:1;grid-row:1;width:36px;height:36px;margin-bottom:0;}
+  /* Pulled back so it reads as a corner mark rather than looming behind the
+     title, which sits top-right in this layout. */
+  .offers-watermark{width:88px;height:88px;top:-14px;right:-14px;}
+  .offers-icon{grid-column:1;grid-row:1;width:36px;height:36px;margin-bottom:0;border-radius:10px;}
   /* The title takes the slot the pill used to hold, beside the icon. */
   .offers-title{grid-column:2;grid-row:1;margin:0;font-size:17px;}
   /* margin-top:auto is a flex trick that would eat the free row space here. */
