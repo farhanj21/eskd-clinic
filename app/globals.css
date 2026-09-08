@@ -2318,6 +2318,9 @@ body{overflow-x:hidden;max-width:100%;}
   font-family:var(--display);
   font-size:52px;font-weight:500;line-height:1;
   color:var(--clay);
+  /* The figures count up from zero on scroll, so equal-width digits keep the
+     last frames from twitching as the numerals change. */
+  font-variant-numeric:tabular-nums;
 }
 .hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
 /* Each label ships in two lengths — the phone swaps to the short one in the

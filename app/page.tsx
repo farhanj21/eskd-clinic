@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
@@ -54,20 +55,43 @@ const faqs = [
 // at that width, and the longest of them sets the height of all three cards —
 // so the phone gets one-word labels instead. Same technique as the
 // .story-copy-full / .story-copy-short pair further down this page.
-const heroStats = [
-  { id: 'patients', value: '10,000+', label: 'Patients Cared For', short: 'Patients Treated' },
-  { id: 'years', value: '45+ years', label: 'Caring Locally', short: 'Caring Locally' },
+//
+// `count`, `decimals` and `suffix` drive the count-up: the figure sits in its
+// own <span data-count>, which the observer in components/ScrollEffects.tsx
+// animates from zero the first time the cards come into view. Anything that
+// must not be counted — the word "years", the stars — goes in `after`, outside
+// that span. The server renders the finished figure, so with JS off (or
+// reduced motion on) the cards read exactly as they always have.
+const heroStats: {
+  id: string
+  count: number
+  decimals?: number
+  suffix?: string
+  after?: ReactNode
+  label: string
+  short: string
+}[] = [
+  { id: 'patients', count: 10000, suffix: '+', label: 'Patients Cared For', short: 'Patients Treated' },
+  { id: 'years', count: 45, suffix: '+', after: ' years', label: 'Caring Locally', short: 'Caring Locally' },
   {
     id: 'rating',
-    value: (
+    count: 5,
+    decimals: 1,
+    after: (
       <>
-        5.0 <span className="proof-stars">★★★★★</span>
+        {' '}
+        <span className="proof-stars">★★★★★</span>
       </>
     ),
     label: 'Google Rating',
     short: 'Google',
   },
 ]
+
+/** "10000" + "+" → "10,000+" — the same formatting the counter's last frame
+    lands on, so the server-rendered figure and the animation agree. */
+const statText = (count: number, decimals = 0, suffix = '') =>
+  (decimals > 0 ? count.toFixed(decimals) : count.toLocaleString('en-AU')) + suffix
 
 // The six services in the "Care for every stage of life" grid. Each photo is
 // the same one the service's own page leads with, so the card and the page it
@@ -225,9 +249,14 @@ export default function Home() {
           would be clipped. */}
       <div className="container hero-stats-wrap">
         <dl className="hero-stats">
-          {heroStats.map(({ id, value, label, short }) => (
+          {heroStats.map(({ id, count, decimals, suffix, after, label, short }) => (
             <div className="hero-stat" key={id}>
-              <dt>{value}</dt>
+              <dt>
+                <span data-count={count} data-decimals={decimals} data-suffix={suffix}>
+                  {statText(count, decimals, suffix)}
+                </span>
+                {after}
+              </dt>
               <dd>
                 <span className="hero-stat-label-full">{label}</span>
                 <span className="hero-stat-label-short">{short}</span>
