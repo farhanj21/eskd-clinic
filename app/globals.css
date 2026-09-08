@@ -2394,17 +2394,26 @@ body{overflow-x:hidden;max-width:100%;}
   :root{--hero-overlap:20px;}
   /* Three across on the phone as well, so all three proof points are taken in
      at a glance instead of costing three screens of scroll. That leaves each
-     card about 101px wide at 375px and 83px at 320px, so the figure is sized
-     off the viewport rather than set in px, and the stars come down with it. */
-  .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px;}
-  .hero-stat{padding:14px 8px 13px;}
-  .hero-stat dt{font-size:clamp(15px,5.1vw,24px);}
-  /* "5.0 ★★★★★" is the widest of the three figures, and it is the one with no
-     break opportunity to spare. The 2px tracking the stars carry on the hero's
-     proof line costs 10px they cannot afford in an 83px card, and .42em keeps
-     the run inside the card at 320px. */
-  .hero-stat dt .proof-stars{font-size:.42em;letter-spacing:0;}
-  .hero-stat dd{margin:6px 0 0;font-size:clamp(10.5px,3.1vw,13px);line-height:1.3;}
+     card about 102px wide at 375px and 84px at 320px, so the figure is sized
+     off the viewport rather than set in px, and the stars come down with it.
+
+     The gap and the side padding are as tight as they are to buy the figure
+     width: every pixel taken off them is three pixels of room for the number,
+     which is what the whole card is for. */
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .hero-stat{padding:14px 6px 13px;}
+  /* The figure has to out-read the label, and being numerically larger is not
+     enough to manage it: Cormorant at weight 500 has a small x-height and fine
+     strokes, while the label below is semibold sans. At the previous 19/12 the
+     two looked the same size — the number needs roughly twice the label, not a
+     little more, before the hierarchy reads. */
+  .hero-stat dt{font-size:clamp(16px,5.9vw,23px);}
+  /* "45+ years" is now the widest of the three figures and sets the ceiling
+     above; "5.0 ★★★★★" is the one with no break opportunity to spare, so the
+     stars are cut to .4em and the 2px tracking they carry on the hero's proof
+     line — 10px an 84px card cannot afford — is dropped. */
+  .hero-stat dt .proof-stars{font-size:.4em;letter-spacing:0;}
+  .hero-stat dd{margin:5px 0 0;font-size:clamp(10px,2.8vw,12px);line-height:1.25;}
   /* One word each — "Patients", "Locally", "Google" — so every card is a
      single line of label tall at 320px as well as 375px. */
   .hero-stat-label-full{display:none;}
@@ -2448,13 +2457,28 @@ body{overflow-x:hidden;max-width:100%;}
    Each row is one flowing line of text: an inline h3 in clay, then the
    sentence. Colour alone separates the two, so a point costs ~70-95px on a
    phone instead of ~350-450px. */
-.care-points{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 22px;list-style:none;padding:0;margin:0;}
-.care-points li{background:var(--paper);border:1px solid var(--line-soft);border-radius:14px;padding:16px 20px;line-height:1.55;}
+/* The row gap is larger than it looks like it needs to be: --shadow-sm carries a
+   24px blur at an 8px offset, so at the 14px gap this used to have, each card's
+   shadow fell across the one below it and the column read as smudged rather
+   than stacked. */
+.care-points{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 22px;list-style:none;padding:0;margin:0;}
+/* These sit on .sec.alt, which is pure white, so the card and its ground are the
+   same colour and the shadow is doing all of the lifting — a hairline border
+   alone left them flat against the section. --line rather than --line-soft for
+   the same reason: the edge has to be visible for the depth to read. */
+.care-points li{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  line-height:1.55;
+  box-shadow:var(--shadow-sm);
+}
 .care-points h3{display:inline;font-size:18px;color:var(--clay-deep);}
 .care-points p{display:inline;font-size:15px;color:var(--ink-soft);}
 @media(max-width:820px){
-  .care-points{grid-template-columns:1fr;gap:10px;}
-  .care-points li{padding:14px 16px;}
+  .care-points{grid-template-columns:1fr;gap:14px;}
+  .care-points li{padding:15px 18px;}
   .care-points h3{font-size:16.5px;}
   .care-points p{font-size:14.5px;}
 }
@@ -2732,8 +2756,17 @@ body{overflow-x:hidden;max-width:100%;}
    because an inline font-size cannot be undone by a media query. Written as
    `.sec .oneline-head` so it outweighs the `.sec h2` size rules. */
 .sec .oneline-head{font-size:min(56px,4.3vw);white-space:nowrap;}
+/* Sized well above the 26px the generic `.sec h2` mobile rule would give these.
+   Both of these sections lead with an unusually long eyebrow — "Learn at your
+   own pace, no appointment needed" and "Your local dentist in Melbourne's inner
+   south-east" — which wraps to two or three lines of bold, wide-tracked
+   uppercase on a phone. Against that block, Cormorant's small x-height at 26px
+   read as the smaller of the two, and the heading lost the section.
+
+   The 35px cap is not a round number: it is what the desktop rule above resolves
+   to at 820px (4.3vw), so the type does not jump at the breakpoint. */
 @media(max-width:820px){
-  .sec .oneline-head{white-space:normal;font-size:clamp(26px,7vw,34px);}
+  .sec .oneline-head{white-space:normal;font-size:clamp(30px,9vw,35px);}
 }
 
 /* Fees */
@@ -2855,6 +2888,10 @@ body{overflow-x:hidden;max-width:100%;}
 .gt-treat label{display:flex;align-items:center;gap:9px;padding:11px 12px;border:1px solid rgba(255,255,255,.26);border-radius:10px;font-size:14px;cursor:pointer;transition:.15s;background:rgba(255,255,255,.05);color:var(--cream);}
 .gt-treat label:hover{background:rgba(255,255,255,.12);}
 .gt-treat input{accent-color:var(--clay);width:16px;height:16px;margin:0;flex:none;}
+/* The dropdown toggle for "I'm interested in" exists on a phone only; from
+   601px up the chips are shown outright and this is never rendered visible.
+   See the ≤600px rules further down for the collapsed state. */
+.gt-treat-toggle{display:none;}
 .gt-finehint{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:14px;}
 .gt-btn{display:block;width:100%;padding:15px 24px;background:var(--clay);color:#fff;border:none;border-radius:40px;font-family:var(--body);font-weight:700;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:18px;text-align:center;}
 .gt-btn:hover{background:var(--clay-deep);}
@@ -2883,6 +2920,42 @@ body{overflow-x:hidden;max-width:100%;}
 
 @media(max-width:860px){.gt-grid{grid-template-columns:1fr;}.gt-treat{grid-template-columns:repeat(2,1fr);}.gt-info,.gt-form{padding:40px 26px;}}
 @media(max-width:480px){.gt-row2{grid-template-columns:1fr;}.gt-treat{grid-template-columns:1fr;}}
+
+/* "I'm interested in" as a dropdown on a phone.
+
+   Nine treatments go one-per-row below 480px, which put most of a screen
+   between the question and the name fields. Collapsing them behind a summary
+   line keeps the field to one row until the reader wants it.
+
+   Deliberately the same checkboxes, not a <select>: the enquiry posts an array
+   of treatments and a native select is single-choice, while <select multiple>
+   is genuinely unusable on a touch screen. So this is a disclosure — the chips
+   are its panel — and the submitted data is identical at every width. */
+@media(max-width:600px){
+  .gt-treat-wrap{margin-top:8px;}
+  .gt-treat-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    width:100%;
+    padding:12px 14px;
+    border:1px solid rgba(255,255,255,.26);
+    border-radius:10px;
+    background:rgba(255,255,255,.05);
+    color:var(--cream);
+    font-family:var(--body);font-size:14px;font-weight:500;
+    text-align:left;
+    cursor:pointer;
+  }
+  .gt-treat-toggle:hover{background:rgba(255,255,255,.12);}
+  .gt-treat-chev{width:16px;height:16px;flex:none;transition:transform .2s ease;}
+  .gt-treat-wrap.is-open .gt-treat-chev{transform:rotate(180deg);}
+  /* The panel. Its grid-template-columns still comes from the rules above, so
+     it stays two-up at 600px and one-up below 480px. */
+  .gt-treat{display:none;}
+  .gt-treat-wrap.is-open .gt-treat{display:grid;}
+}
+@media(prefers-reduced-motion:reduce){
+  .gt-treat-chev{transition:none;}
+}
 
 /* Footer V2 */
 /* Text sits on the deep green (--sage-darker), so the cream is carried at a
