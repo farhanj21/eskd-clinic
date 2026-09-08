@@ -69,7 +69,7 @@ export default function BookingPage() {
               <p>Happy to help you find a time, answer a question, or sort an urgent appointment. Just say if you&apos;re nervous or it&apos;s been a while.</p>
               <a className="btn" href={telHref}>Call {business.telephoneDisplay}</a>
               <p style={{ fontSize: '14px', color: 'var(--ink-faint)', marginTop: '14px' }}>
-                Mon&ndash;Thu 8.30am&ndash;4.00pm &middot; Fri 8.30am&ndash;4.30pm
+                Mon 8.30am&ndash;5.00pm &middot; Tue&ndash;Wed 8.30am&ndash;6.00pm &middot; Thu&ndash;Fri 8.30am&ndash;5.00pm &middot; Sat 9.00am&ndash;4.00pm
               </p>
             </div>
             <div className="book-col reveal">
@@ -108,7 +108,7 @@ export default function BookingPage() {
             </details>
             <details>
               <summary>I can&apos;t see a time that suits. What now?</summary>
-              <p>Call us or request a callback above. We can often find a time that isn&apos;t shown online, including our monthly Saturday.</p>
+              <p>Call us or request a callback above. We can often find a time that isn&apos;t shown online, including Saturdays.</p>
             </details>
           </div>
         </div>
@@ -132,9 +132,10 @@ export default function BookingPage() {
                 On the corner of Orrong Road, where St Kilda East, Windsor, Armadale and Caulfield meet. Off-street parking off Orrong Road &middot; Trams 5 &amp; 64 and bus 220 nearby &middot; Armadale station a 10&ndash;15 minute walk.
               </p>
               <ul className="hours">
-                <li><span>Monday &ndash; Thursday</span><b>8.30am &ndash; 6.00pm</b></li>
-                <li><span>Friday</span><b>8.30am &ndash; 5.00pm</b></li>
-                <li><span>Saturday</span><b>10.00am &ndash; 4.00pm</b></li>
+                <li><span>Monday</span><b>8.30am &ndash; 5.00pm</b></li>
+                <li><span>Tuesday &ndash; Wednesday</span><b>8.30am &ndash; 6.00pm</b></li>
+                <li><span>Thursday &ndash; Friday</span><b>8.30am &ndash; 5.00pm</b></li>
+                <li><span>Saturday</span><b>9.00am &ndash; 4.00pm</b></li>
                 <li><span>Sunday</span><b>Closed</b></li>
               </ul>
             </div>

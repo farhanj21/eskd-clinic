@@ -117,14 +117,16 @@ export const localityLine = `${business.address.addressLocality} ${business.addr
 export const fullAddress = `${streetAddress}, ${localityLine}`
 
 /**
- * Weekly opening hours only.
- *
- * Saturday is deliberately omitted: it runs monthly, not weekly, so it would be
- * wrong as an OpeningHoursSpecification. Saturday stays in the visible hours.
+ * Weekly opening hours, as the OpeningHoursSpecification in the LocalBusiness
+ * JSON-LD. The visible hours lists are still written out by hand in app/page.tsx,
+ * app/contact/page.tsx, app/online-booking/page.tsx and components/GetInTouch.tsx
+ * — change those alongside this, or the markup and the page disagree.
  */
 export const openingHours = [
-  { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '08:30', closes: '16:00' },
-  { days: ['Friday'], opens: '08:30', closes: '16:30' },
+  { days: ['Monday'], opens: '08:30', closes: '17:00' },
+  { days: ['Tuesday', 'Wednesday'], opens: '08:30', closes: '18:00' },
+  { days: ['Thursday', 'Friday'], opens: '08:30', closes: '17:00' },
+  { days: ['Saturday'], opens: '09:00', closes: '16:00' },
 ] as const
 
 export const areasServed = [
