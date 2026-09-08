@@ -2568,6 +2568,13 @@ body{overflow-x:hidden;max-width:100%;}
    reword of this heading needs the 5cqw remeasured. */
 .fundfit{container-type:inline-size;}
 .fundfit h2{font-size:min(62px,5cqw);white-space:nowrap;}
+/* Below 820px the one-line rule stops paying for itself: 5cqw of a phone-width
+   container is ~17px, small enough that iOS text-size-adjust or a fallback face
+   pushes the nowrap line past the screen edge — it was clipping at "major".
+   Wrapping instead buys a readable ~28px over two or three lines. */
+@media(max-width:820px){
+  .fundfit h2{white-space:normal;font-size:clamp(26px,7.4vw,34px);}
+}
 
 /* Fees */
 .fees-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;}

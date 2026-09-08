@@ -539,7 +539,7 @@ export default function Home() {
             <h2 style={{ marginTop: '12px' }}>We welcome patients from <em>all</em> major health funds</h2>
           </div>
           <p style={{ maxWidth: '36em', margin: '14px auto 0' }}>
-            We can process eligible health-fund claims on the spot through HICAPS. Your rebate and out-of-pocket cost depend on your fund, policy and level of cover.
+            On-the-spot HICAPS claims for eligible health funds.
           </p>
           <HealthFundLogos />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>

@@ -39,15 +39,15 @@ export interface HealthFund {
 
 export const healthFunds: HealthFund[] = [
   {
+    name: 'Medibank',
+    logo: { src: '/assets/funds/Medibank_logo_2013.svg', width: 140, height: 45 },
+  },
+  {
     name: 'Bupa',
-    // A full-bleed white-on-blue tile at 1.8:1, against wordmarks at 2.4–3.6:1.
+    // A full-bleed white-on-blue tile at 1.8:1, against wordmarks at 2.4-3.6:1.
     // At the row's 30px default its lettering reads well under the marks either
     // side, because the tile's padding is part of the artwork. 44px matches them.
     logo: { src: '/assets/funds/bupa.webp', width: 290, height: 161, opticalHeight: 44 },
-  },
-  {
-    name: 'Medibank',
-    logo: { src: '/assets/funds/Medibank_logo_2013.svg', width: 140, height: 45 },
   },
   {
     name: 'HCF',
@@ -57,16 +57,19 @@ export const healthFunds: HealthFund[] = [
     name: 'nib',
     logo: { src: '/assets/funds/nib.webp', width: 351, height: 144 },
   },
+  // The five below have no artwork in /public/assets/funds yet, so they fall
+  // back to their name as text — see the `logo?` note above. Drop each fund's
+  // own supplied file in and add a `logo` block to promote it to a mark.
+  { name: 'AHM' },
+  { name: 'HBF' },
+  { name: 'GMHBA' },
   {
     name: 'Australian Unity',
     logo: { src: '/assets/funds/australian-unity-logo.webp', width: 599, height: 166 },
   },
-  {
-    name: 'CBHS',
-    // Stacked lockup (CBHS over HEALTH) at 1.8:1, so it needs the same
-    // treatment as Bupa to stop the two-line type reading small.
-    logo: { src: '/assets/funds/cbhs.webp', width: 739, height: 415, opticalHeight: 42 },
-  },
+  { name: 'Teachers Health' },
+  { name: 'Defence Health' },
+  // CBHS artwork is still at /assets/funds/cbhs.webp if it needs to come back.
 ]
 
 /** The closing tile. Always text — it stands for every fund not named above. */
