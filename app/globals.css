@@ -3344,6 +3344,9 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
      Stacking them full-width reads better than a ragged centred pair. */
   .ctaband-actions{flex-direction:column;align-items:stretch;}
   .ctaband-actions .btn{width:100%;}
+  /* Same reason: "See how we help nervous patients" is too long for one nowrap
+     line in a 328px content column. */
+  .nervous-cta{white-space:normal;display:block;text-align:center;}
 }
 
 /* ── Home offers row ─────────────────────────────────────────

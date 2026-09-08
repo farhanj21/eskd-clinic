@@ -262,9 +262,6 @@ export default function Home() {
           <div style={{ textAlign: 'center', marginTop: '36px' }} className="reveal">
             <Link href="/services" className="btn btn-ghost">See all services</Link>
           </div>
-          <p style={{ textAlign: 'center', marginTop: '18px', fontSize: '14.5px', color: 'var(--ink-faint)' }} className="reveal">
-            Implants, Invisalign and cosmetic work included.
-          </p>
         </div>
       </section>
 
@@ -421,16 +418,12 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <div className="chips chips-2">
-              <span className="chip">Happy gas and sedation options</span>
-              <span className="chip">Calm, unhurried pacing</span>
-              <span className="chip">A coaching-informed approach</span>
-              <span className="chip">Stop any time, no questions asked</span>
+            <p style={{ marginTop: '16px', fontSize: '17px' }}>
+              We take things slowly, explain everything clearly, and you can stop at any time. No judgement. No pressure.
+            </p>
+            <div style={{ marginTop: '24px' }}>
+              <Link href="/nervous-patients" className="btn btn-clay nervous-cta">See how we help nervous patients</Link>
             </div>
-            <blockquote className="nervous-proof">
-              Most of our most anxious patients tell us the hardest part was making the booking. Once they are in the chair and know they can stop any time, the fear starts to settle.
-              <cite>What nervous patients often tell us</cite>
-            </blockquote>
           </div>
         </div>
       </section>
