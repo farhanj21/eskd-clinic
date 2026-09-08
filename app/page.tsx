@@ -48,8 +48,8 @@ const faqs = [
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
 const heroStats = [
-  { id: 'patients', value: '10,000+', label: 'Patients Served' },
-  { id: 'years', value: '45+', label: 'Years In The Local Area' },
+  { id: 'patients', value: '10,000+', label: 'Patients Cared For' },
+  { id: 'years', value: '45+', label: 'Caring Locally' },
   {
     id: 'rating',
     value: (
@@ -57,7 +57,7 @@ const heroStats = [
         5.0 <span className="proof-stars">★★★★★</span>
       </>
     ),
-    label: 'Rating on Google',
+    label: 'Google Rating',
   },
 ]
 
@@ -115,9 +115,7 @@ const homeServices = [
 // Kept plain and descriptive — no superlatives or outcome claims, for AHPRA
 // safety.
 const summarySentence =
-  `${business.name} is a gentle family and emergency dentist at ${business.address.streetAddress}, ` +
-  `caring for ${business.serviceRegion} since ${business.foundedYear}, ` +
-  `with a comprehensive first visit.`
+  `Gentle, thorough dental care for individuals and families, from regular check-ups to emergencies and comprehensive dental care.`
 
 // One connected JSON-LD @graph for the home page: the practice, the four named
 // clinicians, the FAQ, and the website. Every fact comes from lib/business.ts.
@@ -191,22 +189,22 @@ export default function Home() {
         <div className="container container-wide hero-video-inner">
           <div className="hero-video-copy">
             <div className="eyebrow">Skilled, heartfelt dentistry</div>
-            <h1><span style={{ whiteSpace: 'nowrap' }}>Quality dentistry</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
+            <h1><span style={{ whiteSpace: 'nowrap' }}>Your local dentist</span> <em style={{ whiteSpace: 'nowrap' }}>in St Kilda East</em></h1>
             <p className="lead">{summarySentence}</p>
             <div className="hero-cta">
               <Link href="/online-booking" className="btn">Book your visit</Link>
               <a href={telHref} className="btn btn-ghost-light">Call {business.telephoneDisplay}</a>
             </div>
             <div className="hero-proof">
-              <span>15+ suburbs served</span>
-              <span className="proof-dot" />
               <span>Off-street parking</span>
               <span className="proof-dot" />
               <span>HICAPS available</span>
+              <span className="proof-dot" />
+              <span>Caring locally since 1980</span>
             </div>
             <p className="hero-video-note">
               <Link href="/new-patient-comprehensive-care-visit">
-                Experience the New Patient Comprehensive Care Visit &rarr;
+                New patient? See what your first visit includes &rarr;
               </Link>
             </p>
           </div>
