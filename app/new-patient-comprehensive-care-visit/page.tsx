@@ -320,6 +320,8 @@ export default function OfferPage() {
                 objectPosition="center 60%"
                 sizes="(max-width: 900px) 100vw, 34vw"
               />
+              <h4>Our team</h4>
+              <span>Caring for St Kilda East since 1980</span>
             </div>
             {clinicians.map((c) => (
               <div className="team-member" key={c.slug}>

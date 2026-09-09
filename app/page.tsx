@@ -483,6 +483,8 @@ export default function Home() {
                 objectPosition="center 60%"
                 sizes="(max-width: 900px) 100vw, 34vw"
               />
+              <h4>Our team</h4>
+              <span>Caring for St Kilda East since 1980</span>
             </div>
             <div className="team-member">
               <Photo

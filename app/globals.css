@@ -2903,11 +2903,11 @@ body{overflow-x:hidden;max-width:100%;}
    at the same scale across all four regardless of the source file. Per-person
    framing is set with objectPosition in app/page.tsx, never by changing this. */
 .team-member .ph{min-height:0;aspect-ratio:3/4;margin-bottom:20px;border-radius:var(--radius-card);}
-.team-member h4{font-size:22px;line-height:1.25;margin-bottom:5px;}
-.team-member span{font-size:15px;color:var(--clay-deep);font-weight:600;letter-spacing:.01em;}
+.team-member h4,.team-row-group h4{font-size:22px;line-height:1.25;margin-bottom:5px;}
+.team-member span,.team-row-group span{font-size:15px;color:var(--clay-deep);font-weight:600;letter-spacing:.01em;}
 .lang-band{margin-top:30px;background:var(--sage-tint);border-radius:var(--radius-card);padding:22px 26px;font-size:15px;}
 .lang-band b{color:var(--sage-deep);}
-@media(max-width:1024px){.team-grid-v2{gap:26px;}.team-member h4{font-size:20px;}}
+@media(max-width:1024px){.team-grid-v2{gap:26px;}.team-member h4,.team-row-group h4{font-size:20px;}}
 
 /* ── Team: the group shot and the four portraits as one row ──
    Used by the home page and /new-patient-comprehensive-care-visit, which show
@@ -2932,7 +2932,7 @@ body{overflow-x:hidden;max-width:100%;}
    splits what the gaps leave, so the frame is exactly 1.8x as wide. 1.8 / (4/3)
    = 1.35 is the ratio that lands it on exactly their height — landscape, so the
    photograph is not cropped to a portrait it was never shot for. */
-.team-row-group .ph{min-height:0;aspect-ratio:27/20;border-radius:var(--radius-card);}
+.team-row-group .ph{min-height:0;aspect-ratio:27/20;margin-bottom:20px;border-radius:var(--radius-card);}
 
 @media(min-width:1180px){
   /* Wider than its parent and still centred: 100% is the container's content
