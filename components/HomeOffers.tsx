@@ -34,7 +34,7 @@ const OFFERS: Offer[] = [
     icon: 'heart',
   },
   {
-    title: 'Dental problem or emergency',
+    title: 'Emergency',
     body: 'Pain, a broken tooth or something that just doesn’t feel right.',
     cta: 'Get urgent help',
     href: '/emergency-dentist',

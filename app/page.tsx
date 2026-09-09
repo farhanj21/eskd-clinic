@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
+import CarePoints from '@/components/CarePoints'
+import CarouselNav from '@/components/CarouselNav'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
 import HealthFundLogos from '@/components/HealthFundLogos'
@@ -46,22 +48,22 @@ const faqs = [
   },
 ]
 
-// The three proof points that sit in cards across the foot of the hero,
+// The three proof points that sit in one panel across the foot of the hero,
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
 //
-// `short` takes over below 600px, where the three cards sit side by side and
+// `short` takes over below 600px, where the three cells sit side by side and
 // each is only about 100px wide. Every full label wraps to two or three lines
-// at that width, and the longest of them sets the height of all three cards —
-// so the phone gets one-word labels instead. Same technique as the
+// at that width, and the longest of them sets the height of the panel — so the
+// phone gets one-word labels instead. Same technique as the
 // .story-copy-full / .story-copy-short pair further down this page.
 //
 // `count`, `decimals` and `suffix` drive the count-up: the figure sits in its
 // own <span data-count>, which the observer in components/ScrollEffects.tsx
-// animates from zero the first time the cards come into view. Anything that
+// animates from zero the first time the panel comes into view. Anything that
 // must not be counted — the word "years", the stars — goes in `after`, outside
 // that span. The server renders the finished figure, so with JS off (or
-// reduced motion on) the cards read exactly as they always have.
+// reduced motion on) the panel reads exactly as it always has.
 const heroStats: {
   id: string
   count: number
@@ -208,7 +210,11 @@ const homeSchema = {
 
 export default function Home() {
   return (
-    <main>
+    /* .home scopes the phone-width overrides at the foot of globals.css. The
+       home page's mobile layout was redesigned against docs/Mobile 1-2.jpeg,
+       and every rule in that block is inside a media query and prefixed with
+       this class, so neither the desktop layout nor any other page moves. */
+    <main className="home">
       {/* The hero poster is a CSS background, so it isn't discoverable until the
           stylesheet parses. Preloading it keeps it the LCP candidate. */}
       <link rel="preload" as="image" href="/assets/video/hero-clinic-poster.webp" fetchPriority="high" />
@@ -243,9 +249,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stat cards straddling the foot of the hero. Deliberately a sibling of
+      {/* Stat panel straddling the foot of the hero. Deliberately a sibling of
           .hero-video rather than a child: that section is overflow:hidden, so
-          anything pushed past its bottom edge — the cards and their shadow —
+          anything pushed past its bottom edge — the panel and its shadow —
           would be clipped. */}
       <div className="container hero-stats-wrap">
         <dl className="hero-stats">
@@ -276,8 +282,13 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">How we can help</div>
-            <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Care for every stage of life</h2>
-            <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
+            {/* A step above `.sec h2` because this is the page's main "can we
+                help you?" beat, but brought in from clamp(38px,4.8vw,62px):
+                against the new 30–46px H2 scale, and inside the narrower
+                container, 62px was a different type system rather than an
+                emphasis within one. */}
+            <h2 style={{ fontSize: 'clamp(34px, 4.4vw, 52px)' }}>Care for every stage of life</h2>
+            <p style={{ marginTop: '18px', fontSize: '17.5px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
               From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after St Kilda East and the surrounding suburbs.
             </p>
           </div>
@@ -290,8 +301,10 @@ export default function Home() {
                   sizes="(max-width: 820px) 100vw, 33vw"
                 />
                 <div className="svc-item-body">
-                  <h4 style={{ fontWeight: 700 }}>{title}</h4>
+                  <h4 style={{ fontWeight: 600 }}>{title}</h4>
                   <p>{blurb}</p>
+                  {/* The arrow is drawn by .svc-item-more::after, so it can
+                      slide on hover without the label moving with it. */}
                   <span className="svc-item-more">Learn more</span>
                 </div>
               </Link>
@@ -342,7 +355,7 @@ export default function Home() {
               <Link href="/online-booking" className="btn">Book an appointment</Link>
               <a href={telHref} className="btn btn-ghost ctaband-ghost">Call {business.telephoneDisplay}</a>
             </div>
-            <p style={{ margin: '20px 0 0', fontSize: '14.5px' }}>{fullAddress}</p>
+            <p style={{ margin: '24px 0 0', fontSize: '15.5px' }}>{fullAddress}</p>
           </div>
         </div>
       </section>
@@ -365,24 +378,10 @@ export default function Home() {
               However long it&apos;s been, you&apos;re in the right place. No judgement. No pressure.
             </p>
           </div>
-          <ul className="care-points">
-            <li className="reveal">
-              <h3>The Full Picture</h3>{' '}
-              <p>We look beyond one tooth to your overall dental health.</p>
-            </li>
-            <li className="reveal">
-              <h3>No Shame, No Judgement</h3>{' '}
-              <p>Whatever state things are in, we&apos;ll help you move forward.</p>
-            </li>
-            <li className="reveal">
-              <h3>At Your Pace</h3>{' '}
-              <p>We explain your options clearly and never rush you.</p>
-            </li>
-            <li className="reveal">
-              <h3>Comfort Matters</h3>{' '}
-              <p>Gentle care for nervous or anxious patients.</p>
-            </li>
-          </ul>
+          {/* Same four points and the same run-in cards on a wide screen; on a
+              phone they become the reference's tappable pills. The words live in
+              the component now. */}
+          <CarePoints />
         </div>
       </section>
 
@@ -416,14 +415,19 @@ export default function Home() {
               {/* No marginTop: .offer-meta already carries a 28px bottom margin,
                   and an inline-block button does not collapse margins with it —
                   the two stacked to a 48px gap, against the 28px rhythm the rest
-                  of the card uses. */}
+                  of the card uses. On a phone .offer-meta is hidden and the
+                  button takes its own margin instead — see globals.css. */}
               <Link href="/online-booking" className="btn" style={{ display: 'inline-block' }}>Book your visit</Link>
-              <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
+              <p style={{ fontSize: '13.5px', marginTop: '16px', color: 'var(--ink-soft)' }}>
                 Everything included. Eligible health-fund claims can be processed through HICAPS.
               </p>
             </div>
+            {/* The frame's overrides are a class, not an inline style: inline
+                won the cascade against the stacked mobile rule below 820px, so
+                min-height:100% resolved against an auto-height row and the
+                photo collapsed to nothing on a phone. */}
             <Photo
-              style={{ borderRadius: 0, minHeight: '100%' }}
+              className="offer-photo"
               src="/assets/home/comprehensive2.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
      
@@ -446,10 +450,10 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <p style={{ marginTop: '16px', fontSize: '17px' }}>
+            <p style={{ marginTop: '24px', fontSize: '18.5px', maxWidth: '34em' }}>
               We take things slowly, explain everything clearly, and you can stop at any time. No judgement. No pressure.
             </p>
-            <div style={{ marginTop: '24px' }}>
+            <div style={{ marginTop: '36px' }}>
               <Link href="/nervous-patients" className="btn btn-clay nervous-cta">See how we help nervous patients</Link>
             </div>
           </div>
@@ -458,65 +462,79 @@ export default function Home() {
 
 
       {/* TEAM */}
+      {/* .team-row — the group shot and the four portraits as one row, shared
+          with /new-patient-comprehensive-care-visit, which shows the same five
+          photographs. The group frame takes whatever width the four pinned
+          portraits leave it; see the rules in globals.css. */}
       <section className="sec">
         <div className="container">
-          <div className="team-lead-grid">
-            <Photo
-              tall
-              className="reveal"
-              src="/assets/shared/meet-our-team.webp"
-              alt="The East St Kilda Dental team standing together outside the clinic entrance"
-              objectPosition="center top"
-              sizes="(max-width: 820px) 100vw, 40vw"
-            />
-            <div className="reveal">
-              <div className="eyebrow">The people who&apos;ll care for you</div>
-              <h2>A gentle team you&apos;ll get to <em>know</em></h2>
-              </div>
+          <div className="sec-head center reveal">
+            <div className="eyebrow">The people who&apos;ll care for you</div>
+            <h2>A gentle team you&apos;ll get to <em>know</em></h2>
           </div>
-          <div className="team-grid-v2">
-            <div className="team-member reveal">
+          <div className="team-row reveal">
+            {/* The team stands across the lower two thirds of this photograph —
+                everything above them is shopfront. 80% pulls the crop down so
+                the row of people fills the frame, heads to feet. */}
+            <div className="team-row-group">
+              <Photo
+                src="/assets/shared/meet-our-team.webp"
+                alt="The East St Kilda Dental team standing together outside the clinic entrance"
+                objectPosition="center 60%"
+                sizes="(max-width: 900px) 100vw, 34vw"
+              />
+              <h4>Our team</h4>
+              <span>Caring for St Kilda East since 1980</span>
+            </div>
+            {/* display:contents above 600px, so these four stay direct grid
+                items of .team-row; on a phone the wrapper becomes the snap
+                scroller the dots below drive. */}
+            <div className="team-row-people" id="home-team">
+            <div className="team-member">
               <Photo
                 src="/assets/team/anbar-ganatra.webp"
                 alt="Dr Anbar Ganatra – Cosmetic & General Dentist"
                 objectPosition="center top"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Dr Anbar Ganatra</h4>
               <span>Cosmetic &amp; General Dentist</span>
             </div>
-            <div className="team-member reveal">
+            <div className="team-member">
               <Photo
                 src="/assets/team/edmund-goldman.webp"
                 alt="Dr Edmund Goldman – Dentist"
                 objectPosition="center top"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Dr Edmund Goldman</h4>
               <span>Dentist</span>
             </div>
-            <div className="team-member reveal">
+            <div className="team-member">
               <Photo
                 src="/assets/team/jarrod-dean.webp"
                 alt="Dr Jarrod Dean – Dentist"
                 objectPosition="center top"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Dr Jarrod Dean</h4>
               <span>Dentist</span>
             </div>
-            <div className="team-member reveal">
+            <div className="team-member">
               <Photo
                 src="/assets/team/michelle-callaghan.webp"
                 alt="Michelle Callaghan – Hygienist"
                 objectPosition="40% 95%"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Michelle Callaghan</h4>
               <span>Hygienist</span>
             </div>
+            </div>
           </div>
-          <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
+          {/* Phone only — display:none from 601px up. */}
+          <CarouselNav targetId="home-team" count={4} itemSelector=".team-member" className="team-nav" />
+          <div className="team-row-cta reveal">
             <Link href="/about/our-team" className="btn btn-ghost">Meet Our Team</Link>
           </div>
           {/* <div className="lang-band reveal">
@@ -570,7 +588,15 @@ export default function Home() {
       </section>
 
       {/* FEES */}
-      <section className="sec alt">
+      {/* Plain `.sec`, not `.sec.alt`. Education directly below is white, and
+          with Fees white as well the page ran as one unbroken white column
+          from the health-fund band all the way to the areas grid — the only
+          place on the page where two neighbouring sections shared a ground.
+          Flipping this one restores the alternation for the whole tail, and it
+          is the right one to flip: Fees is an image-led split with nothing on
+          it that needs a white ground to lift off, while the white article
+          cards below and the white suburb pills further down both do. */}
+      <section className="sec">
         <div className="container fees-grid">
           <div className="reveal">
             <div className="eyebrow">Honest about cost</div>
@@ -654,7 +680,9 @@ export default function Home() {
               Clear, judgement-free guides to the questions we hear most, from bleeding gums to nervous visits. Understanding your mouth is the first step to looking after it.
             </p>
           </div>
-          <div className="edu-grid">
+          {/* id + .svc are the contract with CarouselNav below: on a phone
+              this grid becomes a snap-scrolling row and the dots track it. */}
+          <div className="edu-grid" id="home-learn">
             <Link
               href="/learn/havent-been-to-the-dentist-in-years"
               className="svc reveal"
@@ -672,7 +700,7 @@ export default function Home() {
               </span>
               <h4>Haven&apos;t been in years? Here&apos;s exactly what to expect.</h4>
               <p>A calm, step-by-step walk-through for an easier return.</p>
-              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '15px' }}>
                 Read article &rarr;
               </span>
             </Link>
@@ -693,7 +721,7 @@ export default function Home() {
               </span>
               <h4>Why are my gums bleeding?</h4>
               <p>What bleeding gums are trying to tell you, and when to act.</p>
-              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '15px' }}>
                 Read article &rarr;
               </span>
             </Link>
@@ -714,11 +742,13 @@ export default function Home() {
               </span>
               <h4>How Often Should You Really See the Dentist?</h4>
               <p>What actually determines your ideal check-up schedule.</p>
-              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '15px' }}>
                 Read article &rarr;
               </span>
             </Link>
           </div>
+          {/* Phone only — display:none from 601px up. */}
+          <CarouselNav targetId="home-learn" count={3} itemSelector=".svc" className="edu-nav" />
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
             <Link href="/learn" className="btn btn-ghost">Browse the full library</Link>
           </div>
@@ -754,25 +784,71 @@ export default function Home() {
       </section>
 
       {/* LOCATION */}
-      <section className="sec alt">
+      <section className="sec alt" id="location">
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">Finding us</div>
             <h2>Easy to get to, easy to park</h2>
           </div>
           <div className="loc-grid">
+            {/* No inline min-height: the frame is sized by .loc-grid .ph in
+                globals.css, which an inline style would pin past every
+                breakpoint step-down. */}
             <MapEmbed
               className="ph reveal"
-              style={{ minHeight: '340px' }}
               title={`Map to ${business.name}, ${fullAddress}`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(`${business.name}, ${fullAddress}`)}&output=embed`}
             />
             <div className="reveal">
               <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>{fullAddress}</b></p>
-              <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>
+              <p style={{ fontSize: '15.5px', marginBottom: '22px' }}>
                 Off-street parking off Orrong Road · Trams 5 &amp; 64 and bus 220 nearby · Armadale station a 10–15 min walk · Wheelchair accessible
               </p>
-              <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>
+              {/* The same four facts as the line above, cut to a length that
+                  fits one line beside the map. Phone only — display:none from
+                  601px up, where the sentence above is what shows. Same
+                  technique as .story-copy-full / .story-copy-short. */}
+              <ul className="loc-points">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 16.5h14M6.5 16.5V19H4.8v-2.5M17.5 16.5V19h1.7v-2.5" />
+                    <path d="M4.5 16.5v-4l1.8-4.3A1.6 1.6 0 0 1 7.8 7h8.4a1.6 1.6 0 0 1 1.5 1.2l1.8 4.3v4Z" />
+                    <path d="M7 13.6h.01M17 13.6h.01" />
+                  </svg>
+                  Off-street parking
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="6" y="3.5" width="12" height="13" rx="2.5" />
+                    <path d="M6 9.5h12M9.5 3.5V2M14.5 3.5V2M8.5 20l1.8-3.5M15.5 20l-1.8-3.5M7 20h10" />
+                    <path d="M9.5 13h.01M14.5 13h.01" />
+                  </svg>
+                  Trams 5 &amp; 64 nearby
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M13 4.5c-3.6 0-6.5 1-6.5 3.5v6a2.5 2.5 0 0 0 2.5 2.5h8a2.5 2.5 0 0 0 2.5-2.5V8c0-2.5-2.9-3.5-6.5-3.5Z" />
+                    <path d="M6.5 10.5h13M10 20l-1.5-3.5M16 20l1.5-3.5M9 20h7" />
+                    <path d="M10 13.6h.01M16 13.6h.01" />
+                  </svg>
+                  Near Armadale station
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="4.5" r="1.8" />
+                    <path d="M9 8.2h6M12 8v5.5h4.2l2 5.5M12 13.5H9.2a3.6 3.6 0 1 0 3.4 4.7" />
+                  </svg>
+                  Wheelchair accessible
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M3 9.5h18M9.5 3v18" />
+                    <path d="M14.5 3v3.5M14.5 14v7M3 14h3.5" />
+                  </svg>
+                  Cnr Dandenong &amp; Orrong
+                </li>
+              </ul>
+              <p style={{ fontSize: '15.5px', marginBottom: '22px' }}>
                 On the corner of Dandenong and Orrong Roads, easy to reach by car, tram or train.
               </p>
               <ul className="hours-list">
@@ -788,7 +864,9 @@ export default function Home() {
       </section>
 
       {/* GET IN TOUCH */}
-      <GetInTouch variant="default" id="contact" />
+      {/* compactMobile — the phone layout holds this form in a narrow column;
+          see the prop's note in components/GetInTouch.tsx. */}
+      <GetInTouch variant="default" id="contact" compactMobile />
     </main>
   )
 }
