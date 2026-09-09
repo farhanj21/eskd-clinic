@@ -21,7 +21,7 @@
  * anywhere on the site.
  */
 
-import ReviewCarouselNav from './ReviewCarouselNav'
+import CarouselNav from './CarouselNav'
 
 interface Review {
   quote: string
@@ -141,7 +141,12 @@ export default function ReviewMarquee() {
         </div>
       </div>
       {/* Phone only — display:none from 601px up. See globals.css. */}
-      <ReviewCarouselNav targetId="home-reviews" count={REVIEWS.length} />
+      <CarouselNav
+        targetId="home-reviews"
+        count={REVIEWS.length}
+        itemSelector=".rmq-track > .rmq-card"
+        className="rmq-nav"
+      />
     </div>
   )
 }

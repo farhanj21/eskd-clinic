@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
+import CarePoints from '@/components/CarePoints'
+import CarouselNav from '@/components/CarouselNav'
 import Photo from '@/components/Photo'
 import GetInTouch from '@/components/GetInTouch'
 import HealthFundLogos from '@/components/HealthFundLogos'
@@ -376,24 +378,10 @@ export default function Home() {
               However long it&apos;s been, you&apos;re in the right place. No judgement. No pressure.
             </p>
           </div>
-          <ul className="care-points">
-            <li className="reveal">
-              <h3>The Full Picture</h3>{' '}
-              <p>We look beyond one tooth to your overall dental health.</p>
-            </li>
-            <li className="reveal">
-              <h3>No Shame, No Judgement</h3>{' '}
-              <p>Whatever state things are in, we&apos;ll help you move forward.</p>
-            </li>
-            <li className="reveal">
-              <h3>At Your Pace</h3>{' '}
-              <p>We explain your options clearly and never rush you.</p>
-            </li>
-            <li className="reveal">
-              <h3>Comfort Matters</h3>{' '}
-              <p>Gentle care for nervous or anxious patients.</p>
-            </li>
-          </ul>
+          {/* Same four points and the same run-in cards on a wide screen; on a
+              phone they become the reference's tappable pills. The words live in
+              the component now. */}
+          <CarePoints />
         </div>
       </section>
 
@@ -677,7 +665,9 @@ export default function Home() {
               Clear, judgement-free guides to the questions we hear most, from bleeding gums to nervous visits. Understanding your mouth is the first step to looking after it.
             </p>
           </div>
-          <div className="edu-grid">
+          {/* id + .svc are the contract with CarouselNav below: on a phone
+              this grid becomes a snap-scrolling row and the dots track it. */}
+          <div className="edu-grid" id="home-learn">
             <Link
               href="/learn/havent-been-to-the-dentist-in-years"
               className="svc reveal"
@@ -742,6 +732,8 @@ export default function Home() {
               </span>
             </Link>
           </div>
+          {/* Phone only — display:none from 601px up. */}
+          <CarouselNav targetId="home-learn" count={3} itemSelector=".svc" className="edu-nav" />
           <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
             <Link href="/learn" className="btn btn-ghost">Browse the full library</Link>
           </div>

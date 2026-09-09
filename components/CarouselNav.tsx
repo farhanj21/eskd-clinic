@@ -1,32 +1,41 @@
 'use client'
 
 /**
- * Arrows and dots for the review row — phone only.
+ * Arrows and dots for a phone-width carousel — the review row and the article
+ * row both use it.
  *
- * Above 600px the row is the drifting marquee it has always been and this
- * whole block is `display:none`, so nothing here touches the desktop layout.
- * At phone width globals.css turns the same markup into a snap-scrolling
- * carousel showing one review at a time, and these are its controls.
+ * Above 600px the rows are what they have always been (a drifting marquee, a
+ * three-up grid) and this whole block is `display:none`, so nothing here
+ * touches the desktop layout. At phone width globals.css turns the same markup
+ * into a snap-scrolling carousel, and these are its controls.
  *
- * It drives the scroller through the DOM rather than owning it, so
- * ReviewMarquee stays a server component and the six quotes are never shipped
- * to the browser as JSON. The only contract between the two is `targetId`,
- * which is the id on the scrolling `.rmq` element, and the `.rmq-card` class on
- * the cards inside it.
+ * It drives the scroller through the DOM rather than owning it, so the sections
+ * that use it stay server components and their content is never shipped to the
+ * browser as JSON. The contract is `targetId` — the id on the scrolling
+ * element — plus `itemSelector`, which finds the cards inside it.
  */
 
 import { useCallback, useEffect, useState } from 'react'
 
-export default function ReviewCarouselNav({ targetId, count }: { targetId: string; count: number }) {
+interface CarouselNavProps {
+  /** id of the scrolling element. */
+  targetId: string
+  /** How many cards, i.e. how many dots. */
+  count: number
+  /** Finds the cards within the scroller. */
+  itemSelector: string
+  /** Wrapper class, so each row can size and place its own controls. */
+  className?: string
+}
+
+export default function CarouselNav({ targetId, count, itemSelector, className = 'cnav' }: CarouselNavProps) {
   const [active, setActive] = useState(0)
 
-  /* The cards are the track's DIRECT children, which is what leaves the
-     marquee's duplicate lap — it lives inside .rmq-loop — out of the count. */
   const scroller = useCallback(() => {
     const el = document.getElementById(targetId)
     if (!el) return null
-    return { el, items: Array.from(el.querySelectorAll<HTMLElement>('.rmq-track > .rmq-card')) }
-  }, [targetId])
+    return { el, items: Array.from(el.querySelectorAll<HTMLElement>(itemSelector)) }
+  }, [targetId, itemSelector])
 
   /* Which card is under the middle of the viewport, recomputed on scroll and
      coalesced to one frame so a flick doesn't run this on every scroll event. */
@@ -76,36 +85,36 @@ export default function ReviewCarouselNav({ targetId, count }: { targetId: strin
   }
 
   return (
-    <div className="rmq-nav">
+    <div className={className}>
       <button
         type="button"
-        className="rmq-arrow rmq-arrow-prev"
+        className="cnav-arrow cnav-arrow-prev"
         onClick={() => go(active - 1)}
         disabled={active === 0}
-        aria-label="Previous review"
+        aria-label="Previous"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M15 6l-6 6 6 6" />
         </svg>
       </button>
-      <div className="rmq-dots">
+      <div className="cnav-dots">
         {Array.from({ length: count }, (_, i) => (
           <button
             key={i}
             type="button"
-            className={`rmq-dot${i === active ? ' is-active' : ''}`}
+            className={`cnav-dot${i === active ? ' is-active' : ''}`}
             onClick={() => go(i)}
-            aria-label={`Show review ${i + 1} of ${count}`}
+            aria-label={`Show item ${i + 1} of ${count}`}
             aria-current={i === active ? 'true' : undefined}
           />
         ))}
       </div>
       <button
         type="button"
-        className="rmq-arrow rmq-arrow-next"
+        className="cnav-arrow cnav-arrow-next"
         onClick={() => go(active + 1)}
         disabled={active === count - 1}
-        aria-label="Next review"
+        aria-label="Next"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M9 6l6 6-6 6" />
