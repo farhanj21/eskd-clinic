@@ -45,7 +45,7 @@ const LEGACY_PATHS: Record<string, string> = {
   '/emergency': '/emergency-dentist',
   '/gentle': '/nervous-patients',
   '/super': '/using-your-super',
-  '/first-visit': '/your-first-visit',
+  '/first-visit': '/new-patient-comprehensive-care-visit',
   '/ourwork': '/our-work',
   '/about/story': '/about/our-story',
   '/about/team': '/about/our-team',
@@ -64,6 +64,12 @@ const LEGACY_PATHS: Record<string, string> = {
   // Comprehensive Care Visit — so both of its URLs point at that page.
   '/campaign': '/new-patient-comprehensive-care-visit',
   '/take-care-of-you': '/new-patient-comprehensive-care-visit',
+
+  // /your-first-visit was the walk-through of a first appointment, live and
+  // indexable until it was removed on 2026-09-08. The Comprehensive Care Visit
+  // page covers the same ground, so it takes both this URL and the older
+  // /first-visit that used to redirect here.
+  '/your-first-visit': '/new-patient-comprehensive-care-visit',
 }
 
 const nextConfig: NextConfig = {

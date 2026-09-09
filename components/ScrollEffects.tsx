@@ -3,13 +3,23 @@
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
-function countUp(el: HTMLElement, target: number, suffix: string, duration = 1600) {
+// `decimals` keeps the 5.0 Google rating on the home page reading as "5.0" the
+// whole way up rather than snapping between whole numbers. The locale is
+// pinned so the last frame matches the figure the server rendered.
+function countUp(
+  el: HTMLElement,
+  target: number,
+  suffix: string,
+  decimals = 0,
+  duration = 1600
+) {
   const start = performance.now()
   function tick(now: number) {
     const t = Math.min(1, (now - start) / duration)
     const eased = 1 - Math.pow(1 - t, 3)
-    const val = Math.round(target * eased)
-    el.textContent = (val >= 1000 ? val.toLocaleString() : String(val)) + suffix
+    const val = target * eased
+    el.textContent =
+      (decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString('en-AU')) + suffix
     if (t < 1) requestAnimationFrame(tick)
   }
   requestAnimationFrame(tick)
@@ -47,13 +57,22 @@ export default function ScrollEffects() {
     })
 
     // Count-up observer
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const countObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return
           const el = entry.target as HTMLElement
-          countUp(el, parseFloat(el.dataset.count ?? '0'), el.dataset.suffix ?? '')
           countObserver.unobserve(el)
+          // The markup already carries the finished figure, so leaving it alone
+          // is the correct reduced-motion behaviour.
+          if (reduceMotion) return
+          countUp(
+            el,
+            parseFloat(el.dataset.count ?? '0'),
+            el.dataset.suffix ?? '',
+            parseInt(el.dataset.decimals ?? '0', 10)
+          )
         })
       },
       { threshold: 0.5 }

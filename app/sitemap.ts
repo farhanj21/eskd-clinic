@@ -44,7 +44,6 @@ const STATIC_PATHS = [
   '/services',
   '/terms',
   '/using-your-super',
-  '/your-first-visit',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

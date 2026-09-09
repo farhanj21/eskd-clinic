@@ -2318,8 +2318,15 @@ body{overflow-x:hidden;max-width:100%;}
   font-family:var(--display);
   font-size:52px;font-weight:500;line-height:1;
   color:var(--clay);
+  /* The figures count up from zero on scroll, so equal-width digits keep the
+     last frames from twitching as the numerals change. */
+  font-variant-numeric:tabular-nums;
 }
 .hero-stat dd{margin:8px 0 0;font-size:17px;font-weight:600;line-height:1.35;color:var(--ink);}
+/* Each label ships in two lengths — the phone swaps to the short one in the
+   ≤600px block below, where a wrapping label would set the height of all
+   three cards. See the note on heroStats in app/page.tsx. */
+.hero-stat-label-short{display:none;}
 /* The stars ride in the 52px figure, so they are sized against it rather than
    set at 1em: five glyphs at full size overflow the card at every breakpoint.
    They inherit the figure's clay, so only the size and baseline need setting. */
@@ -2384,12 +2391,36 @@ body{overflow-x:hidden;max-width:100%;}
   .hero-video-copy{text-align:center;margin:0 auto;}
   .hero-video-copy .hero-cta{flex-direction:column;align-items:stretch;}
   .hero-video-copy .hero-cta .btn{text-align:center;}
-  /* Full-width stack, so the overlap drops to a token gesture — three stacked
-     cards riding up any further would swallow the hero on a short phone. */
+  /* The row is one card tall here, but the overlap still drops to a token
+     gesture: the hero is already short on a phone and a deeper ride-up would
+     crowd the CTA sitting above it. */
   :root{--hero-overlap:20px;}
-  .hero-stats{grid-template-columns:1fr;gap:12px;}
-  .hero-stat{padding:22px 20px;}
-  .hero-stat dt{font-size:46px;}
+  /* Three across on the phone as well, so all three proof points are taken in
+     at a glance instead of costing three screens of scroll. That leaves each
+     card about 102px wide at 375px and 84px at 320px, so the figure is sized
+     off the viewport rather than set in px, and the stars come down with it.
+
+     The gap and the side padding are as tight as they are to buy the figure
+     width: every pixel taken off them is three pixels of room for the number,
+     which is what the whole card is for. */
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .hero-stat{padding:14px 6px 13px;}
+  /* The figure has to out-read the label, and being numerically larger is not
+     enough to manage it: Cormorant at weight 500 has a small x-height and fine
+     strokes, while the label below is semibold sans. At the previous 19/12 the
+     two looked the same size — the number needs roughly twice the label, not a
+     little more, before the hierarchy reads. */
+  .hero-stat dt{font-size:clamp(16px,5.9vw,23px);}
+  /* "45+ years" is now the widest of the three figures and sets the ceiling
+     above; "5.0 ★★★★★" is the one with no break opportunity to spare, so the
+     stars are cut to .4em and the 2px tracking they carry on the hero's proof
+     line — 10px an 84px card cannot afford — is dropped. */
+  .hero-stat dt .proof-stars{font-size:.4em;letter-spacing:0;}
+  .hero-stat dd{margin:5px 0 0;font-size:clamp(10px,2.8vw,12px);line-height:1.25;}
+  /* One word each — "Patients", "Locally", "Google" — so every card is a
+     single line of label tall at 320px as well as 375px. */
+  .hero-stat-label-full{display:none;}
+  .hero-stat-label-short{display:inline;}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-video-media{transition:none;}
@@ -2429,13 +2460,28 @@ body{overflow-x:hidden;max-width:100%;}
    Each row is one flowing line of text: an inline h3 in clay, then the
    sentence. Colour alone separates the two, so a point costs ~70-95px on a
    phone instead of ~350-450px. */
-.care-points{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 22px;list-style:none;padding:0;margin:0;}
-.care-points li{background:var(--paper);border:1px solid var(--line-soft);border-radius:14px;padding:16px 20px;line-height:1.55;}
+/* The row gap is larger than it looks like it needs to be: --shadow-sm carries a
+   24px blur at an 8px offset, so at the 14px gap this used to have, each card's
+   shadow fell across the one below it and the column read as smudged rather
+   than stacked. */
+.care-points{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 22px;list-style:none;padding:0;margin:0;}
+/* These sit on .sec.alt, which is pure white, so the card and its ground are the
+   same colour and the shadow is doing all of the lifting — a hairline border
+   alone left them flat against the section. --line rather than --line-soft for
+   the same reason: the edge has to be visible for the depth to read. */
+.care-points li{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  line-height:1.55;
+  box-shadow:var(--shadow-sm);
+}
 .care-points h3{display:inline;font-size:18px;color:var(--clay-deep);}
 .care-points p{display:inline;font-size:15px;color:var(--ink-soft);}
 @media(max-width:820px){
-  .care-points{grid-template-columns:1fr;gap:10px;}
-  .care-points li{padding:14px 16px;}
+  .care-points{grid-template-columns:1fr;gap:14px;}
+  .care-points li{padding:15px 18px;}
   .care-points h3{font-size:16.5px;}
   .care-points p{font-size:14.5px;}
 }
@@ -2449,6 +2495,125 @@ body{overflow-x:hidden;max-width:100%;}
 .gscore{text-align:center;margin-top:40px;font-size:15px;color:var(--ink-soft);}
 .gscore b{color:var(--sage-deep);}
 @media(max-width:820px){.reviews-v2{grid-template-columns:1fr;}}
+
+/* ── Home reviews marquee ────────────────────────────────────
+   Six cards drifting right to left, forever. The track holds the six twice
+   over and slides by exactly half its own width, so the second copy is already
+   under the reader's eye when the first wraps — which is why this needs no
+   JavaScript at all. See components/ReviewMarquee.tsx.
+
+   Deliberately full-bleed rather than inside .container: the row is meant to
+   run off both edges of the screen, and the mask below is what makes that read
+   as a fade rather than a slice. */
+.rmq{
+  position:relative;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+}
+.rmq-track{
+  display:flex;
+  width:max-content;
+  /* Slow on purpose: one lap of the six cards takes a minute and a half, which
+     is roughly 25px a second on a desktop and slower still on a phone. */
+  animation:rmq-drift 96s linear infinite;
+  will-change:transform;
+}
+/* The second lap. A flex box of its own, so the track's direct children are
+   six cards plus one group of exactly the same width — which is what makes the
+   -50% land on a whole copy. */
+.rmq-loop{display:flex;}
+/* Hover or tab into the row and it stops, so a quote can actually be read. */
+.rmq:hover .rmq-track,
+.rmq:focus-within .rmq-track{animation-play-state:paused;}
+@keyframes rmq-drift{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+.rmq-card{
+  position:relative;
+  flex:0 0 350px;
+  display:flex;flex-direction:column;
+  /* The gap rides on the card rather than being a flex `gap` on the track: with
+     a gap, half the track width lands half a gap short of a whole copy and the
+     loop jumps 12px every lap. The 0 on the other three sides also clears the
+     UA margin a <figure> carries. */
+  margin:0 24px 0 0;
+  padding:30px 28px 26px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow-sm);
+}
+/* Set in Cormorant rather than drawn as an icon — the serif's own quote mark is
+   the closest thing the site has to a house mark. */
+.rmq-mark{
+  position:absolute;top:12px;right:24px;
+  font-family:var(--display);
+  font-size:74px;line-height:1;
+  color:var(--clay);
+  opacity:.18;
+  pointer-events:none;
+}
+.rmq-stars{color:var(--clay);letter-spacing:3px;font-size:15px;}
+/* Body font, not the display italic the old .review-card used: at six cards
+   wide the italic serif was doing more work than the quotes needed. */
+.rmq-quote{
+  margin:14px 0 18px;
+  font-size:15.5px;line-height:1.7;
+  color:var(--ink-soft);
+}
+.rmq-badge{
+  align-self:flex-start;
+  margin-bottom:20px;
+  padding:4px 12px;
+  border-radius:40px;
+  background:rgba(188,122,78,.11);
+  color:var(--clay-deep);
+  font-size:12.5px;font-weight:600;
+}
+/* margin-top:auto pins the person to the card foot, so the rule above them
+   lines up across cards whatever length the quote ran to. */
+.rmq-person{
+  margin-top:auto;
+  display:flex;align-items:center;gap:12px;
+  padding-top:16px;
+  border-top:1px solid var(--line-soft);
+}
+.rmq-avatar{
+  width:44px;height:44px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--sage-deep);color:var(--paper);
+  font-family:var(--display);font-size:20px;font-weight:600;
+}
+.rmq-name{display:block;font-size:15px;font-weight:600;color:var(--ink);}
+.rmq-when{display:block;font-size:13px;color:var(--ink-faint);}
+
+@media(max-width:820px){
+  .rmq-card{flex-basis:320px;margin-right:20px;}
+}
+@media(max-width:600px){
+  .rmq-card{flex-basis:280px;margin-right:16px;padding:26px 22px 22px;}
+  .rmq-quote{font-size:15px;}
+  .rmq-mark{font-size:62px;right:20px;}
+}
+/* Nothing moves on its own; the row becomes a plain horizontal scroller. */
+@media(prefers-reduced-motion:reduce){
+  .rmq{overflow-x:auto;}
+  .rmq-track{animation:none;}
+}
+
+/* The marquee sits between two sections that both carry the full .sec rhythm,
+   so the gaps either side of it were 88+88 on a desktop — far more air than a
+   band of cards needs, and enough that the reviews read as marooned between the
+   services grid and the CTA. Trimming this section's own padding closes both
+   gaps at once without touching .sec itself, which every other page relies on,
+   and without special-casing the two neighbours. The remaining space either
+   side is the neighbour's padding, so the rhythm of the page is unchanged. */
+.sec.sec-reviews{padding:24px 0 28px;}
+@media(max-width:768px){.sec.sec-reviews{padding:18px 0 22px;}}
+@media(max-width:600px){.sec.sec-reviews{padding:12px 0 16px;}}
 
 /* Offer card */
 /* Match the reference .wrap (28px gutters) so the offer card isn't narrowed
@@ -2468,7 +2633,7 @@ body{overflow-x:hidden;max-width:100%;}
 @media(max-width:560px){.offer-includes{grid-template-columns:1fr;}}
 /* .tight — the home page's shortened list. Short enough to stay two-up on a
    phone, which halves the block's height. Scoped so the longer lists on
-   /emergency-dentist, /using-your-super and /your-first-visit are unaffected. */
+   /emergency-dentist and /using-your-super are unaffected. */
 @media(max-width:560px){
   .offer-includes.tight{grid-template-columns:1fr 1fr;gap:8px 14px;}
   .offer-includes.tight li{font-size:13.5px;padding-left:22px;}
@@ -2581,6 +2746,30 @@ body{overflow-x:hidden;max-width:100%;}
    Wrapping instead buys a readable ~28px over two or three lines. */
 @media(max-width:820px){
   .fundfit h2{white-space:normal;font-size:clamp(26px,7.4vw,34px);}
+}
+
+/* ── One-line home headings: Education and Areas ──────────────
+   Both headings are sized off the viewport so they hold a single line on a
+   wide screen. Below 820px that sizing collapses for the same reason it does
+   on .fundfit above: 4.3vw of a phone viewport is ~16px, so the nowrap line
+   either reads smaller than the body copy or runs off the right edge and is
+   clipped by body{overflow-x:hidden}. Wrapping buys a readable ~28px instead.
+
+   Kept as a class rather than the inline styles these headings used to carry,
+   because an inline font-size cannot be undone by a media query. Written as
+   `.sec .oneline-head` so it outweighs the `.sec h2` size rules. */
+.sec .oneline-head{font-size:min(56px,4.3vw);white-space:nowrap;}
+/* Sized well above the 26px the generic `.sec h2` mobile rule would give these.
+   Both of these sections lead with an unusually long eyebrow — "Learn at your
+   own pace, no appointment needed" and "Your local dentist in Melbourne's inner
+   south-east" — which wraps to two or three lines of bold, wide-tracked
+   uppercase on a phone. Against that block, Cormorant's small x-height at 26px
+   read as the smaller of the two, and the heading lost the section.
+
+   The 35px cap is not a round number: it is what the desktop rule above resolves
+   to at 820px (4.3vw), so the type does not jump at the breakpoint. */
+@media(max-width:820px){
+  .sec .oneline-head{white-space:normal;font-size:clamp(30px,9vw,35px);}
 }
 
 /* Fees */
@@ -2702,6 +2891,10 @@ body{overflow-x:hidden;max-width:100%;}
 .gt-treat label{display:flex;align-items:center;gap:9px;padding:11px 12px;border:1px solid rgba(255,255,255,.26);border-radius:10px;font-size:14px;cursor:pointer;transition:.15s;background:rgba(255,255,255,.05);color:var(--cream);}
 .gt-treat label:hover{background:rgba(255,255,255,.12);}
 .gt-treat input{accent-color:var(--clay);width:16px;height:16px;margin:0;flex:none;}
+/* The dropdown toggle for "I'm interested in" exists on a phone only; from
+   601px up the chips are shown outright and this is never rendered visible.
+   See the ≤600px rules further down for the collapsed state. */
+.gt-treat-toggle{display:none;}
 .gt-finehint{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:14px;}
 .gt-btn{display:block;width:100%;padding:15px 24px;background:var(--clay);color:#fff;border:none;border-radius:40px;font-family:var(--body);font-weight:700;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:18px;text-align:center;}
 .gt-btn:hover{background:var(--clay-deep);}
@@ -2730,6 +2923,42 @@ body{overflow-x:hidden;max-width:100%;}
 
 @media(max-width:860px){.gt-grid{grid-template-columns:1fr;}.gt-treat{grid-template-columns:repeat(2,1fr);}.gt-info,.gt-form{padding:40px 26px;}}
 @media(max-width:480px){.gt-row2{grid-template-columns:1fr;}.gt-treat{grid-template-columns:1fr;}}
+
+/* "I'm interested in" as a dropdown on a phone.
+
+   Nine treatments go one-per-row below 480px, which put most of a screen
+   between the question and the name fields. Collapsing them behind a summary
+   line keeps the field to one row until the reader wants it.
+
+   Deliberately the same checkboxes, not a <select>: the enquiry posts an array
+   of treatments and a native select is single-choice, while <select multiple>
+   is genuinely unusable on a touch screen. So this is a disclosure — the chips
+   are its panel — and the submitted data is identical at every width. */
+@media(max-width:600px){
+  .gt-treat-wrap{margin-top:8px;}
+  .gt-treat-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    width:100%;
+    padding:12px 14px;
+    border:1px solid rgba(255,255,255,.26);
+    border-radius:10px;
+    background:rgba(255,255,255,.05);
+    color:var(--cream);
+    font-family:var(--body);font-size:14px;font-weight:500;
+    text-align:left;
+    cursor:pointer;
+  }
+  .gt-treat-toggle:hover{background:rgba(255,255,255,.12);}
+  .gt-treat-chev{width:16px;height:16px;flex:none;transition:transform .2s ease;}
+  .gt-treat-wrap.is-open .gt-treat-chev{transform:rotate(180deg);}
+  /* The panel. Its grid-template-columns still comes from the rules above, so
+     it stays two-up at 600px and one-up below 480px. */
+  .gt-treat{display:none;}
+  .gt-treat-wrap.is-open .gt-treat{display:grid;}
+}
+@media(prefers-reduced-motion:reduce){
+  .gt-treat-chev{transition:none;}
+}
 
 /* Footer V2 */
 /* Text sits on the deep green (--sage-darker), so the cream is carried at a
@@ -3114,15 +3343,6 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 .terms-band p{font-family:var(--display);font-size:clamp(22px,3vw,30px);color:var(--sage-deep);margin:0 0 12px;line-height:1.35;}
 .terms-band span{font-size:16px;color:var(--ink-soft);}
 
-/* Vertical numbered steps (first-visit & offer) */
-.steps{counter-reset:fv;display:flex;flex-direction:column;margin-top:28px;}
-.step{display:grid;grid-template-columns:60px 1fr;gap:20px;padding-bottom:36px;position:relative;counter-increment:fv;}
-.step:not(:last-child)::before{content:"";position:absolute;left:29px;top:60px;bottom:0;width:2px;background:var(--sage-soft);}
-.step .num{width:58px;height:58px;border-radius:50%;background:var(--sage-deep);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:22px;font-weight:500;flex-shrink:0;position:relative;z-index:1;}
-.step .num::before{content:counter(fv);}
-.step h4{font-size:19px;font-family:var(--display);margin:14px 0 8px;color:var(--ink);}
-.step p{font-size:15.5px;color:var(--ink-soft);margin:0;line-height:1.65;}
-
 /* Stories grid (testimonials on light bg) */
 .stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;}
 .nervous-proof.light{background:var(--paper);border:1px solid var(--line-soft);border-radius:16px;padding:28px 30px;margin:0;border-left:none;color:var(--ink);font-family:var(--display);font-style:italic;}
@@ -3209,6 +3429,26 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .hero-v2 .lead{font-size:16.5px;margin:14px 0 20px;}
   .hero-cta{gap:10px;}
   .hero-proof{font-size:13px;gap:6px 12px;}
+
+  /* The home hero's three proof points on ONE line at phone width. The line
+     measures about 32em all in, so it only fits by being sized off the
+     viewport rather than set in px: inside the 28px gutter a 375px screen
+     lands it near 9.5px, a 430px screen near 11px, and the 13px above is the
+     size it keeps everywhere it already fitted.
+
+     Gaps and the dots are in em so they shrink with the type, and there is
+     deliberately no minimum size — a floor would push the nowrap row past the
+     screen edge on a 320px phone, where body{overflow-x:hidden} would slice
+     both ends off it. Scoped to .hero-video because the other pages using
+     .hero-proof carry different, longer items. */
+  .hero-video .hero-proof>span{flex:none;}
+  .hero-video .hero-proof{
+    flex-wrap:nowrap;
+    white-space:nowrap;
+    gap:0 .8em;
+    font-size:min(13px,calc((100vw - 60px) / 33));
+  }
+  .hero-video .proof-dot{width:.3em;height:.3em;flex:none;}
   .ph.tall{min-height:260px;}
 
   /* Buttons */
@@ -3272,13 +3512,13 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   :root{--section-pad:52px;}
   .sec-head{margin-bottom:26px;}
 
-  /* Offer card — comprehensive-care-visit, your-first-visit.
+  /* Offer card — comprehensive-care-visit.
      Stacked at 820px but kept 46px of side padding inside the gutter. */
   .offer-card-v2 .body{padding:32px 22px;}
   .offer-meta{gap:18px;margin:20px 0 22px;}
   .offer-meta b{font-size:21px;}
 
-  /* CTA bands — fees, nervous-patients, your-first-visit, service pages */
+  /* CTA bands — fees, nervous-patients, service pages */
   .ctaband{padding:26px 20px;}
   .ctaband h3{font-size:21px;}
 
@@ -3291,13 +3531,6 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .svc-nervous-band p{font-size:18px;}
   .lang-band{padding:18px 20px;}
 
-  /* Vertical numbered steps (your-first-visit). The 60px number column and
-     the connecting rule are re-measured together so the line stays centred
-     under the circle. */
-  .step{grid-template-columns:46px 1fr;gap:14px;padding-bottom:28px;}
-  .step .num{width:46px;height:46px;font-size:19px;}
-  .step:not(:last-child)::before{left:22px;top:48px;}
-  .step h4{margin:8px 0 6px;font-size:18px;}
 
   /* Article pages (/learn/<slug>) */
   .post{padding:40px 0 56px;}
@@ -3379,18 +3612,55 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   padding:8px;
 }
 /* Lighter surface + accent border + a soft lift, so the cards read as
-   raised out of the tinted band rather than merely tinted differently. */
+   raised out of the tinted band rather than merely tinted differently.
+
+   The row is clay rather than the sage the rest of the page runs on — it is
+   the one place asking the reader to pick a path, and the warm accent is what
+   separates it from the sage-bordered service cards a screen below. Every
+   colour comes from the four --offer-accent-* variables, so the whole row
+   re-accents from the four lines below and nowhere else. */
 .offers-card{
+  --offer-accent:var(--clay);
+  --offer-accent-deep:var(--clay-deep);
+  --offer-accent-tile:var(--clay-soft);
+  /* The accent at about a third strength. Softer than the flat border this
+     replaces, but still crisp against the tinted band — --clay-soft alone
+     disappeared into it. */
+  --offer-accent-line:rgba(188,122,78,.34);
+  /* A wash down the top of the card rather than a hard accent bar across it:
+     the icon tile sits inside the tint, which reads warmer than a rule and
+     keeps the card feeling like one surface. */
+  --offer-wash:rgba(188,122,78,.12);
+
+  position:relative;
+  /* Clips the watermark to the card's rounded corners. */
+  overflow:hidden;
   display:flex;flex-direction:column;align-items:flex-start;
   padding:26px 24px 24px;
   /* min-width:0 stops long words forcing the track wider than its
      share of the grid, which is what overflows at 320px. */
   min-width:0;
-  background:var(--paper);
-  border:1px solid var(--sage);
+  background:linear-gradient(180deg,var(--offer-wash) 0,rgba(255,255,255,0) 108px),var(--paper);
+  border:1px solid var(--offer-accent-line);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-sm);
   transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+/* Lifts the card's own content clear of the watermark, which is positioned and
+   would otherwise paint over the title and body. Declared before the watermark
+   rule so that absolute positioning still wins. */
+.offers-card>*{position:relative;}
+/* An oversized, barely-there restatement of the card's icon, bleeding out of
+   the top corner. This is what gives each card a face of its own without
+   another word of copy. */
+.offers-watermark{
+  position:absolute;
+  top:-18px;right:-18px;
+  width:118px;height:118px;
+  color:var(--offer-accent);
+  opacity:.07;
+  pointer-events:none;
+  transition:opacity .28s ease;
 }
 /* focus-within as well as hover: tabbing to the card's CTA should light the
    same card up that a mouse would. */
@@ -3398,26 +3668,28 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 .offers-card:focus-within{
   transform:translateY(-4px);
   box-shadow:var(--shadow-md);
-  border-color:var(--sage-deep);
+  border-color:var(--offer-accent);
 }
+.offers-card:hover .offers-watermark,
+.offers-card:focus-within .offers-watermark{opacity:.13;}
 
 .offers-icon{
   display:inline-flex;align-items:center;justify-content:center;
-  width:40px;height:40px;flex:none;
-  background:var(--sage-tint);
-  border:1px solid var(--sage-soft);
-  border-radius:var(--radius-sm);
-  color:var(--sage-deep);
+  width:44px;height:44px;flex:none;
+  background:var(--offer-accent-tile);
+  border:1px solid var(--offer-accent-line);
+  border-radius:12px;
+  color:var(--offer-accent-deep);
   margin-bottom:16px;
   transition:background .28s ease,border-color .28s ease,color .28s ease;
 }
 .offers-card:hover .offers-icon,
 .offers-card:focus-within .offers-icon{
-  background:var(--sage-deep);
-  border-color:var(--sage-deep);
+  background:var(--offer-accent-deep);
+  border-color:var(--offer-accent-deep);
   color:var(--paper);
 }
-.offers-icon svg{width:21px;height:21px;}
+.offers-icon svg{width:22px;height:22px;}
 
 .offers-title{
   font-family:var(--display);
@@ -3435,23 +3707,46 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   margin:12px 0 0;
 }
 
-/* Solid sage with white text, the same treatment as the header's "Book your
+/* Solid accent with white text, the same treatment as the header's "Book your
    visit" .btn — these are the row's actual actions, not footnotes. Stretched
    to the card width so three different label lengths still line up. */
 .offers-cta{
   display:flex;align-items:center;justify-content:center;gap:8px;
   align-self:stretch;
   margin-top:auto;
-  padding:13px 20px;
+  /* 12/19 rather than 13/20: the 1.5px outline is new, and the pill keeps the
+     height it had when it was a borderless fill. */
+  padding:12px 19px;
   font-family:var(--body);
   font-size:14.5px;font-weight:600;
-  background:var(--sage);
-  color:#fff;
+  /* Outlined, not filled. The card already carries the clay wash and the clay
+     watermark, and a solid clay pill on top of that left the whole card one
+     flat colour. The gradient is still here — it wipes in on hover.
+
+     background-image cannot be interpolated but background-size can, so the
+     gradient sits on the button at all times and is simply revealed from 0% to
+     100% width. */
+  background-image:linear-gradient(135deg,var(--offer-accent) 0%,var(--offer-accent-deep) 100%);
+  background-repeat:no-repeat;
+  background-size:0% 100%;
+  border:1.5px solid var(--offer-accent);
+  /* --offer-accent is 3.1:1 on the white card and fails AA at this size; the
+     deep step clears it at about 5.1:1. The border is a UI edge, not text, so
+     the lighter accent is fine there. */
+  color:var(--offer-accent-deep);
   border-radius:40px;
   text-decoration:none;
-  transition:background .25s ease;
+  /* Leaving: the label drops back to clay immediately as the fill empties. */
+  transition:background-size .34s ease,color .16s ease,border-color .25s ease;
 }
-.offers-cta:hover{background:var(--sage-deep);}
+.offers-cta:hover{
+  background-size:100% 100%;
+  border-color:var(--offer-accent-deep);
+  color:#fff;
+  /* Arriving: the label turns white just behind the wipe, so it is never white
+     on a stretch of pill the fill has not reached yet. */
+  transition:background-size .34s ease,color .16s ease .12s,border-color .25s ease;
+}
 /* margin-top:auto pins the button to the card foot, so the gap above it has to
    come from the body rather than the button's own margin. */
 .offers-body{margin-bottom:20px;}
@@ -3460,10 +3755,10 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
    hover target even when the pointer is nowhere near the CTA. */
 .offers-card:hover .offers-arrow,
 .offers-card:focus-within .offers-arrow{transform:translateX(4px);}
-.offers-cta:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;}
+.offers-cta:focus-visible{outline:2px solid var(--offer-accent-deep);outline-offset:3px;}
 
 @media(prefers-reduced-motion:reduce){
-  .offers-card,.offers-icon,.offers-arrow{transition:none;}
+  .offers-card,.offers-icon,.offers-arrow,.offers-watermark,.offers-cta{transition:none;}
   .offers-card:hover,.offers-card:focus-within{transform:none;}
   .offers-card:hover .offers-arrow,
   .offers-card:focus-within .offers-arrow{transform:none;}
@@ -3494,8 +3789,14 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
     align-items:center;
     column-gap:12px;
     padding:18px;
+    /* Same wash, re-measured: the card is barely taller than the 108px fade of
+       the desktop one, which would tint it from top to bottom. */
+    background:linear-gradient(180deg,var(--offer-wash) 0,rgba(255,255,255,0) 70px),var(--paper);
   }
-  .offers-icon{grid-column:1;grid-row:1;width:36px;height:36px;margin-bottom:0;}
+  /* Pulled back so it reads as a corner mark rather than looming behind the
+     title, which sits top-right in this layout. */
+  .offers-watermark{width:88px;height:88px;top:-14px;right:-14px;}
+  .offers-icon{grid-column:1;grid-row:1;width:36px;height:36px;margin-bottom:0;border-radius:10px;}
   /* The title takes the slot the pill used to hold, beside the icon. */
   .offers-title{grid-column:2;grid-row:1;margin:0;font-size:17px;}
   /* margin-top:auto is a flex trick that would eat the free row space here. */

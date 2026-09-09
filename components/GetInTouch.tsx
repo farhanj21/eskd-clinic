@@ -29,6 +29,27 @@ export default function GetInTouch({
   const [error, setError] = useState<string | null>(null)
   /** Kept so the confirmation can greet them by name. */
   const [sentName, setSentName] = useState('')
+  /* "I'm interested in" collapses to a dropdown on a phone — nine full-width
+     chips was most of a screen before the reader reached the name fields. The
+     checkboxes themselves are untouched and uncontrolled; these two only drive
+     the toggle and its summary line, so the posted data is identical at every
+     width. */
+  const [treatOpen, setTreatOpen] = useState(false)
+  const [treatSel, setTreatSel] = useState<string[]>([])
+
+  /* Read back off the DOM rather than controlling nine checkboxes: change
+     events bubble, so one handler on the panel keeps the summary in step. */
+  function syncTreatments(e: React.FormEvent<HTMLDivElement>) {
+    const inputs = e.currentTarget.querySelectorAll<HTMLInputElement>('input[name="treat"]')
+    setTreatSel(Array.from(inputs).filter(i => i.checked).map(i => i.value))
+  }
+
+  const treatSummary =
+    treatSel.length === 0
+      ? 'Choose what you need'
+      : treatSel.length === 1
+        ? TREATMENTS.find(t => t.value === treatSel[0])?.label ?? '1 selected'
+        : `${treatSel.length} selected`
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -77,6 +98,10 @@ export default function GetInTouch({
 
       setSentName(String(fd.get('firstName') ?? '').trim())
       form.reset()
+      /* form.reset() clears the checkboxes but not the summary derived from
+         them, so the dropdown is put back by hand. */
+      setTreatSel([])
+      setTreatOpen(false)
       setSubmitted(true)
     } catch {
       setError('Something went wrong sending your message. Please check your connection, or call us.')
@@ -196,13 +221,36 @@ export default function GetInTouch({
               </div>
 
               <div className="gt-field">
-                <span className="gt-label">I&apos;m interested in&hellip;</span>
-                <div className="gt-treat">
-                  {TREATMENTS.map(t => (
-                    <label key={t.value}>
-                      <input type="checkbox" name="treat" value={t.value} /> {t.label}
-                    </label>
-                  ))}
+                <span className="gt-label" id="gt-treat-label">I&apos;m interested in&hellip;</span>
+                <div className={`gt-treat-wrap${treatOpen ? ' is-open' : ''}`}>
+                  {/* Phone only — CSS hides this and shows the panel outright
+                      from 601px up, so a desktop reader sees the chips as
+                      before and never meets the toggle. */}
+                  <button
+                    type="button"
+                    className="gt-treat-toggle"
+                    aria-expanded={treatOpen}
+                    aria-controls="gt-treat-panel"
+                    onClick={() => setTreatOpen(o => !o)}
+                  >
+                    <span>{treatSummary}</span>
+                    <svg className="gt-treat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    className="gt-treat"
+                    id="gt-treat-panel"
+                    role="group"
+                    aria-labelledby="gt-treat-label"
+                    onChange={syncTreatments}
+                  >
+                    {TREATMENTS.map(t => (
+                      <label key={t.value}>
+                        <input type="checkbox" name="treat" value={t.value} /> {t.label}
+                      </label>
+                    ))}
+                  </div>
                 </div>
               </div>
 

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
 import Photo from '@/components/Photo'
@@ -6,6 +7,7 @@ import HealthFundLogos from '@/components/HealthFundLogos'
 import HeroVideoBg from '@/components/HeroVideoBg'
 import HomeOffers from '@/components/HomeOffers'
 import MapEmbed from '@/components/MapEmbed'
+import ReviewMarquee from '@/components/ReviewMarquee'
 import { suburbs, suburbPath } from '@/data/suburbs'
 import { SCHEMA_ID, SITE_URL, areasServed, business, clinicianId, clinicians, comprehensiveCareVisit, fullAddress, openingHours, socialProfiles, telHref } from '@/lib/business'
 import { withSocial } from '@/lib/seo'
@@ -47,19 +49,49 @@ const faqs = [
 // The three proof points that sit in cards across the foot of the hero,
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
-const heroStats = [
-  { id: 'patients', value: '10,000+', label: 'Patients Cared For' },
-  { id: 'years', value: '45+', label: 'Caring Locally' },
+//
+// `short` takes over below 600px, where the three cards sit side by side and
+// each is only about 100px wide. Every full label wraps to two or three lines
+// at that width, and the longest of them sets the height of all three cards —
+// so the phone gets one-word labels instead. Same technique as the
+// .story-copy-full / .story-copy-short pair further down this page.
+//
+// `count`, `decimals` and `suffix` drive the count-up: the figure sits in its
+// own <span data-count>, which the observer in components/ScrollEffects.tsx
+// animates from zero the first time the cards come into view. Anything that
+// must not be counted — the word "years", the stars — goes in `after`, outside
+// that span. The server renders the finished figure, so with JS off (or
+// reduced motion on) the cards read exactly as they always have.
+const heroStats: {
+  id: string
+  count: number
+  decimals?: number
+  suffix?: string
+  after?: ReactNode
+  label: string
+  short: string
+}[] = [
+  { id: 'patients', count: 10000, suffix: '+', label: 'Patients Cared For', short: 'Patients Treated' },
+  { id: 'years', count: 45, suffix: '+', after: ' years', label: 'Caring Locally', short: 'Caring Locally' },
   {
     id: 'rating',
-    value: (
+    count: 5,
+    decimals: 1,
+    after: (
       <>
-        5.0 <span className="proof-stars">★★★★★</span>
+        {' '}
+        <span className="proof-stars">★★★★★</span>
       </>
     ),
     label: 'Google Rating',
+    short: 'Google',
   },
 ]
+
+/** "10000" + "+" → "10,000+" — the same formatting the counter's last frame
+    lands on, so the server-rendered figure and the animation agree. */
+const statText = (count: number, decimals = 0, suffix = '') =>
+  (decimals > 0 ? count.toFixed(decimals) : count.toLocaleString('en-AU')) + suffix
 
 // The six services in the "Care for every stage of life" grid. Each photo is
 // the same one the service's own page leads with, so the card and the page it
@@ -217,10 +249,18 @@ export default function Home() {
           would be clipped. */}
       <div className="container hero-stats-wrap">
         <dl className="hero-stats">
-          {heroStats.map(({ id, value, label }) => (
+          {heroStats.map(({ id, count, decimals, suffix, after, label, short }) => (
             <div className="hero-stat" key={id}>
-              <dt>{value}</dt>
-              <dd>{label}</dd>
+              <dt>
+                <span data-count={count} data-decimals={decimals} data-suffix={suffix}>
+                  {statText(count, decimals, suffix)}
+                </span>
+                {after}
+              </dt>
+              <dd>
+                <span className="hero-stat-label-full">{label}</span>
+                <span className="hero-stat-label-short">{short}</span>
+              </dd>
             </div>
           ))}
         </dl>
@@ -263,39 +303,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REVIEWS — deliberately live.
+      {/* REVIEWS — deliberately live. The quotes, and the note on why they are
+          shown at all, live in components/ReviewMarquee.tsx.
 
-          Four other places in this repo say testimonials are off limits under
-          AHPRA's advertising guidelines, and that is why this block sat
-          commented out. Re-enabling it was an explicit product decision by the
-          practice, who own that call. Do not silently re-comment it; raise it
-          with them instead. The structured data stays clean either way — there
-          is still no Review or aggregateRating node anywhere on the site. */}
-      <section className="sec">
+          .sec-reviews rather than plain .sec: see the note on it in globals.css
+          for why this one section carries less padding than its neighbours. */}
+      <section className="sec sec-reviews">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">In our patients&apos; words</div>
             <h2>Kind, gentle, and never rushed</h2>
           </div>
-          <div className="reviews-v2">
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>Dr Anbar was fantastic and extremely knowledgeable.
-Very comfortable experience as well, from my perspective there was no pain or discomfort.
-Would highly recommend to anyone looking for a new dentist.</p>
-              <div className="who">Emily Wooton · 3 months ago</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>I’ve had years of care under this team. They are friendly, do not over charge, offer options of treatments that consider your circumstances. A clinic that has never failed to care and give me the most personalised treatment.</p>
-              <div className="who">Bronwen Drinnan · 4 months ago</div>
-            </div>
-            <div className="review-card reveal">
-              <div className="review-stars">★★★★★</div>
-              <p>Dr Dean is caring, calm, patient, empathic, professional, warm and open to having a laugh. He and the team at St Kilda East Dental are amazing group who to me practice ‘dentistry as an art form’.</p>
-              <div className="who">Gülşen Özer · 1 month ago</div>
-            </div>
-          </div>
+        </div>
+        {/* Outside the container on purpose — the row runs off both edges. */}
+        <ReviewMarquee />
+        <div className="container">
           <div className="gscore reveal">
             Rated <b>5.0 on Google</b> by our local patients &middot;{' '}
             <a href="https://share.google/M1ZtOT5z13fj2mhWf" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>
@@ -626,8 +648,8 @@ Would highly recommend to anyone looking for a new dentist.</p>
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">Learn at your own pace, no appointment needed</div>
-            {/* Same one-line treatment as the Areas heading — see note there. */}
-            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Answers to the things you&apos;ve been <em>wondering</em></h2>
+            {/* Same one-line treatment as the Areas heading — see .oneline-head. */}
+            <h2 className="oneline-head">Answers to the things you&apos;ve been <em>wondering</em></h2>
             <p style={{ marginTop: '14px', fontSize: '18px' }}>
               Clear, judgement-free guides to the questions we hear most, from bleeding gums to nervous visits. Understanding your mouth is the first step to looking after it.
             </p>
@@ -710,8 +732,9 @@ Would highly recommend to anyone looking for a new dentist.</p>
             <div className="eyebrow">Your local dentist in Melbourne&apos;s inner south-east</div>
             {/* nowrap + a purely viewport-derived size: the .sec-head 46em cap
                 would otherwise break this over two lines. min() keeps it from
-                growing past the 1180px container on wide screens. */}
-            <h2 style={{ fontSize: 'min(56px, 4.3vw)', whiteSpace: 'nowrap' }}>Wherever you are, you&apos;re <em>welcome</em> here</h2>
+                growing past the 1180px container on wide screens, and
+                .oneline-head drops back to a wrapping size below 820px. */}
+            <h2 className="oneline-head">Wherever you are, you&apos;re <em>welcome</em> here</h2>
             <p style={{ marginTop: '14px', fontSize: '18px', maxWidth: '40em', margin: '14px auto 0' }}>
               Find your suburb below, or get directions straight to our door in Google or Apple Maps, from wherever you&apos;re starting.
             </p>

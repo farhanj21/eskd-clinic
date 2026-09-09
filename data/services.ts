@@ -139,7 +139,7 @@ export const services: ServiceData[] = [
     ],
     related: [
       { label: 'Cleans & hygiene', href: '/services/cleans-and-hygiene' },
-      { label: 'Your first visit', href: '/your-first-visit' },
+      { label: 'Your first visit', href: '/new-patient-comprehensive-care-visit' },
       { label: 'Fees & funds', href: '/fees' },
     ],
     meta: {
@@ -1497,7 +1497,6 @@ export function getService(slug: string): ServiceData | undefined {
  * described the same way wherever it's linked from.
  */
 const PAGE_SUB: Record<string, string> = {
-  '/your-first-visit': 'Exactly what happens, start to finish',
   '/fees': 'Costs and health funds, up front',
   '/emergency-dentist': 'Same-day care when it hurts',
   '/nervous-patients': 'How we look after anxious patients',

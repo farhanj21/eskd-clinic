@@ -85,6 +85,13 @@ export default function HomeOffers() {
         <div className="offers-row">
           {OFFERS.map(offer => (
             <article key={offer.title} className="offers-card">
+              {/* The card's own icon again, oversized and barely there, bleeding
+                  out of the top corner. Purely decorative — the real one is
+                  right below it — so it is hidden from assistive tech. */}
+              <svg className="offers-watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                {ICONS[offer.icon]}
+              </svg>
+
               <span className="offers-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   {ICONS[offer.icon]}

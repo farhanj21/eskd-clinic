@@ -48,7 +48,7 @@ export default function Header() {
                 <div className="mega-start">
                   <span className="col-title">Start here</span>
                   <Link href="/services" onClick={close}>All Services</Link>
-                  <Link href="/your-first-visit" onClick={close}>New patients</Link>
+                  <Link href="/new-patient-comprehensive-care-visit" onClick={close}>New patients</Link>
                   <Link href="/nervous-patients" onClick={close}>Nervous patients</Link>
                   <Link href="/emergency-dentist" onClick={close}>Emergency</Link>
                   <Link href="/services/check-ups" onClick={close}>Check-up</Link>
@@ -104,7 +104,6 @@ export default function Header() {
                 New Patients
               </button>
               <div className="dd">
-                <Link href="/your-first-visit" onClick={close}>Your First Visit</Link>
                 <Link href="/new-patient-comprehensive-care-visit" onClick={close}>The New Patient Comprehensive Care Visit</Link>
                 <Link href="/#faq" onClick={close}>FAQ</Link>
               </div>
