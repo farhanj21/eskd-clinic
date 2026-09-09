@@ -2353,27 +2353,38 @@ body{overflow-x:hidden;max-width:100%;}
    Over the video it only needs its two colours lifted; the layout is the same. */
 .hero-video .hero-proof{justify-content:flex-start;margin-top:22px;color:rgba(255,255,255,.85);}
 .hero-video .proof-dot{background:#fff;opacity:.45;}
-/* Stat cards straddling the foot of the hero.
-   They are a SIBLING of .hero-video, not a child, because that section is
+/* Stat panel straddling the foot of the hero.
+   It is a SIBLING of .hero-video, not a child, because that section is
    overflow:hidden — a child pushed past its bottom edge would have both the
-   card and its shadow sliced off. Pulling the row up from outside instead
+   panel and its shadow sliced off. Pulling the row up from outside instead
    leaves the hero's own min-height untouched at every breakpoint.
-   Sizes and spacing reuse values already established elsewhere in this file:
-   the number/label pair from .story-stats, the 24px gap from .svc-grid-v2,
-   the 34px/30px padding from .ctaband. */
+   The number/label pair reuses .story-stats; the cell padding is set a little
+   tighter than a card's, since the cells no longer each carry their own edge. */
 .hero-stats-wrap{position:relative;z-index:3;margin-top:calc(var(--hero-overlap) * -1);}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0;}
-/* A heavier shadow than the page's other cards get, on purpose: this row is
+/* One panel, not three cards: the three figures read as a single band of
+   proof, so they share one sheet of paper and are told apart by a hairline
+   rather than by a gutter. The panel carries the border, radius and shadow the
+   cards used to.
+   A heavier shadow than the page's other cards get, on purpose: this row is
    the only one that has to lift off a photograph rather than off paper, and
    --shadow-card disappeared against the foot of the hero. The hairline border
    does the same job on the two edges the shadow cannot reach. */
-.hero-stat{
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);margin:0;
   background:var(--paper);
   border:1px solid var(--line-soft);
   border-radius:var(--radius-panel);
   box-shadow:0 2px 6px rgba(20,33,26,.06),0 22px 50px rgba(20,33,26,.16);
-  padding:32px 28px;
-  text-align:center;
+}
+.hero-stat{position:relative;padding:26px 24px;text-align:center;}
+/* A short centred rule between cells rather than a full-height border: the
+   divider should part the figures without drawing a line across the whole
+   panel and reinstating the look of three boxes. */
+.hero-stat + .hero-stat::before{
+  content:'';
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:1px;height:56%;
+  background:var(--line-soft);
 }
 .hero-stat dt{
   font-family:var(--display);
@@ -2385,11 +2396,11 @@ body{overflow-x:hidden;max-width:100%;}
 }
 .hero-stat dd{margin:10px 0 0;font-size:16px;font-weight:600;line-height:1.35;letter-spacing:.01em;color:var(--ink-soft);}
 /* Each label ships in two lengths — the phone swaps to the short one in the
-   ≤600px block below, where a wrapping label would set the height of all
-   three cards. See the note on heroStats in app/page.tsx. */
+   ≤600px block below, where a wrapping label would set the height of the
+   whole panel. See the note on heroStats in app/page.tsx. */
 .hero-stat-label-short{display:none;}
 /* The stars ride in the 52px figure, so they are sized against it rather than
-   set at 1em: five glyphs at full size overflow the card at every breakpoint.
+   set at 1em: five glyphs at full size overflow the cell at every breakpoint.
    They inherit the figure's clay, so only the size and baseline need setting. */
 .hero-stat dt .proof-stars{font-size:.55em;vertical-align:.1em;}
 
@@ -2431,8 +2442,7 @@ body{overflow-x:hidden;max-width:100%;}
   /* Three across still reads on tablet — 3 stats split badly into 2 columns,
      so the type and padding tighten instead of the grid reflowing. */
   :root{--hero-overlap:40px;}
-  .hero-stats{gap:14px;}
-  .hero-stat{padding:22px 14px;}
+  .hero-stat{padding:18px 12px;}
   .hero-stat dt{font-size:38px;}
   .hero-stat dd{font-size:14.5px;}
 }
@@ -2458,14 +2468,16 @@ body{overflow-x:hidden;max-width:100%;}
   :root{--hero-overlap:20px;}
   /* Three across on the phone as well, so all three proof points are taken in
      at a glance instead of costing three screens of scroll. That leaves each
-     card about 102px wide at 375px and 84px at 320px, so the figure is sized
+     cell about 102px wide at 375px and 84px at 320px, so the figure is sized
      off the viewport rather than set in px, and the stars come down with it.
 
-     The gap and the side padding are as tight as they are to buy the figure
-     width: every pixel taken off them is three pixels of room for the number,
-     which is what the whole card is for. */
-  .hero-stats{grid-template-columns:repeat(3,1fr);gap:6px;}
+     The side padding is as tight as it is to buy the figure width: every
+     pixel taken off it is two pixels of room for the number, which is what
+     the whole cell is for. */
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
   .hero-stat{padding:14px 6px 13px;}
+  /* The panel is at its narrowest here, so the rule shortens with it. */
+  .hero-stat + .hero-stat::before{height:50%;}
   /* The figure has to out-read the label, and being numerically larger is not
      enough to manage it: Cormorant at weight 500 has a small x-height and fine
      strokes, while the label below is semibold sans. At the previous 19/12 the
@@ -2475,7 +2487,7 @@ body{overflow-x:hidden;max-width:100%;}
   /* "45+ years" is now the widest of the three figures and sets the ceiling
      above; "5.0 ★★★★★" is the one with no break opportunity to spare, so the
      stars are cut to .4em and the 2px tracking they carry on the hero's proof
-     line — 10px an 84px card cannot afford — is dropped. */
+     line — 10px an 84px cell cannot afford — is dropped. */
   .hero-stat dt .proof-stars{font-size:.4em;letter-spacing:0;}
   .hero-stat dd{margin:5px 0 0;font-size:clamp(10px,2.8vw,12px);line-height:1.25;}
   /* One word each — "Patients", "Locally", "Google" — so every card is a

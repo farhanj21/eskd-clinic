@@ -46,22 +46,22 @@ const faqs = [
   },
 ]
 
-// The three proof points that sit in cards across the foot of the hero,
+// The three proof points that sit in one panel across the foot of the hero,
 // replacing the old glass band. Rendered as a <dl>, so each number is announced
 // with the label that gives it meaning.
 //
-// `short` takes over below 600px, where the three cards sit side by side and
+// `short` takes over below 600px, where the three cells sit side by side and
 // each is only about 100px wide. Every full label wraps to two or three lines
-// at that width, and the longest of them sets the height of all three cards —
-// so the phone gets one-word labels instead. Same technique as the
+// at that width, and the longest of them sets the height of the panel — so the
+// phone gets one-word labels instead. Same technique as the
 // .story-copy-full / .story-copy-short pair further down this page.
 //
 // `count`, `decimals` and `suffix` drive the count-up: the figure sits in its
 // own <span data-count>, which the observer in components/ScrollEffects.tsx
-// animates from zero the first time the cards come into view. Anything that
+// animates from zero the first time the panel comes into view. Anything that
 // must not be counted — the word "years", the stars — goes in `after`, outside
 // that span. The server renders the finished figure, so with JS off (or
-// reduced motion on) the cards read exactly as they always have.
+// reduced motion on) the panel reads exactly as it always has.
 const heroStats: {
   id: string
   count: number
@@ -243,9 +243,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stat cards straddling the foot of the hero. Deliberately a sibling of
+      {/* Stat panel straddling the foot of the hero. Deliberately a sibling of
           .hero-video rather than a child: that section is overflow:hidden, so
-          anything pushed past its bottom edge — the cards and their shadow —
+          anything pushed past its bottom edge — the panel and its shadow —
           would be clipped. */}
       <div className="container hero-stats-wrap">
         <dl className="hero-stats">
