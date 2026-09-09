@@ -789,6 +789,50 @@ export default function Home() {
               <p style={{ fontSize: '15.5px', marginBottom: '22px' }}>
                 Off-street parking off Orrong Road · Trams 5 &amp; 64 and bus 220 nearby · Armadale station a 10–15 min walk · Wheelchair accessible
               </p>
+              {/* The same four facts as the line above, cut to a length that
+                  fits one line beside the map. Phone only — display:none from
+                  601px up, where the sentence above is what shows. Same
+                  technique as .story-copy-full / .story-copy-short. */}
+              <ul className="loc-points">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 16.5h14M6.5 16.5V19H4.8v-2.5M17.5 16.5V19h1.7v-2.5" />
+                    <path d="M4.5 16.5v-4l1.8-4.3A1.6 1.6 0 0 1 7.8 7h8.4a1.6 1.6 0 0 1 1.5 1.2l1.8 4.3v4Z" />
+                    <path d="M7 13.6h.01M17 13.6h.01" />
+                  </svg>
+                  Off-street parking
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="6" y="3.5" width="12" height="13" rx="2.5" />
+                    <path d="M6 9.5h12M9.5 3.5V2M14.5 3.5V2M8.5 20l1.8-3.5M15.5 20l-1.8-3.5M7 20h10" />
+                    <path d="M9.5 13h.01M14.5 13h.01" />
+                  </svg>
+                  Trams 5 &amp; 64 nearby
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M13 4.5c-3.6 0-6.5 1-6.5 3.5v6a2.5 2.5 0 0 0 2.5 2.5h8a2.5 2.5 0 0 0 2.5-2.5V8c0-2.5-2.9-3.5-6.5-3.5Z" />
+                    <path d="M6.5 10.5h13M10 20l-1.5-3.5M16 20l1.5-3.5M9 20h7" />
+                    <path d="M10 13.6h.01M16 13.6h.01" />
+                  </svg>
+                  Near Armadale station
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="4.5" r="1.8" />
+                    <path d="M9 8.2h6M12 8v5.5h4.2l2 5.5M12 13.5H9.2a3.6 3.6 0 1 0 3.4 4.7" />
+                  </svg>
+                  Wheelchair accessible
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M3 9.5h18M9.5 3v18" />
+                    <path d="M14.5 3v3.5M14.5 14v7M3 14h3.5" />
+                  </svg>
+                  Cnr Dandenong &amp; Orrong
+                </li>
+              </ul>
               <p style={{ fontSize: '15.5px', marginBottom: '22px' }}>
                 On the corner of Dandenong and Orrong Roads, easy to reach by car, tram or train.
               </p>

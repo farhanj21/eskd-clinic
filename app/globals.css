@@ -3089,6 +3089,10 @@ body{overflow-x:hidden;max-width:100%;}
    it and the hours drifted away from the address they belong to. */
 .loc-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:44px;align-items:start;}
 .loc-grid .ph{min-height:460px;border-radius:var(--radius-card);}
+/* The home page's four transport facts as their own rows with an icon each,
+   for the phone layout at the foot of this file. Hidden everywhere else, where
+   the sentence in app/page.tsx says the same thing in one line of prose. */
+.loc-points{display:none;list-style:none;margin:0;padding:0;}
 .hours-list{list-style:none;margin:0;padding:0;}
 .hours-list li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;}
 .hours-list li b{font-weight:600;color:var(--ink);}
@@ -4424,26 +4428,58 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
      The wrapper carries .reveal, which has no box to fade once it is
      display:contents — so this block also opts the column out of the scroll
      reveal, deliberately. */
-  .home .loc-grid{grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);column-gap:14px;row-gap:14px;}
+  /* Explicit rows. The map spans rows 1 and 2, and with auto rows the
+     browser shared its 210px between them — which pushed the four points half
+     a map down the column, away from the address they belong under. Row 1 is
+     the address and nothing more; row 2 takes whatever height the map still
+     needs, with the points held at its top. */
+  .home .loc-grid{
+    grid-template-columns:minmax(0,.95fr) minmax(0,1fr);
+    grid-template-rows:min-content 1fr auto;
+    column-gap:12px;row-gap:10px;
+  }
   /* :not(.ph) — the map frame is a div in this grid too, and dissolving it
      would drop the frame and leave the facade unstyled. */
   .home .loc-grid>div:not(.ph){display:contents;}
   .home .loc-grid .ph{grid-column:1;grid-row:1/3;min-height:210px;}
   .home .loc-grid>div:not(.ph)>p{grid-column:2;margin:0;font-size:13px;line-height:1.5;}
+  /* The address. */
   .home .loc-grid>div:not(.ph)>p:nth-of-type(1){grid-row:1;align-self:start;}
-  .home .loc-grid>div:not(.ph)>p:nth-of-type(2){grid-row:2;align-self:start;}
-  /* The third line — "on the corner of…" — and the hours run the full width
-     beneath the pair. */
-  .home .loc-grid>div:not(.ph)>p:nth-of-type(3){grid-column:1/-1;grid-row:3;}
-  .home .loc-grid .hours-list{grid-column:1/-1;grid-row:4;}
+  /* The transport sentence, and the "on the corner of…" line below it: the
+     four points say the first in shorter form, and the second is off for now. */
+  .home .loc-grid>div:not(.ph)>p:nth-of-type(2),
+  .home .loc-grid>div:not(.ph)>p:nth-of-type(3){display:none;}
+  /* The four points, stacked beside the map. Each label is short enough for
+     one line at this width, and nowrap is what holds it to one. */
+  .home .loc-points{
+    display:grid;
+    gap:9px;
+    grid-column:2;grid-row:2;
+    align-self:start;
+  }
+  .home .loc-points li{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr);
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;line-height:1.3;
+    white-space:nowrap;
+    color:var(--ink-soft);
+  }
+  .home .loc-points svg{width:17px;height:17px;color:var(--clay);}
+  .home .loc-grid .hours-list{grid-column:1/-1;grid-row:3;}
   .home .hours-list{
     background:var(--paper);
     border:1px solid var(--line);
     border-radius:var(--radius-card);
     box-shadow:var(--shadow-card);
-    padding:4px 18px;
+    padding:2px 14px;
   }
-  .home .hours-list li{font-size:14.5px;padding:11px 0;}
+  /* Five rows at the desktop rhythm ran to about 210px on a phone, which is a
+     third of the screen for a table nobody reads line by line. The type comes
+     down a step and the rows are set on half the padding — the card is still
+     the same five rows, in roughly 150px. */
+  .home .hours-list li{font-size:13px;padding:7px 0;gap:10px;}
   .home .hours-list li:last-child{border-bottom:0;}
 
   /* ── Education ──────────────────────────────────────────
