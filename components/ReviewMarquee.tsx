@@ -67,6 +67,23 @@ const REVIEWS: Review[] = [
   },
 ]
 
+/**
+ * Google's four-colour "G". Inline rather than a file so it costs no request
+ * and cannot 404, and drawn in Google's own brand colours because that is the
+ * only way the mark is licensed to be used — do not recolour it to the site
+ * palette. Decorative here: the words "Google review" sit right beside it.
+ */
+function GoogleMark() {
+  return (
+    <svg className="rmq-glogo" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+      <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.2-.4-4.7H24v8.9h11.8a10 10 0 0 1-4.4 6.6v5.5h7.1c4.1-3.8 6.6-9.5 6.6-16.3Z" />
+      <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7A22 22 0 0 0 24 46Z" />
+      <path fill="#FBBC05" d="M11.8 28.3a13.2 13.2 0 0 1 0-8.6v-5.7H4.5a22 22 0 0 0 0 20l7.3-5.7Z" />
+      <path fill="#EA4335" d="M24 10.1c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 3.5 29.9 1.5 24 1.5A22 22 0 0 0 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9Z" />
+    </svg>
+  )
+}
+
 function ReviewCard({ quote, name, when }: Review) {
   return (
     <figure className="rmq-card">
@@ -75,11 +92,19 @@ function ReviewCard({ quote, name, when }: Review) {
       <span className="rmq-mark" aria-hidden="true">
         &ldquo;
       </span>
-      <div className="rmq-stars" aria-label="Rated 5 out of 5">
-        <span aria-hidden="true">★★★★★</span>
+      {/* Source and rating together at the top of the card: a reader decides
+          whether a quote is worth reading from where it came from and how it
+          scored, and both used to arrive after the quote itself. */}
+      <div className="rmq-source">
+        <GoogleMark />
+        <span className="rmq-source-name">Google review</span>
+        {/* role="img" as well as the label: aria-label on a bare span is not
+            reliably announced without a role to hang it on. */}
+        <span className="rmq-stars" role="img" aria-label="Rated 5 out of 5">
+          <span aria-hidden="true">★★★★★</span>
+        </span>
       </div>
       <blockquote className="rmq-quote">{quote}</blockquote>
-      <span className="rmq-badge">Google review</span>
       <figcaption className="rmq-person">
         <span className="rmq-avatar" aria-hidden="true">
           {name.charAt(0)}

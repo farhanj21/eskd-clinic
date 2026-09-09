@@ -276,8 +276,13 @@ export default function Home() {
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">How we can help</div>
-            <h2 style={{ fontSize: 'clamp(38px, 4.8vw, 62px)' }}>Care for every stage of life</h2>
-            <p style={{ marginTop: '14px', fontSize: '17px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
+            {/* A step above `.sec h2` because this is the page's main "can we
+                help you?" beat, but brought in from clamp(38px,4.8vw,62px):
+                against the new 30–46px H2 scale, and inside the narrower
+                container, 62px was a different type system rather than an
+                emphasis within one. */}
+            <h2 style={{ fontSize: 'clamp(34px, 4.4vw, 52px)' }}>Care for every stage of life</h2>
+            <p style={{ marginTop: '18px', fontSize: '17.5px', maxWidth: '42em', marginLeft: 'auto', marginRight: 'auto' }}>
               From routine check-ups and emergency dentistry to fillings, crowns, implants and cosmetic care, here is how we look after St Kilda East and the surrounding suburbs.
             </p>
           </div>
@@ -290,8 +295,10 @@ export default function Home() {
                   sizes="(max-width: 820px) 100vw, 33vw"
                 />
                 <div className="svc-item-body">
-                  <h4 style={{ fontWeight: 700 }}>{title}</h4>
+                  <h4 style={{ fontWeight: 600 }}>{title}</h4>
                   <p>{blurb}</p>
+                  {/* The arrow is drawn by .svc-item-more::after, so it can
+                      slide on hover without the label moving with it. */}
                   <span className="svc-item-more">Learn more</span>
                 </div>
               </Link>
@@ -342,7 +349,7 @@ export default function Home() {
               <Link href="/online-booking" className="btn">Book an appointment</Link>
               <a href={telHref} className="btn btn-ghost ctaband-ghost">Call {business.telephoneDisplay}</a>
             </div>
-            <p style={{ margin: '20px 0 0', fontSize: '14.5px' }}>{fullAddress}</p>
+            <p style={{ margin: '24px 0 0', fontSize: '15.5px' }}>{fullAddress}</p>
           </div>
         </div>
       </section>
@@ -418,7 +425,7 @@ export default function Home() {
                   the two stacked to a 48px gap, against the 28px rhythm the rest
                   of the card uses. */}
               <Link href="/online-booking" className="btn" style={{ display: 'inline-block' }}>Book your visit</Link>
-              <p style={{ fontSize: '12px', marginTop: '14px', color: 'var(--ink-faint)' }}>
+              <p style={{ fontSize: '13.5px', marginTop: '16px', color: 'var(--ink-soft)' }}>
                 Everything included. Eligible health-fund claims can be processed through HICAPS.
               </p>
             </div>
@@ -446,10 +453,10 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <p style={{ marginTop: '16px', fontSize: '17px' }}>
+            <p style={{ marginTop: '24px', fontSize: '18.5px', maxWidth: '34em' }}>
               We take things slowly, explain everything clearly, and you can stop at any time. No judgement. No pressure.
             </p>
-            <div style={{ marginTop: '24px' }}>
+            <div style={{ marginTop: '36px' }}>
               <Link href="/nervous-patients" className="btn btn-clay nervous-cta">See how we help nervous patients</Link>
             </div>
           </div>
@@ -570,7 +577,15 @@ export default function Home() {
       </section>
 
       {/* FEES */}
-      <section className="sec alt">
+      {/* Plain `.sec`, not `.sec.alt`. Education directly below is white, and
+          with Fees white as well the page ran as one unbroken white column
+          from the health-fund band all the way to the areas grid — the only
+          place on the page where two neighbouring sections shared a ground.
+          Flipping this one restores the alternation for the whole tail, and it
+          is the right one to flip: Fees is an image-led split with nothing on
+          it that needs a white ground to lift off, while the white article
+          cards below and the white suburb pills further down both do. */}
+      <section className="sec">
         <div className="container fees-grid">
           <div className="reveal">
             <div className="eyebrow">Honest about cost</div>
@@ -672,7 +687,7 @@ export default function Home() {
               </span>
               <h4>Haven&apos;t been in years? Here&apos;s exactly what to expect.</h4>
               <p>A calm, step-by-step walk-through for an easier return.</p>
-              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '15px' }}>
                 Read article &rarr;
               </span>
             </Link>
@@ -693,7 +708,7 @@ export default function Home() {
               </span>
               <h4>Why are my gums bleeding?</h4>
               <p>What bleeding gums are trying to tell you, and when to act.</p>
-              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '15px' }}>
                 Read article &rarr;
               </span>
             </Link>
@@ -714,7 +729,7 @@ export default function Home() {
               </span>
               <h4>How Often Should You Really See the Dentist?</h4>
               <p>What actually determines your ideal check-up schedule.</p>
-              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '14px' }}>
+              <span style={{ color: 'var(--clay)', fontWeight: 600, fontSize: '15px' }}>
                 Read article &rarr;
               </span>
             </Link>
@@ -761,18 +776,20 @@ export default function Home() {
             <h2>Easy to get to, easy to park</h2>
           </div>
           <div className="loc-grid">
+            {/* No inline min-height: the frame is sized by .loc-grid .ph in
+                globals.css, which an inline style would pin past every
+                breakpoint step-down. */}
             <MapEmbed
               className="ph reveal"
-              style={{ minHeight: '340px' }}
               title={`Map to ${business.name}, ${fullAddress}`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(`${business.name}, ${fullAddress}`)}&output=embed`}
             />
             <div className="reveal">
               <p style={{ marginBottom: '6px' }}><b style={{ color: 'var(--ink)' }}>{fullAddress}</b></p>
-              <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>
+              <p style={{ fontSize: '15.5px', marginBottom: '22px' }}>
                 Off-street parking off Orrong Road · Trams 5 &amp; 64 and bus 220 nearby · Armadale station a 10–15 min walk · Wheelchair accessible
               </p>
-              <p style={{ fontSize: '14.5px', marginBottom: '22px' }}>
+              <p style={{ fontSize: '15.5px', marginBottom: '22px' }}>
                 On the corner of Dandenong and Orrong Roads, easy to reach by car, tram or train.
               </p>
               <ul className="hours-list">
