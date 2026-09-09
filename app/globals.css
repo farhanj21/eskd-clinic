@@ -3308,7 +3308,18 @@ body{overflow-x:hidden;max-width:100%;}
 .foot-bottom a{color:rgba(255,255,255,.62);}
 .foot-bottom a:hover{color:var(--clay-soft);}
 @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:480px){.foot-grid{grid-template-columns:1fr;}}
+/* Phone: two columns rather than one. As a single stack the four blocks ran
+   most of a screen on their own. The brand line and the contact block are both
+   short and read as full-width bands, so they span; Care and Areas — the two
+   long link lists, and where nearly all the height sits — run side by side.
+   Written as `.footer-v2 .foot-grid` on purpose: the mobile pass further down
+   sets `.foot-grid{gap}` at 600px, and at equal specificity that later rule
+   would win the column gap back. */
+@media(max-width:480px){
+  .footer-v2 .foot-grid{grid-template-columns:1fr 1fr;gap:26px 16px;}
+  .footer-v2 .foot-grid>div:first-child,
+  .footer-v2 .foot-grid>div:last-child{grid-column:1/-1;}
+}
 
 /* ── Service page: card grid ─────────────────────────────── */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -4378,6 +4389,18 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
     .home .care-points .care-chev{transition:none;}
   }
 
+  /* ── First visit card ───────────────────────────────────
+     The three meta points ("60–75 min", "All included", "Clear care plan")
+     come off on a phone: every one of them is already said in the paragraph
+     or the eight-item checklist directly above, and as a wrapped flex row
+     they cost most of a screen to repeat it. Home only —
+     /new-patient-comprehensive-care-visit still shows them.
+
+     The button then needs its own space: it sat on .offer-meta's 30px bottom
+     margin, and .offer-includes leaves only 4px. */
+  .home .offer-card-v2 .offer-meta{display:none;}
+  .home .offer-card-v2 .body .btn{margin-top:24px;width:100%;text-align:center;}
+
   /* ── Our story ──────────────────────────────────────────
      One card on a phone, with the photo leading it. Home only —
      /nervous-patients uses .story-grid's stacked phone layout as it is. */
@@ -4433,11 +4456,28 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .home .ins-logos .lg img{height:calc(var(--logo-h,30px) * .62);}
   .home .ins-pill{font-size:13.5px;padding:11px 18px;margin-top:26px;line-height:1.4;}
 
+  /* ── Honest about cost ──────────────────────────────────
+     The paragraph comes off: the three promises below say the same things in
+     a third of the height, and the heading carries the point on its own. The
+     list stays a list — rules between the lines, no cards. Home only, so
+     /fees keeps its paragraph. */
+  .home .fees-grid>div>p{display:none;}
+  .home .fees-list-v2{margin-top:16px;}
+  .home .fees-list-v2 li{padding:11px 0;gap:11px;font-size:14.5px;line-height:1.45;}
+  .home .fees-list-v2 li::before{width:7px;height:7px;margin-top:6px;}
+  .home .fees-list-v2 li:last-child{border-bottom:0;}
+  .home .fees-grid .btn{width:100%;text-align:center;}
+
   /* ── Areas ──────────────────────────────────────────────
      23 pills, so they only read as a block rather than as a list if they are
      small enough for three or four to share a line. */
   .home .areas-grid{gap:8px;}
   .home .areas-grid a{padding:10px 16px;font-size:14px;}
+  /* The closing line under the pills carried a desktop 34px above it and then
+     the section's own 52px below it — around 90px of air under a single grey
+     sentence, which on a phone reads as the page having stopped early. */
+  .home .areas-wider{margin-top:22px;font-size:14.5px;}
+  .home #areas{padding-bottom:26px;}
 
   /* ── Location ───────────────────────────────────────────
      The reference holds the address beside the map and drops the hours into a
@@ -4502,6 +4542,9 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
      the same five rows, in roughly 150px. */
   .home .hours-list li{font-size:13px;padding:7px 0;gap:10px;}
   .home .hours-list li:last-child{border-bottom:0;}
+  /* Same trim as Areas above: the hours card is the last thing in the section
+     and the full 52px sat under it. Bottom only — the head keeps its space. */
+  .home #location{padding-bottom:26px;}
 
   /* ── Get in touch ───────────────────────────────────────
      Details above, form below — both the full width of the screen. Side by

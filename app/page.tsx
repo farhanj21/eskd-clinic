@@ -415,7 +415,8 @@ export default function Home() {
               {/* No marginTop: .offer-meta already carries a 28px bottom margin,
                   and an inline-block button does not collapse margins with it —
                   the two stacked to a 48px gap, against the 28px rhythm the rest
-                  of the card uses. */}
+                  of the card uses. On a phone .offer-meta is hidden and the
+                  button takes its own margin instead — see globals.css. */}
               <Link href="/online-booking" className="btn" style={{ display: 'inline-block' }}>Book your visit</Link>
               <p style={{ fontSize: '13.5px', marginTop: '16px', color: 'var(--ink-soft)' }}>
                 Everything included. Eligible health-fund claims can be processed through HICAPS.
@@ -769,7 +770,7 @@ export default function Home() {
       </section>
 
       {/* LOCATION */}
-      <section className="sec alt">
+      <section className="sec alt" id="location">
         <div className="container">
           <div className="sec-head reveal">
             <div className="eyebrow">Finding us</div>
