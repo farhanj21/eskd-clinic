@@ -2742,6 +2742,10 @@ body{overflow-x:hidden;max-width:100%;}
 .offer-includes li{position:relative;padding-left:27px;font-size:15.5px;color:var(--ink-soft);line-height:1.45;}
 .offer-includes li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--sage-tint);border:1px solid var(--sage);}
 .offer-includes li::after{content:"";position:absolute;left:5px;top:8px;width:5px;height:8px;border-right:2px solid var(--sage-deep);border-bottom:2px solid var(--sage-deep);transform:rotate(45deg);}
+/* Square corners and a frame that fills the card's row — this photo is one
+   half of the split, not a picture sitting inside it. Below 820px the card
+   stacks and the rule after this one gives the frame a height of its own. */
+.offer-card-v2 .offer-photo{border-radius:0;min-height:100%;}
 @media(max-width:820px){.offer-card-v2{grid-template-columns:1fr;}.offer-card-v2 .ph{min-height:240px;}}
 @media(max-width:560px){.offer-includes{grid-template-columns:1fr;}}
 /* .tight — the home page's shortened list. Short enough to stay two-up on a
@@ -2824,6 +2828,10 @@ body{overflow-x:hidden;max-width:100%;}
 .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:10px 18px;border-radius:30px;font-size:15px;font-weight:500;}
 .nervous-proof{margin:28px 0 0;border-left:3px solid var(--clay);padding:4px 0 4px 20px;font-family:var(--display);font-style:italic;font-size:18px;line-height:1.5;color:var(--cream);}
 .nervous-proof cite{display:block;margin-top:10px;font-family:var(--body);font-style:normal;font-size:13px;color:rgba(255,255,255,.7);font-weight:600;}
+/* Was an inline style on the home page's copy; moved here so the phone rules
+   at the foot of this file can reach it. Same values. */
+.nervous-lead{margin-top:24px;font-size:18.5px;max-width:34em;}
+.nervous-actions{margin-top:36px;}
 @media(max-width:820px){
   .nervous-grid{grid-template-columns:1fr;gap:34px;}
   /* `.nervous-grid .ph.tall` is three classes, so it outweighs the generic
@@ -4106,4 +4114,267 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .offers-title{grid-column:2;grid-row:1;margin:0;font-size:17px;}
   /* margin-top:auto is a flex trick that would eat the free row space here. */
   .offers-cta{grid-column:1/-1;grid-row:2;margin-top:14px;}
+}
+
+/* ═══════════════════════════════════════════════════════
+   HOME — PHONE LAYOUT
+   The mobile home page as drawn in docs/Mobile 1.jpeg and
+   docs/Mobile 2.jpeg.
+
+   Every rule below is inside a media query AND prefixed with
+   `.home` — the class on the home page's <main>, and nowhere
+   else. So the desktop layout does not move at all, and the
+   shared furniture these rules restyle (the offers row, the
+   service cards, the review row, the CTA band, the health-fund
+   logos) keeps its existing phone styling on every other page
+   that uses it.
+═══════════════════════════════════════════════════════ */
+
+/* The carousel controls exist only on a phone; the wrapper around the review
+   row is a plain block everywhere else, and takes its positioning context in
+   the phone block below rather than here — a positioned ancestor changes how
+   the marquee's own composited layer is drawn. */
+.rmq-nav{display:none;}
+
+/* ── Choose the visit that fits ────────────────────────────
+   639px, not 600, so this replaces the shared phone treatment of the offers
+   row outright rather than leaving a 40px band still running the old one. */
+@media(max-width:639px){
+  /* The tinted container is what stops the desktop row reading as a second
+     services grid. Stacked there is no row to shape, and the reference has the
+     three cards sitting straight on the page ground. */
+  .home .offers-row{background:none;border:0;padding:0;gap:10px;}
+  /* One row per card: icon, then name over blurb, then a chevron. The blurb
+     comes back — the shared phone styling hides it — because each card is only
+     two short lines tall here, and "Existing patient" needs its line of
+     explanation before the reader will tap it. */
+  .home .offers-card{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr);
+    align-items:center;
+    column-gap:14px;row-gap:3px;
+    /* The right padding is the chevron's lane. */
+    padding:16px 46px 16px 16px;
+    min-height:0;
+    border-color:var(--line);
+  }
+  .home .offers-watermark{display:none;}
+  .home .offers-icon{grid-column:1;grid-row:1/3;align-self:center;width:42px;height:42px;margin:0;border-radius:12px;}
+  .home .offers-icon svg{width:21px;height:21px;}
+  .home .offers-title{grid-column:2;grid-row:1;margin:0;font-size:17px;}
+  .home .offers-body{grid-column:2;grid-row:2;display:block;margin:0;font-size:13.5px;line-height:1.45;}
+  .home .offers-fine{display:none;}
+  /* The CTA becomes the card. An invisible overlay link makes the whole row
+     one tap target instead of a chevron-sized one, and its own arrow — the
+     only part left visible — is the chevron. The label stays in the DOM at
+     zero size, so the link keeps its accessible name. */
+  .home .offers-cta{
+    position:absolute;inset:0;
+    /* grid-area:auto matters. An absolutely positioned child of a grid
+       container that still carries a placement — the shared phone rule pins
+       this one to row 2 — is contained by that grid AREA, not by the card, so
+       inset:0 stretched it across the blurb instead of the whole row. */
+    grid-area:auto;
+    display:block;margin:0;padding:0;
+    background:none;border:0;
+    border-radius:var(--radius-card);
+    font-size:0;
+  }
+  .home .offers-arrow{
+    position:absolute;top:50%;right:17px;
+    transform:translateY(-50%);
+    width:18px;height:18px;
+    color:var(--ink-faint);
+  }
+  /* Both of these are :hover states that stick after a tap on a touch screen,
+     and the arrow's would drop the centring transform above. */
+  .home .offers-card:hover,
+  .home .offers-card:focus-within{transform:none;}
+  .home .offers-card:hover .offers-arrow,
+  .home .offers-card:focus-within .offers-arrow{transform:translateY(-50%);}
+}
+
+@media(max-width:600px){
+  /* ── Hero ───────────────────────────────────────────────
+     Left-aligned rather than centred, with the headline a step larger and the
+     block given more room above and below it. The two CTAs are already
+     stacked full width; they only gain the space to breathe. */
+  .home .hero-video-inner{padding-block:56px calc(40px + var(--hero-overlap));}
+  .home .hero-video-copy{text-align:left;margin:0;}
+  /* Still sized off the viewport: both halves of the line are nowrap, so a
+     fixed size overflows the gutter on a 320px screen. Only the ceiling
+     moves, which is what a 430px phone sees. */
+  .home .hero-video h1{font-size:clamp(32px,9.6vw,46px);line-height:1.06;}
+  .home .hero-video .lead{font-size:17px;line-height:1.65;margin:16px 0 26px;}
+  .home .hero-video .hero-cta{gap:12px;}
+  .home .hero-video .hero-proof{margin-top:24px;}
+
+  /* ── Reviews: one at a time, swiped ─────────────────────
+     The drift is turned off and the duplicate lap hidden, so the same markup
+     becomes a plain snap scroller over the six real cards — which is what the
+     dots in components/ReviewCarouselNav.tsx count and scroll to. */
+  .home .rmq{
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    /* The desktop edge-fade would grey out the sides of whichever card the
+       reader is holding still, so it comes off with the motion. */
+    -webkit-mask-image:none;mask-image:none;
+    padding:4px 0 8px;
+  }
+  .home .rmq::-webkit-scrollbar{display:none;}
+  /* The gutter rides on the TRACK, not on the scroller: the track keeps its
+     max-content width, so its own padding is part of the scrollable area and
+     the first and last cards can both settle centred. A padding on the
+     scroller is not reliably added after overflowing content. */
+  .home .rmq-track{animation:none;padding-inline:var(--gutter);}
+  .home .rmq-loop{display:none;}
+  .home .rmq-card{
+    flex:0 0 calc(100vw - (var(--gutter) * 2));
+    margin-right:12px;
+    scroll-snap-align:center;
+  }
+  .home .rmq-card:last-child{margin-right:0;}
+  .home .rmq-wrap{position:relative;}
+  .home .rmq-nav{display:flex;align-items:center;justify-content:center;margin-top:16px;}
+  .home .rmq-dots{display:flex;align-items:center;gap:8px;}
+  .home .rmq-dot{
+    width:7px;height:7px;padding:0;
+    background:rgba(60,65,66,.22);border:0;border-radius:50%;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .home .rmq-dot.is-active{background:var(--clay);transform:scale(1.3);}
+  /* Set against the sides of the card rather than under it, as the reference
+     draws them. The offset on `top` is the dot row plus its margin, so the
+     pair sits on the middle of the card and not the middle of the block. */
+  .home .rmq-arrow{
+    position:absolute;top:calc(50% - 23px);
+    transform:translateY(-50%);
+    z-index:2;
+    width:34px;height:34px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--sage-deep);
+    box-shadow:0 4px 14px rgba(20,33,26,.14);
+  }
+  .home .rmq-arrow svg{width:17px;height:17px;}
+  .home .rmq-arrow:disabled{opacity:.32;}
+  .home .rmq-arrow-prev{left:4px;}
+  .home .rmq-arrow-next{right:4px;}
+
+  /* ── Services, two-up ───────────────────────────────────
+     The reference runs the six service cards two to a row with the photo
+     leading each one, which is what makes the section read as a range of care
+     taken in at a glance rather than a column of six full-width cards. Phones
+     only: between 601 and 820px the shared one-column rule still stands, so
+     the tablet layout is exactly what it was. */
+  .home .svc-grid-v2{grid-template-columns:1fr 1fr;gap:12px;}
+  .home .svc-item .ph{height:118px;}
+  .home .svc-item-body{padding:13px 13px 15px;}
+  .home .svc-item h4{font-size:15px;line-height:1.25;margin-bottom:5px;}
+  .home .svc-item p{font-size:12.5px;line-height:1.5;}
+  .home .svc-item-more{font-size:12.5px;padding-top:11px;}
+
+  /* ── CTA band ───────────────────────────────────────────
+     The reference gives this the most weight of anything on the page: a full
+     width primary with the call link stacked beneath it rather than beside it.
+     Scoped to .home so the same band on /fees and the service pages keeps the
+     centred pair it has today. */
+  .home .ctaband{padding:44px 26px;}
+  .home .ctaband h3{font-size:clamp(27px,7.6vw,34px);}
+  .home .ctaband p{font-size:15.5px;line-height:1.65;}
+  .home .ctaband-actions{flex-direction:column;align-items:stretch;gap:12px;margin-top:24px;}
+  .home .ctaband-actions .btn{width:100%;text-align:center;}
+  .home .ctaband .btn:not(.btn-ghost):not(.btn-ghost-light):not(.btn-light){font-size:16.5px;padding:17px 24px;}
+  .home .ctaband-ghost{font-size:16px;padding:16px 24px;}
+
+  /* ── Our story ──────────────────────────────────────────
+     The reference sets the copy beside the photo rather than under it, with
+     the frame running the height of the block. Home only — /nervous-patients
+     uses .story-grid's stacked phone layout as it is. */
+  .home .story-grid{grid-template-columns:minmax(0,1fr) minmax(0,.72fr);gap:16px;align-items:stretch;}
+  /* No floor of its own: the frame takes the height of the copy beside it, so
+     the two columns square off the way the reference draws them. */
+  .home .story-grid>.ph{min-height:0;}
+  .home .story-grid h2{font-size:clamp(23px,6.2vw,30px);line-height:1.12;}
+  .home .story-copy-short{margin-top:10px;font-size:14px;line-height:1.6;}
+  /* Three figures in a column half the screen wide: stacked, not in a row. */
+  .home .story-stats{flex-direction:column;gap:12px;margin-top:20px;}
+  .home .story-stats>div{flex:none;}
+  .home .story-stats b{font-size:24px;}
+  .home .story-stats span{font-size:12px;margin-top:2px;}
+
+  /* ── Nervous patients ───────────────────────────────────
+     The reference's "you're in safe hands" band: photo on the left, the
+     heading, copy and button held beside it. */
+  .home .nervous-grid{grid-template-columns:minmax(0,.72fr) minmax(0,1fr);gap:16px;align-items:stretch;}
+  .home .nervous-grid .ph.tall{min-height:0;}
+  .home .sage-bg .nervous-grid h2{font-size:clamp(21px,5.9vw,28px);line-height:1.14;}
+  .home .nervous-lead{margin-top:14px;font-size:14.5px;line-height:1.55;}
+  .home .nervous-actions{margin-top:18px;}
+  /* Half a screen wide is not enough for a nowrap button label. */
+  .home .nervous-cta{white-space:normal;display:block;text-align:center;padding:13px 16px;font-size:14px;}
+
+  /* The team lead photo still stacks, and simply gets the height the
+     reference gives it. */
+  .home .team-lead-grid .ph.tall{min-height:300px;}
+
+  /* ── Health funds ───────────────────────────────────────
+     Four tiles to a row, as drawn, rather than the two the shared rule leaves
+     at this width. The marks stay sized by height so the set still reads as
+     one size — see the note on .ins-logos .lg img. */
+  .home .ins-logos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:26px;}
+  .home .ins-logos .lg{height:50px;min-width:0;padding:0 8px;}
+  .home .ins-logos .lg img{height:calc(var(--logo-h,30px) * .62);}
+  .home .ins-pill{font-size:13.5px;padding:11px 18px;margin-top:26px;line-height:1.4;}
+
+  /* ── Areas ──────────────────────────────────────────────
+     23 pills, so they only read as a block rather than as a list if they are
+     small enough for three or four to share a line. */
+  .home .areas-grid{gap:8px;}
+  .home .areas-grid a{padding:10px 16px;font-size:14px;}
+
+  /* ── Location ───────────────────────────────────────────
+     The reference holds the address beside the map and drops the hours into a
+     bordered card of their own beneath the pair.
+
+     display:contents on the details column is what allows that from one grid:
+     it dissolves the wrapper so the address, the two transport lines and the
+     hours list become grid items in their own right, and each can be placed.
+     The wrapper carries .reveal, which has no box to fade once it is
+     display:contents — so this block also opts the column out of the scroll
+     reveal, deliberately. */
+  .home .loc-grid{grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);column-gap:14px;row-gap:14px;}
+  /* :not(.ph) — the map frame is a div in this grid too, and dissolving it
+     would drop the frame and leave the facade unstyled. */
+  .home .loc-grid>div:not(.ph){display:contents;}
+  .home .loc-grid .ph{grid-column:1;grid-row:1/3;min-height:210px;}
+  .home .loc-grid>div:not(.ph)>p{grid-column:2;margin:0;font-size:13px;line-height:1.5;}
+  .home .loc-grid>div:not(.ph)>p:nth-of-type(1){grid-row:1;align-self:start;}
+  .home .loc-grid>div:not(.ph)>p:nth-of-type(2){grid-row:2;align-self:start;}
+  /* The third line — "on the corner of…" — and the hours run the full width
+     beneath the pair. */
+  .home .loc-grid>div:not(.ph)>p:nth-of-type(3){grid-column:1/-1;grid-row:3;}
+  .home .loc-grid .hours-list{grid-column:1/-1;grid-row:4;}
+  .home .hours-list{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius-card);
+    box-shadow:var(--shadow-card);
+    padding:4px 18px;
+  }
+  .home .hours-list li{font-size:14.5px;padding:11px 0;}
+  .home .hours-list li:last-child{border-bottom:0;}
+
+  /* ── Education ──────────────────────────────────────────
+     Card gaps only. The article images carry an inline height from
+     app/page.tsx, so their frames are not this file's to set. */
+  .home .edu-grid{gap:14px;}
+}
+
+@media(max-width:600px) and (prefers-reduced-motion:reduce){
+  .home .rmq-dot{transition:none;}
 }

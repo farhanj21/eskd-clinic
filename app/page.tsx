@@ -208,7 +208,11 @@ const homeSchema = {
 
 export default function Home() {
   return (
-    <main>
+    /* .home scopes the phone-width overrides at the foot of globals.css. The
+       home page's mobile layout was redesigned against docs/Mobile 1-2.jpeg,
+       and every rule in that block is inside a media query and prefixed with
+       this class, so neither the desktop layout nor any other page moves. */
+    <main className="home">
       {/* The hero poster is a CSS background, so it isn't discoverable until the
           stylesheet parses. Preloading it keeps it the LCP candidate. */}
       <link rel="preload" as="image" href="/assets/video/hero-clinic-poster.webp" fetchPriority="high" />
@@ -429,8 +433,12 @@ export default function Home() {
                 Everything included. Eligible health-fund claims can be processed through HICAPS.
               </p>
             </div>
+            {/* The frame's overrides are a class, not an inline style: inline
+                won the cascade against the stacked mobile rule below 820px, so
+                min-height:100% resolved against an auto-height row and the
+                photo collapsed to nothing on a phone. */}
             <Photo
-              style={{ borderRadius: 0, minHeight: '100%' }}
+              className="offer-photo"
               src="/assets/home/comprehensive2.webp"
               alt="A dentist talking with a seated patient during a comprehensive care consultation"
      
@@ -453,10 +461,10 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <p style={{ marginTop: '24px', fontSize: '18.5px', maxWidth: '34em' }}>
+            <p className="nervous-lead">
               We take things slowly, explain everything clearly, and you can stop at any time. No judgement. No pressure.
             </p>
-            <div style={{ marginTop: '36px' }}>
+            <div className="nervous-actions">
               <Link href="/nervous-patients" className="btn btn-clay nervous-cta">See how we help nervous patients</Link>
             </div>
           </div>

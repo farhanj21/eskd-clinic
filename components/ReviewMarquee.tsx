@@ -21,6 +21,8 @@
  * anywhere on the site.
  */
 
+import ReviewCarouselNav from './ReviewCarouselNav'
+
 interface Review {
   quote: string
   name: string
@@ -120,19 +122,26 @@ function ReviewCard({ quote, name, when }: Review) {
 
 export default function ReviewMarquee() {
   return (
-    <div className="rmq" role="region" aria-label="Reviews from our patients">
-      <div className="rmq-track">
-        {REVIEWS.map(r => (
-          <ReviewCard key={r.name} {...r} />
-        ))}
-        {/* The second lap. Hidden from assistive tech so the six reviews are
-            announced once, not twice. */}
-        <div className="rmq-loop" aria-hidden="true">
+    /* The wrapper is the positioning context for the phone-only arrows, and
+       nothing more — on a wide screen it is a plain block around the row. */
+    <div className="rmq-wrap">
+      <div className="rmq" id="home-reviews" role="region" aria-label="Reviews from our patients">
+        <div className="rmq-track">
           {REVIEWS.map(r => (
-            <ReviewCard key={`${r.name}-loop`} {...r} />
+            <ReviewCard key={r.name} {...r} />
           ))}
+          {/* The second lap. Hidden from assistive tech so the six reviews are
+              announced once, not twice. On a phone the row is a carousel
+              rather than a marquee and this copy is hidden outright. */}
+          <div className="rmq-loop" aria-hidden="true">
+            {REVIEWS.map(r => (
+              <ReviewCard key={`${r.name}-loop`} {...r} />
+            ))}
+          </div>
         </div>
       </div>
+      {/* Phone only — display:none from 601px up. See globals.css. */}
+      <ReviewCarouselNav targetId="home-reviews" count={REVIEWS.length} />
     </div>
   )
 }
