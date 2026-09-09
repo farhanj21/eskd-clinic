@@ -462,65 +462,70 @@ export default function Home() {
 
 
       {/* TEAM */}
+      {/* .team-row — the group shot and the four portraits as one row, shared
+          with /new-patient-comprehensive-care-visit, which shows the same five
+          photographs. The group frame takes whatever width the four pinned
+          portraits leave it; see the rules in globals.css. */}
       <section className="sec">
         <div className="container">
-          <div className="team-lead-grid">
-            <Photo
-              tall
-              className="reveal"
-              src="/assets/shared/meet-our-team.webp"
-              alt="The East St Kilda Dental team standing together outside the clinic entrance"
-              objectPosition="center top"
-              sizes="(max-width: 820px) 100vw, 40vw"
-            />
-            <div className="reveal">
-              <div className="eyebrow">The people who&apos;ll care for you</div>
-              <h2>A gentle team you&apos;ll get to <em>know</em></h2>
-              </div>
+          <div className="sec-head center reveal">
+            <div className="eyebrow">The people who&apos;ll care for you</div>
+            <h2>A gentle team you&apos;ll get to <em>know</em></h2>
           </div>
-          <div className="team-grid-v2">
-            <div className="team-member reveal">
+          <div className="team-row reveal">
+            {/* The team stands across the lower two thirds of this photograph —
+                everything above them is shopfront. 80% pulls the crop down so
+                the row of people fills the frame, heads to feet. */}
+            <div className="team-row-group">
+              <Photo
+                src="/assets/shared/meet-our-team.webp"
+                alt="The East St Kilda Dental team standing together outside the clinic entrance"
+                objectPosition="center 60%"
+                sizes="(max-width: 900px) 100vw, 34vw"
+              />
+            </div>
+            <div className="team-member">
               <Photo
                 src="/assets/team/anbar-ganatra.webp"
                 alt="Dr Anbar Ganatra – Cosmetic & General Dentist"
                 objectPosition="center top"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Dr Anbar Ganatra</h4>
               <span>Cosmetic &amp; General Dentist</span>
             </div>
-            <div className="team-member reveal">
+            <div className="team-member">
               <Photo
                 src="/assets/team/edmund-goldman.webp"
                 alt="Dr Edmund Goldman – Dentist"
                 objectPosition="center top"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Dr Edmund Goldman</h4>
               <span>Dentist</span>
             </div>
-            <div className="team-member reveal">
+            <div className="team-member">
               <Photo
                 src="/assets/team/jarrod-dean.webp"
                 alt="Dr Jarrod Dean – Dentist"
                 objectPosition="center top"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Dr Jarrod Dean</h4>
               <span>Dentist</span>
             </div>
-            <div className="team-member reveal">
+            <div className="team-member">
               <Photo
                 src="/assets/team/michelle-callaghan.webp"
                 alt="Michelle Callaghan – Hygienist"
                 objectPosition="40% 95%"
-                sizes="(max-width: 820px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 198px"
               />
               <h4>Michelle Callaghan</h4>
               <span>Hygienist</span>
             </div>
           </div>
-          <div style={{ textAlign: 'center', marginTop: '32px' }} className="reveal">
+          <div className="team-row-cta reveal">
             <Link href="/about/our-team" className="btn btn-ghost">Meet Our Team</Link>
           </div>
           {/* <div className="lang-band reveal">

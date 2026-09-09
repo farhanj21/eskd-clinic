@@ -308,12 +308,12 @@ export default function OfferPage() {
               page's card, so the frame, its 3:4 crop, the 20px gap under it and
               the name and role beneath come out identical here by construction
               rather than by two sets of numbers agreeing. */}
-          <div className="npv-team-row reveal">
+          <div className="team-row reveal">
             {/* The team stands across the lower two thirds of this photograph —
                 everything above them is shopfront. "center top" was giving a
                 landscape frame a third of a wall; 80% pulls the crop down so the
                 row of people fills it, heads to feet. */}
-            <div className="npv-team-group">
+            <div className="team-row-group">
               <Photo
                 src="/assets/shared/meet-our-team.webp"
                 alt="The East St Kilda Dental team standing together outside the clinic entrance"
@@ -334,7 +334,7 @@ export default function OfferPage() {
               </div>
             ))}
           </div>
-          <div className="npv-team-cta reveal">
+          <div className="team-row-cta reveal">
             <Link href="/about/our-team" className="btn">Meet the team</Link>
           </div>
         </div>
