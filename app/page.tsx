@@ -461,10 +461,10 @@ export default function Home() {
           <div className="reveal">
             <div className="eyebrow">Nervous and anxious patients</div>
             <h2>Scared of the dentist? You&apos;re exactly who we&apos;re <em>best</em> with.</h2>
-            <p className="nervous-lead">
+            <p style={{ marginTop: '24px', fontSize: '18.5px', maxWidth: '34em' }}>
               We take things slowly, explain everything clearly, and you can stop at any time. No judgement. No pressure.
             </p>
-            <div className="nervous-actions">
+            <div style={{ marginTop: '36px' }}>
               <Link href="/nervous-patients" className="btn btn-clay nervous-cta">See how we help nervous patients</Link>
             </div>
           </div>
