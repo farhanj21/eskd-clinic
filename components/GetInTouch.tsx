@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getInTouchCopy, type GetInTouchVariant } from '@/data/getintouch'
 import { business, emailHref, fullAddress, telHref } from '@/lib/business'
 import { track } from '@/lib/analytics'
@@ -9,6 +9,16 @@ import { TREATMENTS } from '@/lib/enquiry'
 interface GetInTouchProps {
   variant?: GetInTouchVariant
   id?: string
+  /**
+   * Collapses the form's three choice fields into native dropdowns at phone
+   * width, and lets the CSS hide the field headings there.
+   *
+   * Only the home page passes it: that page's phone layout holds the form in
+   * a column barely 200px wide, where two segmented radio pairs and a panel of
+   * nine checkboxes cost most of a screen. Everywhere else the section keeps
+   * the controls it has always had at every width.
+   */
+  compactMobile?: boolean
   /**
    * Overrides the heading above the contact details.
    *
@@ -22,6 +32,7 @@ export default function GetInTouch({
   variant = 'default',
   id = 'contact',
   heading = 'We’re here whenever you’re ready',
+  compactMobile = false,
 }: GetInTouchProps) {
   const copy = getInTouchCopy[variant]
   const [submitted, setSubmitted] = useState(false)
@@ -36,6 +47,17 @@ export default function GetInTouch({
      width. */
   const [treatOpen, setTreatOpen] = useState(false)
   const [treatSel, setTreatSel] = useState<string[]>([])
+  /* Matches the 600px breakpoint the phone rules in globals.css use. */
+  const [isPhone, setIsPhone] = useState(false)
+  useEffect(() => {
+    if (!compactMobile) return
+    const mq = window.matchMedia('(max-width:600px)')
+    const sync = () => setIsPhone(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [compactMobile])
+  const compact = compactMobile && isPhone
 
   /* Read back off the DOM rather than controlling nine checkboxes: change
      events bubble, so one handler on the panel keeps the summary in step. */
@@ -67,7 +89,7 @@ export default function GetInTouch({
         body: JSON.stringify({
           patienttype: fd.get('patienttype'),
           intent: fd.get('intent'),
-          treatments: fd.getAll('treat'),
+          treatments: fd.getAll('treat').filter(Boolean),
           firstName: fd.get('firstName'),
           lastName: fd.get('lastName'),
           email: fd.get('email'),
@@ -206,22 +228,44 @@ export default function GetInTouch({
               <div className="gt-row2">
                 <div>
                   <span className="gt-label">I&apos;m a&hellip;</span>
-                  <div className="gt-seg">
-                    <label><input type="radio" name="patienttype" value="new" defaultChecked /> New patient</label>
-                    <label><input type="radio" name="patienttype" value="returning" /> Returning</label>
-                  </div>
+                  {compact ? (
+                    <select className="gt-select" name="patienttype" defaultValue="new" aria-label="I'm a…">
+                      <option value="new">New patient</option>
+                      <option value="returning">Returning patient</option>
+                    </select>
+                  ) : (
+                    <div className="gt-seg">
+                      <label><input type="radio" name="patienttype" value="new" defaultChecked /> New patient</label>
+                      <label><input type="radio" name="patienttype" value="returning" /> Returning</label>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <span className="gt-label">I&apos;d like to&hellip;</span>
-                  <div className="gt-seg">
-                    <label><input type="radio" name="intent" value="enquire" defaultChecked /> Make an enquiry</label>
-                    <label><input type="radio" name="intent" value="book" /> Book a visit</label>
-                  </div>
+                  {compact ? (
+                    <select className="gt-select" name="intent" defaultValue="enquire" aria-label="I'd like to…">
+                      <option value="enquire">Make an enquiry</option>
+                      <option value="book">Book a visit</option>
+                    </select>
+                  ) : (
+                    <div className="gt-seg">
+                      <label><input type="radio" name="intent" value="enquire" defaultChecked /> Make an enquiry</label>
+                      <label><input type="radio" name="intent" value="book" /> Book a visit</label>
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className="gt-field">
                 <span className="gt-label" id="gt-treat-label">I&apos;m interested in&hellip;</span>
+                {compact ? (
+                  <select className="gt-select" name="treat" defaultValue="" aria-label="I'm interested in…">
+                    <option value="">Choose what you need</option>
+                    {TREATMENTS.map(t => (
+                      <option key={t.value} value={t.value}>{t.label}</option>
+                    ))}
+                  </select>
+                ) : (
                 <div className={`gt-treat-wrap${treatOpen ? ' is-open' : ''}`}>
                   {/* Phone only — CSS hides this and shows the panel outright
                       from 601px up, so a desktop reader sees the chips as
@@ -252,6 +296,7 @@ export default function GetInTouch({
                     ))}
                   </div>
                 </div>
+                )}
               </div>
 
               <div className="gt-row2">
