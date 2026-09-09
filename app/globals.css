@@ -4354,36 +4354,46 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   }
 
   /* ── Our story ──────────────────────────────────────────
-     The reference sets the copy beside the photo rather than under it, with
-     the frame running the height of the block. Home only — /nervous-patients
-     uses .story-grid's stacked phone layout as it is. */
+     One card on a phone, with the photo leading it. Home only —
+     /nervous-patients uses .story-grid's stacked phone layout as it is. */
   .home .story-grid{
     /* .story-grid IS the .container here, so its gutter padding would sit
        inside the card and run the card itself to both screen edges. The
        gutter becomes a margin instead. */
     padding:0;
     margin-inline:var(--gutter);
-    grid-template-columns:minmax(0,1fr) minmax(0,.68fr);
+    grid-template-columns:minmax(0,1fr);
     gap:0;
-    align-items:stretch;
-    background:var(--cream-2);
+    background:var(--paper);
     border:1px solid var(--line);
     border-radius:var(--radius-card);
-    /* Clips the photo to the card's corners, which is what lets it bleed to
-       three of the card's edges instead of sitting inside a frame. */
+    box-shadow:var(--shadow-card);
     overflow:hidden;
   }
-  .home .story-grid>div:first-child{padding:20px 16px 22px;}
-  /* No floor and no corners of its own: the photo takes the height of the copy
-     beside it and runs to the card's edge, the way the reference draws it. */
-  .home .story-grid>.ph{min-height:0;border-radius:0;border:0;}
+  .home .story-grid>div:first-child{grid-row:2;padding:22px 18px 24px;}
+  /* Across the top of the card rather than beside the copy: in a column barely
+     a third of the screen wide, a cover crop of a landscape photo keeps only a
+     sliver down its middle. heritage.webp is 1600x1067, so a 3:2 frame the
+     full width of the card shows the whole picture — every face in it — with
+     nothing cropped away and nothing stretched. */
+  .home .story-grid>.ph{
+    grid-row:1;
+    display:block;
+    min-height:0;
+    aspect-ratio:3/2;
+    border:0;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+  }
   .home .story-grid h2{font-size:clamp(23px,6.2vw,30px);line-height:1.12;}
   .home .story-copy-short{margin-top:10px;font-size:14px;line-height:1.6;}
-  /* Three figures in a column half the screen wide: stacked, not in a row. */
-  .home .story-stats{flex-direction:column;gap:12px;margin-top:20px;}
-  .home .story-stats>div{flex:none;}
-  .home .story-stats b{font-size:24px;}
-  .home .story-stats span{font-size:12px;margin-top:2px;}
+  /* The three figures share one line across the card. They each get about
+     95px, so the figures come down and the labels are set tight — the third
+     one is the long one and is what the size is picked against. */
+  .home .story-stats{flex-direction:row;gap:12px;margin-top:20px;}
+  .home .story-stats>div{flex:1 1 0;min-width:0;}
+  .home .story-stats b{font-size:22px;}
+  .home .story-stats span{font-size:11.5px;line-height:1.35;margin-top:3px;}
 
   /* The team lead photo gets the height the reference gives it. Nervous
      patients is left exactly as it was — stacked, at its own sizes. */
