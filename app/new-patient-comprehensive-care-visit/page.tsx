@@ -143,7 +143,7 @@ export default function OfferPage() {
           Reuses .pillars rather than introducing another card style; the
           .pillars-ico modifier is what adds the badge and moves the number
           up beside it. */}
-      <section className="sec">
+      <section className="sec npv-why">
         <div className="container">
           <div className="sec-head center reveal">
             <div className="eyebrow">Why this visit is different</div>
@@ -172,7 +172,7 @@ export default function OfferPage() {
           The outcome of the visit rather than its contents — deliberately
           placed before the "may include" list, so the reader knows what the
           appointment is for before being shown what is in it. */}
-      <section className="sec know-band">
+      <section className="sec sage-bg">
         <div className="container know-grid">
           <div className="reveal">
             <div className="eyebrow">A clearer, brighter path forward</div>
@@ -189,11 +189,15 @@ export default function OfferPage() {
               ))}
             </ul>
           </div>
+          {/* objectPosition drops the frame past the poster on the back wall —
+              it carries garbled placeholder lettering that reads as a mistake
+              at this size. Everything that matters is in the lower half. */}
           <Photo
             tall
             className="reveal"
-            src="/assets/unused/south-yarra.webp"
-            alt="A relaxed patient smiling in the dental chair during her appointment"
+            src="/assets/unused/comprehensive-care-visit.webp"
+            alt="A patient and a team member going through her chart together at the practice desk"
+            objectPosition="center 35%"
             sizes="(max-width: 860px) 100vw, 46vw"
           />
         </div>
@@ -305,11 +309,15 @@ export default function OfferPage() {
               the name and role beneath come out identical here by construction
               rather than by two sets of numbers agreeing. */}
           <div className="npv-team-row reveal">
+            {/* The team stands across the lower two thirds of this photograph —
+                everything above them is shopfront. "center top" was giving a
+                landscape frame a third of a wall; 80% pulls the crop down so the
+                row of people fills it, heads to feet. */}
             <div className="npv-team-group">
               <Photo
                 src="/assets/shared/meet-our-team.webp"
                 alt="The East St Kilda Dental team standing together outside the clinic entrance"
-                objectPosition="center top"
+                objectPosition="center 60%"
                 sizes="(max-width: 900px) 100vw, 34vw"
               />
             </div>
@@ -336,7 +344,7 @@ export default function OfferPage() {
       <section className="sec" id="offer-callback">
         <div className="container">
           <div className="sec-head center reveal">
-            <div className="eyebrow">Book your visit</div>
+            <div className="eyebrow">Whatever feels easier</div>
             <h2>Two easy ways to book your visit</h2>
           </div>
           <div className="booking-cols reveal">
@@ -359,12 +367,16 @@ export default function OfferPage() {
                 namePlaceholder="First name"
                 showEmail
               />
-              <p className="book-fine">
-                Or call us on{' '}
-                <a href={telHref} style={{ color: 'var(--sage-deep)', fontWeight: 600 }}>{business.telephoneDisplay}</a>.
-              </p>
             </div>
           </div>
+          {/* Under both cards rather than inside the second: calling applies to
+              either route, and as the last line of the callback card it was
+              height that only deepened the gap the first card had to sit
+              through. */}
+          <p className="book-fine reveal">
+            Prefer to talk it through? Call us on{' '}
+            <a href={telHref}>{business.telephoneDisplay}</a>.
+          </p>
 
           {/* The other doors out of this page, in one row rather than as
               asides inside the sections above. */}
