@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Link from 'next/link'
 import CallbackForm from '@/components/CallbackForm'
+import CarouselNav from '@/components/CarouselNav'
 import Photo from '@/components/Photo'
 import ReviewMarquee from '@/components/ReviewMarquee'
 import { withSocial } from '@/lib/seo'
@@ -323,6 +324,10 @@ export default function OfferPage() {
               <h4>Our team</h4>
               <span>Caring for St Kilda East since 1980</span>
             </div>
+            {/* display:contents above 600px, so these four stay direct grid
+                items of .team-row; on a phone the wrapper becomes the snap
+                scroller the dots below drive. */}
+            <div className="team-row-people" id="npv-team">
             {clinicians.map((c) => (
               <div className="team-member" key={c.slug}>
                 <Photo
@@ -335,7 +340,10 @@ export default function OfferPage() {
                 <span>{c.jobTitle}</span>
               </div>
             ))}
+            </div>
           </div>
+          {/* Phone only — display:none from 601px up. */}
+          <CarouselNav targetId="npv-team" count={clinicians.length} itemSelector=".team-member" className="team-nav" />
           <div className="team-row-cta reveal">
             <Link href="/about/our-team" className="btn">Meet the team</Link>
           </div>

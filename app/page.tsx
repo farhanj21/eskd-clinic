@@ -486,6 +486,10 @@ export default function Home() {
               <h4>Our team</h4>
               <span>Caring for St Kilda East since 1980</span>
             </div>
+            {/* display:contents above 600px, so these four stay direct grid
+                items of .team-row; on a phone the wrapper becomes the snap
+                scroller the dots below drive. */}
+            <div className="team-row-people" id="home-team">
             <div className="team-member">
               <Photo
                 src="/assets/team/anbar-ganatra.webp"
@@ -526,7 +530,10 @@ export default function Home() {
               <h4>Michelle Callaghan</h4>
               <span>Hygienist</span>
             </div>
+            </div>
           </div>
+          {/* Phone only — display:none from 601px up. */}
+          <CarouselNav targetId="home-team" count={4} itemSelector=".team-member" className="team-nav" />
           <div className="team-row-cta reveal">
             <Link href="/about/our-team" className="btn btn-ghost">Meet Our Team</Link>
           </div>

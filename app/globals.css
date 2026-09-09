@@ -2932,6 +2932,7 @@ body{overflow-x:hidden;max-width:100%;}
    splits what the gaps leave, so the frame is exactly 1.8x as wide. 1.8 / (4/3)
    = 1.35 is the ratio that lands it on exactly their height — landscape, so the
    photograph is not cropped to a portrait it was never shot for. */
+.team-row-people{display:contents;}
 .team-row-group .ph{min-height:0;aspect-ratio:27/20;margin-bottom:20px;border-radius:var(--radius-card);}
 
 @media(min-width:1180px){
@@ -2961,9 +2962,49 @@ body{overflow-x:hidden;max-width:100%;}
   .team-row-group .ph{aspect-ratio:16/10;}
   .team-row-cta{margin-top:30px;}
 }
+/* Phone: the group shot full width as the section's establishing image, then
+   the four people swiped one at a time — the same treatment .edu-grid and the
+   review row already take at this width, so the dots read as a convention
+   rather than a one-off.
+
+   Two-up in a 160px column was the alternative and it cost 1192px of scroll:
+   the portraits were small, and 20px names in that column wrapped unevenly, so
+   "Dr Edmund Goldman" ran to two lines and its neighbour did not. At 62% of the
+   screen the cards are half again wider, every name holds one line, and the
+   section comes in around half the height. */
 @media(max-width:600px){
-  .team-row{gap:14px;}
-  .team-row-cta{margin-top:28px;}
+  .team-row{display:block;}
+  .team-row-group{margin-bottom:22px;}
+  .team-row-people{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:62%;
+    gap:12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    /* Full-bleed, so a card can sit against the screen edge while the copy
+       above it keeps the gutter. */
+    margin-inline:calc(var(--gutter) * -1);
+    padding:2px var(--gutter) 6px;
+  }
+  .team-row-people::-webkit-scrollbar{display:none;}
+  .team-row-people>.team-member{scroll-snap-align:center;}
+  /* Down from the 20px the 1024px step-down leaves, which is what made the
+     captions wrap unevenly. At these sizes both the longest name and the
+     longest role hold one line. */
+  .team-member h4,.team-row-group h4{font-size:17px;}
+  .team-member span,.team-row-group span{font-size:13.5px;}
+  /* Dots only, as with the article row: at 62% the next card is already in
+     view, so arrows would be telling the reader something they can see.
+
+     Page-scoped, like .home .edu-nav is: the `.rmq-nav, .edu-nav, .team-nav`
+     display:none further down the file matches at the same specificity and
+     would win this on source order alone. */
+  :is(.home,.npv) .team-nav{display:flex;align-items:center;justify-content:center;margin-top:14px;}
+  :is(.home,.npv) .team-nav .cnav-arrow{display:none;}
+  .team-row-cta{margin-top:24px;}
 }
 
 
@@ -4238,7 +4279,8 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
    the phone block below rather than here — a positioned ancestor changes how
    the marquee's own composited layer is drawn. */
 .rmq-nav,
-.edu-nav{display:none;}
+.edu-nav,
+.team-nav{display:none;}
 
 /* ── Choose the visit that fits ────────────────────────────
    639px, not 600, so this replaces the shared phone treatment of the offers
