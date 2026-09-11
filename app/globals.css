@@ -4768,29 +4768,30 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
 /* ── Why this visit is different ─────────────────────────
    .pillars as it has always been, plus a badge and a smaller number: the card
    becomes [number spanning the top] over [badge | title and body]. */
+.npv .pillars-ico{gap:20px;}
 .npv .pillars-ico .pillar{
   display:grid;
   grid-template-columns:auto minmax(0,1fr);
-  column-gap:18px;row-gap:14px;
+  column-gap:16px;row-gap:10px;
   align-items:start;
-  padding:28px 30px;
+  padding:22px 24px;
 }
 .npv .pillars-ico .pillar .n{
   grid-column:1/-1;
-  font-family:var(--body);font-size:13px;font-weight:700;
+  font-family:var(--body);font-size:12px;font-weight:700;
   letter-spacing:.14em;color:var(--clay);
 }
 .npv .pillars-ico .pillar-ico{
   grid-column:1;
-  width:46px;height:46px;flex:none;
+  width:40px;height:40px;flex:none;
   border-radius:50%;
   background:var(--sage-tint);color:var(--clay-deep);
   display:grid;place-items:center;
 }
-.npv .pillars-ico .pillar-ico svg{width:22px;height:22px;}
+.npv .pillars-ico .pillar-ico svg{width:20px;height:20px;}
 .npv .pillars-ico .pillar-body{grid-column:2;}
-.npv .pillars-ico .pillar h3{margin:0 0 8px;font-size:20px;line-height:1.25;}
-.npv .pillars-ico .pillar p{font-size:14.5px;}
+.npv .pillars-ico .pillar h3{margin:0 0 6px;font-size:18.5px;line-height:1.25;}
+.npv .pillars-ico .pillar p{font-size:14px;line-height:1.55;}
 
 /* ── Why this visit is different ─────────────────────────
    --cream-2, the same ground the review band takes further down (and the
@@ -4986,13 +4987,13 @@ button.topic-tag{font-family:var(--body);line-height:inherit;cursor:pointer;}
   .npv .altpaths-row{grid-template-columns:1fr;}
 }
 @media(max-width:820px){
-  .npv .pillars-ico .pillar{padding:24px 22px;}
+  .npv .pillars-ico .pillar{padding:20px 20px;}
   /* One column, so the uneven split above has nothing to divide. */
   .npv .booking-cols{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
-  .npv .pillars-ico .pillar{column-gap:14px;row-gap:12px;padding:22px 20px;}
-  .npv .pillars-ico .pillar-ico{width:40px;height:40px;}
+  .npv .pillars-ico .pillar{column-gap:14px;row-gap:10px;padding:18px 18px;}
+  .npv .pillars-ico .pillar-ico{width:36px;height:36px;}
   .npv .pillars-ico .pillar h3{font-size:18px;}
   .npv .know-list{grid-template-columns:1fr;gap:12px;}
   .npv .book-card{padding:24px 20px;}
